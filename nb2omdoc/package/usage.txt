@@ -1,0 +1,10 @@
+$nb2omversion::usage = "$nb2omversion   is a string containg version information.";
+OMRules::usage = "OMRules   is a system variable that controls the rewrite rules for the conversion from MathML to OpenMath.";
+PrintHeaderInfo::usage = "PrintHeaderInfo[] prints the current setting of the system variables associated with the document header.";
+SetVerbose::usage = "SetVerbose[b] controls printing of debugging information during conversion.";
+NB2OMDoc::usage = "NB2OMDoc[nb,dir,opts] converts a notebook into OMDoc.";
+$omsystem::usage = "$omsystem   determines the OMDoc DTD used in the document header.";
+$omident::usage = "$omsystem   determines the identifier used in the document header.";
+$omtitle::usage = "$omsystem   determines the title used in the document header.";
+$omcreator::usage = "$omsystem   determines the creator used in the document header.";
+$omsubject::usage = "$omsystem   determines the subject used in the document header.";

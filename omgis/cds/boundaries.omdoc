@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="boundaries.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-02-26T16:20:43Z </dc:date>
+  <dc:title xml:lang="en"> boundaries </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-02-26T16:20:43Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+
+<theory xml:id="boundaries">
+  <imports from="maps.omdoc#maps"/>
+
+  <symbol name="boundary_line">
+    <metadata>
+      <dc:description>
+	The limiting line of jurisdictional authority for various levels of government.
+	Delineation: The position of BOUNDARY LINE is as defined by law or proclamation.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="boundary_point">
+    <metadata>
+      <dc:description>
+	An identified location on or near a current boundary or former boundary.
+	Delineation: BOUNDARY POINT is the location as marked by or referenced from POINT MONUMENT.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="city">
+    <metadata>
+      <dc:description>
+	An incorporated, populated place such as a village, city, town, or borough, including an independent city.
+	Delineation: The limit of CITY is the extent of jurisdictional authority.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="county">
+    <metadata>
+      <dc:description>
+	Second order division of a nation such as parish, borough, municipio, judicial division, and independent cities.
+	Delineation: The limit of COUNTY is the extent of jurisdictional authority.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+  <symbol name="minor_civil_division">
+    <metadata>
+      <dc:description>
+	Third order division of a nation such as township, town, district, precinct, or barrio.
+	Delineation: The limit of MINOR CIVIL DIVISION is the extent of jurisdictional authority.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+  <symbol name="nation">
+    <metadata>
+      <dc:description>
+	An area under the jurisdiction of a sovereign government.
+	Delineation: The limit of NATION is the extent of jurisdictional authority.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+  <symbol name="point_monument">
+    <metadata>
+      <dc:description>
+	A structure that marks the location of a point determined by surveying.
+	Delineation: The limit of POINT MONUMENT is the extent of the marker.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+  <symbol name="reservation">
+    <metadata>
+      <dc:description>
+	Bounded land set aside for a particular purpose, generally having certain use restrictions.
+	Delineation: The limit of RESERVATION is the extent of jurisdictional authority.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+  
+  <symbol name="state">
+    <metadata>
+      <dc:description>
+	First order division of a nation.
+	Delineation: The limit of STATE is the extent of jurisdictional authority.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+</theory>
+
+</omdoc>

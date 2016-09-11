@@ -1,0 +1,206 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      4368,        150]*)
+(*NotebookOutlinePosition[      5043,        174]*)
+(*  CellTagsIndexPosition[      4999,        170]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Sample Notebook", "Title"],
+
+Cell[CellGroupData[{
+
+Cell["A Section", "Section"],
+
+Cell[TextData[{
+  "Plain text, inline math ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^\(\(2\)\(\ \)\) + \ y\^2 \[Equal] \ z\^2\)]],
+  ". "
+}], "Text"],
+
+Cell[TextData[{
+  "OMType   ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(A \[Rule] B\),
+          RowBox[ {"OMType", "[", "A", ",", "B", "]"}]], TraditionalForm]]],
+  "  \nOMFunction  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(f \[Colon] A \[Rule] B\),
+          RowBox[ {"OMFunction", "[", "f", ",", "A", ",", "B", "]"}]], 
+        TraditionalForm]]],
+  "\nOMPair ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((\[Alpha], \[CapitalGamma]\_i)\),
+          RowBox[ {"OMPair", "[", "\[Alpha]", ",", 
+            SubscriptBox[ "\[CapitalGamma]", "i"], "]"}]], 
+        TraditionalForm]]],
+  "\nOMTuple  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((a\_1, a\_2, \[Ellipsis], a\_n)\),
+          RowBox[ {"OMTuple", "[", 
+            SubscriptBox[ "a", "1"], ",", 
+            SubscriptBox[ "a", "2"], ",", 
+            SubscriptBox[ "a", "n"], "]"}]], TraditionalForm]]]
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["The Same Section", "Section"],
+
+Cell[TextData[{
+  "Plain text, inline math ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^\(\(2\)\(\ \)\) + \ y\^2 \[Equal] \ z\^2\)]],
+  ". "
+}], "Text"],
+
+Cell[TextData[{
+  "OMType   ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(A \[Rule] B\),
+          RowBox[ {"OMType", "[", "A", ",", "B", "]"}]], TraditionalForm]]],
+  "  \nOMFunction  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(f \[Colon] A \[Rule] B\),
+          RowBox[ {"OMFunction", "[", "f", ",", "A", ",", "B", "]"}]], 
+        TraditionalForm]]],
+  "\nOMPair ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((\[Alpha], \[CapitalGamma]\_i)\),
+          RowBox[ {"OMPair", "[", "\[Alpha]", ",", 
+            SubscriptBox[ "\[CapitalGamma]", "i"], "]"}]], 
+        TraditionalForm]]],
+  "\nOMTuple  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((a\_1, a\_2, \[Ellipsis], a\_n)\),
+          RowBox[ {"OMTuple", "[", 
+            SubscriptBox[ "a", "1"], ",", 
+            SubscriptBox[ "a", "2"], ",", 
+            SubscriptBox[ "a", "n"], "]"}]], TraditionalForm]]]
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["A Lemma", "Section"],
+
+Cell[TextData[{
+  "This is an assertion.  ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^w\  \[Equal] \ 123\)]],
+  "."
+}], "Lemma"]
+}, Closed]]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{854, 607},
+WindowMargins->{{Automatic, 1}, {Automatic, 0}},
+CellLabelAutoDelete->True,
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 32, 0, 166, "Title"],
+
+Cell[CellGroupData[{
+Cell[1833, 57, 28, 0, 87, "Section"],
+Cell[1864, 59, 154, 5, 46, "Text"],
+Cell[2021, 66, 945, 27, 121, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[3003, 98, 35, 0, 55, "Section"],
+Cell[3041, 100, 154, 5, 46, "Text"],
+Cell[3198, 107, 945, 27, 121, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[4180, 139, 26, 0, 55, "Section"],
+Cell[4209, 141, 131, 5, 33, "Lemma"]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

@@ -1,0 +1,1242 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE module PUBLIC "-//CNX//DTD CNXML 0.4//EN" 
+	  "../dtd/cnxml-0.4/cnxml_mathml.dtd">
+
+<module id="m0048"
+	xmlns="http://cnx.rice.edu/cnxml/0.4"
+	xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <name>Linear Time Invariant Systems</name>
+
+  <metadata>    
+    <md:version>2.2</md:version>
+    <md:created>2000-10-11</md:created>
+    <md:revised>2001-08-24</md:revised>
+
+    <md:authorlist> 
+      <md:author id="dhj"> 
+	<md:firstname>Don</md:firstname>
+	<md:othername>H.</md:othername> 
+	<md:surname>Johnson</md:surname> 
+	<md:email>dhj@rice.edu</md:email> 
+      </md:author> 
+    </md:authorlist>
+
+    <md:maintainerlist>
+      <md:maintainer id="dhj"> 
+	<md:firstname>Don</md:firstname>
+	<md:othername>H.</md:othername> 
+	<md:surname>Johnson</md:surname> 
+	<md:email>dhj@rice.edu</md:email> 
+      </md:maintainer> 
+      <md:maintainer id="mrshawn">
+	<md:firstname>Shawn</md:firstname>
+	<md:othername>Michael</md:othername>
+	<md:surname>Stewart</md:surname>
+	<md:email>mrshawn@rice.edu</md:email>
+      </md:maintainer>
+      <md:maintainer id="bfite">
+	<md:firstname>Benjamin</md:firstname>
+	<md:othername>D.</md:othername>
+	<md:surname>Fite</md:surname>
+	<md:email>bfite@rice.edu</md:email>
+      </md:maintainer>
+    </md:maintainerlist>
+
+    <md:keywordlist>
+      <md:keyword>time invariant</md:keyword>
+      <md:keyword>fourier series</md:keyword>
+      <md:keyword>output spectrum</md:keyword>
+    </md:keywordlist>
+
+    <md:abstract>
+      Application of periodic input to linear, time-invariant
+      systems. Also how the transfer function can be used to
+      modularize the analysis of LTI systems.
+    </md:abstract>
+  </metadata>
+
+  <content>
+    <para id='spectrum'> 
+      When we apply a periodic input to a linear, time-invariant
+      system, the output is periodic and has Fourier series
+      coefficients equal to the product of the system's frequency
+      response and the input's Fourier coefficients
+      (<cnxn module="m0044" target="output" strength="9">Filtering
+      Periodic Signals</cnxn>).  
+      The way we derived the spectrum of non-periodic signal from
+      periodic ones makes it clear that the same kind of result works
+      when the input is not periodic: If
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+      serves as the input to a linear, time-invariant system having frequency response
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">H</m:ci>
+	  <m:ci>f</m:ci>
+	</m:apply>
+      </m:math>, 
+      the spectrum of the output is
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:ci type="fn">X</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+
+
+    <example id="example">
+      <para id="sampleprobs"> 
+	Let's use this frequency-domain input-output relationship for
+	linear, time-invariant systems to find a formula for the
+	<m:math>
+	  <m:apply>
+	    <m:times/> 
+	    <m:ci>R</m:ci>
+	    <m:ci>C</m:ci>
+	  </m:apply>
+	</m:math>-circuit's 	
+	response to a pulse input. We have expressions for the input's
+	spectrum and the system's frequency response.
+
+	<equation id="freqresponse">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">P</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+                    <!-- ********* problem in cmml2om? (should be unary minus) ************* -->
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>    
+	  </m:math>
+	</equation>
+	<equation id="freqresponse2">  
+	  <m:math> 
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation> 
+
+	Thus, the output's Fourier transform equals
+
+	<equation id="outputtransform">
+	  <m:math> 
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">Y</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	You won't find this Fourier transform in our table, and the
+	required integral is difficult to evaluate as the expression
+	stands. This situation requires cleverness and an
+	understanding of the Fourier transform's properties. In
+	particular, recall Euler's relation for the sinusoidal term
+	and note the fact that multiplication by a complex exponential
+	in the frequency domain amounts to a time delay. Let's
+	momentarily make the expression for
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">Y</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:math> 
+	more complicated.   
+
+	<equation id="four_fifteen">
+	  <m:math> 
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>    
+		      <m:imaginaryi/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>&Delta;</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:pi/>
+			  <m:ci>f</m:ci>
+			  <m:ci>&Delta;</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>&Delta;</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Consequently,
+
+	<equation id="consequent">
+	  <m:math> 
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">Y</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>&Delta;</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	The table of 
+	<cnxn module="m0045" target="longtable" strength="9">Fourier
+	  transform properties</cnxn> 
+
+	suggests thinking about this expression as a
+	<emphasis>product</emphasis> of terms.
+	
+	<list id="listone" type="bulleted">
+	  <item> 
+	    Multiplication by   
+	    <m:math>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply> 
+	    </m:math>
+	    means integration.
+	  </item>
+	  <item> 
+	    Multiplication by the complex exponential   
+	    <m:math> 
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>&Delta;</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    means delay by   
+	    <m:math> 
+	      <m:ci>&Delta;</m:ci>
+	    </m:math>
+	    seconds in the time domain.
+	  </item>
+	  <item> 
+	    The term   
+	    <m:math> 
+	      <m:apply>
+		<m:minus/>		
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>&Delta;</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    means, in the time domain, subtract from the original
+	    signal its time-delayed version.
+	  </item>
+	  <item> 
+	    The inverse transform of the frequency response is   
+	    <m:math> 
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>R</m:ci>
+			<m:ci>C</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+	  </item>
+	</list>
+	
+	We can translate each of these frequency-domain products into
+	time-domain operations <emphasis>in any order we
+	like</emphasis> because the order in which multiplications
+	occur doesn't affect the result. Let's start with the product
+	of
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	(integration in the time domain) and the transfer function:  
+
+	<equation id="anothertransferfunction">
+	  <m:math> 
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>&harr;</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>R</m:ci>
+			<m:ci>C</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">u</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	The middle term in the expression for   
+	<m:math> 
+	  <m:apply>
+	    <m:ci type="fn">Y</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:math>
+	consists of the difference of two terms: the constant  
+	<m:math> 
+	  <m:cn>1</m:cn>
+	</m:math> 
+	and the complex exponential   
+	<m:math> 
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>&Delta;</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  
+	Because of the Fourier transform's linearity, we simply
+	subtract the results.
+	<equation id="result">
+	  <m:math> 
+	    <m:apply>
+	      <m:ci type="fn">Y</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+            <!-- *************** problem with MathML here *************** -->
+	    <m:ci>&harr;</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>t</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>R</m:ci>
+			  <m:ci>C</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply> 
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			  <m:ci>&Delta;</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>R</m:ci>
+			  <m:ci>C</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:ci>&Delta;</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation> 
+
+	Note that in delaying the signal how we carefully included the
+	unit step. The second term in this result does not begin until
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>t</m:ci>
+	    <m:ci>&Delta;</m:ci>
+	  </m:apply>
+	</m:math>.  
+	Thus, the waveforms shown in the 
+	<cnxn module="m0044" target="filter" strength="9">Filtering 
+	  Periodic Signals</cnxn> 
+	example mentioned above are exponentials.  We say that the
+	<term>time constant</term> of an exponentially decaying signal
+	equals the time it takes to decrease by
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:exponentiale/>
+	  </m:apply>
+	</m:math> 	
+	of its original value.  Thus, the time-constant of the rising
+	and falling portions of the output equal the product of the
+	circuit's resistance and capacitance.
+      </para>
+    </example>
+
+
+
+    <exercise id="exer1">
+      <problem>
+	<para id="exer1probtext">
+	  Derive the filter's output by considering the terms in 
+	  <cnxn target="four_fifteen" strength="9"/> 
+	  in the order given. Integrate last rather than first. You
+	  should get the same answer.
+	</para>
+      </problem>
+      <solution>
+	<para id="exer1probsoln">
+	  The inverse transform of the frequency response is  
+	  <m:math> 
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>R</m:ci>
+		  <m:ci>C</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>t</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">u</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>  
+	  </m:math>.  
+	  Multiplying the frequency response by   
+	  <m:math> 
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>&Delta;</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  means subtract from the original signal its time-delayed
+	  version. Delaying the frequency response's time-domain
+	  version by
+	  <m:math>
+	    <m:ci>&Delta;</m:ci> 
+	  </m:math> 
+	  results in  
+	  <m:math> 
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>R</m:ci>
+		  <m:ci>C</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">u</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>t</m:ci>
+		  <m:ci>&Delta;</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  
+	  Subtracting from the undelayed signal yields   
+	  <m:math> 
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:ci>&Delta;</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:ci>&Delta;</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  	  
+	  Now we integrate this sum. Because the integral of a sum
+	  equals the sum of the component integrals (integration is
+	  linear), we can consider each separately.  Because
+	  integration and signal-delay are linear, the integral of a
+	  delayed signal equals the delayed version of the
+	  integral. The integral is provided in the
+	  <cnxn target="result" strength="9">example</cnxn>.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="conclusion"> 
+      In this example, we used the table extensively to find the
+      inverse Fourier transform, relying mostly on what multiplication
+      by certain factors, like
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:cn>1</m:cn>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> 
+      and  
+      <m:math> 
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>f</m:ci>
+	      <m:ci>&Delta;</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>,       
+      meant.  We essentially treated multiplication by these factors
+      as if they were transfer functions of some fictitious circuit.
+      The transfer function
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:cn>1</m:cn>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> 
+      corresponded to a circuit that integrated, and   
+      <m:math> 
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>f</m:ci>
+	      <m:ci>&Delta;</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      to one that delayed.  We even implicitly interpreted the
+      circuit's transfer function as the input's spectrum! This
+      approach to finding inverse transforms -- breaking down a
+      complicated expression into products and sums of simple
+      components -- is the engineer's way of breaking down the problem
+      into several much simpler ones.  Along the way we may make the
+      system serve as the input, but in the rule
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">Y</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type="fn">X</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, 
+      which term is the input and which is the transfer function is
+      merely a notational matter (we labeled one factor with an
+      <m:math><m:ci>X</m:ci></m:math> and the other with an
+      <m:math><m:ci>H</m:ci></m:math>).
+    </para>
+
+
+    <section id='TransferFunctions'>
+      <name>Transfer Functions</name> 
+      <para id='TransferIntro'> 
+	The notion of a transfer function applies well beyond linear
+	circuits. Although we don't have all we need to demonstrate
+	the result as yet, <emphasis>all</emphasis> linear,
+	time-invariant systems have a frequency-domain input-output
+	relation given by the product of the input's Fourier transform
+	and the system's transfer function. Thus, linear circuits are
+	a special case of linear, time-invariant systems. As we tackle
+	more sophisticated problems in transmitting, manipulating, and
+	receiving information, we will assume linear systems having
+	certain properties (transfer functions)
+	<emphasis>without</emphasis> worrying about what circuit has
+	the desired property. At this point, you may be concerned that
+	this approach is glib, and rightly so. Later we'll show that
+	by involving software that we really don't need to be
+	concerned in most cases.
+      </para>
+    </section>
+
+
+    <section id='CommutativeTransferFunctions'>
+      <name>Commutative Transfer Functions</name>
+      <para id='Interesting'> 
+
+	Another interesting notion arises from the commutative
+	property of multiplication (exploited in an
+	<cnxn target="example" strength='5'>example above</cnxn>): 	
+	We can rather arbitrarily chose an order in which to apply
+	each product. Consider a cascade of two linear, time-invariant
+	systems. Because the Fourier transform of the first system's
+	output is
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type='fn'>X</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type='fn'>
+		<m:msub>	    
+		  <m:mi>H</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:apply>      
+	</m:math>
+	and it serves as the second system's input, the cascade's
+	output spectrum is 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type='fn'>X</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type='fn'>
+		<m:msub>	    
+		  <m:mi>H</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type='fn'>
+		<m:msub>	    
+		  <m:mi>H</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:apply>      
+	</m:math>. 
+	Because this product also equals 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type='fn'>X</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type='fn'>
+		<m:msub>	    
+		  <m:mi>H</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type='fn'>
+		<m:msub>	    
+		  <m:mi>H</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:apply> 
+	</m:math>, 
+	the cascade having the linear systems in the
+	  opposite order yields the same result.
+	Furthermore, the cascade acts like a
+	<emphasis>single</emphasis> linear system, having transfer
+	function
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type='fn'>
+		<m:msub>	    
+		  <m:mi>H</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type='fn'>
+		<m:msub>	    
+		  <m:mi>H</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:apply> 
+	</m:math>. 
+	This result applies to other configurations of linear,
+	time-invariant systems as well; see
+	<cnxn target='i9' module='m10350' strength='6'>this Frequency
+	  Domain Problem</cnxn>. 
+	Engineers exploit this property by determining what transfer
+	function they want, then breaking it down into components
+	arranged according to standard configurations.  Using the fact
+	that op-amp circuits can be connected in cascade with the
+	transfer function equaling the product of its component's
+	transfer function	
+	(<cnxn target='i25' module='m10349' strength='6'>see this 
+	  analog signal processing problem</cnxn>), 
+	we find a ready way of realizing designs.  We now understand
+	why op-amp implementations of transfer functions are so
+	important.
+      </para>
+    </section>     
+
+  </content>
+</module>

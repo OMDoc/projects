@@ -1,0 +1,212 @@
+%% MATH
+%\newcommand{\mathll}[2][l]{\providecommand{\nl}[1][.2cm]{\\[##1]}\begin{array}{#1}#2\end{array}}
+%\newcommand{\tb}{\hspace*{.5cm}}
+\newcommand{\bnf}[1]{{\color{gray}#1}}
+\newcommand{\bnfas}{\bnf{::=}}
+\newcommand{\bnfalt}{\bnf{|}}
+\newcommand{\bnfalts}{\;\bnf{|}\;}
+\newcommand{\maps}[2]{#1\mapsto #2}
+\newcommand{\imorph}{\hookrightarrow}
+\newcommand{\assign}[2]{#1 := #2}
+\renewcommand{\maps}[2]{\assign{#1}{#2}}
+\newcommand{\bnfor}[2]{(#1|#2)}
+\newcommand{\dbf}{\bf}
+
+%% For making metalevel syntax red
+\newcommand{\rvdash}{\vdash}%{\mathbin{\color{red}\vdash}}
+\newcommand{\rcln}{:}%{\mathbin{\color{red}:}}
+\newcommand{\req}{\doteq}%{\mathbin{\color{red}=}}
+\newcommand{\rleadsto}{\leadsto}%{\mathbin{\color{red}\leadsto}}
+
+%% TYPE THEORY
+\renewcommand{\arr}{\rightarrow}
+\renewcommand{\P}[2]{\Pi_{#1:#2}\,}
+\newcommand{\lam}[2]{\lambda_{#1:#2}\,}
+\newcommand{\Terms}{Terms}
+\newcommand{\Types}{Types}
+\newcommand{\Sorts}{Sorts}
+%\newcommand{\type}{type}
+%\newcommand{\sort}{sort}
+\newcommand{\varlist}{x_1:\tau_1,\ldots,x_n:\tau_n}
+\newcommand{\rec}[1]{\{#1\}} % record type 
+\newcommand{\lmd}[3][]{\lambda #2\ifnonempty{#1}{:#1}.\,#3}
+
+%%LF
+\newcommand{\lftype}{\mathtt{type}}
+\newcommand{\lffont}[1]{\small\texttt{#1}}
+\newcommand{\lfm}[1]{\mathit{#1}}
+\newcommand{\kity}{\mathtt{type}}
+\newcommand{\lfkind}{\mathtt{kind}}
+
+%%Substitution, contexts, beta, eta equality
+\newcommand{\beq}{\doteq_{\beta}}
+\newcommand{\eeq}{\doteq_{\eta}}
+\newcommand{\sub}[2]{#2 / #1}           %\sub{x}{A} means A for x
+\newcommand{\subs}[2]{[#1]\,#2}         %\subs{\sub{x_1}{A_1},\sub{x_2}{A_2}}{B} means A_1 for x_1 and A_2 for x_2 in B
+\newcommand{\subst}[3]{[#2 / #1]\,#3}   %\subst{x}{A}{B} means A for x in B
+\newcommand{\psubst}[3]{[#2 / #1]\,#3}
+\newcommand{\sappl}[2]{\hexta{#1}{#2}}
+\newcommand{\ctx}[1]{\langle #1\rangle}
+\newcommand{\Ctx}{\mathit{Ctx}}
+
+%%Renaming
+\newcommand{\rnm}[1]{R^{s_j}_{i.s_j}(#1)}
+
+%% Logic Abbreviations
+\newcommand{\fol}{FOL}
+\newcommand{\sfol}{SFOL}
+\newcommand{\dfol}{DFOL}
+\newcommand{\hol}{HOL}
+
+%% Meta-variables
+\newcommand{\ptype}{\tau}  %pattern types
+\newcommand{\plist}{D}     %list of declaration patterns
+\newcommand{\DL}{L}        %declarative languages / logics
+\newcommand{\dlm}{l}       %declarative language / logic morphisms
+\newcommand{\icons}{i}     %instances                          
+\newcommand{\psig}{\Theta} %pragmatic signatures
+\newcommand{\psigm}{\theta} %pragmatic signatures
+\newcommand{\esig}{\Phi} %elaborated signatures
+\newcommand{\sfr}{\Sigma}
+\newcommand{\lext}{\Sigma}
+
+%% Declaration Patterns
+%\newcommand{\pbind}[3][]{\lambda #2\ifnonempty{#1}{:#1}.\,#3}
+\newcommand{\pbind}[3]{\lambda #1:#2.\,#3} %Pattern binder
+\newcommand{\pappl}[2]{#1\,#2}              %Pattern application
+\newcommand{\sigtp}{\texttt{Sig}}          %Type of signature fragments 
+\newcommand{\match}[2]{#1\ll #2}
+\newcommand{\sigfr}[1]{\{#1\}}
+\newenvironment{sigfrag}{\!\left\{\!\!\!\begin{array}{l@{\,:\,}l}}{\end{array}\!\!\!\right\}}
+\newcommand{\sfdecl}[3][]{#2 & #3\ifnonempty{#1}{ = #1}}
+\newcommand{\qnm}[2]{\,#1\!.#2\,}
+
+%% OpenMath Versions
+\newcommand{\ombind}[1]{\beta(#1)}         %OpenMath bindings
+\newcommand{\oma}[2]{{@}(#1,#2)}           %OpenMath application @(a,b,c,...,t)
+
+%% Declarative Languages, Signatures and Morphisms
+\newcommand{\dlp}[1]{D_{#1}}                                    %the set \dlp{L} of declaration patterns of language L
+\newcommand{\vdecl}[2]{#1 \rcln #2}                             %variable declaratoins x : T
+\newcommand{\cdecldef}[3][]{#2 \rcln #3\ifnonempty{#1}{ = #1}}     %constant declarations c : T = E for type T and definition E
+\newcommand{\cdecl}[3][]{#2 \rcln #3\ifnonempty{#1}{ [= #1]}} %constant declarations c : T [= E] compact notation
+\newcommand{\pdecl}[3][]{#2\ifnonempty{#1}{: #1} = #3}  %pattern declarations  p : T = P for type T and definition P
+\newcommand{\pvalext}[1]{\xhookrightarrow{#1}}          %pattern-valid (legal) extensions of languages
+\newcommand{\hext}[1]{\overline{#1}}                    %homomorphic extension
+\newcommand{\hexta}[2]{\overline{#1}(#2)}               %homomorphic extension of a morphism applied to its argument
+
+%% Sequences
+\newcommand{\seqvar}{\varsigma}
+\newcommand{\seqsubst}[3]{[#1]_{#2 / #3}}
+\newcommand{\sequpto}[1]{\leq\!#1}
+\newcommand{\seqind}[2]{#1_{#2}}
+\newcommand{\sitem}{\iota}
+
+%% Natural numbers
+\newcommand{\add}[2]{#1 + #2}
+\newcommand{\subt}[2]{#1 - #2}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\ntype}{\mathtt{Nat}}
+
+%% Category Theory Semantics for Declaration Patterns and Translations
+\newcommand{\sig}[1]{Sig^{#1}}
+\newcommand{\catdl}{\mathbb{D}}
+\newcommand{\Lsyn}[1][L]{#1}
+\newcommand{\functh}[1][]{\mathbf{Th}\ifnonempty{#1}{(#1)}}
+
+
+%% Judgments 
+\newcommand{\wljudg}[1]{\rvdash #1\;\mathit{Lang}}                     %wellformed language/logic judgment
+\newcommand{\wlmjudg}[3]{\rvdash #1\;\;:\;\;#2\;\rightarrow\; #3} %wellformed language/logic morphism judgment
+\newcommand{\wsjudg}[2][]{\rvdash^{#1}\;#2\;\mathit{Sig}}              %wellformed signature judgment
+\newcommand{\wsmjudg}[4][]{\rvdash^{#1}\;#2 \rcln #3\to #4}  %wellformed signature morphism judgment
+\newcommand{\wpsjudg}[2][]{\rvdash^{#1}\;#2}             %wellformed signature judgment
+\newcommand{\wpsmjudg}[4][]{\rvdash_{#1}\;#2 \rcln #3\to #4} %wellformed signature morphism judgment
+\newcommand{\wesjudg}[2][]{\rvdash_{#1}\;#2}             %wellformed signature judgment
+%\newcommand{\wesmjudg}[4][]{\rvdash_{#1}\;#2 \rcln #3\to #4} %wellformed signature morphism judgment
+\newcommand{\wpjudg}[5][\Gamma]{#1\rvdash^{#2}_{#3} #4 \rcln #5} %wellformed pattern judgment 
+\newcommand{\wejudg}[5][]{#3\rvdash^{#1}_{#2}\;#4 \rcln #5}  %wellformed expression judgment
+\newcommand{\wijudg}[5][]{#3\rvdash^{#1}_{#2}\;#4 \rcln #5}  %wellformed instance judgment
+\newcommand{\wcjudg}[3][]{\rvdash^{#1}_{#2}\;#3\;\mathit{Ctx}}         %wellformed context judgment
+\newcommand{\wsbjudg}[4][]{#4 \rvdash_{#1}\;#2\;\rcln\;#3}   %wellformed substitution judgment
+\newcommand{\pejudg}[5][\Gamma]{#1\rvdash^{#2}_{#3}\;#4 \req #5} % pattern equality judgment
+\newcommand{\sejudg}[3][]{#2 \rleadsto^{#1}\;#3}         %signature elaboration judgment
+\newcommand{\pmjudg}[3][\Gamma]{#1\rvdash\;#2\ll #3}     % pattern matching judgment
+\newcommand{\seqjudg}[4][\Gamma]{#1\rvdash_{#2} #3 \doteq #4} % sequence equality judgment
+
+
+%\newcommand{\mmtejudg}[3][]{#2\vdash^{#1} #3}         %wellformed MMT expression judgment
+%\newcommand{\stjudg}[3]{#2\leadsto_{#1}#3}            %signature translation judgment
+%\newcommand{\emjudg}[2]{#1\ll #2}                     %expression matches an expression
+%\newcommand{\lmjudg}[3][\delta]{#1\vdash #2\ll #3}    %list of expr matches another list
+%\newcommand{\ptjudg}[3][\Gamma]{#1\vdash #2 : #3}     %type judgment for patterns
+%\newcommand{\etjudg}[3][\Gamma]{#1\vdash #2 : #3}     %type judgment for expressions
+%\newcommand{\ltjudg}[3][\gamma]{#1\vdash #2 : #3}     %type judgment for lists
+
+%% Rule names for judgment \wpjudg
+\newcommand{\rSigFrag}{\mathit{sigFrag}}
+\newcommand{\rPConst}{\mathit{const}}
+\newcommand{\rPBind}{\mathit{bind}}
+\newcommand{\rPAppl}{\mathit{appl}}
+%\newcommand{\rpconst}{\mathit{const}}
+%\newcommand{\rpctx}{\mathit{ctx}}
+%\newcommand{\rpbind}{\mathit{bind}}
+%\newcommand{\rpappl}{\mathit{appl}}
+
+%% Rule names for judgment \wljudg
+\newcommand{\rEDL}{\mathit{empty}}
+\newcommand{\rPDL}{\mathit{pattern}}
+
+%% Rule names for judgment \wsbjudg
+\newcommand{\rEmpSub}{\mathit{empty}}
+\newcommand{\rSub}{\mathit{subs}}
+
+%% Rule names for \pejudg
+\newcommand{\rPBeta}{\beta\textrm{-}\mathit{Eq}}
+\newcommand{\rPEta}{\eta\textrm{-}\mathit{Eq}}
+
+%% Rule names for \wpsjudg
+\newcommand{\rAddEmpty}{\mathit{empty}}
+\newcommand{\rAddInst}{\mathit{inst}}
+
+%% Rule names for \sejudg
+\newcommand{\rEmptyElab}{\mathit{empty}}
+\newcommand{\rInstElab}{\mathit{inst}}
+
+
+%% Old macros
+%\newcommand{\matches}[3][\Gamma]{#1\vdash #2\ll #3}
+%\newcommand{\lmatches}[3][\Gamma]{#1\vdash #2\ll #3}
+%\newcommand{\listpat}{L}
+%\newcommand{\pplist}{\pat'_1,\ldots,\pat'_{n'}}
+%\newcommand{\ltype}{\mathtt{List}}
+%\newcommand{\prep}[1]{\overline{#1}}
+%\newcommand{\tappend}{,}
+%\newcommand{\expr}{E}
+%\newcommand{\etype}{\mathtt{Exp}}
+%\newcommand{\lsttp}[1][]{\mathtt{List}\ifnonempty{#1}{\lbrack #1\rbrack}}
+%\newcommand{\lstmap}[3]{[#3]_{#2/#1}}
+%\newcommand{\lelem}[1]{#1.i}
+%\newcommand{\elist}{\expr_1,\ldots,\expr_n}
+%\newcommand{\dlist}{x_1:\expr_1,\ldots,x_n:\expr_n}
+%\newcommand{\block}[1]{\langle #1\rangle}
+%\newcommand{\typelist}{\tau_1,\ldots,\tau_n}
+%\newcommand{\poftp}[1]{\widehat{#1}}
+%\newcommand{\occurs}[2]{#2[#1]}
+%\newcommand{\patt}{P}
+%\newcommand{\pat}{P}
+%\newcommand{\pcons}{c}
+%\newcommand{\typelist}{\type_1,\ldots,\type_n}
+%\newcommand{\oftype}[3][\Gamma]{#1 \vdash #2 : #3}
+%\newcommand{\decl}[3][]{#2 : #3\ifnonempty{#1}{= #1}}
+%\newcommand{\seqv}{\varsigma}
+%\newcommand{\seq}{L}
+%\newcommand{\stype}{\mathtt{Seq}}
+%\newcommand{\ellipsis}[4][]{[#4]^{#2}_{\ifnonempty{#1}{#3 = #1}{#3 = 1}}}
+%\newcommand{\sindex}[2]{#1.#2}
+%\newcommand{\pSigma}{\Sigma}
+%\newcommand{\psigma}{\sigma}
+%\newcommand{\eSigma}{S}
+%\newcommand{\esigma}{s}
+%\newcommand{\lteq}{=}
+%\newcommand{\dom}[1]{\mathit{dom}(#1)}    %domain

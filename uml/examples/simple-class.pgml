@@ -1,0 +1,130 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<pgml description="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram|-64--88-1-2-459cf84a:11bebb005c6:-8000:000000000000099C"
+      name="Klassendiagramm 1"
+>
+<!-- In der description steht 40 für den x-Wert, 24 für den y-Wert, 90 für Breite, 65 für Höhe -->
+  <group name="Fig0"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[40, 24, 90, 65]pathVisible=false;operationsVisible=true;attributesVisible=true"
+       href="-64--88-1-2-459cf84a:11bebb005c6:-8000:000000000000099D"
+       fill="1"
+       fillcolor="white"
+       stroke="1"
+       strokecolor="black"
+  >
+    
+    <rectangle name="Fig0.0"
+      x="40"
+      y="24"
+      width="90"
+      height="65"
+      fill="1"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="0 255 255"
+    />
+    <group name="Fig0.1"
+         description="org.argouml.uml.diagram.ui.FigStereotypesCompartment[40, 24, 90, 2]"
+         href="-64--88-1-2-459cf84a:11bebb005c6:-8000:000000000000099D"
+         fill="1"
+         fillcolor="white"
+         stroke="1"
+         strokecolor="black"
+    >
+      
+      <rectangle name="Fig0.1.0"
+        x="40"
+        y="24"
+        width="90"
+        height="2"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      />
+    </group>
+    <text name="Fig0.2"
+      x="40"
+      y="26"
+      fill="1"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="red"
+      font="Dialog"
+      textsize="10"
+    >Class</text>
+    <group name="Fig0.3"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[41, 69, 89, 20]"
+         fill="1"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      
+      <rectangle name="Fig0.3.0"
+        x="41"
+        y="69"
+        width="89"
+        height="20"
+        fill="1"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <path name="Fig0.3.1"
+        description="org.argouml.uml.diagram.ui.FigFeaturesCompartment$FigSeperator"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      >
+        <moveto x="41"
+                y="69" />
+        <lineto x="130"
+                y="69" />
+      </path>
+    </group>
+    <group name="Fig0.4"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[41, 48, 89, 20]"
+         fill="1"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      
+      <rectangle name="Fig0.4.0"
+        x="41"
+        y="48"
+        width="89"
+        height="20"
+        fill="1"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <path name="Fig0.4.1"
+        description="org.argouml.uml.diagram.ui.FigFeaturesCompartment$FigSeperator"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      >
+        <moveto x="41"
+                y="48" />
+        <lineto x="130"
+                y="48" />
+      </path>
+    </group>
+    <rectangle name="Fig0.5"
+      x="40"
+      y="24"
+      width="90"
+      height="65"
+      fill="0"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    />
+  </group>
+</pgml>
+

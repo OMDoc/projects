@@ -1,0 +1,30 @@
+body {
+       font-family: 'Luxi Sans', 'Trebuchet MS', serif;
+       font-size: large;
+       }
+span.formula {
+              padding: 5px;
+              background-color: #FFFFFF;
+              }
+table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+span.box { 
+           border: 1px solid black;
+           padding-left: 2px;
+           padding-right: 2px;
+           padding-top: 2px;
+           padding-bottom: 5px;
+}
+td, th {
+         border: 1px solid gray;
+         padding-left: 2px;
+         padding-right: 2px;
+         padding-top: 4px;
+         padding-bottom: 2px;
+         }
+div.tright {
+             clear: right;
+             float: right;
+             }

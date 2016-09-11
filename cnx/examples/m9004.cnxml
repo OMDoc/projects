@@ -1,0 +1,264 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE module PUBLIC "-//CNX//DTD CNXML 0.4//EN" 
+	  "../dtd/cnxml-0.4/cnxml-0.4/cnxml_plain.dtd">
+
+<module xmlns="http://cnx.rice.edu/cnxml/0.4" id="m9004">
+
+  <name>Using Emacs with PSGML to edit CNXML</name>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4">
+    <md:version>2.12</md:version>
+    <md:created>2000-03-07</md:created>
+    <md:revised>2002-05-22</md:revised>
+    <md:authorlist>
+      <md:author id="bmh">
+	<md:firstname>Brent</md:firstname>
+	<md:surname>Hendricks</md:surname>
+      </md:author>
+    </md:authorlist>
+
+    <md:maintainerlist>
+      <md:maintainer id="bmh">
+	<md:firstname>Brent</md:firstname>
+	<md:surname>Hendricks</md:surname>
+      </md:maintainer>
+      <md:maintainer id="yasushi">
+	<md:firstname>Yasushi</md:firstname>
+	<md:surname>Yamazaki</md:surname>
+      </md:maintainer>
+    </md:maintainerlist>
+    
+    <md:keywordlist>
+      <md:keyword>CNXML</md:keyword>
+      <md:keyword>Emacs</md:keyword>
+      <md:keyword>Emac</md:keyword>
+      <md:keyword>PSGML</md:keyword>
+      <md:keyword>edit</md:keyword>
+      <md:keyword>configure</md:keyword>
+    </md:keywordlist>
+    
+    <md:abstract>
+      This module explains how to use Emacs's XML editing mode
+      (provided by PSGML) to easily edit CNXML documents
+    </md:abstract>
+  </metadata>
+
+  <content>
+    <para id='par1'>
+      Emacs is an extremely versatile editing environment.  In
+      particular, it can use customized "modes" in which new commands
+      are available.  PSGML is an emacs mode for editing SGML and XML
+      documents.  It can speed up the process of marking up a document
+      considerably.  Using emacs and PSGML to edit CNXML documents
+      requires the following setup steps:
+
+      <list id="steps" type="enumerated">
+	<item>
+	  <cnxn target="install-emacs" strength="9">Installing Emacs</cnxn>
+	</item>
+	<item>
+	  <cnxn target="install" strength="9">Installing PSGML</cnxn>
+	</item>
+	<item>
+	  <cnxn target="catalog" strength="9">Setting up an SGML catalog</cnxn>
+	</item>
+	<item>
+	  <cnxn target="environ" strength="9">Setting up your environment</cnxn>
+	</item>
+	
+	<item>
+	  <cnxn target="editing" strength="9">Editing your document</cnxn>
+	</item>
+      </list>
+    </para>
+
+    <section id="install-emacs">
+      <name>Installing Emacs</name>
+      
+      <para id="inst_em1">
+	Most Unix systems come with emacs already installed.  Most
+	Microsoft Windows systems do not.  A precompiled version for
+	Windows is available from the <link
+	src="ftp://ftp.gnu.org/gnu">Gnu</link> ftp site <link
+	src="ftp://ftp.gnu.org/gnu/windows/emacs/latest/emacs-20.7-fullbin-i386.tar.gz">here</link>.
+	(If you are on a Unix system that does not have emacs installed
+	you will have to compile it yourself, sorry!)  Extract the
+	files using a program such as <link
+	src="http://www.winzip.com">WinZip</link> and install them
+	somewhere.  A good place on Windows would be
+	<codeline>C:\Program Files</codeline>.
+      </para>
+    </section>
+
+    <section id="install">
+      <name>Installing PSGML</name>
+      
+      <para id="inst_p1">
+	The next step is to ensure that you have PSGML installed on
+	your system.  PSGML is a special SGML/XML editing mode for
+	Emacs, written by Lennart Staflin.  Again, many Unix systems
+	have it installed already, but if yours does not, it is
+	available <link
+	src="http://sourceforge.net/project/showfiles.php?group_id=9156">online</link>.
+	If you installed your own emacs, extract the PSGML files in
+	the <codeline>site-lisp</codeline> directory under your emacs
+	installation.
+	  
+	<note>
+	  If you are on a Unix system and do not have permission to
+	  modify the emacs installation, create an
+	  <codeline>emacs</codeline> directory in your home directory,
+	  extract the PSGML files there, and add the line
+	  <codeline>(setq load-path (cons "~/emacs"
+	  load-path))</codeline> to the .emacs file in your home
+	  directory.
+	</note>
+      </para>
+    </section>
+    
+    <section id="catalog">
+      <name>Setting up an SGML catalog</name>
+      
+      <para id="cat_p1">
+	Once you have PSGML installed, you need to setup an SGML
+	catalog.  This catalog provide the translation from public
+	document types to physical file locations and allows emacs to
+	use the tags from your specific language.  For simplicity,
+	Connexions has made available a catalog containing the CNXML,
+	MathML, and QML DTDs.  You can download this from our <link
+	src="http://mountainbunker.org/download/sgml.tgz">website</link>.
+	Just download this file and extract it somewhere on you
+	computer.  A good place on Unix might be
+	<codeline>/usr/local/share</codeline>, or your home-directory.
+	On Windows you can extract it to <codeline>C:\</codeline>.
+	Remember where you extracted the files, because you will need
+	this information in the next step.
+      </para>
+    </section>
+    
+    <section id="environ">
+      <name>Setting up your environment</name>
+      
+      <para id="env_p1">
+	Now that everything is installed, you must configure emacs.
+	The first step is to tell emacs where your SGML catalog is.
+	This is most easily done by setting the environment variable
+	<codeline>SGML_CATALOG_FILES</codeline> to the location of
+	your catalog.  For example, if you extracted the catalog in
+	the directory <codeline>/usr/local/share</codeline>, you would
+	set <codeline>SGML_CATALOG_FILES</codeline> to
+	<codeline>/usr/local/share/sgml/catalog</codeline>.  On Unix
+	this is done in your shell initialization file
+	(<codeline>.cshrc</codeline> for C-shell users and
+	<codeline>.profile</codeline> for Bourne shell users).  On
+	Win9X, setting variables can be done in your
+	<codeline>C:\AUTOEXEC.BAT</codeline> file.  On WinNT, this is
+	done from the control panel.
+    </para>
+    
+    <para id="env_p2">
+	You also need to add some instructions to your emacs
+	initialization file.  Download the
+	<codeline>xml.emacs</codeline> file from our <link
+	src="http://mountainbunker.org/download/xml.emacs">website</link>
+	and append it to your emacs init file.  On Unix, the emacs
+	init file is named <codeline>.emacs</codeline> and resides in
+	your home directory.  On Windows, it is named _emacs and does
+	not have a default location.
+	<note>
+	  On Windows, you must set the environment variable
+	  <codeline>HOME</codeline> to tell the system where your
+	  _emacs file is located.  
+	</note> 
+	If you don't have an emacs init file already, just rename
+	<codeline>xml.emacs</codeline> to <codeline>.emacs</codeline>
+	or <codeline>_emacs</codeline> as appropriate.
+      </para>
+    </section>
+    
+    <section id="editing">
+      <name>Simple editing with PSGML</name>
+      
+      <para id="ed_p1">
+	Now you are ready to begin writing CNXML with emacs.  See <cnxn
+	module="m9000" strength="8">The Basic CNXML</cnxn> for an
+	introduction to writing modules in CNXML.  You must begin the
+	module with the XML declaration and specifying the document
+	type definition to use.  For example, to begin a module using
+	CNXML, type the following lines:
+      </para>
+      
+      <example id="ex_dtd">
+	<codeblock>
+<![CDATA[<?xml version="1.0" standalone="no"?>
+<!DOCTYPE module PUBLIC "-//CNX//DTD CNXML 0.4//EN" 
+          "../dtd/cnxml-0.4/cnxml-0.4/cnxml_plain.dtd">]]>
+	</codeblock>
+      </example>
+      
+      
+      <para id="ed_p2">
+	Once you have started the file out with this header you can
+	begin adding markup elements.  
+
+	<note type="warning">
+	  On new modules you will need to enter XML-mode explicitly by
+	  entering <codeline>M-x xml-mode</codeline>.  ("M" represents
+	  the meta key, commonly mapped to 'Alt' on PC keyboards).
+	  Once this file is saved, successive editing sessions will
+	  bring up xml-mode automatically
+	</note>
+
+	You can enter a start tag by typing <codeline>C-c &lt;
+	</codeline> ("C" represents the control key).  Emacs will then
+	prompt you for the tag-name.  Type the name of the tag you
+	want, or use TAB-completion.  To insert a close tag for the
+	current element, type <codeline>C-C /</codeline>.  Emacs will
+	automatically close the current tag.  For those who prefer
+	menu commands, you can select <codeline>Insert
+	Start-Tag</codeline> or <codeline>Insert End-Tag</codeline>
+	from the <codeline>Markup</codeline> menu.  Emacs will
+	drop-down a list of currently available tags.
+      </para>
+      
+      <para id="ed_p3"> Alternatively, to ensure that you have matched
+	start and end tags with the appropriate attributes and
+	children, you may insert an entire element at once.  To do
+	this, type <codeline>C-c C-e</codeline> (or select
+	<codeline>Insert Element</codeline> from the menu) and type
+	the name of the desired element.  This will insert opening and
+	closing tags for the element and prompt you for any required
+	attributes.  It will also insert any required child elements.
+	Conversely, to delete an entire element with its children,
+	type <codeline>C-M-k</codeline>.
+      </para>
+      
+      <para id="ed_p4">
+	There are many other commands that you may find useful.
+	Explore the Markup and View menus to get a feel for the
+	available commands.  You may also want to look at the 
+	reference manual distributed with PSGML.
+      </para>
+      <section id='tables'>
+        <name>Adding Tables using Emacs and PSGML</name>
+        <para id='tablespara'>
+        Another useful feature of emacs is the ability to add tables to your CNXML document quickly and easily. Before you do so, you must follow the following steps:
+       <list id='stepslist'>
+        <item>Include the following line in your .emacs file:(require 'table)
+        </item>
+        <item>Restart emacs, and you'll notice that at the bottom of the "Tools" menu list is a "Table" tool. From there you can insert a table or you can type M-x table-insert.</item>
+        <item>After inserting a table you will be asked questions about the table columns, rows, sizes, etc., specify this information based on your needs.</item>
+         <item>Finally, creating your table you will want to type M-x table-generate-source. When it asks for the language type "cals". This will save the file as a CALS table valid document which is the format that CNXML uses. This table can now be cut and pasted into a CNXML doc.</item>
+         </list>
+        </para>
+       </section>
+
+    </section>
+  </content>
+  
+</module>
+
+
+
+
+

@@ -1,0 +1,488 @@
+#  RelaxNG Schema for the Precision Graphics
+# 
+# Markup Language, PGML.
+# 
+# version = 1.0 status = draft date = 23.March.1998
+# 
+# syntax = XML author = jnava@adobe.com
+
+# ===============================================================
+
+# Begin Graphics State attributes
+# 
+# The gs_ prefix is added to stand for Graphics State, whose
+# 
+# scoping rules are as follows:
+# 
+# When the PGML interpreter encounters a new pgml, group,
+# 
+# path, text, textspan or predefined graphic element,
+# 
+# the Graphics State is "saved." Any changes in the Graphics State
+# 
+# that occur during processing these elements apply only to the
+# 
+# graphics defined within the element. When the PGML interpreter
+# 
+# encounters the end of the element the Graphics State is "restored"
+# 
+# to its prior condition.
+#
+
+# 
+# The value of the concat attribute is a sequence of 6 numbers
+# 
+# separated by spaces which represents an arbitrary 2x3 matrix
+# 
+# in the form of six values: a b c d e f. The given matrix is
+# 
+# concatenated with the current transformation matrix to produce
+# 
+# a new transformation matrix.
+#
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+gs_general_attributes =
+  attribute concat { text }?,
+  attribute clippath { text }?
+gs_fillstroke_attributes =
+  [ a:defaultValue = "1" ] attribute fill { "0" | "1" }?,
+  [ a:defaultValue = "nonzero" ]
+  attribute fillrule { "nonzero" | "evenodd" }?,
+  [ a:defaultValue = "black" ] attribute fillcolor { text }?,
+  [ a:defaultValue = "sRGB" ] attribute fillcolorspace { text }?,
+  [ a:defaultValue = "color" ] attribute fillpaintserver { text }?,
+  attribute fillparams { text }?,
+  attribute fillname { text }?,
+  [ a:defaultValue = "0" ] attribute stroke { "0" | "1" }?,
+  [ a:defaultValue = "black" ] attribute strokecolor { text }?,
+  [ a:defaultValue = "sRGB" ] attribute strokecolorspace { text }?,
+  [ a:defaultValue = "color" ] attribute strokepaintserver { text }?,
+  attribute strokeparams { text }?,
+  attribute strokename { text }?,
+  [ a:defaultValue = "1" ] attribute opacity { text }?,
+  [ a:defaultValue = "1" ] attribute antialias { "0" | "1" }?
+gs_stroking_attributes =
+  [ a:defaultValue = "0" ] attribute linecap { "0" | "1" | "2" }?,
+  [ a:defaultValue = "0" ] attribute linejoin { "0" | "1" | "2" }?,
+  [ a:defaultValue = "10" ] attribute miterlimit { text }?,
+  [ a:defaultValue = "solid" ] attribute dasharray { text }?,
+  [ a:defaultValue = "0" ] attribute dashoffset { text }?,
+  [ a:defaultValue = "1" ] attribute linewidth { text }?
+gs_font_attribute = attribute font { text }?
+gs_text_attributes =
+  gs_font_attribute,
+  attribute textsize { text }?,
+  [ a:defaultValue = "0" ] attribute charspacing { text }?,
+  [ a:defaultValue = "0" ] attribute wordspacing { text }?,
+  [ a:defaultValue = "0" ] attribute textrise { text }?
+gs_all_attributes =
+  gs_general_attributes,
+  gs_fillstroke_attributes,
+  gs_stroking_attributes,
+  gs_text_attributes
+# 
+# End of Graphics State attributes
+#
+
+# ===============================================================
+event_handler_attributes =
+  attribute onmousedown { text }?,
+  attribute onmouseup { text }?,
+  attribute onclick { text }?,
+  attribute ondblclick { text }?,
+  attribute onmouseover { text }?,
+  attribute onmousemove { text }?,
+  attribute onmouseout { text }?,
+  attribute onkeydown { text }?,
+  attribute onkeypress { text }?,
+  attribute onkeyup { text }?,
+  attribute onload { text }?,
+  attribute onunload { text }?
+# ===============================================================
+base_content_model =
+  (pgml
+   | group
+   | path
+   | img
+   | mytext
+   | rectangle
+   | circle
+   | ellipse
+   | piewedge
+   | script
+   | private
+   | drawobject
+   | animation)*
+base_content_attributes =
+  gs_all_attributes,
+  attribute name { text }?,
+  attribute description { text }?,
+  [ a:defaultValue = "1" ] attribute visibility { "0" | "1" }?,
+  [ a:defaultValue = "simple" ] attribute xml:link { string "simple" }?,
+  attribute href { text }?,
+  attribute refx { text }?,
+  attribute refy { text }?
+# ===============================================================
+
+# 
+# boundingbox takes values for x, y, width and height separated
+# 
+# by a space.
+#
+gs_bounding_box_attribute = attribute boundingbox { text }?
+# 
+# The base_content_model; pgml and head elements
+#
+pgml = element pgml { pgml_attlist, head?, (base_content_model | mytext)* }
+pgml_attlist &=
+  base_content_attributes,
+  gs_bounding_box_attribute,
+  event_handler_attributes,
+  [ a:defaultValue = "1" ] attribute preserveaspectratio { "0" | "1" }?,
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute width { text }?,
+  attribute height { text }?,
+  attribute src { text }?
+# ===============================================================
+
+# 
+# head element .
+#
+head =
+  element head {
+    head_attlist,
+    (extension
+     | objectserver
+     | paintserver
+     | colorspaceserver
+     | filterserver
+     | script
+     | private
+     | graphic
+     | lineargradient
+     | animation)*
+  }
+head_attlist &= empty
+# ===============================================================
+
+# 
+# group element
+#
+group = element group { group_attlist, base_content_model }
+group_attlist &= base_content_attributes, event_handler_attributes
+# ===============================================================
+
+# 
+# path element and it's sub-elements
+#
+path =
+  element path {
+    path_attlist,
+    private?,
+    (moveto | lineto | curveto | arc | closepath)*
+  }
+path_attlist &=
+  base_content_attributes,
+  event_handler_attributes,
+  attribute data { text }?
+moveto = element moveto { moveto_attlist, empty }
+moveto_attlist &=
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute dx { text }?,
+  attribute dy { text }?
+lineto = element lineto { lineto_attlist, empty }
+lineto_attlist &=
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute dx { text }?,
+  attribute dy { text }?
+curveto = element curveto { curveto_attlist, empty }
+curveto_attlist &=
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute x1 { text }?,
+  attribute y1 { text }?,
+  attribute x2 { text }?,
+  attribute y2 { text }?,
+  attribute dx { text }?,
+  attribute dy { text }?,
+  attribute dx1 { text }?,
+  attribute dy1 { text }?,
+  attribute dx2 { text }?,
+  attribute dy2 { text }?
+arc = element arc { arc_attlist, empty }
+arc_attlist &=
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute dx { text }?,
+  attribute dy { text }?,
+  attribute r { text }?,
+  attribute ang1 { text }?,
+  attribute ang2 { text }?,
+  [ a:defaultValue = "0" ] attribute clockwise { "0" | "1" }?
+closepath = element closepath { closepath_attlist, empty }
+closepath_attlist &= empty
+# ===============================================================
+
+# 
+# predefined graphic elements
+#
+rectangle = element rectangle { rectangle_attlist, empty }
+rectangle_attlist &=
+  base_content_attributes,
+  event_handler_attributes,
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute width { text }?,
+  attribute height { text }?,
+  attribute rounding { text }?
+circle = element circle { circle_attlist, empty }
+circle_attlist &=
+  base_content_attributes,
+  event_handler_attributes,
+  attribute cx { text }?,
+  attribute cy { text }?,
+  attribute r { text }?
+ellipse = element ellipse { ellipse_attlist, empty }
+ellipse_attlist &=
+  base_content_attributes,
+  event_handler_attributes,
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute rx { text }?,
+  attribute ry { text }?
+piewedge = element piewedge { piewedge_attlist, empty }
+piewedge_attlist &=
+  base_content_attributes,
+  event_handler_attributes,
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute r { text }?,
+  attribute ang1 { text }?,
+  attribute ang2 { text }?
+# ===============================================================
+
+# 
+# img element
+# 
+# Below, the ATTLIST only shows x, y, width, height and src,
+# 
+# but the actual ATTLIST would have (nearly) everything
+# 
+# that HTML's <img> element has.
+#
+img = element img { img_attlist, empty }
+img_attlist &=
+  event_handler_attributes,
+  gs_general_attributes,
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute width { text }?,
+  attribute height { text }?,
+  attribute src { text }?
+# ===============================================================
+# 
+# text and textspan elements
+#
+# ===============================================================
+mytext = element text { attlist.text, (text | textspan) } 
+attlist.text = 
+  attribute x {text},
+  attribute y {text},
+  base_content_attributes,
+  event_handler_attributes
+textspan = element textspan {attlist.textspan, text}
+attlist.textspan = 
+  base_content_attributes,
+  event_handler_attributes,
+  attribute altchars {text},
+  attribute altglyph {text},
+  attribute altglyphid {text}
+# 
+# drawobject element
+#
+drawobject = element drawobject { drawobject_attlist, private? }
+drawobject_attlist &=
+  attribute objectserver { text }?,
+  attribute params { text }?,
+  attribute objectref { text }?,
+  attribute x { text }?,
+  attribute y { text }?,
+  attribute width { text }?,
+  attribute height { text }?
+# ===============================================================
+# 
+# script element
+# 
+# Below, the ATTLIST is specified as EMPTY, but the actual
+# 
+# ATTLIST would match what HTML's <script> element has.
+#
+script = element script { script_attlist, text }
+script_attlist &= empty
+# ===============================================================
+# 
+# private element
+# 
+# For application-specific private data.
+#
+private = element private { private_attlist, text }
+private_attlist &= empty
+# ===============================================================
+# 
+# animation element
+#
+animation = element animation { animation_attlist, private? }
+animation_attlist &=
+  attribute target { text }?,
+  attribute starttime { text }?,
+  attribute duration { text }?,
+  attribute repetitions { text }?,
+  attribute motion { text }?,
+  attribute motionspeed { text }?,
+  attribute autorotate { text }?,
+  attribute scale { text }?,
+  attribute scalespeed { text }?,
+  attribute rotate { text }?,
+  attribute rotatespeed { text }?,
+  attribute xtranslate { text }?,
+  attribute xtranslatespeed { text }?,
+  attribute ytranslate { text }?,
+  attribute ytranslatespeed { text }?,
+  attribute xshear { text }?,
+  attribute xshearspeed { text }?,
+  attribute yshear { text }?,
+  attribute yshearspeed { text }?,
+  attribute opacity { text }?,
+  attribute opacityspeed { text }?,
+  attribute red { text }?,
+  attribute redspeed { text }?,
+  attribute green { text }?,
+  attribute greenspeed { text }?,
+  attribute blue { text }?,
+  attribute bluespeed { text }?,
+  attribute hue { text }?,
+  attribute huespeed { text }?,
+  attribute saturation { text }?,
+  attribute saturationspeed { text }?,
+  attribute brightness { text }?,
+  attribute brightnessspeed { text }?
+# ===============================================================
+# 
+# extension element
+#
+extension = element extension { extension_attlist, empty }
+extension_attlist &=
+  attribute name { text }?,
+  attribute applet { text }?,
+  attribute class { text }?,
+  attribute proc { text }?
+# ===============================================================
+# 
+# objectserver, paintserver, colorspaceserver and filterserver elements
+#
+objectserver = element objectserver { objectserver_attlist, empty }
+objectserver_attlist &=
+  attribute name { text }?,
+  attribute extension { text }?
+paintserver = element paintserver { paintserver_attlist, empty }
+paintserver_attlist &=
+  attribute name { text }?,
+  attribute extension { text }?
+colorspaceserver =
+  element colorspaceserver { colorspaceserver_attlist, empty }
+colorspaceserver_attlist &=
+  attribute name { text }?,
+  attribute extension { text }?
+filterserver = element filterserver { filterserver_attlist, empty }
+filterserver_attlist &=
+  attribute name { text }?,
+  attribute extension { text }?
+# ===============================================================
+# 
+# graphic element
+#
+graphic = element graphic { graphic_attlist, base_content_model }
+graphic_attlist &=
+  [ a:defaultValue = "0" ] attribute fill { "0" | "1" }?
+graphic_attlist &=
+  gs_general_attributes,
+  [ a:defaultValue = "nonzero" ]
+  attribute fillrule { "nonzero" | "evenodd" }?,
+  [ a:defaultValue = "black" ] attribute fillcolor { text }?,
+  [ a:defaultValue = "sRGB" ] attribute fillcolorspace { text }?,
+  [ a:defaultValue = "color" ] attribute fillpaintserver { text }?,
+  attribute fillparams { text }?,
+  attribute fillname { text }?,
+  [ a:defaultValue = "0" ] attribute stroke { "0" | "1" }?,
+  [ a:defaultValue = "black" ] attribute strokecolor { text }?,
+  [ a:defaultValue = "sRGB" ] attribute strokecolorspace { text }?,
+  [ a:defaultValue = "color" ] attribute strokepaintserver { text }?,
+  attribute strokeparams { text }?,
+  attribute strokename { text }?,
+  [ a:defaultValue = "1" ] attribute opacity { text }?,
+  [ a:defaultValue = "1" ] attribute antialias { "0" | "1" }?,
+  gs_stroking_attributes,
+  gs_text_attributes,
+  attribute name { text }?,
+  attribute description { text }?,
+  [ a:defaultValue = "1" ] attribute visibility { "0" | "1" }?,
+  [ a:defaultValue = "simple" ] attribute xml:link { string "simple" }?,
+  attribute href { text }?,
+  attribute refx { text }?,
+  attribute refy { text }?,
+  [ a:defaultValue = "0" ] attribute painttype { "0" | "1" }?,
+  attribute boundingbox { text }?,
+  attribute xstep { text }?,
+  attribute ystep { text }?
+# ===============================================================
+
+# 
+# lineargradient element and it's sub-elements
+#
+lineargradient =
+  element lineargradient { lineargradient_attlist, gradientstop* }
+lineargradient_attlist &= attribute name { text }?
+gradientstop = element gradientstop { gradientstop_attlist, empty }
+gradientstop_attlist &=
+  attribute offset { text }?,
+  attribute midoffset { text }?,
+  attribute color { text }?
+
+start =
+  objectserver
+  | private
+  | piewedge
+  | circle
+  | head
+  | paintserver
+  | lineargradient
+  | arc
+  | group
+  | curveto
+  | lineto
+  | extension
+  | moveto
+  | drawobject
+  | pgml
+  | gradientstop
+  | graphic
+  | path
+  | colorspaceserver
+  | animation
+  | filterserver
+  | script
+  | ellipse
+  | closepath
+  | rectangle
+  | img
+  | mytext
+# ===============================================================
+
+# 
+# End of RNG for PGML
+#

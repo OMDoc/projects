@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="Nat">
+  <theory xml:id="Nat">
+    <presentation for="Nat">
+      <use format="Hets">[Nat,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Nat1"/>
+    <presentation for="Nat1">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat1" type="free">
+        <constructor name="N01"/>
+        <constructor name="suc1">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="Nat" name="Nat1"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+      </sortdef>
+    </adt>
+    <symbol name="N0" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N0">
+      <use format="Hets">[0]</use>
+    </presentation>
+    <symbol name="__Plus__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="suc" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="suc">
+      <use format="Hets">[suc]</use>
+    </presentation>
+    <axiom name="add_0_Nat">
+      <CMP>
+  forall m,n : Nat
+  . 0 + m = m                        %(add_0_Nat)%
+  . suc(n) + m = suc(n + m)          %(add_suc_Nat)%
+  . (0+0)+m=m                        %(zero)% %implied
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat" name="__Plus__"/>
+                <OMS cd="Nat" name="N0"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="add_0_Nat">
+      <use format="Hets">add_0_Nat</use>
+    </presentation>
+    <axiom name="add_suc_Nat">
+      <CMP>
+  forall m,n : Nat
+  . 0 + m = m                        %(add_0_Nat)%
+  . suc(n) + m = suc(n + m)          %(add_suc_Nat)%
+  . (0+0)+m=m                        %(zero)% %implied
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat" name="__Plus__"/>
+                <OMA>
+                  <OMS cd="Nat" name="suc"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Nat" name="suc"/>
+                <OMA>
+                  <OMS cd="Nat" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="add_suc_Nat">
+      <use format="Hets">add_suc_Nat</use>
+    </presentation>
+    <axiom name="ga_disjoint_0_suc">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMS cd="Nat" name="N0"/>
+                <OMA>
+                  <OMS cd="Nat" name="suc"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint_0_suc">
+      <use format="Hets">ga_disjoint_0_suc</use>
+    </presentation>
+    <axiom name="ga_injective_suc">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Nat" name="suc"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Nat" name="suc"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="X1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="Y1"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective_suc">
+      <use format="Hets">ga_injective_suc</use>
+    </presentation>
+    <axiom name="zero">
+      <CMP>
+  forall m,n : Nat
+  . 0 + m = m                        %(add_0_Nat)%
+  . suc(n) + m = suc(n + m)          %(add_suc_Nat)%
+  . (0+0)+m=m                        %(zero)% %implied
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat" name="__Plus__"/>
+                <OMA>
+                  <OMS cd="Nat" name="__Plus__"/>
+                  <OMS cd="Nat" name="N0"/>
+                  <OMS cd="Nat" name="N0"/>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="zero">
+      <use format="Hets">zero</use>
+    </presentation>
+  </theory>
+</omdoc>

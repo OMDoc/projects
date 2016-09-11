@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "../dtd/omdoc-basic.dtd" [<!ENTITY % om.prefixed "INCLUDE">]>
+
+<omdoc xml:id="PURE-GENERIC-THEORY-1-WITH-1-SUBSORT-omdoc"
+       xmlns="http://www.mathweb.org/omdoc"
+       xmlns:dc="http://dublincore.org"
+       xmlns:om="http://www.openmath.org/OpenMath">
+
+<metadata>
+ <dc:title>The theory PURE-GENERIC-THEORY-1-WITH-1-SUBSORT in IMPS</dc:title>
+ <dc:source>
+  <dc:title>IMPS: An Interactive Mathematical Proof System</dc:title>
+  <dc:creator role="aut">W.M. Farmer</dc:creator>
+  <dc:creator role="aut">J.D. Guttman</dc:creator>
+  <dc:creator role="aut">F.J. Thayer</dc:creator>
+  <dc:date action="created">2001</dc:date>
+ </dc:source>
+ <dc:creator role="aut">W.M. Farmer</dc:creator>
+ <dc:creator role="aut">J.D. Guttman</dc:creator>
+ <dc:creator role="aut">F.J. Thayer</dc:creator>
+ <dc:contributor role="trl">Yan Li</dc:contributor>
+ <dc:contributor role="edt">Marc Bender</dc:contributor>
+ <dc:date action="created">2002</dc:date>
+ <dc:date action="updated">2005</dc:date>
+</metadata>
+
+
+<theory xml:id="pure-generic-theory-1-with-1-subsort">
+
+<omgroup xml:id="pure-generic-theory-1-with-1-subsort-component-theories" type="sequence">
+<metadata>
+ <dc:title>Component theories</dc:title>
+</metadata>
+
+
+<imports xml:id="pure-generic-theory-1.import"  from="pure-generic-theory-1"/>
+<omtext xml:id="pure-generic-theory-1.import-display">
+ <CMP>
+ "pure-generic-theory-1" - component theory of "pure-generic-theory-1-with-1-subsort".
+ </CMP>
+</omtext>
+
+</omgroup>
+
+
+
+
+<omgroup xml:id="pure-generic-language-1-with-1-subsort" type="sequence">
+<metadata>
+ <dc:title> The symbols in "pure-generic-language-1-with-1-subsort" </dc:title>
+</metadata>
+
+<omtext xml:id="pure-generic-language-1-with-1-subsort-intro">
+ <CMP> "pure-generic-language-1-with-1-subsort" - language of the theory "pure-generic-theory-1-with-1-subsort". </CMP>
+</omtext>
+
+<symbol xml:id="uu_1" kind="sort">
+ <CMP> "uu_1" - primitive sort of the theory "pure-generic-theory-1-with-1-subsort". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="uu_1">
+ <CMP> The enclosing sort of "uu_1" is "ind_1". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+ </om:OMOBJ>
+</type>
+
+
+</omgroup>
+
+
+</theory>
+
+</omdoc>

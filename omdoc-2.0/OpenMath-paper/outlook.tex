@@ -1,0 +1,78 @@
+\svnInfo $Id: outlook.tex 6570 2007-06-27 08:40:11Z clange $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/OpenMath-paper/outlook.tex $
+\section{Conclusion and Outlook}\label{sec:outlook}
+
+The advantage of content-oriented representation formats for mathematical formulae is that
+they are independent or a specific output format, and that human-oriented presentations
+can be generated taking into account user preferences, device constraints, etc. To realize
+this potential, we need presentation algorithms that are
+\begin{description}
+\item[knowledge-based] The knowledge about notations and their use is an integral part of
+  our mathematical expertise. If a presentation algorithm is not, then it becomes
+  unmaintainable.
+\item[extensible] Just as mathematics itself, mathematical notation is never finished; new
+  notations are always invented, and they are introduced and discarded on the fly.
+\item[adaptive] They should allow to take the user's preferences into account. In the end,
+  the purpose of mathematical notation is to support a reader in understanding mathematics
+  as effortlessly as possible --- and people differ in their cognitive styles.
+\item[mathematical] They should be able to model as many mathematical practices as
+  possible, so that mathematicians are not hindered by system restrictions in the
+  available notations.
+\item[efficient] Presentation generation should not bog down servers, and should run on
+  all kinds of clients with little lag. The time of the working mathematician is precious!
+\end{description}
+The first three of these aspects call for an meta-mathematical language for
+{\emph{notation definitions}} which can be managed by MKM tools. A corollary of the
+manageability postulate is that the notation definition language should be
+{\emph{declarative}}. 
+
+In this paper, we have presented an infrastructure for declarative notation definitions
+building on ideas from {\omdocv{1.2}} and the presentation system of the {\isabelle}
+theorem prover. We have incorporated functionality for flexary applications and binders
+necessary to apply these ideas to {\openmath} and content {\mathml}, and we have extended
+the {\isabelle}'s precedence-based elision algorithm with general flexible elision
+functionality, which covers most mathematical elision practices. We conjecture that
+others, like Church's dot notation can be specified by allowing more values for the
+{\attributeshort{egroup}} attribute.
+
+Actually, the dot notation is a representative of a more general, user-adaptive practice
+that we do not cover in this paper: {\emph{abbreviation}}. If a formula is too large or
+complex to be digested in one go, mathematicians often help their audience by abbreviating
+parts, which are explained in isolation or expanded when the general picture has been
+grasped. We feel that the abbreviation generation problem shares many aspects with
+elisions, but is less structured, and more dependent on modeling the abilities and
+cognitive load of the reader. Therefore we expect the elision techniques presented in this
+paper to constitute a first step into the right direction, but also that we need more
+insights to solve the abbreviation generation problem.
+
+Another problem we have not addressed in this paper even though it is very related is the
+problem of reversing generation in the parsing process for mathematical formulae\ednote{I
+  guess we did in the compatibility section. --CL}: In some situations, the symbol
+characteristics are sufficient to allow a mathematical software system to reconstruct the
+content structure from its presentation. In the case of the {\isabelle} system, this
+property is essential to ensure unambiguous input. In this paper, we will not pursue the
+question of parseability, since the flexible elision of arguments is not sufficiently
+understood to warrant a restriction to an invertible presentation process. In fact, we
+have argued elsewhere\cite{Kohlhase04:stex} that the process of parsing mathematical
+formula is AI-hard\footnote{i.e. we cannot solve the problem short of succeeding at
+  Artificial Intelligence} in the worst case, since it pre-supposes a mathematical
+understanding of the communicated concepts.
+
+We have implemented the approach presented in this paper in a Scala class\ednote{@CL/FR:
+  cite, is that correct?} to evaluate the expressivity and efficiency of our approach.
+First results are very promising; we will release the finished implementation under an
+open source license as a basis for practical presentation systems.
+
+After a thorough evaluation we want to incorporate the presentation infrastructure
+presented in this paper into the {\omdocv{2.0}} format currently under development, and we
+propose it as part of the content dictionary mechanism of the upcoming {\mathml}3
+recommendation.
+
+%%% Local Variables: 
+%%% mode: stex
+%%% TeX-master: "presel"
+%%% fill-column: 90
+%%% sentence-end-double-space: nil
+%%% End: 
+
+% LocalWords:  egroup Scala CL FR presel

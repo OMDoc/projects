@@ -1,0 +1,199 @@
+\svnInfo $Id: pattern.tex 9195 2012-04-20 12:26:50Z frabe $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/pattern.tex $
+
+We will now define our extension language (EL). It provides a syntactic means to define pragmatic language features and their semantics in terms of strict {\omdoc}.
+
+\paragraph{Syntax}
+EL adds two primitive declarations to {\mmt} theories: \emph{extension declarations} and \emph{pragmatic declarations}:
+
+\begin{center}
+\begin{tabular}{|@{\hspace{.4em}}l@{\hspace{.em}}l@{\hspace{.4em}}l@{\hspace{.4em}}|}
+\hline
+$\Sigma$ &$\bnfas$   &$\Sigma,\,\lfkw{extension}\;\,e = \Phi$\\
+         &$\bnfalts$ &$\Sigma,\,\lfkw{pragmatic}\;\,c:\phi$\\
+\hline
+\end{tabular}
+\end{center}
+
+Extension declarations $\lfkw{extension}\;\,e = \Phi$ introduce a new declaration schema $e$ that is described by $\Phi$.
+Intuitively, $\Phi$ is a function that takes some arguments and returns a list of declarations, which define the strict semantics of the declaration scheme.
+
+Pragmatic declarations $\lfkw{pragmatic}\;\,c : \phi$ introduce new declarations that make use of a previously declared extension.
+Intuitively, $\phi$ applies an extension $e$ a sequence of arguments and evaluates to the returned list of declarations. Thus, $c:\phi$ serves as a pragmatic abbreviation of a list of strict declarations.
+
+The key notion in both cases is that of \emph{theory families}.  They represent
+collections of theories by specifying their common syntactic shape.  Intuitively, theory
+families arise by putting a $\lambda$-calculus on top of theory fragments $\Sigma$:
+
+\begin{center}
+\begin{tabular}{|@{\hspace{.4em}}l@{\tb}l@{\hspace{.4em}}l@{\hspace{.4em}}l@{\hspace{.4em}}|}
+\hline
+Theory Families & $\Phi$ & $\bnfas$& $\sigfr{\sfr}\bnfalts \pbind{x}{E}\Phi$\\
+                & $\phi$ & $\bnfas$& $e \bnfalts \pappl{\Phi}{E}$\\
+\hline
+\end{tabular}
+\end{center}
+
+We group theory families into two non-terminal symbols as shown above: $\Phi$ is formed from theory fragments $\sigfr{\Sigma}$ and $\lambda$-abstraction $\pbind{x}{E}\Phi$. And $\phi$ is formed from references to previously declared extension $e$ and applications of parametric theory families to arguments $E$.
+This has the advantage that both $\Phi$ and $\phi$ have a very simple shape.
+
+
+\begin{example}[Extension Declarations]
+In Figure~\ref{fig:mmt-ext} we give the theory $\Assertions$, which declares extensions for axiom and theorem declarations. Their semantics is defined in terms of the Curry-Howard representation of strict {\omdoc}.
+
+Both extensions take a logical formula $F:\form$ as a parameter.
+The extension $\axiom$ permits pragmatic declarations of the form $c:\axiom\,F$. These abbreviate {\mmt} constant declarations of the form $c:\ded\,F$.
+
+The extension $\thm$ additionally takes a parameter $D:\ded\,F$, which is a proof of $F$. It permits pragmatic declarations of the form $c : \thm\,F\,D$. These abbreviate {\mmt} constant declarations of the form $c:\ded\,F = D$.
+
+\begin{figure}[ht]
+\vspace{-1.5em}
+\begin{center}
+\begin{twelfsig}
+\tsig{\Assertions}\\
+\tmeta{\Forms}{}\\
+\tpattern{\axiom}{\lflam[\form]{F}}{
+ \tsfdecl{c}{\ded\,F}\\
+}\\
+\tpattern{\thm}{\lflam[\form]{F}\lflam[\ded\,F]{D}}{
+ \tsfdecl[D]{c}{\ded\,F}\\
+}\\
+\tsigend
+\end{twelfsig}
+\end{center}
+\vspace{-1em}
+\caption{An MMT Theory with Extension Declarations}\label{fig:mmt-ext}
+\vspace{-1.5em}
+\end{figure}
+\end{example}
+
+Any {\mmt} theory may introduce extension declarations. However, pragmatic declarations
+are only legal if the extension that is used has been declared in the meta-theory:
+
+\begin{definition}[Legal Extension Declarations]\label{def:ext-legal}
+We say that an extension declaration 
+$\extension{e}{\pbind{x_1}{E_1}\ldots\pbind{x_n}{E_n}\sigfr{\Sigma}}$
+\noindent is \defemph{legal} in an {\mmt} theory $T$, if the declarations
+$x_1:E_1,\ldots,x_n:E_n$ and $\Sigma$ are well-formed in $T$.
+
+This includes the case where $\Sigma$ contains pragmatic declarations.
+\end{definition}
+
+\begin{definition}[Legal Pragmatic Declarations]\label{def:prag-legal}
+We say that a pragmatic declaration 
+$\pragmatic{c}{e\,E_1\ldots E_n}$
+\noindent is \defemph{legal} in an {\mmt} theory $T$ if there is a declaration
+$\extension{e}{\pbind{x_1}{E'_1}\ldots\pbind{x_n}{E'_n}\sigfr{\Sigma}}$
+in the meta-theory of $T$ and each $E_i$ has type $E'_i$.
+\end{definition}
+
+Here the typing relation is the one provided by the {\mmt} foundation.
+
+\paragraph{Semantics}
+Extension declarations do not have a semantics as such because the extension declared in $M$ only govern what pragmatic declarations are legal in $M$-theories. In particular, contrary to the constant declarations in $M$, a model of $M$ does not interpret the extension declarations.
+
+The semantics of pragmatic declarations is given by elaborating them into strict declarations:
+\begin{definition}[Pragmatic-to-Strict Translation \ptos]\label{def:ptos}
+A legal pragmatic declaration $\pragmatic{c}{e\;E_1\ldots E_n}$ is translated to a list of strict constant declarations 
+\[c.d_1 : \gamma(F_1) = \gamma(D_1),\ldots,c.d_m :\gamma(F_m) = \gamma(D_m)\]
+
+\noindent where $\gamma$ substitutes every $x_i$ with $E_i$ and every $d_j$ with $c.d_j$
+%\noindent for substitution
+%\[\gamma = \sub{x_1}{E_1},\ldots,\sub{x_n}{E_n},c.d_1/d_1,\ldots,c.d_m/d_m\]
+if we have 
+\[\extension{e}{\pbind{x_1}{E'_{1}}\ldots\pbind{x_n}{E'_{n}}\sigfr{d_1 : F_1 = D_1,\ldots,d_m : F_m = D_m}}\]
+\noindent and every expression $E_i$ has type $E'_i$.
+%If we have 
+%\[\extension{e}{\pbind{x_1}{E'_{1}}\ldots\pbind{x_n}{E'_{n}}\sigfr{d_1 : F_1 = D_1,\ldots,d_n : F_m = D_m}}\]
+%\noindent then a legal pragmatic declaration $\pragmatic{c}{e\;E_1\ldots E_n}$ is translated to a list of strict constant declarations 
+%\[c.d_1 : \gamma(F_1) = \gamma(D_1),\ldots,c.d_m :\gamma(F_m) = \gamma(D_m)\]
+%\noindent for 
+%\[\gamma = \sub{x_1}{E_1},\ldots,\sub{x_n}{E_n},c.d_1/d_1,\ldots,c.d_m/d_m\]
+%\noindent where every expression $E_i$ has type $E'_i$.
+\end{definition}
+
+\begin{example}\label{ex:ptos}
+Consider the following {\mmt} theories in Figure~\ref{fig:ptos}: 
+$\HOL$ includes the {\mmt} theory $\Forms$ and declares a constant $\ind$ as the type of individuals. It adds the usual logical connectives and quantifiers -- here we only present truth ($\truth$) and the universal quantifier ($\forall$) -- and introduces equality ($\doteq$) on expressions of type $\alpha$. Then it includes $\Assertions$. This gives $\HOL$ access to the extensions $\axiom$ and $\thm$.
+%We give a meta-theory which has access to some extensions. 
+%Define HOL via Forms and Assertions.
+
+$\Commutativity$ uses $\HOL$ as its meta-theory and declares a constant $\circ$ that takes two individuals as arguments and returns an individual. It adds a pragmatic declaration named $\comm$ that declares the commutativity axiom for $\circ$ using the axiom extension from $\HOL$.
+
+$\Commutativity'$ is obtained by elaborating $\Commutativity$ according to
+Definition~\ref{def:ptos}.
+\end{example}
+
+\begin{figure}[ht]
+%\begin{center}
+\begin{minipage}[b]{4cm}%{0.5\linewidth}
+\begin{twelfsig}
+\tsig{\HOL}\\
+\tmeta{\Forms}{}\\
+\decl{\ind}{\kity}\\
+\decl{\truth}{\form}\\
+%\decl{\false}{\form}\\
+%\decl{\neg}{\form\to\form}\\
+$\vdots$\\
+\decl{\forall}{(\alpha\to\form)\to\form}\\
+%\decl{\exists}{(\alpha\to\form)\to\form}\\
+\decl{\doteq}{\alpha\to\alpha\to\form}\\[.3em]
+\tinclude{\Assertions}{}\\
+\tsigend
+\end{twelfsig}
+\vspace{1.4em}
+\end{minipage}
+\hspace{.2cm}
+\begin{minipage}[b]{5cm}%{0.6\linewidth}
+\begin{twelfsig}
+\tsig{\Commutativity}\\
+\tmeta{\HOL}{}\\
+\decl{\circ}{\ind\to\ind\to\ind}\\
+%\decl{e}{\ind}\\
+\pdecl{\comm}{\axiom\,\forall x:\ind.\,\forall y:\ind.\, x\circ y \doteq y\circ x}\\
+%\pdecl{\neutr}{\axiom\,\forall x.\,x\circ e \doteq x}\\
+%\pdecl{\neutl}{\axiom\,\forall x.\,e\circ x \doteq x}\\
+\tsigend
+\end{twelfsig}
+\begin{twelfsig}
+\tsig{\Commutativity'}\\
+\tmeta{\HOL}{}\\
+\decl{\circ}{\ind\to\ind\to\ind}\\
+%\decl{e}{\ind}\\
+\decl{\comm.c}{\ded\,\forall x:\ind.\,\forall y:\ind.\,x\circ y \doteq y\circ x}\\
+%\pdecl{\neutr}{\axiom\,\forall x.\,x\circ e \doteq x}\\
+%\pdecl{\neutl}{\axiom\,\forall x.\,e\circ x \doteq x}\\
+\tsigend
+\end{twelfsig}
+\end{minipage}
+%\end{center}
+\caption{A {\ptos} Translation Example}\label{fig:ptos}
+\end{figure}
+
+%\begin{example}[Pragmatic Declarations]
+%\begin{twelfsig}
+%\tsig{\Exponential}\\
+%\tmeta{\Assertions}{}\\
+%%\decl{\deriv}{\term\to\term}\\
+%\pdecl{\expo}{\axiom\,\uexists f.\,(\deriv\,f) = f \wedge (f\,0) = 1}\\
+%%\tpattern{\axiom}{\lflam[\form]{F}}{
+%% \tsfdecl{m}{\ded\,F}\\
+%%}\\
+%%\tpattern{\thm}{\lflam[\form]{F}\lflam[\ded\,\form]{D}}{
+%% \tsfdecl[D]{m}{\ded\,F}\\
+%%}\\
+%%\tsigend
+%\end{twelfsig}
+%\end{example}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+
+% LocalWords:  hline bnfas bnfalts sigfr bnfalts pbind bnfalts pappl cdot cdecl
+% LocalWords:  emph newcommand mathit ded ded noindent fhorozal omdoc mmt lfkw
+% LocalWords:  hspace hspace hspace hspace ldots defemph thm thm twelfsig tsig
+% LocalWords:  tmeta tpattern lflam tsfdecl tsigend vspace ptos ptos forall
+% LocalWords:  doteq circ comm circ linewidth kity vdots tinclude pdecl neutr
+% LocalWords:  neutl deriv uexists

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="transportation.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-03-18T19:06:05Z </dc:date>
+  <dc:title xml:lang="en"> transportation </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-03-18T19:06:05Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="transportation">
+  <imports from="maps.omdoc#maps"/>
+
+  <symbol name="aircraft_facility">
+    <metadata>
+      <dc:description>
+	*An area where aircraft can take-off and land, usually equipped with associated buildings
+	and facilities.
+	Delineation: The limit of AIRCRAFT FACILITY is the extent of the area encompassing all associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="bridge">
+    <metadata>
+      <dc:description>
+	*A structure spanning and providing passage over a waterway, railroad, or other obstacle.	
+      Delineation: The limit of BRIDGE is the extent of the span as defined by the edges of the deck and the end abutments.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="cul_de_sac">
+    <metadata>
+      <dc:description>
+	The round or circular section of the end of a dead-end street.
+      Delineation: The limit of CUL-DE-SAC is the extent of the road surface, excluding the shoulders and curbs.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="draw_span">
+    <metadata>
+      <dc:description>
+	The movable portion of a bridge deck.
+      Delineation: The limit of DRAW SPAN is the edge of the bridge section which can be moved.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="ford">
+    <metadata>
+      <dc:description>
+	A location in a body of water for a road or trail crossing where the physical characteristics of the bottom,
+	water depth, and approaches permit passage without a bridge or ferry.
+      Delineation: The limit of FORD is the extent of the edges of the traffic lanes across the body of water and the
+	SHORELINES.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="gate">
+    <metadata>
+      <dc:description>
+	*A structure that may be swung, drawn, or lowered to block an entrance or passageway.
+      Delineation: The limit of GATE is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="helipad">
+    <metadata>
+      <dc:description>
+	A structure used for the landing and take-off of helicopters.
+      Delineation: The limit of HELIPAD is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="interchange">
+    <metadata>
+      <dc:description>
+	An area designated to provide traffic access between roadways of differing levels.
+      Delineation: The limit of INTERCHANGE is the extent of the area encompassing all ramps.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="junction">
+    <metadata>
+      <dc:description>
+	An intersection or confluence of two or more adjacent network segments, or a terminus of a single
+	network segment. Network segments are those links in a roadway network or drainage network that have direction
+	of flow or carry traffic.
+      Delineation: The limit of JUNCTION is the imaginary point or line at the terminal end of a network segment,
+	Or
+	The imaginary point or line that separates two adjacent network segments,
+	Or
+	The imaginary point or spoke-shaped set of lines that separate three or more network segments at an
+	intersection, confluence, merge point, or decision point.
+	In general, the limit of JUNCTION delineated with lines is the shortest straight line or shortest set of
+	spoke-shaped lines that separates the adjacent network segments.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="lane">
+    <metadata>
+      <dc:description>
+	*A prescribed course for ships, boats, or seaplanes.
+      Delineation: The limit of LANE is the extent of the water which has been dredged or designated for a particular purpose.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="monorail">
+    <metadata>
+      <dc:description>
+	A single rail on which a vehicle or train of cars travels.
+      Delineation: The limit of MONORAIL is the extent of the rail.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="railway">
+    <metadata>
+      <dc:description>
+	*A set of parallel rails on which a train or trolley runs.
+      Delineation: The limit of RAILWAY is the extent of the rails.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="railway_yard">
+    <metadata>
+      <dc:description>
+	An area provided with a system of tracks and associated structures, where railway trains are
+	assembled, and railway cars are switched, stored or serviced.
+      Delineation: The limit of RAILWAY YARD is the point at which multiple sidings diverge from the primary line at one end
+	of RAILWAY YARD, to the point at which multiple sidings converge on a primary line, or terminate, at the
+	other end of RAILWAY YARD, and the outermost tracks.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="rest_site">
+    <metadata>
+      <dc:description>
+	A roadside area usually having facilities for people and/or vehicles.
+      Delineation: The limit of REST AREA is the extent of the roadside area that contains parking and open areas, including any
+	associated buildings and structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="road">
+    <metadata>
+      <dc:description>
+	An open way for the passage of vehicles.
+	Delineation: The limit of ROAD is the extent of the passage surface, excluding shoulders and curbs.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="route">
+    <metadata>
+      <dc:description>
+	*A designated path through a road network.
+      Delineation: The limit of ROUTE is the set of one or more, usually continuous, components of the named or designated path.
+	The route designator (including route type) or the name applies to the entire set, and not to any individual piece
+	of the set.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="runway_apron_taxiway">
+    <metadata>
+      <dc:description>
+	*An area on land used by aircraft for takeoff, landing, parking or access to runways.
+      Delineation: The limit of RUNWAY/APRON/TAXIWAY is the extent of the area used for landing, takeoff, parking, or
+	runway access.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="traffic_inspection_facility">
+    <metadata>
+      <dc:description>
+	*An area having facilities to examine pedestrian and vehicular traffic and/or cargo.
+      Delineation: The limit of TRAFFIC INSPECTION FACILITY is the extent of the area used for inspection, including any
+	structures and parking areas.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="trail">
+    <metadata>
+      <dc:description>
+	A cleared path, beaten track, or improved surface, as through woods or wilderness, not usually trafficked
+	by vehicles because of width, seasonal conditions, or access restrictions.
+      Delineation: The limit of TRAIL is the extent of the traveled path.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="tunnel">
+    <metadata>
+      <dc:description>
+	An underground or underwater passage.
+      Delineation: The limit of TUNNEL is the walls of and openings to the passage.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="tunnel_entrance">
+    <metadata>
+      <dc:description>
+	*Opening that affords entry to an underground or underwater passage.
+      Delineation: The limit of TUNNEL ENTRANCE is the extent of the opening.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="turntable">
+    <metadata>
+      <dc:description>
+	A rotating platform with railway tracks used for turning locomotives or cars.
+      Delineation: The limit of TURNTABLE is the extent of the rotating platform.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="underpass">
+    <metadata>
+      <dc:description>
+	The grade separation where part or all of one feature instance is directly above part or all of another
+	feature instance.
+      Delineation: The limit of UNDERPASS is the extent of the horizontal area where the two separated feature instances
+	overlap.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+</theory>
+
+</omdoc>

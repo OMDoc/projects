@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="omgis.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-02-17T10:56:35Z </dc:date>
+  <dc:title xml:lang="en">OMGeo Sample Paper No. 1</dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-02-17T10:56:35Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="omgeopaper">
+  <metadata>
+    <dc:title>OMGeo Sample Paper No. 1</dc:title>
+    <dc:creator>Alexandru Chitea</dc:creator>
+    <dc:description>
+      This OMGeo paper was written for the Brandenburg Rasgeo WMS Service.
+    </dc:description>
+  </metadata>
+
+  <imports from="../../../examples/omstd/setname1.omdoc#setname1"/>
+  <imports from="../cds/built_up.omdoc#built_up"/>
+  <imports from="../cds/maps.omdoc#maps"/>
+
+  <omgeoMap>
+    <omgeoURI>http://tlab023.clamv.iu-bremen.de:9000/rasgeo/servlet/rasogc?</omgeoURI>
+    <omgeoVersion>1.1.0</omgeoVersion>
+    <omgeoService>WMS</omgeoService>
+    <omgeoRequest>GetMap</omgeoRequest>
+    <mapWidth></mapWidth>
+    <mapHeight></mapHeight>
+    <mapFormat>image/jpeg</mapFormat>
+    <mapExceptions>application/vnd.ogc.se_inimage</mapExceptions>
+    <mapCustomDEM>?</mapCustomDEM>
+  </omgeoMap>
+
+  <omtext>
+    <CMP>
+      A sample OMGeo paper. Here we can include more content regarding the mapping performance of the area at hand.
+    </CMP>
+  </omtext>
+
+  <type system="omgeo">
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+	<OMS cd="maps" name="composite_map"/>
+	<OMA>
+	  <OMS cd="maps" name="topographic" />
+	  <OMA>
+	    <OMS name="resolution" cd="maps" />
+	    <OMI>50000</OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS name="srs" cd="maps" />
+	    <OMSTR>EPSG:31464</OMSTR>
+	  </OMA>
+	  <OMA>
+	    <OMS name="latlongboundingbox" cd="maps" />
+	    <OMF dec="51.093867" />
+	    <OMF dec="10.7151518" />
+	    <OMF dec="53.6978408" />
+	    <OMF dec="15.4543864" />
+	  </OMA>
+	  <OMA>
+	    <OMS name="boundingbox" cd="maps" />
+	    <OMA>
+	      <OMS name="srs" cd="maps" />
+	      <OMSTR>EPSG:31464</OMSTR>
+	    </OMA>
+	    <OMF dec="3200000.0" />
+	    <OMF dec="5669000.0" />
+	    <OMF dec="3530000.0" />
+	    <OMF dec="5950000.0" />    
+	  </OMA>
+	  <OMA>
+	    <OMS name="style" cd="maps" />
+	    <OMSTR>AdV_Standard</OMSTR>
+	    <OMSTR>binary</OMSTR>
+	    <OMSTR>red</OMSTR>
+	  </OMA>
+	  <OMS cd="built_up" name="building"/>
+	  <OMA>
+	    <OMS name="attributes" cd="maps" />
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="maps" name="topographic" />
+	  <OMA>
+	    <OMS name="resolution" cd="maps" />
+	    <OMI>50000</OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS name="srs" cd="maps" />
+	    <OMSTR>EPSG:31464</OMSTR>
+	  </OMA>
+	  <OMA>
+	    <OMS name="latlongboundingbox" cd="maps" />
+	    <OMF dec="51.093867" />
+	    <OMF dec="10.7151518" />
+	    <OMF dec="53.6978408" />
+	    <OMF dec="15.4543864" />
+	  </OMA>
+	  <OMA>
+	    <OMS name="boundingbox" cd="maps" />
+	    <OMA>
+	      <OMS name="srs" cd="maps" />
+	      <OMSTR>EPSG:31464</OMSTR>
+	    </OMA>
+	    <OMF dec="3200000.0" />
+	    <OMF dec="5669000.0" />
+	    <OMF dec="3530000.0" />
+	    <OMF dec="5950000.0" />    
+	  </OMA>
+	  <OMA>
+	    <OMS name="style" cd="maps" />
+	    <OMSTR>AdV_Standard</OMSTR>
+	    <OMSTR>binary</OMSTR>
+	    <OMSTR>red</OMSTR>
+	  </OMA>
+	  <OMS cd="built_up" name="built_up_area"/>
+	  <OMA>
+	    <OMS name="attributes" cd="maps" />
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	  </OMA>
+	</OMA>
+	<OMA>
+	  <OMS cd="maps" name="topographic" />
+	  <OMA>
+	    <OMS name="resolution" cd="maps" />
+	    <OMI>50000</OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS name="srs" cd="maps" />
+	    <OMSTR>EPSG:31464</OMSTR>
+	  </OMA>
+	  <OMA>
+	    <OMS name="latlongboundingbox" cd="maps" />
+	    <OMF dec="51.093867" />
+	    <OMF dec="10.7151518" />
+	    <OMF dec="53.6978408" />
+	    <OMF dec="15.4543864" />
+	  </OMA>
+	  <OMA>
+	    <OMS name="boundingbox" cd="maps" />
+	    <OMA>
+	      <OMS name="srs" cd="maps" />
+	      <OMSTR>EPSG:31464</OMSTR>
+	    </OMA>
+	    <OMF dec="3200000.0" />
+	    <OMF dec="5669000.0" />
+	    <OMF dec="3530000.0" />
+	    <OMF dec="5950000.0" />    
+	  </OMA>
+	  <OMA>
+	    <OMS name="style" cd="maps" />
+	    <OMSTR>AdV_Standard</OMSTR>
+	    <OMSTR>binary</OMSTR>
+	    <OMSTR>green</OMSTR>
+	  </OMA>
+	  <OMS cd="vegetative_cover" name="trees"/>
+	  <OMA>
+	    <OMS name="attributes" cd="maps" />
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	  </OMA>
+	</OMA>
+      </OMA>
+    </OMOBJ>
+  </type>
+  <omtext><CMP>there is an alternative text here, when the server is inaccessible</CMP></omtext>
+  <data href="images/..." />
+  
+</theory>
+
+</omdoc>

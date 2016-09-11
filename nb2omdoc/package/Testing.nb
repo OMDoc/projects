@@ -1,0 +1,776 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     25545,        634]*)
+(*NotebookOutlinePosition[     26492,        666]*)
+(*  CellTagsIndexPosition[     26362,        659]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(SourceToBrowser["\<nb2omsrc\>", "\<NB2OMDHelp\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(SourceToBrowser["nb2omsrc", "NB2OMDHelp"]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(SetDirectory["\<~/projects/Conversion/Mta2OMdoc/package\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("/home/sutner/projects/Conversion/Mta2OMdoc/package"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(SetDirectory["\<~/projects/Conversion/Mta2OMdoc/package/nb2omdoc/\
+Example\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("/home/sutner/projects/Conversion/Mta2OMdoc/package/nb2omdoc/Example"\)]\
+, "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(Needs["\<nb2omdoc`nb2omdoc`\>"]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(?PrintHeaderInfo\)\)], "Input"],
+
+Cell[BoxData[
+    \("PrintHeaderInfo[] prints the current setting of the system variables \
+associated with the document header."\)], "Print",
+  CellTags->"Info3256410432-7834930"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PrintHeaderInfo\  // \ Context\)], "Input"],
+
+Cell[BoxData[
+    \("nb2omdoc`nb2omdoc`"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(?NB2OMDoc\)\)], "Input"],
+
+Cell[BoxData[
+    \("NB2OMDoc[nb,dir,opts] converts a notebook into OMDoc."\)], "Print",
+  CellTags->"Info3256410435-5978813"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(SetVerbose[]\)], "Input"],
+
+Cell[BoxData[
+    \(True\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(res\  = \ NB2OMDoc["\<Sample\>"];\)\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("nb2omdoc:  "\[InvisibleSpace]"Sample.nb"\),
+      SequenceForm[ "nb2omdoc:  ", "Sample.nb"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("---->  "\[InvisibleSpace]"Title"\),
+      SequenceForm[ "---->  ", "Title"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("---->  "\[InvisibleSpace]"Section"\),
+      SequenceForm[ "---->  ", "Section"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Text"\),
+      SequenceForm[ "  ", "*Cell  Text"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Text"\),
+      SequenceForm[ "  ", "*Cell  Text"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("<----  "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("---->  "\[InvisibleSpace]"Section"\),
+      SequenceForm[ "---->  ", "Section"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Text"\),
+      SequenceForm[ "  ", "*Cell  Text"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Text"\),
+      SequenceForm[ "  ", "*Cell  Text"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("<----  "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("---->  "\[InvisibleSpace]"Section"\),
+      SequenceForm[ "---->  ", "Section"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Assertion  "\
+\[InvisibleSpace]"Lemma"\),
+      SequenceForm[ "  ", "*Cell  Assertion  ", "Lemma"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("<----  "\)], "Print"],
+
+Cell[BoxData[
+    \("<----  "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("nb2omdoc:  "\[InvisibleSpace]"Sample.omdoc"\),
+      SequenceForm[ "nb2omdoc:  ", "Sample.omdoc"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Text"\),
+      SequenceForm[ "  ", "*Cell  Text"],
+      Editable->False]], "Print",
+  GeneratedCell->False,
+  CellAutoOverwrite->False],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("<----  "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("---->  "\[InvisibleSpace]"Section"\),
+      SequenceForm[ "---->  ", "Section"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Text"\),
+      SequenceForm[ "  ", "*Cell  Text"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Text"\),
+      SequenceForm[ "  ", "*Cell  Text"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("<----  "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("---->  "\[InvisibleSpace]"Section"\),
+      SequenceForm[ "---->  ", "Section"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*Cell  Assertion  "\
+\[InvisibleSpace]"Lemma"\),
+      SequenceForm[ "  ", "*Cell  Assertion  ", "Lemma"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  "\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "  ", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("<----  "\)], "Print"],
+
+Cell[BoxData[
+    \("<----  "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("nb2omdoc:  "\[InvisibleSpace]"Sample.omdoc"\),
+      SequenceForm[ "nb2omdoc:  ", "Sample.omdoc"],
+      Editable->False]], "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(XML`SymbolicXMLErrors[res]\)], "Input"],
+
+Cell[BoxData[
+    \({}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Import["\<Sample.omdoc\>", "\<XML\>", 
+      ConversionOptions \[Rule] {"\<ValidateAgainstDTD\>" \[Rule] 
+            True}]\)], "Input"],
+
+Cell[BoxData[
+    \(\(XMLObject[
+        "Document"]\)[{\(XMLObject["Declaration"]\)["Version" \[Rule] "1.0", 
+          "Encoding" \[Rule] "utf-8"], \(XMLObject["Doctype"]\)["omdoc", 
+          "Public" \[Rule] "-//OMDoc//DTD OMDoc V1.2//EN", 
+          "System" \[Rule] "omdoc.dtd", 
+          "InternalSubset" \[Rule] \*"\<\"\"\>"]}, 
+      XMLElement[
+        "omdoc", {"id" \[Rule] 
+            "NN", {"http://www.w3.org/2000/xmlns/", "xmlns"} \[Rule] 
+            "http://www.mathweb.org/omdoc", 
+          "catalogue" \[Rule] 
+            "../../../../../../omdoc/examples/omstd/catalogue.omdoc", \
+{"http://www.w3.org/2000/xmlns/", "xsi"} \[Rule] 
+            "http://www.w3.org/2001/XMLSchema-instance", \
+{"http://www.w3.org/2001/XMLSchema-instance", "schemaLocation"} \[Rule] 
+            "omdoc.xsd http://www.mathweb.org/omdoc"}, {XMLElement[
+            "metadata", {}, {XMLElement["Title", {}, {"NN"}], 
+              XMLElement["Creator", {}, {"NN"}], 
+              XMLElement["Subject", {}, {"NN"}], 
+              XMLElement[
+                "Date", {"action" \[Rule] 
+                    "created"}, {"2003-3-11 22:27:37"}]}], 
+          XMLElement[
+            "catalogue", {}, {XMLElement[
+                "loc", {"theory" \[Rule] "scripts", 
+                  "omdoc" \[Rule] 
+                    "../../../../../theories/migration/scripts.omdoc"}, \
+{}]}], XMLElement[
+            "omgroup", {"id" \[Rule] "G3"}, {XMLElement[
+                "metadata", {}, {XMLElement[
+                    "Title", {}, {"Sample Notebook"}]}], 
+              XMLElement[
+                "omgroup", {"id" \[Rule] "G0"}, {XMLElement[
+                    "metadata", {}, {XMLElement[
+                        "Title", {}, {"A Section"}]}], 
+                  XMLElement[
+                    "omtext", {"id" \[Rule] "T0"}, {XMLElement[
+                        "CMP", {}, {"Plain text, inline math", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMS", {"cd" \[Rule] "relation1", 
+                                      "name" \[Rule] "eq"}, {}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "arith1", 
+                                        "name" \[Rule] "plus"}, {}], 
+                                      XMLElement[
+                                        "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "superscript"}, {}], 
+                                        XMLElement[
+                                        "OMV", {"name" \[Rule] "x"}, {}], 
+                                        XMLElement["OMI", {}, {"2"}]}], 
+                                      XMLElement[
+                                        "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "superscript"}, {}], 
+                                        XMLElement[
+                                        "OMV", {"name" \[Rule] "y"}, {}], 
+                                        XMLElement["OMI", {}, {"2"}]}]}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "superscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "z"}, {}], 
+                                      XMLElement["OMI", {}, {"2"}]}]}]}], 
+                          "."}]}], 
+                  XMLElement[
+                    "omtext", {"id" \[Rule] "T1"}, {XMLElement[
+                        "CMP", {}, {"OMType", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMV", {"name" \[Rule] "OMType"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "A"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "B"}, {}]}]}], 
+                          "OMFunction", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMV", {"name" \[Rule] 
+                                        "OMFunction"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "f"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "A"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "B"}, {}]}]}], 
+                          "OMPair", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMV", {"name" \[Rule] "OMPair"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "\[Alpha]"}, {}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "subscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] 
+                                        "\[CapitalGamma]"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] 
+                                        "i"}, {}]}]}]}], "OMTuple", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMV", {"name" \[Rule] "OMTuple"}, {}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "subscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "a"}, {}], 
+                                      XMLElement["OMI", {}, {"1"}]}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "subscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "a"}, {}], 
+                                      XMLElement["OMI", {}, {"2"}]}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "subscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "a"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] 
+                                        "n"}, {}]}]}]}]}]}]}], 
+              XMLElement[
+                "omgroup", {"id" \[Rule] "G1"}, {XMLElement[
+                    "metadata", {}, {XMLElement[
+                        "Title", {}, {"The Same Section"}]}], 
+                  XMLElement[
+                    "omtext", {"id" \[Rule] "T2"}, {XMLElement[
+                        "CMP", {}, {"Plain text, inline math", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMS", {"cd" \[Rule] "relation1", 
+                                      "name" \[Rule] "eq"}, {}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "arith1", 
+                                        "name" \[Rule] "plus"}, {}], 
+                                      XMLElement[
+                                        "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "superscript"}, {}], 
+                                        XMLElement[
+                                        "OMV", {"name" \[Rule] "x"}, {}], 
+                                        XMLElement["OMI", {}, {"2"}]}], 
+                                      XMLElement[
+                                        "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "superscript"}, {}], 
+                                        XMLElement[
+                                        "OMV", {"name" \[Rule] "y"}, {}], 
+                                        XMLElement["OMI", {}, {"2"}]}]}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "superscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "z"}, {}], 
+                                      XMLElement["OMI", {}, {"2"}]}]}]}], 
+                          "."}]}], 
+                  XMLElement[
+                    "omtext", {"id" \[Rule] "T3"}, {XMLElement[
+                        "CMP", {}, {"OMType", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMV", {"name" \[Rule] "OMType"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "A"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "B"}, {}]}]}], 
+                          "OMFunction", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMV", {"name" \[Rule] 
+                                        "OMFunction"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "f"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "A"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "B"}, {}]}]}], 
+                          "OMPair", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMV", {"name" \[Rule] "OMPair"}, {}], 
+                                  XMLElement[
+                                    "OMV", {"name" \[Rule] "\[Alpha]"}, {}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "subscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] 
+                                        "\[CapitalGamma]"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] 
+                                        "i"}, {}]}]}]}], "OMTuple", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMV", {"name" \[Rule] "OMTuple"}, {}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "subscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "a"}, {}], 
+                                      XMLElement["OMI", {}, {"1"}]}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "subscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "a"}, {}], 
+                                      XMLElement["OMI", {}, {"2"}]}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "subscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "a"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] 
+                                        "n"}, {}]}]}]}]}]}]}], 
+              XMLElement[
+                "omgroup", {"id" \[Rule] "G2"}, {XMLElement[
+                    "metadata", {}, {XMLElement["Title", {}, {"A Lemma"}]}], 
+                  XMLElement[
+                    "assertion", {"id" \[Rule] "L0", 
+                      "type" \[Rule] "lemma"}, {XMLElement[
+                        "CMP", {}, {"This is an assertion.", 
+                          XMLElement[
+                            "OMOBJ", {}, {XMLElement[
+                                "OMA", {}, {XMLElement[
+                                    "OMS", {"cd" \[Rule] "relation1", 
+                                      "name" \[Rule] "eq"}, {}], 
+                                  XMLElement[
+                                    "OMA", {}, {XMLElement[
+                                        "OMS", {"cd" \[Rule] "scripts", 
+                                        "name" \[Rule] "superscript"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "K"}, {}], 
+                                      XMLElement[
+                                        "OMV", {"name" \[Rule] "w"}, {}]}], 
+                                  XMLElement["OMI", {}, {"123"}]}]}], 
+                          "."}]}]}]}]}], {}, 
+      "Valid" \[Rule] True]\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{765, 869},
+WindowMargins->{{62, Automatic}, {Automatic, 40}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "Info3256410432-7834930"->{
+    Cell[2570, 88, 180, 3, 39, "Print",
+      CellTags->"Info3256410432-7834930"]},
+  "Info3256410435-5978813"->{
+    Cell[2993, 108, 126, 2, 23, "Print",
+      CellTags->"Info3256410435-5978813"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"Info3256410432-7834930", 26138, 649},
+  {"Info3256410435-5978813", 26252, 652}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 82, 1, 27, "Input"],
+Cell[1861, 56, 75, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[1973, 62, 92, 1, 27, "Input"],
+Cell[2068, 65, 86, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2191, 71, 111, 2, 27, "Input"],
+Cell[2305, 75, 105, 2, 27, "Output"]
+}, Open  ]],
+Cell[2425, 80, 64, 1, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[2514, 85, 53, 1, 27, "Input"],
+Cell[2570, 88, 180, 3, 39, "Print",
+  CellTags->"Info3256410432-7834930"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2787, 96, 63, 1, 27, "Input"],
+Cell[2853, 99, 54, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2944, 105, 46, 1, 27, "Input"],
+Cell[2993, 108, 126, 2, 23, "Print",
+  CellTags->"Info3256410435-5978813"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3156, 115, 45, 1, 27, "Input"],
+Cell[3204, 118, 38, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3279, 124, 70, 1, 27, "Input"],
+Cell[3352, 127, 165, 3, 23, "Print"],
+Cell[3520, 132, 149, 3, 23, "Print"],
+Cell[3672, 137, 153, 3, 23, "Print"],
+Cell[3828, 142, 151, 3, 23, "Print"],
+Cell[3982, 147, 145, 3, 23, "Print"],
+Cell[4130, 152, 151, 3, 23, "Print"],
+Cell[4284, 157, 145, 3, 23, "Print"],
+Cell[4432, 162, 145, 3, 23, "Print"],
+Cell[4580, 167, 145, 3, 23, "Print"],
+Cell[4728, 172, 145, 3, 23, "Print"],
+Cell[4876, 177, 42, 1, 23, "Print"],
+Cell[4921, 180, 153, 3, 23, "Print"],
+Cell[5077, 185, 151, 3, 23, "Print"],
+Cell[5231, 190, 145, 3, 23, "Print"],
+Cell[5379, 195, 151, 3, 23, "Print"],
+Cell[5533, 200, 145, 3, 23, "Print"],
+Cell[5681, 205, 145, 3, 23, "Print"],
+Cell[5829, 210, 145, 3, 23, "Print"],
+Cell[5977, 215, 145, 3, 23, "Print"],
+Cell[6125, 220, 42, 1, 23, "Print"],
+Cell[6170, 223, 153, 3, 23, "Print"],
+Cell[6326, 228, 200, 4, 23, "Print"],
+Cell[6529, 234, 145, 3, 23, "Print"],
+Cell[6677, 239, 42, 1, 23, "Print"],
+Cell[6722, 242, 42, 1, 23, "Print"],
+Cell[6767, 245, 171, 3, 23, "Print"],
+Cell[6941, 250, 203, 5, 23, "Print"],
+Cell[7147, 257, 145, 3, 23, "Print"],
+Cell[7295, 262, 145, 3, 23, "Print"],
+Cell[7443, 267, 145, 3, 23, "Print"],
+Cell[7591, 272, 145, 3, 23, "Print"],
+Cell[7739, 277, 42, 1, 23, "Print"],
+Cell[7784, 280, 153, 3, 23, "Print"],
+Cell[7940, 285, 151, 3, 23, "Print"],
+Cell[8094, 290, 145, 3, 23, "Print"],
+Cell[8242, 295, 151, 3, 23, "Print"],
+Cell[8396, 300, 145, 3, 23, "Print"],
+Cell[8544, 305, 145, 3, 23, "Print"],
+Cell[8692, 310, 145, 3, 23, "Print"],
+Cell[8840, 315, 145, 3, 23, "Print"],
+Cell[8988, 320, 42, 1, 23, "Print"],
+Cell[9033, 323, 153, 3, 23, "Print"],
+Cell[9189, 328, 200, 4, 23, "Print"],
+Cell[9392, 334, 145, 3, 23, "Print"],
+Cell[9540, 339, 42, 1, 23, "Print"],
+Cell[9585, 342, 42, 1, 23, "Print"],
+Cell[9630, 345, 171, 3, 23, "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9838, 353, 59, 1, 27, "Input"],
+Cell[9900, 356, 36, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9973, 362, 157, 3, 27, "Input"],
+Cell[10133, 367, 15396, 264, 1163, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

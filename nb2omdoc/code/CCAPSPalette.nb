@@ -1,0 +1,476 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     20480,        435]*)
+(*NotebookOutlinePosition[     21254,        464]*)
+(*  CellTagsIndexPosition[     21210,        460]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[RawData["\<\
+Cell[BoxData[
+    FormBox[GridBox[{
+          {
+            ButtonBox[
+              RowBox[{\"Initialize\", \"CCAPS\", \"Formats\"}],
+              ButtonFunction:>(With[ {
+                  Set[ nb, 
+                    NotebookCreate[ Visible -> False]]}, 
+                  CompoundExpression[ 
+                    SetSelectedNotebook[ nb], 
+                    NotebookWrite[ nb, 
+                      Cell[ 
+                        BoxData[ {
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"MakeBoxes\", \"[\", 
+                                  RowBox[ {
+                                    
+                                    RowBox[ {\"FormalExpression\", \"[\", 
+                                      \"exp_\", \"]\"}], \",\", \
+\"StandardForm\"}], 
+                                  \"]\"}], \":=\", 
+                                RowBox[ {\"TagBox\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"MakeBoxes\", \"[\", 
+                                      RowBox[ {\"exp\", \",\", \"StandardForm\
+\"}],
+                                       \"]\"}], \",\", \"\\\"FormalExpression\
+\\\"\"}],
+                                   \"]\"}]}], \";\"}], \"\\[IndentingNewLine]\
+\"}], 
+                          \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"MakeExpression\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"TagBox\", \"[\", 
+                                      
+                                      RowBox[ {\"exp_\", \",\", 
+                                        \"\\\"FormalExpression\\\"\", \",\", 
+                                        \"___\"}], \"]\"}], \",\", 
+                                    \"StandardForm\"}], \"]\"}], \":=\", 
+                                RowBox[ {\"MakeExpression\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"RowBox\", \"[\", 
+                                      RowBox[ {\"{\", 
+                                        
+                                        RowBox[ \
+{\"\\\"FormalExpression\\\"\", 
+                                        \",\", \"\\\"[\\\"\", \",\", \"exp\", \
+\",\", 
+                                        \"\\\"]\\\"\"}], \"}\"}], \"]\"}], \
+\",\", 
+                                    \"StandardForm\"}], \"]\"}]}], \";\"}], 
+                            \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"MakeBoxes\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"TypeDeclaration\", \"[\", 
+                                      RowBox[ {\"f_\", \",\", \"t_\"}], \
+\"]\"}], 
+                                    \",\", \"StandardForm\"}], \"]\"}], \
+\":=\", 
+                                RowBox[ {\"TagBox\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"RowBox\", \"[\", 
+                                      RowBox[ {\"{\", 
+                                        RowBox[ {
+                                        RowBox[ {\"TagBox\", \"[\", 
+                                        RowBox[ {
+                                        RowBox[ {\"MakeBoxes\", \"[\", 
+                                        RowBox[ {\"f\", \",\", \"StandardForm\
+\"}],
+                                         \"]\"}], \",\", \
+\"\\\"Object\\\"\"}], \"]\"}], 
+                                        \",\", \"\\\":\\\"\", \",\", 
+                                        RowBox[ {\"TagBox\", \"[\", 
+                                        RowBox[ {
+                                        RowBox[ {\"MakeBoxes\", \"[\", 
+                                        RowBox[ {\"t\", \",\", \"StandardForm\
+\"}],
+                                         \"]\"}], \",\", \"\\\"Type\\\"\"}], \
+\"]\"}]}], 
+                                        \"}\"}], \"]\"}], \",\", 
+                                    \"\\\"TypeDeclaration\\\"\"}], \"]\"}]}], \
+\";\"}],
+                             \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"MakeExpression\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"TagBox\", \"[\", 
+                                      RowBox[ {
+                                        RowBox[ {\"RowBox\", \"[\", 
+                                        RowBox[ {\"{\", 
+                                        RowBox[ {
+                                        RowBox[ {\"TagBox\", \"[\", 
+                                        
+                                        RowBox[ {\"f_\", \",\", \
+\"\\\"Object\\\"\", 
+                                        \",\", \"___\"}], \"]\"}], \",\", \
+\"\\\":\\\"\", 
+                                        \",\", 
+                                        RowBox[ {\"TagBox\", \"[\", 
+                                        
+                                        RowBox[ {\"t_\", \",\", \
+\"\\\"Type\\\"\", \",\",
+                                         \"___\"}], \"]\"}]}], \"}\"}], \
+\"]\"}], 
+                                        \",\", \"\\\"TypeDeclaration\\\"\", \
+\",\", 
+                                        \"___\"}], \"]\"}], \",\", 
+                                    \"StandardForm\"}], \"]\"}], \":=\", 
+                                RowBox[ {\"MakeExpression\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"RowBox\", \"[\", 
+                                      RowBox[ {\"{\", 
+                                        
+                                        RowBox[ {\"\\\"TypeDeclaration\\\"\", \
+\",\",
+                                         \"\\\"[\\\"\", \",\", 
+                                        RowBox[ {\"RowBox\", \"[\", 
+                                        RowBox[ {\"{\", 
+                                        
+                                        RowBox[ {\"f\", \",\", \"\\\",\\\"\", \
+\",\", 
+                                        \"t\"}], \"}\"}], \"]\"}], \",\", \
+\"\\\"]\\\"\"}],
+                                         \"}\"}], \"]\"}], \",\", 
+                                    \"StandardForm\"}], \"]\"}]}], \";\"}], 
+                            \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"MakeBoxes\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"ImplicitSeries\", \"[\", 
+                                      RowBox[ {\"f_\", \",\", 
+                                        RowBox[ {\"{\", \"a__\", \"}\"}], \",\
+\", 
+                                        RowBox[ {\"{\", \"b___\", \"}\"}]}], 
+                                      \"]\"}], \",\", \"StandardForm\"}], \"]\
+\"}], 
+                                \":=\", 
+                                RowBox[ {\"TagBox\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"MakeBoxes\", \"[\", 
+                                      RowBox[ {
+                                        RowBox[ {\"f\", \"[\", 
+                                        
+                                        RowBox[ {\"a\", \",\", 
+                                        \"\\[CenterEllipsis]\", \",\", \
+\"b\"}], 
+                                        \"]\"}], \",\", \"StandardForm\"}], \
+\"]\"}],
+                                     \",\", \"\\\"ImplicitSeries\\\"\"}], \"]\
+\"}]}], 
+                              \";\"}], \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"MakeExpression\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"TagBox\", \"[\", 
+                                      
+                                      RowBox[ {\"exp_\", \",\", 
+                                        \"\\\"ImplicitSeries\\\"\", \",\", \
+\"___\"}], 
+                                      \"]\"}], \",\", \"StandardForm\"}], \"]\
+\"}], 
+                                \":=\", 
+                                RowBox[ {\"MakeExpression\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"RowBox\", \"[\", 
+                                      RowBox[ {\"{\", 
+                                        
+                                        RowBox[ \
+{\"\\\"FormalExpression\\\"\", 
+                                        \",\", \"\\\"[\\\"\", \",\", \"exp\", \
+\",\", 
+                                        \"\\\"]\\\"\"}], \"}\"}], \"]\"}], \
+\",\", 
+                                    \"StandardForm\"}], \"]\"}]}], \";\"}], 
+                            \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"MakeBoxes\", \"[\", 
+                                  RowBox[ {
+                                    
+                                    RowBox[ {\"SquareGrouping\", \"[\", \
+\"exp_\", 
+                                      \"]\"}], \",\", \"StandardForm\"}], \"]\
+\"}], 
+                                \":=\", 
+                                RowBox[ {\"TagBox\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"RowBox\", \"[\", 
+                                      RowBox[ {\"{\", 
+                                        RowBox[ {\"\\\"[\\\"\", \",\", 
+                                        RowBox[ {\"MakeBoxes\", \"[\", 
+                                        
+                                        RowBox[ {\"exp\", \",\", 
+                                        \"StandardForm\"}], \"]\"}], \",\", 
+                                        \"\\\"]\\\"\"}], \"}\"}], \"]\"}], \
+\",\", 
+                                    \"\\\"SquareGrouping\\\"\"}], \"]\"}]}], \
+\";\"}], 
+                            \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"MakeExpression\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"TagBox\", \"[\", 
+                                      RowBox[ {
+                                        RowBox[ {\"RowBox\", \"[\", 
+                                        RowBox[ {\"{\", 
+                                        
+                                        RowBox[ {\"\\\"[\\\"\", \",\", \"exp_\
+\", \",\", 
+                                        \"\\\"]\\\"\"}], \"}\"}], \"]\"}], \
+\",\", 
+                                        \"\\\"SquareGrouping\\\"\", \",\", \
+\"___\"}], 
+                                      \"]\"}], \",\", \"StandardForm\"}], \"]\
+\"}], 
+                                \":=\", 
+                                RowBox[ {\"MakeExpression\", \"[\", 
+                                  RowBox[ {
+                                    RowBox[ {\"RowBox\", \"[\", 
+                                      RowBox[ {\"{\", 
+                                        
+                                        RowBox[ {\"\\\"SquareGrouping\\\"\", \
+\",\", 
+                                        \"\\\"[\\\"\", \",\", \"exp\", \",\", \
+\"\\\"]\\\"\"}],
+                                         \"}\"}], \"]\"}], \",\", 
+                                    \"StandardForm\"}], \"]\"}]}], \";\"}], 
+                            \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {\"SetAttributes\", \"[\", 
+                                
+                                RowBox[ {\"FormalExpression\", \",\", 
+                                  \"HoldAllComplete\"}], \"]\"}], \";\"}], 
+                            \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {\"SetAttributes\", \"[\", 
+                                
+                                RowBox[ {\"ImplicitSeries\", \",\", 
+                                  \"HoldAllComplete\"}], \"]\"}], \";\"}], 
+                            \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"FormalExpression\", \"[\", 
+                                  RowBox[ {\"f_\", \"[\", 
+                                    
+                                    RowBox[ {\"a__\", \",\", 
+                                      \"\\[CenterEllipsis]\", \",\", \
+\"b___\"}], 
+                                    \"]\"}], \"]\"}], \":=\", 
+                                RowBox[ {\"ImplicitSeries\", \"[\", 
+                                  RowBox[ {\"f\", \",\", 
+                                    RowBox[ {\"{\", \"a\", \"}\"}], \",\", 
+                                    RowBox[ {\"{\", \"b\", \"}\"}]}], \
+\"]\"}]}], 
+                              \";\"}], \"\\[IndentingNewLine]\"}], \"\\n\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                
+                                RowBox[ {\"SquareGrouping\", \"[\", \"exp_\", \
+
+                                  \"]\"}], \":=\", \"exp\"}], \";\"}], 
+                            \"\\[IndentingNewLine]\"}], \
+\"\\[IndentingNewLine]\", 
+                          
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                
+                                RowBox[ {\"FormalExpression\", \"::\", 
+                                  \"usage\"}], \" \", \"=\", \" \", 
+                                \"\\\"A CCAPS formatting command.  \\
+FormalExpression[exp] acts as an invisible wrapper, preventing exp from \\
+being evaluated.  FormalExpression differs from HoldForm in that \\
+FormalExpression attempts to categorize its input upon evaluation.  For \\
+example, FormalExpression[1+2+\\[CenterEllipsis]+n] evaluates to \\
+ImplicitSeries[Plus,{1,2},{n}].\\\"\"}], \";\"}], \"\\[IndentingNewLine]\"}], \
+
+                          \"\\[IndentingNewLine]\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"ImplicitSeries\", \"::\", \
+\"usage\"}], 
+                                \" \", \"=\", \" \", 
+                                \"\\\"A CCAPS formatting command.  \\
+ImplicitSeries[f,alist,blist] represents a series of arguments to the \\
+function f that are given implicitly.  For example, \\
+ImplicitSeries[Plus,{1,2},{n}] represents the series \\
+1+2+\\[CenterEllipsis]+n.  This representation is purely formal, returning \\
+itself if evaluated.\\\"\"}], \";\"}], \"\\[IndentingNewLine]\"}], 
+                          \"\\[IndentingNewLine]\", 
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"SquareGrouping\", \"::\", \
+\"usage\"}], 
+                                \" \", \"=\", \" \", 
+                                \"\\\"A CCAPS formatting command.  \\
+SquareGrouping wraps it argument in square brackets.  Effectively, these \\
+square brackets evaluate like parentheses.\\\"\"}], \";\"}], 
+                            \"\\[IndentingNewLine]\"}], \
+\"\\[IndentingNewLine]\", 
+                          
+                          RowBox[ {
+                            RowBox[ {
+                              RowBox[ {
+                                RowBox[ {\"TypeDeclaration\", \"::\", \"usage\
+\"}],
+                                 \" \", \"=\", \" \", 
+                                \"\\\"A CCAPS formatting command.  \\
+TypeDeclaration[f,t] represents a declaration that object f has type t.  \\
+For example, TypeDeclaration[f,A\\[Rule]B] represents the declaration that f \
+\\
+is a function from A to B.  This representation is purely formal, returning \
+\\
+itself if evaluated.\\\"\"}], \";\"}], \"\\[IndentingNewLine]\"}], 
+                          \"\\[IndentingNewLine]\", 
+                          RowBox[ {
+                            RowBox[ {\"NotebookClose\", \"[\", 
+                              RowBox[ {\"EvaluationNotebook\", \"[\", \
+\"]\"}], 
+                              \"]\"}], \";\"}]}], \"Input\"], All], 
+                    SelectionEvaluateCreateCell[ nb]]]&),
+              ButtonEvaluator->Automatic,
+              Active->True,
+              ButtonMargins->5,
+              ButtonNote->\"\"]},
+          {GridBox[{
+                {
+                  ButtonBox[
+                    TagBox[\"\\[SelectionPlaceholder]\",
+                      \"FormalExpression\"],
+                    
+                    ButtonNote->
+                      \"FormalExpression[\\[SelectionPlaceholder]]\"], 
+                  ButtonBox[
+                    TagBox[
+                      RowBox[{
+                        TagBox[\"\\[SelectionPlaceholder]\",
+                          \"Object\"], \":\", 
+                        TagBox[\"\\[Placeholder]\",
+                          \"Type\"]}],
+                      \"TypeDeclaration\"],
+                    
+                    ButtonNote->
+                      \"TypeDeclaration[\\[SelectionPlaceholder],\\
+\\[Placeholder]]\"], 
+                  ButtonBox[
+                    TagBox[
+                      RowBox[{\"[\", \"\\[SelectionPlaceholder]\", \"]\"}],
+                      \"SquareGrouping\"],
+                    ButtonNote->\"SquareGrouping[\\[SelectionPlaceholder]]\"]}\
+
+                }]}
+          }], InputForm]],
+  GridBoxOptions->{RowSpacings->0.5,
+  ColumnSpacings->0}
+  ]\
+\>"],
+  GridBoxOptions->{RowSpacings->0.5,
+  ColumnSpacings->0}]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+ClosingAutoSave->True,
+AutoGeneratedPackage->None,
+WindowSize->{918, 996},
+WindowMargins->{{Automatic, 53}, {Automatic, 22}},
+Active->True,
+CellOpen->True,
+ShowCellLabel->False,
+ShowCellTags->False,
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 18722, 382, 6492, InheritFromParent]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

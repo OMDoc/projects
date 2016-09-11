@@ -1,0 +1,355 @@
+\svnInfo $Id: compatibility.tex 6837 2007-09-23 00:07:39Z frabe $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/OpenMath-paper/compatibility.tex $
+\section{Compatibility}\label{sec:templates}
+Here we show that the proposed infrastructure for notation definitions is a superset of
+the functionality of other systems. We first show that we can re-gain the {\omdocv{1.2}}
+syntax by specifying two new elements that get their meaning as abbreviations of the new
+functionality. In a second step we develop a template-based variant of our presentation
+technique to be compatible to (a functional superset of) the {\activemath} notation
+definition system. 
+
+\subsection{Compatibility to {\omdocv{1.2}}}
+
+The proposed presentation syntax has one disadvantage: Information about the fixity or
+associativity of a symbol is not marked up explicitly. Therefore, we specify
+{\element{use}} elements in the next section which are very similar to the corresponding
+{\omdocv{1.2}} syntax.
+
+The {\element{style}}- and {\element{xslt}}-based infrastructure for notation definitions
+in {\omdocv{1.2}} will not be supported. They have rightfully been described as
+non-declarative, therefore ill-suited as a definitional mechanism and have tied the
+presentation procedure to the XSLT programming language. The extended expressivity of the
+proposed notation definition format seems to cover all the cases, where these two have
+been needed in practice. We have re-formulated\ednote{MK: complete this} all the notation
+definitions in the {\openmath} standard content dictionaries --- which cover the K-14
+fragment of mathematics --- and have not found need for a procedural fall-back solution.
+
+
+\subsection{Direct Specification of Symbol Characteristics}
+
+We define a presentation element {\element{use}} which like its counterpart in
+{\omdocv{1.2}} is based on the direct specification of symbol characteristics. But here we
+define its meaning via abbreviations for certain presentations in the above syntax.
+\begin{center}\small
+\begin{tabular}{|l|l|p{3.2cm}|p{3.5cm}|}\hline
+  Element  &  \multicolumn{2}{c|}{Attributes}  &  Content \\\cline{2-3}
+  & Required & Optional & \\\hline\hline
+  use           &          & egroup, elevel, precedence, bracket-style, fixity
+                     & rbrack? lbrack? operator? separator?\\\hline
+  operator      &          & egroup, elevel             & \llquote{item}* \\\hline\hline
+  lbrack        &          & egroup, elevel             & \llquote{item}* \\\hline
+  rbrack        &          & egroup, elevel             & \llquote{item}* \\\hline
+  \multicolumn{4}{|l|}{\llquote{item} $\hat=$ (text $|$ element $|$ map $|$ attribution $|$
+recurse)}\\\hline
+\end{tabular}
+\end{center}
+
+A {\element{use}} may have the attributes
+\begin{itemize}
+\item {\attribute{fixity}{use}} with values {\attval{prefix}{fixity}{use}},
+  {\attval{postfix}{fixity}{use}}, {\attval{infixl}{fixity}{use}},
+  {\attval{infixr}{fixity}{use}}, and {\attval{infixlr}{fixity}{use}},
+\item If fixity is {\attval{prefix}{fixity}{use}} or {\attval{postfix}{fixity}{use}}:
+  {\attribute{bracket-style}{use}} with values {\attval{math}{bracket-style}{use}} and
+  {\attval{lisp}{bracket-style}{use}}\ednote{discuss that! --CL},
+  % \item optionally, {\attribute{crossref-symbol}{use}} whose value must be a
+  %   whitespace-separated list of {\attval{lbrack}{crossref-symbol}{use}},
+  %   {\attval{rbrack}{crossref-symbol}{use}}, and
+  %   {\attval{separator}{crossref-symbol}{use}} with default value being the empty
+  %   string.
+\item {\attribute{precedence}{use}}.
+\end{itemize}
+Its children are at most one each of {\element{lbrack}}, {\element{rbrack}},
+{\element{operator}}, and {\element{separator}}, all with \llquote{item}* content.
+\ednote{FR: This should be improved: It should be possible that a use element gives only, e.g., fixity and precedence with the rest being inherited from default presentations. The motivation is that fixity and precedence typically depend on the symbol but not on the output format, whereas the other attributes typically depend on the home theory and the output format.}
+Such a presentation specification can be translated easily into the above syntax. For
+prefix operators,
+
+\begin{minipage}{.53\textwidth}
+\begin{lstlisting}[mathescape,frame=tlrb,numbers=none]
+<use fixity="prefix" bracket-style="math" precedence="$p$">
+  <lbrack>$\llquote{l}$</lbrack>
+  <rbrack>$\llquote{r}$</rbrack>
+  <operator>$\llquote{op}$</operator>
+  <separator>$\llquote{s}$</separator>
+</use>
+\end{lstlisting}
+\end{minipage}
+\quad abbreviates\quad
+\begin{minipage}{.28\textwidth}
+\begin{lstlisting}[mathescape,frame=tlrb,numbers=none]
+$\llquote{op}$
+$\llquote{l}$
+<map begin="1" end="-1">
+  <separator>$\llquote{s}$</separator>
+  <recurse precedence="$p$"/>
+</map>
+$\llquote{r}$
+\end{lstlisting}
+\end{minipage}
+
+And
+
+\begin{minipage}{.53\textwidth}
+\begin{lstlisting}[mathescape,frame=tlrb,numbers=none]
+<use fixity="prefix" bracket-style="lisp" precedence="$p$">
+  <lbrack>$\llquote{l}$</lbrack>
+  <rbrack>$\llquote{r}$</rbrack>
+  <operator>$\llquote{op}$</operator>
+  <separator>$\llquote{s}$</separator>
+</use>
+\end{lstlisting}
+\end{minipage}
+\quad abbreviates\quad
+\begin{minipage}{.28\textwidth}
+\begin{lstlisting}[mathescape,frame=tlrb,numbers=none]
+$\llquote{l}^b$
+$\llquote{op}$
+$\llquote{s}$
+<map begin="1" end="-1">
+  <separator>$\llquote{s}$</separator>
+  <recurse precedence="$p$"/>
+</map>
+$\llquote{r}^b$
+\end{lstlisting}
+\end{minipage}
+where the superscript $b$ denotes that the attribute \snippet{level="bracket"}
+has been added to the elements $l$ and $r$. Note how in the mathematical bracket
+style brackets are always displayed, whereas they can be elided in the Lisp
+style\ednote{@FR: Not in general! For postfix (e.\,g.\ factorial) and infix (most
+  ordinary operators), yes, but for prefix? --CL}. Postfix operators are treated
+correspondingly.
+
+If omitted {\element{lbrack}}, {\element{rbrack}}, and {\element{separator}} default to
+the empty elements\ednote{I thought in OMDoc 1.2 they defaulted to ( and )? --CL}, and
+{\element{operator}} defaults to \snippet{map begin="0"/>}. {\attribute{fixity}{use}}
+defaults to {\attval{prefix}{fixity}{use}}, {\attribute{bracket-style}{use}} to
+{\attval{math}{bracket-style}{use}}, and {\attribute{precedence}{use}} to
+{\attval{0}{precedence}{use}}.
+
+% Here, and in the following, $C$ abbreviates \snippet{crossref="true"} if the
+% corresponding element is in the value of \attribute{crossref-symbol}{use}, and is empty
+% otherwise.
+
+Infix operators require some care: An infix operator which is applied to $n$ arguments is
+inserted $n-1$ times between the arguments. {\attval{infixlr}{fixity}{use}} is used for
+associative operators for which no inner brackets are needed.
+{\attval{infixl}{fixity}{use}} and {\attval{infixr}{fixity}{use}} refer to left and
+right-associative operators, respectively. In none of these cases do we generate inner
+brackets, not even elidable ones. This permits us to distinguish, e.\,g., the $n$-ary
+application of addition from successive application of binary addition.
+
+Elidable or unelidable brackets are only generated when the several applications of the
+operator are nested. This is achieved by different input precedences when
+expanding. Associative, right-associative, and left-associative infix specifications
+expand to, respectively,
+\begin{center}
+\begin{minipage}{.3\textwidth}
+\begin{lstlisting}[mathescape,frame=tlrb,numbers=none]
+$\llquote{l}^b$
+<map begin="1" end="-1">
+  <separator>$\llquote{op}$</separator>
+  <recurse precedence="$p$"/>
+</map>
+$\llquote{r}^b$
+\end{lstlisting}
+\end{minipage}
+\quad
+\begin{minipage}{.3\textwidth}
+\begin{lstlisting}[mathescape,frame=tlrb,numbers=none]
+$\llquote{l}^b$
+<map begin="1">
+  <separator/>
+  <recurse precedence="$p-1$"/>
+</map>
+<map begin="2" end="-1">
+  <separator/>
+  $\llquote{op}$
+  <recurse precedence="$p$"/>
+</map>
+$\llquote{r}^b$
+\end{lstlisting}
+\end{minipage}
+\quad
+\begin{minipage}{.3\textwidth}
+\begin{lstlisting}[mathescape,frame=tlrb,numbers=none]
+$\llquote{l}^b$
+<map begin="1" end="-2">
+  <separator/>
+  <recurse precedence="$p$"/>
+  $\llquote{op}$
+</map>
+<map begin="-1">
+  <separator/>
+  <recurse precedence="$p-1$"/>
+</map>
+$\llquote{r}^b$
+\end{lstlisting}
+\end{minipage}
+\end{center}
+
+\subsection{Compatibility to {\activemath}}
+
+  The {\activemath} system~\cite{URL:activemath} uses a pattern-based approach that
+  synthesizes ideas from the {\omdocv{1.0}} infrastructure and~\cite{Naylor:conversion}
+  for XSLT template generation.
+\begin{lstlisting} 
+<symbolpresentation xmlns="..." id="comb1bk" xref=".../bk">
+  <notation format="html|pmathml|TeX" language="de">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mrow><mo>(</mo><mfrac linethickness="0"><mi>n</mi><mi>k</mi></mfrac><mo>)</mo></mrow> 
+    </math>
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA><OMS cd="comb1" name="bk"/><OMV name="n"><OMV name="k"></OMA>
+    </OMOBJ>
+  </notation>
+</symbolpresentation>
+\end{lstlisting}
+  The presentation approach outlined in~\cite{ManLib:apo05} directly uses the names of
+  {\openmath} variables and the content of {\mathml} {\element{mi}} elements for the
+  necessary cross-referencing between formats, confusing the role of meta-variables and
+  object variables. Conceptually, this is a step backwards from~\cite{Naylor:conversion}
+  (where the distinction was somewhat tentative) and makes it impossible to exclude
+  variables from the cross-referencing (and therefore recursion) of the presentation
+  procedure. The main contribution here is the provision of the
+  {\textit{jEditOQMath}}~\cite{jeditoqmath:web} developed by P.\
+  Libbrecht~\cite{Lib:authoring} with a {\openmath} Presentation Editor (OMPE)
+  plug-in~\cite{oqmath:web} for the visual authoring of {\element{symbolpresentation}}
+  elements.
+
+\begin{newpart}{MK: we have to talk about this}
+  \subsection{A Pattern-Based Approach to Flexary Mixfix Notations}
+
+%\begin{newpart}{FR: pattern example for mathml draft}
+%\input{integral_example_pattern_matching}
+%\end{newpart}
+
+
+  Template-based approaches are often simpler to understand for authors, moreover, they
+  are the only intuitive way to capture notations like $\sin^2(x)$ for the square of the
+  value of the sine function at $x$. Here we propose to directly follow the lead of the
+  Naylor\&Watt system described in Section~\ref{sec:notdef}, re-using as much of the
+  infrastructure we have built up until now as possible. Furthermore, we will drop the
+  distinction between a semantic template and the notation generators. We claim that
+  template-based notation definitions should only contain information about
+  ``corresponding'' representations, and that presentation generation is only one
+  direction of transformation between representations (from machine-oriented to
+  human-oriented ones). The the symmetricity of the ``correspondence relation'' is
+  immediately perspicuous if we have templates for more than one machine-oriented format,
+  e.\,g.\ {\openmath} and content {\mathml}. But parsing of human-oriented formats should in
+  principle be able to use the information in the ``notation correpsondence'' in the
+  opposite of the ``presentation direction''. We should be able to derive parsing-oriented
+  grammars taking into account precedences and the extended elision specifications
+  developed above. In this paper though, we will not make use of this generalization and
+  only concentrate on the presentation direction. Concretely, we assume that the
+  presentation algorithm either directly uses the {\openmath} template for pattern
+  matching internally, or generates XPath expression for the
+  {\attribute[ns-elt=xsl]{match}{template}} attribute in the {\element[ns-elt=xsl]{template}}
+  element as in {\mylstref{template}}.
+
+
+  Finally, we keep the set of corresponding templates loosely coupled, rather than enging
+  them in a {\element{Notation}} element as in {\mylstref{lst:template-based}}: Two
+  {\element{presentation}} elements are in correspondence, if they reference the same
+  symbol in the {\attribute{for}{presentation}} element and have the same
+  {\attribute{role}{presentation}} value.
+
+  Consider for instance the case of the typing judgment from {\mylstref{typing-judgment}},
+  here we would just add the following template. 
+\begin{lstlisting}[mathescape]
+<presentation format="OM" for="#typing-judgment">
+  <OMA><OMS cd="types" name="typing-judgment"/>
+    <arg name="context"/><arg name="sig"/><arg name="term"/><arg name="type"/>
+  </OMA>
+</presentation>
+\end{lstlisting}
+  Unfortunately, we cannot directly write this in our grammar (nor would we like allow
+  this, since we want to support an open-ended set of XML-based formats). Therefore we
+  write instead
+\begin{lstlisting}[mathescape]
+<presentation format="OM" role="application" for="#typing-judgment">
+  <element name="OMA">
+    <element name="OMS">
+      <attribute name="cd"><text>types</text></attribute>
+      <attribute name="name"><text>typing-judgment</text></attribute>
+    </element>
+    <arg name="context"/><arg name="sig"/><map name="term"/><map name="type"/>
+  </element>
+</presentation>
+\end{lstlisting}
+  This template is assembled using the {\omdoc} {\element{element}} and
+  {\element{attribute}} elements, rather than the {\openmath} elements themselves. We
+  consider this representation above to be equivalent to the one that uses the target
+  elements literally.
+
+  Following XSLT terminology, we call we speak of the {\defemph{native}} encoding for the
+  former representation and the {\defemph{literal inclusion}} encoding for the
+  latter. Note that the native encoding has great advantages for validation, while the
+  literal inclusion encoding is simpler to read for humans. They are obviously identical
+  in expressivity and trivially isomorphic. We therefore assume that native form is used
+  for storage and a pre-process or a tool like OMPE will present equivalent literal
+  inclusion syntax for editing and user interaction. In particular, we will write our
+  examples in literal inclusion encoding.
+
+  \begin{newpart}{@MK: I only understood this stuff when you gave the additional PMML
+      pattern and told me that one way of the presentation could be ``pattern matching
+      OM'' $\to$ ``output PMML''. Therefore, I want an PMML example here and an
+      explanation; please adapt this draft. --CL}
+\begin{lstlisting}[mathescape]
+<presentation format="pmathml" for="#typing-judgment">
+  <mrow>
+    <arg name="context"/>
+    <msub><mo>$\vdash$</mo><arg name="sig"/></msub>
+    <arg name="term"/>
+    <mo>:</mo>
+    <arg name="type"/>
+  </mrow>
+</presentation>
+\end{lstlisting}
+    
+    When for the same symbol there is a presentation pattern $p_{in}$ for the given input
+    format (e.\,g.\ {\openmath}) and $p_{out}$ for the desired output format (e.\,g.\
+    Presentation {\mathml}), the input would be matched against $p_{in}$, assigning the
+    meta-variables named by the {\attribute{name}{map}} attribute. Then, the output would
+    be rendered according to $p_{out}$, filling in the results of recursively rendering
+    the values of the meta-variables at the indicated positions.
+  \end{newpart}
+
+  Note that the native encoding also clarifies the role of the {\element{map}} elements as
+  meta-variables, and the contribution of the other presentation elements.
+
+\begin{lstlisting}[mathescape]
+<presentation for="#plus" role="constant" format="OM"><OMS cd="arith1" name="plus"/></presentation>
+<presentation for="#plus" role="application" format="OM">
+  <OMA><OMS cd="arith1" name="plus"/><map begin="1" end="-1" name="summands"/></OMA>
+</presentation>
+<presentation for="#plus" role="application" format="ascii latex">
+  <element name="mo" egroup="lbrack"><text>(</text></element>
+  <map name="summands"><separator><arg pos="0"/></separator><recurse/></map>
+  <element name="mo" egroup="lbrack"><text>(</text></element>
+</presentation>
+\end{lstlisting}
+  \ednote{MK: say something about the referencing with @name and @begin/end/pos, and where
+    what is redundant. But @name is always a good documentation of the intended behavior.}
+\end{newpart}
+
+
+
+
+%%% Local Variables: 
+%%% mode: stex
+%%% TeX-master: "presel"
+%%% fill-column: 90
+%%% sentence-end-double-space: nil
+%%% End: 
+
+
+% LocalWords:  CL rbrack lbrack infixl infixr infixlr crossref whitespece tlrb
+% LocalWords:  mathescape FR OMDoc assoc ary op ednote symbolpresentation xmlns
+% LocalWords:  bk xref html pmathml de mrow mo mfrac linethickness mi OMOBJ OMA
+% LocalWords:  OMS cd OMV MK jEditOQMath OMPE Vorher hieß es noch Das hier ist
+% LocalWords:  doch nicht Warum denn auf einmal Ausgabeformat OM Im ersten bzw
+% LocalWords:  Beispiel wenn wir von sprechen wollen wäre MathML sinnvoll aber
+% LocalWords:  eine Identitäts Abbildung Außerdem geht ein der Eingabesprache
+% LocalWords:  macht das und Ausgabesprache PMML nimmt gematchten Ausdrücke pre
+% LocalWords:  crid arith stex presel egroup elevel

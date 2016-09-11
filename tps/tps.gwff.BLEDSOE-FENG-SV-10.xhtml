@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.BLEDSOE-FENG-SV-10" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.BLEDSOE-FENG-SV-10</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.BLEDSOE-FENG-SV-10</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="tps.abbr.SETUNION.xhtml#tps.abbr.SETUNION">tps.abbr.SETUNION</a>, 
+        <a href="tps.abbr.SUBSET.xhtml#tps.abbr.SUBSET">tps.abbr.SUBSET</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.BLEDSOE-FENG-SV-10" role="Assertion" about="#gwff.BLEDSOE-FENG-SV-10" xml:id="gwff.BLEDSOE-FENG-SV-10">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.BLEDSOE-FENG-SV-10"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> Example 10 from Bledsoe and Feng's SET VAR paper from JAR, p. 308. A simple topology theorem. If a set B has the property that every x in B has a nbhd D subset B, then B is open. This requires a primsub corresponding to the set of all subsets of B. Note that we do not have to include the 'set theory axioms' because we are working in type theory. Also, I have stated closure of open sets under unions with an equation D = SETUNION G as did Bledsoe and Feng. This is necessary to prevent having to do equational reasoning that TPS cannot currently do. (Actually, Bledsoe and Feng assume 'Lemma 1' which amounts to the same thing as closure under unions, except with the quantifier on G pushed into the antecedent of an implication.) FORALL D(OI) FORALL G(O(OI)) [G SUBSET OPEN(O(OI)) AND D = SETUNION G IMPLIES OPEN D] IMPLIES FORALL B(OI).FORALL x(I) [B x IMPLIES EXISTS D.OPEN D AND D x AND D SUBSET B] IMPLIES OPEN B</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e33" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mrow>
+                  <m:mo>∀</m:mo>
+                  <m:msub>
+                    <m:mi>D</m:mi>
+                    <m:mrow>
+                      <m:mo>ι</m:mo>
+                      <m:mo>→</m:mo>
+                      <m:mo>o</m:mo>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                  <m:msub>
+                    <m:mi>G</m:mi>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>ι</m:mo>
+                        <m:mo>→</m:mo>
+                        <m:mo>o</m:mo>
+                      </m:mrow>
+                      <m:mo>→</m:mo>
+                      <m:mo>o</m:mo>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mrow>
+                        <m:mi>G</m:mi>
+                        <m:mo>SUBSET</m:mo>
+                        <m:mi>OPEN</m:mi>
+                      </m:mrow>
+                      <m:mo>∧</m:mo>
+                      <m:mrow>
+                        <m:mi>D</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mrow>
+                          <m:mo>SETUNION</m:mo>
+                          <!-- Face using unicode: <char unicode="X22C3"/>. -->
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>G</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>⇒</m:mo>
+                    <m:mrow>
+                      <m:mi>OPEN</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>D</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+                <m:mo>⇒</m:mo>
+                <m:mrow>
+                  <m:mo>∀</m:mo>
+                  <m:msub>
+                    <m:mi>B</m:mi>
+                    <m:mrow>
+                      <m:mo>ι</m:mo>
+                      <m:mo>→</m:mo>
+                      <m:mo>o</m:mo>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo>∀</m:mo>
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mo>ι</m:mo>
+                      </m:msub>
+                      <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>B</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>x</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo>⇒</m:mo>
+                        <m:mrow>
+                          <m:mo>∃</m:mo>
+                          <m:msub>
+                            <m:mi>D</m:mi>
+                            <m:mrow>
+                              <m:mo>ι</m:mo>
+                              <m:mo>→</m:mo>
+                              <m:mo>o</m:mo>
+                            </m:mrow>
+                          </m:msub>
+                          <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                              <m:mrow>
+                                <m:mi>OPEN</m:mi>
+                                <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                                <m:mi>D</m:mi>
+                                <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                              </m:mrow>
+                              <m:mo>∧</m:mo>
+                              <m:mrow>
+                                <m:mi>D</m:mi>
+                                <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                                <m:mi>x</m:mi>
+                                <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                              </m:mrow>
+                              <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                            </m:mrow>
+                            <m:mo>∧</m:mo>
+                            <m:mrow>
+                              <m:mi>D</m:mi>
+                              <m:mo>SUBSET</m:mo>
+                              <m:mi>B</m:mi>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mo>⇒</m:mo>
+                    <m:mrow>
+                      <m:mi>OPEN</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>B</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

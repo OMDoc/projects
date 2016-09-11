@@ -1,0 +1,96 @@
+--------------------------------------------------------------------------------
+
+Title:          `nb2omdoc'
+
+Version:        0.5
+
+Description:    A Mathematica package that provides tools to convert 
+		Mathematica notebooks to XML documents in OMDoc format.
+
+Author:         Klaus Sutner
+		sutner@cs.cmu.edu
+
+Maintained-by:  Klaus Sutner
+
+Maintained-at:  www.cs.cmu.edu/~sutner
+
+Platforms:      Requires Mathematica version 4.2 or higher. 
+                Should be OS independent. 
+
+Copying-Policy: The package may be freely redistributed for noncommercial 
+                purposes provided that no changes are made and that this 
+                notice is included.
+
+Keywords:       Mathematica notebooks, OpenMath, OMDoc.
+
+
+--------------------------------------------------------------------------------
+WARNING
+--------------------------------------------------------------------------------
+
+This is an experimental version containing only the rudiments of 
+the conversion procedure.  It is distributed at this point mostly 
+with a view towards getting early feedback.  The conversion works 
+well for simple source notebooks, but no claim of completeness is 
+made.  Most notably, the present version ignores output and graphics. 
+An experienced Mathematica programmer should find it easy to extend 
+the conversion algorithm to address these issues. 
+
+Bug reports, comments, suggestions should be sent to
+
+        sutner@cs.cmu.edu
+
+Alternatively, send ordinary mail to 
+
+        Klaus Sutner
+        Department of Computer Science
+        Carnegie Mellon University
+        Pittsburgh, PA 15213-3890
+
+
+--------------------------------------------------------------------------------
+Installation and Use
+--------------------------------------------------------------------------------
+
+To install the package place it into 
+
+	~/.Mathematica/Applications/
+
+in your home directory (or whatever corresponds to this location on 
+your system).  After installation, do a "Rebuild Help Index" so that 
+Mathematica updates its browser information.  A (currently rather tiny)
+browser file should then be available under "Add-ons", see there for 
+usage information.
+
+To load the package type 
+
+	Needs["nb2omdoc`nb2omdoc`"]
+
+
+Note that NB2OMDoc[nb]  returns a potentially very large XML expression. 
+It is usually best to supress output:
+
+	res = NB2OMDoc["Sample"];
+
+You can then check for errors like so:
+
+	XML`SymbolicXMLErrors[res]
+	snb =  Import["Sample.omdoc", "XML", 
+		ConversionOptions -> {"ValidateAgainstDTD" -> True}]
+
+For the sample notebook  Sample.nb  in the Example directory, there should
+be no errors (assuming the DTD is in the right place).
+
+In standard mode, NB2OMDoc works quietly, printing only two messages at 
+the begin and end of conversion.  If you want to get more feedback, type
+
+	SetVerbose[]
+
+and 
+
+	SetVerbose[False]
+
+for a return to the default (no debugging information).
+
+
+--------------------------------------------------------------------------------

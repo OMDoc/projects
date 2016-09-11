@@ -1,0 +1,48 @@
+-- SGML Open style entity catalog                                        --
+
+-- Add elements to this file: the format is                              --
+-- PUBLIC [Identifier] [path to file, full or relative to /usr/lib/sgml] --
+-- ..................................................................... --
+
+-- public identifiers override system identifiers, if both are supplied   --
+OVERRIDE YES
+
+-- CNX Project DTDs --
+PUBLIC "-//CNX//DTD CNXML 0.1//EN"                                              dtd/cnxml-0.1/cnxml.dtd
+
+PUBLIC "-//CNX//DTD CNXML 0.2//EN"                                              dtd/cnxml-0.2/cnxml.dtd
+
+PUBLIC "-//CNX//DTD CNXML 0.2.1//EN"                                            dtd/cnxml-0.2.1/cnxml_plain.dtd
+PUBLIC "-//CNX//DTD CNXML 0.2.1 plus MathML//EN"                                dtd/cnxml-0.2.1/cnxml_mathml.dtd
+
+PUBLIC "-//CNX//DTD CNXML 0.3//EN"                                              dtd/cnxml-0.3/cnxml_plain.dtd
+PUBLIC "-//CNX//DTD CNXML 0.3 plus MathML//EN"                                  dtd/cnxml-0.3/cnxml_mathml.dtd
+PUBLIC "-//CNX//DTD CNXML 0.3 plus MathML plus QML//EN"                         dtd/cnxml-0.3/cnxml_mathml_qml.dtd
+
+PUBLIC "-//CNX//DTD CNXML 0.3.5//EN"                                            dtd/cnxml-0.3.5/cnxml_plain.dtd
+PUBLIC "-//CNX//DTD CNXML 0.3.5 plus MathML//EN"                                dtd/cnxml-0.3.5/cnxml_mathml.dtd
+PUBLIC "-//CNX//DTD CNXML 0.3.5 plus MathML plus QML//EN"                       dtd/cnxml-0.3.5/cnxml_mathml_qml.dtd
+
+PUBLIC "-//CNX//DTD CNXML 0.4//EN"                                              dtd/cnxml-0.4/cnxml_plain.dtd
+PUBLIC "-//CNX//DTD CNXML 0.4 plus MathML//EN"                                  dtd/cnxml-0.4/cnxml_mathml.dtd
+PUBLIC "-//CNX//DTD CNXML 0.4 plus MathML plus QML//EN"                         dtd/cnxml-0.4/cnxml_mathml_qml.dtd
+
+
+-- MDML --
+PUBLIC "-//CNX//ENTITIES MDML 0.4 Qualified Names 1.0//EN"                      dtd/mdml-0.4/mdml-qname-1.mod
+PUBLIC "-//CNX//ELEMENTS MDML 0.4 Elements//EN"                                 dtd/mdml-0.4/mdml.mod
+
+
+-- MathML --
+PUBLIC "-//W3C//DTD MathML 2.0//EN"                                             dtd/mathml2/mathml2.dtd
+PUBLIC "-//W3C//ENTITIES MathML 2.0 Qualified Names 1.0//EN"                    dtd/mathml2/mathml2-qname-1.mod
+
+
+-- QML --
+PUBLIC "-//CNX//DTD QML 1.0//EN"                                                dtd/qml-1.0/qml.dtd
+PUBLIC "-//CNX//ENTITIES QML 1.0 Qualified Names 1.0//EN"                       dtd/qml-1.0/qml1-qname-1.mod
+PUBLIC "-//CNX//ELEMENTS QML 1.0 Elements//EN"                                  dtd/qml-1.0/qml1.mod
+
+
+
+

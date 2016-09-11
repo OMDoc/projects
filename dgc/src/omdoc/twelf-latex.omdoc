@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//om:OMDoc//DTD om:OMDoc V1.2//EN" "../../dtd/omdoc.dtd">
+<omdoc xml:id=":twelf-latex.omdoc" xmlns="http://www.omdoc.org/ns/" xmlns:om="http://www.openmath.org/OpenMath" xmlns:visib="http://www.mathweb.org/omdoc" version="1.2">
+
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="latex" role="constant">
+      <text value="\mathop{"/>
+      <name/>
+      <text value="}"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="latex" role="variable">
+      <text value="\mathop{"/>
+      <name/>
+      <text value="}"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="latex" role="key">
+      <components begin="2"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="latex" role="application">
+      <text>(</text>
+      <components begin="0" end="-1">
+         <separator>
+            <text>\;</text>
+         </separator>
+      </components>
+      <text>)</text>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="latex" role="morphism">
+      <text value="\twelfmorphism{"/>
+      <components begin="0"/>
+      <text value="}{"/>
+      <components begin="1"/>
+      <text value="}"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/type" format="latex" role="constant">
+      <text value="\textt{type}"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/type" format="latex" role="constant">
+      <text value="\_"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/lambda" format="latex" role="binder">
+      <text>\lambda</text>
+      <components begin="1">
+         <recurse/>
+         <attribution>
+            <OMOBJ>
+               <om:OMS path="http://www.mathweb.org/omdoc?twelf/oftype"/>
+            </OMOBJ>
+            <text value=":"/>
+            <recurse/>
+         </attribution>
+      </components>
+      <text>.</text>
+      <components begin="3"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/Pi" format="latex" role="binder">
+      <text>\Pi</text>
+      <components begin="1">
+         <recurse/>
+         <attribution>
+            <OMOBJ>
+               <om:OMS path="http://www.mathweb.org/omdoc?twelf/oftype"/>
+            </OMOBJ>
+            <text>:</text>
+            <recurse/>
+         </attribution>
+      </components>
+      <text>.</text>
+      <components begin="3"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/arrow" format="latex" role="application">
+      <use fixity="infixr" precedence="0">
+         <operator>
+            <text value="\rightarrow "/>
+         </operator>
+      </use>
+   </presentation>
+</omdoc>

@@ -1,0 +1,1394 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "../dtd/omdoc-basic.dtd" [<!ENTITY % om.prefixed "INCLUDE">]>
+
+<omdoc xml:id="FIELDS-omdoc"
+       xmlns="http://www.mathweb.org/omdoc"
+       xmlns:dc="http://dublincore.org"
+       xmlns:om="http://www.openmath.org/OpenMath">
+
+<metadata>
+ <dc:title>The theory FIELDS in IMPS</dc:title>
+ <dc:source>
+  <dc:title>IMPS: An Interactive Mathematical Proof System</dc:title>
+  <dc:creator role="aut">W.M. Farmer</dc:creator>
+  <dc:creator role="aut">J.D. Guttman</dc:creator>
+  <dc:creator role="aut">F.J. Thayer</dc:creator>
+  <dc:date action="created">2001</dc:date>
+ </dc:source>
+ <dc:creator role="aut">W.M. Farmer</dc:creator>
+ <dc:creator role="aut">J.D. Guttman</dc:creator>
+ <dc:creator role="aut">F.J. Thayer</dc:creator>
+ <dc:contributor role="trl">Yan Li</dc:contributor>
+ <dc:contributor role="edt">Marc Bender</dc:contributor>
+ <dc:date action="created">2002</dc:date>
+ <dc:date action="updated">2005</dc:date>
+</metadata>
+
+
+<theory xml:id="fields">
+
+<omgroup xml:id="fields-component-theories" type="sequence">
+<metadata>
+ <dc:title>Component theories</dc:title>
+</metadata>
+
+
+<imports xml:id="h-o-real-arithmetic.import"  from="h-o-real-arithmetic"/>
+<omtext xml:id="h-o-real-arithmetic.import-display">
+ <CMP>
+ "h-o-real-arithmetic" - component theory of "fields".
+ </CMP>
+</omtext>
+
+</omgroup>
+
+
+
+
+<omgroup xml:id="field-language" type="sequence">
+<metadata>
+ <dc:title> The symbols in "field-language" </dc:title>
+</metadata>
+
+<omtext xml:id="field-language-intro">
+ <CMP> "field-language" - language of the theory "fields". </CMP>
+</omtext>
+
+<symbol xml:id="kk" kind="sort">
+ <CMP> "kk" - primitive sort of the theory "fields". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="kk">
+ <CMP> The enclosing sort of "kk" is "kk". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="fields" name="kk"/>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="o_kk" kind="object">
+ <CMP> "o_kk" - primitive constant of the theory "fields". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="o_kk">
+ <CMP> The sort of "o_kk" is "kk". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="fields" name="kk"/>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="i_kk" kind="object">
+ <CMP> "i_kk" - primitive constant of the theory "fields". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="i_kk">
+ <CMP> The sort of "i_kk" is "kk". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="fields" name="kk"/>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="-_kk" kind="object">
+ <CMP> "-_kk" - primitive constant of the theory "fields". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="-_kk">
+ <CMP> The sort of "-_kk" is "[kk,kk]". </CMP>
+ <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="funsort"/>
+     <om:OMS cd="fields" name="kk"/>
+     <om:OMS cd="fields" name="kk"/>
+   </om:OMA>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="+_kk" kind="object">
+ <CMP> "+_kk" - primitive constant of the theory "fields". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="+_kk">
+ <CMP> The sort of "+_kk" is "[kk,kk,kk]". </CMP>
+ <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="funsort"/>
+     <om:OMS cd="fields" name="kk"/>
+     <om:OMS cd="fields" name="kk"/>
+     <om:OMS cd="fields" name="kk"/>
+   </om:OMA>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="*_kk" kind="object">
+ <CMP> "*_kk" - primitive constant of the theory "fields". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="*_kk">
+ <CMP> The sort of "*_kk" is "[kk,kk,kk]". </CMP>
+ <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="funsort"/>
+     <om:OMS cd="fields" name="kk"/>
+     <om:OMS cd="fields" name="kk"/>
+     <om:OMS cd="fields" name="kk"/>
+   </om:OMA>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="inv" kind="object">
+ <CMP> "inv" - primitive constant of the theory "fields". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="inv">
+ <CMP> The sort of "inv" is "[kk,kk]". </CMP>
+ <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="funsort"/>
+     <om:OMS cd="fields" name="kk"/>
+     <om:OMS cd="fields" name="kk"/>
+   </om:OMA>
+ </om:OMOBJ>
+</type>
+
+
+</omgroup>
+
+
+<omgroup xml:id="axioms-of-fields" type="sequence">
+<metadata>
+ <dc:title> Axioms </dc:title>
+</metadata>
+
+<omtext xml:id="fields-axioms-intro">
+ <CMP> The axioms of the theory "fields" (which are not from its component theories). </CMP>
+</omtext>
+
+
+<axiom xml:id="multiplicative-inverse-for-fields">
+<CMP>
+ Axiom name: "multiplicative-inverse-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(x:kk,not(x=o_kk) implies x *_kk inv(x)=i_kk)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((kk x))
+ (implies (not (= x o_kk))
+  (= (apply-operator *_kk x (apply-operator inv x)) i_kk)))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="not"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMV name="x"/>
+       <om:OMS cd="fields" name="o_kk"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="x"/>
+       <om:OMA>
+        <om:OMS cd="fields" name="inv"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMS cd="fields" name="i_kk"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+
+<axiom xml:id="commutative-law-for-addition-for-fields">
+<CMP>
+ Axiom name: "commutative-law-for-addition-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(y,x:kk,x +_kk y=y +_kk x)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk y x)) (= (apply-operator +_kk x y) (apply-operator +_kk y x)))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="x"/>
+      <om:OMV name="y"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="y"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+
+<axiom xml:id="associative-law-for-addition-for-fields">
+<CMP>
+ Axiom name: "associative-law-for-addition-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(z,y,x:kk,x +_kk y +_kk z=x +_kk (y +_kk z))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((kk z y x))
+ (= (apply-operator +_kk (apply-operator +_kk x y) z)
+  (apply-operator +_kk x (apply-operator +_kk y z))))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="z"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="+_kk"/>
+       <om:OMV name="x"/>
+       <om:OMV name="y"/>
+      </om:OMA>
+      <om:OMV name="z"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="+_kk"/>
+       <om:OMV name="y"/>
+       <om:OMV name="z"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+
+<axiom xml:id="commutative-law-for-multiplication-for-fields">
+<CMP>
+ Axiom name: "commutative-law-for-multiplication-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(y,x:kk,x *_kk y=y *_kk x)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk y x)) (= (apply-operator *_kk x y) (apply-operator *_kk y x)))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMV name="x"/>
+      <om:OMV name="y"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMV name="y"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+
+<axiom xml:id="additive-inverse-for-fields">
+<CMP>
+ Axiom name: "additive-inverse-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(x:kk,x +_kk  -_kk x=o_kk)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk x)) (= (apply-operator +_kk x (apply-operator -_kk x)) o_kk))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="-_kk"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMS cd="fields" name="o_kk"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+
+<axiom xml:id="additive-identity-for-fields">
+<CMP>
+ Axiom name: "additive-identity-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(x:kk,x +_kk o_kk=x)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk x)) (= (apply-operator +_kk x o_kk) x))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="x"/>
+      <om:OMS cd="fields" name="o_kk"/>
+     </om:OMA>
+     <om:OMV name="x"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+
+<axiom xml:id="multiplicative-identity-for-fields">
+<CMP>
+ Axiom name: "multiplicative-identity-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(x:kk,i_kk *_kk x=x)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk x)) (= (apply-operator *_kk i_kk x) x))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMS cd="fields" name="i_kk"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+     <om:OMV name="x"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+
+<axiom xml:id="left-distributive-law-for-fields">
+<CMP>
+ Axiom name: "left-distributive-law-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(z,y,x:kk,x *_kk (y +_kk z)=x *_kk y +_kk x *_kk z)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((kk z y x))
+ (= (apply-operator *_kk x (apply-operator +_kk y z))
+  (apply-operator +_kk (apply-operator *_kk x y) (apply-operator *_kk x z))))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="z"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="+_kk"/>
+       <om:OMV name="y"/>
+       <om:OMV name="z"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="x"/>
+       <om:OMV name="y"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="x"/>
+       <om:OMV name="z"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+
+<axiom xml:id="associative-law-for-multiplication-for-fields">
+<CMP>
+ Axiom name: "associative-law-for-multiplication-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(z,y,x:kk,x *_kk y *_kk z=x *_kk (y *_kk z))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((kk z y x))
+ (= (apply-operator *_kk (apply-operator *_kk x y) z)
+  (apply-operator *_kk x (apply-operator *_kk y z))))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="z"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="x"/>
+       <om:OMV name="y"/>
+      </om:OMA>
+      <om:OMV name="z"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="y"/>
+       <om:OMV name="z"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+</omgroup>
+
+
+<omgroup xml:id="events-of-fields" type="sequence">
+<metadata>
+ <dc:title>Events</dc:title>
+</metadata>
+
+<omtext xml:id="fields-events-intro">
+ <CMP>
+  The events of the theory "fields" in load order.
+ </CMP>
+</omtext>
+
+
+<assertion xml:id="associative-law-for-multiplication-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "associative-law-for-multiplication-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(z,y,x:kk,x *_kk y *_kk z=x *_kk (y *_kk z))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((kk z y x))
+ (= (apply-operator *_kk (apply-operator *_kk x y) z)
+  (apply-operator *_kk x (apply-operator *_kk y z))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="z"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="x"/>
+       <om:OMV name="y"/>
+      </om:OMA>
+      <om:OMV name="z"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="y"/>
+       <om:OMV name="z"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="left-distributive-law-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "left-distributive-law-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(z,y,x:kk,x *_kk (y +_kk z)=x *_kk y +_kk x *_kk z)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((kk z y x))
+ (= (apply-operator *_kk x (apply-operator +_kk y z))
+  (apply-operator +_kk (apply-operator *_kk x y) (apply-operator *_kk x z))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="z"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="+_kk"/>
+       <om:OMV name="y"/>
+       <om:OMV name="z"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="x"/>
+       <om:OMV name="y"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="x"/>
+       <om:OMV name="z"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="multiplicative-identity-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "multiplicative-identity-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(x:kk,i_kk *_kk x=x)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk x)) (= (apply-operator *_kk i_kk x) x))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "rewrite". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMS cd="fields" name="i_kk"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+     <om:OMV name="x"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="additive-identity-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "additive-identity-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(x:kk,x +_kk o_kk=x)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk x)) (= (apply-operator +_kk x o_kk) x))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "rewrite". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="x"/>
+      <om:OMS cd="fields" name="o_kk"/>
+     </om:OMA>
+     <om:OMV name="x"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="additive-inverse-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "additive-inverse-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(x:kk,x +_kk  -_kk x=o_kk)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk x)) (= (apply-operator +_kk x (apply-operator -_kk x)) o_kk))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "rewrite". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="-_kk"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMS cd="fields" name="o_kk"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="commutative-law-for-multiplication-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "commutative-law-for-multiplication-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(y,x:kk,x *_kk y=y *_kk x)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk y x)) (= (apply-operator *_kk x y) (apply-operator *_kk y x)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMV name="x"/>
+      <om:OMV name="y"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="*_kk"/>
+      <om:OMV name="y"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="associative-law-for-addition-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "associative-law-for-addition-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(z,y,x:kk,x +_kk y +_kk z=x +_kk (y +_kk z))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((kk z y x))
+ (= (apply-operator +_kk (apply-operator +_kk x y) z)
+  (apply-operator +_kk x (apply-operator +_kk y z))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="z"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="+_kk"/>
+       <om:OMV name="x"/>
+       <om:OMV name="y"/>
+      </om:OMA>
+      <om:OMV name="z"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="fields" name="+_kk"/>
+       <om:OMV name="y"/>
+       <om:OMV name="z"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="commutative-law-for-addition-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "commutative-law-for-addition-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(y,x:kk,x +_kk y=y +_kk x)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((kk y x)) (= (apply-operator +_kk x y) (apply-operator +_kk y x)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="x"/>
+      <om:OMV name="y"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="fields" name="+_kk"/>
+      <om:OMV name="y"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="multiplicative-inverse-for-fields"  type="theorem">
+<CMP>
+ Theorem name: "multiplicative-inverse-for-fields". <with style="linebreak"/>
+
+ Formula (string): "forall(x:kk,not(x=o_kk) implies x *_kk inv(x)=i_kk)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((kk x))
+ (implies (not (= x o_kk))
+  (= (apply-operator *_kk x (apply-operator inv x)) i_kk)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="fields" name="kk"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="not"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMV name="x"/>
+       <om:OMS cd="fields" name="o_kk"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="fields" name="*_kk"/>
+       <om:OMV name="x"/>
+       <om:OMA>
+        <om:OMS cd="fields" name="inv"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMS cd="fields" name="i_kk"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="field-zero-is-not-field-one"  type="theorem">
+<CMP>
+ Theorem name: "field-zero-is-not-field-one". <with style="linebreak"/>
+
+ Formula (string): "not(o_kk=i_kk)". <with style="linebreak"/>
+
+ Formula (s-expression): "(not (= o_kk i_kk))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="not"/>
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMS cd="fields" name="o_kk"/>
+     <om:OMS cd="fields" name="i_kk"/>
+    </om:OMA>
+   </om:OMA>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="nil"  type="theorem">
+<CMP>
+ Theorem name: "nil". <with style="linebreak"/>
+
+ Formula (string): "total_q{+_kk,[kk,kk,kk]}". <with style="linebreak"/>
+
+ Formula (s-expression): "(total? +_kk (undefined (kk kk kk)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="total?"/>
+    <om:OMS cd="fields" name="+_kk"/>
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="undefined"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="funsort"/>
+       <om:OMS cd="fields" name="kk"/>
+       <om:OMS cd="fields" name="kk"/>
+       <om:OMS cd="fields" name="kk"/>
+     </om:OMA>
+    </om:OMA>
+
+   </om:OMA>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="nil"  type="theorem">
+<CMP>
+ Theorem name: "nil". <with style="linebreak"/>
+
+ Formula (string): "total_q{*_kk,[kk,kk,kk]}". <with style="linebreak"/>
+
+ Formula (s-expression): "(total? *_kk (undefined (kk kk kk)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="total?"/>
+    <om:OMS cd="fields" name="*_kk"/>
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="undefined"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="funsort"/>
+       <om:OMS cd="fields" name="kk"/>
+       <om:OMS cd="fields" name="kk"/>
+       <om:OMS cd="fields" name="kk"/>
+     </om:OMA>
+    </om:OMA>
+
+   </om:OMA>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="nil"  type="theorem">
+<CMP>
+ Theorem name: "nil". <with style="linebreak"/>
+
+ Formula (string): "total_q{-_kk,[kk,kk]}". <with style="linebreak"/>
+
+ Formula (s-expression): "(total? -_kk (undefined (kk kk)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="total?"/>
+    <om:OMS cd="fields" name="-_kk"/>
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="undefined"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="funsort"/>
+       <om:OMS cd="fields" name="kk"/>
+       <om:OMS cd="fields" name="kk"/>
+     </om:OMA>
+    </om:OMA>
+
+   </om:OMA>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+</omgroup>
+
+
+</theory>
+
+</omdoc>

@@ -1,0 +1,651 @@
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ACS.omdoc#tps.abbr.ACS
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.EQCL.omdoc#tps.abbr.EQCL
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.MAPS.omdoc#tps.abbr.MAPS
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.HOM.omdoc#tps.abbr.HOM
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PLUSA.omdoc#tps.abbr.PLUSA
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PU-HAT.omdoc#tps.abbr.PU-HAT
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PU-CTS.omdoc#tps.abbr.PU-CTS
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.Q0T.omdoc#tps.abbr.Q0T
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.Q0AXIOM1.omdoc#tps.abbr.Q0AXIOM1
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.S-JOIN.omdoc#tps.abbr.S-JOIN
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.S-DUC.omdoc#tps.abbr.S-DUC
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PU-LT.omdoc#tps.abbr.PU-LT
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SEQ-CA.omdoc#tps.abbr.SEQ-CA
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SET-CTS.omdoc#tps.abbr.SET-CTS
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.FINITESUBSET.omdoc#tps.abbr.FINITESUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SET-CTS.omdoc#tps.abbr.SET-CTS
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SET-TOPOLOGY.omdoc#tps.abbr.SET-TOPOLOGY
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TIMESA.omdoc#tps.abbr.TIMESA
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PRIM-REC.omdoc#tps.abbr.PRIM-REC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TIMESA.omdoc#tps.abbr.TIMESA
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TWO.omdoc#tps.abbr.TWO
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.CONCRETE" name="abbr.CONCRETE" />
+ in theory #tps.const.CONCRETE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.ENCODES" name="abbr.ENCODES" />
+ in theory #tps.const.ENCODES
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GT" name="abbr.GT" />
+ in theory #tps.const.GT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GT" name="abbr.GT" />
+ in theory #tps.const.GT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-APP2" name="abbr.GVB-APP2" />
+ in theory #tps.const.GVB-APP2
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-APPLY" name="abbr.GVB-APPLY" />
+ in theory #tps.const.GVB-APPLY
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-CLOSED" name="abbr.GVB-CLOSED" />
+ in theory #tps.const.GVB-CLOSED
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-COMPLEMENT" name="abbr.GVB-COMPLEMENT" />
+ in theory #tps.const.GVB-COMPLEMENT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-COMPOSE" name="abbr.GVB-COMPOSE" />
+ in theory #tps.const.GVB-COMPOSE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-COMPOSE" name="abbr.GVB-COMPOSE" />
+ in theory #tps.const.GVB-COMPOSE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-CONVERSE" name="abbr.GVB-CONVERSE" />
+ in theory #tps.const.GVB-CONVERSE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-CROSS" name="abbr.GVB-CROSS" />
+ in theory #tps.const.GVB-CROSS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-CROSS" name="abbr.GVB-CROSS" />
+ in theory #tps.const.GVB-CROSS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-DISJOINT" name="abbr.GVB-DISJOINT" />
+ in theory #tps.const.GVB-DISJOINT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-DOMAIN" name="abbr.GVB-DOMAIN" />
+ in theory #tps.const.GVB-DOMAIN
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-ESTIN" name="abbr.GVB-ESTIN" />
+ in theory #tps.const.GVB-ESTIN
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-FIRST" name="abbr.GVB-FIRST" />
+ in theory #tps.const.GVB-FIRST
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-FLIP-RANGE" name="abbr.GVB-FLIP-RANGE" />
+ in theory #tps.const.GVB-FLIP-RANGE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-FUNCTION" name="abbr.GVB-FUNCTION" />
+ in theory #tps.const.GVB-FUNCTION
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-HOMOM" name="abbr.GVB-HOMOM" />
+ in theory #tps.const.GVB-HOMOM
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-IDENT" name="abbr.GVB-IDENT" />
+ in theory #tps.const.GVB-IDENT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-IMAGE" name="abbr.GVB-IMAGE" />
+ in theory #tps.const.GVB-IMAGE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-IN" name="abbr.GVB-IN" />
+ in theory #tps.const.GVB-IN
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-IN" name="abbr.GVB-IN" />
+ in theory #tps.const.GVB-IN
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-INTERSECT" name="abbr.GVB-INTERSECT" />
+ in theory #tps.const.GVB-INTERSECT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-INTERSECT" name="abbr.GVB-INTERSECT" />
+ in theory #tps.const.GVB-INTERSECT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-ITERATE" name="abbr.GVB-ITERATE" />
+ in theory #tps.const.GVB-ITERATE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-M" name="abbr.GVB-M" />
+ in theory #tps.const.GVB-M
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-MAPS" name="abbr.GVB-MAPS" />
+ in theory #tps.const.GVB-MAPS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-NOP" name="abbr.GVB-NOP" />
+ in theory #tps.const.GVB-NOP
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-ONE-ONE" name="abbr.GVB-ONE-ONE" />
+ in theory #tps.const.GVB-ONE-ONE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-OP" name="abbr.GVB-OP" />
+ in theory #tps.const.GVB-OP
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-OPP" name="abbr.GVB-OPP" />
+ in theory #tps.const.GVB-OPP
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-POWERSET" name="abbr.GVB-POWERSET" />
+ in theory #tps.const.GVB-POWERSET
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-PROP-SUBSET" name="abbr.GVB-PROP-SUBSET" />
+ in theory #tps.const.GVB-PROP-SUBSET
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-RANGE" name="abbr.GVB-RANGE" />
+ in theory #tps.const.GVB-RANGE
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-RELATION" name="abbr.GVB-RELATION" />
+ in theory #tps.const.GVB-RELATION
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-RESTRICT" name="abbr.GVB-RESTRICT" />
+ in theory #tps.const.GVB-RESTRICT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-ROT-RIGHT" name="abbr.GVB-ROT-RIGHT" />
+ in theory #tps.const.GVB-ROT-RIGHT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-SECOND" name="abbr.GVB-SECOND" />
+ in theory #tps.const.GVB-SECOND
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-SIGMA" name="abbr.GVB-SIGMA" />
+ in theory #tps.const.GVB-SIGMA
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-SING-VAL" name="abbr.GVB-SING-VAL" />
+ in theory #tps.const.GVB-SING-VAL
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-SING" name="abbr.GVB-SING" />
+ in theory #tps.const.GVB-SING
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-SUBSET" name="abbr.GVB-SUBSET" />
+ in theory #tps.const.GVB-SUBSET
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-SUCC" name="abbr.GVB-SUCC" />
+ in theory #tps.const.GVB-SUCC
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-UNION" name="abbr.GVB-UNION" />
+ in theory #tps.const.GVB-UNION
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-V" name="abbr.GVB-V" />
+ in theory #tps.const.GVB-V
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.GVB-ZERO" name="abbr.GVB-ZERO" />
+ in theory #tps.const.GVB-ZERO
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.INFIX-LESS" name="abbr.INFIX-LESS" />
+ in theory #tps.const.INFIX-LESS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.INFIX-LESS" name="abbr.INFIX-LESS" />
+ in theory #tps.const.INFIX-LESS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.LESS" name="abbr.LESS" />
+ in theory #tps.const.LESS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.LESS" name="abbr.LESS" />
+ in theory #tps.const.LESS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.LESSEQ" name="abbr.LESSEQ" />
+ in theory #tps.const.LESSEQ
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.LESSEQ" name="abbr.LESSEQ" />
+ in theory #tps.const.LESSEQ
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.LT" name="abbr.LT" />
+ in theory #tps.const.LT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.LT" name="abbr.LT" />
+ in theory #tps.const.LT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.MINUS" name="abbr.MINUS" />
+ in theory #tps.const.MINUS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.MINUS" name="abbr.MINUS" />
+ in theory #tps.const.MINUS
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.PLUS-CONST" name="abbr.PLUS-CONST" />
+ in theory #tps.const.PLUS-CONST
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.PLUS-CONST" name="abbr.PLUS-CONST" />
+ in theory #tps.const.PLUS-CONST
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.PLUS-LIBCONST" name="abbr.PLUS-LIBCONST" />
+ in theory #tps.const.PLUS-LIBCONST
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.PLUS-LIBCONST" name="abbr.PLUS-LIBCONST" />
+ in theory #tps.const.PLUS-LIBCONST
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.TEST-RELN3" name="abbr.TEST-RELN3" />
+ in theory #tps.const.TEST-RELN3
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.TEST-RELN3" name="abbr.TEST-RELN3" />
+ in theory #tps.const.TEST-RELN3
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.TRUE-AT" name="abbr.TRUE-AT" />
+ in theory #tps.const.TRUE-AT
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.TRUE-IN" name="abbr.TRUE-IN" />
+ in theory #tps.const.TRUE-IN
+----------------------------------------------------
+ WARN : imports missing for <om:OMS cd="tps.abbr.TRUE-IN" name="abbr.TRUE-IN" />
+ in theory #tps.const.TRUE-IN
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.BLEDSOE7A.omdoc#tps.gwff.BLEDSOE7A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.BLEDSOE7A.omdoc#tps.gwff.BLEDSOE7A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.UNION.omdoc#tps.abbr.UNION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.BOOL-PROP-95.omdoc#tps.gwff.BOOL-PROP-95
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.UNION.omdoc#tps.abbr.UNION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.BOOL-PROP-96.omdoc#tps.gwff.BOOL-PROP-96
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.UNION.omdoc#tps.abbr.UNION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.BOOL-PROP-97.omdoc#tps.gwff.BOOL-PROP-97
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.UNION.omdoc#tps.abbr.UNION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.BOOL-PROP-98.omdoc#tps.gwff.BOOL-PROP-98
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.LATTICE-COMP.omdoc#tps.abbr.LATTICE-COMP
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CD-LATTICE-THM.omdoc#tps.gwff.CD-LATTICE-THM
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.RTCL.omdoc#tps.abbr.RTCL
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CHURCH-ROSSER-THM-2.omdoc#tps.gwff.CHURCH-ROSSER-THM-2
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.RTCL.omdoc#tps.abbr.RTCL
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CHURCH-ROSSER-THM.omdoc#tps.gwff.CHURCH-ROSSER-THM
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.CKB6-BLACK.omdoc#tps.abbr.CKB6-BLACK
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CKB6-L24000.omdoc#tps.gwff.CKB6-L24000
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.CKB6-BLACK.omdoc#tps.abbr.CKB6-BLACK
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CKB6-L40000.omdoc#tps.gwff.CKB6-L40000
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CLOSURE-THM0.omdoc#tps.gwff.CLOSURE-THM0
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.CLOSED.omdoc#tps.abbr.CLOSED
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CLOSURE-THM1.omdoc#tps.gwff.CLOSURE-THM1
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CLOSURE-THM2.omdoc#tps.gwff.CLOSURE-THM2
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMMON-REWRITE.omdoc#tps.abbr.COMMON-REWRITE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.CR-THEOREM.omdoc#tps.gwff.CR-THEOREM
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.UNITSET.omdoc#tps.abbr.UNITSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMLEMMA1.omdoc#tps.gwff.DOMLEMMA1
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.UNITSET.omdoc#tps.abbr.UNITSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMLEMMA2-1.omdoc#tps.gwff.DOMLEMMA2-1
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.UNION.omdoc#tps.abbr.UNION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMLEMMA2-1.omdoc#tps.gwff.DOMLEMMA2-1
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.UNION.omdoc#tps.abbr.UNION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMLEMMA2.omdoc#tps.gwff.DOMLEMMA2
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMLEMMA4.omdoc#tps.gwff.DOMLEMMA4
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.FINITESET.omdoc#tps.abbr.FINITESET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMLEMMA4.omdoc#tps.gwff.DOMLEMMA4
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMTHM1.omdoc#tps.gwff.DOMTHM1
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMTHM3.omdoc#tps.gwff.DOMTHM3
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.FINITESUBSET.omdoc#tps.abbr.FINITESUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMTHM4.omdoc#tps.gwff.DOMTHM4
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SETUNION.omdoc#tps.abbr.SETUNION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMTHM4.omdoc#tps.gwff.DOMTHM4
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SET-TOPOLOGY.omdoc#tps.abbr.SET-TOPOLOGY
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMTHM5.omdoc#tps.gwff.DOMTHM5
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.T0SPACE.omdoc#tps.abbr.T0SPACE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMTHM6.omdoc#tps.gwff.DOMTHM6
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.DOMTHM7.omdoc#tps.gwff.DOMTHM7
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.EXT2" name="abbr.EXT2" />
+ in theory #tps.gwff.EXT2A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PLUSA.omdoc#tps.abbr.PLUSA
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.FOUR-THEOREM.omdoc#tps.gwff.FOUR-THEOREM
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.FP-THM1.omdoc#tps.gwff.FP-THM1
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELN2.omdoc#tps.abbr.SUBRELN2
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.FP-THM2.omdoc#tps.gwff.FP-THM2
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELN3.omdoc#tps.abbr.SUBRELN3
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.FP-THM3-INST.omdoc#tps.gwff.FP-THM3-INST
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELN3.omdoc#tps.abbr.SUBRELN3
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.FP-THM3.omdoc#tps.gwff.FP-THM3
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.DIFF.omdoc#tps.abbr.DIFF
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.GAZING-THM45.omdoc#tps.gwff.GAZING-THM45
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.INDUCTION.omdoc#tps.gwff.INDUCTION
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.INDUCTION.omdoc#tps.gwff.INDUCTION
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.CKB-BLACK.omdoc#tps.abbr.CKB-BLACK
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.L2400.omdoc#tps.gwff.L2400
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.LTHM88.omdoc#tps.gwff.LTHM88
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.NBHD-THM.omdoc#tps.gwff.NBHD-THM
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.NBHD-THM1.omdoc#tps.gwff.NBHD-THM1
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.NBHD-THM2.omdoc#tps.gwff.NBHD-THM2
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.NBHD-THM2A.omdoc#tps.gwff.NBHD-THM2A
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-1" name="abbr.PA-1" />
+ in theory #tps.gwff.PA-THM1
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-2" name="abbr.PA-2" />
+ in theory #tps.gwff.PA-THM1
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-3" name="abbr.PA-3" />
+ in theory #tps.gwff.PA-THM1
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-4" name="abbr.PA-4" />
+ in theory #tps.gwff.PA-THM1
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-1" name="abbr.PA-1" />
+ in theory #tps.gwff.PA-THM2
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-2" name="abbr.PA-2" />
+ in theory #tps.gwff.PA-THM2
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-1" name="abbr.PA-1" />
+ in theory #tps.gwff.PA-THM3
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-2" name="abbr.PA-2" />
+ in theory #tps.gwff.PA-THM3
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-1" name="abbr.PA-1" />
+ in theory #tps.gwff.PA-THM4
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.PA-2" name="abbr.PA-2" />
+ in theory #tps.gwff.PA-THM4
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.SIXPEOPLE.omdoc#tps.gwff.SIXPEOPLE
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.STHM88.omdoc#tps.gwff.STHM88
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.SUM2.omdoc#tps.gwff.SUM2
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.SUM2.omdoc#tps.gwff.SUM2
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.SUM3.omdoc#tps.gwff.SUM3
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.SUM3.omdoc#tps.gwff.SUM3
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TRANSITIVE.omdoc#tps.abbr.TRANSITIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.TCL-IS-TRANS.omdoc#tps.gwff.TCL-IS-TRANS
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.INDUCTION" name="abbr.INDUCTION" />
+ in theory #tps.gwff.THM129A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM129A.omdoc#tps.gwff.THM129A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM129A.omdoc#tps.gwff.THM129A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM130-B.omdoc#tps.gwff.THM130-B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM130-B.omdoc#tps.gwff.THM130-B
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.INDUCTION" name="abbr.INDUCTION" />
+ in theory #tps.gwff.THM130-NAT
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.NAT.omdoc#tps.abbr.NAT
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM130-NAT.omdoc#tps.gwff.THM130-NAT
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM130-NAT.omdoc#tps.gwff.THM130-NAT
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM130-NAT.omdoc#tps.gwff.THM130-NAT
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM130B.omdoc#tps.gwff.THM130B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM130B.omdoc#tps.gwff.THM130B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM135.omdoc#tps.gwff.THM135
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM135A.omdoc#tps.gwff.THM135A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM135B.omdoc#tps.gwff.THM135B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM135C.omdoc#tps.gwff.THM135C
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM135D.omdoc#tps.gwff.THM135D
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TRANSITIVE.omdoc#tps.abbr.TRANSITIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM136-AGAIN.omdoc#tps.gwff.THM136-AGAIN
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TRANSITIVE.omdoc#tps.abbr.TRANSITIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM136.omdoc#tps.gwff.THM136
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.FIXPOINT.omdoc#tps.abbr.FIXPOINT
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM15B-V2.omdoc#tps.gwff.THM15B-V2
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ADD1.omdoc#tps.abbr.ADD1
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM164.omdoc#tps.gwff.THM164
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM170.omdoc#tps.gwff.THM170
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PAIR1.omdoc#tps.abbr.PAIR1
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM186.omdoc#tps.gwff.THM186
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.RIGHT1.omdoc#tps.abbr.RIGHT1
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM187.omdoc#tps.gwff.THM187
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.LEFT1.omdoc#tps.abbr.LEFT1
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM187.omdoc#tps.gwff.THM187
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PAIR1.omdoc#tps.abbr.PAIR1
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM187.omdoc#tps.gwff.THM187
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.RIGHT1.omdoc#tps.abbr.RIGHT1
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM188.omdoc#tps.gwff.THM188
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.LEFT1.omdoc#tps.abbr.LEFT1
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM188.omdoc#tps.gwff.THM188
+----------------------------------------------------
+ WARN : imports missing for <OMS cd="tps.abbr.THM192" name="abbr.THM192" />
+ in theory #tps.gwff.THM193
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM196.omdoc#tps.gwff.THM196
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM196A.omdoc#tps.gwff.THM196A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM196B.omdoc#tps.gwff.THM196B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM196C.omdoc#tps.gwff.THM196C
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM250B.omdoc#tps.gwff.THM250B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM250C.omdoc#tps.gwff.THM250C
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TRANSITIVE.omdoc#tps.abbr.TRANSITIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM250D.omdoc#tps.gwff.THM250D
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM250D.omdoc#tps.gwff.THM250D
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TRANSITIVE.omdoc#tps.abbr.TRANSITIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM250G.omdoc#tps.gwff.THM250G
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM250G.omdoc#tps.gwff.THM250G
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TRANSITIVE.omdoc#tps.abbr.TRANSITIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM250H.omdoc#tps.gwff.THM250H
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM250H.omdoc#tps.gwff.THM250H
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM252A.omdoc#tps.gwff.THM252A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM252B.omdoc#tps.gwff.THM252B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM253-A.omdoc#tps.gwff.THM253-A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM253-B.omdoc#tps.gwff.THM253-B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM254-A.omdoc#tps.gwff.THM254-A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBRELATION.omdoc#tps.abbr.SUBRELATION
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM254-B.omdoc#tps.gwff.THM254-B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.INJECTIVE.omdoc#tps.abbr.INJECTIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM40.omdoc#tps.gwff.THM40
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SURJECTIVE.omdoc#tps.abbr.SURJECTIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM41.omdoc#tps.gwff.THM41
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.INJECTIVE.omdoc#tps.abbr.INJECTIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM41.omdoc#tps.gwff.THM41
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM46.omdoc#tps.gwff.THM46
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PER.omdoc#tps.abbr.PER
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM507.omdoc#tps.gwff.THM507
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.PER.omdoc#tps.abbr.PER
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM509.omdoc#tps.gwff.THM509
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.CLOSEDUNDER.omdoc#tps.abbr.CLOSEDUNDER
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM527.omdoc#tps.gwff.THM527
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM531E.omdoc#tps.gwff.THM531E
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM564.omdoc#tps.gwff.THM564
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM565.omdoc#tps.gwff.THM565
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM88.omdoc#tps.gwff.THM88
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM92.omdoc#tps.gwff.THM92
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM93.omdoc#tps.gwff.THM93
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.COMPOSE.omdoc#tps.abbr.COMPOSE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.THM94.omdoc#tps.gwff.THM94
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.TRANSITIVE.omdoc#tps.abbr.TRANSITIVE
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.TRCL-TRANS-PBA.omdoc#tps.gwff.TRCL-TRANS-PBA
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.TTTP6100.omdoc#tps.gwff.TTTP6100
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.TTTP6101.omdoc#tps.gwff.TTTP6101
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.TTTP6102.omdoc#tps.gwff.TTTP6102
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.TTTP6102.omdoc#tps.gwff.TTTP6102
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.INF.omdoc#tps.abbr.INF
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.UNIQUE-INF.omdoc#tps.gwff.UNIQUE-INF
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUP.omdoc#tps.abbr.SUP
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.UNIQUE-SUP.omdoc#tps.gwff.UNIQUE-SUP
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUBSET.omdoc#tps.abbr.SUBSET
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X5305B.omdoc#tps.gwff.X5305B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X6102-A.omdoc#tps.gwff.X6102-A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X6102-A.omdoc#tps.gwff.X6102-A
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X6102-B.omdoc#tps.gwff.X6102-B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X6102-B.omdoc#tps.gwff.X6102-B
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X6102-C.omdoc#tps.gwff.X6102-C
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X6102-C.omdoc#tps.gwff.X6102-C
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.SUCC.omdoc#tps.abbr.SUCC
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X6400.omdoc#tps.gwff.X6400
+----------------------------------------------------
+ WARN : redundant import /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.abbr.ZERO.omdoc#tps.abbr.ZERO
+ in theory /Users/kohlhase/vc/svn/omdoc.org/omdoc/projects/tps/tps.gwff.X6400.omdoc#tps.gwff.X6400
+----------------------------------------------------

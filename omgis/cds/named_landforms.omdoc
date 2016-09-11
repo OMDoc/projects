@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="named_landforms.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-03-18T13:51:21Z </dc:date>
+  <dc:title xml:lang="en"> named_landforms </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-03-18T13:51:21Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="named_landforms">
+  <imports from="maps.omdoc#maps"/>
+
+  <symbol name="arch">
+    <metadata>
+      <dc:description>
+	*A naturally occuring, freestanding curved structure that spans an opening.
+	Delineation: The limit of ARCH is the extent of the curved structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="bar">
+    <metadata>
+      <dc:description>
+	A natural accumulation of sand, gravel, or other material forming an underwater or exposed embankment.
+      Delineation: The limit of an offshore BAR is the break in the slope between the sides of the feature and the relatively flat
+      underwater terrain at the base of the feature. The limit of a BAR which is not offshore is the extent of the accumulation.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="basin">
+    <metadata>
+      <dc:description>
+	*A bowl-shaped depression in the surface of the land or ocean floor.
+      Delineation: The limit of BASIN is the identifiable rim, distinguished by the change in elevation.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="bend">
+    <metadata>
+      <dc:description>
+	A curve in the course of a stream or the land within the curve.
+      Delineation: BEND can be a portion of a stream or the land inside the curve of the stream.
+      The limit of BEND that is the land within the curve of STREAM/RIVER, is defined by SHORELINE and the
+      line across the land that connects the points of recurve.
+      The limit of BEND that is the area of STREAM/RIVER, is defined by SHORELINE on both sides of
+      STREAM/RIVER and the lines across the stream that connect the points of recurve.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="cape">
+    <metadata>
+      <dc:description>
+	A projection of land extending into a body of water which prominently marks a change in or interrupts the
+	coastal trend of that water body.
+      Delineation: The limit of CAPE is the extent of the projection of land as defined by SHORELINE of SEA/OCEAN,
+	ESTUARY, LAKE/POND or STREAM/RIVER on the water side and the arbitrary line across the land that
+	isolates the projection.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="cave_entrance">
+    <metadata>
+      <dc:description>
+	A passage that affords entry to a naturally formed subterranean open area or chamber.
+      Delineation: The limit of CAVE ENTRANCE is the edge of the passage.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="cliff">
+    <metadata>
+      <dc:description>
+	A high vertical, near-vertical, or over-hanging face.
+      Delineation: The limit of CLIFF is the extent of the face.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="desert">
+    <metadata>
+      <dc:description>
+	A region rendered barren or practically barren by environmental extremes, especially low rainfall.
+      Delineation: The limit of DESERT is the extent of the barren region.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="divide">
+    <metadata>
+      <dc:description>
+	The line separating drainage basins.
+      Delineation: The limit of DIVIDE is the line connecting points of highest elevation along the ridges that divide the drainage
+      basins.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="fracture">
+    <metadata>
+      <dc:description>
+	A deformation in the Earth's crust caused by a loss of cohesion.
+      Delineation: The limit of FRACTURE is the edges of the Earth's surface.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="gap">
+    <metadata>
+      <dc:description>
+	A low point or opening between mounts or in a ridge.
+      Delineation: The limit of GAP is the extent of the constriction, defined by a rise in elevation.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="iceberg">
+    <metadata>
+      <dc:description>
+	Large mass of floating or stranded ice of greatly varying shape, more than 5 meters above sea level,
+	which has broken away from a glacier.
+      Delineation: The limit of an ICEBERG.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="iceberg_tongue">
+    <metadata>
+      <dc:description>
+	A major accumulation of icebergs projecting from the coast, held in place by grounding
+	and joined together by fast ice.
+      Delineation: The limit of an ICEBERG TONGUE.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="incline">
+    <metadata>
+      <dc:description>
+	A feature characterized by a sloping surface or a formation resulting from movement down a
+	sloping surface.
+      Delineation: The limit of INCLINE/FLOW is the extent of the sloping or flow area.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="island">
+    <metadata>
+      <dc:description>
+	An area of dry or relatively dry land surrounded by water or low wetland.
+      Delineation: The limit of ISLAND surrounded by STREAM/RIVER, SEA/OCEAN or LAKE/POND is the SHORELINE.
+	The limit of ISLAND covered with TREES, Vegetation Characteristics = Mangrove, is the Indefinite SHORELINE.
+	The limit of ISLAND surrounded by SWAMP/MARSH is the extent of the dry land.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="isthmus">
+    <metadata>
+      <dc:description>
+	A narrow strip of land, bordered on both sides by water, connecting two larger land areas.
+      Delineation: The limit of ISTHMUS is the extent of the strip of land.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="mount">
+    <metadata>
+      <dc:description>
+	*A landmass that projects conspicuously above its surroundings.
+      Delineation: The limit of MOUNT is the break in slope between the steep sides of the feature and the relatively flat terrain at
+	the base of the feature.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="pinnacle">
+    <metadata>
+      <dc:description>
+	A vertical, often spire-shaped natural rock formation.
+      Delineation: The limit of PINNACLE is the base of the formation.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="plateau">
+    <metadata>
+      <dc:description>
+	An elevated and comparatively level expanse of land.
+      Delineation: The limits of PLATEAU are the edges of the base of the side(s) supporting the elevated flat area, and/or the
+	break in the slope of the flat area if partially bounded by an upslope.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="range">
+    <metadata>
+      <dc:description>
+	A chain of mounts and/or ridges.
+      Delineation: The limit of RANGE is the extent of the connected mounts and/or ridges.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="ridge">
+    <metadata>
+      <dc:description>
+	A long and narrow upland with steep sides.
+      Delineation: The limit of RIDGE is the break in slope between the steep sides of the feature and the relatively flat terrain at
+	the base of the feature.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="terrace">
+    <metadata>
+      <dc:description>
+	A step-like surface between higher and lower ground.
+      Delineation: The limits of TERRACE are the outermost edges of a strip or a series of nearly level strips of ground that
+	interrupt the uniform continuity of a slope.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="valley">
+    <metadata>
+      <dc:description>
+	An elongated depression in the Earth's surface which generally slopes from one end to the other.
+      Delineation: The limit of VALLEY is the edges of low relief in gently sloping occurances, and the highest rim of the sides in
+	steeply inclined occurances (such as some canyons), generally with a drainage outlet at one end.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+</theory>
+
+</omdoc>

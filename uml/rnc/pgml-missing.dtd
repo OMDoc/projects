@@ -1,0 +1,25 @@
+<!ELEMENT text      (private?,(#PCDATA | textspan )*) >
+
+<!ATTLIST text      %base_content_attributes;
+
+                    %event_handler_attributes;
+
+                    x            CDATA #IMPLIED
+
+                    y            CDATA #IMPLIED
+
+>
+
+<!ELEMENT textspan (private?,(#PCDATA | textspan )*) >
+
+<!ATTLIST textspan  %base_content_attributes;
+
+                    %event_handler_attributes;
+
+                    altchars     CDATA #IMPLIED
+
+                    altglyph     CDATA #IMPLIED
+
+                    altglyphid   CDATA #IMPLIED
+
+>

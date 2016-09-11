@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.THM587" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.THM587</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.THM587</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="tps.abbr.IND.xhtml#tps.abbr.IND">tps.abbr.IND</a>, 
+        <a href="tps.abbr.PLUS-INDEQS.xhtml#tps.abbr.PLUS-INDEQS">tps.abbr.PLUS-INDEQS</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.THM587" role="Assertion" about="#gwff.THM587" xml:id="gwff.THM587">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.THM587"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> A special case of associativity of addition (THM584). [x + y] + y = x + [y + y]. Without a lemma giving Sx + y = S[x + y], we can't do the induction on x, and induction on y fails too. The solution is to generalize this to associativity. In terms of unification (PR00), the setvar P should go to lambda z . [x + y] + z = x + [y + z]. So, this is an example of how to use unification to generalize the problem to be shown by induction. This was suggested by Michael Kohlhase, Nov 2000. IND AND PLUS-INDEQS(O(II)I) 0(I) S(II) IMPLIES FORALL x(I) FORALL y(I).x PLUS-LIBCONST y PLUS-LIBCONST y = x PLUS-LIBCONST.y PLUS-LIBCONST y</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e33" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mrow>
+                  <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                  <m:mo>IND</m:mo>
+                  <m:mo>∧</m:mo>
+                  <m:mrow>
+                    <m:mo>PLUS-INDEQS</m:mo>
+                    <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                    <m:mi>a0</m:mi>
+                    <m:mo separator="true">,</m:mo>
+                    <m:mi>S</m:mi>
+                    <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                  </m:mrow>
+                  <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                </m:mrow>
+                <m:mo>⇒</m:mo>
+                <m:mrow>
+                  <m:mo>∀</m:mo>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mo>ι</m:mo>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mo>ι</m:mo>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mi>PLUS-LIBCONST</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mrow>
+                        <m:mi>PLUS-LIBCONST</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>x</m:mi>
+                        <m:mo separator="true">,</m:mo>
+                        <m:mi>y</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo separator="true">,</m:mo>
+                      <m:mi>y</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mi>PLUS-LIBCONST</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo separator="true">,</m:mo>
+                      <m:mrow>
+                        <m:mi>PLUS-LIBCONST</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>y</m:mi>
+                        <m:mo separator="true">,</m:mo>
+                        <m:mi>y</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+
+(* Title: nb2omdoc  *)
+
+(*
+* Author:      Klaus Sutner
+* Affiliation: Carnegie Mellon University
+* email:       sutner@cs.cmu.edu
+*)
+
+(*
+* Version: Version 0.5
+* Date:    2003.03.05
+*)
+
+BeginPackage["nb2omdoc`nb2omdoc`"];
+
+

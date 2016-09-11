@@ -1,0 +1,53 @@
+# A RelaxNG for Open Mathematical documents (OMDoc 2 alpha) Module PRES       
+# $Id: pres.rnc 6561 2007-06-24 06:30:57Z kohlhase $
+# $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/OpenMath-paper/pres.rnc $
+# See the documentation and examples at http://www.omdoc.org
+# Copyright (c) 2007 Michael Kohlhase, released under the GNU Public License (GPL) 
+
+default namespace omdoc = "http://www.mathweb.org/omdoc"
+
+omdoc.class |=  presentation |omstyle
+
+elision.attrib = attribute egroup {xsd:anyURI}?, attribute elevel {xsd:integer}?
+crossref.attrib = attribute crossref-symbol 
+		    {"no" | "yes" | "brackets" | "separator" | "lbrack" | "rbrack" | "all"}
+format.attrib = attribute format {xsd:string}, attribute requires {omdocref}?, xml.lang.attrib
+precedence.attrib = attribute precedence {xsd:string {pattern = "0|[1-9][0-9]*"}}
+role.attrib = attribute role {"applied" | "binding" | "key"}
+
+pres.items = elt | txt | recurse | map | keyval
+
+presentation = element presentation {omdoc.toplevel.attribs,
+	                             format.attrib,
+                       	       	     attribute for {omdocref},
+                       	       	     role.attrib?,
+		       	       	     precedence.attrib?,
+		       	       	     crossref.attrib?,
+                                     (pres.items)*}
+
+elt = element element {attribute name {xsd:NMTOKEN},
+                       attribute crid {xsd:string}?,
+                       attribute cr {"yes" |"no"}?,
+                       attribute ns {xsd:anyURI}?,
+		       elision.attrib,
+                       (attrb | pres.items)*}
+
+attrb = element attribute {attribute name {xsd:NMTOKEN}, 
+                           attribute ns {xsd:anyURI}?,
+			   text}
+
+map = element map {attribute begin {xsd:integer},
+                   attribute end {xsd:integer},
+                   precedence.attrib?,
+		   elision.attrib?,
+		   lbrack?,rbrack?,(pres.items)*}
+
+recurse = element recurse {attribute precedence {xsd:integer}?,
+	                   elision.attrib}
+keyval = element keyval {attribute cd {xsd:NMTOKEN},
+                         attribute name {xsd:NMTOKEN},
+			 elision.attrib}
+
+txt = element text {elision.attrib,text}
+
+

@@ -1,0 +1,40 @@
+<theory xml:id="twelf">
+  <symbol xml:id="twelf-type" name="type"/>
+  <symbol xml:id="twelf-arrow" name="arrow" role="application"/>
+  <symbol xml:id="twelf-lambda" name="lambda" role="binder"/>
+  <symbol xml:id="twelf-oftype" name="oftype" role="semantic-attribution"/>
+  <!-- other symbols omitted -->
+</theory>
+
+<presentation for="#twelf-type" format="twelf">
+  <text>type</text>
+</presentation>
+
+<presentation theory="#twelf-lambda" role="binder" format="twelf">
+  <text>[</text>
+  <map begin="0">
+    <recurse/>
+  </map>
+  <text>:</text>
+  <attribution position="0">
+    <OMOBJ><OMS cd="twelf" name="oftype"/></OMOBJ>
+  </attribution>  
+  <text>]</text>
+  <map begin="1">
+    <recurse/>
+  </map>
+</presentation>
+
+<!-- A right-associative infix operator -->
+<presentation theory="#twelf-arrow" role="applied" format="twelf"
+	      precedence="100">
+  <map begin="0">
+    <recurse precedence="99"/>
+  </map>
+  <text> -> </text>
+  <map begin="1">
+    <recurse precedence="100"/>
+    <!-- input precedence can be left out, as it
+         equals the output precedence -->
+  </map>
+</presentation>

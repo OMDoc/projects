@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "omdoc.dtd" []>
+<omdoc id="mtanb"
+    xmlns="http://www.mathweb.org/omdoc"
+    catalogue="../../../../../../omdoc/examples/omstd/catalogue.omdoc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="omdoc.xsd http://www.mathweb.org/omdoc">
+ <metadata>
+  <Title>
+   Fido Test
+  </Title>
+  <Creator>
+   NN
+  </Creator>
+  <Subject>
+   NN
+  </Subject>
+  <Date action="created">
+   2003-3-10 8:54:19
+  </Date>
+ </metadata>
+ <catalogue>
+  <loc theory="scripts"
+      omdoc="../../../../../theories/migration/scripts.omdoc"/>
+ </catalogue>
+ <omgroup id="G3">
+  <metadata>
+   <Title>
+    Sample Notebook
+   </Title>
+  </metadata>
+  <omgroup id="G0">
+   <metadata>
+    <Title>
+     A Section
+    </Title>
+   </metadata>
+   <omtext id="T0">
+    <CMP>
+     Plain text, inline math 
+     <OMOBJ>
+      <OMA>
+       <OMS cd="relation1"
+           name="eq"/>
+       <OMA>
+        <OMS cd="arith1"
+            name="plus"/>
+        <OMA>
+         <OMS cd="scripts"
+             name="superscript"/>
+         <OMV name="x"/>
+         <OMI>
+          2
+         </OMI>
+        </OMA>
+        <OMA>
+         <OMS cd="scripts"
+             name="superscript"/>
+         <OMV name="y"/>
+         <OMI>
+          2
+         </OMI>
+        </OMA>
+       </OMA>
+       <OMA>
+        <OMS cd="scripts"
+            name="superscript"/>
+        <OMV name="z"/>
+        <OMI>
+         2
+        </OMI>
+       </OMA>
+      </OMA>
+     </OMOBJ>
+     . 
+</CMP>
+   </omtext>
+   <omtext id="T1">
+    <CMP>
+     OMType   
+     <OMOBJ>
+      <OMA>
+       <OMV name="OMType"/>
+       <OMV name="A"/>
+       <OMV name="B"/>
+      </OMA>
+     </OMOBJ>
+       
+OMFunction  
+     <OMOBJ>
+      <OMA>
+       <OMV name="OMFunction"/>
+       <OMV name="f"/>
+       <OMV name="A"/>
+       <OMV name="B"/>
+      </OMA>
+     </OMOBJ>
+     
+OMPair 
+     <OMOBJ>
+      <OMA>
+       <OMV name="OMPair"/>
+       <OMV name="α"/>
+       <OMA>
+        <OMS cd="scripts"
+            name="subscript"/>
+        <OMV name="Γ"/>
+        <OMV name="i"/>
+       </OMA>
+      </OMA>
+     </OMOBJ>
+     
+OMTuple  
+     <OMOBJ>
+      <OMA>
+       <OMV name="OMTuple"/>
+       <OMA>
+        <OMS cd="scripts"
+            name="subscript"/>
+        <OMV name="a"/>
+        <OMI>
+         1
+        </OMI>
+       </OMA>
+       <OMA>
+        <OMS cd="scripts"
+            name="subscript"/>
+        <OMV name="a"/>
+        <OMI>
+         2
+        </OMI>
+       </OMA>
+       <OMA>
+        <OMS cd="scripts"
+            name="subscript"/>
+        <OMV name="a"/>
+        <OMV name="n"/>
+       </OMA>
+      </OMA>
+     </OMOBJ>
+</CMP>
+   </omtext>
+  </omgroup>
+  <omgroup id="G1">
+   <metadata>
+    <Title>
+     The Same Section
+    </Title>
+   </metadata>
+   <omtext id="T2">
+    <CMP>
+     Plain text, inline math 
+     <OMOBJ>
+      <OMA>
+       <OMS cd="relation1"
+           name="eq"/>
+       <OMA>
+        <OMS cd="arith1"
+            name="plus"/>
+        <OMA>
+         <OMS cd="scripts"
+             name="superscript"/>
+         <OMV name="x"/>
+         <OMI>
+          2
+         </OMI>
+        </OMA>
+        <OMA>
+         <OMS cd="scripts"
+             name="superscript"/>
+         <OMV name="y"/>
+         <OMI>
+          2
+         </OMI>
+        </OMA>
+       </OMA>
+       <OMA>
+        <OMS cd="scripts"
+            name="superscript"/>
+        <OMV name="z"/>
+        <OMI>
+         2
+        </OMI>
+       </OMA>
+      </OMA>
+     </OMOBJ>
+     . 
+</CMP>
+   </omtext>
+   <omtext id="T3">
+    <CMP>
+     OMType   
+     <OMOBJ>
+      <OMA>
+       <OMV name="OMType"/>
+       <OMV name="A"/>
+       <OMV name="B"/>
+      </OMA>
+     </OMOBJ>
+       
+OMFunction  
+     <OMOBJ>
+      <OMA>
+       <OMV name="OMFunction"/>
+       <OMV name="f"/>
+       <OMV name="A"/>
+       <OMV name="B"/>
+      </OMA>
+     </OMOBJ>
+     
+OMPair 
+     <OMOBJ>
+      <OMA>
+       <OMV name="OMPair"/>
+       <OMV name="α"/>
+       <OMA>
+        <OMS cd="scripts"
+            name="subscript"/>
+        <OMV name="Γ"/>
+        <OMV name="i"/>
+       </OMA>
+      </OMA>
+     </OMOBJ>
+     
+OMTuple  
+     <OMOBJ>
+      <OMA>
+       <OMV name="OMTuple"/>
+       <OMA>
+        <OMS cd="scripts"
+            name="subscript"/>
+        <OMV name="a"/>
+        <OMI>
+         1
+        </OMI>
+       </OMA>
+       <OMA>
+        <OMS cd="scripts"
+            name="subscript"/>
+        <OMV name="a"/>
+        <OMI>
+         2
+        </OMI>
+       </OMA>
+       <OMA>
+        <OMS cd="scripts"
+            name="subscript"/>
+        <OMV name="a"/>
+        <OMV name="n"/>
+       </OMA>
+      </OMA>
+     </OMOBJ>
+</CMP>
+   </omtext>
+  </omgroup>
+  <omgroup id="G2">
+   <metadata>
+    <Title>
+     A Lemma
+    </Title>
+   </metadata>
+   <assertion id="L0"
+       type="lemma">
+    <CMP>
+     This is an assertion.  
+     <OMOBJ>
+      <OMA>
+       <OMS cd="relation1"
+           name="eq"/>
+       <OMA>
+        <OMS cd="scripts"
+            name="superscript"/>
+        <OMV name="K"/>
+        <OMV name="w"/>
+       </OMA>
+       <OMI>
+        123
+       </OMI>
+      </OMA>
+     </OMOBJ>
+     .
+</CMP>
+   </assertion>
+  </omgroup>
+ </omgroup>
+</omdoc>

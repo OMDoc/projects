@@ -1,0 +1,89 @@
+    /*general HTML stuff */
+    body {/*margin:5mm 10mm 5mm 10mm;*/
+          background-color:#c6ddf8;color:black;
+          font-family:helvetica;font-size:medium;}
+
+    a.special:visited {color:black;text-decoration:none;}
+    a.special:link {color:black;text-decoration:none;}
+    a.special:active {color:black;text-decoration:none;}
+    a.special:hover {color:black;text-decoration:none;}
+    
+    a:hover {color:#151b7e;}
+    a:visited {color:black;}
+    a:link {color:#151b7e;}
+    
+    td {font-size:normal;font-family:helvetica;}
+    h2 {color:blue}
+
+    /* Module MATH */
+    span[class="math"] {font-style=oblique}
+    div[class="displaymath"] {font-style:oblique;display:block;align:center}
+    
+    /* Module DC */
+    div[class="titleblock"]{width:80%;margin-left:10%;fontsize:medium;
+                            border-style:inset;border-color:#222222;border-width:2pt}
+    div[class="title"],div[class="author"],div[class="date"],
+    div[class="subject"],div[class="description"]
+       {align:center}
+    div[class="author"]{font-variant:small-caps}
+    div[class="subject"]{font-style:italic}
+    div[class="title"]{fontsize:large;font-weight:bold}
+    div[class="author"],div[class="date"],div[class="subject"],div[class="description"]
+       {width:80%;left-margin:10%;align:center;fontsize:medium}
+    div[class="author"]{font-variant:small-caps}
+    div[class="subject"]{font-style:italic}
+    div[class="firstname"]:after,div[class="surname"]:after,div[class="othername"]:after
+       {content:" "}
+    div[class="email"]{font-family:monospace}  
+
+    /* Module DOC */
+    div[class="omtext"]{width:100%;margin:5mm 5mm 5mm 5mm;margin-bottom:0pt;padding:0pt}
+    div[class="quote"]{font-size:larger;width:80%;font-family:sans-serif}
+    div[class="caption"]{font-size:smaller;font-style:italic;align:right}
+    div[class="annotation"]{font-size:smaller;color:gray}
+    div[class="ednote"]{font-size:smaller;background-color:red}
+    
+    /* Module ST */
+    span[class="titleword"]{font-weight:bold}
+    span[class="titleword"]:after{content:": "}
+    div[class="titlebox"]{padding:0pt}
+
+    div[class="assertion"],div[class="false-conjecture"],div[class="definition"],
+    div[class="example"],div[class="counterexample"],div[class="proof"],
+    div[class="exercise"],div[class="axiom"],div[class="symbol"]
+       {padding:4pt;align:center;margin-top:2pt;margin-bottom:2pt;
+        border-color:#222222;border-width:2pt;border-style:inset}
+
+    div[class="axiom"],div[class="symbol"]
+       {background-color:#93a8f8;align:center}
+    div[class="assertion"],div[class="false-conjecture"]{border-color:black}
+    div[class="proof"],div[class="counterexample"],div[class="example"]
+       {margin-left:30pt;width:88%}
+
+    div[class="assertion"]{background-color:#e5e5e4}
+    div[class="false-conjecture"]{background-color:#CC3300}
+    div[class="definition"]{background-color:#e5e5e1}
+    div[class="example"]{background-color:#7289f0}
+    div[class="counterexample"]{background-color:#CC3300}
+
+    /* Module PROOF */
+    div[class="proof"]{background-color:#90b3fc}
+
+    /* Module QUIZ */
+    div[class="exercise"]{background-color:#5a7ffc;margin-left:30pt}
+
+    /* Module EXT */
+    div[class="code"]{font-family:courier;background-color:#ffa964;width:60%}
+    div[class="omlet"]{}
+    div[class="image"]{}
+    div[class="legacy"]{}
+
+    /* Module RT */
+    div[class="note"]{background-color:#e5e5e4}
+    span[class="noteref"]:before{content:"["}
+    span[class="noteref"]:after{content:"]"}
+    span[class="notenumber"]:before{content:"["}
+    span[class="notenumber"]:after{content:"]"}
+
+    /* Various */
+    div[class="migration"]{color:red;font-size:smaller}

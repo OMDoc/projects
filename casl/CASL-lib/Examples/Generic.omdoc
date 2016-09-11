@@ -1,0 +1,5770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="Generic">
+  <theory xml:id="Elem">
+    <presentation for="Elem">
+      <use format="Hets">[Elem,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Elem2"/>
+    <presentation for="Elem2">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Set1_1">
+    <presentation for="Set1_1">
+      <use format="Hets">[Set1,,1]</use>
+    </presentation>
+    <imports from="#Elem"/>
+    <symbol role="sort" name="SetSBrackOpenElemSBrackClose1"/>
+    <presentation for="SetSBrackOpenElemSBrackClose1">
+      <use format="Hets">[Set[Elem]]</use>
+    </presentation>
+    <symbol name="__cup__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+            <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+            <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__cup__1">
+      <use format="Hets">[__,cup,__]</use>
+    </presentation>
+    <symbol name="BraceOpen__BraceClose1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="BraceOpen__BraceClose1">
+      <use format="Hets">[{,__,}]</use>
+    </presentation>
+    <symbol name="BraceOpenBraceClose1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="BraceOpenBraceClose1">
+      <use format="Hets">[{,}]</use>
+    </presentation>
+    <axiom name="ga_assoc___cup__">
+      <CMP>
+      op __ cup __ : Set[Elem]×Set[Elem]  -&#62; Set[Elem],
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Set1_1" name="__cup__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Set1_1" name="__cup__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Set1_1" name="__cup__1"/>
+                <OMA>
+                  <OMS cd="Set1_1" name="__cup__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_assoc___cup__">
+      <use format="Hets">ga_assoc___cup__</use>
+    </presentation>
+    <axiom name="ga_comm___cup__">
+      <CMP>
+      op __ cup __ : Set[Elem]×Set[Elem]  -&#62; Set[Elem],
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Set1_1" name="__cup__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Set1_1" name="__cup__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_comm___cup__">
+      <use format="Hets">ga_comm___cup__</use>
+    </presentation>
+    <axiom name="ga_idem___cup__">
+      <CMP>
+      op __ cup __ : Set[Elem]×Set[Elem]  -&#62; Set[Elem],
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Set1_1" name="__cup__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_idem___cup__">
+      <use format="Hets">ga_idem___cup__</use>
+    </presentation>
+    <axiom name="ga_left_unit___cup__">
+      <CMP>
+      op __ cup __ : Set[Elem]×Set[Elem]  -&#62; Set[Elem],
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Set1_1" name="__cup__1"/>
+                <OMS cd="Set1_1" name="BraceOpenBraceClose1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_left_unit___cup__">
+      <use format="Hets">ga_left_unit___cup__</use>
+    </presentation>
+    <axiom name="ga_right_unit___cup__">
+      <CMP>
+      op __ cup __ : Set[Elem]×Set[Elem]  -&#62; Set[Elem],
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Set1_1" name="__cup__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="Set1_1" name="BraceOpenBraceClose1"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set1_1" name="SetSBrackOpenElemSBrackClose1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_right_unit___cup__">
+      <use format="Hets">ga_right_unit___cup__</use>
+    </presentation>
+  </theory>
+  <private for="Set1_1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Set1">
+    <presentation for="Set1">
+      <use format="Hets">[Set1,,0]</use>
+    </presentation>
+    <symbol role="sort" name="SetSBrackOpenElemSBrackClose"/>
+    <presentation for="SetSBrackOpenElemSBrackClose">
+      <use format="Hets">[Set[Elem]]</use>
+    </presentation>
+    <symbol role="sort" name="Elem7"/>
+    <presentation for="Elem7">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+    <symbol name="__cup__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Set1" name="SetSBrackOpenElemSBrackClose"/>
+            <OMS cd="Set1" name="SetSBrackOpenElemSBrackClose"/>
+            <OMS cd="Set1" name="SetSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__cup__">
+      <use format="Hets">[__,cup,__]</use>
+    </presentation>
+    <symbol name="BraceOpen__BraceClose" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Set1" name="Elem7"/>
+            <OMS cd="Set1" name="SetSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="BraceOpen__BraceClose">
+      <use format="Hets">[{,__,}]</use>
+    </presentation>
+    <symbol name="BraceOpenBraceClose" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Set1" name="SetSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="BraceOpenBraceClose">
+      <use format="Hets">[{,}]</use>
+    </presentation>
+  </theory>
+  <private for="Set1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Set1_1" Type:"FreeDef EmptyNode" Origin:"DGFree"
+]]></data>
+  </private>
+  <theory xml:id="Set2_E1">
+    <presentation for="Set2_E1">
+      <use format="Hets">[Set2,E,1]</use>
+    </presentation>
+    <imports from="#Elem"/>
+    <imports from="#Set1"/>
+    <symbol role="sort" name="SetSBrackOpenElemSBrackClose2"/>
+    <presentation for="SetSBrackOpenElemSBrackClose2">
+      <use format="Hets">[Set[Elem]]</use>
+    </presentation>
+    <symbol name="__cup__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+            <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+            <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__cup__2">
+      <use format="Hets">[__,cup,__]</use>
+    </presentation>
+    <symbol name="BraceOpen__BraceClose2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="BraceOpen__BraceClose2">
+      <use format="Hets">[{,__,}]</use>
+    </presentation>
+    <symbol name="BraceOpenBraceClose2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="BraceOpenBraceClose2">
+      <use format="Hets">[{,}]</use>
+    </presentation>
+  </theory>
+  <private for="Set2_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalDef" Origin:"DGSpecInst Set1"
+From:"Elem" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"Set1" Type:"GlobalDef" Origin:"DGSpecInst Set1"
+]]></data>
+  </private>
+  <theory xml:id="Set2">
+    <presentation for="Set2">
+      <use format="Hets">[Set2,,0]</use>
+    </presentation>
+    <imports from="#Set2_E1"/>
+    <symbol name="__inset__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__inset__">
+      <use format="Hets">[__,inset,__]</use>
+    </presentation>
+    <axiom name="Ax18">
+      <CMP>
+      forall  a,b : Elem; s,t : Set[Elem] 
+      forall  a,b : Elem; s,t : Set[Elem] 
+        .  not  a inset {} 
+        .  a inset {b}   &#60;=&#62;  a=b 
+        .  a inset (s cup t)   &#60;=&#62;  (a inset s)   \/  (a inset t) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Set2" name="__inset__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="a"/>
+                </OMATTR>
+                <OMS cd="Set2_E1" name="BraceOpenBraceClose2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax18">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax24">
+      <CMP>
+      forall  a,b : Elem; s,t : Set[Elem] 
+      forall  a,b : Elem; s,t : Set[Elem] 
+        .  not  a inset {} 
+        .  a inset {b}   &#60;=&#62;  a=b 
+        .  a inset (s cup t)   &#60;=&#62;  (a inset s)   \/  (a inset t) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Set2" name="__inset__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="a"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Set2_E1" name="BraceOpen__BraceClose2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="b"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="a"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="b"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax24">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax34">
+      <CMP>
+      forall  a,b : Elem; s,t : Set[Elem] 
+      forall  a,b : Elem; s,t : Set[Elem] 
+        .  not  a inset {} 
+        .  a inset {b}   &#60;=&#62;  a=b 
+        .  a inset (s cup t)   &#60;=&#62;  (a inset s)   \/  (a inset t) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="t"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Set2" name="__inset__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="a"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Set2_E1" name="__cup__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="t"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="disjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Set2" name="__inset__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="a"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Set2" name="__inset__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="a"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Set2_E1" name="SetSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="t"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax34">
+      <use format="Hets">Ax3</use>
+    </presentation>
+  </theory>
+  <private for="Set2">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Set2_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="List">
+    <presentation for="List">
+      <use format="Hets">[List,,0]</use>
+    </presentation>
+    <imports from="#Elem"/>
+    <symbol role="sort" name="ListSBrackOpenElemSBrackClose2"/>
+    <presentation for="ListSBrackOpenElemSBrackClose2">
+      <use format="Hets">[List[Elem]]</use>
+    </presentation>
+    <adt>
+      <sortdef name="ListSBrackOpenElemSBrackClose2" type="free">
+        <constructor name="cons10">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="Elem" name="Elem2"/>
+              </OMOBJ>
+            </type>
+          </argument>
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+        <constructor name="nil10"/>
+      </sortdef>
+    </adt>
+    <symbol name="__PlusPlus__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__3">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="cons3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons3">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+            <OMS cd="Elem" name="Elem2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first3">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil3">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="rest3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest3">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse3">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+    <axiom name="Ax11">
+      <CMP>
+      . cons(e,l) ++ l&#39; = cons(e,l ++ l&#39;) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="e"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="l&#39;"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List" name="__PlusPlus__3"/>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                  </OMATP>
+                  <OMV name="l&#39;"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="List" name="cons3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="e"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="List" name="__PlusPlus__3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="l&#39;"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax11">
+      <use format="Hets">Ax11</use>
+    </presentation>
+    <axiom name="Ax12">
+      <CMP>
+      . reverse(nil) = nil 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="List" name="reverse3"/>
+              <OMS cd="List" name="nil3"/>
+            </OMA>
+            <OMS cd="List" name="nil3"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax12">
+      <use format="Hets">Ax12</use>
+    </presentation>
+    <axiom name="Ax13">
+      <CMP>
+      . reverse(nil) = nil 
+      . reverse(cons(e,l)) = reverse(l) ++ cons(e,nil) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="e"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List" name="reverse3"/>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="List" name="__PlusPlus__3"/>
+                <OMA>
+                  <OMS cd="List" name="reverse3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                  <OMS cd="List" name="nil3"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax13">
+      <use format="Hets">Ax13</use>
+    </presentation>
+    <axiom name="ga_assoc___PlusPlus__">
+      <CMP>
+      op __ ++ __ : List[Elem]×List[Elem]  -&#62; List[Elem], assoc, unit nil 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List" name="__PlusPlus__3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="List" name="__PlusPlus__3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="List" name="__PlusPlus__3"/>
+                <OMA>
+                  <OMS cd="List" name="__PlusPlus__3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_assoc___PlusPlus__">
+      <use format="Hets">ga_assoc___++__</use>
+    </presentation>
+    <axiom name="ga_disjoint_nil_cons">
+      <CMP>
+      free type List[Elem] ::= nil  |  cons(first:?Elem; rest:?List[Elem]) 
+      free type List[Elem] ::= nil  |  cons(first:?Elem; rest:?List[Elem]) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="Y2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMS cd="List" name="nil3"/>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="Y2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint_nil_cons">
+      <use format="Hets">ga_disjoint_nil_cons</use>
+    </presentation>
+    <axiom name="ga_injective_cons">
+      <CMP>
+      free type List[Elem] ::= nil  |  cons(first:?Elem; rest:?List[Elem]) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="Y2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="Y2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="Y2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective_cons">
+      <use format="Hets">ga_injective_cons</use>
+    </presentation>
+    <axiom name="ga_left_unit___PlusPlus__">
+      <CMP>
+      op __ ++ __ : List[Elem]×List[Elem]  -&#62; List[Elem], assoc, unit nil 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List" name="__PlusPlus__3"/>
+                <OMS cd="List" name="nil3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_left_unit___PlusPlus__">
+      <use format="Hets">ga_left_unit___++__</use>
+    </presentation>
+    <axiom name="ga_right_unit___PlusPlus__">
+      <CMP>
+      op __ ++ __ : List[Elem]×List[Elem]  -&#62; List[Elem], assoc, unit nil 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List" name="__PlusPlus__3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="List" name="nil3"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_right_unit___PlusPlus__">
+      <use format="Hets">ga_right_unit___++__</use>
+    </presentation>
+    <axiom name="ga_selector_first1">
+      <CMP>
+      free type List[Elem] ::= nil  |  cons(first:?Elem; rest:?List[Elem]) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List" name="first3"/>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_selector_first1">
+      <use format="Hets">ga_selector_first</use>
+    </presentation>
+    <axiom name="ga_selector_rest1">
+      <CMP>
+      free type List[Elem] ::= nil  |  cons(first:?Elem; rest:?List[Elem]) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List" name="rest3"/>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_selector_rest1">
+      <use format="Hets">ga_selector_rest</use>
+    </presentation>
+    <axiom name="ga_selector_undef_first_nil">
+      <CMP>
+      free type List[Elem] ::= nil  |  cons(first:?Elem; rest:?List[Elem]) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="neg"/>
+            <OMA>
+              <OMS cd="casl" name="definedness"/>
+              <OMA>
+                <OMS cd="List" name="first3"/>
+                <OMS cd="List" name="nil3"/>
+              </OMA>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_selector_undef_first_nil">
+      <use format="Hets">ga_selector_undef_first_nil</use>
+    </presentation>
+    <axiom name="ga_selector_undef_rest_nil">
+      <CMP>
+      free type List[Elem] ::= nil  |  cons(first:?Elem; rest:?List[Elem]) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="neg"/>
+            <OMA>
+              <OMS cd="casl" name="definedness"/>
+              <OMA>
+                <OMS cd="List" name="rest3"/>
+                <OMS cd="List" name="nil3"/>
+              </OMA>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_selector_undef_rest_nil">
+      <use format="Hets">ga_selector_undef_rest_nil</use>
+    </presentation>
+  </theory>
+  <private for="List">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="List_with_Order_E1A">
+    <presentation for="List_with_Order_E1A">
+      <use format="Hets">[List_with_Order,E1A,0]</use>
+    </presentation>
+    <symbol role="sort" name="Elem6"/>
+    <presentation for="Elem6">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+  </theory>
+  <private for="List_with_Order_E1A">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalThm Open None Open" Origin:"DGSpecInst List"
+]]></data>
+  </private>
+  <theory xml:id="List_with_Order_E1">
+    <presentation for="List_with_Order_E1">
+      <use format="Hets">[List_with_Order,E,1]</use>
+    </presentation>
+    <imports from="#List"/>
+    <imports from="#List_with_Order_E1A"/>
+    <imports from="Examples/Simple.omdoc#Total_Order"/>
+    <symbol name="__LowerEquals__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="Elem" name="Elem2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__3">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+  </theory>
+  <private for="List_with_Order_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"List" Type:"GlobalDef" Origin:"DGSpecInst List"
+From:"Total_Order" Type:"GlobalDef" Origin:"DGSpecInst List"
+From:"List_with_Order_E1A" Type:"GlobalDef" Origin:"DGFitSpec"
+]]></data>
+  </private>
+  <theory xml:id="List_with_Order_1">
+    <presentation for="List_with_Order_1">
+      <use format="Hets">[List_with_Order,,1]</use>
+    </presentation>
+    <imports from="#List_with_Order_E1"/>
+    <symbol name="insert" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="insert">
+      <use format="Hets">[insert]</use>
+    </presentation>
+    <symbol name="orderSBrackOpen__LowerEquals__SBrackClose1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="orderSBrackOpen__LowerEquals__SBrackClose1">
+      <use format="Hets">[order[__,&#60;=,__]]</use>
+    </presentation>
+    <axiom name="Ax14">
+      <CMP>
+ . order[__  &#60;= __](nil)=nil 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="List_with_Order_1" name="orderSBrackOpen__LowerEquals__SBrackClose1"/>
+              <OMS cd="List" name="nil3"/>
+            </OMA>
+            <OMS cd="List" name="nil3"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax14">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax21">
+      <CMP>
+ forall  x,y : Elem; l : List[Elem] 
+ forall  x,y : Elem; l : List[Elem] 
+ . order[__  &#60;= __](nil)=nil 
+ . order[__  &#60;= __](cons(x,l)) = insert(x,order[__  &#60;= __](l)) 
+ . insert(x,nil)=cons(x,nil) 
+ . x  &#60;= y   =&#62;  insert(x,cons(y,l))=cons(x,insert(y,l)) 
+ . not (x  &#60;= y)   =&#62;  insert(x,cons(y,l))=cons(y,insert(x,l)) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List_with_Order_1" name="orderSBrackOpen__LowerEquals__SBrackClose1"/>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="List_with_Order_1" name="insert"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="List_with_Order_1" name="orderSBrackOpen__LowerEquals__SBrackClose1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax21">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax31">
+      <CMP>
+ forall  x,y : Elem; l : List[Elem] 
+ forall  x,y : Elem; l : List[Elem] 
+ . order[__  &#60;= __](nil)=nil 
+ . order[__  &#60;= __](cons(x,l)) = insert(x,order[__  &#60;= __](l)) 
+ . insert(x,nil)=cons(x,nil) 
+ . x  &#60;= y   =&#62;  insert(x,cons(y,l))=cons(x,insert(y,l)) 
+ . not (x  &#60;= y)   =&#62;  insert(x,cons(y,l))=cons(y,insert(x,l)) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="List_with_Order_1" name="insert"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="List" name="nil3"/>
+              </OMA>
+              <OMA>
+                <OMS cd="List" name="cons3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="List" name="nil3"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax31">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax4">
+      <CMP>
+ forall  x,y : Elem; l : List[Elem] 
+ forall  x,y : Elem; l : List[Elem] 
+ . order[__  &#60;= __](nil)=nil 
+ . order[__  &#60;= __](cons(x,l)) = insert(x,order[__  &#60;= __](l)) 
+ . insert(x,nil)=cons(x,nil) 
+ . x  &#60;= y   =&#62;  insert(x,cons(y,l))=cons(x,insert(y,l)) 
+ . not (x  &#60;= y)   =&#62;  insert(x,cons(y,l))=cons(y,insert(x,l)) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="List_with_Order_E1" name="__LowerEquals__3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Elem" name="Elem2"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="List_with_Order_1" name="insert"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMA>
+                    <OMS cd="List" name="cons3"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Elem" name="Elem2"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                      </OMATP>
+                      <OMV name="l"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMA>
+                    <OMS cd="List_with_Order_1" name="insert"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Elem" name="Elem2"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                      </OMATP>
+                      <OMV name="l"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax4">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax5">
+      <CMP>
+ forall  x,y : Elem; l : List[Elem] 
+ forall  x,y : Elem; l : List[Elem] 
+ . order[__  &#60;= __](nil)=nil 
+ . order[__  &#60;= __](cons(x,l)) = insert(x,order[__  &#60;= __](l)) 
+ . insert(x,nil)=cons(x,nil) 
+ . x  &#60;= y   =&#62;  insert(x,cons(y,l))=cons(x,insert(y,l)) 
+ . not (x  &#60;= y)   =&#62;  insert(x,cons(y,l))=cons(y,insert(x,l)) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="List_with_Order_E1" name="__LowerEquals__3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="List_with_Order_1" name="insert"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMA>
+                    <OMS cd="List" name="cons3"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Elem" name="Elem2"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                      </OMATP>
+                      <OMV name="l"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="List" name="cons3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMA>
+                    <OMS cd="List_with_Order_1" name="insert"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Elem" name="Elem2"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+                      </OMATP>
+                      <OMV name="l"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax5">
+      <use format="Hets">Ax5</use>
+    </presentation>
+  </theory>
+  <private for="List_with_Order_1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"List_with_Order_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="List_with_Order">
+    <presentation for="List_with_Order">
+      <use format="Hets">[List_with_Order,,0]</use>
+    </presentation>
+    <symbol role="sort" name="ListSBrackOpenElemSBrackClose4"/>
+    <presentation for="ListSBrackOpenElemSBrackClose4">
+      <use format="Hets">[List[Elem]]</use>
+    </presentation>
+    <symbol role="sort" name="Elem5"/>
+    <presentation for="Elem5">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+    <symbol name="__LowerEquals__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="List_with_Order" name="Elem5"/>
+            <OMS cd="List_with_Order" name="Elem5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__2">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <symbol name="__PlusPlus__6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__6">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="cons6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_with_Order" name="Elem5"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons6">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+            <OMS cd="List_with_Order" name="Elem5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first6">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil6">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="orderSBrackOpen__LowerEquals__SBrackClose" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="orderSBrackOpen__LowerEquals__SBrackClose">
+      <use format="Hets">[order[__,&#60;=,__]]</use>
+    </presentation>
+    <symbol name="rest6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest6">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse6">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+  </theory>
+  <private for="List_with_Order">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"List_with_Order_1" Type:"HidingDef" Origin:"DGHiding"
+]]></data>
+  </private>
+  <theory xml:id="Ordered_Nat">
+    <presentation for="Ordered_Nat">
+      <use format="Hets">[Ordered_Nat,,0]</use>
+    </presentation>
+    <imports from="Examples/Simple.omdoc#Nat"/>
+    <symbol name="__LowerEquals__4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__4">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__2">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <axiom name="Ax16">
+      <CMP>
+  forall  m,n : Nat 
+  · zero  &#60;= n 
+  · ¬ (succ m  &#60;= zero) 
+  · succ m  &#60;= succ n   &#60;=&#62;  m  &#60;= n 
+  · m  &#62;= n   &#60;=&#62;  n  &#60;= m 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="predication"/>
+              <OMS cd="Ordered_Nat" name="__LowerEquals__4"/>
+              <OMS cd="Nat" name="zero"/>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax16">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax22">
+      <CMP>
+  forall  m,n : Nat 
+  · zero  &#60;= n 
+  · ¬ (succ m  &#60;= zero) 
+  · succ m  &#60;= succ n   &#60;=&#62;  m  &#60;= n 
+  · m  &#62;= n   &#60;=&#62;  n  &#60;= m 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Ordered_Nat" name="__LowerEquals__4"/>
+                <OMA>
+                  <OMS cd="Nat" name="succ__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+                <OMS cd="Nat" name="zero"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax22">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax32">
+      <CMP>
+  forall  m,n : Nat 
+  · zero  &#60;= n 
+  · ¬ (succ m  &#60;= zero) 
+  · succ m  &#60;= succ n   &#60;=&#62;  m  &#60;= n 
+  · m  &#62;= n   &#60;=&#62;  n  &#60;= m 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Ordered_Nat" name="__LowerEquals__4"/>
+                <OMA>
+                  <OMS cd="Nat" name="succ__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Nat" name="succ__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Ordered_Nat" name="__LowerEquals__4"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax32">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax41">
+      <CMP>
+  forall  m,n : Nat 
+  · zero  &#60;= n 
+  · ¬ (succ m  &#60;= zero) 
+  · succ m  &#60;= succ n   &#60;=&#62;  m  &#60;= n 
+  · m  &#62;= n   &#60;=&#62;  n  &#60;= m 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="Nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Ordered_Nat" name="__GreaterEquals__2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Ordered_Nat" name="__LowerEquals__4"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax41">
+      <use format="Hets">Ax4</use>
+    </presentation>
+  </theory>
+  <private for="Ordered_Nat">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat" Type:"GlobalDef" Origin:"DGExtension"
+From:"Total_Order" Type:"GlobalThm Open None Open" Origin:"DGSpecInst List_with_Order"
+From:"Total_Order" Type:"GlobalThm Open None Open" Origin:"DGSpecInst List_with_Order"
+From:"Total_Order" Type:"GlobalThm Open None Open" Origin:"DGView Ordered_Nat_as_Total_Order"
+]]></data>
+  </private>
+  <theory xml:id="Nat_List_with_Reverse_Orders_E1U">
+    <presentation for="Nat_List_with_Reverse_Orders_E1U">
+      <use format="Hets">[Nat_List_with_Reverse_Orders,E1U,0]</use>
+    </presentation>
+    <imports from="#List_with_Order">
+      <morphism hiding="Elem List[Elem] __++__ __&#60;=__ cons first nil order[__&#60;=__] rest reverse">
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="Elem5"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="Nat1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="__&#60;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="__LowerEquals__4"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#Ordered_Nat"/>
+    <symbol role="sort" name="ListSBrackOpenNatSBrackClose6"/>
+    <presentation for="ListSBrackOpenNatSBrackClose6">
+      <use format="Hets">[List[Nat]]</use>
+    </presentation>
+    <symbol name="__PlusPlus__9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__9">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="cons9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons9">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first9">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil9">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="orderSBrackOpen__LowerEquals__SBrackClose4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="orderSBrackOpen__LowerEquals__SBrackClose4">
+      <use format="Hets">[order[__,&#60;=,__]]</use>
+    </presentation>
+    <symbol name="rest9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest9">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U" name="ListSBrackOpenNatSBrackClose6"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse9">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+  </theory>
+  <private for="Nat_List_with_Reverse_Orders_E1U">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Ordered_Nat" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"List_with_Order" Type:"GlobalDef" Origin:"DGSpecInst List_with_Order"
+]]></data>
+  </private>
+  <theory xml:id="Nat_List_with_Reverse_Orders_E1U1">
+    <presentation for="Nat_List_with_Reverse_Orders_E1U1">
+      <use format="Hets">[Nat_List_with_Reverse_Orders,E1U,1]</use>
+    </presentation>
+    <imports from="#List_with_Order">
+      <morphism hiding="Elem List[Elem] __++__ __&#60;=__ cons first nil order[__&#60;=__] rest reverse">
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="Elem5"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="Nat1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="__&#60;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="__GreaterEquals__2"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="orderSBrackOpen__LowerEquals__SBrackClose"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="orderSBrackOpen__GreaterEquals__SBrackClose"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#Ordered_Nat"/>
+    <symbol role="sort" name="ListSBrackOpenNatSBrackClose5"/>
+    <presentation for="ListSBrackOpenNatSBrackClose5">
+      <use format="Hets">[List[Nat]]</use>
+    </presentation>
+    <symbol name="__PlusPlus__8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__8">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="cons8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons8">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first8">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil8">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="orderSBrackOpen__GreaterEquals__SBrackClose" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="orderSBrackOpen__GreaterEquals__SBrackClose">
+      <use format="Hets">[order[__,&#62;=,__]]</use>
+    </presentation>
+    <symbol name="rest8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest8">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse8">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+  </theory>
+  <private for="Nat_List_with_Reverse_Orders_E1U1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Ordered_Nat" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"List_with_Order" Type:"GlobalDef" Origin:"DGSpecInst List_with_Order"
+]]></data>
+  </private>
+  <theory xml:id="Nat_List_with_Reverse_Orders_E1">
+    <presentation for="Nat_List_with_Reverse_Orders_E1">
+      <use format="Hets">[Nat_List_with_Reverse_Orders,E,1]</use>
+    </presentation>
+    <imports from="#Nat_List_with_Reverse_Orders_E1U"/>
+    <imports from="#Nat_List_with_Reverse_Orders_E1U1"/>
+    <symbol name="orderSBrackOpen__LowerEquals__SBrackClose3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+            <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="orderSBrackOpen__LowerEquals__SBrackClose3">
+      <use format="Hets">[order[__,&#60;=,__]]</use>
+    </presentation>
+  </theory>
+  <private for="Nat_List_with_Reverse_Orders_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat_List_with_Reverse_Orders_E1U1" Type:"GlobalDef" Origin:"DGUnion"
+From:"Nat_List_with_Reverse_Orders_E1U" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="Nat_List_with_Reverse_Orders">
+    <presentation for="Nat_List_with_Reverse_Orders">
+      <use format="Hets">[Nat_List_with_Reverse_Orders,,0]</use>
+    </presentation>
+    <imports from="#Nat_List_with_Reverse_Orders_E1"/>
+    <axiom name="Ax15">
+      <CMP>
+  forall l : List[Nat] · order[__ &#62;= __](l) = reverse(order[__ &#60;= __](l)) 
+  forall l : List[Nat] · order[__ &#62;= __](l) = reverse(order[__ &#60;= __](l)) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="orderSBrackOpen__GreaterEquals__SBrackClose"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+                  </OMATP>
+                  <OMV name="l"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="reverse8"/>
+                <OMA>
+                  <OMS cd="Nat_List_with_Reverse_Orders_E1" name="orderSBrackOpen__LowerEquals__SBrackClose3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat_List_with_Reverse_Orders_E1U1" name="ListSBrackOpenNatSBrackClose5"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax15">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <private for="Nat_List_with_Reverse_Orders">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat_List_with_Reverse_Orders_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Non_Empty_List">
+    <presentation for="Non_Empty_List">
+      <use format="Hets">[Non_Empty_List,,0]</use>
+    </presentation>
+    <imports from="#Elem"/>
+    <symbol role="sort" name="NeListSBrackOpenElemSBrackClose"/>
+    <presentation for="NeListSBrackOpenElemSBrackClose">
+      <use format="Hets">[NeList[Elem]]</use>
+    </presentation>
+    <adt>
+      <sortdef name="NeListSBrackOpenElemSBrackClose" type="free">
+        <constructor name="____2">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="Elem" name="Elem2"/>
+              </OMOBJ>
+            </type>
+          </argument>
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+        <constructor name="g__inj">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="Elem" name="Elem2"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+        <insort for="#Elem2"/>
+      </sortdef>
+    </adt>
+    <adt>
+      <sortdef name="NeListSBrackOpenElemSBrackClose" type="free">
+        <constructor name="____2">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="Elem" name="Elem2"/>
+              </OMOBJ>
+            </type>
+          </argument>
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+        <constructor name="g__inj">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="Elem" name="Elem2"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+        <insort for="#Elem2"/>
+      </sortdef>
+    </adt>
+    <symbol name="____" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="____">
+      <use format="Hets">[__,__]</use>
+    </presentation>
+    <symbol name="first10" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Elem" name="Elem2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first10">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="rest10" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest10">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <axiom name="ga_disjoint______sort_Elem">
+      <CMP>
+     NeList[Elem] ::= sort Elem  |  __ __(Elem; NeList[Elem]) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="membership"/>
+                <OMA>
+                  <OMS cd="Non_Empty_List" name="____"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+                <OMS cd="Elem" name="Elem2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint______sort_Elem">
+      <use format="Hets">ga_disjoint______sort_Elem</use>
+    </presentation>
+    <axiom name="ga_injective_____">
+      <CMP>
+     NeList[Elem] ::= sort Elem  |  __ __(Elem; NeList[Elem]) 
+     NeList[Elem] ::= sort Elem  |  __ __(Elem; NeList[Elem]) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Elem" name="Elem2"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+                </OMATP>
+                <OMV name="Y2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Non_Empty_List" name="____"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Non_Empty_List" name="____"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="Y2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Elem" name="Elem2"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="Y2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective_____">
+      <use format="Hets">ga_injective_____</use>
+    </presentation>
+  </theory>
+  <private for="Non_Empty_List">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Path_E2A">
+    <presentation for="Path_E2A">
+      <use format="Hets">[Path,E2A,0]</use>
+    </presentation>
+    <symbol role="sort" name="Name3"/>
+    <presentation for="Name3">
+      <use format="Hets">[Name]</use>
+    </presentation>
+  </theory>
+  <private for="Path_E2A">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalThm Open None Open" Origin:"DGSpecInst Non_Empty_List"
+]]></data>
+  </private>
+  <theory xml:id="Path_E2">
+    <presentation for="Path_E2">
+      <use format="Hets">[Path,E,2]</use>
+    </presentation>
+    <imports from="#Non_Empty_List">
+      <morphism hiding="Elem NeList[Elem] ____ first rest">
+        <requation>
+          <OMOBJ>
+            <OMS cd="Non_Empty_List" name="Elem2"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Path_E2" name="Name3"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Non_Empty_List" name="NeListSBrackOpenElemSBrackClose"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Path_E2" name="NeListSBrackOpenNameSBrackClose"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#Path_E2A"/>
+    <symbol role="sort" name="NeListSBrackOpenNameSBrackClose"/>
+    <presentation for="NeListSBrackOpenNameSBrackClose">
+      <use format="Hets">[NeList[Name]]</use>
+    </presentation>
+    <adt>
+      <sortdef name="NeListSBrackOpenNameSBrackClose" type="free">
+        <insort for="#Name3"/>
+      </sortdef>
+    </adt>
+    <symbol name="____1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Path_E2A" name="Name3"/>
+            <OMS cd="Path_E2" name="NeListSBrackOpenNameSBrackClose"/>
+            <OMS cd="Path_E2" name="NeListSBrackOpenNameSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="____1">
+      <use format="Hets">[__,__]</use>
+    </presentation>
+    <symbol name="first11" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Path_E2" name="NeListSBrackOpenNameSBrackClose"/>
+            <OMS cd="Path_E2A" name="Name3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first11">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="rest11" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Path_E2" name="NeListSBrackOpenNameSBrackClose"/>
+            <OMS cd="Path_E2" name="NeListSBrackOpenNameSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest11">
+      <use format="Hets">[rest]</use>
+    </presentation>
+  </theory>
+  <private for="Path_E2">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Path_E2A" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"Non_Empty_List" Type:"GlobalDef" Origin:"DGSpecInst Non_Empty_List"
+]]></data>
+  </private>
+  <theory xml:id="Path_E1">
+    <presentation for="Path_E1">
+      <use format="Hets">[Path,E,1]</use>
+    </presentation>
+    <imports from="#Path_E2">
+      <morphism hiding="NeList[Name] ____ first rest">
+        <requation>
+          <OMOBJ>
+            <OMS cd="Path_E2" name="NeListSBrackOpenNameSBrackClose"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Path_E1" name="Path1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Path_E2" name="____1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Path_E1" name="__Division__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Path_E2" name="first11"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Path_E1" name="the_first_name_of__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Path_E2" name="rest11"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Path_E1" name="the_last_part_of__"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <symbol role="sort" name="Path1"/>
+    <presentation for="Path1">
+      <use format="Hets">[Path]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Path1" type="free">
+        <insort for="#Name3"/>
+      </sortdef>
+    </adt>
+    <symbol name="__Division__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Path_E2A" name="Name3"/>
+            <OMS cd="Path_E1" name="Path1"/>
+            <OMS cd="Path_E1" name="Path1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Division__">
+      <use format="Hets">[__,/,__]</use>
+    </presentation>
+    <symbol name="the_first_name_of__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Path_E1" name="Path1"/>
+            <OMS cd="Path_E2A" name="Name3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="the_first_name_of__">
+      <use format="Hets">[the_first_name_of,__]</use>
+    </presentation>
+    <symbol name="the_last_part_of__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Path_E1" name="Path1"/>
+            <OMS cd="Path_E1" name="Path1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="the_last_part_of__">
+      <use format="Hets">[the_last_part_of,__]</use>
+    </presentation>
+  </theory>
+  <private for="Path_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Path_E2" Type:"GlobalDef" Origin:"DGTranslation"
+]]></data>
+  </private>
+  <theory xml:id="Path">
+    <presentation for="Path">
+      <use format="Hets">[Path,,0]</use>
+    </presentation>
+    <imports from="#Path_E1"/>
+    <symbol name="the_first_part_of__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Path_E1" name="Path1"/>
+            <OMS cd="Path_E1" name="Path1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="the_first_part_of__">
+      <use format="Hets">[the_first_part_of,__]</use>
+    </presentation>
+    <symbol name="the_last_name_of__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Path_E1" name="Path1"/>
+            <OMS cd="Path_E2A" name="Name3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="the_last_name_of__">
+      <use format="Hets">[the_last_name_of,__]</use>
+    </presentation>
+    <axiom name="Ax17">
+      <CMP>
+  forall  n : Name; p : Path 
+  forall  n : Name; p : Path 
+  · def (the_first_part_of p)   &#60;=&#62;  ¬  (p in Name)
+  · ¬  (p in Name)   =&#62;  the_first_part_of (n/p)  =e= n/the_first_part_of p
+  · p in Name   =&#62;  the_first_part_of (n/p)  =e= n
+  · the_last_name_of n = n 
+  · the_last_name_of (n/p) = the_last_name_of p 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E1" name="Path1"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="Path" name="the_first_part_of__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Path_E1" name="Path1"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="membership"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Path_E1" name="Path1"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                  <OMS cd="Path_E2A" name="Name3"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax17">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax23">
+      <CMP>
+  forall  n : Name; p : Path 
+  forall  n : Name; p : Path 
+  · def (the_first_part_of p)   &#60;=&#62;  ¬  (p in Name)
+  · ¬  (p in Name)   =&#62;  the_first_part_of (n/p)  =e= n/the_first_part_of p
+  · p in Name   =&#62;  the_first_part_of (n/p)  =e= n
+  · the_last_name_of n = n 
+  · the_last_name_of (n/p) = the_last_name_of p 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E2A" name="Name3"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E1" name="Path1"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="membership"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Path_E1" name="Path1"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                  <OMS cd="Path_E2A" name="Name3"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="existial-equation"/>
+                <OMA>
+                  <OMS cd="Path" name="the_first_part_of__"/>
+                  <OMA>
+                    <OMS cd="Path_E1" name="__Division__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Path_E2A" name="Name3"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Path_E1" name="Path1"/>
+                      </OMATP>
+                      <OMV name="p"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="Path_E1" name="__Division__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Path_E2A" name="Name3"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                  <OMA>
+                    <OMS cd="Path" name="the_first_part_of__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Path_E1" name="Path1"/>
+                      </OMATP>
+                      <OMV name="p"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax23">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax33">
+      <CMP>
+  forall  n : Name; p : Path 
+  forall  n : Name; p : Path 
+  · def (the_first_part_of p)   &#60;=&#62;  ¬  (p in Name)
+  · ¬  (p in Name)   =&#62;  the_first_part_of (n/p)  =e= n/the_first_part_of p
+  · p in Name   =&#62;  the_first_part_of (n/p)  =e= n
+  · the_last_name_of n = n 
+  · the_last_name_of (n/p) = the_last_name_of p 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E2A" name="Name3"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E1" name="Path1"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="membership"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Path_E1" name="Path1"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+                <OMS cd="Path_E2A" name="Name3"/>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="existial-equation"/>
+                <OMA>
+                  <OMS cd="Path" name="the_first_part_of__"/>
+                  <OMA>
+                    <OMS cd="Path_E1" name="__Division__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Path_E2A" name="Name3"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Path_E1" name="Path1"/>
+                      </OMATP>
+                      <OMV name="p"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Path_E2A" name="Name3"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax33">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax42">
+      <CMP>
+  forall  n : Name; p : Path 
+  forall  n : Name; p : Path 
+  · def (the_first_part_of p)   &#60;=&#62;  ¬  (p in Name)
+  · ¬  (p in Name)   =&#62;  the_first_part_of (n/p)  =e= n/the_first_part_of p
+  · p in Name   =&#62;  the_first_part_of (n/p)  =e= n
+  · the_last_name_of n = n 
+  · the_last_name_of (n/p) = the_last_name_of p 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E2A" name="Name3"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Path" name="the_last_name_of__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Path_E2A" name="Name3"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E2A" name="Name3"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax42">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax51">
+      <CMP>
+  forall  n : Name; p : Path 
+  forall  n : Name; p : Path 
+  · def (the_first_part_of p)   &#60;=&#62;  ¬  (p in Name)
+  · ¬  (p in Name)   =&#62;  the_first_part_of (n/p)  =e= n/the_first_part_of p
+  · p in Name   =&#62;  the_first_part_of (n/p)  =e= n
+  · the_last_name_of n = n 
+  · the_last_name_of (n/p) = the_last_name_of p 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E2A" name="Name3"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Path_E1" name="Path1"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Path" name="the_last_name_of__"/>
+                <OMA>
+                  <OMS cd="Path_E1" name="__Division__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Path_E2A" name="Name3"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Path_E1" name="Path1"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Path" name="the_last_name_of__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Path_E1" name="Path1"/>
+                  </OMATP>
+                  <OMV name="p"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax51">
+      <use format="Hets">Ax5</use>
+    </presentation>
+  </theory>
+  <private for="Path">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Path_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Name">
+    <presentation for="Name">
+      <use format="Hets">[Name,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Name2"/>
+    <presentation for="Name2">
+      <use format="Hets">[Name]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Content">
+    <presentation for="Content">
+      <use format="Hets">[Content,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Content1"/>
+    <presentation for="Content1">
+      <use format="Hets">[Content]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="File_E1">
+    <presentation for="File_E1">
+      <use format="Hets">[File,E,1]</use>
+    </presentation>
+    <imports from="#Content"/>
+    <imports from="#Name"/>
+    <symbol role="sort" name="Name1"/>
+    <presentation for="Name1">
+      <use format="Hets">[Name]</use>
+    </presentation>
+  </theory>
+  <private for="File_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Content" Type:"GlobalDef" Origin:"DGUnion"
+From:"Name" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="File">
+    <presentation for="File">
+      <use format="Hets">[File,,0]</use>
+    </presentation>
+    <imports from="#File_E1"/>
+    <symbol role="sort" name="File1"/>
+    <presentation for="File1">
+      <use format="Hets">[File]</use>
+    </presentation>
+    <symbol name="Lower__dot__Greater" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="File_E1" name="Name1"/>
+            <OMS cd="Content" name="Content1"/>
+            <OMS cd="File" name="File1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Lower__dot__Greater">
+      <use format="Hets">[&#60;,__,dot,__,&#62;]</use>
+    </presentation>
+    <symbol name="the_content_of__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="File" name="File1"/>
+            <OMS cd="Content" name="Content1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="the_content_of__">
+      <use format="Hets">[the_content_of,__]</use>
+    </presentation>
+    <symbol name="the_name_of__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="File" name="File1"/>
+            <OMS cd="File_E1" name="Name1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="the_name_of__">
+      <use format="Hets">[the_name_of,__]</use>
+    </presentation>
+    <axiom name="ga_generated_File">
+      <CMP/>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="sort-gen-ax"/>
+            <OMBIND>
+              <OMS cd="casl" name="File"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="constraint-indices"/>
+                    <OMSTR>-1|-1|</OMSTR>
+                  </OMATP>
+                  <OMS cd="File" name="Lower__dot__Greater"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMS cd="casl" name="File"/>
+            </OMBIND>
+            <OMS cd="casl" name="false"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_generated_File">
+      <use format="Hets">ga_generated_File</use>
+    </presentation>
+    <axiom name="ga_selector_the_content_of__">
+      <CMP>
+                   the_content_of__:Content) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="File_E1" name="Name1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Content" name="Content1"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="File" name="the_content_of__"/>
+                <OMA>
+                  <OMS cd="File" name="Lower__dot__Greater"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="File_E1" name="Name1"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Content" name="Content1"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Content" name="Content1"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_selector_the_content_of__">
+      <use format="Hets">ga_selector_the_content_of__</use>
+    </presentation>
+    <axiom name="ga_selector_the_name_of__">
+      <CMP>
+                   the_name_of__:Name;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="File_E1" name="Name1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Content" name="Content1"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="File" name="the_name_of__"/>
+                <OMA>
+                  <OMS cd="File" name="Lower__dot__Greater"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="File_E1" name="Name1"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Content" name="Content1"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="File_E1" name="Name1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_selector_the_name_of__">
+      <use format="Hets">ga_selector_the_name_of__</use>
+    </presentation>
+  </theory>
+  <private for="File">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"File_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="List_as_Elem_T">
+    <presentation for="List_as_Elem_T">
+      <use format="Hets">[List_as_Elem,T,0]</use>
+    </presentation>
+    <imports from="#Elem">
+      <morphism hiding="">
+        <requation>
+          <OMOBJ>
+            <OMS cd="Elem" name="Elem2"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#List"/>
+    <symbol role="sort" name="ListSBrackOpenElemSBrackClose3"/>
+    <presentation for="ListSBrackOpenElemSBrackClose3">
+      <use format="Hets">[List[Elem]]</use>
+    </presentation>
+    <symbol name="__PlusPlus__4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__4">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="cons4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons4">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+            <OMS cd="Elem" name="Elem2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first4">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil4">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="rest4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest4">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse4">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+  </theory>
+  <private for="List_as_Elem_T">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalDef" Origin:"DGSpecInst List"
+From:"Elem" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"Elem" Type:"GlobalThm Open None Open" Origin:"DGView List_as_Elem"
+From:"List" Type:"GlobalDef" Origin:"DGSpecInst List"
+]]></data>
+  </private>
+  <theory xml:id="List_of_List_of_List_of_Nat_AA">
+    <presentation for="List_of_List_of_List_of_Nat_AA">
+      <use format="Hets">[List_of_List_of_List_of_Nat,AA,0]</use>
+    </presentation>
+    <imports from="#List_as_Elem_T">
+      <morphism hiding="Elem List[Elem] __++__ cons first nil rest reverse">
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_as_Elem_T" name="Elem2"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="Nat1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="Examples/Simple.omdoc#Nat"/>
+    <symbol role="sort" name="ListSBrackOpenNatSBrackClose3"/>
+    <presentation for="ListSBrackOpenNatSBrackClose3">
+      <use format="Hets">[List[Nat]]</use>
+    </presentation>
+    <symbol name="__PlusPlus__5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__5">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="cons5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons5">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first5">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil5">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="rest5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest5">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+            <OMS cd="List_of_List_of_List_of_Nat_AA" name="ListSBrackOpenNatSBrackClose3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse5">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+  </theory>
+  <private for="List_of_List_of_List_of_Nat_AA">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat" Type:"GlobalDef" Origin:"DGFitView List"
+From:"List_as_Elem_T" Type:"GlobalDef" Origin:"DGFitViewA List"
+]]></data>
+  </private>
+  <theory xml:id="List_of_List_of_List_of_Nat_AAV">
+    <presentation for="List_of_List_of_List_of_Nat_AAV">
+      <use format="Hets">[List_of_List_of_List_of_Nat,AAV,0]</use>
+    </presentation>
+    <imports from="#Elem"/>
+  </theory>
+  <private for="List_of_List_of_List_of_Nat_AAV">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalDef" Origin:"DGFitView List"
+From:"Elem" Type:"GlobalThm Open None Open" Origin:"DGFitView List"
+]]></data>
+  </private>
+  <theory xml:id="List_of_List_of_List_of_Nat_A">
+    <presentation for="List_of_List_of_List_of_Nat_A">
+      <use format="Hets">[List_of_List_of_List_of_Nat,A,0]</use>
+    </presentation>
+    <imports from="#List_as_Elem_T">
+      <morphism hiding="Elem List[Elem] __++__ cons first nil rest reverse">
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_as_Elem_T" name="Elem2"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="List_of_List_of_List_of_Nat_A" name="ListSBrackOpenNatSBrackClose2"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_as_Elem_T" name="ListSBrackOpenElemSBrackClose3"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="List_of_List_of_List_of_Nat_A" name="ListSBrackOpenListSBrackOpenNatSBrackCloseSBrackClose1"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#List_of_List_of_List_of_Nat_AA"/>
+    <symbol role="sort" name="Zero3"/>
+    <presentation for="Zero3">
+      <use format="Hets">[Zero]</use>
+    </presentation>
+    <symbol role="sort" name="Pos3"/>
+    <presentation for="Pos3">
+      <use format="Hets">[Pos]</use>
+    </presentation>
+    <symbol role="sort" name="Odd3"/>
+    <presentation for="Odd3">
+      <use format="Hets">[Odd]</use>
+    </presentation>
+    <symbol role="sort" name="Nat4"/>
+    <presentation for="Nat4">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <symbol role="sort" name="ListSBrackOpenNatSBrackClose2"/>
+    <presentation for="ListSBrackOpenNatSBrackClose2">
+      <use format="Hets">[List[Nat]]</use>
+    </presentation>
+    <symbol role="sort" name="ListSBrackOpenListSBrackOpenNatSBrackCloseSBrackClose1"/>
+    <presentation for="ListSBrackOpenListSBrackOpenNatSBrackCloseSBrackClose1">
+      <use format="Hets">[List[List[Nat]]]</use>
+    </presentation>
+    <symbol role="sort" name="Int3"/>
+    <presentation for="Int3">
+      <use format="Hets">[Int]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Int3" type="free">
+        <insort for="#Nat4"/>
+        <insort for="#Odd3"/>
+        <insort for="#Pos3"/>
+        <insort for="#Zero3"/>
+      </sortdef>
+    </adt>
+    <adt>
+      <sortdef name="Nat4" type="free">
+        <insort for="#Odd3"/>
+        <insort for="#Pos3"/>
+        <insort for="#Zero3"/>
+      </sortdef>
+    </adt>
+    <symbol name="pre__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_A" name="Pos3"/>
+            <OMS cd="List_of_List_of_List_of_Nat_A" name="Nat4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="pre__3">
+      <use format="Hets">[pre,__]</use>
+    </presentation>
+    <symbol name="succ__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_A" name="Nat4"/>
+            <OMS cd="List_of_List_of_List_of_Nat_A" name="Pos3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ__3">
+      <use format="Hets">[succ,__]</use>
+    </presentation>
+    <symbol name="zero3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_A" name="Int3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero3">
+      <use format="Hets">[zero]</use>
+    </presentation>
+    <symbol name="zero3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat_A" name="Zero3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero3">
+      <use format="Hets">[zero]</use>
+    </presentation>
+  </theory>
+  <private for="List_of_List_of_List_of_Nat_A">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"List_as_Elem_T" Type:"GlobalDef" Origin:"DGFitViewA List"
+From:"List_of_List_of_List_of_Nat_AA" Type:"GlobalDef" Origin:"DGFitView List"
+]]></data>
+  </private>
+  <theory xml:id="List_of_List_of_List_of_Nat_AV">
+    <presentation for="List_of_List_of_List_of_Nat_AV">
+      <use format="Hets">[List_of_List_of_List_of_Nat,AV,0]</use>
+    </presentation>
+    <imports from="#Elem"/>
+  </theory>
+  <private for="List_of_List_of_List_of_Nat_AV">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalDef" Origin:"DGFitView List"
+From:"Elem" Type:"GlobalThm Open None Open" Origin:"DGFitView List"
+]]></data>
+  </private>
+  <theory xml:id="List_of_List_of_List_of_Nat">
+    <presentation for="List_of_List_of_List_of_Nat">
+      <use format="Hets">[List_of_List_of_List_of_Nat,,0]</use>
+    </presentation>
+    <imports from="#List">
+      <morphism hiding="Elem List[Elem] __++__ cons first nil rest reverse">
+        <requation>
+          <OMOBJ>
+            <OMS cd="List" name="Elem2"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="List_of_List_of_List_of_Nat" name="ListSBrackOpenListSBrackOpenNatSBrackCloseSBrackClose"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List" name="ListSBrackOpenElemSBrackClose2"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="List_of_List_of_List_of_Nat" name="ListSBrackOpenListSBrackOpenListSBrackOpenNatSBrackCloseSBrackCloseSBrackClose"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#List_of_List_of_List_of_Nat_A"/>
+    <symbol role="sort" name="Zero2"/>
+    <presentation for="Zero2">
+      <use format="Hets">[Zero]</use>
+    </presentation>
+    <symbol role="sort" name="Pos2"/>
+    <presentation for="Pos2">
+      <use format="Hets">[Pos]</use>
+    </presentation>
+    <symbol role="sort" name="Odd2"/>
+    <presentation for="Odd2">
+      <use format="Hets">[Odd]</use>
+    </presentation>
+    <symbol role="sort" name="Nat3"/>
+    <presentation for="Nat3">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <symbol role="sort" name="ListSBrackOpenNatSBrackClose1"/>
+    <presentation for="ListSBrackOpenNatSBrackClose1">
+      <use format="Hets">[List[Nat]]</use>
+    </presentation>
+    <symbol role="sort" name="ListSBrackOpenListSBrackOpenNatSBrackCloseSBrackClose"/>
+    <presentation for="ListSBrackOpenListSBrackOpenNatSBrackCloseSBrackClose">
+      <use format="Hets">[List[List[Nat]]]</use>
+    </presentation>
+    <symbol role="sort" name="ListSBrackOpenListSBrackOpenListSBrackOpenNatSBrackCloseSBrackCloseSBrackClose"/>
+    <presentation for="ListSBrackOpenListSBrackOpenListSBrackOpenNatSBrackCloseSBrackCloseSBrackClose">
+      <use format="Hets">[List[List[List[Nat]]]]</use>
+    </presentation>
+    <symbol role="sort" name="Int2"/>
+    <presentation for="Int2">
+      <use format="Hets">[Int]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Int2" type="free">
+        <insort for="#Nat3"/>
+        <insort for="#Odd2"/>
+        <insort for="#Pos2"/>
+        <insort for="#Zero2"/>
+      </sortdef>
+    </adt>
+    <adt>
+      <sortdef name="Nat3" type="free">
+        <insort for="#Odd2"/>
+        <insort for="#Pos2"/>
+        <insort for="#Zero2"/>
+      </sortdef>
+    </adt>
+    <symbol name="pre__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat" name="Pos2"/>
+            <OMS cd="List_of_List_of_List_of_Nat" name="Nat3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="pre__2">
+      <use format="Hets">[pre,__]</use>
+    </presentation>
+    <symbol name="succ__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat" name="Nat3"/>
+            <OMS cd="List_of_List_of_List_of_Nat" name="Pos2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ__2">
+      <use format="Hets">[succ,__]</use>
+    </presentation>
+    <symbol name="zero2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat" name="Int2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero2">
+      <use format="Hets">[zero]</use>
+    </presentation>
+    <symbol name="zero2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="List_of_List_of_List_of_Nat" name="Zero2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero2">
+      <use format="Hets">[zero]</use>
+    </presentation>
+  </theory>
+  <private for="List_of_List_of_List_of_Nat">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"List" Type:"GlobalDef" Origin:"DGSpecInst List"
+From:"List_of_List_of_List_of_Nat_A" Type:"GlobalDef" Origin:"DGFitSpec"
+]]></data>
+  </private>
+  <theory xml:id="Nat_List_with_Order">
+    <presentation for="Nat_List_with_Order">
+      <use format="Hets">[Nat_List_with_Order,,0]</use>
+    </presentation>
+    <imports from="#List_with_Order">
+      <morphism hiding="Elem List[Elem] __++__ __&#60;=__ cons first nil order[__&#60;=__] rest reverse">
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="Elem5"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Order" name="Nat1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="ListSBrackOpenElemSBrackClose4"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="List_with_Order" name="__&#60;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Nat_List_with_Order" name="__LowerEquals__4"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#Ordered_Nat"/>
+    <symbol role="sort" name="ListSBrackOpenNatSBrackClose4"/>
+    <presentation for="ListSBrackOpenNatSBrackClose4">
+      <use format="Hets">[List[Nat]]</use>
+    </presentation>
+    <symbol name="__PlusPlus__7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__7">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="cons7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons7">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first7">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil7">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="orderSBrackOpen__LowerEquals__SBrackClose2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="orderSBrackOpen__LowerEquals__SBrackClose2">
+      <use format="Hets">[order[__,&#60;=,__]]</use>
+    </presentation>
+    <symbol name="rest7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest7">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+            <OMS cd="Nat_List_with_Order" name="ListSBrackOpenNatSBrackClose4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse7">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+  </theory>
+  <private for="Nat_List_with_Order">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Ordered_Nat" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"List_with_Order" Type:"GlobalDef" Origin:"DGSpecInst List_with_Order"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_List_PI">
+    <presentation for="Bounded_List_PI">
+      <use format="Hets">[Bounded_List,PI,0]</use>
+    </presentation>
+    <imports from="Examples/Simple.omdoc#Nat"/>
+  </theory>
+  <private for="Bounded_List_PI">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_List_P1">
+    <presentation for="Bounded_List_P1">
+      <use format="Hets">[Bounded_List,P,1]</use>
+    </presentation>
+    <imports from="#Bounded_List_PI"/>
+    <imports from="#Elem"/>
+    <symbol role="sort" name="Elem3"/>
+    <presentation for="Elem3">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_List_P1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_PI" Type:"GlobalDef" Origin:"DGSpecInst Elem"
+From:"Elem" Type:"GlobalDef" Origin:"DGSpecInst Elem"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_List_P2">
+    <presentation for="Bounded_List_P2">
+      <use format="Hets">[Bounded_List,P,2]</use>
+    </presentation>
+    <imports from="#Bounded_List_PI"/>
+    <symbol name="bound" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="bound">
+      <use format="Hets">[bound]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_List_P2">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_PI" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_List_P">
+    <presentation for="Bounded_List_P">
+      <use format="Hets">[Bounded_List,P,0]</use>
+    </presentation>
+    <imports from="#Bounded_List_P1"/>
+    <imports from="#Bounded_List_P2"/>
+    <symbol role="sort" name="Elem1"/>
+    <presentation for="Elem1">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_List_P">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_P2" Type:"GlobalDef" Origin:"DGFormalParams"
+From:"Bounded_List_P1" Type:"GlobalDef" Origin:"DGFormalParams"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_List_E1U">
+    <presentation for="Bounded_List_E1U">
+      <use format="Hets">[Bounded_List,E1U,0]</use>
+    </presentation>
+    <imports from="#Bounded_List_P"/>
+    <imports from="#Elem"/>
+    <imports from="#List"/>
+    <symbol role="sort" name="Zero1"/>
+    <presentation for="Zero1">
+      <use format="Hets">[Zero]</use>
+    </presentation>
+    <symbol role="sort" name="Pos1"/>
+    <presentation for="Pos1">
+      <use format="Hets">[Pos]</use>
+    </presentation>
+    <symbol role="sort" name="Odd1"/>
+    <presentation for="Odd1">
+      <use format="Hets">[Odd]</use>
+    </presentation>
+    <symbol role="sort" name="Nat2"/>
+    <presentation for="Nat2">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <symbol role="sort" name="ListSBrackOpenElemSBrackClose1"/>
+    <presentation for="ListSBrackOpenElemSBrackClose1">
+      <use format="Hets">[List[Elem]]</use>
+    </presentation>
+    <symbol role="sort" name="Int1"/>
+    <presentation for="Int1">
+      <use format="Hets">[Int]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Int1" type="free">
+        <insort for="#Nat2"/>
+        <insort for="#Odd1"/>
+        <insort for="#Pos1"/>
+        <insort for="#Zero1"/>
+      </sortdef>
+    </adt>
+    <adt>
+      <sortdef name="Nat2" type="free">
+        <insort for="#Odd1"/>
+        <insort for="#Pos1"/>
+        <insort for="#Zero1"/>
+      </sortdef>
+    </adt>
+    <symbol name="__PlusPlus__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__1">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="bound1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1U" name="Nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="bound1">
+      <use format="Hets">[bound]</use>
+    </presentation>
+    <symbol name="cons1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Elem" name="Elem2"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons1">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+            <OMS cd="Elem" name="Elem2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first1">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil1">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="pre__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1U" name="Pos1"/>
+            <OMS cd="Bounded_List_E1U" name="Nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="pre__1">
+      <use format="Hets">[pre,__]</use>
+    </presentation>
+    <symbol name="rest1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest1">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+            <OMS cd="Bounded_List_E1U" name="ListSBrackOpenElemSBrackClose1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse1">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+    <symbol name="succ__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1U" name="Nat2"/>
+            <OMS cd="Bounded_List_E1U" name="Pos1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ__1">
+      <use format="Hets">[succ,__]</use>
+    </presentation>
+    <symbol name="zero1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1U" name="Int1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero1">
+      <use format="Hets">[zero]</use>
+    </presentation>
+    <symbol name="zero1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1U" name="Zero1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero1">
+      <use format="Hets">[zero]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_List_E1U">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Elem" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"Bounded_List_P" Type:"GlobalDef" Origin:"DGSpecInst List"
+From:"List" Type:"GlobalDef" Origin:"DGSpecInst List"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_List_E1U1">
+    <presentation for="Bounded_List_E1U1">
+      <use format="Hets">[Bounded_List,E1U,1]</use>
+    </presentation>
+    <imports from="#Bounded_List_P"/>
+    <imports from="#Ordered_Nat"/>
+    <symbol name="__LowerEquals__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_List_E1U1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_P" Type:"GlobalDef" Origin:"DGSpecInst Ordered_Nat"
+From:"Ordered_Nat" Type:"GlobalDef" Origin:"DGSpecInst Ordered_Nat"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_List_E1">
+    <presentation for="Bounded_List_E1">
+      <use format="Hets">[Bounded_List,E,1]</use>
+    </presentation>
+    <imports from="#Bounded_List_E1U"/>
+    <imports from="#Bounded_List_E1U1"/>
+    <symbol role="sort" name="ListSBrackOpenElemSBrackClose"/>
+    <presentation for="ListSBrackOpenElemSBrackClose">
+      <use format="Hets">[List[Elem]]</use>
+    </presentation>
+    <symbol name="__PlusPlus__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="cons" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_P" name="Elem1"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Bounded_List_P" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="nil" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="rest" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_List_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_E1U1" Type:"GlobalDef" Origin:"DGUnion"
+From:"Bounded_List_E1U" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_List">
+    <presentation for="Bounded_List">
+      <use format="Hets">[Bounded_List,,0]</use>
+    </presentation>
+    <imports from="#Bounded_List_E1"/>
+    <symbol role="sort" name="Bounded_ListSBrackOpenElemSBrackClose"/>
+    <presentation for="Bounded_ListSBrackOpenElemSBrackClose">
+      <use format="Hets">[Bounded_List[Elem]]</use>
+    </presentation>
+    <adt>
+      <sortdef name="ListSBrackOpenElemSBrackClose" type="free">
+        <insort for="#Bounded_ListSBrackOpenElemSBrackClose"/>
+      </sortdef>
+    </adt>
+    <symbol name="length" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="length">
+      <use format="Hets">[length]</use>
+    </presentation>
+    <axiom name="Ax1">
+      <CMP>
+   . length(nil) = zero 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="Bounded_List" name="length"/>
+              <OMS cd="Bounded_List_E1" name="nil"/>
+            </OMA>
+            <OMS cd="Nat" name="zero"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax1">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax2">
+      <CMP>
+   forall  e:Elem; l:List[Elem] 
+   forall  e:Elem; l:List[Elem] 
+   . length(nil) = zero 
+   . length(cons(e,l)) = succ length(l) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="e"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Bounded_List" name="length"/>
+                <OMA>
+                  <OMS cd="Bounded_List_E1" name="cons"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Bounded_List_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Nat" name="succ__"/>
+                <OMA>
+                  <OMS cd="Bounded_List" name="length"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax2">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax3">
+      <CMP>
+   sort Bounded_List[Elem] = { l:List[Elem] . length(l) &#60;= bound } 
+   sort Bounded_List[Elem] = { l:List[Elem] . length(l) &#60;= bound } 
+   sort Bounded_List[Elem] = { l:List[Elem] . length(l) &#60;= bound } 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+                </OMATP>
+                <OMV name="l"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="membership"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+                  </OMATP>
+                  <OMV name="l"/>
+                </OMATTR>
+                <OMS cd="Bounded_List" name="Bounded_ListSBrackOpenElemSBrackClose"/>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Bounded_List_E1U1" name="__LowerEquals__"/>
+                <OMA>
+                  <OMS cd="Bounded_List" name="length"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Bounded_List_E1" name="ListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="l"/>
+                  </OMATTR>
+                </OMA>
+                <OMS cd="Bounded_List_P2" name="bound"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax3">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="ga_selector_first">
+      <CMP>
+          first:?Elem; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List" name="Bounded_ListSBrackOpenElemSBrackClose"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Bounded_List_E1" name="first"/>
+                <OMA>
+                  <OMS cd="Bounded_List_E1" name="cons"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Bounded_List_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Bounded_List" name="Bounded_ListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_selector_first">
+      <use format="Hets">ga_selector_first</use>
+    </presentation>
+    <axiom name="ga_selector_rest">
+      <CMP>
+          rest:?Bounded_List[Elem])? 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List" name="Bounded_ListSBrackOpenElemSBrackClose"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Bounded_List_E1" name="rest"/>
+                <OMA>
+                  <OMS cd="Bounded_List_E1" name="cons"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Bounded_List_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Bounded_List" name="Bounded_ListSBrackOpenElemSBrackClose"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Bounded_List" name="Bounded_ListSBrackOpenElemSBrackClose"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_selector_rest">
+      <use format="Hets">ga_selector_rest</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_List">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_Nat_List_PI">
+    <presentation for="Bounded_Nat_List_PI">
+      <use format="Hets">[Bounded_Nat_List,PI,0]</use>
+    </presentation>
+    <imports from="Examples/Simple.omdoc#Nat"/>
+  </theory>
+  <private for="Bounded_Nat_List_PI">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_Nat_List_P">
+    <presentation for="Bounded_Nat_List_P">
+      <use format="Hets">[Bounded_Nat_List,P,0]</use>
+    </presentation>
+    <imports from="#Bounded_Nat_List_PI"/>
+    <symbol name="bound4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="bound4">
+      <use format="Hets">[bound]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_Nat_List_P">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_Nat_List_PI" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_Nat_List_A">
+    <presentation for="Bounded_Nat_List_A">
+      <use format="Hets">[Bounded_Nat_List,A,0]</use>
+    </presentation>
+    <imports from="#Bounded_List_PI"/>
+    <imports from="Examples/Simple.omdoc#Nat"/>
+  </theory>
+  <private for="Bounded_Nat_List_A">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_PI" Type:"GlobalDef" Origin:"DGFitViewAImp Bounded_List"
+From:"Nat" Type:"GlobalDef" Origin:"DGFitViewA Bounded_List"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_Nat_List_A1">
+    <presentation for="Bounded_Nat_List_A1">
+      <use format="Hets">[Bounded_Nat_List,A,1]</use>
+    </presentation>
+    <imports from="#Bounded_List_PI"/>
+    <imports from="#Elem"/>
+    <symbol role="sort" name="Elem4"/>
+    <presentation for="Elem4">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_Nat_List_A1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_PI" Type:"GlobalDef" Origin:"DGFitViewImp Bounded_List"
+From:"Bounded_List_P1" Type:"GlobalThm Open None Open" Origin:"DGFitView Bounded_List"
+From:"Elem" Type:"GlobalDef" Origin:"DGFitView Bounded_List"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_Nat_List_A11">
+    <presentation for="Bounded_Nat_List_A11">
+      <use format="Hets">[Bounded_Nat_List,A,1]</use>
+    </presentation>
+    <imports from="#Bounded_List_PI"/>
+    <symbol name="bound3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="bound3">
+      <use format="Hets">[bound]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_Nat_List_A11">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_List_P2" Type:"GlobalThm Open None Open" Origin:"DGSpecInst Bounded_List"
+From:"Bounded_List_PI" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Bounded_Nat_List">
+    <presentation for="Bounded_Nat_List">
+      <use format="Hets">[Bounded_Nat_List,,0]</use>
+    </presentation>
+    <imports from="#Bounded_List">
+      <morphism hiding="Bounded_List[Elem] Elem List[Elem] __++__ cons first length nil rest reverse">
+        <requation>
+          <OMOBJ>
+            <OMS cd="Bounded_List" name="Bounded_ListSBrackOpenElemSBrackClose"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Bounded_Nat_List" name="Bounded_ListSBrackOpenNatSBrackClose"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Bounded_List" name="Elem1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Bounded_Nat_List" name="Nat1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Bounded_List" name="ListSBrackOpenElemSBrackClose"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Bounded_List" name="bound"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Bounded_Nat_List" name="bound2"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Bounded_List" name="pre__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Bounded_Nat_List" name="pre__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Bounded_List" name="succ__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Bounded_Nat_List" name="succ__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Bounded_List" name="zero"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Bounded_Nat_List" name="zero"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#Bounded_Nat_List_A"/>
+    <imports from="#Bounded_Nat_List_A11"/>
+    <imports from="#Bounded_Nat_List_P"/>
+    <symbol role="sort" name="ListSBrackOpenNatSBrackClose"/>
+    <presentation for="ListSBrackOpenNatSBrackClose">
+      <use format="Hets">[List[Nat]]</use>
+    </presentation>
+    <symbol role="sort" name="Bounded_ListSBrackOpenNatSBrackClose"/>
+    <presentation for="Bounded_ListSBrackOpenNatSBrackClose">
+      <use format="Hets">[Bounded_List[Nat]]</use>
+    </presentation>
+    <adt>
+      <sortdef name="ListSBrackOpenNatSBrackClose" type="free">
+        <insort for="#Bounded_ListSBrackOpenNatSBrackClose"/>
+      </sortdef>
+    </adt>
+    <symbol name="__LowerEquals__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__1">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__1">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <symbol name="__PlusPlus__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__2">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="bound2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="bound2">
+      <use format="Hets">[bound]</use>
+    </presentation>
+    <symbol name="cons2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons2">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="cons2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Nat" name="Nat1"/>
+            <OMS cd="Bounded_Nat_List" name="Bounded_ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Bounded_Nat_List" name="Bounded_ListSBrackOpenNatSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="cons2">
+      <use format="Hets">[cons]</use>
+    </presentation>
+    <symbol name="first2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Bounded_Nat_List" name="Bounded_ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first2">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="first2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="first2">
+      <use format="Hets">[first]</use>
+    </presentation>
+    <symbol name="length1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Nat" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="length1">
+      <use format="Hets">[length]</use>
+    </presentation>
+    <symbol name="nil2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_Nat_List" name="Bounded_ListSBrackOpenNatSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil2">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="nil2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil2">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="rest2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Bounded_Nat_List" name="Bounded_ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Bounded_Nat_List" name="Bounded_ListSBrackOpenNatSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest2">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="rest2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="rest2">
+      <use format="Hets">[rest]</use>
+    </presentation>
+    <symbol name="reverse2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+            <OMS cd="Bounded_Nat_List" name="ListSBrackOpenNatSBrackClose"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="reverse2">
+      <use format="Hets">[reverse]</use>
+    </presentation>
+  </theory>
+  <private for="Bounded_Nat_List">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Bounded_Nat_List_A" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"Bounded_Nat_List_A11" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"Bounded_Nat_List_P" Type:"GlobalDef" Origin:"DGSpecInst Bounded_List"
+From:"Bounded_List" Type:"GlobalDef" Origin:"DGSpecInst Bounded_List"
+]]></data>
+  </private>
+</omdoc>

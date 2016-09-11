@@ -1,0 +1,19 @@
+<!-- left-over ideas for default presentations -->
+<presentation theory="#twelf" symbol="arrow" format="twelf">
+  <map begin="0" end="-1" separator=" -> "/>
+</presentation/>
+
+<presentation theory="#twelf" format="twelf" role="applied">
+  <!-- This gives a default presentation for a symbol, i.e.,
+       for symbols declared in a Twelf signature. -->
+  <name/>
+  <text> </text>
+  <map begin="0" end="-1" separator=" "/>
+</presentation>
+
+<presentation theory="#twelf" format="twelf" role="constant">
+  <name/>
+</presentation>
+
+//similarly for variables
+

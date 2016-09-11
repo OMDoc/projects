@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.X5311A-EXT" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.X5311A-EXT</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.X5311A-EXT</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="tps.abbr.SIGMA1A.xhtml#tps.abbr.SIGMA1A">tps.abbr.SIGMA1A</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.X5311A-EXT" role="Assertion" about="#gwff.X5311A-EXT" xml:id="gwff.X5311A-EXT">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.X5311A-EXT"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> Variant of tttp5311a, with extensionality added. Probably needs a primsub for one of the sets in extensionality. FORALL y(A) [IOTA [= y] = y] AND FORALL p(OA) FORALL q(OA) [FORALL x(A) [p x EQUIV q x] IMPLIES FORALL r(O(OA)).r p IMPLIES r q] IMPLIES FORALL p.SIGMA1A p IMPLIES p.IOTA p</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e32" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mo>∀</m:mo>
+                <m:mi>A</m:mi>
+                <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                    <m:mrow>
+                      <m:mo>∀</m:mo>
+                      <m:msub>
+                        <m:mi>y</m:mi>
+                        <m:mi>A</m:mi>
+                      </m:msub>
+                      <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo>descr-op</m:mo>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mrow>
+                            <m:mo>eq</m:mo>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                            <m:mi>y</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                          </m:mrow>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo>=</m:mo>
+                        <m:mi>y</m:mi>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mo>∧</m:mo>
+                    <m:mrow>
+                      <m:mo>∀</m:mo>
+                      <m:msub>
+                        <m:mi>p</m:mi>
+                        <m:mrow>
+                          <m:mi>A</m:mi>
+                          <m:mo>→</m:mo>
+                          <m:mo>o</m:mo>
+                        </m:mrow>
+                      </m:msub>
+                      <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                      <m:msub>
+                        <m:mi>q</m:mi>
+                        <m:mrow>
+                          <m:mi>A</m:mi>
+                          <m:mo>→</m:mo>
+                          <m:mo>o</m:mo>
+                        </m:mrow>
+                      </m:msub>
+                      <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo>∀</m:mo>
+                          <m:msub>
+                            <m:mi>x</m:mi>
+                            <m:mi>A</m:mi>
+                          </m:msub>
+                          <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>p</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                              <m:mi>x</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                            </m:mrow>
+                            <m:mo>≡</m:mo>
+                            <m:mrow>
+                              <m:mi>q</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                              <m:mi>x</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                        <m:mo>⇒</m:mo>
+                        <m:mrow>
+                          <m:mo>∀</m:mo>
+                          <m:msub>
+                            <m:mi>r</m:mi>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>A</m:mi>
+                                <m:mo>→</m:mo>
+                                <m:mo>o</m:mo>
+                              </m:mrow>
+                              <m:mo>→</m:mo>
+                              <m:mo>o</m:mo>
+                            </m:mrow>
+                          </m:msub>
+                          <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mi>r</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                              <m:mi>p</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                            </m:mrow>
+                            <m:mo>⇒</m:mo>
+                            <m:mrow>
+                              <m:mi>r</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                              <m:mi>q</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                  </m:mrow>
+                  <m:mo>⇒</m:mo>
+                  <m:mrow>
+                    <m:mo>∀</m:mo>
+                    <m:msub>
+                      <m:mi>p</m:mi>
+                      <m:mrow>
+                        <m:mi>A</m:mi>
+                        <m:mo>→</m:mo>
+                        <m:mo>o</m:mo>
+                      </m:mrow>
+                    </m:msub>
+                    <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo>(CAPSIGMA SUP1 SUP1)</m:mo>
+                        <!-- Face using unicode: <char unicode="X2211"/><sup>1</sup><sup>1</sup>. -->
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>p</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo>⇒</m:mo>
+                      <m:mrow>
+                        <m:mi>p</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mrow>
+                          <m:mo>descr-op</m:mo>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>p</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

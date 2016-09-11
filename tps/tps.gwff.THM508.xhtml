@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.THM508" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.THM508</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.THM508</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="logics/sthold.xhtml#sthold">sthold</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.THM508" role="Assertion" about="#gwff.THM508" xml:id="gwff.THM508">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.THM508"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> This is an example which demonstrates that subst=, subst=l, and subst=r, are actually more restrictive with respect to variables than they need be. The point is that we end up in a situation where the x is free in a hypothesis of the planned conclusion (because it is free in q x), but is not free in the hypotheses of either of the lines used to justify the planned lines using subst= (or one of its variants). So, the application should be legal, although it is not recognized as being legal. The problem seems to be that free-in-hyps uses rule-hupper instead of rule-hlower. I'm reluctant to change something so fundamental though. FORALL x(I) [f(II) x = g(II) x] IMPLIES.p(O(II)) [LAMBDA x f x] IMPLIES.q(OI) x IMPLIES p.LAMBDA x g x</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e32" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mrow>
+                  <m:mo>∀</m:mo>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mo>ι</m:mo>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mi>f</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mi>g</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+                <m:mo>⇒</m:mo>
+                <m:mrow>
+                  <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                  <m:mrow>
+                    <m:mi>p</m:mi>
+                    <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                    <m:mrow>λ
+                      <m:msub>
+                        <m:mi>x</m:mi>
+                        <m:mo>ι</m:mo>
+                      </m:msub>
+                      <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                      <m:mrow>
+                        <m:mi>f</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>x</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                    <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                  </m:mrow>
+                  <m:mo>⇒</m:mo>
+                  <m:mrow>
+                    <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                    <m:mrow>
+                      <m:mi>q</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>⇒</m:mo>
+                    <m:mrow>
+                      <m:mi>p</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mrow>λ
+                        <m:msub>
+                          <m:mi>x</m:mi>
+                          <m:mo>ι</m:mo>
+                        </m:msub>
+                        <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                        <m:mrow>
+                          <m:mi>g</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>x</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                  </m:mrow>
+                  <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

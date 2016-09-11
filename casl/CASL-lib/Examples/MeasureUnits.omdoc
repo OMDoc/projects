@@ -1,0 +1,3376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="MeasureUnits">
+  <theory xml:id="MeasureUnits_E2">
+    <presentation for="MeasureUnits_E2">
+      <use format="Hets">[MeasureUnits,E,2]</use>
+    </presentation>
+    <imports from="Basic/Numbers.omdoc#Int"/>
+    <symbol role="sort" name="Unit1"/>
+    <presentation for="Unit1">
+      <use format="Hets">[Unit]</use>
+    </presentation>
+    <symbol role="sort" name="BUnit1"/>
+    <presentation for="BUnit1">
+      <use format="Hets">[BUnit]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Unit1" type="free">
+        <insort for="#BUnit1"/>
+      </sortdef>
+    </adt>
+    <symbol name="Celsius1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="MeasureUnits_E2" name="BUnit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Celsius1">
+      <use format="Hets">[Celsius]</use>
+    </presentation>
+    <symbol name="Fahrenheit1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="MeasureUnits_E2" name="BUnit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Fahrenheit1">
+      <use format="Hets">[Fahrenheit]</use>
+    </presentation>
+    <symbol name="Newton1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="MeasureUnits_E2" name="BUnit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Newton1">
+      <use format="Hets">[Newton]</use>
+    </presentation>
+    <symbol name="any1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="MeasureUnits_E2" name="Unit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="any1">
+      <use format="Hets">[any]</use>
+    </presentation>
+    <symbol name="kg1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="MeasureUnits_E2" name="BUnit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="kg1">
+      <use format="Hets">[kg]</use>
+    </presentation>
+    <symbol name="meter1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="MeasureUnits_E2" name="BUnit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="meter1">
+      <use format="Hets">[meter]</use>
+    </presentation>
+    <symbol name="noUnit1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="MeasureUnits_E2" name="Unit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="noUnit1">
+      <use format="Hets">[noUnit]</use>
+    </presentation>
+    <symbol name="second1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="MeasureUnits_E2" name="BUnit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="second1">
+      <use format="Hets">[second]</use>
+    </presentation>
+    <axiom name="Ax31">
+      <CMP>
+  . Newton = kg * meter * second ^ -2
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMS cd="MeasureUnits_E2" name="Newton1"/>
+            <OMA>
+              <OMS cd="Int" name="__Ast__"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMS cd="MeasureUnits_E2" name="kg1"/>
+                <OMS cd="MeasureUnits_E2" name="meter1"/>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMS cd="MeasureUnits_E2" name="second1"/>
+                <OMA>
+                  <OMS cd="Int" name="Minus__"/>
+                  <OMS cd="Int" name="N2"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax31">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax41">
+      <CMP>
+  forall u : Unit; n : Int
+  forall u : Unit; n : Int
+  . Newton = kg * meter * second ^ -2
+  . u * noUnit = u
+  . u * any = u
+  . any ^ n = any
+  . noUnit ^ n = noUnit
+  . u ^ 0 = noUnit
+  . u * (u ^ n) = u ^ (n + 1)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMS cd="MeasureUnits_E2" name="noUnit1"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax41">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax51">
+      <CMP>
+  forall u : Unit; n : Int
+  forall u : Unit; n : Int
+  . Newton = kg * meter * second ^ -2
+  . u * noUnit = u
+  . u * any = u
+  . any ^ n = any
+  . noUnit ^ n = noUnit
+  . u ^ 0 = noUnit
+  . u * (u ^ n) = u ^ (n + 1)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMS cd="MeasureUnits_E2" name="any1"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax51">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="Ax6">
+      <CMP>
+  forall u : Unit; n : Int
+  forall u : Unit; n : Int
+  . Newton = kg * meter * second ^ -2
+  . u * noUnit = u
+  . u * any = u
+  . any ^ n = any
+  . noUnit ^ n = noUnit
+  . u ^ 0 = noUnit
+  . u * (u ^ n) = u ^ (n + 1)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Int" name="Int1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMS cd="MeasureUnits_E2" name="any1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Int" name="Int1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="MeasureUnits_E2" name="any1"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax6">
+      <use format="Hets">Ax6</use>
+    </presentation>
+    <axiom name="Ax7">
+      <CMP>
+  forall u : Unit; n : Int
+  forall u : Unit; n : Int
+  . Newton = kg * meter * second ^ -2
+  . u * noUnit = u
+  . u * any = u
+  . any ^ n = any
+  . noUnit ^ n = noUnit
+  . u ^ 0 = noUnit
+  . u * (u ^ n) = u ^ (n + 1)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Int" name="Int1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMS cd="MeasureUnits_E2" name="noUnit1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Int" name="Int1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="MeasureUnits_E2" name="noUnit1"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax7">
+      <use format="Hets">Ax7</use>
+    </presentation>
+    <axiom name="Ax8">
+      <CMP>
+  forall u : Unit; n : Int
+  forall u : Unit; n : Int
+  . Newton = kg * meter * second ^ -2
+  . u * noUnit = u
+  . u * any = u
+  . any ^ n = any
+  . noUnit ^ n = noUnit
+  . u ^ 0 = noUnit
+  . u * (u ^ n) = u ^ (n + 1)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMS cd="Int" name="N0"/>
+              </OMA>
+              <OMS cd="MeasureUnits_E2" name="noUnit1"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax8">
+      <use format="Hets">Ax8</use>
+    </presentation>
+    <axiom name="Ax9">
+      <CMP>
+  forall u : Unit; n : Int
+  forall u : Unit; n : Int
+  . Newton = kg * meter * second ^ -2
+  . u * noUnit = u
+  . u * any = u
+  . any ^ n = any
+  . noUnit ^ n = noUnit
+  . u ^ 0 = noUnit
+  . u * (u ^ n) = u ^ (n + 1)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Int" name="Int1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Int" name="__Power__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Int" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                  <OMS cd="Int" name="N1"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax9">
+      <use format="Hets">Ax9</use>
+    </presentation>
+    <axiom name="ga_assoc___Ast__">
+      <CMP>
+      __*__ : Unit * Unit -&#62; Unit, assoc, comm
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_assoc___Ast__">
+      <use format="Hets">ga_assoc___*__</use>
+    </presentation>
+    <axiom name="ga_comm___Ast__">
+      <CMP>
+      __*__ : Unit * Unit -&#62; Unit, assoc, comm
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_comm___Ast__">
+      <use format="Hets">ga_comm___*__</use>
+    </presentation>
+  </theory>
+  <private for="MeasureUnits_E2">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Int" Type:"GlobalDef" Origin:"DGExtension"
+From:"MeasureUnits_E1" Type:"GlobalThm Open None Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="MeasureUnits_E1">
+    <presentation for="MeasureUnits_E1">
+      <use format="Hets">[MeasureUnits,E,1]</use>
+    </presentation>
+    <imports from="#MeasureUnits_E2"/>
+    <axiom name="Ax11">
+      <CMP>
+  forall u, v : Unit; n, m : Int
+  forall u, v : Unit; n, m : Int
+  . u ^ 1 = u
+  . u * u = u ^ 2
+  . (u ^ n) * (u ^ m) = u ^ (n + m)
+  . (u * v) ^ n = (u ^ n) * (v ^ n)
+  . (u ^ n) ^ m = u ^ (n * m)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMS cd="Int" name="N1"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax11">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax2">
+      <CMP>
+  forall u, v : Unit; n, m : Int
+  forall u, v : Unit; n, m : Int
+  . u ^ 1 = u
+  . u * u = u ^ 2
+  . (u ^ n) * (u ^ m) = u ^ (n + m)
+  . (u * v) ^ n = (u ^ n) * (v ^ n)
+  . (u ^ n) ^ m = u ^ (n * m)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMS cd="Int" name="N2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax2">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax3">
+      <CMP>
+  forall u, v : Unit; n, m : Int
+  forall u, v : Unit; n, m : Int
+  . u ^ 1 = u
+  . u * u = u ^ 2
+  . (u ^ n) * (u ^ m) = u ^ (n + m)
+  . (u * v) ^ n = (u ^ n) * (v ^ n)
+  . (u ^ n) ^ m = u ^ (n * m)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Int" name="Int1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Int" name="Int1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Power__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Int" name="__Power__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Int" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax3">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax4">
+      <CMP>
+  forall u, v : Unit; n, m : Int
+  forall u, v : Unit; n, m : Int
+  . u ^ 1 = u
+  . u * u = u ^ 2
+  . (u ^ n) * (u ^ m) = u ^ (n + m)
+  . (u * v) ^ n = (u ^ n) * (v ^ n)
+  . (u ^ n) ^ m = u ^ (n * m)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Int" name="Int1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="v"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Int" name="Int1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Power__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Int" name="__Power__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="v"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax4">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax5">
+      <CMP>
+  forall u, v : Unit; n, m : Int
+  forall u, v : Unit; n, m : Int
+  . u ^ 1 = u
+  . u * u = u ^ 2
+  . (u ^ n) * (u ^ m) = u ^ (n + m)
+  . (u * v) ^ n = (u ^ n) * (v ^ n)
+  . (u ^ n) ^ m = u ^ (n * m)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Int" name="Int1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Int" name="Int1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Power__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Int" name="Int1"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Power__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Int" name="Int1"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax5">
+      <use format="Hets">Ax5</use>
+    </presentation>
+  </theory>
+  <private for="MeasureUnits_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"MeasureUnits_E2" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="MeasureUnits">
+    <presentation for="MeasureUnits">
+      <use format="Hets">[MeasureUnits,,0]</use>
+    </presentation>
+    <imports from="#MeasureUnits_E1"/>
+    <symbol name="compatible1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="MeasureUnits_E2" name="Unit1"/>
+            <OMS cd="MeasureUnits_E2" name="Unit1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="compatible1">
+      <use format="Hets">[compatible]</use>
+    </presentation>
+    <axiom name="Ax1">
+      <CMP>
+  pred compatible(u, v:Unit) &#60;=&#62; u=v \/ u = any \/ v = any
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="MeasureUnits" name="compatible1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                  </OMATP>
+                  <OMV name="v"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="disjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="v"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMS cd="MeasureUnits_E2" name="any1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="MeasureUnits_E2" name="Unit1"/>
+                    </OMATP>
+                    <OMV name="v"/>
+                  </OMATTR>
+                  <OMS cd="MeasureUnits_E2" name="any1"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax1">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <private for="MeasureUnits">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"MeasureUnits_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="UnitNumbers_PI">
+    <presentation for="UnitNumbers_PI">
+      <use format="Hets">[UnitNumbers,PI,0]</use>
+    </presentation>
+    <imports from="Basic/Numbers.omdoc#Int"/>
+  </theory>
+  <private for="UnitNumbers_PI">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Int" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="UnitNumbers_P">
+    <presentation for="UnitNumbers_P">
+      <use format="Hets">[UnitNumbers,P,0]</use>
+    </presentation>
+    <imports from="Basic/Algebra_I.omdoc#Ring"/>
+    <imports from="#UnitNumbers_PI"/>
+    <symbol role="sort" name="Elem1"/>
+    <presentation for="Elem1">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+    <symbol name="e1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_P" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="e1">
+      <use format="Hets">[e]</use>
+    </presentation>
+  </theory>
+  <private for="UnitNumbers_P">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"UnitNumbers_PI" Type:"GlobalDef" Origin:"DGSpecInst Ring"
+From:"Ring" Type:"GlobalDef" Origin:"DGSpecInst Ring"
+]]></data>
+  </private>
+  <theory xml:id="UnitNumbers_E1">
+    <presentation for="UnitNumbers_E1">
+      <use format="Hets">[UnitNumbers,E,1]</use>
+    </presentation>
+    <imports from="#MeasureUnits"/>
+    <imports from="#UnitNumbers_P"/>
+    <symbol role="sort" name="Unit"/>
+    <presentation for="Unit">
+      <use format="Hets">[Unit]</use>
+    </presentation>
+    <symbol role="sort" name="BUnit"/>
+    <presentation for="BUnit">
+      <use format="Hets">[BUnit]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Unit" type="free">
+        <insort for="#BUnit"/>
+      </sortdef>
+    </adt>
+    <symbol name="compatible" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="UnitNumbers_E1" name="Unit"/>
+            <OMS cd="UnitNumbers_E1" name="Unit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="compatible">
+      <use format="Hets">[compatible]</use>
+    </presentation>
+    <symbol name="Celsius" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_E1" name="BUnit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Celsius">
+      <use format="Hets">[Celsius]</use>
+    </presentation>
+    <symbol name="Fahrenheit" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_E1" name="BUnit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Fahrenheit">
+      <use format="Hets">[Fahrenheit]</use>
+    </presentation>
+    <symbol name="Newton" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_E1" name="BUnit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Newton">
+      <use format="Hets">[Newton]</use>
+    </presentation>
+    <symbol name="any" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_E1" name="Unit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="any">
+      <use format="Hets">[any]</use>
+    </presentation>
+    <symbol name="kg" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_E1" name="BUnit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="kg">
+      <use format="Hets">[kg]</use>
+    </presentation>
+    <symbol name="meter" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_E1" name="BUnit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="meter">
+      <use format="Hets">[meter]</use>
+    </presentation>
+    <symbol name="noUnit" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_E1" name="Unit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="noUnit">
+      <use format="Hets">[noUnit]</use>
+    </presentation>
+    <symbol name="second" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="UnitNumbers_E1" name="BUnit"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="second">
+      <use format="Hets">[second]</use>
+    </presentation>
+  </theory>
+  <private for="UnitNumbers_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"UnitNumbers_P" Type:"GlobalDef" Origin:"DGSpecInst MeasureUnits"
+From:"MeasureUnits" Type:"GlobalDef" Origin:"DGSpecInst MeasureUnits"
+]]></data>
+  </private>
+  <theory xml:id="UnitNumbers">
+    <presentation for="UnitNumbers">
+      <use format="Hets">[UnitNumbers,,0]</use>
+    </presentation>
+    <imports from="#UnitNumbers_E1"/>
+    <symbol role="sort" name="UnitNumber"/>
+    <presentation for="UnitNumber">
+      <use format="Hets">[UnitNumber]</use>
+    </presentation>
+    <adt>
+      <sortdef name="UnitNumber" type="free">
+        <constructor name="__Ast__3">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="UnitNumbers_P" name="Elem1"/>
+              </OMOBJ>
+            </type>
+          </argument>
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="UnitNumbers_E1" name="Unit"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+        <insort for="#Elem1"/>
+      </sortdef>
+    </adt>
+    <adt>
+      <sortdef name="UnitNumber" type="free">
+        <constructor name="__Ast__3">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="UnitNumbers_P" name="Elem1"/>
+              </OMOBJ>
+            </type>
+          </argument>
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="UnitNumbers_E1" name="Unit"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+        <insort for="#Elem1"/>
+      </sortdef>
+    </adt>
+    <symbol name="__Division__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="UnitNumbers" name="UnitNumber"/>
+            <OMS cd="UnitNumbers" name="UnitNumber"/>
+            <OMS cd="UnitNumbers" name="UnitNumber"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Division__">
+      <use format="Hets">[__,/,__]</use>
+    </presentation>
+    <axiom name="Ax10">
+      <CMP>
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  . x = x*noUnit
+  . def x*u + y*v &#60;=&#62; u=v
+  . x*u + y*u = (x+y)*u
+  . def x*u - y*v &#60;=&#62; u=v
+  . def a-b =&#62; (a-b=c &#60;=&#62; b+c=a)
+  . (x*u) * (y*v) = (x*y) * (u*v)
+  . def a/b &#60;=&#62; exists! c:UnitNumber . b*c = a
+  . def a/b =&#62; (a/b = c  &#60;=&#62; b*c = a)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers" name="UnitNumber"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers" name="UnitNumber"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers" name="UnitNumber"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="UnitNumbers" name="__Division__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="a"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="b"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="equivalence"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="UnitNumbers" name="__Division__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="a"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="b"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="c"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="Int" name="__Ast__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="b"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="c"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="a"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax10">
+      <use format="Hets">Ax10</use>
+    </presentation>
+    <axiom name="Ax32">
+      <CMP>
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  . x = x*noUnit
+  . def x*u + y*v &#60;=&#62; u=v
+  . x*u + y*u = (x+y)*u
+  . def x*u - y*v &#60;=&#62; u=v
+  . def a-b =&#62; (a-b=c &#60;=&#62; b+c=a)
+  . (x*u) * (y*v) = (x*y) * (u*v)
+  . def a/b &#60;=&#62; exists! c:UnitNumber . b*c = a
+  . def a/b =&#62; (a/b = c  &#60;=&#62; b*c = a)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="UnitNumbers_P" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="UnitNumbers_E1" name="noUnit"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax32">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax42">
+      <CMP>
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  . x = x*noUnit
+  . def x*u + y*v &#60;=&#62; u=v
+  . x*u + y*u = (x+y)*u
+  . def x*u - y*v &#60;=&#62; u=v
+  . def a-b =&#62; (a-b=c &#60;=&#62; b+c=a)
+  . (x*u) * (y*v) = (x*y) * (u*v)
+  . def a/b &#60;=&#62; exists! c:UnitNumber . b*c = a
+  . def a/b =&#62; (a/b = c  &#60;=&#62; b*c = a)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="Int" name="__Plus__"/>
+                  <OMA>
+                    <OMS cd="Int" name="__Ast__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers_P" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers_E1" name="Unit"/>
+                      </OMATP>
+                      <OMV name="u"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="Int" name="__Ast__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers_P" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers_E1" name="Unit"/>
+                      </OMATP>
+                      <OMV name="v"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="UnitNumbers_E1" name="Unit"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="UnitNumbers_E1" name="Unit"/>
+                  </OMATP>
+                  <OMV name="v"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax42">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax52">
+      <CMP>
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  . x = x*noUnit
+  . def x*u + y*v &#60;=&#62; u=v
+  . x*u + y*u = (x+y)*u
+  . def x*u - y*v &#60;=&#62; u=v
+  . def a-b =&#62; (a-b=c &#60;=&#62; b+c=a)
+  . (x*u) * (y*v) = (x*y) * (u*v)
+  . def a/b &#60;=&#62; exists! c:UnitNumber . b*c = a
+  . def a/b =&#62; (a/b = c  &#60;=&#62; b*c = a)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Plus__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="UnitNumbers_E1" name="Unit"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax52">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="Ax61">
+      <CMP>
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  . x = x*noUnit
+  . def x*u + y*v &#60;=&#62; u=v
+  . x*u + y*u = (x+y)*u
+  . def x*u - y*v &#60;=&#62; u=v
+  . def a-b =&#62; (a-b=c &#60;=&#62; b+c=a)
+  . (x*u) * (y*v) = (x*y) * (u*v)
+  . def a/b &#60;=&#62; exists! c:UnitNumber . b*c = a
+  . def a/b =&#62; (a/b = c  &#60;=&#62; b*c = a)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="Int" name="__Minus__"/>
+                  <OMA>
+                    <OMS cd="Int" name="__Ast__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers_P" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers_E1" name="Unit"/>
+                      </OMATP>
+                      <OMV name="u"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="Int" name="__Ast__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers_P" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers_E1" name="Unit"/>
+                      </OMATP>
+                      <OMV name="v"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="UnitNumbers_E1" name="Unit"/>
+                  </OMATP>
+                  <OMV name="u"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="UnitNumbers_E1" name="Unit"/>
+                  </OMATP>
+                  <OMV name="v"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax61">
+      <use format="Hets">Ax6</use>
+    </presentation>
+    <axiom name="Ax71">
+      <CMP>
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  . x = x*noUnit
+  . def x*u + y*v &#60;=&#62; u=v
+  . x*u + y*u = (x+y)*u
+  . def x*u - y*v &#60;=&#62; u=v
+  . def a-b =&#62; (a-b=c &#60;=&#62; b+c=a)
+  . (x*u) * (y*v) = (x*y) * (u*v)
+  . def a/b &#60;=&#62; exists! c:UnitNumber . b*c = a
+  . def a/b =&#62; (a/b = c  &#60;=&#62; b*c = a)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers" name="UnitNumber"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers" name="UnitNumber"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers" name="UnitNumber"/>
+                </OMATP>
+                <OMV name="c"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="Int" name="__Minus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="a"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="b"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="equivalence"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="Int" name="__Minus__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="a"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="b"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="c"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="Int" name="__Plus__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="b"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="c"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="a"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax71">
+      <use format="Hets">Ax7</use>
+    </presentation>
+    <axiom name="Ax81">
+      <CMP>
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  . x = x*noUnit
+  . def x*u + y*v &#60;=&#62; u=v
+  . x*u + y*u = (x+y)*u
+  . def x*u - y*v &#60;=&#62; u=v
+  . def a-b =&#62; (a-b=c &#60;=&#62; b+c=a)
+  . (x*u) * (y*v) = (x*y) * (u*v)
+  . def a/b &#60;=&#62; exists! c:UnitNumber . b*c = a
+  . def a/b =&#62; (a/b = c  &#60;=&#62; b*c = a)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="u"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="v"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="v"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Int" name="__Ast__"/>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="u"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="v"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax81">
+      <use format="Hets">Ax8</use>
+    </presentation>
+    <axiom name="Ax91">
+      <CMP>
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  forall x,y,z:Elem; u,v,w:Unit; a,b,c:UnitNumber 
+  . x = x*noUnit
+  . def x*u + y*v &#60;=&#62; u=v
+  . x*u + y*u = (x+y)*u
+  . def x*u - y*v &#60;=&#62; u=v
+  . def a-b =&#62; (a-b=c &#60;=&#62; b+c=a)
+  . (x*u) * (y*v) = (x*y) * (u*v)
+  . def a/b &#60;=&#62; exists! c:UnitNumber . b*c = a
+  . def a/b =&#62; (a/b = c  &#60;=&#62; b*c = a)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers" name="UnitNumber"/>
+                </OMATP>
+                <OMV name="a"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers" name="UnitNumber"/>
+                </OMATP>
+                <OMV name="b"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="UnitNumbers" name="__Division__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="a"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="b"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMBIND>
+                <OMS cd="casl" name="unique-existential"/>
+                <OMBVAR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="c"/>
+                  </OMATTR>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="Int" name="__Ast__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="b"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="UnitNumbers" name="UnitNumber"/>
+                      </OMATP>
+                      <OMV name="c"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers" name="UnitNumber"/>
+                    </OMATP>
+                    <OMV name="a"/>
+                  </OMATTR>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax91">
+      <use format="Hets">Ax9</use>
+    </presentation>
+    <axiom name="ga_injective___Ast__">
+      <CMP>
+  free type UnitNumber ::= __*__(Elem;Unit)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="X2"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_P" name="Elem1"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="UnitNumbers_E1" name="Unit"/>
+                </OMATP>
+                <OMV name="Y2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Int" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="Y2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_P" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="X2"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="UnitNumbers_E1" name="Unit"/>
+                    </OMATP>
+                    <OMV name="Y2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective___Ast__">
+      <use format="Hets">ga_injective___*__</use>
+    </presentation>
+  </theory>
+  <private for="UnitNumbers">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"UnitNumbers_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="IntUnitNumbers_AE1">
+    <presentation for="IntUnitNumbers_AE1">
+      <use format="Hets">[IntUnitNumbers,AE,1]</use>
+    </presentation>
+    <imports from="Basic/Numbers.omdoc#Int"/>
+    <imports from="#UnitNumbers_PI"/>
+  </theory>
+  <private for="IntUnitNumbers_AE1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"UnitNumbers_PI" Type:"GlobalDef" Origin:"DGSpecInst Int"
+From:"Int" Type:"GlobalDef" Origin:"DGSpecInst Int"
+]]></data>
+  </private>
+  <theory xml:id="IntUnitNumbers_A">
+    <presentation for="IntUnitNumbers_A">
+      <use format="Hets">[IntUnitNumbers,A,0]</use>
+    </presentation>
+    <imports from="#IntUnitNumbers_AE1"/>
+  </theory>
+  <private for="IntUnitNumbers_A">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"UnitNumbers_P" Type:"GlobalThm Open None Open" Origin:"DGSpecInst UnitNumbers"
+From:"IntUnitNumbers_AE1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="IntUnitNumbers">
+    <presentation for="IntUnitNumbers">
+      <use format="Hets">[IntUnitNumbers,,0]</use>
+    </presentation>
+    <imports from="#IntUnitNumbers_A"/>
+    <imports from="#UnitNumbers">
+      <morphism hiding="0 Elem __*__ __+__ e">
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="Elem1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="Int1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="Minus__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="Minus__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N0"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N0"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N2"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N2"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N3"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N3"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N4"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N4"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N5"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N5"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N6"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N6"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N7"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N7"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N8"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N8"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N9"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N9"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__&#60;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__LowerEquals__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__&#60;__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__Lower__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__&#62;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__GreaterEquals__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__&#62;__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__Greater__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Ast__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__Ast__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__AtAt__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__AtAt__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__DivisionQuest__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__DivisionQuest__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Excla"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__Excla"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__MinusExcla__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__MinusExcla__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__MinusQuest__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__MinusQuest__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Minus__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__Minus__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Plus__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__Plus__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Power__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__Power__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__div__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__div__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__mod__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__mod__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__quot__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__quot__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__rem__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="__rem__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="abs"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="abs"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="e1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="N1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="even"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="even"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="max"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="max"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="min"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="min"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="odd"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="odd"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="pre"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="pre"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="sign"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="sign"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="suc"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="IntUnitNumbers" name="suc"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+  </theory>
+  <private for="IntUnitNumbers">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"UnitNumbers" Type:"GlobalDef" Origin:"DGSpecInst UnitNumbers"
+From:"IntUnitNumbers_A" Type:"GlobalDef" Origin:"DGFitSpec"
+]]></data>
+  </private>
+  <theory xml:id="RatUnitNumbers_AE1">
+    <presentation for="RatUnitNumbers_AE1">
+      <use format="Hets">[RatUnitNumbers,AE,1]</use>
+    </presentation>
+    <imports from="Basic/Numbers.omdoc#Rat"/>
+    <imports from="#UnitNumbers_PI"/>
+    <symbol role="sort" name="Rat2"/>
+    <presentation for="Rat2">
+      <use format="Hets">[Rat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Rat2" type="free">
+        <insort for="#Int1"/>
+        <insort for="#Nat"/>
+        <insort for="#Pos"/>
+      </sortdef>
+    </adt>
+    <symbol name="__Division__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Int" name="Int1"/>
+            <OMS cd="Int" name="Pos"/>
+            <OMS cd="RatUnitNumbers_AE1" name="Rat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Division__2">
+      <use format="Hets">[__,/,__]</use>
+    </presentation>
+    <symbol name="__Division__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="RatUnitNumbers_AE1" name="Rat2"/>
+            <OMS cd="RatUnitNumbers_AE1" name="Rat2"/>
+            <OMS cd="RatUnitNumbers_AE1" name="Rat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Division__2">
+      <use format="Hets">[__,/,__]</use>
+    </presentation>
+  </theory>
+  <private for="RatUnitNumbers_AE1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"UnitNumbers_PI" Type:"GlobalDef" Origin:"DGSpecInst Rat"
+From:"Rat" Type:"GlobalDef" Origin:"DGSpecInst Rat"
+]]></data>
+  </private>
+  <theory xml:id="RatUnitNumbers_A">
+    <presentation for="RatUnitNumbers_A">
+      <use format="Hets">[RatUnitNumbers,A,0]</use>
+    </presentation>
+    <imports from="#RatUnitNumbers_AE1"/>
+  </theory>
+  <private for="RatUnitNumbers_A">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"UnitNumbers_P" Type:"GlobalThm Open None Open" Origin:"DGSpecInst UnitNumbers"
+From:"RatUnitNumbers_AE1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="RatUnitNumbers">
+    <presentation for="RatUnitNumbers">
+      <use format="Hets">[RatUnitNumbers,,0]</use>
+    </presentation>
+    <imports from="#RatUnitNumbers_A"/>
+    <imports from="#UnitNumbers">
+      <morphism hiding="0 Elem __*__ __+__ e">
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="Elem1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="Rat2"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="Minus__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="Minus__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N0"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N0"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N2"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N2"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N3"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N3"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N4"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N4"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N5"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N5"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N6"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N6"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N7"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N7"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N8"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N8"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="N9"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N9"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__&#60;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__LowerEquals__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__&#60;__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__Lower__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__&#62;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__GreaterEquals__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__&#62;__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__Greater__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Ast__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__Ast__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__AtAt__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__AtAt__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__DivisionQuest__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__DivisionQuest__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Excla"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__Excla"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__MinusExcla__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__MinusExcla__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__MinusQuest__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__MinusQuest__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Minus__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__Minus__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Plus__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__Plus__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__Power__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__Power__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__div__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__div__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__mod__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__mod__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__quot__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__quot__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="__rem__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="__rem__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="abs"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="abs"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="e1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="N1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="even"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="even"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="max"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="max"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="min"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="min"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="odd"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="odd"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="pre"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="pre"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="sign"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="sign"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="UnitNumbers" name="suc"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RatUnitNumbers" name="suc"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <symbol role="sort" name="UnitNumber1"/>
+    <presentation for="UnitNumber1">
+      <use format="Hets">[UnitNumber]</use>
+    </presentation>
+    <symbol role="sort" name="Unit2"/>
+    <presentation for="Unit2">
+      <use format="Hets">[Unit]</use>
+    </presentation>
+    <symbol role="sort" name="BUnit2"/>
+    <presentation for="BUnit2">
+      <use format="Hets">[BUnit]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Unit2" type="free">
+        <insort for="#BUnit2"/>
+      </sortdef>
+    </adt>
+    <adt>
+      <sortdef name="UnitNumber1" type="free">
+        <insort for="#Int1"/>
+        <insort for="#Nat"/>
+        <insort for="#Pos"/>
+        <insort for="#Rat2"/>
+      </sortdef>
+    </adt>
+    <symbol name="compatible2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="RatUnitNumbers" name="Unit2"/>
+            <OMS cd="RatUnitNumbers" name="Unit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="compatible2">
+      <use format="Hets">[compatible]</use>
+    </presentation>
+    <symbol name="Celsius2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="RatUnitNumbers" name="BUnit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Celsius2">
+      <use format="Hets">[Celsius]</use>
+    </presentation>
+    <symbol name="Fahrenheit2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="RatUnitNumbers" name="BUnit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Fahrenheit2">
+      <use format="Hets">[Fahrenheit]</use>
+    </presentation>
+    <symbol name="Newton2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="RatUnitNumbers" name="BUnit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Newton2">
+      <use format="Hets">[Newton]</use>
+    </presentation>
+    <symbol name="any2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="RatUnitNumbers" name="Unit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="any2">
+      <use format="Hets">[any]</use>
+    </presentation>
+    <symbol name="kg2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="RatUnitNumbers" name="BUnit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="kg2">
+      <use format="Hets">[kg]</use>
+    </presentation>
+    <symbol name="meter2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="RatUnitNumbers" name="BUnit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="meter2">
+      <use format="Hets">[meter]</use>
+    </presentation>
+    <symbol name="noUnit2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="RatUnitNumbers" name="Unit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="noUnit2">
+      <use format="Hets">[noUnit]</use>
+    </presentation>
+    <symbol name="second2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="RatUnitNumbers" name="BUnit2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="second2">
+      <use format="Hets">[second]</use>
+    </presentation>
+  </theory>
+  <private for="RatUnitNumbers">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"RatUnitNumbers_A" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"UnitNumbers" Type:"GlobalDef" Origin:"DGSpecInst UnitNumbers"
+]]></data>
+  </private>
+</omdoc>

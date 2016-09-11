@@ -1,0 +1,4887 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[    128144,       4084]*)
+(*NotebookOutlinePosition[    130839,       4182]*)
+(*  CellTagsIndexPosition[    130489,       4165]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["\[Copyright] 1997-2002 K. Sutner ", "SmallText"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Cellular Automata",
+  FontFamily->"Charter"]], "Title",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  CellTags->"c:1"],
+
+Cell[CellGroupData[{
+
+Cell["Linear Cellular Automata", "Section",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  CellTags->"c:2"],
+
+Cell[CellGroupData[{
+
+Cell["Motivation", "Subsection",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  CellTags->"c:3"],
+
+Cell[CellGroupData[{
+
+Cell["Symbolic Dynamics", "Subsubsection",
+  CellTags->"c:4"],
+
+Cell[TextData[{
+  "Dynamical system  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(T \[Colon] X \[Rule] X\),
+          RowBox[ {"OMFunction", "[", "T", ",", "X", ",", "X", "]"}]], 
+        TraditionalForm]]]
+}], "Definition"],
+
+Cell[TextData[{
+  "Consider orbits of points  ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\  \[Element] \ X\)]],
+  ":    ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((x\_\(\(\ \)\(i\)\))\)\_\(i\  \[Element] \ \
+\[DoubleStruckCapitalZ]\)\)]],
+  "   such that   ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_\(i + 1\) = \ T(x\_i)\)]]
+}], "Text"],
+
+Cell[TextData[{
+  "Partition ",
+  Cell[BoxData[
+      \(TraditionalForm\`X\)]],
+  " into finitely many regions   ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\({\ X\_0, \[Ellipsis], 
+        X\_\(k - 1\)}\)\)\)]]
+}], "Text"],
+
+Cell[TextData[{
+  "Interpret orbit as biinfinite word over some alphabet  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalSigma]\  = \ {0, 1, \[Ellipsis], 
+          k - 1}\)]],
+  ":\n\treplace  ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_i\)]],
+  " by  ",
+  Cell[BoxData[
+      \(TraditionalForm\`s\)]],
+  "  such that  ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_i\  \[Element] \ X\_s\)]],
+  "."
+}], "Text"],
+
+Cell[TextData[{
+  "Configuration space:   ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalSigma]\^\[Infinity]\)]],
+  ":  all biinfinite words over ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalSigma]\)]],
+  "."
+}], "Definition"],
+
+Cell[TextData[{
+  "Note that the orbit of  ",
+  Cell[BoxData[
+      \(TraditionalForm\`T(x)\)]],
+  "  is the ",
+  StyleBox["shift",
+    FontColor->RGBColor[0, 0, 1]],
+  " of the orbit of ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  ":  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Sigma](\ \((x\_i)\)\ )\  = \ x\_\(i + 1\)\)]]
+}], "Text"],
+
+Cell[TextData[{
+  "Subshift  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\[LeftAngleBracket]\ 
+        S, \ \[Sigma]\ \[RightAngleBracket]\)\(\ \)\)\)]],
+  ":    \t\t",
+  Cell[BoxData[
+      \(TraditionalForm\`S\  \[SubsetEqual] \ \
+\[CapitalSigma]\^\[Infinity]\)]],
+  " closed shift-invariant subspace."
+}], "Definition"],
+
+Cell[TextData[{
+  "Sofic System:    \t\t\tfinite subwords of ",
+  Cell[BoxData[
+      \(TraditionalForm\`S\)]],
+  "  ",
+  StyleBox["regular.",
+    FontColor->RGBColor[0, 0, 1]]
+}], "Definition"],
+
+Cell["\<\
+Subshift of finite type:  \t\tthere are only finitely many excluded \
+blocks. \
+\>", "Definition"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Morphisms", "Subsubsection",
+  CellTags->"c:5"],
+
+Cell[TextData[{
+  "Morphisms for subshifts: continuous shift-invariant maps.\nA linear \
+cellular automaton (or LCA) consists of a ",
+  StyleBox["local  map",
+    FontColor->RGBColor[0, 0, 1]],
+  "    ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Rho] \[Colon] \[CapitalSigma]\^w \[Rule] \
+\[CapitalSigma]\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  "  where  ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\  > \ 0\)]],
+  "  is the width of the local map."
+}], "Text"],
+
+Cell[TextData[{
+  "\[Rho]  extends naturally to ",
+  StyleBox["global map",
+    FontColor->RGBColor[0, 0, 1]],
+  "  from   ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[CapitalSigma]\^\[Infinity] \[Rule] \
+\[CapitalSigma]\^\[Infinity]\),
+          
+          RowBox[ {"OMType", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  " as follows:\n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\((\[Rho](X))\)\_i\  := \ \[Rho](\(X\_i\) \(X\_\(i + 
+                  1\)\) \[Ellipsis]\ X\_\(i + w - 1\))\)]]
+}], "Text"],
+
+Cell[TextData[{
+  "Topology/dynamical systems:  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalSigma]\^\(\(\ \)\(\[Infinity]\)\)\)]],
+  "  totally disconnected compact Hausdorff space."
+}], "Text"],
+
+Cell[TextData[{
+  StyleBox["Theorem",
+    FontWeight->"Bold"],
+  ":  Hedlund\nThese are precisely the continuous shift-invariant maps on  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalSigma]\^\[Infinity]\)]],
+  "."
+}], "Theorem"],
+
+Cell[TextData[{
+  StyleBox["Theorem",
+    FontWeight->"Bold"],
+  ":  Weiss\nSofic systems are precisely the images of subshifts of finite \
+type under the global maps of cellular automata. "
+}], "Theorem"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dimension Greater Than 1", "Subsubsection",
+  CellTags->"c:6"],
+
+Cell[TextData[{
+  "Naturally extends to higher-dimensional case \n\t ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Rho] \[Colon] \[CapitalSigma]\^\(\
+\[DoubleStruckCapitalZ]\^\(\(\[VeryThinSpace]\[ThinSpace]\)\(d\)\)\) \[Rule] \
+\[CapitalSigma]\^\(\[DoubleStruckCapitalZ]\^\(\(\[VeryThinSpace]\[ThinSpace]\)\
+\(d\)\)\)\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  "\nThe 1-dimensional case is special, though, since automata theory can be \
+brought to bear on some of the questions."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Linear Cellular Automata", "Subsection",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  CellTags->"c:7"],
+
+Cell[CellGroupData[{
+
+Cell["Local Maps", "Subsubsection",
+  CellTags->"c:8"],
+
+Cell[TextData[{
+  "A ",
+  StyleBox["linear cellular automaton",
+    FontColor->RGBColor[0, 0, 1]],
+  " (or simply CA) consists of \n\t- a finite alphabet ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  ", the ",
+  StyleBox["alphabet",
+    FontColor->RGBColor[0, 0, 1]],
+  " of the CA,\n\t- a positive integer ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  ", the ",
+  StyleBox["width",
+    FontColor->RGBColor[0, 0, 1]],
+  " of the CA, \n\t- a map  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Rho] \[Colon] K\^w \[Rule] K\),
+          RowBox[ {"OMFunction", "[", "\[Rho]", ",", 
+            SuperscriptBox[ "K", "w"], ",", "K", "]"}]], TraditionalForm]]],
+  ", the ",
+  StyleBox["local map",
+    FontColor->RGBColor[0, 0, 1]],
+  " of the CA.\nAs is customary, we will often use alphabets of the  form \n\t\
+",
+  Cell[BoxData[
+      \(TraditionalForm\`K\_k\  = \ {0, 1, \[Ellipsis], k - 1}\)]],
+  ".\nNote that these alphabets are abbreviated as ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(-k\)\)]],
+  " in the automata package. There is a standard coding for linear cellular \
+automata of a given width ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " over alphabet ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  ":  Let  ",
+  Cell[BoxData[
+      \(TraditionalForm\`0 \[LessEqual] c < k\^w\)]],
+  ", enumerate the words of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " over ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\)]],
+  " in natural order and assign the ",
+  Cell[BoxData[
+      \(TraditionalForm\`i\)]],
+  "-th digit of ",
+  Cell[BoxData[
+      \(TraditionalForm\`c\)]],
+  " in base ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\)]],
+  " (padded on the left to exactly ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\^w\)]],
+  " digits) to the ",
+  Cell[BoxData[
+      \(TraditionalForm\`i\)]],
+  "-th word. \nTo save space we will usually deal with coded CAs. If need be, \
+the local map of a coded CA can be translated into the more explicit labeled \
+form using the command  ",
+  StyleBox["ToLabelCA", "SmallText"],
+  ". Command ",
+  StyleBox["ToRuleCA", "SmallText"],
+  " performs the opposite translation."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C150 = CA[150, 3, \(-2\)]\), "\n", 
+    \(ToLabelCA[C150]\), "\n", 
+    \(PrintCA[C150]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "CAs can also be generated from ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " functions that represent the local map. These functions must be defined \
+on ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " integer arguments (in the range ",
+  Cell[BoxData[
+      \(TraditionalForm\`0\  \[LessEqual] \ x\  < \ k\)]],
+  "). Here is an example:"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Clear[loc]\), "\n", 
+    \(loc[x_, y_, z_] := Mod[x + y + z, 2]\), "\n", 
+    \(FunctionToCA[loc, 3, \(-2\)]\), "\n", 
+    \(loc[x_, y_, z_] := Mod[x + z, 2]\), "\n", 
+    \(FunctionToCA[loc, 3, \(-2\)]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Thus, rule 150 corresponds to adding the states of all three cells modulo \
+2, whereas rule 90 corresponds to adding only the states of the two \
+neighboring states.\nModular arithmetic in general is a good source of \
+examples for cellular automata.  If the corresponding local function can be \
+described in terms of a polynomial, one can generate the CA very conveniently \
+using command ",
+  StyleBox["PolynomialToCA", "SmallText"],
+  "."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(PolynomialToCA[x1 + x2 + x3, 3, 2]\), "\n", 
+    \(PolynomialToCA[x1 + x4, 4]\), "\n", 
+    \(PolynomialToCA[z1\ z2 + z3, 3, 2, "\<z\>"]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Lastly, there is a command to convert a Boolean polynomial into a \
+binary CA. Writing a Boolean function as a polynomial is sometimes more \
+convenient as with logical operators. Of course, we use binary functions \
+rather than Boolean ones and identify 0  with False and 1 with True.  Boolean \
+variables are x1, x2, ... and their negation can be expressed as xx1, xx2, \
+....  \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(BFunctionToCA[x1 + xx2\ x3, 3]\), "\n", 
+    \(PrintCA[%]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(BFunctionToCA[x1\ xx3 + xx1\ x3, 3]\), "\n", 
+    \(PrintCA[%]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "If it is necessary to convert the expression representing a CA, and thus \
+in essence the local map of the automaton, into a ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " function we can use the command ",
+  StyleBox["LocalMapCA", "SmallText"],
+  " :"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(LocalMapCA[rho, C150]\), "\n", 
+    \(rho /@ Words[3, \(-2\)]\), "\n", 
+    \(Information["\<rho\>", LongForm \[Rule] True]\)}], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Global Maps", "Subsubsection"],
+
+Cell[TextData[{
+  "Let ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^\[Infinity]\)]],
+  " be the set of all biinfinite sequences of symbols from ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  ". The elements of ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^\[Infinity]\)]],
+  " are called configurations over ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  ". Linear cellular automata are traditionally considered as endomorphisms \
+of the space ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^\[Infinity]\)]],
+  " of all configurations. More precisely, ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^\[Infinity]\)]],
+  " is a totally disconnected compact Hausdorff space and the local map gives \
+rise to a global map   ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Rho] \[Colon] 
+            K\^\[Infinity] \[Rule] K\^\[Infinity]\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  " that is easily seen to be a continuous map on this space. The \
+configuration ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho](X)\)]],
+  " is generated by dividing ",
+  Cell[BoxData[
+      \(TraditionalForm\`X\)]],
+  " into overlapping blocks of width w and applying the local map to all \
+these blocks in parallel. Clearly, the global map commutes with the shift. In \
+fact, all continuous maps that commute with the shift arise in this way. \n",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^\[Infinity]\)]],
+  " together with the shift forms a primitive dynamical system, the full \
+shift. It is often more interesting to consider a subshift, i.e., a closed \
+subset  ",
+  Cell[BoxData[
+      \(TraditionalForm\`C\  \[SubsetEqual] K\^\[Infinity]\)]],
+  " that is invariant under the shift. The simplest type of such subshifts \
+are topological Markov shifts (TMS) and are described by a list of forbidden \
+subwords of length 2. If one excludes a finite number of words of arbitrary \
+length one obtains a subshift of finite type (SFT). Unlike TMSs, the latter \
+class of shifts is closed under homeomorphisms. It is not closed under global \
+maps as described above (or rather their obvious generalizations to \
+subshifts). The shifts that can occur as the range of a global map are known \
+as sofic systems (SoS). \nThere is a slight ambiguity in the construction of \
+the global map from the local map: the blocks of width ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " obtained from a biinfinite sequence are only unique up to a shift. We \
+will use the convention that the ",
+  Cell[BoxData[
+      \(TraditionalForm\`i\)]],
+  "-th block is centered at symbol ",
+  Cell[BoxData[
+      \(TraditionalForm\`i\)]],
+  " (for even ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " we choose the left center symbol). \nAlternatively, we may consider ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\)]],
+  " as a map on finite words over ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  ". Note that ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(\[LeftBracketingBar]\[Rho](
+            x)\[RightBracketingBar]\  = \ \[LeftBracketingBar]x\
+\[RightBracketingBar]\  - \ w\)\)\)]],
+  " where ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " is the width of the CA (strictly speaking, this map is defined only for \
+",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(\[LeftBracketingBar]x\[RightBracketingBar] \
+\[GreaterEqual] w\)\)\)]],
+  "; for completeness sake define ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho](x)\  = \ \[Epsilon]\)]],
+  " for shorter words ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  ". We will refer to this map as the word map of the CA. \n\nThe command ",
+  StyleBox["GlobalMapCA ", "SmallText"],
+  " generates the word map of a CA. Unlike with the executable function \
+generated by ",
+  StyleBox["LocalMapCA", "SmallText"],
+  ", the function produced by the global map command accepts as input words \
+of arbitrary length. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(GlobalMapCA[rho, C150, Boundary \[Rule] None, 
+      WordMap \[Rule] True]\), "\n", 
+    \(ColumnForm[NestList[rho, "\<00000100000\>", 6]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+As the example shows, the word map is shrinking and can be iterated \
+only a bounded number of times. In order to get a more useful analogue to the \
+infinitary global map of a CA we can use one of two standard \
+conventions:\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "\[EmptyCircle]  Peridic (cyclic) boundary conditions\nOne may think of the \
+word as a cyclic string so that the last symbol is adjacent to the first. The \
+global map can be defined for such cyclic strings in exactly the same way as \
+for biinfinite words (in fact, cyclic words correspond precisely to periodic \
+biinfinite words). \n\[EmptyCircle]  Fixed boundary conditions\n\
+Alternatively, we can attach a prefix and suffix of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((w - 1)\)/2\)]],
+  " to the string, usually ",
+  Cell[BoxData[
+      \(TraditionalForm\`0\^\(\((w - 1)\)/2\)\)]],
+  ", and apply the ordinary map to this augmented string. Again, length will \
+be preserved and we can generate orbits of arbitrary length. Note that this \
+approach does not have any immediate counterpart in the realm of biinfinite \
+words. \n"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(GlobalMapCA[rhop, C150, Boundary \[Rule] Cyclic, 
+      WordMap \[Rule] True]\), "\n", 
+    \(GlobalMapCA[rhof, C150, Boundary \[Rule] Fixed, 
+      WordMap \[Rule] True]\), "\n", 
+    \(With[{L = Words[3, \(-2\)]}, 
+      TableForm[{L, rhop /@ L, rhof /@ L}]]\)}], "Input"],
+
+Cell[BoxData[
+    \(ColumnForm[NestList[rhof, "\<000000010000000\>", 6]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Note the use of the option WordMap->True everywhere.  Without, the global \
+map expects lists as inputs rather than words, a format that is often more \
+convenient since ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " provide numerous tools to manipulate lists. "
+}], "Text"],
+
+Cell[BoxData[{
+    \(GlobalMapCA[rho, C150]; \), "\n", 
+    \(X = SeedConfiguration[{1}, 11]; \), "\n", 
+    \(orb = NestList[rho, X, 10]; \), "\n", 
+    \(MatrixForm[orb]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+For example, it is now easy to perform a frequency analysis on this \
+orbit:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(Frequencies[Flatten[orb]]\)], "Input"],
+
+Cell[TextData[{
+  "Clearly, orbits can be nicely represented graphically. \nFor example, for \
+C150 we obtain the following well-known pattern. The initial configuration is \
+a one-point seed of the form ",
+  Cell[BoxData[
+      \(TraditionalForm\`00  \[Ellipsis]010\[Ellipsis]00\)]],
+  "  and we generate the first 64 steps in the orbit."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(EvolutionCA[C150, 64, GridLines \[Rule] False]; \)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "The orbit (or rather, an initial segment thereof) of a configuration can \
+be generated by the command ",
+  StyleBox["OrbitCA", "SmallText"],
+  ", which returns a list of configurations. "
+}], "Text"],
+
+Cell[BoxData[
+    \(OrbitCA[C150, {0, 0, 0, 1, 0, 0, 0}, 30]\)], "Input"],
+
+Cell[TextData[{
+  " ",
+  StyleBox["OrbitCA", "SmallText"],
+  " accepts optional arguments that control periodic versus fixed boundary \
+conditions. "
+}], "Text"],
+
+Cell[BoxData[{
+    \(OrbitCA[C150, {1, 0, 0, 0}, 5]\), "\n", 
+    \(OrbitCA[C150, {1, 0, 0, 0}, 5, Boundary \[Rule] Fixed]\)}], "Input"],
+
+Cell[TextData[{
+  "To generate seed configurations of the form  ",
+  Cell[BoxData[
+      \(TraditionalForm\`00  \[Ellipsis]0\ L\ 0  \[Ellipsis]00\)]],
+  "  for some list ",
+  Cell[BoxData[
+      \(TraditionalForm\`L\)]],
+  " and a given length we can use the command SeedConfiguration."
+}], "Text"],
+
+Cell[BoxData[{
+    \(SeedConfiguration[{1}, 20]\), "\n", 
+    \(SeedConfiguration[{1, 1, 1, 1, 1}, 20]\)}], "Input"],
+
+Cell[TextData[{
+  "We can pipe the output of ",
+  StyleBox["OrbitCA", "SmallText"],
+  " to ",
+  StyleBox["PlotMatrix", "SmallText"],
+  " to obtain the usual pictures. "
+}], "Text"],
+
+Cell[BoxData[{
+    \(orb = 
+      OrbitCA[C150, SeedConfiguration[{1, 1, 1, 1}, 20], 20]; \), "\n", 
+    \(PlotMatrix[orb]; \), "\n", 
+    \(PlotMatrix[orb, GridLines \[Rule] False]; \)}], "Input"],
+
+Cell[TextData[{
+  "Alternatively, we can use the command ",
+  StyleBox["EvolutionCA", "SmallText"],
+  " which combines an orbit calculation with a plotting routine. "
+}], "Text"],
+
+Cell[BoxData[{
+    \(Unprotect[X]; \), "\n", 
+    \(X = {1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1}; \), "\n", 
+    \(gr1 = 
+      EvolutionCA[C150, X, 40, Boundary \[Rule] Fixed, 
+        DisplayFunction \[Rule] Identity]; \), "\n", 
+    \(gr2 = 
+      EvolutionCA[C150, X, 40, Boundary \[Rule] Cyclic, 
+        DisplayFunction \[Rule] Identity]; \), "\n", 
+    \(ShowArray[{gr1, gr2}]; \)}], "Input"],
+
+Cell[BoxData[{
+    \(X = 
+      SeedConfiguration[{1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1}, 
+        40]; \), "\n", 
+    \(EvolutionCA[CA[110], X, 25]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Here are the orbits of a one-point seed pattern, traced for 25 \
+steps, for all (2,2)-CAs.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(w = SeedConfiguration[{1}, 31]; \), "\n", 
+    \(gr = \((EvolutionCA[CA[#1, 2, \(-2\)], w, 25, GridLines \[Rule] False, 
+              DisplayFunction \[Rule] Identity] &)\) /@ 
+        Range[0, 15]; \), "\n", 
+    \(ShowArray[gr]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Rules based on addition modulo ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\)]],
+  " are easily generated using ",
+  StyleBox["FunctionToCA", "SmallText"],
+  "."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Unprotect[C]; \), "\[IndentingNewLine]", 
+    \(C = FunctionToCA[Mod[\(+##1\), 4] &, 3, \(-4\)]\), "\n", 
+    \(w = SeedConfiguration[Table[1, {10}], 50]; \), "\n", 
+    \(EvolutionCA[C, w, 50]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(EvolutionCA[C, w, 100, Cyclic \[Rule] False, 
+      GridLines \[Rule] False]; \)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Here is Wolfram's example of a exceedingly simple rule that \
+nonetheless appears to produce random patterns starting from a one-point \
+seed. It is built from the Boolean operations 'or' and 'exclusive or':\
+\>", \
+"Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Clear[loc]; \), "\n", 
+    \(loc[x_, y_, z_] := Mod[x + Max[y, z], 2]\), "\n", 
+    \(C = FunctionToCA[loc, 3, \(-2\)]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(EvolutionCA[C, 60, GridLines \[Rule] False]; \)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+No method is known to compute, say, the bit pattern down the middle \
+column other than brute force simulation. Even for fairly small grids, rule \
+30 produces long transients and cycles. Here is a glimpse at steps 800 - 1000 \
+on a grid of size 200. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(orb = OrbitCA[C, SeedConfiguration[{1}, 200], 1000]; \), "\n", 
+    \(PlotMatrix[Drop[orb, 800], GridLines \[Rule] False]; \)}], "Input"],
+
+Cell[BoxData[
+    \(Length[Union[orb]]\)], "Input"],
+
+Cell[TextData[{
+  "The left and right shift are generated by the commands ",
+  StyleBox["LeftShiftCA", "SmallText"],
+  " and ",
+  StyleBox["RightShiftCA", "SmallText"],
+  ", respectively."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(L = LeftShiftCA[\(-2\)]\), "\n", 
+    \(R = RightShiftCA[\(-2\)]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(EvolutionCA[L, Table[Random[Integer, {0, 1}], {20}], 20]; \)], "Input",
+  AspectRatioFixed->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Composing CAs", "Subsection"],
+
+Cell[TextData[{
+  "Given two CAs  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Rho] \[Colon] 
+            K\^\[Infinity] \[Rule] K\^\[Infinity]\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  " and   ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Tau] \[Colon] 
+            K\^\[Infinity] \[Rule] K\^\[Infinity]\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  "  over the same alphabet ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  " one can compose the maps to obtain a new CA  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Rho]  \[Tau] \[Colon] \(K\^\[Infinity] \[Rule] 
+              K\^\[Infinity]\)\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  ". The width of the composite CA is  ",
+  Cell[BoxData[
+      \(TraditionalForm\`w(\[Rho])\  + \ w(\[Tau])\  - \ 1\)]],
+  ". Command ",
+  StyleBox["ComposeCA", "SmallText"],
+  " generates the appropriate CA. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C150 = CA[150, 3, \(-2\)]; \), "\n", 
+    \(C90 = CA[90, 3, \(-2\)]; \), "\n", 
+    \(CC = ComposeCA[C150, C90, External \[Rule] False]\), "\n", 
+    \(PrintCA[CC]\), "\n", 
+    \(EvolutionCA[CC, 40]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Note that there is an exponential increase in the size of the rule table, \
+so one has to use composition with caution.\nCommand ",
+  StyleBox["IterateCA", "SmallText"],
+  " computes compositions of a CA with itself. Thus, starting at a CA ca[1] \
+we can generate a sequence ca[t] of CAs of increasing width. One step in the \
+evolution of a word on ca[t] coresponds to t steps in the evolution of the \
+base automaton ca[1]. The width of  ca[t]  is  ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\  + \ 2 \((t - 1)\)\)]],
+  "  where ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " is the width of ca[1]. Hence the size of  ca[t]  is  ",
+  Cell[BoxData[
+      \(TraditionalForm\`2\^\(w + 2 \((t - 1)\)\)\)]],
+  "  (assuming a binary alphabet) and gets out of hand rather quickly. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(ca[t_] := IterateCA[C150, t]\), "\n", 
+    \(EvolutionCA[ca[3], 40]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Here is the result of composition with the left and right \
+shift.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(L = LeftShiftCA[\(-2\)]\), "\n", 
+    \(R = RightShiftCA[\(-2\)]\), "\n", 
+    \(C = CA[51, 3, \(-2\)]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(EvolutionCA[C, 20]; \), "\n", 
+    \(EvolutionCA[ComposeCA[L, C], 20]; \), "\n", 
+    \(EvolutionCA[ComposeCA[R, C], 20]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Cellular automata (or rather, their global maps) commute with the \
+shift.\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(ComposeCA[C, L] == ComposeCA[L, C]\), "\n", 
+    \(ComposeCA[C, R] == ComposeCA[R, C]\)}], "Input"],
+
+Cell["\<\
+Applying a shift, or an iterated shift, is often helpful to get \
+better of visual representations of orbits. Here is an example of a rule of \
+width 5 that boils down to a \"Pascal's triangle mod 2\" after a shift. \
+\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(C = CA[1717986918, 5, \(-2\)]\), "\n", 
+    \(CR = ComposeCA[C, R]\)}], "Input"],
+
+Cell[BoxData[{
+    \(EvolutionCA[C, 40]; \), "\n", 
+    \(EvolutionCA[CR, 40]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+In this example, eliminating useless variables is actually a better \
+line of attack.\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(CS = ShrinkCA[C]\), "\n", 
+    \(EvolutionCA[CS, 50, GridLines \[Rule] False]; \)}], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Elementary CAs and Symmetries", "Subsection"],
+
+Cell[TextData[{
+  "Binary CAs of width 3 are often referred to as elementary CAs. There are \
+only 256 such automata, but they still display a wide variety of behaviors. \
+Hence, they are ideally suited as a standard test set for algorithms. \
+Actually, it is sometimes possible to limit one's attention to even fewer \
+machines since they are already equivalent in some sense to the collection of \
+all elementary CAs. An example are properties of the global maps of a CA such \
+as injectivity and surjectivity. It is clear that these properties are \
+invariant under permutations of the underlying alphabet. Thus, to speed up \
+searches, we can eliminate CAs that can be obtained by such permutiations. \n\
+As another example, let us determine how many elementary CAs are relevant to \
+the study of their associated regular languages (see the next section). We \
+can reduce the number of machines to be considered by interchanging 0 and 1 \
+in the domain and/or range of the local map. Hence, we can associate any rule \
+\[Rho] with four rules ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\  = \ \[Rho]\_0\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\_1\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\_2\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\_3\)]],
+  " (which are not necessarily all distinct). Note that this is not the same \
+as topological conjugacy. \nFor example, for rule number 89 we get the four \
+following labelings: "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(lab0 = IntegerDigits[89, 2, 8]; \), "\n", 
+    \(lab1 = Reverse[lab0]; \), "\n", 
+    \(lab2 = 1 - lab0; \), "\n", 
+    \(lab3 = Reverse[lab2]; \), "\n", 
+    \(ColumnForm[{lab0, lab1, lab2, lab3}]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "In general, these variants are obtained by defining local maps\n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[Rho]\_0\)(X) = \[Rho](X)\)]],
+  "\n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[Rho]\_1\)(X) = \[Rho](X\^c)\)]],
+  "\n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[Rho]\_2\)(X) = \(\[Rho](X)\)\^c\)]],
+  "\n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[Rho]\_3\)(X) = \(\[Rho](X\^c)\)\^c\)]],
+  "\nwhere ",
+  Cell[BoxData[
+      \(TraditionalForm\`Z\^c\)]],
+  " denotes the result of exchanging 0's and 1's.  We call a rule \[Rho] is \
+essential  iff  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\  \[LessEqual] \ \[Rho]\_\(\(\ \)\(i\)\)\)]],
+  "  for ",
+  Cell[BoxData[
+      \(TraditionalForm\`i\  \[Element] \ \((3)\)\)]],
+  "."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "By Burnside's lemma, there are  ",
+  Cell[BoxData[
+      \(TraditionalForm\`2\^\(n - 2\) + 2\^\(n/2 - 1\)\)]],
+  "  essential binary rules of width ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " where ",
+  Cell[BoxData[
+      \(TraditionalForm\`n = 2\^w\)]],
+  ". In particular, there are 72 essential binary rules of width 3:"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(L1 = \((Prepend[#1, 0] &)\) /@ KPermutationsR[{0, 1}, 7]; \), "\n", 
+    \(L2 = \((Union[{#1, Reverse[#1], 1 - #1, 1 - Reverse[#1]}] &)\) /@ 
+        L1; \), "\n", 
+    \(essentialrules = \((FromDigits[#1, 2] &)\) /@ 
+        Union[First /@ L2]; \), "\n", 
+    \(essentialrules\), "\n", 
+    \(Length[essentialrules]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Quiescent rules, i.e., those that map 000 to 0, have even code \
+numbers.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(quiesc = Select[essentialrules, EvenQ]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Here are pictures of the evolution of a one point seed pattern for \
+some essential quiescent binary rules of width 3. Note the size of the \
+graphics object. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(gr = \((EvolutionCA[CA[#1, 3, 2], 40, GridLines \[Rule] False, 
+              DisplayFunction \[Rule] Identity] &)\) /@ quiesc; \)], "Input"],
+
+Cell[BoxData[
+    \(ShowArray[
+      gr\[LeftDoubleBracket]{9, 11, 13, 
+          15}\[RightDoubleBracket]]; \)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ShowArray[Take[gr, \(-16\)]]; \)], "Input",
+  AspectRatioFixed->True]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cellular Automata and Regular Languages", "Section",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  CellTags->"c:12"],
+
+Cell[CellGroupData[{
+
+Cell[" de Bruijn Graphs and Fischer Automata", "Subsection",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  CellTags->"c:13"],
+
+Cell[CellGroupData[{
+
+Cell["Fischer Automata", "Subsubsection"],
+
+Cell[TextData[{
+  "As mentioned in the last section, the range of the global map ",
+  StyleBox["\[Rho]",
+    FontFamily->"Symbol"],
+  " is a regular language ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptCapitalL](\[Rho])\)]],
+  " and one can use methods from automata theory to analyze these languages \
+and their corresponding CAs. First, we need to convert a CA into a FSM that \
+accepts ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptCapitalL](\[Rho])\)]],
+  ". There is an elegant construction of a FSM for a CA based on labeled de \
+Bruijn graphs. (See also the section on local universal machines in the \
+Guide.)  Suppose  ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(r, K)\)]],
+  "  is  the de Bruijn graph on vertex set ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^r\)]],
+  ". Thus the edges are of the form \n\t\t",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((a\[VeryThinSpace]x, x\[VeryThinSpace]b)\),
+          RowBox[ {"OMPair", "[", "ax", ",", "xb", "]"}]], 
+        TraditionalForm]]],
+  "\t\nwhere ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\)]],
+  " is a letter and ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  "  a sequence of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`r - 1\)]],
+  ".  Now suppose ",
+  Cell[BoxData[
+      \(TraditionalForm\`C\)]],
+  " is a CA over ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  " with width ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\  = \ r + 1\)]],
+  ". Then the local map  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Rho] \[Colon] K\^\(r + 1\) \[Rule] K\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  "   can be used to label the edges of the de Bruijn graph:  edge   ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((a\[VeryThinSpace]x, x\[VeryThinSpace]b)\),
+          RowBox[ {"OMPair", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  "   is labeled by  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho](a\[VeryThinSpace]x\[VeryThinSpace]b)\)]],
+  ". Thus we obtain a semiautomaton whose transition diagram is the labeled \
+de Bruijn graph. We will refer to this machine as ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho], r, K)\)]],
+  " or simply ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  ". \nA Fischer automaton is a semiautomaton whose transition diagram is \
+strongly connected. De Bruijn graphs are strongly connected (and even \
+Hamiltonian), hence ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  " is a Fischer automaton. \[ScriptCapitalL](\[Rho]) is the acceptance \
+language of this automaton and the configurations in the range of the global \
+map  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\)]],
+  StyleBox["  ",
+    FontFamily->"Symbol"],
+  "correspond to (the labels of) biinfinite paths in ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  StyleBox[".\n\n",
+    FontFamily->"Symbol"],
+  "Here is a plain de Bruin graph: ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(2, 3)\)]],
+  ". Since the graph is ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((3, 3)\),
+          RowBox[ {"OMPair", "[", "3", ",", "3", "]"}]], TraditionalForm]]],
+  "-regular the number of paths of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`r \[GreaterEqual] 2\)]],
+  " from any vertex ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  " to any other vertex ",
+  Cell[BoxData[
+      \(TraditionalForm\`q\)]],
+  "  is  ",
+  Cell[BoxData[
+      \(TraditionalForm\`3\^\(r - 2\)\)]],
+  StyleBox[". ",
+    FontVariations->{"CompatibilityType"->"Superscript"}],
+  "The spectral radius of ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(2, 3)\)]],
+  " is 3. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(g = DeBruijnGraph[2, \(-3\), Normalize \[Rule] 1]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(mat = Edges[ToAdjMatrix[g]]; \), "\n", 
+    \(MatrixForm[mat]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(MatrixForm[MatrixPower[mat, 5]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(Max[Eigenvalues[mat]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Subgraphs of a de Bruijn graph are also useful to represent subshifts. In \
+general, the number of words of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`r\)]],
+  " in a subshift is  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalTheta](\[Lambda]\^r)\)]],
+  " where ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Lambda]\)]],
+  " is the spectral radius of the corresponding adjacency matrix. For \
+example, for the Fibonacci shift ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Lambda]\)]],
+  StyleBox[" ",
+    FontFamily->"Symbol"],
+  "is the golden ratio:"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(mat = {{1, 1}, {1, 0}}; \), "\n", 
+    \(Eigenvalues[mat]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+
+Returning to CAs, we can use the command ToSA to transforms a CA into the \
+corrseponding de Bruijn automaton. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C150 = CA[150, 3, \(-2\)]\), "\n", 
+    \(m150 = ToSA[C150]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["Here are some words accepted by m150:", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[LanguageFA[m150, \(-5\)]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Thus, m150 accepts all words up to lenght 5. In fact, m150 accepts \
+all inputs: \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(MinimizeFA[m150]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "By compactness, it follows that the global map ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\  : \ C\  \[RightArrow] \ C\)]],
+  " is surjective. \nHere is a more interesting example: rule 76."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C76 = CA[76, 3, \(-2\)]; \), "\n", 
+    \(PrintCA[C76]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(m76 = ToSA[C76]; \), "\n", 
+    \(mm76 = MinimizeFA[m76]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(L76 = LanguageFA[mm76, \(-5\)]; \), "\n", 
+    \(ColumnForm[L76]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(WordSort[Complement[Words[\(-5\), {0, 1}], Flatten[L76]]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+This suggests that the range of C76 is a subshift of finite type \
+(SFT), i.e., the language of B(76,2,2) is a finite complement language: it \
+consists of all words not containing a block 111. It is easy to verify this \
+conjecture:\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(EquivalentQFA[mm76, 
+      ComplementFA[InfixFA["\<111\>", {0, 1}]]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+
+As usual, the state set of mm76 has additional structure which is hidden by \
+normalization. It can be make visible by repeating the computation with \
+option Normalize->2 everywhere. We will come back to the structure of the \
+states in a related power automaton in the section on inversion of reversible \
+CAs below. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(m0 = ToSA[C76, Normalize \[Rule] 2]; \), "\n", 
+    \(m1 = ToDFA[m0, Normalize \[Rule] 2]; \), "\n", 
+    \(m2 = MinimizeFA[m1, Normalize \[Rule] 2]; \), "\n", 
+    \(ColumnForm[States[m1]]\), "\n", 
+    \(ColumnForm[States[m2]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "A more systematic way to check whether a CA defines a SFT is to use the \
+procedure ",
+  StyleBox["NoProperInfixDFA", "SmallText"],
+  " defined in the section Guide7. ",
+  StyleBox["NoFactorFA[m]", "SmallText"],
+  " builds an automaton that accepts all words x in the language of m such \
+that no proper infix of x is also in the language. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(InfiniteQFA[
+      MinimizeFA[NoFactorFA[ComplementFA[MinimizeFA[ToSA[C76]]]]]]\)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Since any Fischer automaton ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(c, 2, 2)\)]],
+  " has only four states, the corresponding minimal automaton can have no \
+more than 16 states. Here is an example of a CA that reaches this bound: rule \
+73."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C73 = CA[73, 3, \(-2\)]; \), "\n", 
+    \(mm73 = MinimizeFA[ToSA[C73]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(\((TableForm[#1, TableSpacing \[Rule] 1] &)\)[{Range[0, 10], 
+        LanguageFA[mm73, \(-10\), SizeOnly \[Rule] True]}]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Thus, we have to consider words of length at least 6 before \
+anything interesting happens.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(L6 = Complement[Words[6, 2], LanguageFA[mm73, 6]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+It appears that rule 73 is symmetric.  One can check the rule \
+table:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(PrintCA[C73]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["or write a little program that does the checking.", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(blocks = Words[3, \(-2\)]; \), "\n", 
+    \(rules = First[ToRulesCA[C73]]; \), "\n", 
+    \(\((blocks /. \[InvisibleSpace]rules)\) === \((WordReverse /@ 
+            blocks /. \[InvisibleSpace]rules)\)\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "One should not make premature conjectures, though, with respect to the \
+language of C73: excluding blocks 111001 and 100111 is not enough. In fact, \
+C73 is not a SFT. This can be verified using ",
+  StyleBox["NoProperInfixDFA", "SmallText"],
+  " as above.  "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(InfiniteQFA[MinimizeFA[NoFactorFA[ComplementFA[mm73]]]]\)], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Deterministic Semiautomata", "Subsubsection"],
+
+Cell[TextData[{
+  "A language ",
+  Cell[BoxData[
+      \(TraditionalForm\`L\)]],
+  " is ",
+  StyleBox["factorial",
+    FontColor->RGBColor[0, 0, 1]],
+  " (or closed under infixes) iff  ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\ x\ v\ \  \[Element] \ L\)]],
+  "  implies ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\  \[Element] \ L\)]],
+  ". \nA language ",
+  Cell[BoxData[
+      \(TraditionalForm\`L\)]],
+  " is ",
+  StyleBox["transitive",
+    FontColor->RGBColor[0, 0, 1]],
+  " iff for all ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`v\)]],
+  " in ",
+  Cell[BoxData[
+      \(TraditionalForm\`L\)]],
+  " there is some ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " such that ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\ x\ v\  \[Element] \ L\)]],
+  ".\n",
+  Cell[BoxData[
+      \(TraditionalForm\`L\)]],
+  " is strongly transitive iff all the words ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " in the last definition can be chosen with uniform length. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "It is clear that the acceptance language of a Fischer automaton is \
+factorial and transitive. The languages ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptCapitalL](\[Rho])\)]],
+  " are strongly transitive. One can show that the converse is also true for \
+regular languages. In fact, there always is a deterministic Fischer automaton \
+for any given factorial, transitive, regular language.  \n\nSuppose we have \
+the minimal automaton of a factorial, transitive language ",
+  Cell[BoxData[
+      \(TraditionalForm\`L\)]],
+  ". We can decompose the automaton into its strongly connected components \
+and pick one such component as the diagram for the Fischer automaton. \
+Ignoring possible edges to the sink of the minimal automaton, the component \
+has to have out-degree 0. As it turns out, there is only one such strongly \
+connected component and the minimal deterministic Fischer automaton (i.e., \
+with smallest possible state set) is unique up to isomorphism. \n\nWe \
+construct the minimal automaton for rule 172, convert it to a graph ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\)]],
+  ", and compute the non-transient strongly connected components of ",
+  Cell[BoxData[
+      \(TraditionalForm\`g\)]],
+  "."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[172, 3, \(-2\)]; \), "\n", 
+    \(ToSA[C]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(m = MinimizeFA[ToSA[C]]; \), "\n", 
+    \({Size[m], TheSinkDFA[m]}\), "\n", 
+    \(g = ToGraphFA[m]; \), "\n", 
+    \(gg = NonTransientGraph[g]\), "\n", 
+    \(scc = 
+      StronglyConnectedComponents[g, NonTrivial \[Rule] True]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+State 7 is the sink in m, so the first component is what we are \
+after. Thus, we construct a new semiautomaton mm by restricting m to that \
+component.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(mm = 
+      ToSA[SelectFA[m, 
+          scc\[LeftDoubleBracket]2\[RightDoubleBracket]]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["The two machines ought to be equivalent:", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(EquivalentQFA[m, mm]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Machine mm is minimal in the sense that it is accessible and \
+different states have different behaviors. To see this we generate the \
+minimal automata of the machines obtained by moving the initial state and \
+check that they are non-isomorphic. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(minaut = \((MinimizeFA[SetInitialFA[mm, {#1}]] &)\) /@ 
+        Range[7]; \), "\n", 
+    \(class = ToClasses[minaut, IsomorphicQDFA]; \), "\n", 
+    \(Length[class]\), "\n", 
+    \(TableForm[class]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+The union of the behavior of the 7 partial machines must be the \
+full language (we convert the DFAs to FAs to speed up the union operation):\
+\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(mmm = UnionFA @@ \(ToFA /@ minaut\)\), "\n", 
+    \(IsomorphicQDFA[m, MinimizeFA[mmm]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["The next plot shows that CA[172,3,-2] is not surjective.", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(PlotComputationFA[ToSA[CA[172]], "\<1010\>"]; \)], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Direct Construction of a DFA", "Subsubsection"],
+
+Cell[TextData[{
+  "The de Bruiijn automata introduced above are naturally nondeterministic, \
+except for a special rules. However,  it is quite straightforward to \
+construct an equivalent DFA directly by hand (rather than resorting to \
+deterministic simulation via the command ToDFA). The state set of the machine \
+is ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptCapitalP](K\^\(w - 1\))\)]],
+  ", the initial state ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^\(w - 1\)\)]],
+  ", all states other than ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[EmptySet]\)]],
+  StyleBox[" ",
+    FontFamily->"Symbol"],
+  "are final and the transition relation is defined by \n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Delta](A, s)\  := \ {\ \ 
+          x\[VeryThinSpace]b\  | \ \ \[Exists] \ 
+                a\  \[Element] \ \(K\  : \ 
+                    a\[VeryThinSpace]x\  \[Element] \ A\ \  \[And] \ \ \[Rho](
+                        a\[VeryThinSpace]x\[VeryThinSpace]b)\)\  = \ 
+            s\ \ \ }\)]],
+  ". \nOf course, there is no particular reason why one would want to \
+construct this machine, but it makes for a nice exercise in programming in ",
+  StyleBox["automata", "SmallText"],
+  ". "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Clear[CAToDFA]; \), "\n", 
+    \(Options[CAToDFA] = {Normalize \[Rule] 0}; \), "\n", 
+    \(CAToDFA[C_CA, opts___Rule] := 
+      Module[{k, alph, w, n, lab, lab1, lab2, norm, Q, next, nextall}, 
+        norm = \(Normalize /. \[InvisibleSpace]{opts}\) \
+/. \[InvisibleSpace]Options[CAToDFA]; 
+        next[S_, s_] := 
+          Sort[Last /@ 
+              Select[lab2\[LeftDoubleBracket]s\[RightDoubleBracket], 
+                MemberQ[S, First[#1]] &]]; 
+        nextall[s_] := \((next[#1, s] &)\) /@ Q; 
+        w = WidthCA[C]; {k, alph} = FullAlphabet[C]; 
+        lab = First[ToRulesCA[C]] /. \[InvisibleSpace]Rule \[Rule] List; 
+        lab1 = \((First /@ Cases[lab, {_, #1}] &)\) /@ alph; 
+        lab2 = Map[{StringTake[#1, w - 1], StringTake[#1, 1 - w]} &, 
+            lab1, {\(-1\)}]; Q = PowerSet[Words[w - 1, \(-k\)]]; 
+        tr = \((PositionList[Q, nextall[#1]] &)\) /@ Range[k]; 
+        n = 2\^\(k\^\(w - 1\)\); 
+        If[norm == 0, DFA[n, Drei[C], tr, n, Range[2, n]], 
+          DFA[Q, Drei[C], tr, n, Range[2, n]]]]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "As an example, we convert C150 to a DFA, once using ",
+  StyleBox["CAToDFA", "SmallText"],
+  " and once by constructing the full power set automaton from the \
+corresponding semiautomaton."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C150 = CA[150, 3, \(-2\)]; \), "\n", 
+    \(m1 = CAToDFA[C150]\), "\n", 
+    \(m2 = 
+      ToDFA[ToSA[C150], Full \[Rule] True, 
+        External \[Rule] False]; \), "\n", 
+    \(m1 === m2\)}], "Input",
+  AspectRatioFixed->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Minimal DFAs for all Elementary CAs", "Subsection"],
+
+Cell["\<\
+We will compute all minimal automata associated with binary CAs of \
+width 3. Clearly it would suffice to consider only all essential rules, but \
+we will carry out the computation for all 256 elementary CAs. On a slow \
+machine without the external code this may take a bit. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(Timing[
+      CAmin = \(({#1, MinimizeFA[ToSA[CA[#1]]]} &)\) /@ 
+          Range[0, 255]; ]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["Here are the 30  surjective (3,2)-rules: ", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(First /@ Cases[CAmin, {_, DFA[1, __]}]\), "\n", 
+    \(Length[%]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+On the other end, there are 16 rules whose minimal DFAs have 16 \
+states. The distribution of sizes is shown in the next plot. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(First /@ Cases[CAmin, {_, DFA[16, __]}]\), "\n", 
+    \(Length[%]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(TableForm[Frequencies[Size /@ \(Last /@ CAmin\)]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(\((ListPlot[#1, PlotRange \[Rule] {{0, 256}, {0, 17}}, 
+            Prolog \[Rule] PointSize[0.01], PlotStyle \[Rule] Blue, 
+            Ticks \[Rule] {50\ Range[0, 5], Range[17]}] &)\)[
+      Size[Last /@ CAmin]]; \)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Removing duplicate machines from the list ",
+  StyleBox["CAmin", "SmallText"],
+  " leaves 85 DFAs. This can be done conveniently with the command ",
+  StyleBox["RemoveDuplicates", "SmallText"],
+  " from dimath.m. As it turns out, these remaining 85 machines are all \
+non-isomorphic. See the section on isomorphism testing for an explanation of \
+the test used below."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(CAmin1 = 
+      Reverse /@ RemoveDuplicates[Last /@ CAmin, First /@ CAmin, 
+          OutPairs \[Rule] True]; \), "\n", 
+    \(Length[CAmin1]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(Length[Union[AccessibleFA /@ \(Last /@ CAmin1\)]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+We can now visualize the languages of these automata. The following \
+picture shows the acceptanced words of length k for all 85 machines as a \
+raster plot. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(k = 6; \), "\n", 
+    \(W = Words[k, \(-2\)]; \), "\n", 
+    \(lang = \((ToBitVector[
+              LanguageFA[
+                CAmin1\[LeftDoubleBracket]#1, 2\[RightDoubleBracket], k], 
+              W] &)\) /@ Range[85]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(PlotMatrix[lang + 5, AspectRatio \[Rule] 1]; \)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Since all the languages ",
+  Cell[BoxData[
+      \(TraditionalForm\`L(\[Rho])\)]],
+  " are factorial, it is of interest to find the shortest excluded words in \
+these languages. In fact, many of these languages are finite complement: \
+there are finitely words w such that all excluded words are of the form uwv. \
+\nAs one can see from the picture (?) some of the machines accept all words \
+of length 6. Here are the shortest words not accepted by the machines:"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(sw = 
+      TransferSequenceFA /@ \(ComplementFA /@ \(Last /@ CAmin1\)\)\)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(WordLength /@ Flatten[sw]\), "\n", 
+    \(Max[%]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Machine number 44 (which corresponds to rule 37) misses a few words \
+of length 9.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Cases[CAmin1, {37, _}]\), "\n", 
+    \(m37 = Last[Last[%]]; \)}], "Input"],
+
+Cell[BoxData[
+    \(LanguageFA[ComplementFA[m37], 9]\)], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Minimizing Iterated CAs", "Subsection"],
+
+Cell[TextData[{
+  "We can generate a sequence ca[t] of CAs by starting with a fixed automaton \
+ca[1] and applying it repeatedly. Thus, one step in the evolution of ca[t] \
+coresponds to t steps in the evolution of the base automaton ca[1]. Note that \
+the width of  ca[t]  is  w + 2(t-1)  where w is the width of ca[1]. Hence the \
+size of  ca[t]  is  2",
+  StyleBox["w + 2(t-1) ",
+    FontVariations->{"CompatibilityType"->"Superscript"}],
+  " (assuming a binary alphabet) and gets out of hand rather quickly. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Clear[ca]; \), "\n", 
+    \(ca[1] = \(C20 = CA[20, 3, \(-2\)]\); \), "\n", 
+    \(ca[n_Integer?Positive] := \(ca[n] = 
+        ComposeCA[C20, ca[n - 1]]\); \), "\n", 
+    \(Scan[ca, Range[5]]\)}], "Input"],
+
+Cell["The code numbers also grow exponentially: ", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(ca[5]\), "\n", 
+    \(\((N[Log[First[ca[#1]]]] &)\) /@ Range[5]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Computation of the minimal automata will also take a few seconds, \
+since the largest semiautomaton has 512 states. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Clear[m]; \), "\n", 
+    \(m[i_] := \(m[i] = MinimizeFA[ToSA[ca[i]]]\)\)}], "Input"],
+
+Cell[BoxData[
+    \(m /@ Range[5]\)], "Input"],
+
+Cell["\<\
+Here are the growth functions of the automata up to length 12. As \
+one can see, up to words of length 5 the functions agree. The values are \
+decreasing since the languages form a descending sequence (by  definition of \
+the automata). \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(cencus = \((LanguageFA[m[#1], \(-12\), SizeOnly \[Rule] True] &)\) /@ 
+        Range[5]; \), "\n", 
+    \(\((TableForm[#1, TableSpacing \[Rule] {1, 2}] &)\)[
+      Prepend[cencus, Range[0, 12]]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Words of length 8 that are accepted by m[i] but rejected by m[i+1] \
+are\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(k = 8; \), "\n", 
+    \(diff = \((Complement[LanguageFA[m[#1], k], 
+              LanguageFA[m[#1 + 1], k]] &)\) /@ Range[3]; \), "\n", 
+    \(ColumnForm[diff]\)}], "Input",
+  AspectRatioFixed->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Surjectivity, Openess and Injectivity", "Section",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  CellTags->"c:19"],
+
+Cell[CellGroupData[{
+
+Cell["The Method", "Subsection"],
+
+Cell[TextData[{
+  "The de Bruijn graph of a one-dimensional CA is also useful in determining \
+certain properties of the global map of the CA. In this section we will show \
+how to determine whether the map is injective, open or surjective. One can \
+show that injectivity implies openess which implies surjectivity (the \
+converse is false in each case). \nBy compactness, the global map is \
+surjective iff the associated de Bruijn machine accepts",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(K\^*\)\)\)]],
+  ". The latter property is often referred to as NFA Universality. \
+Unfortunately, it is PSPACE-hard to test NFA Universality for general \
+nondeterministic automata and the problem remains hard for Fischer automata.  \
+However, there are quadratic time algorithms for all three properties based \
+on the product of the de Bruijn graph with itself. \nThe key concept here is \
+borrowed from automata theory: a finites state machine ",
+  Cell[BoxData[
+      \(TraditionalForm\`M\)]],
+  " is unambiguous iff  there is no pair of states ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`q\)]],
+  "  in ",
+  Cell[BoxData[
+      \(TraditionalForm\`M\)]],
+  " such that there is are two distinct paths labeled ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " from ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  " to ",
+  Cell[BoxData[
+      \(TraditionalForm\`q\)]],
+  ". \nPut loosely: the unfolding of ",
+  Cell[BoxData[
+      \(TraditionalForm\`M\)]],
+  " along ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " contains no diamonds, for all ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  ". \nAs it turns out, unambiguity of the associated de Bruijn automaton is \
+equivalent with surjectivity of the local map, and stronger properties such \
+openess and injectivity correspond to stronger notions of unambiguity. \nHere \
+is an example:"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[3915, 4, \(-2\)]; \), "\n", 
+    \(EvolutionCA[C, Table[Random[Integer, {0, 1}], {81}], 50]; \)}], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell["\<\
+From the picture, it seems plausible that the global map is \
+injective.  Let's take a look at the de Bruijn automaton. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(db = ToSA[C]\), "\n", 
+    \(TableForm[DegreesFA[db]]\), "\n", 
+    \(TableForm[DegreesFA[ReverseFA[db]]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Since the machine as well as its reverse is non-deterministic,  it is \
+quite conceivable that the there are two different computations on the same \
+input, starting at some state ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  " and ending at some state ",
+  Cell[BoxData[
+      \(TraditionalForm\`q\)]],
+  ". We can take a look at the unfolding of the de Bruijn automaton along \
+some random word to check that in fact no diamonds seem to appear. "
+}], "Text"],
+
+Cell[BoxData[{
+    \(w = RandomWord[10, \(-2\)]\), "\n", 
+    \(PlotComputationFA[db, w]; \)}], "Input"],
+
+Cell[TextData[{
+  "Here is a slightly more systematic approach: we look at the multiplicities \
+of all words of length at most 8 in an associated unitary FA. Since the \
+machine is strongly connected, we may safely consider only the case, say,  ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\  = \ \(q\  = \ 1\)\)]],
+  " (though the length of a hypothetical counterexample might decrease by a \
+different choice). "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(fa = SetInitialFinalFA[db, {1}, {1}]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[
+      ToSeries[FlattenOne[
+          LanguageFA[fa, \(-8\), Multiplicity \[Rule] True]]]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "All words in this language have multiplicity 1, as required. Of course, \
+this last computation proves nothing. To demonstrate that the CA is \
+injective, we have to use a product automaton construction. \nThe product of \
+two labeled graphs is defined on vertex set ",
+  Cell[BoxData[
+      \(TraditionalForm\`V\  = \ V\_1\[Cross]\ V\_2\)]],
+  " and the edges have the form ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[
+          RowBox[{"(", 
+            RowBox[{
+              InterpretationBox[\((u\_1, u\_2)\),
+                
+                RowBox[ {"OMPair", "[", "\[Placeholder]", ",", 
+                  "\[Placeholder]", "]"}]], ",", \((v\_1, v\_2)\)}], ")"}],
+          
+          RowBox[ {"OMPair", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  "   where  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\((u\_i, v\_i)\)\  \[Element] \ E\_i\),
+          
+          RowBox[ {"OMPair", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  " and both edges are labeled by the same symbol their respective graphs.  A \
+strongly connected component (SCC) of a digraph  is a maximal vertex induced \
+subgraph with every two nodes lying on a cycle. A strongly connected \
+component is non-trivial iff it contains an edge.\n\nThe algorithms are based \
+on the following proposition. Let \[Rho] be a one-dimensional cellular \
+automaton and ",
+  Cell[BoxData[
+      \(TraditionalForm\`B\^2\)]],
+  " the product of ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  " with itself. Note that ",
+  Cell[BoxData[
+      \(TraditionalForm\`B\^2\)]],
+  " contains a copy of the original graph, namely the diagonal which we will \
+call ",
+  Cell[BoxData[
+      \(TraditionalForm\`D\)]],
+  ". \n\n(1) The global map is surjective iff ",
+  Cell[BoxData[
+      \(TraditionalForm\`B\)]],
+  "  is unambiguous  iff  the strongly connected component in ",
+  Cell[BoxData[
+      \(TraditionalForm\`B\^2\)]],
+  " that contains ",
+  Cell[BoxData[
+      \(TraditionalForm\`D\)]],
+  " is ",
+  Cell[BoxData[
+      \(TraditionalForm\`D\)]],
+  ".\n(2)  The global map is open  iff  the strongly connected component of \
+",
+  Cell[BoxData[
+      \(TraditionalForm\`D\)]],
+  " is ",
+  Cell[BoxData[
+      \(TraditionalForm\`D\)]],
+  " and is isolated (there are no paths from or to other nontrivial strongly \
+connected components). \n(3)  The global map is reversible (injective) iff ",
+  Cell[BoxData[
+      \(TraditionalForm\`B\^2\)]],
+  " has only one nontrivial strongly connected component, namely ",
+  Cell[BoxData[
+      \(TraditionalForm\`D\)]],
+  ". \n\nTo illustrate this method we first generate the labeled de Bruijn \
+graph B150 for rule 150. The we compute the product BB, translate it into a \
+graph suitable as input for the command StronglyConnectedComponents and \
+compute the strongly connected components. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["\<\
+All words in this language have multiplicity 1, as required. Of \
+course, this last computation proves nothing. To demonstrate that the CA is \
+injective, we have to use a product automaton construction. First, we compute \
+the product automaton db2. 
+Then, we translate db2 into a dircted graph gr and compute the strongly \
+connected components. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(db2 = ProductFA[db, db]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(gr = ToGraphFA[db2]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(StronglyConnectedComponents[gr]\), "\n", 
+    \(\(\(Curry[StronglyConnectedComponents]\)[NonTrivial \[Rule] True]\)[
+      gr]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+The first component is the diagonal, an isomorpic copy of the \
+original automaton, and all the other vertices form trivial SCCs. Thus, the \
+CA is indeed injective. 
+
+Here is another example:  rule 150. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(db = ToSA[CA[150, 3, \(-2\)]]; \), "\n", 
+    \(TableForm[DegreesFA[db]]\), "\n", 
+    \(TableForm[DegreesFA[ReverseFA[db]]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+So, rule 150 is biderministic and might look like a promising \
+candidate for an injecive rule.  However, a moment's thought reveals that the \
+sequence  \[Ellipsis]0110110110110\[Ellipsis]  is mapped to 0 by rule 150, as \
+is the 0-sequence. 
+The problem here is that the source and target p and q have moved out into \
+infinity. To take into account this and similar problems we have to insist \
+that the diagonal is the only non-trivial strongly connected components in \
+the product automaton, a test that rule 150 promptly fails.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(StronglyConnectedComponents[ToGraphFA[ProductFA[db, db]]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+The first component is the diagonal, the other compises all \
+remaining vertices. Thus, there are two SCCs and there are no edges between \
+them. Hence the global map is open (and thus surjective) but not reversible. \
+The command ClassifyCA performs all these operations. The internal version \
+has the option Full->True which causes the collapse of the square of the de \
+Bruijn graph to be displayed. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(Information["\<ClassifyCA\>", LongForm \[Rule] False]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[ClassifyCA[CA[51, 3, \(-2\)], Full \[Rule] True]]\)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell["\<\
+In this case, there is only one nontrivial \
+StronglyConnectedComponents, namely the diagonal. Hence, rule 51 is \
+reversible. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[ClassifyCA[CA[60, 3, \(-2\)], Full \[Rule] True]]\)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell["\<\
+Rule 60 is open: there is a component other than the diagonal, but \
+there are no paths between the components. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[ClassifyCA[CA[89, 3, \(-2\)], Full \[Rule] True]]\)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell["\<\
+Rule 89 is surjective but not open: for example, there is a path \
+from some component to the diagonal. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[ClassifyCA[CA[22, 3, \(-2\)], Full \[Rule] True]]\)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Lastly, rule 22 is not even surjective. The whole product graph forms one \
+strongly connected component. \n\nNote that the product graph as defined \
+above ought to have 16 nodes. To speed up computation, the procedure \
+ClassifyCA exploits symmetries in that graph and computes only the part above \
+the diagonal (i.e., nodes ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((i, j)\),
+          RowBox[ {"OMPair", "[", "i", ",", "j", "]"}]], TraditionalForm]]],
+  " where ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(1\  \[LessEqual] \ i\  \[LessEqual] \ 
+        j\  \[LessEqual] \ n\)\)\)]],
+  "). Thus, there are only  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(n(n + 1)\)/2\)]],
+  " nodes. \n\nCommand ClassifyCA works for CAs of arbitrary width--in \
+principle. Since the size of the graph is exponential in the width of the \
+automaton, width 5 is a realistic barrier. For larger alphabets smaller \
+widths are appropriate. \n\nThe identity map is always injective: there is \
+exactly one non-trivial SCC, namely the copy of the original de Bruijn graph. \
+"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(id[w_, k_] := 
+      FunctionToCA[{##1}\[LeftDoubleBracket]
+            Ceiling[w\/2]\[RightDoubleBracket] &, w, k]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(id[4, \(-3\)]\), "\n", 
+    \(Timing[ClassifyCA[id[4, \(-3\)]]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+The following three rules of width four are injective, open but not \
+injective, and not even surjective, respectively.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(ClassifyCA[CA[43690, 4, \(-2\)]]\), "\n", 
+    \(ClassifyCA[CA[38505, 4, \(-2\)]]\), "\n", 
+    \(ClassifyCA[CA[43754, 4, \(-2\)]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+The second rule corresponds to addition modulo 2 and is easily \
+generalized to arbitrary widths.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Clear[sigma]; \), "\n", 
+    \(sigma[w_Integer] := 
+      FunctionToCA[Mod[\(+##1\), 2] &, w, \(-2\)]; \), "\n", 
+    \(TableForm[sigma /@ Range[6]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(\((ClassifyCA[sigma[#1]] &)\) /@ Range[6]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Thus, addition modulo 2 seems to produce an open but not reversible \
+rule, except in the trivial case width = 1. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["\<\
+
+Here is another example of a rule of width 4 that is surjective but fails to \
+be open. There are four nontrivial SCCs in the product graph and there is a \
+path from the  diagonal to two of them (the diagonal is the component of size \
+8, in the current implementation it appears in position 9). \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \({i, g} = ClassifyCA[CA[19890, 4, \(-2\)], Full \[Rule] True]\)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(V = VertexSet[g]; \), "\n", 
+    \(nontriv = PositionList[V, Select[V, Length[#1] > 1 &]]\), "\n", 
+    \(EnumForm[\((WeaklyConnectedComponents[g, #1] &)\) /@ 
+        nontriv]\)}], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Binary CAs of Width 3", "Subsection"],
+
+Cell["\<\
+To test all binary CAs of width 3 for injectivity, openess and \
+surjectivity we could use the list  essentialrules from above (the \
+equivalence of isomorphic rules defined in the last section clearly preserves \
+these properties). To speed things up we will only consider those labelings \
+that are 1-balanced, i.e., that have the same number of 0's and 1's. As is \
+pointed out in the section on multiplicity below, all surjective rules are \
+1-balanced (and in fact are balanced in a much stronger sense). Only 23 rules \
+remain. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(ess1bal = 
+      Select[essentialrules, 
+        Plus @@ IntegerDigits[#1, 2, 8] == 4 &]\), "\n", 
+    \(Length[ess1bal]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(ess1bal = 
+      Select[Range[0, 127], Plus @@ IntegerDigits[#1, 2, 8] == 4 &]\), "\n", 
+    \(Length[ess1bal]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(class = \(({#1, ClassifyCA[CA[#1, 3, 2]]} &)\) /@ ess1bal; \)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell["We can now extract the various types of rules as follows.", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(inj = First /@ Cases[class, {_, 3}]\), "\n", 
+    \(open0 = First /@ Cases[class, {_, 2}]\), "\n", 
+    \(surj0 = First /@ Cases[class, {_, 1}]\), "\n", 
+    \(open = Sort[Join[inj, open0]]\), "\n", 
+    \(surj = Sort[Join[surj0, open]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Note that for all the injective CAs the local maps are simply \
+Boolean functions of one of the arguments (since we only consider essential \
+rules,only complement occurs):\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(TableForm[
+      Transpose[\((First[ToRulesCA[CA[#1, 3, \(-2\)]]] &)\) /@ 
+          inj]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+This can be made very clearly visible by deleting variables that \
+the local map does not depend on:\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(TableForm[\((ShrinkCA[CA[#1, 3, \(-2\)]] &)\) /@ inj]\)], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["F-surjective CAs", "Subsection"],
+
+Cell[TextData[{
+  "Another interesting property of the global map of a CA is its behavior on \
+finite configurations. Here a configuration is called finite iff its support \
+is finite, i.e., if only finitely many cells are in a state different from 0. \
+The automata under consideration will always assumed to be quiescent: the all \
+0's configuration ",
+  StyleBox["0",
+    FontWeight->"Bold"],
+  " is mapped to itself. \nBy compactness, F-surjective implies surjective. \n\
+One can show that a surjective CA is F-surjective iff the preimage of ",
+  StyleBox["0",
+    FontWeight->"Bold"],
+  " is ",
+  StyleBox["0",
+    FontWeight->"Bold"],
+  ". The latter property is easily tested by searching for cycles labeled 0 \
+in the de Bruijn graph after deletion of the edge ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((0, 0, 0)\),
+          RowBox[ {"OMTuple", "[", "0", ",", "0", ",", "0", "]"}]], 
+        TraditionalForm]]],
+  ". \nHere are all the quiescent binary rules of width 2 (up to isomorphism, \
+see the previous section). Command FSurjectiveCA tests for F-surjectivity. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(surjq = \((If[EvenQ[#1], #1, 255 - #1] &)\) /@ surj\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(\(L1 = \((FSurjectiveCA[CA[#1, 3, \(-2\)]] &)\) /@ surjq;\)\), "\n", 
+    \(\(L2 = \((ClassifyCA[CA[#1, 3, \(-2\)]] &)\) /@ surjq;\)\), "\n", 
+    \(\((TableForm[#1, TableSpacing \[Rule] {1, 2}] &)\)[{surjq, L1, 
+        L2}]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Thus, with the exception of rule 166, all F-surjetive (3,2)-CAs are \
+aleady injective. Note that F-sujective CAs may or may not be open. \
+\>", \
+"Text",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Highly Symmetric Rules", "Subsection"],
+
+Cell[TextData[{
+  "One can use  the operation ",
+  StyleBox["ListMultiply", "SmallText"],
+  "  to generate highly symmetric rule tables that produce surjective (albeit \
+trivial) automata. The basic idea is to define an action ",
+  Cell[BoxData[
+      \(TraditionalForm\`F\)]],
+  " on binary lists as follows:"
+}], "Text"],
+
+Cell[BoxData[{
+    \(ClearAll[F, ff, L, b]\), "\n", 
+    \(ff[L_List, b_Integer] := ListMultiply[L, {0, b}]; \), "\n", 
+    \(F[L_List, B_List] := Fold[ff, L, B]; \), "\n", 
+    \(F[B_List] := Fold[ff, {0}, B]; \)}], "Input"],
+
+Cell[TextData[{
+  "Here is a trace of the computation of  ",
+  Cell[BoxData[
+      \(TraditionalForm\`F[{0}, \ {0, 1, 0, 1, 0}]\)]],
+  ". "
+}], "Text"],
+
+Cell[BoxData[{
+    \(L = FoldList[ff, {0}, {0, 1, 0, 1, 0}]; \), "\n", 
+    \(\((TableForm[#1, TableSpacing \[Rule] {0, 0}] &)\)[L]\), "\n", 
+    \(Frequencies[Last[L]]\)}], "Input"],
+
+Cell[TextData[{
+  "It is not hard to show that for any binary list ",
+  Cell[BoxData[
+      \(TraditionalForm\`B\)]],
+  " of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " other than  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((0, 0, \[Ellipsis], 0)\),
+          
+          RowBox[ {"OMTuple", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  "  we always have ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(\(#\_0\) \(F({0}, 
+            B)\)\  = \ \ \(#\_1\) \(F({0}, B)\)\)\)\)]],
+  ".  Here is a test for all lists of length 32. "
+}], "Text"],
+
+Cell[BoxData[{
+    \(BB = F /@ Rest[CartesianProduct @@ Table[{0, 1}, {5}]]; \), "\n", 
+    \(\((Count[#1, 1] &)\) /@ BB\)}], "Input"],
+
+Cell[BoxData[
+    \(PlotMatrix[BB]; \)], "Input"],
+
+Cell["\<\
+And here are the corresponding binary cellular automata of width 5.\
+\
+\>", "Text"],
+
+Cell[BoxData[
+    \(class = \((With[{rr = FromDigits[#1, 2]}, {ClassifyCA[
+                  CA[rr, 5, \(-2\)]], rr}] &)\) /@ BB; \)], "Input"],
+
+Cell[BoxData[
+    \(TableForm[Frequencies[First /@ class]]\)], "Input"],
+
+Cell["\<\
+All the CAs are open or even reversible.  Perhaps surprisingly, we \
+can make things a bit more complicated by rotating the lists and still obtain \
+only surjective automata. 
+Unfortunately, the reversible ones are not very interesting. \
+\>", "Text"],
+
+Cell["\<\
+But the open ones are at least in part real width 5 automata. \
+\
+\>", "Text"],
+
+Cell["Alas, they are all deterministic.", "Text"],
+
+Cell[BoxData[{
+    \(rot[L_List] := \((RotateLeft[L, #1] &)\) /@ 
+        Range[Length[L]]; \), "\n", 
+    \(BBB = Union[FlattenOne[rot /@ BB]]; \), "\n", 
+    \(Length[BBB]\)}], "Input"],
+
+Cell["Without the external code this will take a bit. ", "Text"],
+
+Cell[BoxData[
+    \(class = \((With[{rr = FromDigits[#1, 2]}, {ClassifyCA[
+                  CA[rr, 5, \(-2\)]], rr}] &)\) /@ BBB; \)], "Input"],
+
+Cell[BoxData[
+    \(TableForm[Frequencies[First /@ class]]\)], "Input"],
+
+Cell["\<\
+Unfortunately, the reversible ones are not very interesting: they \
+shrink to width 1.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(Union[\((ShrinkCA[CA[#1, 5, 2]] &)\) /@ \(Last /@ 
+          Cases[class, {3, _}]\)]\)], "Input"],
+
+Cell["\<\
+And the open maps turn out to be somewhat boring, too: the ones of \
+real width 5 are all deterministic. \
+\>", "Text"],
+
+Cell[BoxData[
+    \(\((ShrinkCA[CA[#1, 5, 2]] &)\) /@ \(Last /@ 
+        Cases[class, {2, _}]\); \)], "Input"],
+
+Cell[BoxData[
+    \(W5 = Select[%, WidthCA[#1] == 5 &]\)], "Input"],
+
+Cell[BoxData[
+    \(Union[\((DeterministicQFA[ToSA[#1]] &)\) /@ W5]\)], "Input"],
+
+Cell["\<\
+There remain 128 surjective automata that all fail to be \
+deterministic, but they are codeterministic.\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(W5 = 
+      Select[\((ShrinkCA[CA[#1, 5, \(-2\)]] &)\) /@ \(Last /@ 
+            Cases[class, {1, _}]\), WidthCA[#1] == 5 &]; \), "\n", 
+    \(Length[W5]\)}], "Input"],
+
+Cell[BoxData[{
+    \(Union[\((DeterministicQFA[ToSA[#1]] &)\) /@ W5]\), "\n", 
+    \(Union[\((CodeterministicQFA[ToSA[#1]] &)\) /@ W5]\)}], "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Multiplicity and Welch Indices", "Section",
+  Evaluatable->False,
+  AspectRatioFixed->True,
+  CellTags->"c:24"],
+
+Cell[CellGroupData[{
+
+Cell["Multiplicity", "Subsection"],
+
+Cell[TextData[{
+  "There is a wealth of information about the connections between properties \
+of the global map of a one-dimensional CA such as surjectivity and properties \
+of the corresponding finite state machines. For example, \n- the global map  \
+",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Rho] \[Colon] 
+            K\^\[Infinity] \[Rule] K\^\[Infinity]\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  " is surjective iff \n- the acceptance language of the de Bruijn automaton \
+",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  " is the set of all finite strings over the alphabet ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  "  iff \n- every word has multiplicity ",
+  Cell[BoxData[
+      \(TraditionalForm\`n\)]],
+  " over ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  " where ",
+  Cell[BoxData[
+      \(TraditionalForm\`n\  = \ k\^\(w - 1\)\)]],
+  " is the number of states of ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  ". "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[CellGroupData[{
+
+Cell["Balance", "Subsubsection"],
+
+Cell["\<\
+As pointed out above, surjectivity testing via acceptance languages \
+is computationally very inefficient. In general, the problem of testing \
+whether a Fischer automaton accepts all inputs is PSPACE-complete (at least \
+for alphabets of size larger than 2). However, we can use minimization to \
+verify that all the (3,2)-CAs computed above are at indeed surjective.\
+\>", \
+"Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(Union[\((MinimizeFA[ToSA[CA[#1]]] &)\) /@ surj]\)], "Input"],
+
+Cell["\<\
+The multiplicities of accepted words can be determined using option \
+Multiplicity in the command LanguageFA. For rule 60 for example all words \
+have multiplicity 4.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(ColumnForm[
+      ToSeries[LanguageFA[ToSA[CA[60, 3, 2]], 5, 
+          Multiplicity \[Rule] True]]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "We have switched to alphabet  ",
+  Cell[BoxData[
+      \(TraditionalForm\`{a, b}\)]],
+  " for the sake of legibility.  For the nonsurjective rule 73 on the other \
+hand we obtain:"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(L = 
+      LanguageFA[ToSA[CA[73, 3, 2]], 6, 
+        Multiplicity \[Rule] True]; \), "\n", 
+    \(ColumnForm[ToSeries[L]]\), "\n", 
+    \(Plus @@ \(Last /@ L\)\), "\n", 
+    \(Complement[Words[6, 2], First /@ L]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Option ",
+  Cell[BoxData[
+      FormBox[
+        StyleBox["Multiplicity",
+          "SmallText"], TraditionalForm]]],
+  " supresses words with multiplicity 0, thus the two missing words are not \
+listed and have to be computed separately. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Note that the multiplicity characterization for surjective rules implies \
+that labelings in a surjective rule must be ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  "-balanced for all ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  ": every word of lenght ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  " is accepted equally often by the de Bruijn semiautomaton. Hence we can \
+weed out all rules that fail to be ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  "-balanced without using the classification algorithm. \nThe following \
+procedure tests whether a CA is ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  "-balanced. It assumes that all symbols in ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  " appear in the range of the local map. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Clear[balanceQ]; \), "\n", 
+    \(balanceQ[C_CA, 1] := 
+      Equal @@ \(Last /@ Frequencies[ToLabelCA[C]]\); \), "\n", 
+    \(balanceQ[C_CA, b_Integer] := 
+      Equal @@ \(Last /@ 
+          LanguageFA[ToSA[C], b, Multiplicity \[Rule] True]\); \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "For example, ",
+  Cell[BoxData[
+      \(TraditionalForm\`CA[11173, 4, 2]\)]],
+  " is 1-balanced but not 2-balanced (and therefore not surjective). \
+Similarly, ",
+  Cell[BoxData[
+      \(TraditionalForm\`CA[194310571, 3, 3] \(\(\ \)\(\ \)\)\)]],
+  " is 3-balanced but not 4-balanced."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[11173, 4, 2]\), "\n", 
+    \(balanceQ[C, 1]\), "\n", 
+    \(balanceQ[C, 2]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[194310571, 3, 3]\), "\n", 
+    \(balanceQ[C, 3]\), "\n", 
+    \(balanceQ[C, 4]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "The function ",
+  StyleBox["balanceQ", "SmallText"],
+  " can be iterated to filter out ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  "-balanced rules (this takes a few seconds):"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(pick[LL_List, b_Integer] := 
+      Select[LL, balanceQ[CA[#1], b] &]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(cnt = 0; \), "\n", 
+    \(bal = FixedPointList[pick[#1, \(++cnt\)] &, Range[254]]; \), "\n", 
+    \(Length[bal]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(Last[bal]\)], "Input"],
+
+Cell[BoxData[
+    \(\((ClassifyCA[CA[#1]] &)\) /@ Last[bal]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Thus, all 3-balanced binary rules of width 3 are already surjective.\n\nOf \
+course, the use of ",
+  StyleBox["LanguageFA", "SmallText"],
+  " in ",
+  StyleBox["balanceQ", "SmallText"],
+  " makes this approach very inefficient. To obtain a better algorithm it is \
+best to use an external program that generates only 1-balanced labelings to \
+start with and then eliminates ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  "-unbalanced rules for some small value of ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  ". This provides a speed-up since testing for ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  "-balance takes some ",
+  Cell[BoxData[
+      \(TraditionalForm\`O(k\^\(w + b - 1\))\)]],
+  " steps and the classification algorithm is ",
+  Cell[BoxData[
+      \(TraditionalForm\`O(k\^\(2  w\))\)]],
+  "."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["The multilplicity matrix semigroup", "Subsubsection"],
+
+Cell[TextData[{
+  "The multiplicity property of surjective CAs can also be visualized using \
+the semigroup of integer matrices associated with the de Bruijn automaton ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\  = \[LeftAngleBracket]Q, 
+          K, \[Delta]\[RightAngleBracket]\)]],
+  ". For any symbol ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\  \[Element] \ K\)]],
+  " let ",
+  Cell[BoxData[
+      \(TraditionalForm\`M\_a\)]],
+  " be the ",
+  Cell[BoxData[
+      \(TraditionalForm\`Q\[Cross]Q\)]],
+  " matrix defined by\n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`M\_a[p, q] = 1\)]],
+  "  if there is a transition ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((p, a, q)\),
+          
+          RowBox[ {"OMTuple", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  " , and 0 otherwise. \nWe can extend this definition to words over ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  " and obtain a homomorphism\n\t",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\(\[Mu] \[Colon] \(K\^*\) \[Rule] \
+\[DoubleStruckCapitalN]\^\(\(\ \)\(Q\[Cross]Q\)\)\),
+          
+          RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", "\[Placeholder]",
+             ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  "\nfrom the words over ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\)]],
+  "  to non-negative integer matrices. The image of this homomorphism is the \
+semigroup ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(S\)\(\ \)\)\)]],
+  " generated by ",
+  Cell[BoxData[
+      \(TraditionalForm\`M\_a\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\  \[Element] \ K\)]],
+  ".  The most important property of this semigroup is captured in the \
+following theorem."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  StyleBox["Theorem",
+    FontWeight->"Bold"],
+  ":  The cellular automaton \[Rho] is surjective iff the associated matrix \
+semigroup ",
+  Cell[BoxData[
+      \(TraditionalForm\`S\)]],
+  " is finite."
+}], "Text"],
+
+Cell[TextData[{
+  "One can provide a direct proof of this fact using the Frobenius-Perron \
+theorem (i.e., circumventing automata theory).  The key observation is that \
+the matrix semigroup is finite iff it fails to contain the 0 matrix. It \
+follows that all the multiplicity matrices of surjective automaton are \
+actually 0/1-matrices. Moreover, their  1-norm is always  ",
+  Cell[BoxData[
+      \(TraditionalForm\`n = \(\[LeftBracketingBar]Q\[RightBracketingBar] = 
+          k\^\(w - 1\)\)\)]],
+  ". \nHere is an example. We define an auxiliary procedure  ",
+  StyleBox["makematrix", "SmallText"],
+  "  that computes a list of the generator matrices ",
+  Cell[BoxData[
+      \(TraditionalForm\`M\_a\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\  \[Element] \ K\)]],
+  "."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(makematrix[
+        C_CA] := \[IndentingNewLine]Module[\({sa, 
+          ff}\)\(,\)\(\[IndentingNewLine]\)\(\t\)\(sa = 
+          ToSA[C]; \[IndentingNewLine]\t
+        TransitionMatrixFA[sa, ff]; \[IndentingNewLine]\t
+        ff /@ Alphabet[sa]\)\(\[IndentingNewLine]\)]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(gen = makematrix[CA[150, 3, 2]]; \), "\n", 
+    \(MatrixForm /@ gen\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+At current, the external code handles only transition semigroups, \
+so we have to use the internal algorithm to generate the semigroup. Also note \
+that it is a good idea to test for surjectiveness first so that one does not \
+attempt to generate an infinite semigroup. \
+\>", "Text"],
+
+Cell[BoxData[
+    \(oneNorm[M_] := Plus @@ Abs[Flatten[M]]\)], "Input"],
+
+Cell[BoxData[{
+    \(S = GenerateSG[GEN[4, 2, gen], External \[Rule] False]; \), "\n", 
+    \(Length[S]\), "\n", 
+    \(oneNorm /@ ToList[S]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+A picture of the matrix semigroup shows that there is a unique \
+computation starting at each state for each input. \
+\>", "Text"],
+
+Cell[BoxData[{
+    \(gr = \((PlotMatrix[#1, DisplayFunction \[Rule] Identity] &)\) /@ 
+        ToList[S]; \), "\n", 
+    \(ShowArray[gr, 4, GraphicsSpacing \[Rule]  .2]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Since the de Bruijn automaton is a permutation automaton \
+(deterministic and codeterministic), all the matrices are permutation \
+matrices. 
+For injective rule 51 there are only 4 matrices:\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(gen = makematrix[CA[51, 3, 2]]; \), "\n", 
+    \(MatrixForm /@ gen\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(S = GenerateSG[GEN[4, 2, gen], External \[Rule] False]; \), "\n", 
+    \(Length[S]\), "\n", 
+    \(oneNorm /@ ToList[S]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(gr = \((PlotMatrix[#1, DisplayFunction \[Rule] Identity] &)\) /@ 
+        ToList[S]; \), "\n", 
+    \(ShowArray[gr]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Note that these matrices have rank 1 and fail to be invertible. 
+Lastly, an example for a rule of width 4. This time, the semigroup has size \
+77. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(ClassifyCA[CA[13628, 4, 2]]\), "\n", 
+    \(gen = makematrix[CA[13628, 4, 2]]; \), "\n", 
+    \({S, wit, eq} = 
+      GenerateSG[GEN[8, 2, gen], External \[Rule] False, 
+        Equations \[Rule] True]; \), "\n", 
+    \(Length[S]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+For the further study of this matrix semigroup the collection of \
+matrices of minimal rank turns out to be important. \
+\>", "Text"],
+
+Cell[BoxData[{
+    \(rank[m_?MatrixQ] := 
+      Last[Dimensions[m]] - Length[NullSpace[m]]; \), "\n", 
+    \(SS = ToList[S]; \), "\n", 
+    \(rk = rank /@ SS; \), "\n", 
+    \(TableForm[Frequencies[rk]]\)}], "Input"],
+
+Cell["There are 24 matrices of minimal rank 1.", "Text"],
+
+Cell[BoxData[{
+    \(pos = Flatten[Position[rk, Min[rk]]]; \), "\n", 
+    \(mS = SS\[LeftDoubleBracket]pos\[RightDoubleBracket]; \), "\n", 
+    \(gr = \((PlotMatrix[#1, DisplayFunction \[Rule] Identity] &)\) /@ 
+        mS; \), "\n", 
+    \(ShowArray[gr, 6]; \)}], "Input"],
+
+Cell[TextData[{
+  "These matrices form an ideal ",
+  Cell[BoxData[
+      \(TraditionalForm\`I\)]],
+  ", i.e., we have  ",
+  Cell[BoxData[
+      \(TraditionalForm\`S\ I\ S\  \[SubsetEqual] \ I\)]],
+  ". "
+}], "Text"],
+
+Cell[BoxData[{
+    \(eqq = SimplifyRewriteSystem[eq]; \), "\n", 
+    \(mwit = wit\[LeftDoubleBracket]pos\[RightDoubleBracket]\), "\n", 
+    \(Length[mwit]\)}], "Input"],
+
+Cell[BoxData[{
+    \(w = 
+      RandomWord[10, 2] <> 
+        mwit\[LeftDoubleBracket]Random[
+            Integer, {1, 24}]\[RightDoubleBracket] <> 
+        RandomWord[10, 2]\), "\n", 
+    \(WordReduce[w, eqq]\), "\n", 
+    \(Position[mwit, %]\)}], "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Welch Indices", "Subsection"],
+
+Cell[TextData[{
+  "There are several interesting numerical parameters that can be associated \
+with a surjective one-dimensional CA. \nThe first such parameter is the least \
+number of preimages of any biinfinite word under ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\)]],
+  " which we will denote  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(\(W\_m\)(\[Rho])\)\)\)]],
+  ". Hence for an injective rule we have ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(\(W\_m\)(\[Rho]) = \ 1\)\)\)]],
+  ", and, more generally, for any open rule the number of preimages of any \
+biinfinite word in the range of \[Rho]  is always equal to ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_m\)(\[Rho])\)]],
+  ". One can show that this number is always realized by some bilaterally \
+transitive word (a biinfinte word such that every finite word occurs to the \
+left as well as to the right of the origin). In terms of the de Bruijn \
+automaton ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  " we can describe ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_m\)(\[Rho])\)]],
+  " as follows. For any finite word ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " let ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho], x)\)]],
+  " be the graph obtained by unfolding ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  " according to labeling ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  ": the nodes of ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(B(\[Rho], x)\)\(\ \)\)\)]],
+  "are pairs  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((u, i)\),
+          
+          RowBox[ {"OMPair", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  " where ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  " is a node in ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  "  and  ",
+  Cell[BoxData[
+      \(TraditionalForm\`0\  \[LessEqual] \ 
+        i\  \[LessEqual] \ \[LeftBracketingBar]\ x\[RightBracketingBar]\)]],
+  ".  The edges are of the from  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((u, i - 1)\),
+          
+          RowBox[ {"OMPair", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  " to ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((v, i)\),
+          
+          RowBox[ {"OMPair", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  "  where ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((u, x\_i, v)\),
+          
+          RowBox[ {"OMTuple", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  " is a labeled edge in ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  ". The core of ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho], x)\)]],
+  ", denoted ",
+  Cell[BoxData[
+      \(TraditionalForm\`cB(\[Rho], x)\)]],
+  ", is the subgraph induced by all paths in ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(B(\[Rho], x)\)\(\ \)\)\)]],
+  "from some vertex  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((u, 0)\),
+          
+          RowBox[ {"OMPair", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  " to  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((v, \[LeftBracketingBar]x\[RightBracketingBar])\),
+          
+          
+          RowBox[ {"OMPair", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            "]"}]], TraditionalForm]]],
+  ". Note that the multiplicity of ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " is the number of such paths. \nHere are a few examples. The thin gray \
+lines indicate ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho], x)\)]],
+  " and the solid black lines joining red vertices represent ",
+  Cell[BoxData[
+      \(TraditionalForm\`cB(\[Rho], x)\)]],
+  ". For the sake of clarity we draw the full vertex set in both cases. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(m = ToSA[CA[51, 3, \(-2\)]]\)], "Input"],
+
+Cell[BoxData[
+    \(PlotComputationFA[m, "\<000111000\>", ShowAll \[Rule] True, 
+      PlotStyle \[Rule] {0.02, 0.03}, 
+      LabelGrid \[Rule] Automatic]; \)], "Input"],
+
+Cell[TextData[{
+  "Rule 90 has a deterministic de Bruijn automaton, as a consequence the core \
+of ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho], x)\)]],
+  " is the whole graph."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(m = ToSA[CA[90, 3, \(-2\)]]; \), "\n", 
+    \(DeterministicQFA[m]\), "\n", 
+    \(PlotComputationFA[m, "\<000111000\>", ShowAll \[Rule] True, 
+      PlotStyle \[Rule] {0.02, 0.02}, 
+      LabelGrid \[Rule] Automatic]; \)}], "Input"],
+
+Cell["Here is an example for width 4.", "Text"],
+
+Cell[BoxData[{
+    \(m = ToNFA[ToSA[CA[7770, 4, \(-2\)]]]; \), "\n", 
+    \(PlotComputationFA[m, "\<000000000\>", ShowAll \[Rule] True, 
+      PlotStyle \[Rule] {0.02, 0.02}, 
+      LabelGrid \[Rule] Automatic]; \)}], "Input"],
+
+Cell[TextData[{
+  "One can show that ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(Wm\_m\)(\[Rho])\)]],
+  " is the minimum number of connected components of ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho], x)\)]],
+  " as ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " varies over all finite words. As one can see from the pictures, the \
+connected components have the form of two trees connected via a path. We will \
+call such graphs bi-trees and their component trees in-trees and out-trees, \
+respectively (the decomposition is not unique but that does not matter here). \
+That the connected components of any unfolding ",
+  Cell[BoxData[
+      \(TraditionalForm\`cB(\[Rho], x)\)]],
+  " are always bi-trees follows from the fact that any surjective rule is \
+locally injective (no two nontrivial paths in have the same source and \
+target). \nThe other two indices have to do with the maximum number of leaves \
+in the in- and out-trees. Put differently, consider the the semiautomaton  ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  ". Define \n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_r\)(\[Rho])\  = \ 
+        max\ \[LeftBracketingBar]\ \[Delta](p, x)\ \[RightBracketingBar]\)]],
+  "\nwhere ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  " is in ",
+  Cell[BoxData[
+      \(TraditionalForm\`Q\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " ranges over ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(K\^*\)\)]],
+  ". Since ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  " is strongly connected, the choice of ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  " does not matter here. Then ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_l\)(\[Rho])\)]],
+  " is the maximum number of leaves in any out-tree. Similarly we define \n\t\
+",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_l\)(\[Rho]) = 
+        max\ \[LeftBracketingBar]\ \[Delta]\^\(r(p, x)\)\[RightBracketingBar]\
+\)]],
+  "\nwhere  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Delta]\^r\)]],
+  StyleBox[" ",
+    FontVariations->{"CompatibilityType"->"Superscript"}],
+  "is the reverse transition function.  Note that in a deterministic de \
+Bruijn automaton we have ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_r\)(\[Rho]) = \ 1\)]],
+  " and similarly in a codeterministic automaton ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_l\)(\[Rho])\  = \ 1\)]],
+  ". \nA bi-tree in ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho], x)\)]],
+  " is maximal iff its in-tree has ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_l\)(\[Rho])\)]],
+  " leaves and its out-tree has ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_r\)(\[Rho])\)]],
+  " leaves. Using transitivity it is not hard to see that there always is a \
+word such that all its bi-trees are maximal. With a little more effort one \
+can show further that \n\n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(W\_l\)(\[Rho])\) \(\(W\_m\)(\[Rho])\) \
+\(\(W\_r\)(\[Rho])\) = k\^\(w - 1\)\)]],
+  "\n\t\nwhere ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\)]],
+  " is the alphabet size and ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\)]],
+  " the width of the CA.\nWe can easily compute the Welch indices using a \
+variation of the deterministic simulation algorithm. Instead of constructing \
+all states in the power set machine reachable from the initial state of the \
+nondeterministic machine (i.e., the full state set in this case) we only \
+construct the states reachable from ",
+  Cell[BoxData[
+      \(TraditionalForm\`{1}\)]],
+  ". See the section on kernel automata in the Guides. The maximum \
+cardinality of the state sets in these machines are the Welch indices. \nHere \
+are the results for all essential surjective binary CAs of width 3. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["\<\
+Clear[ndb,rndb,ddb,rddb]
+Scan[(ndb[#] = ToSA[CA[#]]) & , surj]
+Scan[(rndb[#] = ReverseFA[ndb[#]]) & , surj]
+Scan[(ddb[#] = ToKernelFA[ndb[#], 1]) & , surj]
+Scan[(rddb[#] = ToKernelFA[rndb[#], 1]) & , surj]
+weight[m_SA] := Max[Length /@ States[m]]
+wr = (weight[ddb[#]] & ) /@ surj; 
+wl = (weight[rddb[#]] & ) /@ surj; 
+det = (DeterministicQFA[ndb[#]] & ) /@ surj; 
+cod = (DeterministicQFA[rndb[#]] & ) /@ surj; \
+\>", "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(TableForm[
+      Prepend[Thread[{surj, wl, 4\/\(wl\ wr\), wr, cod, 
+            det}], {"\<rule\>", "\<Wl\>", "\<Wm\>", "\<Wr\>", "\<codet\>", \
+"\<det\>"}]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Command ",
+  StyleBox["WelchCA", "SmallText"],
+  " computes the three indices. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(WelchCA[CA[102, 3, 2]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+The Welch coefficients of the right and left shifts for alphabets \
+of size 2 to 5 are:\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(TableForm[\((WelchCA[RightShiftCA[#1]] &)\) /@ Range[2, 5]]\)], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(TableForm[\((WelchCA[LeftShiftCA[#1]] &)\) /@ Range[2, 5]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Note that every CA whose de Bruijn automaton is deterministic or \
+codeterministic is automatically surjective. CAs of this type are easily \
+generated by glueing together random permutations of the underlying alphabet. \
+\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(k = 3; \), "\n", 
+    \(w = 3; \), "\n", 
+    \(L = Permutations[Range[0, k - 1]]; \), "\n", 
+    \(dig1 = 
+      Flatten[\((L\[LeftDoubleBracket]
+                Random[Integer, {1, \(k!\)}]\[RightDoubleBracket] &)\) /@ 
+          Range[k\^\(w - 1\)]]\), "\n", 
+    \(dig2 = 
+      Flatten[Transpose[\((L\[LeftDoubleBracket]
+                  Random[Integer, {1, \(k!\)}]\[RightDoubleBracket] &)\) /@ 
+            Range[k\^\(w - 1\)]]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C1 = CA[FromDigits[dig1, k], w, \(-k\)]\), "\n", 
+    \(C2 = CA[FromDigits[dig2, k], w, \(-k\)]\), "\n", 
+    \(ClassifyCA[C1]\), "\n", 
+    \(ClassifyCA[C2]\), "\n", 
+    \(WelchCA[C1]\), "\n", 
+    \(WelchCA[C2]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "To obtain a CA whose de Bruijn automaton is both deterministic and \
+codeterministic  we can pick a random permutation of order at least k of the \
+underlying alphabet ",
+  Cell[BoxData[
+      \(TraditionalForm\`{0, \[Ellipsis], k - 1}\)]],
+  " and define \n\t",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho](
+          a\[VeryThinSpace]x\[VeryThinSpace]b) = \[Pi]\^\(a(b)\)\)]],
+  " .\nThe corresponding global map is always open and fails to be injective. \
+"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(t = T[2, 3, 1]; \), "\n", 
+    \(grid = 
+      Pairs[Flatten[\((Table[#1, {k\^\(w - 1\)}] &)\) /@ Range[0, k - 1]], 
+        Flatten[\((Range[0, k - 1] &)\) /@ Range[k\^\(w - 1\)]]]; \), "\n", 
+    \(make[{a_Integer, b_Integer}] := \(t\^a\)\[LeftDoubleBracket]
+          b + 1\[RightDoubleBracket] - 1; \), "\n", 
+    \(dig = make /@ grid\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[FromDigits[dig, k], w, \(-k\)]\), "\n", 
+    \(sa = ToSA[C]; \), "\n", 
+    \(DeterministicQFA[sa]\), "\n", 
+    \(CodeterministicQFA[sa]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(ClassifyCA[C]\), "\n", 
+    \(WelchCA[C]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Note that one can extract the Welch indices also from the matrix \
+semigroups constructed in the last section. One only has to compute the \
+maximum row and column norms:\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[13628, 4, \(-2\)]; \), "\n", 
+    \(WelchCA[C]\), "\n", 
+    \(gen = makematrix[C]; \), "\n", 
+    \(S = 
+      ToList[GenerateSG[GEN[8, 2, gen], External \[Rule] False]]; \), "\n", 
+    \(Max[\((Plus @@ #1 &)\) /@ Flatten[Transpose /@ S, 1]]\), "\n", 
+    \(Max[\((Plus @@ #1 &)\) /@ Flatten[S, 1]]\)}], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Welch Automata", "Subsection"],
+
+Cell["\<\
+The deterministic semiautomata used in the computation of the Welch \
+parameters are also of interest. By selecting all state sets in the power set \
+machine of maximal cardinality we obtain a deterministic semiautomaton. Doing \
+this for both the forward and backward machine one constructs two such \
+automata, which we will call the Welch pair of the CA. The Welch pair of a CA \
+can be generated by the command ToWelchCA. The output consists of two pieces:
+\t-  the Welch indices,
+\t-  the Welch pair itself. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell["\<\
+For example, for the automaton CA[7770,4,2] from above we \
+find\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \({ind, {sl, sr}} = 
+      WelchCA[CA[7770, 4, \(-2\)], Full \[Rule] True, 
+        Normalize \[Rule] 2]; \), "\n", 
+    \(ind\), "\n", 
+    \(sl\), "\n", 
+    \(sr\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Hence, in the picture above, the bi-trees associated with word 0",
+  StyleBox["10",
+    FontVariations->{"CompatibilityType"->"Superscript"}],
+  " were not maximal.  To find a suitable word x we can use the semiautomata \
+ml and mr obtained by performing the power automaton construction to sa, the \
+de Bruijn automaton of the CA, starting with all singleton states:"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(sa = ToSA[CA[7770, 4, \(-2\)]]; \), "\n", 
+    \(mr = ToKernelFA[sa, \(({#1} &)\) /@ Range[8]]; \), "\n", 
+    \(ml = ToKernelFA[ReverseFA[sa], \(({#1} &)\) /@ Range[8]]; \), "\n", 
+    \(Fl = Select[States[ml], Length[#1] == 2 &]\), "\n", 
+    \(Fr = Select[States[mr], Length[#1] == 4 &]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[
+      TransferSequenceFA[ml, Range[8], 
+        PositionList[States[ml], Fl]]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(ts = 
+      TransferSequenceFA[mr, Range[8], 
+        PositionList[States[mr], Fr]]; \), "\n", 
+    \(ColumnForm[ts]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(PlotComputationFA[sa, 
+      ts\[LeftDoubleBracket]1, 1\[RightDoubleBracket]]; \)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Voila.\n\nSince ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(W\_m\)(C)\  = \ 1\)]],
+  " the states of sl and sr have intersections of cardinality 1:"
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(sl1 = States[sl]\), "\n", 
+    \(sr1 = States[sr]\), "\n", 
+    \(Apply[Intersection, CartesianProduct[sl1, sr1], {1}]\)}], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Welch Indices and Composition", "Subsection"],
+
+Cell[TextData[{
+  "The maps ",
+  Cell[BoxData[
+      \(TraditionalForm\`W\_l\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`W\_r\)]],
+  " are multiplicative under composition (monoid homomorphisms from the \
+epimorphisms of ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^\[Infinity]\)]],
+  " under composition to \[DoubleStruckCapitalN] under mulitplication). "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C51 = CA[51]; \), "\n", 
+    \(C102 = CA[102]; \), "\n", 
+    \(CC = ComposeCA[C51, C102]\), "\n", 
+    \(PrintCA[CC]\), "\n", 
+    \(EvolutionCA[CC, 40, GridLines \[Rule] False]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+All three global maps are open, the first one is even a \
+bijection.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(ClassifyCA /@ {C51, C102, CC}\)], "Input"],
+
+Cell["\<\
+The Welch indices of CC are the product of the respective indices \
+of C51 and C102.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(ColumnForm[WelchCA /@ {C51, C102, CC}]\)], "Input",
+  AspectRatioFixed->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Inverting CAs", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["The Method", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["Finding Bottlenecks", "Subsubsection"],
+
+Cell[TextData[{
+  "All injective global maps are open and surjective, and hence \
+homoemorphisms of ",
+  Cell[BoxData[
+      \(TraditionalForm\`K\^\[Infinity]\)]],
+  ". By Hedlund's theorem, the inverse maps must also be given by a suitable \
+CA. To determine the appropriate local rule one can proceed as follows.  \
+Suppose we are given a reversible automaton  ",
+  Cell[BoxData[
+      \(TraditionalForm\`CA[\[Rho], w, k]\)]],
+  " with local rule ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Rho]\)]],
+  ". We have to find a sufficiently large width ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\^\[Prime]\)]],
+  " so that every word ",
+  Cell[BoxData[
+      \(TraditionalForm\`z\  = \ \[Rho](x)\)]],
+  " of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\^\[Prime]\)]],
+  " contains enough information to reconstruct at least one symbol in ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  ".  We can then design an inverse CA of width ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\^\[Prime]\)]],
+  " by mapping ",
+  Cell[BoxData[
+      \(TraditionalForm\`z\)]],
+  " to that one symbol. In terms of the de Bruijn automaton, this means that \
+all the accepting computations of ",
+  Cell[BoxData[
+      \(TraditionalForm\`B(\[Rho])\)]],
+  " on input ",
+  Cell[BoxData[
+      \(TraditionalForm\`z\)]],
+  " must pass through a bottleneck: a particular state ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  " reached after scanning a certain number of symbols in ",
+  Cell[BoxData[
+      \(TraditionalForm\`z\)]],
+  ". Here is a simple example. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[51, 3, \(-2\)]; \), "\n", 
+    \(m = ToSA[C, Normalize \[Rule] 1]\), "\n", 
+    \(States[m]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(gr = \((PlotComputationFA[m, #1, PlotStyle \[Rule] {0.05, 0.05}, 
+              DisplayFunction \[Rule] Identity] &)\) /@ 
+        Words[4, \(-2\)]; \), "\n", 
+    \(ShowArray[gr]; \)}], "Input"],
+
+Cell[TextData[{
+  "As one can see, all computations are in the same state even after just one \
+step. In fact, for ",
+  Cell[BoxData[
+      \(TraditionalForm\`CA[51, 3, 2]\)]],
+  " it suffices to use ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\^\[Prime] = \ w\_l + w\_r\)]],
+  "  where  ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\_l = \ 1\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\_r = \ 1\)]],
+  "."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(gr = \((PlotComputationFA[m, #1, PlotStyle \[Rule] {0.05, 0.05}, 
+              DisplayFunction \[Rule] Identity] &)\) /@ 
+        Words[2, \(-2\)]; \), "\n", 
+    \(ShowArray[gr]; \)}], "Input"],
+
+Cell["\<\
+To find the appropriate states we have to trace the computation of \
+m. This can be done--albeit in an exceedingly inefficient way--by inspecting \
+all possible computations of the semiautomaton on some input. For example, \
+for the string \"01\" we have:\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(TableForm[ComputationFA[m, "\<01\>"]]\)], "Input"],
+
+Cell[TextData[{
+  "which shows that state 3 is a bottleneck, corresponding to the second \
+picture in the first row. \nWe repeat this operation for all words ",
+  Cell[BoxData[
+      \(TraditionalForm\`z\)]],
+  " of length 2 and obtain the local rule for the inverse CA. Note the \
+reversal operation, by convention the least significant digit of the rule \
+number is on the right. "
+}], "Text"],
+
+Cell[BoxData[{
+    \(getstate[z_] := \(ComputationFA[m, z]\)\[LeftDoubleBracket]1, 
+        3\[RightDoubleBracket]; \), "\n", 
+    \(states = \(States[m]\)\[LeftDoubleBracket]
+        getstate /@ Words[2, \(-2\)]\[RightDoubleBracket]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(lab = \((StringTake[#1, 1] &)\) /@ states\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(Ci = LabelToCodeCA[CA[Reverse[lab], 2, \(-2\)]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+To make sure that Ci works properly we compute the composition and \
+eliminate superfluous variables.\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(CC = ComposeCA[C, Ci]\), "\n", 
+    \(ShrinkCA[CC]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+The Welch indices show the appropriate multiplicative behavior. \
+\
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[WelchCA /@ {C, Ci, CC}]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(PrintCA[CCC = ComposeCA[C, CC]]\), "\[IndentingNewLine]", 
+    \(ShrinkCA[CCC]\)}], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Another Example", "Subsubsection"],
+
+Cell[TextData[{
+  "Let us perform the necessary computations by hand for another example, a \
+binary CA of width 4. In order to determine the proper choice of ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\^\[Prime] = \ w\_l\  + \ w\_r\)]],
+  "  we use the Welch automata associated with the CA. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[3915, 4, \(-2\)]\), "\n", 
+    \(sa = ToSA[C, Normalize \[Rule] 1]\), "\n", 
+    \(PrintCA[C]\), "\n", 
+    \(ClassifyCA[C]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+First we compute the Welch automata. The indices turn out to be 4 \
+and 2, respectively. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(WelchCA[C]\)], "Input"],
+
+Cell[BoxData[{
+    \({Wl, Wr} = Last[WelchCA[C, Full \[Rule] True]]; \), "\n", 
+    \(States[Wl]\), "\n", 
+    \(States[Wr]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "The procedure ",
+  StyleBox["DefiniteQFA", "SmallText"],
+  " tests whether an automaton is definite, and also determines the maximum \
+number of steps before any two computations with the same input in a definite \
+automaton merge."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(defl = DefiniteQFA[Wl, Full \[Rule] True]; \), "\n", 
+    \(defr = DefiniteQFA[Wr, Full \[Rule] True]; \), "\n", 
+    \({defl, defr, ww = defl + defr}\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["Let's try for the left Welch automaton. ", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(TransitionFunctionFA[Wl, dell]\), "\n", 
+    \(\((dell[#1, "\<0000\>"] &)\) /@ Range[6]\), "\n", 
+    \(\((dell[#1, "\<0001\>"] &)\) /@ Range[6]\), "\n", 
+    \(\((dell[#1, "\<1111\>"] &)\) /@ Range[6]\), "\n", 
+    \(\((dell[#1, "\<0011\>"] &)\) /@ Range[6]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Seems to work. Let's also try a few random words of length 6 to \
+check if the computations of the de Bruijn automaton really all have a bottle \
+neck. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(W = \((RandomWord[6, \(-2\)] &)\) /@ Range[4]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(gr = \((PlotComputationFA[sa, #1, PlotStyle \[Rule] { .02,  .03}, 
+              LineStyle \[Rule] { .005,  .015}, 
+              DisplayFunction \[Rule] Identity] &)\) /@ W; \), "\n", 
+    \(ShowArray[gr]; \)}], "Input"],
+
+Cell[TextData[{
+  "From the pictures, it seems that words of length 2 + 4 produce the desired \
+bottleneck after two steps in the computation.  Let's take a closer look at \
+one of these computations. The bottleneck here is at state ",
+  Cell[BoxData[
+      \(TraditionalForm\`p = 8\)]],
+  ", after two steps."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ColumnForm[ComputationFA[sa, "\<100010\>"]]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Moreover, only computations starting at ",
+  Cell[BoxData[
+      \(TraditionalForm\`{2, 3}\)]],
+  " and ending at ",
+  Cell[BoxData[
+      \(TraditionalForm\`{3, 5, 6, 8}\)]],
+  " survive, two states in Wl and Wr, respectively. To find the bottleneck \
+for all words of length 6, we compute all words of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`defl = 2\)]],
+  " that lead to the same state in Wl and similarly all words of length ",
+  Cell[BoxData[
+      \(TraditionalForm\`defr = 4\)]],
+  " that lead to the same state in Wr. This can be accomplished with the \
+procedure ",
+  StyleBox["fullanguage", "SmallText"],
+  ", a private function in automata. It will output a list of all words of a \
+given length that label a computation starting at a specific state ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  ", for all states ",
+  Cell[BoxData[
+      \(TraditionalForm\`p\)]],
+  "."
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Lr = Automata`automata`Private`fullanguage[sa, defl]\), "\n", 
+    \(Ll = 
+      Automata`automata`Private`fullanguage[ReverseFA[sa], defr]\)}], "Input",\
+
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "Since the words in Ll are backwards from the point of view of the cellular \
+automaton, we have to revert them before we glue them to their counterparts \
+in Lr. We use ",
+  StyleBox["MapIndexed", "SmallText"],
+  " to keep track of the state where the strings join."
+}], "Text"],
+
+Cell[BoxData[{
+    \(join[{L1_List, L2_List}] := 
+      Apply[StringJoin, CartesianProduct[StringReverse /@ L1, L2], 
+        1]; \), "\n", 
+    \(LL = 
+      Sort[FlattenOne[
+          MapIndexed[CartesianProduct, join /@ Pairs[Ll, Lr]]]]\)}], "Input"],
+
+Cell["\<\
+Note that reversal/append operation has indeed produced all strings \
+of length 6. Since the cellular automaton under consideration is surjective, \
+this better be the case. The associated states, or rather, their structured \
+counterparts in the de Bruijn automaton determine the image of the string \
+under the local map of the inverse CA. \
+\>", "Text"],
+
+Cell[BoxData[
+    \(States[sa]\)], "Input"],
+
+Cell[BoxData[
+    \(rul = Thread[Range[8] \[Rule] \((StringTake[#1, 1] &)\) /@ States[sa]]; 
+    lab = Reverse[Last /@ LL /. \[InvisibleSpace]rul]\)], "Input"],
+
+Cell["\<\
+After some some cleaning up we obtain the local map for the inverse \
+CA. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(LabelToCodeCA[lab, ww, \(-2\)]\), "\n", 
+    \(Ci = CA[%, ww, \(-2\)]\)}], "Input"],
+
+Cell["\<\
+To check, we compute the composition of C with Ci. To speed up \
+composition we first shrink Ci. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Ci = ShrinkCA[Ci]\), "\n", 
+    \(CC = ComposeCA[Ci, C]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Looks wrong, but after elimination of useless variables we get the \
+right answer.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(ShrinkCA[CC]\)], "Input",
+  AspectRatioFixed->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["A Real Algorithm", "Subsubsection"],
+
+Cell[TextData[StyleBox[">>>>>>>>>>>>>>>More explanations \
+later.<<<<<<<<<<<<<<<<<",
+  FontWeight->"Bold"]], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "The reader will have noticed that a crucial step in inversion process is \
+to decide how far computations have to be traced forward and backward to \
+ensure the existence of bottlenecks. As it turns out, the proper choice of ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\^\[Prime]\  = \ w\_l\  + \ w\_r\)]],
+  " can be determined from the Welch automata. For injective rules these \
+automata are always definite and their definiteness numbers are equal to ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\_l\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`w\_r\)]],
+  ". The necessary computations are carried out in the procedure ",
+  StyleBox["InverseCA", "SmallText"],
+  ". Note that in general ",
+  StyleBox["InverseCA", "SmallText"],
+  " will only construct a CA whose composition with the original machine is a \
+shift, but not necessarily the exact inverse. "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(C = CA[3915, 4, \(-2\)]\), "\n", 
+    \(Ci = InverseCA[C]\), "\n", 
+    \(CC = ComposeCA[C, Ci]\), "\n", 
+    \(ShrinkCA[CC]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+The last CA is remarkable because it is the smallest example of a \
+CA whose reversibility is not caused by simple properties of the local \
+function. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(PrintCA[C]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "The second bit is always flipped, except in the context  ",
+  Cell[BoxData[
+      FormBox[
+        InterpretationBox[\((0, \[Ellipsis], 1, \ 0)\),
+          
+          RowBox[ {"OMTuple", "[", "\[Placeholder]", ",", "\[Placeholder]", 
+            ",", "\[Placeholder]", "]"}]], TraditionalForm]]],
+  ".\nAnother interesting example is the following machine based on addition \
+modulo 2, but over an alphabet of size 8 (so that every state can be \
+construed as a 3-bit block).  "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Clear[loc]\), "\n", 
+    \(loc[x_, y_] := 
+      Module[{x0, x1, x2, y0, y1, y2}, {x0, x1, x2} = 
+          Reverse[IntegerDigits[x, 2, 3]]; {y0, y1, y2} = 
+          Reverse[IntegerDigits[y, 2, 3]]; 
+        FromDigits[{Mod[x1 + y2, 2], Mod[x0 + y1, 2], y0}, 2]]; \), "\n", 
+    \(C = FunctionToCA[loc, 2, \(-8\)]\), "\n", 
+    \(PrintCA[C]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+To understand how the machine works it is best to think of the \
+cells as consisting of three layers of bits. The top bit is unchanged, the \
+second is obtained by xor with the top bit of the cell on the left, and the \
+bottom bit is obtained from xor with the second bit on the left.
+Note that the corresponding de Bruijn automaton is deterministic, but not \
+co-deterministic. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(sa = ToSA[C]; \), "\n", 
+    \(sar = ReverseFA[sa]; \), "\n", 
+    \(DeterministicQFA[sa]\), "\n", 
+    \(DeterministicQFA[sar]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(TableForm[DegreesFA[sa]]\), "\n", 
+    \(TableForm[DegreesFA[sar]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["The Welch coefficients are 8 and 1 for C. ", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(WelchCA[C]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell["Hence, C is reversible. ", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ClassifyCA[C]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(Ci = InverseCA[C]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[TextData[{
+  "If you have enough patience, you may wish to verify that the composition \
+of C and Ci really is a shift, it takes a bit of time to do so.\n\nNote that \
+the width of the inverse automaton is 3. It is quite straightforward to \
+generalize this example to produce a CA of width 2 and an alphabet of size ",
+  Cell[BoxData[
+      \(TraditionalForm\`2\^k\)]],
+  " whose inverse CA has width ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\)]],
+  ". "
+}], "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Binary width 4 CAs", "Subsection"],
+
+Cell["\<\
+We will now compute the inverse CAs for all reversible binary CAs \
+of width 4. We start with a list of all essential reversible CAs:\
+\>", "Text",\
+
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(inj4 = \((CA[#1, 4, \(-2\)] &)\) /@ {255, 3855, 3915, 11535, 13107, 
+          13155, 14643, 21845}; \), "\n", 
+    \(TableForm[inj4]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+To speed up the computation a little, we first shrink the automata. \
+As it turns out, only 4 rules that depend on all 4 variables remain. \
+\>", \
+"Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(sinj4 = ShrinkCA /@ inj4; \), "\n", 
+    \(TableForm[sinj4]\), "\n", 
+    \(sinj4 = Select[sinj4, WidthCA[#1] == 4 &]; \)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(Timing[inv4 = ShrinkCA /@ \(InverseCA /@ sinj4\); ]\), "\n", 
+    \(TableForm[Thread[{sinj4, inv4}]]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell["\<\
+Note that the first CA is the inverse of the second, and the third \
+the inverse of the fourth. 
+To check the results we compute the compositions. After shrinking the \
+automata all turn out to produce the identity map. \
+\>", "Text",
+  Evaluatable->False,
+  AspectRatioFixed->True],
+
+Cell[BoxData[{
+    \(cc = Apply[ComposeCA, Pairs[sinj4, inv4], {1}]; \), "\n", 
+    \(TableForm[cc]\)}], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(ShrinkCA /@ Union[cc]\)], "Input",
+  AspectRatioFixed->True]
+}, Closed]]
+}, Closed]]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+AutoGeneratedPackage->None,
+ScreenStyleEnvironment->"Working",
+WindowToolbars->{},
+CellGrouping->Automatic,
+WindowSize->{1024, 880},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingStartingPageNumber->91,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PaperSize"->{612, 792},
+"PaperOrientation"->"Portrait",
+"Magnification"->1},
+PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
+ShowCellLabel->True,
+CellLabelAutoDelete->True,
+ShowCellTags->False,
+RenderingOptions->{"ObjectDithering"->True,
+"RasterDithering"->False},
+CharacterEncoding->Automatic,
+Magnification->1.5,
+StyleDefinitions -> "XMLStyle.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "c:1"->{
+    Cell[1833, 55, 146, 4, 175, "Title",
+      Evaluatable->False,
+      CellTags->"c:1"]},
+  "c:2"->{
+    Cell[2004, 63, 110, 3, 87, "Section",
+      Evaluatable->False,
+      CellTags->"c:2"]},
+  "c:3"->{
+    Cell[2139, 70, 99, 3, 64, "Subsection",
+      Evaluatable->False,
+      CellTags->"c:3"]},
+  "c:4"->{
+    Cell[2263, 77, 61, 1, 60, "Subsubsection",
+      CellTags->"c:4"]},
+  "c:5"->{
+    Cell[4844, 183, 53, 1, 37, "Subsubsection",
+      CellTags->"c:5"]},
+  "c:6"->{
+    Cell[6763, 249, 68, 1, 60, "Subsubsection",
+      CellTags->"c:6"]},
+  "c:7"->{
+    Cell[7558, 273, 113, 3, 38, "Subsection",
+      Evaluatable->False,
+      CellTags->"c:7"]},
+  "c:8"->{
+    Cell[7696, 280, 54, 1, 66, "Subsubsection",
+      CellTags->"c:8"]},
+  "c:12"->{
+    Cell[33481, 1071, 126, 3, 87, "Section",
+      Evaluatable->False,
+      CellTags->"c:12"]},
+  "c:13"->{
+    Cell[33632, 1078, 128, 3, 66, "Subsection",
+      Evaluatable->False,
+      CellTags->"c:13"]},
+  "c:19"->{
+    Cell[58226, 1870, 124, 3, 55, "Section",
+      Evaluatable->False,
+      CellTags->"c:19"]},
+  "c:24"->{
+    Cell[80485, 2551, 117, 3, 55, "Section",
+      Evaluatable->False,
+      CellTags->"c:24"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"c:1", 129280, 4117},
+  {"c:2", 129383, 4121},
+  {"c:3", 129487, 4125},
+  {"c:4", 129593, 4129},
+  {"c:5", 129676, 4132},
+  {"c:6", 129760, 4135},
+  {"c:7", 129844, 4138},
+  {"c:8", 129952, 4142},
+  {"c:12", 130037, 4145},
+  {"c:13", 130146, 4149},
+  {"c:19", 130258, 4153},
+  {"c:24", 130367, 4157}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 54, 0, 40, "SmallText"],
+
+Cell[CellGroupData[{
+Cell[1833, 55, 146, 4, 175, "Title",
+  Evaluatable->False,
+  CellTags->"c:1"],
+
+Cell[CellGroupData[{
+Cell[2004, 63, 110, 3, 87, "Section",
+  Evaluatable->False,
+  CellTags->"c:2"],
+
+Cell[CellGroupData[{
+Cell[2139, 70, 99, 3, 64, "Subsection",
+  Evaluatable->False,
+  CellTags->"c:3"],
+
+Cell[CellGroupData[{
+Cell[2263, 77, 61, 1, 60, "Subsubsection",
+  CellTags->"c:4"],
+Cell[2327, 80, 241, 7, 74, "Definition"],
+Cell[2571, 89, 349, 11, 46, "Text"],
+Cell[2923, 102, 231, 8, 46, "Text"],
+Cell[3157, 112, 420, 15, 71, "Text"],
+Cell[3580, 129, 240, 8, 74, "Definition"],
+Cell[3823, 139, 347, 13, 46, "Text"],
+Cell[4173, 154, 326, 10, 74, "Definition"],
+Cell[4502, 166, 194, 7, 74, "Definition"],
+Cell[4699, 175, 108, 3, 74, "Definition"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[4844, 183, 53, 1, 37, "Subsubsection",
+  CellTags->"c:5"],
+Cell[4900, 186, 600, 17, 71, "Text"],
+Cell[5503, 205, 570, 16, 71, "Text"],
+Cell[6076, 223, 203, 5, 46, "Text"],
+Cell[6282, 230, 236, 7, 110, "Theorem"],
+Cell[6521, 239, 205, 5, 110, "Theorem"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6763, 249, 68, 1, 60, "Subsubsection",
+  CellTags->"c:6"],
+Cell[6834, 252, 675, 15, 103, "Text",
+  Evaluatable->False]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[7558, 273, 113, 3, 38, "Subsection",
+  Evaluatable->False,
+  CellTags->"c:7"],
+
+Cell[CellGroupData[{
+Cell[7696, 280, 54, 1, 66, "Subsubsection",
+  CellTags->"c:8"],
+Cell[7753, 283, 2238, 72, 337, "Text",
+  Evaluatable->False],
+Cell[9994, 357, 148, 4, 91, "Input"],
+Cell[10145, 363, 437, 14, 60, "Text",
+  Evaluatable->False],
+Cell[10585, 379, 263, 6, 137, "Input"],
+Cell[10851, 387, 521, 11, 132, "Text",
+  Evaluatable->False],
+Cell[11375, 400, 197, 4, 91, "Input"],
+Cell[11575, 406, 452, 9, 98, "Text",
+  Evaluatable->False],
+Cell[12030, 417, 118, 3, 68, "Input"],
+Cell[12151, 422, 123, 3, 68, "Input"],
+Cell[12277, 427, 343, 10, 63, "Text",
+  Evaluatable->False],
+Cell[12623, 439, 184, 4, 91, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[12844, 448, 36, 0, 66, "Subsubsection"],
+Cell[12883, 450, 4083, 101, 524, "Text",
+  Evaluatable->False],
+Cell[16969, 553, 199, 4, 68, "Input"],
+Cell[17171, 559, 297, 7, 60, "Text",
+  Evaluatable->False],
+Cell[17471, 568, 924, 18, 241, "Text",
+  Evaluatable->False],
+Cell[18398, 588, 295, 6, 91, "Input"],
+Cell[18696, 596, 111, 2, 45, "Input"],
+Cell[18810, 600, 305, 7, 79, "Text"],
+Cell[19118, 609, 211, 5, 114, "Input"],
+Cell[19332, 616, 100, 3, 41, "Text"],
+Cell[19435, 621, 58, 1, 45, "Input"],
+Cell[19496, 624, 399, 9, 91, "Text",
+  Evaluatable->False],
+Cell[19898, 635, 107, 2, 45, "Input"],
+Cell[20008, 639, 219, 5, 63, "Text"],
+Cell[20230, 646, 73, 1, 45, "Input"],
+Cell[20306, 649, 161, 5, 44, "Text"],
+Cell[20470, 656, 136, 2, 68, "Input"],
+Cell[20609, 660, 298, 8, 60, "Text"],
+Cell[20910, 670, 116, 2, 68, "Input"],
+Cell[21029, 674, 180, 6, 44, "Text"],
+Cell[21212, 682, 197, 4, 91, "Input"],
+Cell[21412, 688, 178, 4, 44, "Text"],
+Cell[21593, 694, 407, 9, 137, "Input"],
+Cell[22003, 705, 191, 5, 68, "Input"],
+Cell[22197, 712, 162, 5, 41, "Text",
+  Evaluatable->False],
+Cell[22362, 719, 293, 6, 137, "Input"],
+Cell[22658, 727, 241, 9, 44, "Text",
+  Evaluatable->False],
+Cell[22902, 738, 256, 5, 114, "Input"],
+Cell[23161, 745, 137, 3, 45, "Input"],
+Cell[23301, 750, 281, 7, 60, "Text",
+  Evaluatable->False],
+Cell[23585, 759, 179, 4, 91, "Input"],
+Cell[23767, 765, 104, 2, 45, "Input"],
+Cell[23874, 769, 323, 7, 79, "Text",
+  Evaluatable->False],
+Cell[24200, 778, 158, 2, 68, "Input"],
+Cell[24361, 782, 51, 1, 45, "Input"],
+Cell[24415, 785, 248, 8, 44, "Text",
+  Evaluatable->False],
+Cell[24666, 795, 125, 3, 68, "Input"],
+Cell[24794, 800, 117, 2, 45, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[24960, 808, 35, 0, 38, "Subsection"],
+Cell[24998, 810, 1315, 36, 82, "Text",
+  Evaluatable->False],
+Cell[26316, 848, 262, 6, 137, "Input"],
+Cell[26581, 856, 866, 19, 134, "Text",
+  Evaluatable->False],
+Cell[27450, 877, 130, 3, 68, "Input"],
+Cell[27583, 882, 138, 5, 41, "Text",
+  Evaluatable->False],
+Cell[27724, 889, 163, 4, 91, "Input"],
+Cell[27890, 895, 183, 4, 91, "Input"],
+Cell[28076, 901, 98, 3, 41, "Text"],
+Cell[28177, 906, 120, 2, 68, "Input"],
+Cell[28300, 910, 242, 5, 60, "Text"],
+Cell[28545, 917, 101, 2, 68, "Input"],
+Cell[28649, 921, 119, 3, 68, "Input"],
+Cell[28771, 926, 109, 3, 41, "Text"],
+Cell[28883, 931, 114, 2, 68, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[29034, 938, 51, 0, 38, "Subsection"],
+Cell[29088, 940, 1552, 31, 255, "Text",
+  Evaluatable->False],
+Cell[30643, 973, 258, 6, 137, "Input"],
+Cell[30904, 981, 842, 26, 196, "Text",
+  Evaluatable->False],
+Cell[31749, 1009, 414, 13, 63, "Text",
+  Evaluatable->False],
+Cell[32166, 1024, 377, 8, 137, "Input"],
+Cell[32546, 1034, 145, 5, 41, "Text",
+  Evaluatable->False],
+Cell[32694, 1041, 97, 2, 45, "Input"],
+Cell[32794, 1045, 231, 6, 60, "Text",
+  Evaluatable->False],
+Cell[33028, 1053, 161, 2, 91, "Input"],
+Cell[33192, 1057, 148, 4, 45, "Input"],
+Cell[33343, 1063, 89, 2, 45, "Input"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[33481, 1071, 126, 3, 87, "Section",
+  Evaluatable->False,
+  CellTags->"c:12"],
+
+Cell[CellGroupData[{
+Cell[33632, 1078, 128, 3, 66, "Subsection",
+  Evaluatable->False,
+  CellTags->"c:13"],
+
+Cell[CellGroupData[{
+Cell[33785, 1085, 41, 0, 66, "Subsubsection"],
+Cell[33829, 1087, 3884, 112, 424, "Text",
+  Evaluatable->False],
+Cell[37716, 1201, 108, 2, 45, "Input"],
+Cell[37827, 1205, 122, 3, 68, "Input"],
+Cell[37952, 1210, 90, 2, 45, "Input"],
+Cell[38045, 1214, 80, 2, 45, "Input"],
+Cell[38128, 1218, 646, 20, 80, "Text",
+  Evaluatable->False],
+Cell[38777, 1240, 118, 3, 68, "Input"],
+Cell[38898, 1245, 184, 6, 91, "Text",
+  Evaluatable->False],
+Cell[39085, 1253, 120, 3, 68, "Input"],
+Cell[39208, 1258, 101, 2, 41, "Text",
+  Evaluatable->False],
+Cell[39312, 1262, 95, 2, 45, "Input"],
+Cell[39410, 1266, 153, 5, 41, "Text",
+  Evaluatable->False],
+Cell[39566, 1273, 75, 2, 45, "Input"],
+Cell[39644, 1277, 276, 7, 72, "Text",
+  Evaluatable->False],
+Cell[39923, 1286, 115, 3, 68, "Input"],
+Cell[40041, 1291, 117, 3, 68, "Input"],
+Cell[40161, 1296, 125, 3, 68, "Input"],
+Cell[40289, 1301, 116, 2, 45, "Input"],
+Cell[40408, 1305, 305, 7, 60, "Text",
+  Evaluatable->False],
+Cell[40716, 1314, 127, 3, 45, "Input"],
+Cell[40846, 1319, 392, 9, 110, "Text",
+  Evaluatable->False],
+Cell[41241, 1330, 289, 6, 137, "Input"],
+Cell[41533, 1338, 420, 10, 85, "Text",
+  Evaluatable->False],
+Cell[41956, 1350, 140, 4, 45, "Input"],
+Cell[42099, 1356, 327, 9, 60, "Text",
+  Evaluatable->False],
+Cell[42429, 1367, 131, 3, 68, "Input"],
+Cell[42563, 1372, 179, 3, 68, "Input"],
+Cell[42745, 1377, 163, 5, 41, "Text",
+  Evaluatable->False],
+Cell[42911, 1384, 108, 2, 45, "Input"],
+Cell[43022, 1388, 94, 3, 41, "Text"],
+Cell[43119, 1393, 71, 2, 45, "Input"],
+Cell[43193, 1397, 113, 2, 41, "Text",
+  Evaluatable->False],
+Cell[43309, 1401, 262, 5, 91, "Input"],
+Cell[43574, 1408, 339, 8, 63, "Text",
+  Evaluatable->False],
+Cell[43916, 1418, 114, 2, 45, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[44067, 1425, 51, 0, 66, "Subsubsection"],
+Cell[44121, 1427, 1095, 43, 103, "Text",
+  Evaluatable->False],
+Cell[45219, 1472, 1305, 26, 298, "Text",
+  Evaluatable->False],
+Cell[46527, 1500, 109, 3, 68, "Input"],
+Cell[46639, 1505, 289, 7, 137, "Input"],
+Cell[46931, 1514, 224, 6, 60, "Text",
+  Evaluatable->False],
+Cell[47158, 1522, 146, 4, 45, "Input"],
+Cell[47307, 1528, 104, 2, 41, "Text",
+  Evaluatable->False],
+Cell[47414, 1532, 79, 2, 45, "Input"],
+Cell[47496, 1536, 320, 7, 79, "Text",
+  Evaluatable->False],
+Cell[47819, 1545, 258, 6, 114, "Input"],
+Cell[48080, 1553, 215, 6, 60, "Text",
+  Evaluatable->False],
+Cell[48298, 1561, 147, 3, 68, "Input"],
+Cell[48448, 1566, 120, 2, 41, "Text",
+  Evaluatable->False],
+Cell[48571, 1570, 105, 2, 45, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[48713, 1577, 53, 0, 66, "Subsubsection"],
+Cell[48769, 1579, 1271, 30, 186, "Text",
+  Evaluatable->False],
+Cell[50043, 1611, 1099, 21, 363, "Input"],
+Cell[51145, 1634, 268, 7, 63, "Text",
+  Evaluatable->False],
+Cell[51416, 1643, 249, 7, 114, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[51714, 1656, 57, 0, 66, "Subsection"],
+Cell[51774, 1658, 348, 7, 79, "Text",
+  Evaluatable->False],
+Cell[52125, 1667, 150, 4, 45, "Input"],
+Cell[52278, 1673, 105, 2, 41, "Text",
+  Evaluatable->False],
+Cell[52386, 1677, 125, 3, 68, "Input"],
+Cell[52514, 1682, 199, 5, 60, "Text",
+  Evaluatable->False],
+Cell[52716, 1689, 126, 3, 68, "Input"],
+Cell[52845, 1694, 108, 2, 45, "Input"],
+Cell[52956, 1698, 274, 5, 91, "Input"],
+Cell[53233, 1705, 447, 10, 85, "Text",
+  Evaluatable->False],
+Cell[53683, 1717, 202, 5, 91, "Input"],
+Cell[53888, 1724, 108, 2, 45, "Input"],
+Cell[53999, 1728, 230, 6, 60, "Text",
+  Evaluatable->False],
+Cell[54232, 1736, 284, 7, 91, "Input"],
+Cell[54519, 1745, 104, 2, 45, "Input"],
+Cell[54626, 1749, 543, 11, 129, "Text",
+  Evaluatable->False],
+Cell[55172, 1762, 133, 4, 45, "Input"],
+Cell[55308, 1768, 109, 3, 68, "Input"],
+Cell[55420, 1773, 154, 5, 41, "Text",
+  Evaluatable->False],
+Cell[55577, 1780, 95, 2, 68, "Input"],
+Cell[55675, 1784, 91, 2, 45, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[55803, 1791, 45, 0, 66, "Subsection"],
+Cell[55851, 1793, 573, 11, 110, "Text",
+  Evaluatable->False],
+Cell[56427, 1806, 226, 5, 114, "Input"],
+Cell[56656, 1813, 106, 2, 41, "Text",
+  Evaluatable->False],
+Cell[56765, 1817, 124, 3, 68, "Input"],
+Cell[56892, 1822, 188, 5, 41, "Text",
+  Evaluatable->False],
+Cell[57083, 1829, 105, 2, 68, "Input"],
+Cell[57191, 1833, 46, 1, 45, "Input"],
+Cell[57240, 1836, 309, 7, 60, "Text",
+  Evaluatable->False],
+Cell[57552, 1845, 255, 5, 68, "Input"],
+Cell[57810, 1852, 144, 5, 41, "Text",
+  Evaluatable->False],
+Cell[57957, 1859, 220, 5, 114, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[58226, 1870, 124, 3, 55, "Section",
+  Evaluatable->False,
+  CellTags->"c:19"],
+
+Cell[CellGroupData[{
+Cell[58375, 1877, 32, 0, 66, "Subsection"],
+Cell[58410, 1879, 1990, 50, 329, "Text",
+  Evaluatable->False],
+Cell[60403, 1931, 163, 4, 68, "Input"],
+Cell[60569, 1937, 192, 5, 41, "Text",
+  Evaluatable->False],
+Cell[60764, 1944, 166, 4, 91, "Input"],
+Cell[60933, 1950, 486, 11, 79, "Text"],
+Cell[61422, 1963, 104, 2, 68, "Input"],
+Cell[61529, 1967, 474, 10, 79, "Text",
+  Evaluatable->False],
+Cell[62006, 1979, 95, 2, 45, "Input"],
+Cell[62104, 1983, 160, 4, 45, "Input"],
+Cell[62267, 1989, 3005, 77, 532, "Text",
+  Evaluatable->False],
+Cell[65275, 2068, 420, 9, 110, "Text",
+  Evaluatable->False],
+Cell[65698, 2079, 82, 2, 45, "Input"],
+Cell[65783, 2083, 78, 2, 45, "Input"],
+Cell[65864, 2087, 187, 4, 68, "Input"],
+Cell[66054, 2093, 276, 8, 122, "Text",
+  Evaluatable->False],
+Cell[66333, 2103, 185, 4, 91, "Input"],
+Cell[66521, 2109, 606, 11, 129, "Text",
+  Evaluatable->False],
+Cell[67130, 2122, 116, 2, 45, "Input"],
+Cell[67249, 2126, 476, 9, 98, "Text",
+  Evaluatable->False],
+Cell[67728, 2137, 112, 2, 45, "Input"],
+Cell[67843, 2141, 121, 3, 45, "Input"],
+Cell[67967, 2146, 199, 6, 60, "Text",
+  Evaluatable->False],
+Cell[68169, 2154, 121, 3, 45, "Input"],
+Cell[68293, 2159, 184, 5, 41, "Text",
+  Evaluatable->False],
+Cell[68480, 2166, 121, 3, 45, "Input"],
+Cell[68604, 2171, 176, 5, 41, "Text",
+  Evaluatable->False],
+Cell[68783, 2178, 121, 3, 45, "Input"],
+Cell[68907, 2183, 1170, 25, 303, "Text",
+  Evaluatable->False],
+Cell[70080, 2210, 174, 4, 71, "Input"],
+Cell[70257, 2216, 124, 3, 68, "Input"],
+Cell[70384, 2221, 191, 5, 41, "Text",
+  Evaluatable->False],
+Cell[70578, 2228, 191, 4, 91, "Input"],
+Cell[70772, 2234, 169, 5, 41, "Text",
+  Evaluatable->False],
+Cell[70944, 2241, 209, 5, 91, "Input"],
+Cell[71156, 2248, 100, 2, 45, "Input"],
+Cell[71259, 2252, 186, 5, 41, "Text",
+  Evaluatable->False],
+Cell[71448, 2259, 370, 8, 110, "Text",
+  Evaluatable->False],
+Cell[71821, 2269, 121, 3, 45, "Input"],
+Cell[71945, 2274, 237, 5, 91, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[72219, 2284, 43, 0, 66, "Subsection"],
+Cell[72265, 2286, 606, 11, 117, "Text",
+  Evaluatable->False],
+Cell[72874, 2299, 181, 5, 68, "Input"],
+Cell[73058, 2306, 171, 4, 68, "Input"],
+Cell[73232, 2312, 120, 3, 45, "Input"],
+Cell[73355, 2317, 121, 2, 41, "Text",
+  Evaluatable->False],
+Cell[73479, 2321, 297, 6, 137, "Input"],
+Cell[73779, 2329, 244, 6, 60, "Text",
+  Evaluatable->False],
+Cell[74026, 2337, 149, 4, 45, "Input"],
+Cell[74178, 2343, 172, 5, 41, "Text",
+  Evaluatable->False],
+Cell[74353, 2350, 112, 2, 45, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[74502, 2357, 38, 0, 66, "Subsection"],
+Cell[74543, 2359, 1157, 26, 210, "Text",
+  Evaluatable->False],
+Cell[75703, 2387, 110, 2, 45, "Input"],
+Cell[75816, 2391, 286, 5, 91, "Input"],
+Cell[76105, 2398, 212, 6, 60, "Text",
+  Evaluatable->False]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[76354, 2409, 44, 0, 66, "Subsection"],
+Cell[76401, 2411, 322, 8, 63, "Text"],
+Cell[76726, 2421, 225, 4, 114, "Input"],
+Cell[76954, 2427, 151, 5, 41, "Text"],
+Cell[77108, 2434, 182, 3, 91, "Input"],
+Cell[77293, 2439, 650, 19, 60, "Text"],
+Cell[77946, 2460, 134, 2, 68, "Input"],
+Cell[78083, 2464, 49, 1, 45, "Input"],
+Cell[78135, 2467, 93, 3, 41, "Text"],
+Cell[78231, 2472, 143, 2, 68, "Input"],
+Cell[78377, 2476, 71, 1, 45, "Input"],
+Cell[78451, 2479, 261, 5, 91, "Text"],
+Cell[78715, 2486, 88, 3, 41, "Text"],
+Cell[78806, 2491, 49, 0, 41, "Text"],
+Cell[78858, 2493, 187, 4, 91, "Input"],
+Cell[79048, 2499, 64, 0, 41, "Text"],
+Cell[79115, 2501, 144, 2, 68, "Input"],
+Cell[79262, 2505, 71, 1, 45, "Input"],
+Cell[79336, 2508, 110, 3, 41, "Text"],
+Cell[79449, 2513, 117, 2, 45, "Input"],
+Cell[79569, 2517, 129, 3, 41, "Text"],
+Cell[79701, 2522, 110, 2, 45, "Input"],
+Cell[79814, 2526, 67, 1, 45, "Input"],
+Cell[79884, 2529, 80, 1, 45, "Input"],
+Cell[79967, 2532, 127, 3, 41, "Text"],
+Cell[80097, 2537, 188, 4, 91, "Input"],
+Cell[80288, 2543, 148, 2, 68, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[80485, 2551, 117, 3, 55, "Section",
+  Evaluatable->False,
+  CellTags->"c:24"],
+
+Cell[CellGroupData[{
+Cell[80627, 2558, 34, 0, 66, "Subsection"],
+Cell[80664, 2560, 1180, 34, 153, "Text",
+  Evaluatable->False],
+
+Cell[CellGroupData[{
+Cell[81869, 2598, 32, 0, 66, "Subsubsection"],
+Cell[81904, 2600, 442, 9, 98, "Text",
+  Evaluatable->False],
+Cell[82349, 2611, 80, 1, 45, "Input"],
+Cell[82432, 2614, 190, 4, 60, "Text"],
+Cell[82625, 2620, 159, 4, 45, "Input"],
+Cell[82787, 2626, 259, 8, 60, "Text",
+  Evaluatable->False],
+Cell[83049, 2636, 273, 7, 114, "Input"],
+Cell[83325, 2645, 319, 10, 60, "Text",
+  Evaluatable->False],
+Cell[83647, 2657, 858, 25, 129, "Text",
+  Evaluatable->False],
+Cell[84508, 2684, 307, 7, 114, "Input"],
+Cell[84818, 2693, 363, 11, 60, "Text",
+  Evaluatable->False],
+Cell[85184, 2706, 142, 4, 91, "Input"],
+Cell[85329, 2712, 146, 4, 91, "Input"],
+Cell[85478, 2718, 264, 9, 44, "Text",
+  Evaluatable->False],
+Cell[85745, 2729, 127, 3, 45, "Input"],
+Cell[85875, 2734, 172, 4, 91, "Input"],
+Cell[86050, 2740, 42, 1, 45, "Input"],
+Cell[86095, 2743, 98, 2, 45, "Input"],
+Cell[86196, 2747, 905, 26, 168, "Text",
+  Evaluatable->False]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[87138, 2778, 59, 0, 52, "Subsubsection"],
+Cell[87200, 2780, 1844, 53, 203, "Text",
+  Evaluatable->False],
+Cell[89047, 2835, 229, 8, 41, "Text"],
+Cell[89279, 2845, 848, 20, 153, "Text",
+  Evaluatable->False],
+Cell[90130, 2867, 330, 7, 160, "Input"],
+Cell[90463, 2876, 128, 3, 68, "Input"],
+Cell[90594, 2881, 294, 5, 79, "Text"],
+Cell[90891, 2888, 71, 1, 45, "Input"],
+Cell[90965, 2891, 180, 4, 91, "Input"],
+Cell[91148, 2897, 140, 3, 41, "Text"],
+Cell[91291, 2902, 210, 4, 68, "Input"],
+Cell[91504, 2908, 262, 7, 91, "Text",
+  Evaluatable->False],
+Cell[91769, 2917, 127, 3, 68, "Input"],
+Cell[91899, 2922, 180, 4, 91, "Input"],
+Cell[92082, 2928, 178, 4, 68, "Input"],
+Cell[92263, 2934, 219, 6, 72, "Text",
+  Evaluatable->False],
+Cell[92485, 2942, 290, 7, 114, "Input"],
+Cell[92778, 2951, 143, 3, 60, "Text"],
+Cell[92924, 2956, 216, 5, 114, "Input"],
+Cell[93143, 2963, 56, 0, 41, "Text"],
+Cell[93202, 2965, 273, 5, 114, "Input"],
+Cell[93478, 2972, 215, 8, 41, "Text"],
+Cell[93696, 2982, 168, 3, 91, "Input"],
+Cell[93867, 2987, 257, 7, 91, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[94173, 3000, 35, 0, 66, "Subsection"],
+Cell[94211, 3002, 4041, 118, 274, "Text",
+  Evaluatable->False],
+Cell[98255, 3122, 60, 1, 45, "Input"],
+Cell[98318, 3125, 169, 3, 68, "Input"],
+Cell[98490, 3130, 245, 8, 41, "Text",
+  Evaluatable->False],
+Cell[98738, 3140, 253, 5, 114, "Input"],
+Cell[98994, 3147, 47, 0, 41, "Text"],
+Cell[99044, 3149, 226, 4, 91, "Input"],
+Cell[99273, 3155, 3823, 99, 666, "Text",
+  Evaluatable->False],
+Cell[103099, 3256, 461, 12, 224, "Input"],
+Cell[103563, 3270, 216, 5, 104, "Input"],
+Cell[103782, 3277, 159, 6, 44, "Text",
+  Evaluatable->False],
+Cell[103944, 3285, 81, 2, 45, "Input"],
+Cell[104028, 3289, 159, 5, 41, "Text",
+  Evaluatable->False],
+Cell[104190, 3296, 120, 3, 45, "Input"],
+Cell[104313, 3301, 117, 2, 45, "Input"],
+Cell[104433, 3305, 294, 7, 60, "Text",
+  Evaluatable->False],
+Cell[104730, 3314, 497, 12, 152, "Input"],
+Cell[105230, 3328, 274, 7, 160, "Input"],
+Cell[105507, 3337, 542, 14, 122, "Text",
+  Evaluatable->False],
+Cell[106052, 3353, 399, 8, 154, "Input"],
+Cell[106454, 3363, 205, 5, 114, "Input"],
+Cell[106662, 3370, 101, 3, 68, "Input"],
+Cell[106766, 3375, 242, 6, 60, "Text",
+  Evaluatable->False],
+Cell[107011, 3383, 367, 8, 160, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[107415, 3396, 36, 0, 55, "Subsection"],
+Cell[107454, 3398, 585, 11, 70, "Text",
+  Evaluatable->False],
+Cell[108042, 3411, 136, 5, 70, "Text",
+  Evaluatable->False],
+Cell[108181, 3418, 223, 7, 70, "Input"],
+Cell[108407, 3427, 447, 9, 70, "Text",
+  Evaluatable->False],
+Cell[108857, 3438, 350, 6, 70, "Input"],
+Cell[109210, 3446, 149, 4, 70, "Input"],
+Cell[109362, 3452, 177, 5, 70, "Input"],
+Cell[109542, 3459, 138, 3, 70, "Input"],
+Cell[109683, 3464, 229, 7, 70, "Text",
+  Evaluatable->False],
+Cell[109915, 3473, 179, 4, 70, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[110131, 3482, 51, 0, 55, "Subsection"],
+Cell[110185, 3484, 431, 14, 70, "Text",
+  Evaluatable->False],
+Cell[110619, 3500, 241, 6, 70, "Input"],
+Cell[110863, 3508, 92, 3, 70, "Text"],
+Cell[110958, 3513, 62, 1, 70, "Input"],
+Cell[111023, 3516, 108, 3, 70, "Text"],
+Cell[111134, 3521, 97, 2, 70, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[111280, 3529, 32, 0, 55, "Section"],
+
+Cell[CellGroupData[{
+Cell[111337, 3533, 32, 0, 66, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[111394, 3537, 44, 0, 66, "Subsubsection"],
+Cell[111441, 3539, 1618, 47, 70, "Text",
+  Evaluatable->False],
+Cell[113062, 3588, 159, 4, 70, "Input"],
+Cell[113224, 3594, 216, 4, 70, "Input"],
+Cell[113443, 3600, 482, 17, 70, "Text",
+  Evaluatable->False],
+Cell[113928, 3619, 216, 4, 70, "Input"],
+Cell[114147, 3625, 327, 7, 70, "Text",
+  Evaluatable->False],
+Cell[114477, 3634, 70, 1, 70, "Input"],
+Cell[114550, 3637, 395, 8, 70, "Text"],
+Cell[114948, 3647, 273, 5, 70, "Input"],
+Cell[115224, 3654, 100, 2, 70, "Input"],
+Cell[115327, 3658, 106, 2, 70, "Input"],
+Cell[115436, 3662, 173, 5, 70, "Text",
+  Evaluatable->False],
+Cell[115612, 3669, 111, 3, 70, "Input"],
+Cell[115726, 3674, 138, 5, 70, "Text",
+  Evaluatable->False],
+Cell[115867, 3681, 93, 2, 70, "Input"],
+Cell[115963, 3685, 113, 2, 70, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[116113, 3692, 40, 0, 52, "Subsubsection"],
+Cell[116156, 3694, 356, 8, 70, "Text",
+  Evaluatable->False],
+Cell[116515, 3704, 191, 5, 70, "Input"],
+Cell[116709, 3711, 161, 5, 70, "Text",
+  Evaluatable->False],
+Cell[116873, 3718, 43, 1, 70, "Input"],
+Cell[116919, 3721, 163, 4, 70, "Input"],
+Cell[117085, 3727, 311, 8, 70, "Text",
+  Evaluatable->False],
+Cell[117399, 3737, 211, 4, 70, "Input"],
+Cell[117613, 3743, 104, 2, 70, "Text",
+  Evaluatable->False],
+Cell[117720, 3747, 319, 6, 70, "Input"],
+Cell[118042, 3755, 224, 6, 70, "Text",
+  Evaluatable->False],
+Cell[118269, 3763, 104, 2, 70, "Input"],
+Cell[118376, 3767, 242, 4, 70, "Input"],
+Cell[118621, 3773, 370, 9, 70, "Text",
+  Evaluatable->False],
+Cell[118994, 3784, 102, 2, 70, "Input"],
+Cell[119099, 3788, 979, 27, 70, "Text",
+  Evaluatable->False],
+Cell[120081, 3817, 202, 5, 70, "Input"],
+Cell[120286, 3824, 297, 6, 70, "Text"],
+Cell[120586, 3832, 253, 6, 70, "Input"],
+Cell[120842, 3840, 366, 6, 70, "Text"],
+Cell[121211, 3848, 43, 1, 70, "Input"],
+Cell[121257, 3851, 159, 2, 70, "Input"],
+Cell[121419, 3855, 146, 5, 70, "Text",
+  Evaluatable->False],
+Cell[121568, 3862, 104, 2, 70, "Input"],
+Cell[121675, 3866, 169, 5, 70, "Text",
+  Evaluatable->False],
+Cell[121847, 3873, 116, 3, 70, "Input"],
+Cell[121966, 3878, 106, 3, 70, "Text"],
+Cell[122075, 3883, 71, 2, 70, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[122183, 3890, 41, 0, 52, "Subsubsection"],
+Cell[122227, 3892, 164, 4, 41, "Text",
+  Evaluatable->False],
+Cell[122394, 3898, 951, 21, 139, "Text",
+  Evaluatable->False],
+Cell[123348, 3921, 185, 5, 114, "Input"],
+Cell[123536, 3928, 223, 6, 60, "Text",
+  Evaluatable->False],
+Cell[123762, 3936, 69, 2, 45, "Input"],
+Cell[123834, 3940, 558, 13, 91, "Text",
+  Evaluatable->False],
+Cell[124395, 3955, 402, 9, 183, "Input"],
+Cell[124800, 3966, 451, 9, 70, "Text",
+  Evaluatable->False],
+Cell[125254, 3977, 188, 5, 70, "Input"],
+Cell[125445, 3984, 127, 3, 70, "Input"],
+Cell[125575, 3989, 106, 2, 70, "Text",
+  Evaluatable->False],
+Cell[125684, 3993, 69, 2, 70, "Input"],
+Cell[125756, 3997, 88, 2, 70, "Text",
+  Evaluatable->False],
+Cell[125847, 4001, 72, 2, 70, "Input"],
+Cell[125922, 4005, 76, 2, 70, "Input"],
+Cell[126001, 4009, 524, 13, 70, "Text",
+  Evaluatable->False]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[126574, 4028, 40, 0, 55, "Subsection"],
+Cell[126617, 4030, 207, 6, 60, "Text",
+  Evaluatable->False],
+Cell[126827, 4038, 194, 4, 68, "Input"],
+Cell[127024, 4044, 213, 6, 60, "Text",
+  Evaluatable->False],
+Cell[127240, 4052, 180, 4, 91, "Input"],
+Cell[127423, 4058, 161, 3, 68, "Input"],
+Cell[127587, 4063, 292, 7, 91, "Text",
+  Evaluatable->False],
+Cell[127882, 4072, 139, 3, 68, "Input"],
+Cell[128024, 4077, 80, 2, 45, "Input"]
+}, Closed]]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

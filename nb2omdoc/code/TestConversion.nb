@@ -1,0 +1,331 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      6593,        231]*)
+(*NotebookOutlinePosition[      7271,        255]*)
+(*  CellTagsIndexPosition[      7227,        251]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[" Conversion Tests", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[" HTMLSave", "Subsubsection"],
+
+Cell[BoxData[
+    \(HTMLSave["\<editor.html\>", \ "\<editor.nb\>"\ ]\)], "Input"],
+
+Cell[BoxData[
+    \(\(res\  = \ \ NB2OMDoc[\ here, \ "\<editor\>"\ \ ];\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(res[\([2, 3, 3, 3, 1, 3\ ]\)]\)\)\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Fido", "Subsubsection"],
+
+Cell[BoxData[{
+    \(\(here\  = \ "\<~/projects/Conversion/Mta2OMdoc/New\>";\)\), "\n", 
+    \(\(SetDirectory[here];\)\)}], "Input"],
+
+Cell[BoxData[{
+    \(\($celltrace\  = \ False;\)\), "\[IndentingNewLine]", 
+    \(\($omtitle\  = \ "\<Fido Test\>";\)\)}], "Input"],
+
+Cell[BoxData[
+    \(\(res\  = \ NB2OMDoc[\ "\<Sample\>", \ here\ \ ];\)\)], "Input"],
+
+Cell[BoxData[
+    \(res\)], "Input"],
+
+Cell[BoxData[
+    \(XML`SymbolicXMLErrors[res]\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{"snb", " ", "=", "  ", 
+      RowBox[{"Import", "[", 
+        RowBox[{"\"\<Fido.omdoc\>\"", ",", "\"\<XML\>\"", ",", 
+          RowBox[{"ConversionOptions", "\[Rule]", 
+            RowBox[{"{", 
+              RowBox[{\("\<ValidateAgainstDTD\>" \[Rule] True\), ",", 
+                StyleBox[\("\<AllowUnrecognizedEntities\>" -> True\),
+                  FontFamily->"Courier"]}], "}"}]}]}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+    \(\(ProfileCells["\<Fido.nb\>"]\  // \ Frequencies\)\  // \ 
+      TableForm\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["fido", "Subsubsection"],
+
+Cell[BoxData[{
+    \(\(here\  = \ "\<~/projects/Conversion/Mta2OMdoc/New\>";\)\), "\n", 
+    \(\(SetDirectory[here];\)\)}], "Input"],
+
+Cell[BoxData[
+    \(\($celltrace\  = \ True;\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(res\  = \ NB2OMDoc[\ here, \ "\<fido\>"\ \ ];\)\)], "Input"],
+
+Cell[BoxData[
+    \(XML`SymbolicXMLErrors[res]\)], "Input"],
+
+Cell[BoxData[
+    \(res[\([\ 1, 3, 4, 3, 5, 3]\)]\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Logic", "Subsubsection"],
+
+Cell[BoxData[{
+    \(\(here\  = \ "\<~/projects/Conversion/Mta2OMdoc/New\>";\)\), "\n", 
+    \(\(SetDirectory[here];\)\)}], "Input"],
+
+Cell[BoxData[
+    \(\($celltrace\  = \ True;\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(res\  = \ NB2OMDoc[\ here, \ "\<Logic\>"\ \ ];\)\)], "Input"],
+
+Cell[BoxData[
+    \(XML`SymbolicXMLErrors[res[\([1]\)]]\)], "Input"],
+
+Cell[BoxData[
+    \(res[\([\ 1, 3, 14, 3, 10, 3, 1, 3, 1, 3]\)]\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["CellAuto", "Subsubsection"],
+
+Cell[BoxData[{
+    \(\(here\  = \ "\<~/projects/Conversion/Mta2OMdoc/New\>";\)\), "\n", 
+    \(\(SetDirectory[here];\)\)}], "Input"],
+
+Cell[BoxData[
+    \(\($celltrace\  = \ False;\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(res\  = \ NB2OMDoc[\ here, \ "\<CellAuto\>"\ \ ];\)\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"snb", " ", "=", 
+        RowBox[{"Import", "[", 
+          RowBox[{"\"\<CellAuto.omdoc\>\"", ",", "\"\<XML\>\"", ",", 
+            RowBox[{"ConversionOptions", "\[Rule]", 
+              RowBox[{"{", 
+                RowBox[{\("\<ValidateAgainstDTD\>" \[Rule] True\), ",", 
+                  StyleBox[\("\<AllowUnrecognizedEntities\>" -> True\),
+                    FontFamily->"Courier"]}], "}"}]}]}], "]"}]}], 
+      ";"}]], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Complex", "Subsubsection"],
+
+Cell[BoxData[{
+    \(\(here\  = \ "\<~/projects/Conversion/Mta2OMdoc/New\>";\)\), "\n", 
+    \(\(SetDirectory[here];\)\)}], "Input"],
+
+Cell[BoxData[
+    \(\($celltrace\  = \ False;\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(res\  = \ NB2OMDoc[\ here, \ "\<Complex\>"\ \ ];\)\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{"snb", " ", "=", 
+      RowBox[{"Import", "[", 
+        RowBox[{"\"\<CellAuto.omdoc\>\"", ",", "\"\<XML\>\"", ",", 
+          RowBox[{"ConversionOptions", "\[Rule]", 
+            RowBox[{"{", 
+              RowBox[{\("\<ValidateAgainstDTD\>" \[Rule] True\), ",", 
+                StyleBox[\("\<AllowUnrecognizedEntities\>" -> True\),
+                  FontFamily->"Courier"]}], "}"}]}]}], "]"}]}]], "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Notes", "Section"],
+
+Cell[BoxData[
+    \(XML`MathML`ExpressionToSymbolicMathML[\ 
+      Normal[Series[Sin[x], {x, 0, 3}]]]\)], "Input"],
+
+Cell[BoxData[
+    \($Version\)], "Input"],
+
+Cell["\<\
+XML`MathML`ExpressionToSymbolicMathML   crashes on Series[]  unless \
+normalized
+
+How does one convert a string to an expression without evaluation? 
+ToString with HoldForm
+
+Removed all nested constructs (definitions, lemmata) from proofs. 
+Flattened proofs to ProofStep (no Notes, Hints, Inputs). \
+\>", "Text"],
+
+Cell[BoxData[
+    \(ConversionOptions \[Rule] {"\<Formats\>" \[Rule] {"\<ContentMathML\>"}}\
+\)], "Input"],
+
+Cell[BoxData[
+    \(ConversionOptions \[Rule] {"\<ValidateAgainstDTD\>" \[Rule] 
+          True}\)], "Input"]
+}, Closed]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+AutoGeneratedPackage->None,
+WindowSize->{1092, 806},
+WindowMargins->{{Automatic, 19}, {1, Automatic}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 36, 0, 87, "Section"],
+
+Cell[CellGroupData[{
+Cell[1837, 57, 34, 0, 60, "Subsubsection"],
+Cell[1874, 59, 81, 1, 39, "Input"],
+Cell[1958, 62, 86, 1, 39, "Input"],
+Cell[2047, 65, 76, 1, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[2160, 71, 29, 0, 37, "Subsubsection"],
+Cell[2192, 73, 132, 2, 62, "Input"],
+Cell[2327, 77, 131, 2, 62, "Input"],
+Cell[2461, 81, 84, 1, 39, "Input"],
+Cell[2548, 84, 36, 1, 39, "Input"],
+Cell[2587, 87, 59, 1, 39, "Input"],
+Cell[2649, 90, 435, 8, 62, "Input"],
+Cell[3087, 100, 107, 2, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[3231, 107, 29, 0, 60, "Subsubsection"],
+Cell[3263, 109, 132, 2, 62, "Input"],
+Cell[3398, 113, 59, 1, 39, "Input"],
+Cell[3460, 116, 82, 1, 39, "Input"],
+Cell[3545, 119, 59, 1, 39, "Input"],
+Cell[3607, 122, 62, 1, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[3706, 128, 30, 0, 37, "Subsubsection"],
+Cell[3739, 130, 132, 2, 62, "Input"],
+Cell[3874, 134, 59, 1, 39, "Input"],
+Cell[3936, 137, 83, 1, 39, "Input"],
+Cell[4022, 140, 68, 1, 39, "Input"],
+Cell[4093, 143, 76, 1, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[4206, 149, 33, 0, 60, "Subsubsection"],
+Cell[4242, 151, 132, 2, 62, "Input"],
+Cell[4377, 155, 60, 1, 39, "Input"],
+Cell[4440, 158, 86, 1, 39, "Input"],
+Cell[4529, 161, 476, 10, 62, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5042, 176, 32, 0, 60, "Subsubsection"],
+Cell[5077, 178, 132, 2, 62, "Input"],
+Cell[5212, 182, 60, 1, 39, "Input"],
+Cell[5275, 185, 85, 1, 39, "Input"],
+Cell[5363, 188, 433, 8, 62, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5845, 202, 25, 0, 55, "Section"],
+Cell[5873, 204, 114, 2, 39, "Input"],
+Cell[5990, 208, 41, 1, 39, "Input"],
+Cell[6034, 211, 322, 9, 196, "Text"],
+Cell[6359, 222, 106, 2, 39, "Input"],
+Cell[6468, 226, 109, 2, 39, "Input"]
+}, Closed]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.FP-THM1" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.FP-THM1</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.FP-THM1</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="tps.abbr.CLOS-SYS1.xhtml#tps.abbr.CLOS-SYS1">tps.abbr.CLOS-SYS1</a>, 
+        <a href="tps.abbr.MONOTONE1.xhtml#tps.abbr.MONOTONE1">tps.abbr.MONOTONE1</a>, 
+        <a href="tps.abbr.SUBSET.xhtml#tps.abbr.SUBSET">tps.abbr.SUBSET</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.FP-THM1" role="Assertion" about="#gwff.FP-THM1" xml:id="gwff.FP-THM1">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.FP-THM1"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> least fixed point theorem for a closure system of sets CLOS-SYS1 CL(O(OA)) AND MONOTONE1(O(OA(OA))(O(OA))) CL F(OA(OA)) IMPLIES EXISTS X(OA).CL X AND F X = X AND FORALL Y(OA).CL Y AND F Y = Y IMPLIES X SUBSET Y</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e34" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mo>∀</m:mo>
+                <m:mi>A</m:mi>
+                <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                    <m:mrow>
+                      <m:mo>CLOS-SYS1</m:mo>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>CL</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>∧</m:mo>
+                    <m:mrow>
+                      <m:mo>MONOTONE1</m:mo>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>CL</m:mi>
+                      <m:mo separator="true">,</m:mo>
+                      <m:mi>F</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                  </m:mrow>
+                  <m:mo>⇒</m:mo>
+                  <m:mrow>
+                    <m:mo>∃</m:mo>
+                    <m:msub>
+                      <m:mi>X</m:mi>
+                      <m:mrow>
+                        <m:mi>A</m:mi>
+                        <m:mo>→</m:mo>
+                        <m:mo>o</m:mo>
+                      </m:mrow>
+                    </m:msub>
+                    <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mrow>
+                          <m:mi>CL</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>X</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo>∧</m:mo>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mi>F</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                            <m:mi>X</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                          </m:mrow>
+                          <m:mo>=</m:mo>
+                          <m:mi>X</m:mi>
+                        </m:mrow>
+                        <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo>∧</m:mo>
+                      <m:mrow>
+                        <m:mo>∀</m:mo>
+                        <m:msub>
+                          <m:mi>Y</m:mi>
+                          <m:mrow>
+                            <m:mi>A</m:mi>
+                            <m:mo>→</m:mo>
+                            <m:mo>o</m:mo>
+                          </m:mrow>
+                        </m:msub>
+                        <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                        <m:mrow>
+                          <m:mrow>
+                            <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                            <m:mrow>
+                              <m:mi>CL</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                              <m:mi>Y</m:mi>
+                              <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                            </m:mrow>
+                            <m:mo>∧</m:mo>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mi>F</m:mi>
+                                <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                                <m:mi>Y</m:mi>
+                                <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                              </m:mrow>
+                              <m:mo>=</m:mo>
+                              <m:mi>Y</m:mi>
+                            </m:mrow>
+                            <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                          </m:mrow>
+                          <m:mo>⇒</m:mo>
+                          <m:mrow>
+                            <m:mi>X</m:mi>
+                            <m:mo>SUBSET</m:mo>
+                            <m:mi>Y</m:mi>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

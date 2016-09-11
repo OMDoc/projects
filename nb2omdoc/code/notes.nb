@@ -1,0 +1,213 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      5965,        157]*)
+(*NotebookOutlinePosition[      6617,        180]*)
+(*  CellTagsIndexPosition[      6573,        176]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(Cell[
+        BoxData[FormBox[
+            RowBox[{RowBox[{"\<\[Alpha]\>", "\< \>", "\<+\>", "\< \>", 
+                    SuperscriptBox["\<2\>", 
+                      RowBox[{"\< \>", "\<n\>"}]]}], "\< \>", "\<\[Equal]\>", \
+"\< \>", "\<x\>"}], TraditionalForm]]]\  // \ processCell\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\(\*"\<\"\"\>"\[InvisibleSpace]"*BoxData"\),
+      SequenceForm[ "", "*BoxData"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(XMLElement[
+      "OMOBJ", {}, {XMLElement[
+          "mrow", {}, {XMLElement[
+              "mrow", {}, {XMLElement["mi", {}, {"\[Alpha]"}], 
+                XMLElement["mo", {}, {"+"}], 
+                XMLElement[
+                  "msup", {}, {XMLElement["mn", {}, {"2"}], 
+                    XMLElement["mi", {}, {"n"}]}]}], 
+            XMLElement["mo", {}, {"\[Equal]"}], 
+            XMLElement["mi", {}, {"x"}]}]}]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(BoxData[
+        FormBox[RowBox[{RowBox[{"\<\[Alpha]\>", "\< \>", "\<+\>", "\< \>", 
+                  SuperscriptBox["\<2\>", 
+                    RowBox[{"\< \>", "\<n\>"}]]}], "\< \>", "\<\[Equal]\>", "\
+\< \>", "\<x\>"}], TraditionalForm]]\  // \ btoSML\)], "Input"],
+
+Cell[BoxData[
+    \(XMLElement[
+      "OMOBJ", {}, {XMLElement[
+          "mrow", {}, {XMLElement[
+              "mrow", {}, {XMLElement["mi", {}, {"\[Alpha]"}], 
+                XMLElement["mo", {}, {"+"}], 
+                XMLElement[
+                  "msup", {}, {XMLElement["mn", {}, {"2"}], 
+                    XMLElement["mi", {}, {"n"}]}]}], 
+            XMLElement["mo", {}, {"\[Equal]"}], 
+            XMLElement["mi", {}, {"x"}]}]}]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(BoxData[
+        RowBox[{RowBox[{"\<\[Alpha]\>", "\< \>", "\<+\>", "\< \>", 
+                SuperscriptBox["\<2\>", 
+                  RowBox[{"\< \>", "\<n\>"}]]}], "\< \>", "\<\[Equal]\>", "\< \
+\>", "\<x\>"}]]\  // \ btoSML\)], "Input"],
+
+Cell[BoxData[
+    \(XMLElement[
+      "OMOBJ", {}, {XMLElement[
+          "OMA", {}, {XMLElement[
+              "OMS", {"cd" \[Rule] "relation1", "name" \[Rule] "eq"}, {}], 
+            XMLElement[
+              "OMA", {}, {XMLElement[
+                  "OMS", {"cd" \[Rule] "arith1", "name" \[Rule] "plus"}, {}], 
+                XMLElement["OMV", {"name" \[Rule] "\[Alpha]"}, {}], 
+                XMLElement[
+                  "OMA", {}, {XMLElement[
+                      "OMS", {"cd" \[Rule] "arith1", 
+                        "name" \[Rule] "power"}, {}], 
+                    XMLElement["OMI", {}, {"2"}], 
+                    XMLElement["OMV", {"name" \[Rule] "n"}, {}]}]}], 
+            XMLElement["OMV", {"name" \[Rule] "x"}, {}]}]}]\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(ExportString[\ \[IndentingNewLine]\(XMLObject["\<Document\>"]\)[\
+\[IndentingNewLine]{\[IndentingNewLine]\(XMLObject["\<Declaration\>"]\)["\<\
+Version\>" \[Rule] "\<1.0\>"], \
+\[IndentingNewLine]\(XMLObject["\<Doctype\>"]\)[\[IndentingNewLine]"\<omdoc\>\
+", \ "\<SYSTEM\>"\  \[Rule] \ "\<omdoc.dtd\>", "\<InternalSubset\>" \[Rule] "\
+\<fred\>"]}, \[IndentingNewLine]XMLElement["\<person\>", {"\<gender\>" \
+\[Rule] "\<male\>"}, \[IndentingNewLine]{XMLElement["\<name\>", {}, {"\<Joe \
+Smith\>"}]}], \[IndentingNewLine]{}\[IndentingNewLine]], \[IndentingNewLine]"\
+\<XML\>"\ ]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ExportString[\ \[IndentingNewLine]\(XMLObject["\<Document\>"]\)[\
+\[IndentingNewLine]{\[IndentingNewLine]\(XMLObject["\<Declaration\>"]\)["\<\
+Version\>" \[Rule] "\<1.0\>"], \
+\[IndentingNewLine]\(XMLObject["\<Doctype\>"]\)["\<omdoc\>", \ "\<System\>"\  \
+\[Rule] \ "\<omdoc.dtd\>", "\<InternalSubset\>" \[Rule] "\<\>"]}, \
+\[IndentingNewLine]XMLElement["\<person\>", {"\<gender\>" \[Rule] \
+"\<male\>"}, \[IndentingNewLine]{XMLElement["\<name\>", {}, {"\<Joe \
+Smith\>"}]}], \[IndentingNewLine]{}\[IndentingNewLine]], \[IndentingNewLine]"\
+\<XML\>"\ ]\)], "Input"],
+
+Cell[BoxData[
+    \("<?xml version='1.0'?>\n<!DOCTYPE omdoc SYSTEM 'omdoc.dtd' []>\n<person \
+gender='male'>\n <name>Joe Smith</name>\n</person>"\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{864, 753},
+WindowMargins->{{Automatic, 118}, {Automatic, 102}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 318, 6, 177, "Input"],
+Cell[2097, 61, 151, 3, 33, "Print"],
+Cell[2251, 66, 458, 10, 131, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2746, 81, 290, 5, 154, "Input"],
+Cell[3039, 88, 458, 10, 131, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3534, 103, 260, 5, 131, "Input"],
+Cell[3797, 110, 757, 15, 177, "Output"]
+}, Open  ]],
+Cell[4569, 128, 608, 9, 269, "Input"],
+
+Cell[CellGroupData[{
+Cell[5202, 141, 585, 9, 269, "Input"],
+Cell[5790, 152, 159, 2, 131, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

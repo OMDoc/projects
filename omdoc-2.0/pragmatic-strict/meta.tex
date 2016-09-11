@@ -1,0 +1,256 @@
+\svnInfo $Id: meta.tex 9199 2012-04-20 20:19:00Z frabe $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/meta.tex $
+
+Formal mathematical developments can be classified based on whether they follow the
+axiomatic or the definitional method. The former is common for logics where theories
+declare primitive constants and axioms. The latter is common for foundations of
+mathematics where a fixed theory (the foundation) is extended only by defined constants
+and theorems.  In {\mmt}, both the logic and the foundation are represented as a
+meta-theory $M$, and the main difference is that the definitional method does not permit
+undefined constants in $M$-theories.
+
+However, this treatment does not capture conservative extension principles:
+These are meta-theorems that establish that certain extensions are acceptable even if they are not definitional.
+We can understand them as intermediates between axiomatic and definitional extensions: They may be axiomatic but are essentially as safe as definitional ones. 
+
+To make this argument precise, we use the following definition:
+
+\begin{definition}
+We call the theory family
+$\Phi=\pbind{x_1}{E'_1}\ldots\pbind{x_n}{E'_n}\sigfr{\Sigma}$
+\defemph{conservative} for $M$ if for every $M$-theory $T$ and all $E_1:E'_1,\ldots,E_n:E'_n$, every model of $T$ can be extended to a model of $T,\gamma(\Sigma)$, where $\gamma$ substitutes every $x_i$ with $E_i$.
+
+  An extension declaration $\extension{e}{\Phi}$ is called \defemph{derived} if all
+  constant declarations in $\Sigma$ have a definiens; otherwise, it is called \defemph{primitive}.
+\end{definition}
+
+Primitive extension declarations correspond to axiom declarations because they postulate that certain extensions of $M$ are legal. The proof that they are indeed conservative is a meta-argument that must be carried out as a part of the proof that $M$ is an adequate {\mmt} representation of the represented formalism.
+Similarly, derived extension declarations correspond to theorem declarations because their conservativity follows from that of the primitive ones. More precisely:
+If all primitive extension principles in $M$ are conservative, then so are all derived ones.
+
+In the following, we will recover built-in extension statements of common representation formats as special cases of our extension declarations.
+We will follow a \emph{little foundations} paradigm and state every extensions in the smallest theory in which it is meaningful. Using the {\mmt} module system, this permits maximal reuse of extension definitions. Moreover, it documents the (often implicit) foundational assumptions of each extension.
+
+\paragraph{Implicit Definitions in {\omdoc}}
+Implicit definitions of {\omdoc} 1.2 are captured using the following derived extension declaration.
+If the theory $\Description$ in Figure~\ref{fig:impldef} is included into a meta-theory $M$, then $M$-theories may use implicit definitions.
+
+\begin{figure}[ht]
+\vspace{-1.5em}
+\begin{center}
+\begin{twelfsig}
+\tsig{\Description}\\
+\tmeta{\Forms}{}\\
+\decl{\uexists}{(\alpha\to\form)\to\form}\\
+\decl{\descr}{(\alpha\to\form)\to\alpha}\\
+\decl{\descr_{\ax}}{\ded\,\uexists x\,P\,x\to \ded\,P\,(\descr\,P)}\\
+[.5em]
+\tpattern{\implDef}{\lflam[\kity]{\alpha}\lflam[\alpha\to\form]{P}\lflam[\ded\,\uexists x:\alpha.\,P\,x]{m}}{
+ \tsfdecl{c}{\alpha\;\;=\;\;\descr\,P}\\
+ \tsfdecl{c_\ax}{\ded\,\uexists x:\alpha.\,P\,x}\\
+}\\
+\tsigend
+\end{twelfsig}
+\end{center}
+\vspace{-2em}
+\caption{An Extension for Implicit Definitions}\label{fig:impldef}
+\vspace{-1em}
+\end{figure}
+
+Note that $\Description$ requires two other connectives: A description operator ($\descr$) and a unique existential ($\uexists$) are needed to express the meaning of an implicit definition.
+We deliberately assume only those two operators in order to maximize the re-usability of this theory: Using the {\mmt} module system, any logic $M$ in which these two operators are definable can import the theory $\Description$.
+%In particular, we do not define the unique existential quantifier in terms of equality so that $\Description$ can be reused if $M$ does not have to have equality.
+
+More specifically, $\Description$ introduces the definite description operator as a new
+binding operator ($\descr$), and describes its meaning by the axiom $\uexists
+x\,P(x)\impl\,P\,(\descr\,P)$ formulated in $\descr_{\ax}$ for any predicate $P$ on $\alpha$.
+The extension $\implDef$ permits pragmatic declarations of the form $f:
+\implDef\,\alpha\,P\,m$, which defines $f$ as the unique object which makes the property
+$P$ valid. This leads to the well-defined condition that there is indeed such a unique
+object, which is discharged by the proof $m$.  The pragmatic-to-strict translation from
+Section~\ref{sec:pattern} translates the pragmatic declaration $f: \implDef\,\alpha\,P\,m$
+to the strict constant declarations $f.c : \alpha = \descr\,P$ and $f.c_{\ax} :
+\ded\,\uexists x:\alpha\,P\,x$.
+
+
+
+\paragraph{Mizar-Style Functor Definitions}
+The Mizar language \cite{mizar} provides a wide (but fixed) variety of special statements, most of which can be understood as conservative extension principles for first-order logic. A comprehensive list of the corresponding extension declarations can be found in \cite{IKR:mizar:11}.
+We will only consider one example in Figure~\ref{fig:mizar}.
+
+
+\begin{figure}[ht]
+\vspace{-2em}
+\begin{center}
+\begin{twelfsig}
+\tsig{\FunctorDefinitions}\\
+\tmeta{\Forms}{}\\
+\decl{\wedge}{\form\to\form\to\form}\\
+\decl{\impl}{\form\to\form\to\form}\\
+\decl{\forall}{(\alpha\to\form)\to\alpha}\\
+\decl{\exists}{(\alpha\to\form)\to\alpha}\\
+\decl{\eqn}{\alpha\to\alpha\to\form}\\
+%\decl{\means}{(\alpha\to\form)\to\form}\\[.5em]
+%\tpattern{\functor}{\lflam[\kity]{\alpha}\lflam[\kity]{\beta}\lflam[\alpha\to\beta\to\form]{\means}}{
+% \tsfdecl{f}{\alpha\to\beta}\\
+% \tsfdecl{\defthm}{\means\,x\,(f\,x)}\\
+%}\\
+\multicolumn{4}{@{\tb}l}{$\lfkw{extension}\;\functor\;=$}\\
+& &$\lflam[\kity]{\alpha}\lflam[\kity]{\beta}\lflam[\alpha\to\beta\to\form]{\means}$\\
+& &$\lflam[\ded\,\forall x:\alpha.\,\exists y:\beta.\,\means\,x\,y]{\existence}$\\
+& &$\lflam[\ded\,\forall x:\alpha.\,\forall y:\beta.\,\forall y':\beta.\,\means\,x\,y\wedge \means\,x\,y'\impl y\eqn y']{\uniqueness}\,\{$\\
+\multicolumn{4}{@{\tb\tb}l}{
+\begin{tabular}{lll}
+$\tb f$ &$:$ &$\alpha\to\beta$\\
+$\tb\defthm$ & $:$ &$\ded\,\forall x:\alpha.\,\means\,x\,(f\,x)$\\
+\end{tabular}}\\
+&& $\}$\\
+\tsigend
+\end{twelfsig}
+\end{center}
+\vspace{-2.5em}
+\caption{An Extension for Mizar-Style Functor Definitions}\label{fig:mizar}
+\vspace{-1.5em}
+\end{figure}
+
+The theory $\FunctorDefinitions$ describes Mizar-style implicit definition of a unary function symbol (called a \emph{functor} in Mizar). This is different from the one above because it uses a primitive extension declaration that is well-known to be conservative. In Mizar, the axiom $\defthm$ is called the definitional theorem induced by the implicit definition. Using the extension $\functor$, one can introduce pragmatic declarations of the form $\pragmatic{c}{\functor\,A\,B\,P\,E\,U}$ that declare functors $c$ from $A$ to $B$ that are defined by the property $P$ where $E$ and $U$ discharge the induced proof obligations.
+
+\paragraph{Flexary Extensions}
+The above two examples become substantially more powerful if they are extended to implicit definitions of functions of arbitrary arity.
+This is supported by our extension language by using an LF-based logical framework with term sequences and type sequences.
+We omit the formal details of this framework here for simplicity and refer to \cite{Hor:patterns} instead.
+We only give one example in Figure~\ref{fig:casebased} that demonstrates the potential.
+
+\begin{figure}[ht]
+\vspace{-1.5em}
+\begin{center}
+\begin{twelfsig}
+\tsig{\CaseBased}\\
+\tmeta{\Forms}{}\\
+%$\wedge$\\
+%$\impl$\\
+%$\forall$\\
+\decl{\wedge}{\form^n\to\form}\\
+\decl{\vee^{!}}{\form^n\to\form}\\
+\decl{\impl}{\form\to\form\to\form}\\
+\decl{\forall}{(\alpha\to\form)\to\form}\\
+\multicolumn{4}{@{\tb}l}{$\lfkw{extension}\;\casedef\;=\;\lflam[\mathbb{N}]{n}\lflam[\kity]{\alpha}\lflam[\kity]{\beta}\lflam[(\alpha\to\form)^n]{c}$}\\
+& &$\hspace{2.65cm}\lflam[(\alpha\to\beta)^n]{d}\lflam[\ded\,\forall x:\alpha.\, \vee^{!} \lfseqbind{c_i\,x}{i}{n}]{\rho}\{$ \\
+\multicolumn{4}{@{\tb\tb}l}{
+\begin{tabular}{lll}
+$f$ &$:$ &$\alpha\to\beta$\\
+$\ax$ & $:$ &$\ded\,\forall x:\alpha.\,\wedge\,\lfseqbind{c_i\,x\,\impl\,(f\,x) = (d_i\,x)}{i}{n}$\\
+\end{tabular}}\\
+\multicolumn{4}{@{\tb}l}{$\}$}\\
+%\tpattern{\caseBasedDef}{\lflam[\mathbb{N}]{n}\lflam[\kity]{\alpha}\lflam[\kity]{\beta}\lflam[(\alpha\to\form)^n]{c}\lflam[(\alpha\to\beta)^n]{d}\lflam[\ded\,\forall x:\alpha.\, \vee^{!} \lfseqbind{c_i\,x}{i}{n}]{m}}{
+% \tsfdecl{f}{\alpha\to\beta}\\
+% \tsfdecl{\ax}{\ded\,\forall x:\alpha.\,\wedge\,\lfseqbind{c_i\,x\,\impl\,(f\,x) = (d_i\,x)}{i}{n}}\\ 
+%}\\
+\tsigend
+\end{twelfsig}
+\end{center}
+\vspace{-2em}
+\caption{An Extension for Case-Based Definitions}\label{fig:casebased}
+\vspace{-1.5em}
+\end{figure}
+
+The theory $\CaseBased$ introduces an extension that describes the case-based definition of a unary function $f$ from $\alpha$ to $\beta$ that is defined using $n$ different cases where each case is guarded by the predicate $c_i$ together with the respective definiens $d_i$.
+Such a definition is well-defined if for all $x \in\alpha$ exactly one out of the $c_i\,x$ is true.
+Note that these declarations use a special sequence constructor: for example, $\lfseqbind{c_i\,x}{i}{n}$ simplifies to the sequence $c_1\,x\,,\ldots,c_n\,x$.
+Moreover, $\wedge$ and $\vee^!$ are flexary connectives, i.e., they take a flexible number of arguments.
+In particular, $\vee^!(F_1,\ldots,F_n)$ holds if exactly one of its arguments holds.
+
+The pragmatic declaration $\pragmatic{f}{\casedef\,n\,\alpha\,\beta\,c_1\ldots c_n\,d_1\ldots d_n\,\rho}$
+%corresponds to the function definition $f(x) =\left\{
+%\begin{array}{lll}
+%  d_1(x) & \quad\textrm{if}\quad & c_1(x) \\
+% \vdots && \vdots\\
+% d_n(x) & \quad\textrm{if}\quad & c_n(x)
+%\end{array}\right.
+%$
+corresponds to the following function definition: \[f(x) =\left\{
+\begin{array}{lll}
+  d_1(x) & \quad\textrm{if}\quad & c_1(x) \\
+ \vdots && \vdots\\
+ d_n(x) & \quad\textrm{if}\quad & c_n(x)
+\end{array}\right.
+\]
+
+
+%In the extension $\casedef$, the unary function $f$ is defined using $n$ different cases guarded by the predicates $c_i$ together with the respective definientia $d_i$. 
+%Here, $(\alpha\to\form)^$ denotes the sequence of types $\alpha\to\form$ of length $n$.
+
+
+%\multirow{3}{*}{Immediate} & RR & Round Robin \\
+%\[
+%f(x) =
+%\begin{cases}
+% D_1, & \text{if } C_1 \text{ is even} \\
+% D_2, & \text{if } C_2 \text{ is odd}
+%\end{cases}
+%\]
+
+
+\paragraph{HOL-Style Type Definitions}
+Due to the presence of $\lambda$-abstraction and a description operator in HOL \cite{churchtypes}, a lot of common extension principles become derivable in HOL, in particular, implicit definitions.
+
+But there is one primitive definition principle that is commonly accepted in HOL-based formalizations of the definitional method: A Gordon/HOL type definition \cite{hol} introduces a new type that is axiomatized to be isomorphic to a subtype of an existing type. This cannot be expressed as a derivable extension because HOL does not use subtyping.
+
+
+\begin{figure}[ht]
+\vspace{-1.5em}
+\begin{center}
+\begin{twelfsig}
+\tsig{\Types}\\
+\tmeta{\Forms}{}\\
+\decl{\forall}{(\alpha\to\form)\to\form}\\
+\decl{\exists}{(\alpha\to\form)\to\form}\\
+\decl{\doteq}{(\alpha\to\alpha)\to\form}\\
+\tpattern{\typeDef}{\lflam[\kity]{\alpha}\lflam[\alpha\to\form]{A}\lflam[\ded\,\exists x:\alpha.\,A\,x]{P}}{
+ \tsfdecl{T}{\kity}\\
+ \tsfdecl{\Rep}{T\to\alpha}\\
+ \tsfdecl{\Abs}{\alpha\to T}\\
+ \tsfdecl{{\Rep'}}{\ded\,\forall x:T.\,A\,(\Rep\,x)}\\
+ \tsfdecl{{\RepInv}}{\ded\,\forall x:T.\,\Abs\,(\Rep\,x) \doteq x}\\
+ \tsfdecl{{\AbsInv}}{\ded\,\forall x:\alpha.\,A\,x\impl\Rep\,(\Abs\,x) \doteq x}\\
+}\\
+\tsigend
+\end{twelfsig}
+\vspace{-1.5em}
+\caption{An Extension for HOL-Style Type Definitions}\label{fig:typedef}
+\end{center}
+\vspace{-1.5em}
+\end{figure}
+
+The theory $\Types$ in Figure~\ref{fig:typedef}, formalizes this extension principle. Our symbol names follow the implementation of this definition principle in Isabelle/HOL \cite{isabellehol}.
+%, which takes a type $\alpha$, a predicate $A$ on $\alpha$ and a proof that $A$ is non-empty and  
+Pragmatic declarations of the form $\pragmatic{t}{\typeDef\,\alpha\,A\,P}$ introduce a new non-empty type $t$ isomorphic to the predicate $A$ over $\alpha$. Since all HOL-types must be non-empty, a proof $P$ of the non-emptiness of $A$ must be supplied. 
+More precisely, it is translated to the following strict constant declarations:
+\begin{itemize}
+\item $t.T: \kity$ is the new type that is being defined,
+\item $t.\Rep: t.T\to\alpha$ is an injection from the new type $t.T$ to $\alpha$,
+\item $t.\Abs:\alpha\to t.T$ is the inverse of $t.\Rep$ from $\alpha$ to the new type $t.T$,
+\item $t.\Rep'$ states that the property $A$ holds for any term of type $t.T$,
+\item $t.\RepInv$ states that the injection of any element of type $t.T$ to $\alpha$ and back is equal to itself,
+\item $t.\AbsInv$ states that if an element satisfies $A$, then injecting it to $t.T$ and back is equal to itself.
+\end{itemize}
+
+HOL-based proof assistants implement the type definition principle as a built-in statement.
+They also often provide further built-in statements for other definition principles that become derivable in the presence of type definitions, e.g., a definition principle for record types.
+For example, in Isabelle/HOL \cite{isabellehol}, HOL is formalized in the Pure logic underlying the logical framework Isabelle \cite{isabelle}.
+But because the type definition principle is not expressible in Pure, it is implemented as a primitive Isabelle feature that is only active in Isabelle/HOL.
+
+%For all $x$, $f(x)$ is the unique $y$ such that $p(x,f(x))$.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+
+% LocalWords:  wrapfigure vspace twelfsig tsig kity ded ineq tpattern lflam thm
+% LocalWords:  tsfdecl tsfdecldef tsigend ednote ptos impldef texttt forall lst
+% LocalWords:  p2srule lstlisting mathescape expfun omdoc bigl desctheory impl
+% LocalWords:  uexists lfseqbind tm tp tpj fhorozal newpart mmt pbind ldots
+% LocalWords:  sigfr defemph tmeta descr doteq defthm Flexary casebased lfkw
+% LocalWords:  casedef mathbb hspace noindent multirow Bigg textrm vdots RepInv
+% LocalWords:  churchtypes AbsInv isabellehol

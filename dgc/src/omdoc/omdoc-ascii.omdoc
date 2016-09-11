@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//om:OMDoc//DTD om:OMDoc V1.2//EN" "../../dtd/omdoc.dtd">
+<omdoc cdbase="http://www.mathweb.org/omdoc/omdoc" xmlns="http://www.omdoc.org/ns/" xmlns:om="http://www.openmath.org/OpenMath" xmlns:visib="http://www.mathweb.org/omdoc" version="1.2">
+
+   <presentation for="." format="ascii" role="application">
+      <use fixity="prefix" bracketstyle="math" precedence="0" implicit="0">
+         <operator><components pos="0"/></operator>
+         <separator><text value=","/></separator>
+         <lbrack><text value="("/></lbrack>
+         <rbrack><text value=")"/></rbrack>
+      </use>
+   </presentation>
+   <presentation for="." format="ascii" role="constant">
+      <components pos="0"/>
+      <components pos="1"/>
+      <components pos="2"/>
+   </presentation>
+   <presentation for="." format="ascii" role="name">
+      <components pos="0"/>
+      <components pos="1"/>
+      <components pos="2"/>
+   </presentation>
+   <presentation for="." format="ascii" role="theorypath">
+      <components>
+        <text value="/"/>
+        <recurse/>
+      </components>
+   </presentation>
+   <presentation for="." format="ascii" role="flatname">
+      <components>
+        <text value="/"/>
+        <recurse/>
+      </components>
+   </presentation>
+   <presentation for="." format="ascii" role="variable">
+      <components pos="0"/>
+   </presentation>
+   <presentation for="." format="ascii" role="key">
+      <components begin="2"/>
+   </presentation>
+   <presentation for="." format="ascii" role="symbol">
+      <components begin="0"/>
+      <ifpresent pos="1">
+         <text value=" : "/>
+         <components begin="1"/>
+      </ifpresent>
+      <ifpresent pos="2">
+         <text value=" = "/>
+         <components begin="2"/>
+      </ifpresent>
+      <text value="."/>
+      <text value="&#x000a;"/>
+   </presentation>
+   <presentation for="." format="ascii" role="identity">
+      <text value="identity"/>
+   </presentation>
+   <presentation for="." format="ascii" role="integer">
+      <components pos="0"/>
+   </presentation>
+
+</omdoc>

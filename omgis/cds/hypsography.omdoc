@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="hypsography.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-03-18T13:36:15Z </dc:date>
+  <dc:title xml:lang="en"> hypsography </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-03-18T13:36:15Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="hypsography">
+  <imports from="maps.omdoc#maps"/>
+
+  <symbol name="contour">
+    <metadata>
+      <dc:description>
+	*A line connecting points of equal elevation with reference to a vertical datum.
+	Delineation: The limit of CONTOUR (LAND) is the line connecting points of equal elevation.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="depth_curve">
+    <metadata>
+      <dc:description>
+	A line connecting points of equal depth below the hydrographic datum.
+	Delineation: The limit of DEPTH CURVE is the line connecting points of equal depth.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+  <symbol name="sounding">
+    <metadata>
+      <dc:description>
+	*The measured or charted depth of water below the hydrographic datum.
+	Delineation: The limit of SOUNDING is the point at which the depth is measured or charted.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="spot_elevation">
+    <metadata>
+      <dc:description>
+	*A point with a measured vertical position of less than third order accuracy, measured
+	relative to a reference datum.
+	Delineation: The limit of SPOT ELEVATION is the point at which the elevation is measured.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+</theory>
+
+</omdoc>

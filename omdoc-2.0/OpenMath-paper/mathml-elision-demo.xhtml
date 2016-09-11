@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+               "http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:omdoc="http://www.mathweb.org/omdoc">
+  <head>
+    <title>Elision Demo</title>
+    <script type="text/javascript">
+      function nsResolver(prefix) {
+        var ns = {
+	  'math': 'http://www.w3.org/1998/Math/MathML',
+	  'mcd':  'http://www.w3.org/ns/mathml-cd',
+          'xhtml': 'http://www.w3.org/1999/xhtml'
+        };
+        return ns[prefix] || null;
+      }
+
+      function _update(group, fun) {
+        var fdoc = document.getElementById("formula").contentDocument;
+        var xpath_egroup = 
+          group == 'bracket' ? '@mcd:elevel and not(@mcd:egroup)' :
+          "@mcd:egroup='" + group + "'";
+        /* get all nodes of the selected elision group */
+        var snapshot = fdoc.evaluate(
+          '//math:semantics[@mcd:elevel and ' + xpath_egroup + ']',
+          fdoc, nsResolver, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null );
+        for (var i = 0; i &lt; snapshot.snapshotLength; i++) {
+          var item = snapshot.snapshotItem(i);
+          /* toggle the visibility */
+	  var visibLevel = item.getAttributeNodeNS(
+              nsResolver('mcd'), 'elevel').value;
+	  if (visibLevel == 'infinity') visibLevel = Number.POSITIVE_INFINITY;
+          fun(item, group, visibLevel);
+        }
+      }
+
+      function elide(group, threshold) {
+        _update(group, function(item, group, visibLevel) {
+	  var displayedElement = item.firstChild;
+
+	  var swap = ((visibLevel &gt; threshold) != (displayedElement.firstChild == null));
+	  // i.e. visibLevel &gt; threshold XOR firstchild = <mo/>
+
+	  if (swap) {
+	    // take the currently hidden element out of the annotation-xml element,
+	    // insert it before the displayed element
+	    var hiddenElement = item.lastChild.firstChild;
+	    item.insertBefore(hiddenElement, displayedElement);
+	    // put the currently displayed element into the annotation-xml element
+	    item.lastChild.appendChild(displayedElement);
+	  }
+        });
+      }
+
+      /* Unfortunately, this does not work with MathML */
+      function colorize() {
+        _update('bracket', function(item, group, visibLevel) {
+	  if (visibLevel == Number.POSITIVE_INFINITY) visibLevel = 600;
+          var saturation = Math.round(visibLevel / 900 * 256);
+          item.style.color = 'rgb(' + saturation + ',' + saturation + ',' +
+           saturation + ');';
+        });
+        _update('types', function(item, group, visibLevel) {
+          var saturation = Math.round(visibLevel / 512 * 256);
+          item.style.color = 'rgb(' + saturation + ',' + saturation + ',' +
+           saturation + ');';
+        });
+      }
+    </script>
+    <link rel="stylesheet" type="text/css" href="omdoc.css"/>
+  </head>
+  <body>
+    <div class="tright">
+      <img src="w3c_main.png" width="315" height="48"/>
+    </div>
+    <h1>Flexible Elision Demo</h1>
+    <ul>
+      <li>Powered by <a href="https://jomdoc.omdoc.org">JOMDoc</a> and <a href="https://jomdoc.omdoc.org/wiki/JOBAD">JOBAD</a></li>
+      <li>Tested with <a href="http://www.mozilla.com/firefox/">Firefox ≥ 2.0</a></li>
+      <li>Authors: Michael Kohlhase, Christoph Lange, Normen Müller</li>
+    </ul>
+    <!-- <iframe src="mathml-index.xhtml" width="100%" id="formula" onload="colorize();"/> -->
+    <iframe src="mathml-index.xhtml" width="100%" id="formula"/>
+    <p>
+      <form id="form" action="">
+	Visibility Thresholds:
+	<ul>
+	  <li>brackets: <label title="0" accesskey="0"><input type="radio"
+	onchange="elide('bracket', 0);" name="threshold_bracket" checked="checked"/><u>0</u></label>
+	    <label title="1" accesskey="1"><input type="radio" onchange="elide('bracket', 100);" name="threshold_bracket"/><u>1</u>00</label>
+	    <label title="200" accesskey="2"><input type="radio" onchange="elide('bracket', 200);" name="threshold_bracket"/><u>2</u>00</label>
+	    <label title="300" accesskey="3"><input type="radio" onchange="elide('bracket', 300);" name="threshold_bracket"/><u>3</u>00</label>
+	    <label title="400" accesskey="4"><input type="radio" onchange="elide('bracket', 400);" name="threshold_bracket"/><u>4</u>00</label>
+	    <label title="500" accesskey="5"><input type="radio" onchange="elide('bracket', 500);" name="threshold_bracket"/><u>5</u>00</label>
+	    <label title="infinite" accesskey="i"><input type="radio"
+	    onchange="elide('bracket', Number.POSITIVE_INFINITY)"
+	    name="threshold_bracket"/><u>i</u>nfinite</label></li>
+	  <li>types: <label title="necessary" accesskey="a"><input type="radio"
+	onchange="elide('types', 0);" name="threshold_types"
+	checked="checked"/>0</label>
+	    <label title="inferable" accesskey="s"><input type="radio" onchange="elide('types', 100);" name="threshold_types"/>100</label>
+	    <label title="functions" accesskey="d"><input type="radio" onchange="elide('types', 200);" name="threshold_types"/>200</label>
+	    <label title="symbols" accesskey="f"><input type="radio" onchange="elide('types', 300);" name="threshold_types"/>300</label></li>
+	</ul>
+      </form>
+    </p>
+    <div style="display:inline; float:left">
+      <table>
+	<tr><th>Operator</th><th>Mixfix declaration</th></tr>
+	<tr><td>x<sup>y</sup></td><td><span
+	class="box">199|<sub>1</sub></span><sup style="font-size:smaller"><span class="box">∞|<sub>2</sub></span></sup>:200</td></tr>
+	<tr><td>!</td><td><span class="box">300|<sub>1</sub></span>!:300</td></tr>
+	<tr><td>·</td><td><span class="box">400|<sub>1</sub></span>·<span class="box">400|<sub>2</sub></span>:400</td></tr>
+	<tr><td>+</td><td><span class="box">500|<sub>1</sub></span>+<span class="box">500|<sub>2</sub></span>:500</td></tr>
+      </table>
+    </div>
+    <div style="width:3em;display:inline;float:left">&#xa0;</div>
+    <div style="display:inline">
+      <table>
+	<tr><th>Operator</th><th>Mixfix declaration</th></tr>
+	<tr><td>¬</td><td>¬<span class="box">600|<sub>1</sub></span>:600</td></tr>
+	<tr><td>≤</td><td><span class="box">700|<sub>1</sub></span>≤<span class="box">700|<sub>2</sub></span>:700</td></tr>
+	<tr><td>∧</td><td><span class="box">1000|<sub>1</sub></span>∧<span class="box">1000|<sub>2</sub></span>:1000</td></tr>
+	<tr><td>∨</td><td><span class="box">1200|<sub>1</sub></span>∨<span class="box">1200|<sub>2</sub></span>:1200</td></tr>
+      </table>
+    </div>
+  </body>
+</html>

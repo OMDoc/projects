@@ -1,0 +1,108 @@
+\svnInfo $Id: intro.tex 9171 2012-03-05 08:39:33Z kohlhase $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/intro.tex $
+
+The development of representation languages for mathematical knowledge is one of the
+central concerns of the MKM community. After all, practical mathematical knowledge
+management consists in the manipulation of expressions in such languages. To be
+successful, MKM representation formats must balance multiple concerns. A format should be
+expressive and flexible (for depth and ease of modeling), foundationally unconstrained
+(for coverage), regular and minimal (for ease of implementation), and modular and
+web-transparent (for scalability). Finally, the format should be elegant, feel natural to
+mathematicians, and be easy to read and write. Needless to say that this set of
+requirements is over-constrained so that the design problem for MKM representation formats
+lies in relaxing some of the constraints to achieve a global optimum.
+
+In languages for formalized mathematics, it is standard practice to define a minimal
+core language that is extended by macros, functions, or notations.
+For example, Isabelle \cite{isabelle} provides a rich language of notations, abbreviations, syntax and printing translations, and a number of definitional forms.
+In narrative formats for mathematics, for
+instance, the {\TeX/\LaTeX} format -- arguably the most commonly used format for
+representing mathematical knowledge -- goes a similar way, only that the core language is
+given by the {\TeX} layout primitives and the translation is realized by macro expansion
+and is fully under user control. This extensibility led to the profusion of
+user-defined {\LaTeX} document classes and packages that has made {\TeX/\LaTeX} so
+successful.
+
+However, the fully unconstrained nature of the extensibility makes ensuring invariants and
+machine support very difficult, and thus this approach is not immediately applicable to
+content markup formats. There, MathML3~\cite{CarlisleEd:MathML3:base} is a good example of
+the state of the art. It specifies a core language called ``strict content MathML'' that
+is equivalent to OpenMath~\cite{BusCapCar:2oms04} and ``full content MathML''. The first
+subset uses a minimal set of elements representing the meaning of a mathematical
+expression in a uniform, regular structure, while the second one tries to strike a
+pragmatic balance between verbosity and formality. The meaning of non-strict expressions
+is given by a fixed translation: the ``strict content MathML translation'' specified in
+section 4.6 of the MathML3 recommendation~\cite{CarlisleEd:MathML3:base}.
+
+This language design has the advantage that only a small, regular sublanguage has to be
+given a mathematical meaning, but a larger vocabulary that is more intuitive to
+practitioners of the field can be used for actual representation. Moreover, semantic
+services like validation only need to be implemented for the strict subset and can be
+extended to the pragmatic language by translation. Ultimately, a representation format
+might even have multiple pragmatic front-ends geared towards different audiences. These
+are semantically interoperable by construction.
+\medskip
+
+The work reported in this paper comes from an ongoing language design effort, where we
+want to redesign our \omdoc format~\cite{Kohlhase:OMDoc1.2} into a minimal, regular core
+language (\emph{strict \omdoc2}) and an extension layer (\emph{pragmatic \omdoc2}) whose
+semantics is given by a ``pragmatic-to-strict'' ($\ptos$) translation.  While this problem
+is well-understood for mathematical \emph{objects}, extension frameworks \emph{at the
+  statement level} seem to be restricted to the non-semantic case, e.g. the
+\texttt{amsthm} package for {\LaTeX}.
+
+Languages for mathematics commonly permit a variety of pragmatic statements, e.g.,
+implicit or case-based definitions, type definitions, theorems, or proof schemata.  But
+representation frameworks for such languages do not include a generic mechanism that
+permits introducing arbitrary pragmatic statements --- instead, a fixed set is built into
+the format.  Among logical frameworks, Twelf/LF~\cite{twelf,lf} permits two statements:
+defined and undefined constants. Isabelle~\cite{isabelle} and Coq~\cite{coq} permit much
+larger, but still fixed sets that include, for example, recursive case-based function
+definitions.  Content markup formats like \omdoc permit similar fixed sets.
+
+A large set of statements is desirable in a representation format in order to model the
+flexibility of individual languages. A large \emph{fixed} set on the other hand is
+unsatisfactory because it is difficult to give a theoretical justification for fixing any
+specific set of statements.  Moreover, it is often difficult to define the semantics of a
+built-in statement in a foundationally unconstrained representation format because many
+pragmatic statement are only meaningful under certain foundational assumptions.
+%For example, an existential quantifier is needed to express the well-definedness condition of an implicit definition.
+\medskip
+
+In this paper we present a general formalism for adding new pragmatic statement forms to
+our \omdoc format; we have picked \omdoc for familiarity and foundation-independence; any
+other foundational format can be extended similarly. Consider for instance the pragmatic
+statement of an ``implicit definition'', which defines a mathematical object by describing
+it so accurately, that there is only one object that fits this description. For instance,
+the exponential function $exp$ is defined as the (unique) solution of the differential
+equation $f=f'$ with $f(0)=1$. This form of definition is extensively used in practical
+mathematics, so pragmatic {\omdoc} should offer an infrastructure for it, whereas strict
+{\omdoc} only offers ``simple definitions'' of the form $c:=d$, where $c$ is a new symbol
+and $d$ any object.  In our extension framework, the $\ptos$ translation provides the
+semantics of the implicit definition in terms of the strict definition $exp:=\descr
+f.(f'=f\wedge f(0)=1)$, where $\descr$ is a ``definite description operator'': Given an
+expression $A$ with free variable $x$, such that there is a unique $x$ that makes $A$
+valid, $\descr x.A$ returns that $x$, otherwise $\descr x.A$ is undefined.
+
+Note that the semantics of an implicit definition requires a definite description operator.
+While most areas of mathematics at least implicitly assume its existence, it should not be required in general because that would prevent the representation of systems without one.
+Therefore, we make these requirements explicit in a special theory that defines the new pragmatic statement and its strict semantics. This theory must be imported in order for implicit definitions to become available.
+Using our extension language, we can recover a large number of existing pragmatic statements as definable special cases, including many existing ones of {\omdoc}.
+Thus, when representing formal languages in {\omdoc}, authors have full control what pragmatic statements to permit and can define new ones in terms of existing ones.
+\medskip
+
+In the next section, we will recap those parts of \omdoc that are
+needed in this paper. In Section~\ref{sec:pattern}, 
+we define our extension language, and in Section~\ref{sec:meta}, we look at particular extensions that are motivated by mathematical practice. Finally, in Section~\ref{sec:syntax}, we will address the question
+of extending the concrete syntax with pragmatic features as well.
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+
+% LocalWords:  wrapfigure vspace hline ednote emph emph RabKoh prel Rudnicki lf
+% LocalWords:  isabelle-isar aomp92 omdoc ptos frabe medskip texttt amsthm exp
+% LocalWords:  descr

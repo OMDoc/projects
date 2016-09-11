@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.GVB-AX-HOMOM" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.GVB-AX-HOMOM</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.GVB-AX-HOMOM</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="logics/sthold.xhtml#sthold">sthold</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.GVB-AX-HOMOM" role="Assertion" about="#gwff.GVB-AX-HOMOM" xml:id="gwff.GVB-AX-HOMOM">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.GVB-AX-HOMOM"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> Defn of h is a homomorphism from s1 to s2 (f1 closed on s1, f2 closed on s2). GVB-HOMOM h(I) s1(I) f1(I) s2(I) f2(I) EQUIV GVB-CLOSED s1 f1 AND GVB-CLOSED s2 f2 AND GVB-MAPS h s1 s2 AND FORALL x(I) FORALL y(I).x GVB-IN s1 AND y GVB-IN s1 IMPLIES GVB-APPLY h [GVB-APP2 f1 x y] = GVB-APP2 f2 [GVB-APPLY h x].GVB-APPLY h y</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e32" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mrow>
+                  <m:mi>GVB-HOMOM</m:mi>
+                  <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                  <m:mi>h</m:mi>
+                  <m:mo separator="true">,</m:mo>
+                  <m:mi>s1</m:mi>
+                  <m:mo separator="true">,</m:mo>
+                  <m:mi>f1</m:mi>
+                  <m:mo separator="true">,</m:mo>
+                  <m:mi>s2</m:mi>
+                  <m:mo separator="true">,</m:mo>
+                  <m:mi>f2</m:mi>
+                  <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                </m:mrow>
+                <m:mo>≡</m:mo>
+                <m:mrow>
+                  <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                  <m:mrow>
+                    <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                    <m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mrow>
+                        <m:mi>GVB-CLOSED</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>s1</m:mi>
+                        <m:mo separator="true">,</m:mo>
+                        <m:mi>f1</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo>∧</m:mo>
+                      <m:mrow>
+                        <m:mi>GVB-CLOSED</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>s2</m:mi>
+                        <m:mo separator="true">,</m:mo>
+                        <m:mi>f2</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>∧</m:mo>
+                    <m:mrow>
+                      <m:mi>GVB-MAPS</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>h</m:mi>
+                      <m:mo separator="true">,</m:mo>
+                      <m:mi>s1</m:mi>
+                      <m:mo separator="true">,</m:mo>
+                      <m:mi>s2</m:mi>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                  </m:mrow>
+                  <m:mo>∧</m:mo>
+                  <m:mrow>
+                    <m:mo>∀</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mo>ι</m:mo>
+                    </m:msub>
+                    <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mo>ι</m:mo>
+                    </m:msub>
+                    <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                    <m:mrow>
+                      <m:mrow>
+                        <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mrow>
+                          <m:mi>GVB-IN</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>x</m:mi>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mi>s1</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo>∧</m:mo>
+                        <m:mrow>
+                          <m:mi>GVB-IN</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>y</m:mi>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mi>s1</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo>⇒</m:mo>
+                      <m:mrow>
+                        <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mrow>
+                          <m:mi>GVB-APPLY</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>h</m:mi>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mrow>
+                            <m:mi>GVB-APP2</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                            <m:mi>f1</m:mi>
+                            <m:mo separator="true">,</m:mo>
+                            <m:mi>x</m:mi>
+                            <m:mo separator="true">,</m:mo>
+                            <m:mi>y</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                          </m:mrow>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo>=</m:mo>
+                        <m:mrow>
+                          <m:mi>GVB-APP2</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>f2</m:mi>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mrow>
+                            <m:mi>GVB-APPLY</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo separator="true">,</m:mo>
+                            <m:mi>x</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                          </m:mrow>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mrow>
+                            <m:mi>GVB-APPLY</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                            <m:mi>h</m:mi>
+                            <m:mo separator="true">,</m:mo>
+                            <m:mi>y</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                          </m:mrow>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet  type="text/xsl" href="mathml.xsl"?>
+
+<!DOCTYPE html PUBLIC "-//OMDoc//DTD XHTML 1.1 plus MathML 2.0 plus OMDoc OM//EN" "../../dtd/xhtml-math11-om.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:pref="http://www.w3.org/2002/Math/preference" xmlns:xlink="http://www.w3.org/1999/xlink" pref:renderer="mathplayer-dl">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>Deduction Rules for Apros Theorem Prover</title>
+  </head>
+  <body>
+<div class="titleblock">
+<div class="title">Deduction Rules for Apros Theorem Prover</div>
+<div class="authors">Michael Kohlhase</div>
+<div class="date">20020227</div>
+<div class="description">	
+    This theory provides symbols for the deduction rules of the
+    Apros theorem prover developed at the Philosophy Department of Carnegie Mellon
+    University.
+  </div></div>
+
+
+<div class="symbol" id="AllE">
+<div class="titlebox">
+<span class="titleword">Concept</span>AllE(<a href="#AllE-def">Definition</a>)</div>
+<p>The universal elimination rule (AllE).</p>
+</div>
+
+<div class="definition" id="AllE-def">
+<span class="titleword">Definition</span>
+<p>The universal elimination rule (AllE). This has the following form:
+       </p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:exsl="http://exslt.org/common" id="MCRid2632118"><semantics><math id="MCRid2657916id2657932"><semantics><mtable rowlines="solid"><mtr><mtd><mrow id="id2657983"><mo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../examples/logics/pl1.xml#forall" id="MCRid2657988">&#x2200;</mo><mrow id="id2657997"><mi id="id2657999">x</mi></mrow><mrow id="id2658005"><mi id="id2658007">P</mi><mrow><mo fence="true">(</mo><mrow><mi id="id2658012">x</mi></mrow><mo fence="true">)</mo></mrow></mrow></mrow></mtd></mtr><mtr><mtd><mo fence="true">[</mo><mi id="id2658032">a</mi><mo>/</mo><mi id="id2658039">x</mi><mo fence="true">]</mo><mrow id="id2658044"><mi id="id2658046">P</mi><mrow><mo fence="true">(</mo><mrow><mi id="id2658049">x</mi></mrow><mo fence="true">)</mo></mrow></mrow></mtd></mtr></mtable><annotation-xml encoding="OpenMath"><OMOBJ xmlns="http://www.openmath.org/OpenMath" cref="MCRid2657916id2657932"><OMBIND cref="MCRid2657916id2657942"><OMS cd="inference-rules" name="schema" cref="MCRid2657916id2657948"/><OMBVAR cref="MCRid2657916id2657957"><OMV name="P" cref="MCRid2657916id2657959"/><OMV name="a" cref="MCRid2657916id2657963"/></OMBVAR><OMA cref="MCRid2657916id2657969"><OMS cd="inference-rules" name="rule" cref="MCRid2657916id2657974"/><OMBIND cref="MCRid2657916id2657983"><OMS cd="pl1" name="forall" cref="MCRid2657916id2657988"/><OMBVAR cref="MCRid2657916id2657997"><OMV name="x" cref="MCRid2657916id2657999"/></OMBVAR><OMA cref="MCRid2657916id2658005"><OMV name="P" cref="MCRid2657916id2658007"/><OMV name="x" cref="MCRid2657916id2658012"/></OMA></OMBIND><OMA cref="MCRid2657916id2658018"><OMS cd="substitution" name="substitute" cref="MCRid2657916id2658024"/><OMV name="a" cref="MCRid2657916id2658032"/><OMV name="x" cref="MCRid2657916id2658039"/><OMA cref="MCRid2657916id2658044"><OMV name="P" cref="MCRid2657916id2658046"/><OMV name="x" cref="MCRid2657916id2658049"/></OMA></OMA></OMA></OMBIND></OMOBJ></annotation-xml></semantics></math><annotation-xml encoding="OpenMath"><OMOBJ xmlns="http://www.openmath.org/OpenMath" cref="MCRid2632118"/></annotation-xml></semantics></math></div>
+
+<div class="symbol" id="AllI">
+<div class="titlebox">
+<span class="titleword">Concept</span>AllI(<a href="#AllI-def">Definition</a>)</div>
+<p>The universal introduction rule (AllI).</p>
+</div>
+
+<div class="definition" id="AllI-def">
+<span class="titleword">Definition</span>
+<p>The universal introduction rule (AllI). This has the following form:
+       </p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:exsl="http://exslt.org/common" id="MCRid2658112"><semantics><math id="MCRid2658121id2658171"><semantics><mtable rowlines="solid"><mtr><mtd><mrow id="id2676249"><mi id="id2657929">P</mi><mrow><mo fence="true">(</mo><mrow><mi id="id2658060">x</mi></mrow><mo fence="true">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow id="id2657985"><mo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../examples/logics/pl1.xml#forall" id="MCRid2658111">&#x2200;</mo><mrow id="id2658208"><mi id="id2658136">x</mi></mrow><mrow id="id2658109"><mi id="id2658200">P</mi><mrow><mo fence="true">(</mo><mrow><mi id="id2658169">x</mi></mrow><mo fence="true">)</mo></mrow></mrow></mrow></mtd></mtr></mtable><annotation-xml encoding="OpenMath"><OMOBJ xmlns="http://www.openmath.org/OpenMath" cref="MCRid2658121id2658171"><OMBIND cref="MCRid2658121id2658181"><OMS cd="inference-rules" name="schema" cref="MCRid2658121id2658190"/><OMBVAR cref="MCRid2658121id2658198"><OMV name="P" cref="MCRid2658121id2658203"/><OMV name="a" cref="MCRid2658121id2658211"/></OMBVAR><OMA cref="MCRid2658121id2658216"><OMS cd="inference-rules" name="rule" cref="MCRid2658121id2658225"/><OMA cref="MCRid2658121id2676249"><OMV name="P" cref="MCRid2658121id2657929"/><OMV name="x" cref="MCRid2658121id2658060"/></OMA><OMBIND cref="MCRid2658121id2657985"><OMS cd="pl1" name="forall" cref="MCRid2658121id2658111"/><OMBVAR cref="MCRid2658121id2658208"><OMV name="x" cref="MCRid2658121id2658136"/></OMBVAR><OMA cref="MCRid2658121id2658109"><OMV name="P" cref="MCRid2658121id2658200"/><OMV name="x" cref="MCRid2658121id2658169"/></OMA></OMBIND></OMA></OMBIND></OMOBJ></annotation-xml></semantics></math><annotation-xml encoding="OpenMath"><OMOBJ xmlns="http://www.openmath.org/OpenMath" cref="MCRid2658112"/></annotation-xml></semantics></math>
+<p>
+       where <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:exsl="http://exslt.org/common" id="MCRid2658133"><semantics><mi id="id2658139">a</mi><annotation-xml encoding="OpenMath"><OMOBJ xmlns="http://www.openmath.org/OpenMath" cref="MCRid2658133"><OMV name="a" cref="MCRid2658139"/></OMOBJ></annotation-xml></semantics></math> does not occur in
+      the formula <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:exsl="http://exslt.org/common" id="MCRid2658145"><semantics><mrow id="id2658151id2657985"><mo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../../examples/logics/pl1.xml#forall" id="id2658151MCRid2658111">&#x2200;</mo><mrow id="id2658151id2658208"><mi id="id2658151id2658136">x</mi></mrow><mrow id="id2658151id2658109"><mi id="id2658151id2658200">P</mi><mrow><mo fence="true">(</mo><mrow><mi id="id2658151id2658169">x</mi></mrow><mo fence="true">)</mo></mrow></mrow></mrow><annotation-xml encoding="OpenMath"><OMOBJ xmlns="http://www.openmath.org/OpenMath" cref="MCRid2658145"/></annotation-xml></semantics></math> or in any
+      assumption of the scope.
+     </p>
+</div>
+
+
+
+</body>
+</html>
+

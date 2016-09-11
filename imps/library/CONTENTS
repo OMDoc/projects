@@ -1,0 +1,302 @@
+THIS FILE CONTAINS INFORMATION ABOUT THE CONTENTS OF THIS DIRECTORY.
+
+
+Sections translated:
+--------------------------
+
+banach-fixed-point-theorem
+
+
+There are 27 OMDoc theory files in this directory:
+--------------------------------------------------
+
+vector-spaces.omdoc
+fields.omdoc
+ms-closed-ball.omdoc
+ms-subspace.omdoc
+metric-spaces.omdoc
+metric-spaces-2-tuples.omdoc
+metric-spaces-1.omdoc
+metric-spaces-0.omdoc
+generic-theory-4.omdoc
+generic-theory-3.omdoc
+generic-theory-2.omdoc
+mappings-into-a-partial-order.omdoc
+generic-theory-1.omdoc
+complete-partial-order.omdoc
+partial-order.omdoc
+h-o-real-arithmetic.omdoc
+pure-generic-theory-3-with-2-subsorts.omdoc
+pure-generic-theory-2-with-2-subsorts.omdoc
+pure-generic-theory-2-with-1-subsort.omdoc
+pure-generic-theory-1-with-1-subsort.omdoc
+family-indicators.omdoc
+indicators.omdoc
+pure-generic-theory-4.omdoc
+pure-generic-theory-3.omdoc
+pure-generic-theory-2.omdoc
+pure-generic-theory-1.omdoc
+the-kernel-theory.omdoc
+
+
+Theory tree for each theory in this directory:
+----------------------------------------------
+
+vector-spaces
+     h-o-real-arithmetic
+          the-kernel-theory
+     fields
+          h-o-real-arithmetic
+               the-kernel-theory
+
+fields
+     h-o-real-arithmetic
+          the-kernel-theory
+
+ms-closed-ball
+     metric-spaces
+          h-o-real-arithmetic
+               the-kernel-theory
+
+ms-subspace
+     metric-spaces
+          h-o-real-arithmetic
+               the-kernel-theory
+
+metric-spaces
+     h-o-real-arithmetic
+          the-kernel-theory
+
+metric-spaces-2-tuples
+     metric-spaces-1
+          h-o-real-arithmetic
+               the-kernel-theory
+     metric-spaces-0
+          h-o-real-arithmetic
+               the-kernel-theory
+
+metric-spaces-1
+     h-o-real-arithmetic
+          the-kernel-theory
+
+metric-spaces-0
+     h-o-real-arithmetic
+          the-kernel-theory
+
+generic-theory-4
+     generic-theory-3
+          generic-theory-2
+               generic-theory-1
+                    pure-generic-theory-1
+                         the-kernel-theory
+                    h-o-real-arithmetic
+                         the-kernel-theory
+               pure-generic-theory-2
+                    pure-generic-theory-1
+                         the-kernel-theory
+               h-o-real-arithmetic
+                    the-kernel-theory
+          pure-generic-theory-3
+               pure-generic-theory-2
+                    pure-generic-theory-1
+                         the-kernel-theory
+          h-o-real-arithmetic
+               the-kernel-theory
+     pure-generic-theory-4
+          pure-generic-theory-3
+               pure-generic-theory-2
+                    pure-generic-theory-1
+                         the-kernel-theory
+     h-o-real-arithmetic
+          the-kernel-theory
+
+generic-theory-3
+     generic-theory-2
+          generic-theory-1
+               pure-generic-theory-1
+                    the-kernel-theory
+               h-o-real-arithmetic
+                    the-kernel-theory
+          pure-generic-theory-2
+               pure-generic-theory-1
+                    the-kernel-theory
+          h-o-real-arithmetic
+               the-kernel-theory
+     pure-generic-theory-3
+          pure-generic-theory-2
+               pure-generic-theory-1
+                    the-kernel-theory
+     h-o-real-arithmetic
+          the-kernel-theory
+
+generic-theory-2
+     generic-theory-1
+          pure-generic-theory-1
+               the-kernel-theory
+          h-o-real-arithmetic
+               the-kernel-theory
+     pure-generic-theory-2
+          pure-generic-theory-1
+               the-kernel-theory
+     h-o-real-arithmetic
+          the-kernel-theory
+
+mappings-into-a-partial-order
+     generic-theory-1
+          pure-generic-theory-1
+               the-kernel-theory
+          h-o-real-arithmetic
+               the-kernel-theory
+     partial-order
+          h-o-real-arithmetic
+               the-kernel-theory
+
+generic-theory-1
+     pure-generic-theory-1
+          the-kernel-theory
+     h-o-real-arithmetic
+          the-kernel-theory
+
+complete-partial-order
+     partial-order
+          h-o-real-arithmetic
+               the-kernel-theory
+
+partial-order
+     h-o-real-arithmetic
+          the-kernel-theory
+
+h-o-real-arithmetic
+     the-kernel-theory
+
+pure-generic-theory-3-with-2-subsorts
+     pure-generic-theory-3
+          pure-generic-theory-2
+               pure-generic-theory-1
+                    the-kernel-theory
+
+pure-generic-theory-2-with-2-subsorts
+     pure-generic-theory-2
+          pure-generic-theory-1
+               the-kernel-theory
+
+pure-generic-theory-2-with-1-subsort
+     pure-generic-theory-2
+          pure-generic-theory-1
+               the-kernel-theory
+
+pure-generic-theory-1-with-1-subsort
+     pure-generic-theory-1
+          the-kernel-theory
+
+family-indicators
+     indicators
+          the-kernel-theory
+
+indicators
+     the-kernel-theory
+
+pure-generic-theory-4
+     pure-generic-theory-3
+          pure-generic-theory-2
+               pure-generic-theory-1
+                    the-kernel-theory
+
+pure-generic-theory-3
+     pure-generic-theory-2
+          pure-generic-theory-1
+               the-kernel-theory
+
+pure-generic-theory-2
+     pure-generic-theory-1
+          the-kernel-theory
+
+pure-generic-theory-1
+     the-kernel-theory
+
+the-kernel-theory
+
+
+Translations related to the theories in this directory:
+-------------------------------------------------------
+
+Translation name: the-kernel-translation
+    Source theory: the-kernel-theory
+    Target theory: the-kernel-theory
+    Interpretation?: yes
+
+Translation name: index-families
+    Source theory: mappings-into-a-partial-order
+    Target theory: generic-theory-1
+    Interpretation?: yes
+
+Translation name: index-on-zz
+    Source theory: mappings-into-a-partial-order
+    Target theory: partial-order
+    Interpretation?: yes
+
+Translation name: index-on-zz-reverse
+    Source theory: mappings-into-a-partial-order
+    Target theory: partial-order
+    Interpretation?: yes
+
+Translation name: order-reverse
+    Source theory: partial-order
+    Target theory: partial-order
+    Interpretation?: yes
+
+Translation name: complete-partial-order-to-h-o-real-arithmetic
+    Source theory: complete-partial-order
+    Target theory: h-o-real-arithmetic
+    Interpretation?: yes
+
+Translation name: complete-order-reverse
+    Source theory: complete-partial-order
+    Target theory: complete-partial-order
+    Interpretation?: yes
+
+Translation name: metric-spaces-to-metric-spaces-1
+    Source theory: metric-spaces
+    Target theory: metric-spaces-1
+    Interpretation?: yes
+
+Translation name: metric-spaces-to-ms-subspace
+    Source theory: metric-spaces
+    Target theory: ms-subspace
+    Interpretation?: yes
+
+Translation name: ms-to-ms-closed-ball
+    Source theory: metric-spaces
+    Target theory: ms-closed-ball
+    Interpretation?: yes
+
+Translation name: metric-spaces-to-metric-spaces-0
+    Source theory: metric-spaces
+    Target theory: metric-spaces-0
+    Interpretation?: yes
+
+Translation name: ind_1->pp
+    Source theory: generic-theory-1
+    Target theory: metric-spaces
+    Interpretation?: yes
+
+Translation name: metric-spaces-2-tuples-to-ms-subspace
+    Source theory: metric-spaces-2-tuples
+    Target theory: ms-subspace
+    Interpretation?: yes
+
+Translation name: metric-spaces-2-tuples-to-metric-spaces
+    Source theory: metric-spaces-2-tuples
+    Target theory: metric-spaces
+    Interpretation?: yes
+
+Translation name: ms-subspace-to-ms-closed-ball
+    Source theory: ms-subspace
+    Target theory: ms-closed-ball
+    Interpretation?: yes
+
+Translation name: fields-to-rr-core
+    Source theory: fields
+    Target theory: h-o-real-arithmetic
+    Interpretation?: yes
+

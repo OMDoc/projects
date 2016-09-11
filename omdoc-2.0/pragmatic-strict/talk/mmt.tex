@@ -1,0 +1,68 @@
+
+
+\begin{frame}
+\frametitle{Our Core Language (strict OMDoc 2 = MMT)}
+\onslide<1-2>{
+\vspace{.3em}
+\begin{itemize}
+\item A \underline{m}odule system for \underline{m}athematical \underline{t}heories (MMT)
+\vspace{.5em}
+\item Foundation-independent
+\vspace{.5em}
+\item Logics and logical frameworks represented as theories
+\vspace{.5em}
+\item Generic declarative language: theories, declarations, expressions
+%\begin{itemize}
+%\vspace{.3em}
+%\item math objects as expressions
+%\vspace{.3em}
+%\item symbol declarations
+%\vspace{.3em}
+%\end{itemize}
+\end{itemize}
+}
+\onslide<2>{
+\begin{block}{Syntax}
+\begin{tabular}{llll}
+Modules     &$M$      &$\bnfas$ & $\bnf{(}\theoDecl{T}{\Sigma}\bnf{)}^{\bnf{\ast}}$\\
+Theories    &$\Sigma$ &$\bnfas$ & $\bnf{(}\conDeclOp[E]{c}{E} \bnfalts \lfkw{include}\;\,T\bnfalts \lfkw{meta}\;\,T\bnf{)}^{\bnf{\ast}}$\\
+Expressions &$E$      &         & OpenMath expressions \\%$\bnfas$ & $x \bnfalts c \bnfalts E\,E^{\bnf{+}} \bnfalts E\,\Gamma.\,E$\\
+%Contexts    &$\Gamma$ &$\bnfas$ & $\ctx{x}{E}$
+\end{tabular}
+\end{block}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{MMT Theories}
+\begin{block}{Examples}
+\vspace{-.3em}
+%\begin{multicols}{2}
+%\setlength{\columnsep}{-.5em}
+\begin{columns}
+\column{.4\textwidth}
+\begin{twelfsig}
+\tsig{\Forms}\\
+$\kity$\\
+$\rightarrow$\\
+$\lmbd$\\
+\decl{\form}{\kity}\\
+\decl{\ded}{\form\to\kity}\\
+\tsigend
+\end{twelfsig}
+\column{.5\textwidth}
+
+\begin{twelfsig}
+\tsig{\FOL}\\
+\tinclude{\Forms}{}\\
+\decl{\term}{\kity}\\
+\decl{\wedge}{\form\to\form\to\form}\\
+%\decl{\vee}{\form\to\form\to\form}\\
+$\vdots$\\%\decl{\forall}{(\term\to\form)\to\form}\\
+\decl{\exists}{(\term\to\form)\to\form}\\
+\tsigend
+\end{twelfsig}
+\end{columns}
+%\end{multicols}
+\end{block}
+\end{frame}

@@ -1,0 +1,109 @@
+%% MMT
+\newcommand{\exu}{\mathit{exu}}
+\newcommand{\Module}{\mathit{Module}}
+\newcommand{\Theory}{\mathit{Theory}}
+\newcommand{\Symbol}{\mathit{Symbol}}
+\newcommand{\Const}{\mathit{Const}}
+\newcommand{\Term}{\mathit{Term}}
+%% NAMES
+\newcommand{\Forms}{\mathit{Propositions}}
+\renewcommand{\Types}{\mathit{Types}}
+\newcommand{\axiom}{\mathit{axiom}}
+\newcommand{\thm}{\mathit{theorem}}
+\newcommand{\form}{o}
+\newcommand{\term}{\mathit{term}}
+\newcommand{\Exponential}{\mathit{Exponential}}
+\newcommand{\deriv}{\mathit{deriv}}
+\newcommand{\ax}{\mathit{ax}}
+\newcommand{\ded}{\mathit{proof}}
+\newcommand{\expo}{\mathit{exp}}
+\newcommand{\lmbd}{\mathit{lam}}
+\newcommand{\tm}{\mathit{tm}}
+\newcommand{\tp}{\mathit{tp}}
+\newcommand{\means}{\mathit{means}}
+\newcommand{\defthm}{\mathit{definitional\_theorem}}
+\newcommand{\functor}{\mathit{functor}}
+\newcommand{\FunctorDefinitions}{\mathit{FunctorDefinitions}}
+\newcommand{\Assertions}{\mathit{Assertion}}
+\newcommand{\Definitions}{\mathit{Definitions}}
+\newcommand{\Commutativity}{\mathit{Commutativity}}
+\newcommand{\CaseBased}{\mathit{CaseBasedDefinitions}}
+\newcommand{\comm}{\mathit{comm}}
+\newcommand{\neutr}{\mathit{neut_r}}
+\newcommand{\neutl}{\mathit{neut_l}}
+\newcommand{\Description}{\mathit{ImplicitDefinitions}}
+\newcommand{\tpj}{\#}
+\newcommand{\truth}{\mathit{true}}
+\newcommand{\false}{\mathit{false}}
+\newcommand{\implDef}{\mathit{impldef}}
+\newcommand{\typeDef}{\mathit{typedef}}
+\newcommand{\directDef}{\mathit{directDef}}
+\newcommand{\casedef}{\mathit{casedef}}
+\newcommand{\typedCons}{\mathit{typedCons}}
+\newcommand{\Rep}{\mathit{Rep}}
+\newcommand{\Abs}{\mathit{Abs}}
+\newcommand{\RepInv}{\mathit{Rep\_inverse}}
+\newcommand{\AbsInv}{\mathit{Abs\_inverse}}
+\newcommand{\uexists}{\exists^{!}}
+\newcommand{\HOLd}{\mathit{HOLd}}
+\newcommand{\HOL}{\mathit{HOL}}
+\newcommand{\descr}{\iota}
+\newcommand{\ind}{i}
+\newcommand{\existence}{\mathit{existence}}
+\newcommand{\uniqueness}{\mathit{uniqueness}}
+\newcommand{\eqn}{\doteq}
+%% Syntax
+\newcommand{\lflam}[2][]{\lambda #2\ifnonempty{#1}{: #1}.\,}
+
+%% Seq
+\newcommand{\lfseqbind}[3]{\big[#1\big]_{#2 = 1}^{#3}}
+
+%% Theory Families
+\newcommand{\prdecl}[3]{#1 : #2\,#3}
+
+%% Twelf Math
+\renewcommand{\lfkw}[1]{\mathtt{#1}}
+\renewcommand{\tsig}[1]{\multicolumn{3}{l}{$\lfkw{theory}\;#1\;=\,\{$}} % \tsig{NAME}
+\renewcommand{\tpattern}[3]{
+  \multicolumn{4}{@{\tb}l}{$\lfkw{extension}\;#1\;=\;#2\,\{$} \\
+  \multicolumn{4}{@{\tb\tb}l}{\begin{tabular}{lll}#3\end{tabular}} \\
+  \multicolumn{4}{@{\tb}l}{$\}$}
+}
+\renewcommand{\pdecl}[3][]{$\lfkw{pragmatic}$ $#2$\tcolon $#3$\dotatend & #1} % \pdecl[COMMENTorFIXITY]{c}{F}
+\newcommand{\pdecldef}[4][]{$#2$\tcolon $#3\tequal #4$\dotatend & #1} % \decl[COMMENTorFIXITY]{c}{F}{f}
+
+%% Inline Twelf Math
+\newcommand{\extension}[2]{\lfkw{extension}\;#1 = #2}
+\newcommand{\pragmatic}[2]{\lfkw{pragmatic}\;#1:#2}
+
+%% tikz
+\newcommand{\mmtarrowtip}{angle 45}
+\newcommand{\mmtarrowtipepi}{triangle 45}
+\newcommand{\mmtarrowtipmono}{right hook}
+\tikzstyle{thy}=[draw,outer sep=1mm,rounded corners]
+%\tikzstyle{include}=[\mmtarrowtipmono-\mmtarrowtip,thick]
+%\tikzstyle{meta}=[dotted,-\mmtarrowtip,thick]
+%\tikzstyle{view}=[dashed,-\mmtarrowtip,thick]
+%\tikzstyle{struct}=[-\mmtarrowtip,thick]
+%\tikzstyle{morph}=[-\mmtarrowtip] % any morphism
+\tikzstyle{struct}=[->]
+\tikzstyle{meta}=[\mmtarrowtipmono->]
+
+
+\newcommand\mmturi[3]{#1?#2?#3}
+\def\defemph#1{\textbf{#1}} 
+\def\mmt{MMT}
+\def\omdoc{OMDoc\xspace}
+%\def\ptos{\ensuremath{\mathcal{P}\kern-.2em2\kern-.2em\mathcal{S}}}
+\def\ptos{\ensuremath{\mathcal{P}2\mathcal{S}}}
+\def\llquote#1{\ensuremath{\langle\kern-.25em\langle\hbox{\sl{#1}}\rangle\kern-.25em\rangle}}
+\def\llqn#1#2{\ensuremath{\langle\kern-.25em\langle\hbox{\sl{#1}}_#2\rangle\kern-.25em\rangle}}
+\def\cn{}
+\def\om#1{\fbox{\ensuremath{#1}}}
+
+\lstdefinelanguage[sTeX]{TeX}[LaTeX]{TeX}%
+  {moretexcs={[2]defin,twindef,atwindef,definalt,twindefalt,atwindefalt,definiendum,
+      importmodule,symdef,
+      termref,sref},
+   morekeywords={module,definition,axiom,assertion,
+     sproof,spfstep,spfcases,spfcase,justification,premise}}

@@ -1,0 +1,286 @@
+\svnInfo $Id: proposal.tex 6836 2007-09-19 23:03:18Z frabe $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/OpenMath-paper/proposal.tex $
+\section{The Flexary Mixfix Model in {\omdocv{2.0}}}\label{sec:preselem}
+
+We introduce extensions making the declarative {\omdoc} syntax of presentations more
+expressive. Thus we can drop the support for embedded XPath and XSLT expressions, which
+represented big hurdles for implementations. 
+
+\subsection{An XML Encoding for Flexary Mixfix Declarations}
+
+The presentation of mathematical objects is specified by {\element{presentation}} elements
+as follows:
+
+\begin{center}\small
+\begin{tabular}{|l|l|l|l|}\hline
+  Element  &  \multicolumn{2}{c|}{Attributes}  &  Content \\\cline{2-3}
+  & Required & Optional & \\\hline\hline
+  presentation  & for, role, format & precedence        & \llquote{item}* \\\hline
+  map           & begin, end        & egroup, elevel    & separator? \llquote{item}* \\\hline
+  arg           & pos      & egroup, elevel             & EMPTY\\\hline
+  separator     &          & egroup, elevel             & \llquote{item}* \\\hline
+  recurse       &          & egroup, elevel, precedence & EMPTY \\\hline
+  attribution   & cd, name & egroup, elevel, cdbase     & \llquote{item}* \\\hline
+  text          & value    & crossref                   & \#PCDATA \\\hline
+  element       & name     & ns, egroup, elevel, crossref   & attribute* \llquote{item}*\\\hline
+  attribute     & name     & ns                         & \llquote{item}* \\\hline
+  name          &          &                            & EMPTY\\\hline 
+  \multicolumn{4}{|l|}{\llquote{item} $\hat=$ (text $|$ element $|$ map $|$ attribution $|$
+recurse)}\\\hline
+\end{tabular}
+\end{center}
+
+The attributes of {\element{presentation}} elements have the following meaning:
+\begin{itemize}
+\item {\attribute{for}{presentation}}: a URI reference to a symbol to which the
+  presentation applies, or to the theory for which a default presentation is given.
+\item {\attribute{role}{presentation}}: the role of the presented symbol to which the
+  presentation applies. The same symbol can be used in different roles\footnote{Do not
+    confuse the symbols' role in the notational context specified in the
+    {\attribute{role}{presentation}} attribute here with the role of a symbol in the
+    {\openmath}2 standard}, and for each role a different presentation may be necessary.
+  Possible values are {\attval{binder}{role}{presentation}},
+  {\attval{application}{role}{presentation}}, {\attval{constant}{role}{presentation}},
+  {\attval{variable}{role}{presentation}}, {\attval{key}{role}{presentation}}, and
+  {\attval{error}{role}{presentation}}, mirroring the possible values of the corresponding
+  attribute of the presented symbol (cf.~\cite[chapter~15.2.1]{Kohlhase:omdoc1.2}).
+\item {\attribute{format}{presentation}}: A whitespace-separated list of target formats
+  for which the presentation element can be used. Typical values are
+  {\attval{ascii}{role}{presentation}}, {\attval{html}{role}{presentation}},
+  {\attval{pmathml}{role}{presentation}}, {\attval{latex}{role}{presentation}}, and
+  {\attval{default}{role}{presentation}}. The latter acts as a backup that can be applied
+  if there is no specific {\element{presentation}} element for a given format.
+  % \item {\attribute[ns-attr=xml]{id}{presentation}} (\cite{W3C05:xmlid}): an optional
+  %   identifier that can be used to refer to a presentation, e.g., to select between
+  %   alternative presentations depending on the presentation context.
+\item {\attribute{precedence}{presentation}}: the output precedence of the term, which is
+  used for bracket elimination. It must be an integer, or the string ``infinity'', and
+  defaults to $0$.\ednote{IMHO reicht $[0,\infty)$; $(-\infty,+\infty)$ braucht man nicht.
+    --CL}
+\end{itemize} 
+The exact syntax of the children of the {\element{presentation}} elements is introduced
+when we specify their presentation behavior. The two optional attributes
+{\attributeshort{egroup}} and {\attributeshort{elevel}}, which may occur on almost all
+elements that relate to presentation are used to specify the elision group and elision
+level. If {\attributeshort{egroup}} is omitted, it defaults to the home theory that the
+containing {\element{presentation}} element applies to.
+
+\subsection{Determining Notation Definitions}\label{sec:determining}
+
+An application that displays a mathematical object $O$ must process $O$ recursively
+looking up the needed {\element{presentation}} element once in the beginning and then
+whenever a {\element{recurse}} element is encountered. This lookup is guided by the
+attributes {\attribute{for}{presentation}}, {\attribute{role}{presentation}}, and
+{\attribute{format}{presentation}}, which determine when a {\element{presentation}}
+element is eligible. If these attributes uniquely determines a {\element{presentation}}
+element, it must be used by the application. Otherwise, the application is free to choose
+the most appropriate one. This choice is non-trivial and is the topic of ongoing
+research~\cite{KohMueMue:dfncimk07}.
+
+More precisely, to present an object $O$, a {\element{presentation}} element is chosen
+as follows.
+\begin{itemize}
+\item If $O$ is a binding, application, or error object with a symbol as the first child,
+  a presentation for this symbol with the appropriate role is chosen. If none exists or if the first
+  child is not a symbol, a presentation for the home theory of $O$ with the appropriate
+  role is chosen. \ednote{in between, fall back to the meta-theory, but we leave out meta-theories here}
+\item If $O$ is an attributed object, a presentation for the key of the first attribution
+  with role {\attval{key}{role}{presentation}} is chosen. If none exists, a presentation for the
+  home theory of $O$ with that role is chosen.
+\item If $O$ is a symbol, a presentation for $O$ with role
+  {\attval{constant}{role}{presentation}}, or, if none is found, a presentation for the home
+  theory of $O$ with that role is chosen.
+\item If $O$ is a variable, a presentation for it that is attributed to it in its binder
+  as specified in {\omdocv{1.2}} is chosen. If none exists, a presentation for the home theory of
+  the binder with role {\attval{variable}{role}{presentation}} is chosen.
+\item The presentation of constants and foreign objects must be determined independently
+  by the application.
+\end{itemize}
+Of course, in all these cases only {\element{presentation}} elements with the intended
+target format are eligible. Also, if the above algorithm fails, the presentation system may fail or fall back first to a
+target format-specific presentation with the correct role, then to a general presentation with the correct role, and finally to a presentation defined by the system.\ednote{@MK: I made this optional since we do not implement it yet.}
+
+\subsection{Generating Presentations for {\openmath} Objects}
+
+Once a {\element{presentation}} element, say with a body $B$, has been chosen for $O$, the
+presentation is obtained as a function of $O$ and $B$. We say that $B$ is rendered in
+context $O$. Let $n$ be the number of components of $O$; furthermore, let $\pi_n(x)\colon=x\;mod\;n$, if $x\in[-n;n-1]$, and fail otherwise. Each child of $B$ is rendered separately as defined in the following, and the results are concatenated. The rendering recurses over the structure of $O$, and the recursive calls additionally pass the output precedence as a parameter $P$; for the initial call, this parameter is set to negative infinity.\ednote{FR@FR: or was it positive?}
+
+An {\element{arg}} element $A$ is interpreted by selecting and rendering a component of $O$.
+, and let $i$ be the value of the required
+attribute {\attribute{pos}{arg}} and let $p$ be the value of the (optional) attribute
+{\attribute{precedence}{arg}} of $A$ defaulting to $P$ if it is missing. Then {\snippet{arg}} recursively calls the
+presenation procedure with precedence $p$ on the $\pi_n(i)$-th
+component of $O$. In particular, for applications, $i=0$ renders the operator and, e.g., $i=2$ renders the second argument. Note that $\pi_n(i)\in [0,\ldots,n-1]$; this allows for conveniently
+accessing, e.\,g., the last component by the index $-1$.
+
+For example the presentation of a typing judgment $\Gamma\vdash_\Sigma t:T$ in {\LaTeX}
+(expressing that $t$ has type $T$ in context $\Gamma$ over the signature $\Sigma$) can be
+specified as follows:
+\begin{lstlisting}[mathescape,label={lst:typing-judgment},
+                   caption={Presenting a Typing Judgment}]
+<symbol name="typing-judgment" role="application"/>
+<presentation for="#typing-judgment" role="application" format="latex">
+  <arg pos="1"/>
+  <text>\vdash_{</text><arg pos="2"/><text>}</text>
+  <arg pos="3"/>
+  <text>:</text>
+  <ar pos="4"/>
+</presentation>
+\end{lstlisting}
+The only other element needed here is the {\element{text}} element, which literally
+inserts its content into the output string. If the output format is XML-based the
+{\element{text}} generates an XML text node.
+
+A {\element{map}} element $M$ is interpreted as a component mapping
+specification $\fimarg{\llquote{sep}:\recu{p}}{\pi_n(b)}{\pi_n(e)}$, where
+\begin{enumerate}
+\item $n$ is the number of children $n$ of $O$.
+\item $b$ ($e$) is the value of the attribute {\attribute{begin}{map}}
+  ({\attribute{end}{map}}). 
+\item $p$ is the value of the {\attribute{precedence}{recurse}} attribute of the
+  {\element{recurse}} element or $P$ if it that is missing.
+\item $\llquote{sep}$ is the result of recursively rendering the {\element{separator}}
+  child of $M$ in context $O$. If there is no such child, assume $\llquote{sep}$ to be the
+  empty token sequence.
+\end{enumerate}
+If $M$ is empty, assume its content to be a child {\snippet{<recurse/>}}.
+
+Note that {\snippet{<map begin="$n$" end="$n$"><recurse precedence="$p$"/></map>}} is
+equivalent to {\snippet{<arg pos="$n$" precedence="$p$"/>}}.
+
+\begin{lstlisting}[mathescape,label={lst:multiplication},
+                   caption={A Notation Definition for Multiplication}]
+<symbol name="times" role="application"/>
+<presentation for="#times" role="constant" format="ascii"><text>*</text></presentation>
+<presentation for="#times" role="constant" format="latex"><text>\ast</text></presentation>
+<presentation for="#times" role="application" format="ascii latex">
+  <text egroup="lbrack">(</text>
+  <map begin="1" end="-1">
+    <separator><arg pos="0"/></separator>
+    <recurse/>
+  </map>
+  <text egroup="rbrack">)</text>
+</presentation>
+\end{lstlisting}
+Here we have used two format variants for the constant role to keep the notation
+definition of the applied form as general as possible: we use {\snippet{<arg pos="0"/>}}
+to call the presentation of the function symbol as a constant in the presentation of
+multiplication. We rely on the recursive rendering of the arguments. Note that we have
+used the {\attribute{egroup}{text}} attribute to classify the bracket characters as
+such.\ednote{MK: possible inconsistency to what we said earlier, note that we could also
+  use the lbrack
+  and rbrack elements here, maybe?\\
+  Unless we hard-code that e.g. an lbrack in PMML is ``<mo>(</mo>'' and ``('' in \TeX , I
+  like @egroup better, as, depending on the output format, we need either <text> or
+  <element> to generate brackets. --CL}
+
+{\snippet{<attribution cd="\llquote{cd}" name="\llquote{name}">A</attribution>}} is
+rendered by rendering $A$ in the context of the value for the key specified by the symbol
+with name $\llquote{name}$ from the theory {\llquote{cd}} of the attribution of $O$. If
+this attribution is not present, it is rendered as the empty string. Consider for instance
+the presentation of the universal quantifier with a flexible number of possibly typed
+variables:
+\begin{lstlisting}[mathescape]
+<symbol name="univ-quant" role="binder"/>
+<presentation for="#univ-quant" role="binder" format="latex">
+  <text value="\forall"/>
+  <map begin="1" end="-2">
+    <separator><text>,</text></separator>
+    <recurse/>
+    <attribution cd="types" name="type"><text>:</text><recurse/></attribution>
+  </map>
+  <text egroup="lbrack">.(</text><arg pos="-1"/><text egroup="rbrack">)</text>
+</presentation>
+\end{lstlisting}
+Note how the bound variables appear with the indices $1$ to $-2$ and the body with index
+$-1$. Also note how the colon is only printed if a type ascription is present.
+
+  Finally, we can use the {\element{name}} element to render the value of the name
+  attribute of $O$ if $O$ is a symbol or variable. For other $O$, it is not defined.
+  Therefore, {\snippet{<name/>}} may only occur in a {\element{presentation}} element with
+  role {\attval{constant}{role}{presentation}} or {\attval{variable}{role}{presentation}}.
+  This is useful for specifying the default presentation mentioned above, for instance the
+  following presentations can be used for a logic $L$ so that symbols declared in logical signatures of $L$ can be presented without giving separate presentation elements.
+\begin{lstlisting}[mathescape]
+<presentation for="$L$" role="constant" format="ascii"><name/></presentation>
+<presentation for="$L$" role="variable" format="ascii"><name/></presentation>
+<presentation for="$L$" role="application" format="ascii">
+  <arg pos="0"/>
+  <text egroup="lbrack">(</text>
+  <map begin="1" end="-1"><separator><text>,</text></separator></map>
+  <text egroup="rbrack">)</text>
+</presentation>
+\end{lstlisting}
+
+
+We have only used the ASCII-based {\LaTeX} as an example format above; for XML-based
+formats, we need extra infrastructure: An {\element{element}} element is rendered as an
+XML element in the obvious way. And an {\element{attribute}} element produces an attribute
+of the governing XML element, the presentation of the body of the element suitably
+XML-escaped yields the value of the generated attribute. For example the presentation of a
+symbol that attributes a certain color in presentation {\mathml} could be given as
+follows. (The value of such an attribution must be an {\element{OMFOREIGN}} element that
+the application can present as text.)
+\begin{lstlisting}[mathescape]
+<symbol name="color" role="attribution"/>
+<presentation for="#color" role="key" format="pmathml">
+  <element name="mstyle">
+    <attribute name="fontcolor"><arg pos="1"/></attribute>
+    <arg pos="2"/>
+  </element>
+</presentation>
+\end{lstlisting}
+
+To get an intuition for the full power of the elision capability of the new notation
+definition format, consider the following (contrived) example: assume an object $O$ with
+component vector $(A_1,A_2)$ which are rendered recursively as {\snippet{<a1/>}} and
+{\snippet{<a2 omdoc:egroup="group0" omdoc:elevel="0"/>}}. Then in context $O$, the
+presentation
+\begin{lstlisting}[mathescape]
+<presentation>
+  <map egroup="group1" level="1">
+     <separator egroup="group2" elevel="2">
+       <element name="s1" egroup="group3" elevel="3">
+         <element name="s2" egroup="group4" elevel="4"/>
+       </element>
+     </separator>
+     <recurse egroup="group5" elevel="5"/>
+  </map>
+</presentation>
+\end{lstlisting}
+is rendered as
+\begin{lstlisting}[mathescape]
+<a1 omdoc:egroup="group5" omdoc:elevel="5"/>
+<s1 omdoc:egroup="group1" omdoc:elevel="1">
+  <s2 omdoc:egroup="group4" omdoc:elevel="4"/>
+</s1>
+<a2 omdoc:egroup="group5" omdoc:elevel="5"/>
+\end{lstlisting}
+Note how the visibility information of the outermost element overrides the information of
+inner elements if the outer element is a structuring element like {\element{map}},
+{\element{separator,}} or {\element{recurse}}. We only mention this for the sake of
+definiteness though. In practice it is unreasonable to provide so much visibility
+information that it leads to such conflicts.
+
+
+\paragraph{Cross-References}
+In principle, the treatment of cross-references is left as in {\omdocv{1.2}}. In output
+formats that are capable of cross-references, references from parts of the display to the
+definition of the symbol may be generated. The {\element{presentation}} elements can
+specify which parts of the presentation this reference is affixed to by using the optional
+{\attributeshort{crossref}{}} attribute. This has values {\attvalshort{true}{crossref}}
+and {\attvalshort{false}{crossref}}, the latter being the default. Cross-references are to
+be attached to all elements for which the value is {\attvalshort{true}{role}}.
+
+
+%%% Local Variables: 
+%%% mode: stex
+%%% TeX-master: "presel"
+%%% fill-column: 90
+%%% sentence-end-double-space: nil
+%%% End: 
+
+% LocalWords:  egroup elevel cd cdbase crossref PCDATA ns cf attr xml IMHO CL
+% LocalWords:  reicht braucht nicht FR mathescape lst lbrack rbrack MK univ
+% LocalWords:  quant OMFOREIGN mstyle fontcolor presel

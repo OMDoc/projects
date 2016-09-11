@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.THM135D" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.THM135D</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.THM135D</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="tps.abbr.ITERATE.plus.xhtml#tps.abbr.ITERATE.plus">tps.abbr.ITERATE.plus</a>, 
+        <a href="tps.abbr.COMPOSE.xhtml#tps.abbr.COMPOSE">tps.abbr.COMPOSE</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.THM135D" role="Assertion" about="#gwff.THM135D" xml:id="gwff.THM135D">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.THM135D"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> Like thm135 but uses ITERATE+ FORALL f(AA) FORALL g1(AA) FORALL g2(AA).ITERATE+ f g1 AND ITERATE+ f g2 IMPLIES ITERATE+ f.g1 COMPOSE g2</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e33" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mo>∀</m:mo>
+                <m:mi>A</m:mi>
+                <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                <m:mrow>
+                  <m:mo>∀</m:mo>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mrow>
+                      <m:mi>A</m:mi>
+                      <m:mo>→</m:mo>
+                      <m:mi>A</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                  <m:msub>
+                    <m:mi>g1</m:mi>
+                    <m:mrow>
+                      <m:mi>A</m:mi>
+                      <m:mo>→</m:mo>
+                      <m:mi>A</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                  <m:msub>
+                    <m:mi>g2</m:mi>
+                    <m:mrow>
+                      <m:mi>A</m:mi>
+                      <m:mo>→</m:mo>
+                      <m:mi>A</m:mi>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mrow>
+                        <m:mo>ITERATE+</m:mo>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>f</m:mi>
+                        <m:mo separator="true">,</m:mo>
+                        <m:mi>g1</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo>∧</m:mo>
+                      <m:mrow>
+                        <m:mo>ITERATE+</m:mo>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>f</m:mi>
+                        <m:mo separator="true">,</m:mo>
+                        <m:mi>g2</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>⇒</m:mo>
+                    <m:mrow>
+                      <m:mo>ITERATE+</m:mo>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mi>f</m:mi>
+                      <m:mo separator="true">,</m:mo>
+                      <m:mrow>
+                        <m:mi>g1</m:mi>
+                        <m:mo>COMPOSE</m:mo>
+                        <m:mi>g2</m:mi>
+                      </m:mrow>
+                      <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+We will take care of all minor comments and reply to the major comments below.
+
+Review 1:
+
+About primitives for extensions: 
+Your question stems from the fact that we omitted much of the MMT module system for simplicity in our paper. In the full MMT system, it is a strong point that every extension is introduced in a separate theory containing exactly the needed primitives: Thus meta-theories can be composed modularly importing exactly the relevant extension and the module system guarantees that an extension can only be imported if its requirements are available.
+
+We will discuss this point more clearly in the final version.
+
+Review 2:
+
+Regarding the more complex examples: 
+Those are supported in principle and can be added by users on demand. Of course, the extension declarations may become complex. We chose the simple ones for didactic reasons.
+
+Regarding the direct translation:
+The main benefits of our approach (pragmatic surface -> pragmatic MMT -> strict MMT) over a direct translation (pragmatic surface -> strict MMT) are:
+
+- It makes it very easy for users to introduce their own language extensions. In particular, all semantic issues (e.g., type checking) are handled generically during the transation from pragmatic MMT to strict MMT so that the translation from pragmatic surface to pragmatic MMT becomes trivial. 
+- We expect systems to interchange document at the pragmatic MMT level. For example, we want to translate implicit definitions of one system to those of another system even if - which is typical - the respective strict implementations are very different.
+- It is essential that user interfaces have access to the pragmatic MMT syntax.
+We did indeed not discuss this well enough, and we will add discussion in the final version.
+
+Regarding the Enumerated Comments:
+
+1) Our approach indeed suffers from Pollack inconsistency in the same way as existing systems do. However, we believe our approach is well-suited to alleviate the situation because it permits user interfaces that can switch between pragmatic and strict syntax.
+
+6) Except for a few structural rules, MMT is parametric in the set of typing rules. We will discuss that and add a description of these rules. Then the paper will be essentially self-contained.
+
+7) The example had mistakes. We fixed them.
+
+9) Our design is such that extensions are type-checked in a way that guarantees that any pragmatic declaration with well-typed parameters elaborates to well-typed declarations. Thus, our framework is only applicable to an extension if the meta-theory is strong enough to express all necessary constraints. For example, for Coq's inductive types, the meta-theory would have to declare and axiomatize judgments for positivity, which would occur as additional parameters of the extension.
+
+10) We will remove that sentence.
+
+Review 3
+
+We discussed all similar approaches we know about. We would appreciate pointers to further related work.

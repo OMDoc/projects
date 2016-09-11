@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+               "http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mcd="http://www.w3.org/ns/mathml-cd">
+  <head>
+    <title>Elision Demo (Formula)</title>
+    <link rel="stylesheet" type="text/css" href="omdoc.css"/>
+    <style type="text/css">
+      span.formula {
+        font-size: x-large;
+      }
+    </style>
+  </head>
+  <body>
+    <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+	<mrow>
+	  <semantics mcd:elevel="500" id="test"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	  <semantics mcd:elevel="300"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	  <msup>
+	    <mrow>
+	      <mn>5</mn>
+	      <mo>·</mo>
+	      <mo>(</mo>
+	      <mi>x</mi>
+	      <mo>+</mo>
+	      <mi>y</mi>
+	      <mo>)</mo>
+	    </mrow>
+	    <mrow>
+	      <semantics mcd:elevel="infinity"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	      <mi>n</mi>
+	      <mo>+</mo>
+	      <mn>3</mn>
+	      <semantics mcd:elevel="infinity"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	    </mrow>
+	   </msup>
+	   <semantics mcd:elevel="300"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	   <mo>≤</mo>
+	   <semantics mcd:elevel="400"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	   <mo>(</mo>
+	   <mi>a</mi>
+	   <mo>·</mo>
+	   <mi>b</mi>
+	   <mo>)</mo>
+	   <mo>!</mo>
+	   <semantics mcd:elevel="400"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	   <semantics mcd:elevel="500"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	   <mo>∨</mo>
+	   <semantics mcd:elevel="200"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	   <semantics mcd:elevel="400"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	   <mo>¬</mo>
+	   <mi>p</mi>
+	   <semantics mcd:elevel="400"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	   <mo>∧</mo>
+	   <semantics mcd:elevel="400"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	   <mo>¬</mo>
+	   <mo>(</mo>
+	   <mi>q</mi>
+	   <mo>≤</mo>
+	   <mi>π</mi>
+	   <mo>)</mo>
+	   <semantics mcd:elevel="400"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	   <semantics mcd:elevel="200"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	</mrow>
+    </math></p>
+    <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mrow>
+	<msub>
+	 <mi>∧*</mi>
+	 <semantics mcd:egroup="types" mcd:elevel="200"><mrow/><annotation-xml><mrow>
+	       <mo>(</mo>
+	       <mi>ι</mi>
+	       <mo>→</mo>
+	       <mi>ο</mi>
+	       <mo>)</mo>
+	       <mo>→</mo>
+	       <semantics mcd:elevel="100"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	       <mo>(</mo>
+	       <mi>ι</mi>
+	       <mo>→</mo>
+	       <mi>ο</mi>
+	       <mo>)</mo>
+	       <mo>→</mo>
+	       <semantics mcd:elevel="100"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+	       <mi>ι</mi>
+	       <mo>→</mo>
+	       <mi>ο</mi>
+	       <semantics mcd:elevel="100"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	       <semantics mcd:elevel="100"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	 </mrow></annotation-xml></semantics>
+	</msub>
+	<mo>=</mo>
+	<mo>λ</mo>
+	<msub>
+	  <mi>F</mi>
+	  <semantics mcd:egroup="types" mcd:elevel="100"><mrow/><annotation-xml><mrow>
+	  <mi>ι</mi>
+	  <mo>→</mo>
+	  <mi>ο</mi>
+	  </mrow></annotation-xml></semantics>
+	</msub>
+	<msub>
+	  <mi>G</mi>
+	  <semantics mcd:egroup="types" mcd:elevel="100"><mrow/><annotation-xml><mrow>
+	  <mi>ι</mi>
+	  <mo>→</mo>
+	  <mi>ο</mi>
+	  </mrow></annotation-xml></semantics>
+	</msub>
+	<msub>
+	  <mi>X</mi>
+	  <mrow mcd:egroup="types" mcd:elevel="0">
+	    <mi>ι</mi>
+	  </mrow>
+	</msub>
+	<mo>.</mo>
+	<msub>
+	  <mi>F</mi>
+	  <semantics mcd:egroup="types" mcd:elevel="300"><mrow/><annotation-xml><mrow>
+		<mi>ι</mi>
+		<mo>→</mo>
+		<mi>ο</mi>
+	      </mrow></annotation-xml></semantics>
+	</msub>
+	<mo>(</mo>
+	<msub>
+	  <mi>X</mi>
+	  <semantics mcd:egroup="types" mcd:elevel="300"><mrow/><annotation-xml><mrow>
+		<mi>ι</mi>
+	      </mrow></annotation-xml></semantics>
+	</msub>
+	<mo>)</mo>
+	<msub>
+	  <mo>∧</mo>
+	  <semantics mcd:egroup="types" mcd:elevel="300"><mrow/><annotation-xml><mrow>
+		<mi>o</mi>
+		<mo>→</mo>
+		<semantics mcd:elevel="100"><mo/><annotation-xml><mo>(</mo></annotation-xml></semantics>
+		<mi>ο</mi>
+		<mo>→</mo>
+		<mi>ο</mi>
+		<semantics mcd:elevel="100"><mo/><annotation-xml><mo>)</mo></annotation-xml></semantics>
+	      </mrow></annotation-xml></semantics>
+	</msub>
+	<msub>
+	  <mi>G</mi>
+	  <semantics mcd:egroup="types" mcd:elevel="300"><mrow/><annotation-xml><mrow>
+		<mi>ι</mi>
+		<mo>→</mo>
+		<mi>ο</mi>
+	      </mrow></annotation-xml></semantics>
+	</msub>
+	<mo>(</mo>
+	<msub>
+	  <mi>X</mi>
+	  <semantics mcd:egroup="types" mcd:elevel="300"><mrow/><annotation-xml><mrow>
+		<mi>ι</mi>
+	      </mrow></annotation-xml></semantics>
+	</msub>
+	<mo>)</mo>
+      </mrow>
+    </math></p>
+  </body>
+</html>

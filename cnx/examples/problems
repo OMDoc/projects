@@ -1,0 +1,73 @@
+in m0031.cnxml and m0037.cnxml units are used. 
+
+They should be treated multiplicatively e.g. 
+
+	<m:math>
+         <m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>I</m:mi>
+		<m:mn>0</m:mn>
+              </m:msub>
+            </m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	  <m:ci>&nbsp;&mu;A</m:ci>
+          </m:apply>
+	</m:math>.
+
+instead of 
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>I</m:mi>
+		<m:mn>0</m:mn>
+              </m:msub>
+            </m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	  <m:ci>&nbsp;&mu;A</m:ci>
+	</m:math>.
+
+Moreover, it would be much better to use 
+<m:csymbol definitionURL="..."><m:mi>&mu;A</m:mi></m:csymbol>
+
+for this. 
+
+in m0043.cnxml we find
+
+      <m:math> 
+	<m:mi>
+	  <m:msub>
+	    <m:mi>a</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:mi>
+	<m:mi>&comma;</m:mi>
+	<m:mi>&hellip;</m:mi>
+	<m:mi>&comma;</m:mi>
+	<m:mi>
+	  <m:msub>
+	    <m:mi>a</m:mi>
+	    <m:mi>N</m:mi>
+	  </m:msub>
+	</m:mi>
+      </m:math>.  
+
+This is pure presentation MathML, I am not sure what to do here. A principled
+solution is not possible in C-MathML without csymbol. 
+
+Generally, you should check for more than one child in <m:math>, this almost
+always points to problems, in most of the examples, the content is presentation
+MathML (disguised as Content MathML). 
+
+sometimes there are m:apply  in m:bvar
+
+sometimes we have <m:cn>&phi</cn> or <m:cn type="constant">&alpha</m:cn> this is
+not the intended usage for <m:cn>.

@@ -1,0 +1,1707 @@
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI is the top-level XML ELEMENT for XMI transfer text          -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI (XMI.header?, XMI.content?, XMI.difference*,
+               XMI.extensions*)>
+<!ATTLIST XMI
+            xmi.version CDATA #FIXED "1.1"
+            timestamp CDATA #IMPLIED
+            verified (true|false) #IMPLIED>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.header contains documentation and identifies the model,     -->
+<!-- metamodel, and metametamodel                                    -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.header (XMI.documentation?, XMI.model*, XMI.metamodel*,
+                      XMI.metametamodel*, XMI.import*)>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- documentation for transfer data                                 -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.documentation (#PCDATA | XMI.owner | XMI.contact |
+                             XMI.longDescription | XMI.shortDescription |
+                             XMI.exporter | XMI.exporterVersion |
+                             XMI.notice)*>
+<!ELEMENT XMI.owner ANY>
+<!ELEMENT XMI.contact ANY>
+<!ELEMENT XMI.longDescription ANY>
+<!ELEMENT XMI.shortDescription ANY>
+<!ELEMENT XMI.exporter ANY>
+<!ELEMENT XMI.exporterVersion ANY>
+<!ELEMENT XMI.exporterID ANY>
+<!ELEMENT XMI.notice ANY>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.ELEMENT.att defines the attributes that each XML ELEMENT    -->
+<!-- that corresponds to a metamodel class must have to conform to   -->
+<!-- the XMI specification.                                          -->
+<!-- _______________________________________________________________ -->
+
+<!ENTITY % XMI.ELEMENT.att
+               'xmi.id ID #IMPLIED xmi.label CDATA #IMPLIED xmi.uuid
+                CDATA #IMPLIED '>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.model identifies the model(s) being transferred             -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.model ANY>
+<!ATTLIST XMI.model 
+            xmi.name    CDATA #REQUIRED
+            xmi.version CDATA #IMPLIED>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.metamodel identifies the metamodel(s) for the transferred   -->
+<!-- data                                                            -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.metamodel ANY>
+<!ATTLIST XMI.metamodel 
+            xmi.name    CDATA #REQUIRED
+            xmi.version CDATA #IMPLIED>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.metametamodel identifies the metametamodel(s) for the       -->
+<!-- transferred data                                                -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.metametamodel ANY>
+<!ATTLIST XMI.metametamodel 
+            xmi.name    CDATA #REQUIRED
+            xmi.version CDATA #IMPLIED>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.import identifies imported metamodel(s)                     -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.import ANY>
+<!ATTLIST XMI.import 
+            xmi.name    CDATA #REQUIRED
+            xmi.version CDATA #IMPLIED>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.content is the actual data being transferred                -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.content ANY>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.extensions contains data to transfer that does not conform  -->
+<!-- to the metamodel(s) in the header                               -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.extensions ANY>
+<!ATTLIST XMI.extensions
+            xmi.extender CDATA #REQUIRED>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- extension contains information related to a specific model      -->
+<!-- construct that is not defined in the metamodel(s) in the header -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.extension ANY>
+<!ATTLIST XMI.extension %XMI.ELEMENT.att; 
+            xmi.extender CDATA #REQUIRED
+            xmi.extenderID CDATA #IMPLIED>
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.difference holds XML ELEMENTs representing differences to a -->
+<!-- base model                                                      -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.difference (XMI.difference | XMI.delete | XMI.add |
+                          XMI.replace)*>
+<!ATTLIST XMI.difference %XMI.ELEMENT.att; >
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.delete represents a deletion from a base model              -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.delete EMPTY>
+<!ATTLIST XMI.delete %XMI.ELEMENT.att; >
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.add represents an addition to a base model                  -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.add ANY>
+<!ATTLIST XMI.add %XMI.ELEMENT.att; 
+            xmi.position CDATA "-1">
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.replace represents the replacement of a model construct     -->
+<!-- with another model construct in a base model                    -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.replace ANY>
+<!ATTLIST XMI.replace %XMI.ELEMENT.att; 
+            xmi.position CDATA "-1">
+
+<!-- _______________________________________________________________ -->
+<!--                                                                 -->
+<!-- XMI.reference may be used to refer to data types not defined in -->
+<!-- the metamodel                                                   -->
+<!-- _______________________________________________________________ -->
+
+<!ELEMENT XMI.reference ANY>
+<!ATTLIST XMI.reference >
+
+
+<!ATTLIST XMI xmlns:UML CDATA #IMPLIED>
+
+<!-- ========= Data_Types ========= -->
+<!ENTITY % AggregationKind '(none|aggregate|composite)'>
+<!ENTITY % CallConcurrencyKind '(sequential|guarded|concurrent)'>
+<!ENTITY % ChangeableKind '(changeable|frozen|addOnly)'>
+<!ENTITY % OrderingKind '(unordered|ordered)'>
+<!ENTITY % ParameterDirectionKind '(in|inout|out|return)'>
+<!ENTITY % ScopeKind '(instance|classifier)'>
+<!ENTITY % VisibilityKind '(public|protected|private|package)'>
+<!ENTITY % PseudostateKind '(choice|deepHistory|fork|initial|join|
+   junction|shallowHistory)'>
+
+<!-- ========= Multiplicity ========= -->
+<!ELEMENT Multiplicity.range (MultiplicityRange)*>
+<!ENTITY % MultiplicityFeatures 'XMI.extension |
+   Multiplicity.range'>
+<!ENTITY % MultiplicityAtts '%XMI.ELEMENT.att; '>
+<!ELEMENT Multiplicity (%MultiplicityFeatures;)*>
+<!ATTLIST Multiplicity %MultiplicityAtts;>
+
+<!-- ========= MultiplicityRange ========= -->
+<!ELEMENT MultiplicityRange.lower (#PCDATA|XMI.reference)*>
+<!ELEMENT MultiplicityRange.upper (#PCDATA|XMI.reference)*>
+<!ELEMENT MultiplicityRange.multiplicity (Multiplicity)*>
+<!ENTITY % MultiplicityRangeFeatures 'XMI.extension |
+   MultiplicityRange.lower |
+   MultiplicityRange.upper |
+   MultiplicityRange.multiplicity'>
+<!ENTITY % MultiplicityRangeAtts '%XMI.ELEMENT.att; 
+   lower CDATA #IMPLIED
+   upper CDATA #IMPLIED
+   multiplicity IDREFS #IMPLIED'>
+<!ELEMENT MultiplicityRange (%MultiplicityRangeFeatures;)*>
+<!ATTLIST MultiplicityRange %MultiplicityRangeAtts;>
+
+<!-- ========= Expression ========= -->
+<!ELEMENT Expression.language (#PCDATA|XMI.reference)*>
+<!ELEMENT Expression.body (#PCDATA|XMI.reference)*>
+<!ENTITY % ExpressionFeatures 'XMI.extension |
+   Expression.language |
+   Expression.body'>
+<!ENTITY % ExpressionAtts '%XMI.ELEMENT.att; 
+   language CDATA #IMPLIED
+   body CDATA #IMPLIED'>
+<!ELEMENT Expression (%ExpressionFeatures;)*>
+<!ATTLIST Expression %ExpressionAtts;>
+
+<!-- ========= BooleanExpression ========= -->
+<!ENTITY % BooleanExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % BooleanExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT BooleanExpression (%BooleanExpressionFeatures;)*>
+<!ATTLIST BooleanExpression %BooleanExpressionAtts;>
+
+<!-- ========= TypeExpression ========= -->
+<!ENTITY % TypeExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % TypeExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT TypeExpression (%TypeExpressionFeatures;)*>
+<!ATTLIST TypeExpression %TypeExpressionAtts;>
+
+<!-- ========= MappingExpression ========= -->
+<!ENTITY % MappingExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % MappingExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT MappingExpression (%MappingExpressionFeatures;)*>
+<!ATTLIST MappingExpression %MappingExpressionAtts;>
+
+<!-- ========= ProcedureExpression ========= -->
+<!ENTITY % ProcedureExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % ProcedureExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT ProcedureExpression (%ProcedureExpressionFeatures;)*>
+<!ATTLIST ProcedureExpression %ProcedureExpressionAtts;>
+
+<!-- ========= ObjectSetExpression ========= -->
+<!ENTITY % ObjectSetExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % ObjectSetExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT ObjectSetExpression (%ObjectSetExpressionFeatures;)*>
+<!ATTLIST ObjectSetExpression %ObjectSetExpressionAtts;>
+
+<!-- ========= ActionExpression ========= -->
+<!ENTITY % ActionExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % ActionExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT ActionExpression (%ActionExpressionFeatures;)*>
+<!ATTLIST ActionExpression %ActionExpressionAtts;>
+
+<!-- ========= IterationExpression ========= -->
+<!ENTITY % IterationExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % IterationExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT IterationExpression (%IterationExpressionFeatures;)*>
+<!ATTLIST IterationExpression %IterationExpressionAtts;>
+
+<!-- ========= TimeExpression ========= -->
+<!ENTITY % TimeExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % TimeExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT TimeExpression (%TimeExpressionFeatures;)*>
+<!ATTLIST TimeExpression %TimeExpressionAtts;>
+
+<!-- ========= ArgListsExpression ========= -->
+<!ENTITY % ArgListsExpressionFeatures '%ExpressionFeatures;'>
+<!ENTITY % ArgListsExpressionAtts '%ExpressionAtts;'>
+<!ELEMENT ArgListsExpression (%ArgListsExpressionFeatures;)*>
+<!ATTLIST ArgListsExpression %ArgListsExpressionAtts;>
+
+<!-- ========= Core ========= -->
+
+<!-- ========= ELEMENT ========= -->
+<!ENTITY % ELEMENTFeatures 'XMI.extension'>
+<!ENTITY % ELEMENTAtts '%XMI.ELEMENT.att; '>
+<!ELEMENT ELEMENT (%ELEMENTFeatures;)*>
+<!ATTLIST ELEMENT %ELEMENTAtts;>
+
+<!-- ========= ModelELEMENT ========= -->
+<!ELEMENT ModelELEMENT.name (#PCDATA|XMI.reference)*>
+<!ELEMENT ModelELEMENT.visibility EMPTY>
+<!ATTLIST ModelELEMENT.visibility xmi.value %VisibilityKind; #REQUIRED>
+<!ELEMENT ModelELEMENT.isSpecification EMPTY>
+<!ATTLIST ModelELEMENT.isSpecification xmi.value (true|false) #REQUIRED>
+<!ELEMENT ModelELEMENT.namespace (Namespace)*>
+<!ELEMENT ModelELEMENT.clientDependency (Dependency)*>
+<!ELEMENT ModelELEMENT.constraint (Constraint)*>
+<!ELEMENT ModelELEMENT.targetFlow (Flow)*>
+<!ELEMENT ModelELEMENT.sourceFlow (Flow)*>
+<!ELEMENT ModelELEMENT.comment (Comment)*>
+<!ELEMENT ModelELEMENT.templateParameter (TemplateParameter)*>
+<!ELEMENT ModelELEMENT.stereotype (Stereotype)*>
+<!ELEMENT ModelELEMENT.taggedValue (TaggedValue)*>
+<!ENTITY % ModelELEMENTFeatures '%ELEMENTFeatures; |
+   ModelELEMENT.name |
+   ModelELEMENT.visibility |
+   ModelELEMENT.isSpecification |
+   ModelELEMENT.namespace |
+   ModelELEMENT.clientDependency |
+   ModelELEMENT.constraint |
+   ModelELEMENT.targetFlow |
+   ModelELEMENT.sourceFlow |
+   ModelELEMENT.comment |
+   ModelELEMENT.templateParameter |
+   ModelELEMENT.stereotype |
+   ModelELEMENT.taggedValue'>
+<!ENTITY % ModelELEMENTAtts '%ELEMENTAtts;
+   name CDATA #IMPLIED
+   visibility %VisibilityKind; #IMPLIED
+   isSpecification (true|false) #IMPLIED
+   namespace IDREFS #IMPLIED
+   clientDependency IDREFS #IMPLIED
+   constraint IDREFS #IMPLIED
+   targetFlow IDREFS #IMPLIED
+   sourceFlow IDREFS #IMPLIED
+   comment IDREFS #IMPLIED
+   stereotype IDREFS #IMPLIED'>
+<!ELEMENT ModelELEMENT (%ModelELEMENTFeatures;)*>
+<!ATTLIST ModelELEMENT %ModelELEMENTAtts;>
+
+<!-- ========= GeneralizableELEMENT ========= -->
+<!ELEMENT GeneralizableELEMENT.isRoot EMPTY>
+<!ATTLIST GeneralizableELEMENT.isRoot xmi.value (true|false) #REQUIRED>
+<!ELEMENT GeneralizableELEMENT.isLeaf EMPTY>
+<!ATTLIST GeneralizableELEMENT.isLeaf xmi.value (true|false) #REQUIRED>
+<!ELEMENT GeneralizableELEMENT.isAbstract EMPTY>
+<!ATTLIST GeneralizableELEMENT.isAbstract xmi.value (true|false) #REQUIRED>
+<!ELEMENT GeneralizableELEMENT.generalization (Generalization)*>
+<!ENTITY % GeneralizableELEMENTFeatures '%ModelELEMENTFeatures; |
+   GeneralizableELEMENT.isRoot |
+   GeneralizableELEMENT.isLeaf |
+   GeneralizableELEMENT.isAbstract |
+   GeneralizableELEMENT.generalization'>
+<!ENTITY % GeneralizableELEMENTAtts '%ModelELEMENTAtts;
+   isRoot (true|false) #IMPLIED
+   isLeaf (true|false) #IMPLIED
+   isAbstract (true|false) #IMPLIED
+   generalization IDREFS #IMPLIED'>
+<!ELEMENT GeneralizableELEMENT (%GeneralizableELEMENTFeatures;)*>
+<!ATTLIST GeneralizableELEMENT %GeneralizableELEMENTAtts;>
+
+<!-- ========= Namespace ========= -->
+<!ELEMENT Namespace.ownedELEMENT (ModelELEMENT|
+   GeneralizableELEMENT|Classifier|Class|AssociationClass|
+   DataType|Primitive|Enumeration|ProgrammingLanguageDataType|
+   Interface|Component|Node|Artifact|Signal|Exception|
+   UseCase|Actor|ClassifierRole|ClassifierInState|
+   Subsystem|Association|AssociationRole|Stereotype|
+   Collaboration|Package|Model|Namespace|Feature|
+   StructuralFeature|Attribute|BehavioralFeature|Operation|
+   Method|Reception|AssociationEnd|AssociationEndRole|
+   Constraint|Relationship|Generalization|Dependency|
+   Abstraction|Usage|Binding|Permission|Flow|Extend|
+   Include|Parameter|Comment|EnumerationLiteral|
+   TagDefinition|TaggedValue|Instance|Object|LinkObject|
+   DataValue|ComponentInstance|NodeInstance|SubsystemInstance|
+   UseCaseInstance|Action|CreateAction|DestroyAction|
+   UninterpretedAction|CallAction|SendAction|ActionSequence|
+   ReturnAction|TerminateAction|AttributeLink|Link|
+   Argument|LinkEnd|Stimulus|ExtensionPoint|StateMachine|
+   ActivityGraph|Event|TimeEvent|CallEvent|SignalEvent|
+   ChangeEvent|StateVertex|State|CompositeState|
+   SubmachineState|SubactivityState|SimpleState|ActionState|
+   CallState|ObjectFlowState|FinalState|Pseudostate|
+   SynchState|StubState|Transition|Guard|Message|
+   Interaction|InteractionInstanceSet|CollaborationInstanceSet|
+   Partition)*>
+<!ENTITY % NamespaceFeatures '%ModelELEMENTFeatures; |
+   Namespace.ownedELEMENT'>
+<!ENTITY % NamespaceAtts '%ModelELEMENTAtts;'>
+<!ELEMENT Namespace (%NamespaceFeatures;)*>
+<!ATTLIST Namespace %NamespaceAtts;>
+
+<!-- ========= Classifier ========= -->
+<!ELEMENT Classifier.feature (Feature|StructuralFeature|
+   Attribute|BehavioralFeature|Operation|Method|Reception)*>
+<!ELEMENT Classifier.powertypeRange (Generalization)*>
+<!ENTITY % ClassifierFeatures '%GeneralizableELEMENTFeatures; |
+   Namespace.ownedELEMENT |
+   Classifier.feature |
+   Classifier.powertypeRange'>
+<!ENTITY % ClassifierAtts '%GeneralizableELEMENTAtts;
+   powertypeRange IDREFS #IMPLIED'>
+<!ELEMENT Classifier (%ClassifierFeatures;)*>
+<!ATTLIST Classifier %ClassifierAtts;>
+
+<!-- ========= Class ========= -->
+<!ELEMENT Class.isActive EMPTY>
+<!ATTLIST Class.isActive xmi.value (true|false) #REQUIRED>
+<!ENTITY % ClassFeatures '%ClassifierFeatures; |
+   Class.isActive'>
+<!ENTITY % ClassAtts '%ClassifierAtts;
+   isActive (true|false) #IMPLIED'>
+<!ELEMENT Class (%ClassFeatures;)*>
+<!ATTLIST Class %ClassAtts;>
+
+<!-- ========= DataType ========= -->
+<!ENTITY % DataTypeFeatures '%ClassifierFeatures;'>
+<!ENTITY % DataTypeAtts '%ClassifierAtts;'>
+<!ELEMENT DataType (%DataTypeFeatures;)*>
+<!ATTLIST DataType %DataTypeAtts;>
+
+<!-- ========= Feature ========= -->
+<!ELEMENT Feature.ownerScope EMPTY>
+<!ATTLIST Feature.ownerScope xmi.value %ScopeKind; #REQUIRED>
+<!ELEMENT Feature.owner (Classifier)*>
+<!ENTITY % FeatureFeatures '%ModelELEMENTFeatures; |
+   Feature.ownerScope |
+   Feature.owner'>
+<!ENTITY % FeatureAtts '%ModelELEMENTAtts;
+   ownerScope %ScopeKind; #IMPLIED
+   owner IDREFS #IMPLIED'>
+<!ELEMENT Feature (%FeatureFeatures;)*>
+<!ATTLIST Feature %FeatureAtts;>
+
+<!-- ========= StructuralFeature ========= -->
+<!ELEMENT StructuralFeature.multiplicity (Multiplicity)*>
+<!ELEMENT StructuralFeature.changeability EMPTY>
+<!ATTLIST StructuralFeature.changeability xmi.value %ChangeableKind; #REQUIRED>
+<!ELEMENT StructuralFeature.targetScope EMPTY>
+<!ATTLIST StructuralFeature.targetScope xmi.value %ScopeKind; #REQUIRED>
+<!ELEMENT StructuralFeature.ordering EMPTY>
+<!ATTLIST StructuralFeature.ordering xmi.value %OrderingKind; #REQUIRED>
+<!ELEMENT StructuralFeature.type (Classifier)*>
+<!ENTITY % StructuralFeatureFeatures '%FeatureFeatures; |
+   StructuralFeature.multiplicity |
+   StructuralFeature.changeability |
+   StructuralFeature.targetScope |
+   StructuralFeature.ordering |
+   StructuralFeature.type'>
+<!ENTITY % StructuralFeatureAtts '%FeatureAtts;
+   changeability %ChangeableKind; #IMPLIED
+   targetScope %ScopeKind; #IMPLIED
+   ordering %OrderingKind; #IMPLIED
+   type IDREFS #IMPLIED'>
+<!ELEMENT StructuralFeature (%StructuralFeatureFeatures;)*>
+<!ATTLIST StructuralFeature %StructuralFeatureAtts;>
+
+<!-- ========= AssociationEnd ========= -->
+<!ELEMENT AssociationEnd.isNavigable EMPTY>
+<!ATTLIST AssociationEnd.isNavigable xmi.value (true|false) #REQUIRED>
+<!ELEMENT AssociationEnd.ordering EMPTY>
+<!ATTLIST AssociationEnd.ordering xmi.value %OrderingKind; #REQUIRED>
+<!ELEMENT AssociationEnd.aggregation EMPTY>
+<!ATTLIST AssociationEnd.aggregation xmi.value %AggregationKind; #REQUIRED>
+<!ELEMENT AssociationEnd.targetScope EMPTY>
+<!ATTLIST AssociationEnd.targetScope xmi.value %ScopeKind; #REQUIRED>
+<!ELEMENT AssociationEnd.multiplicity (Multiplicity)*>
+<!ELEMENT AssociationEnd.changeability EMPTY>
+<!ATTLIST AssociationEnd.changeability xmi.value %ChangeableKind; #REQUIRED>
+<!ELEMENT AssociationEnd.association (Association)*>
+<!ELEMENT AssociationEnd.qualifier (Attribute)*>
+<!ELEMENT AssociationEnd.participant (Classifier)*>
+<!ELEMENT AssociationEnd.specification (Classifier)*>
+<!ENTITY % AssociationEndFeatures '%ModelELEMENTFeatures; |
+   AssociationEnd.isNavigable |
+   AssociationEnd.ordering |
+   AssociationEnd.aggregation |
+   AssociationEnd.targetScope |
+   AssociationEnd.multiplicity |
+   AssociationEnd.changeability |
+   AssociationEnd.association |
+   AssociationEnd.qualifier |
+   AssociationEnd.participant |
+   AssociationEnd.specification'>
+<!ENTITY % AssociationEndAtts '%ModelELEMENTAtts;
+   isNavigable (true|false) #IMPLIED
+   ordering %OrderingKind; #IMPLIED
+   aggregation %AggregationKind; #IMPLIED
+   targetScope %ScopeKind; #IMPLIED
+   changeability %ChangeableKind; #IMPLIED
+   association IDREFS #IMPLIED
+   participant IDREFS #IMPLIED
+   specification IDREFS #IMPLIED'>
+<!ELEMENT AssociationEnd (%AssociationEndFeatures;)*>
+<!ATTLIST AssociationEnd %AssociationEndAtts;>
+
+<!-- ========= Interface ========= -->
+<!ENTITY % InterfaceFeatures '%ClassifierFeatures;'>
+<!ENTITY % InterfaceAtts '%ClassifierAtts;'>
+<!ELEMENT Interface (%InterfaceFeatures;)*>
+<!ATTLIST Interface %InterfaceAtts;>
+
+<!-- ========= Constraint ========= -->
+<!ELEMENT Constraint.body (BooleanExpression)*>
+<!ELEMENT Constraint.constrainedELEMENT (ModelELEMENT)*>
+<!ENTITY % ConstraintFeatures '%ModelELEMENTFeatures; |
+   Constraint.body |
+   Constraint.constrainedELEMENT'>
+<!ENTITY % ConstraintAtts '%ModelELEMENTAtts;
+   constrainedELEMENT IDREFS #IMPLIED'>
+<!ELEMENT Constraint (%ConstraintFeatures;)*>
+<!ATTLIST Constraint %ConstraintAtts;>
+
+<!-- ========= Relationship ========= -->
+<!ENTITY % RelationshipFeatures '%ModelELEMENTFeatures;'>
+<!ENTITY % RelationshipAtts '%ModelELEMENTAtts;'>
+<!ELEMENT Relationship (%RelationshipFeatures;)*>
+<!ATTLIST Relationship %RelationshipAtts;>
+
+<!-- ========= Association ========= -->
+<!ELEMENT Association.connection (AssociationEnd|
+   AssociationEndRole)*>
+<!ENTITY % AssociationFeatures '%GeneralizableELEMENTFeatures; |
+   Association.connection'>
+<!ENTITY % AssociationAtts '%GeneralizableELEMENTAtts;'>
+<!ELEMENT Association (%AssociationFeatures;)*>
+<!ATTLIST Association %AssociationAtts;>
+
+<!-- ========= Attribute ========= -->
+<!ELEMENT Attribute.initialValue (Expression|BooleanExpression|
+   TypeExpression|MappingExpression|ProcedureExpression|
+   ObjectSetExpression|ActionExpression|IterationExpression|
+   TimeExpression|ArgListsExpression)*>
+<!ELEMENT Attribute.associationEnd (AssociationEnd)*>
+<!ENTITY % AttributeFeatures '%StructuralFeatureFeatures; |
+   Attribute.initialValue |
+   Attribute.associationEnd'>
+<!ENTITY % AttributeAtts '%StructuralFeatureAtts;
+   associationEnd IDREFS #IMPLIED'>
+<!ELEMENT Attribute (%AttributeFeatures;)*>
+<!ATTLIST Attribute %AttributeAtts;>
+
+<!-- ========= BehavioralFeature ========= -->
+<!ELEMENT BehavioralFeature.isQuery EMPTY>
+<!ATTLIST BehavioralFeature.isQuery xmi.value (true|false) #REQUIRED>
+<!ELEMENT BehavioralFeature.parameter (Parameter)*>
+<!ENTITY % BehavioralFeatureFeatures '%FeatureFeatures; |
+   BehavioralFeature.isQuery |
+   BehavioralFeature.parameter'>
+<!ENTITY % BehavioralFeatureAtts '%FeatureAtts;
+   isQuery (true|false) #IMPLIED'>
+<!ELEMENT BehavioralFeature (%BehavioralFeatureFeatures;)*>
+<!ATTLIST BehavioralFeature %BehavioralFeatureAtts;>
+
+<!-- ========= Operation ========= -->
+<!ELEMENT Operation.concurrency EMPTY>
+<!ATTLIST Operation.concurrency xmi.value %CallConcurrencyKind; #REQUIRED>
+<!ELEMENT Operation.isRoot EMPTY>
+<!ATTLIST Operation.isRoot xmi.value (true|false) #REQUIRED>
+<!ELEMENT Operation.isLeaf EMPTY>
+<!ATTLIST Operation.isLeaf xmi.value (true|false) #REQUIRED>
+<!ELEMENT Operation.isAbstract EMPTY>
+<!ATTLIST Operation.isAbstract xmi.value (true|false) #REQUIRED>
+<!ELEMENT Operation.specification (#PCDATA|XMI.reference)*>
+<!ENTITY % OperationFeatures '%BehavioralFeatureFeatures; |
+   Operation.concurrency |
+   Operation.isRoot |
+   Operation.isLeaf |
+   Operation.isAbstract |
+   Operation.specification'>
+<!ENTITY % OperationAtts '%BehavioralFeatureAtts;
+   concurrency %CallConcurrencyKind; #IMPLIED
+   isRoot (true|false) #IMPLIED
+   isLeaf (true|false) #IMPLIED
+   isAbstract (true|false) #IMPLIED
+   specification CDATA #IMPLIED'>
+<!ELEMENT Operation (%OperationFeatures;)*>
+<!ATTLIST Operation %OperationAtts;>
+
+<!-- ========= Parameter ========= -->
+<!ELEMENT Parameter.defaultValue (Expression|BooleanExpression|
+   TypeExpression|MappingExpression|ProcedureExpression|
+   ObjectSetExpression|ActionExpression|IterationExpression|
+   TimeExpression|ArgListsExpression)*>
+<!ELEMENT Parameter.kind EMPTY>
+<!ATTLIST Parameter.kind xmi.value %ParameterDirectionKind; #REQUIRED>
+<!ELEMENT Parameter.behavioralFeature (BehavioralFeature)*>
+<!ELEMENT Parameter.type (Classifier)*>
+<!ENTITY % ParameterFeatures '%ModelELEMENTFeatures; |
+   Parameter.defaultValue |
+   Parameter.kind |
+   Parameter.behavioralFeature |
+   Parameter.type'>
+<!ENTITY % ParameterAtts '%ModelELEMENTAtts;
+   kind %ParameterDirectionKind; #IMPLIED
+   behavioralFeature IDREFS #IMPLIED
+   type IDREFS #IMPLIED'>
+<!ELEMENT Parameter (%ParameterFeatures;)*>
+<!ATTLIST Parameter %ParameterAtts;>
+
+<!-- ========= Method ========= -->
+<!ELEMENT Method.body (ProcedureExpression)*>
+<!ELEMENT Method.specification (Operation)*>
+<!ENTITY % MethodFeatures '%BehavioralFeatureFeatures; |
+   Method.body |
+   Method.specification'>
+<!ENTITY % MethodAtts '%BehavioralFeatureAtts;
+   specification IDREFS #IMPLIED'>
+<!ELEMENT Method (%MethodFeatures;)*>
+<!ATTLIST Method %MethodAtts;>
+
+<!-- ========= Generalization ========= -->
+<!ELEMENT Generalization.discriminator (#PCDATA|XMI.reference)*>
+<!ELEMENT Generalization.child (GeneralizableELEMENT)*>
+<!ELEMENT Generalization.parent (GeneralizableELEMENT)*>
+<!ELEMENT Generalization.powertype (Classifier)*>
+<!ENTITY % GeneralizationFeatures '%RelationshipFeatures; |
+   Generalization.discriminator |
+   Generalization.child |
+   Generalization.parent |
+   Generalization.powertype'>
+<!ENTITY % GeneralizationAtts '%RelationshipAtts;
+   discriminator CDATA #IMPLIED
+   child IDREFS #IMPLIED
+   parent IDREFS #IMPLIED
+   powertype IDREFS #IMPLIED'>
+<!ELEMENT Generalization (%GeneralizationFeatures;)*>
+<!ATTLIST Generalization %GeneralizationAtts;>
+
+<!-- ========= AssociationClass ========= -->
+<!ENTITY % AssociationClassFeatures '%AssociationFeatures; |
+   Namespace.ownedELEMENT |
+   Classifier.feature |
+   Classifier.powertypeRange |
+   Class.isActive'>
+<!ENTITY % AssociationClassAtts '%AssociationAtts;
+   powertypeRange IDREFS #IMPLIED
+   isActive (true|false) #IMPLIED'>
+<!ELEMENT AssociationClass (%AssociationClassFeatures;)*>
+<!ATTLIST AssociationClass %AssociationClassAtts;>
+
+<!-- ========= Dependency ========= -->
+<!ELEMENT Dependency.client (ModelELEMENT)*>
+<!ELEMENT Dependency.supplier (ModelELEMENT)*>
+<!ENTITY % DependencyFeatures '%RelationshipFeatures; |
+   Dependency.client |
+   Dependency.supplier'>
+<!ENTITY % DependencyAtts '%RelationshipAtts;
+   client IDREFS #IMPLIED
+   supplier IDREFS #IMPLIED'>
+<!ELEMENT Dependency (%DependencyFeatures;)*>
+<!ATTLIST Dependency %DependencyAtts;>
+
+<!-- ========= Abstraction ========= -->
+<!ELEMENT Abstraction.mapping (MappingExpression)*>
+<!ENTITY % AbstractionFeatures '%DependencyFeatures; |
+   Abstraction.mapping'>
+<!ENTITY % AbstractionAtts '%DependencyAtts;'>
+<!ELEMENT Abstraction (%AbstractionFeatures;)*>
+<!ATTLIST Abstraction %AbstractionAtts;>
+
+<!-- ========= PresentationELEMENT ========= -->
+<!ELEMENT PresentationELEMENT.subject (ModelELEMENT)*>
+<!ENTITY % PresentationELEMENTFeatures '%ELEMENTFeatures; |
+   PresentationELEMENT.subject'>
+<!ENTITY % PresentationELEMENTAtts '%ELEMENTAtts;
+   subject IDREFS #IMPLIED'>
+<!ELEMENT PresentationELEMENT (%PresentationELEMENTFeatures;)*>
+<!ATTLIST PresentationELEMENT %PresentationELEMENTAtts;>
+
+<!-- ========= Usage ========= -->
+<!ENTITY % UsageFeatures '%DependencyFeatures;'>
+<!ENTITY % UsageAtts '%DependencyAtts;'>
+<!ELEMENT Usage (%UsageFeatures;)*>
+<!ATTLIST Usage %UsageAtts;>
+
+<!-- ========= Binding ========= -->
+<!ELEMENT Binding.argument (TemplateArgument)*>
+<!ENTITY % BindingFeatures '%DependencyFeatures; |
+   Binding.argument'>
+<!ENTITY % BindingAtts '%DependencyAtts;'>
+<!ELEMENT Binding (%BindingFeatures;)*>
+<!ATTLIST Binding %BindingAtts;>
+
+<!-- ========= Component ========= -->
+<!ELEMENT Component.deploymentLocation (Node)*>
+<!ELEMENT Component.residentELEMENT (ELEMENTResidence)*>
+<!ELEMENT Component.implementation (Artifact)*>
+<!ENTITY % ComponentFeatures '%ClassifierFeatures; |
+   Component.deploymentLocation |
+   Component.residentELEMENT |
+   Component.implementation'>
+<!ENTITY % ComponentAtts '%ClassifierAtts;
+   deploymentLocation IDREFS #IMPLIED
+   implementation IDREFS #IMPLIED'>
+<!ELEMENT Component (%ComponentFeatures;)*>
+<!ATTLIST Component %ComponentAtts;>
+
+<!-- ========= Node ========= -->
+<!ELEMENT Node.deployedComponent (Component)*>
+<!ENTITY % NodeFeatures '%ClassifierFeatures; |
+   Node.deployedComponent'>
+<!ENTITY % NodeAtts '%ClassifierAtts;
+   deployedComponent IDREFS #IMPLIED'>
+<!ELEMENT Node (%NodeFeatures;)*>
+<!ATTLIST Node %NodeAtts;>
+
+<!-- ========= Permission ========= -->
+<!ENTITY % PermissionFeatures '%DependencyFeatures;'>
+<!ENTITY % PermissionAtts '%DependencyAtts;'>
+<!ELEMENT Permission (%PermissionFeatures;)*>
+<!ATTLIST Permission %PermissionAtts;>
+
+<!-- ========= Comment ========= -->
+<!ELEMENT Comment.body (#PCDATA|XMI.reference)*>
+<!ELEMENT Comment.annotatedELEMENT (ModelELEMENT)*>
+<!ENTITY % CommentFeatures '%ModelELEMENTFeatures; |
+   Comment.body |
+   Comment.annotatedELEMENT'>
+<!ENTITY % CommentAtts '%ModelELEMENTAtts;
+   body CDATA #IMPLIED
+   annotatedELEMENT IDREFS #IMPLIED'>
+<!ELEMENT Comment (%CommentFeatures;)*>
+<!ATTLIST Comment %CommentAtts;>
+
+<!-- ========= Flow ========= -->
+<!ELEMENT Flow.target (ModelELEMENT)*>
+<!ELEMENT Flow.source (ModelELEMENT)*>
+<!ENTITY % FlowFeatures '%RelationshipFeatures; |
+   Flow.target |
+   Flow.source'>
+<!ENTITY % FlowAtts '%RelationshipAtts;
+   target IDREFS #IMPLIED
+   source IDREFS #IMPLIED'>
+<!ELEMENT Flow (%FlowFeatures;)*>
+<!ATTLIST Flow %FlowAtts;>
+
+<!-- ========= ELEMENTResidence ========= -->
+<!ELEMENT ELEMENTResidence.visibility EMPTY>
+<!ATTLIST ELEMENTResidence.visibility xmi.value %VisibilityKind; #REQUIRED>
+<!ELEMENT ELEMENTResidence.resident (ModelELEMENT)*>
+<!ELEMENT ELEMENTResidence.container (Component)*>
+<!ENTITY % ELEMENTResidenceFeatures 'XMI.extension |
+   ELEMENTResidence.visibility |
+   ELEMENTResidence.resident |
+   ELEMENTResidence.container'>
+<!ENTITY % ELEMENTResidenceAtts '%XMI.ELEMENT.att; 
+   visibility %VisibilityKind; #IMPLIED
+   resident IDREFS #IMPLIED
+   container IDREFS #IMPLIED'>
+<!ELEMENT ELEMENTResidence (%ELEMENTResidenceFeatures;)*>
+<!ATTLIST ELEMENTResidence %ELEMENTResidenceAtts;>
+
+<!-- ========= TemplateParameter ========= -->
+<!ELEMENT TemplateParameter.template (ModelELEMENT)*>
+<!ELEMENT TemplateParameter.parameter (ModelELEMENT|
+   GeneralizableELEMENT|Classifier|Class|AssociationClass|
+   DataType|Primitive|Enumeration|ProgrammingLanguageDataType|
+   Interface|Component|Node|Artifact|Signal|Exception|
+   UseCase|Actor|ClassifierRole|ClassifierInState|
+   Subsystem|Association|AssociationRole|Stereotype|
+   Collaboration|Package|Model|Namespace|Feature|
+   StructuralFeature|Attribute|BehavioralFeature|Operation|
+   Method|Reception|AssociationEnd|AssociationEndRole|
+   Constraint|Relationship|Generalization|Dependency|
+   Abstraction|Usage|Binding|Permission|Flow|Extend|
+   Include|Parameter|Comment|EnumerationLiteral|
+   TagDefinition|TaggedValue|Instance|Object|LinkObject|
+   DataValue|ComponentInstance|NodeInstance|SubsystemInstance|
+   UseCaseInstance|Action|CreateAction|DestroyAction|
+   UninterpretedAction|CallAction|SendAction|ActionSequence|
+   ReturnAction|TerminateAction|AttributeLink|Link|
+   Argument|LinkEnd|Stimulus|ExtensionPoint|StateMachine|
+   ActivityGraph|Event|TimeEvent|CallEvent|SignalEvent|
+   ChangeEvent|StateVertex|State|CompositeState|
+   SubmachineState|SubactivityState|SimpleState|ActionState|
+   CallState|ObjectFlowState|FinalState|Pseudostate|
+   SynchState|StubState|Transition|Guard|Message|
+   Interaction|InteractionInstanceSet|CollaborationInstanceSet|
+   Partition)*>
+<!ELEMENT TemplateParameter.defaultELEMENT (ModelELEMENT)*>
+<!ENTITY % TemplateParameterFeatures 'XMI.extension |
+   TemplateParameter.template |
+   TemplateParameter.parameter |
+   TemplateParameter.defaultELEMENT'>
+<!ENTITY % TemplateParameterAtts '%XMI.ELEMENT.att; 
+   template IDREFS #IMPLIED
+   defaultELEMENT IDREFS #IMPLIED'>
+<!ELEMENT TemplateParameter (%TemplateParameterFeatures;)*>
+<!ATTLIST TemplateParameter %TemplateParameterAtts;>
+
+<!-- ========= Primitive ========= -->
+<!ENTITY % PrimitiveFeatures '%DataTypeFeatures;'>
+<!ENTITY % PrimitiveAtts '%DataTypeAtts;'>
+<!ELEMENT Primitive (%PrimitiveFeatures;)*>
+<!ATTLIST Primitive %PrimitiveAtts;>
+
+<!-- ========= Enumeration ========= -->
+<!ELEMENT Enumeration.literal (EnumerationLiteral)*>
+<!ENTITY % EnumerationFeatures '%DataTypeFeatures; |
+   Enumeration.literal'>
+<!ENTITY % EnumerationAtts '%DataTypeAtts;'>
+<!ELEMENT Enumeration (%EnumerationFeatures;)*>
+<!ATTLIST Enumeration %EnumerationAtts;>
+
+<!-- ========= EnumerationLiteral ========= -->
+<!ELEMENT EnumerationLiteral.enumeration (Enumeration)*>
+<!ENTITY % EnumerationLiteralFeatures '%ModelELEMENTFeatures; |
+   EnumerationLiteral.enumeration'>
+<!ENTITY % EnumerationLiteralAtts '%ModelELEMENTAtts;
+   enumeration IDREFS #IMPLIED'>
+<!ELEMENT EnumerationLiteral (%EnumerationLiteralFeatures;)*>
+<!ATTLIST EnumerationLiteral %EnumerationLiteralAtts;>
+
+<!-- ========= Stereotype ========= -->
+<!ELEMENT Stereotype.icon (#PCDATA|XMI.reference)*>
+<!ELEMENT Stereotype.baseClass (#PCDATA|XMI.reference)*>
+<!ELEMENT Stereotype.definedTag (TagDefinition)*>
+<!ELEMENT Stereotype.stereotypeConstraint (Constraint)*>
+<!ENTITY % StereotypeFeatures '%GeneralizableELEMENTFeatures; |
+   Stereotype.icon |
+   Stereotype.baseClass |
+   Stereotype.definedTag |
+   Stereotype.stereotypeConstraint'>
+<!ENTITY % StereotypeAtts '%GeneralizableELEMENTAtts;
+   icon CDATA #IMPLIED'>
+<!ELEMENT Stereotype (%StereotypeFeatures;)*>
+<!ATTLIST Stereotype %StereotypeAtts;>
+
+<!-- ========= TagDefinition ========= -->
+<!ELEMENT TagDefinition.tagType (#PCDATA|XMI.reference)*>
+<!ELEMENT TagDefinition.multiplicity (Multiplicity)*>
+<!ELEMENT TagDefinition.owner (Stereotype)*>
+<!ENTITY % TagDefinitionFeatures '%ModelELEMENTFeatures; |
+   TagDefinition.tagType |
+   TagDefinition.multiplicity |
+   TagDefinition.owner'>
+<!ENTITY % TagDefinitionAtts '%ModelELEMENTAtts;
+   tagType CDATA #IMPLIED
+   owner IDREFS #IMPLIED'>
+<!ELEMENT TagDefinition (%TagDefinitionFeatures;)*>
+<!ATTLIST TagDefinition %TagDefinitionAtts;>
+
+<!-- ========= TaggedValue ========= -->
+<!ELEMENT TaggedValue.dataValue (#PCDATA|XMI.reference)*>
+<!ELEMENT TaggedValue.modelELEMENT (ModelELEMENT)*>
+<!ELEMENT TaggedValue.type (TagDefinition)*>
+<!ELEMENT TaggedValue.referenceValue (ModelELEMENT)*>
+<!ENTITY % TaggedValueFeatures '%ModelELEMENTFeatures; |
+   TaggedValue.dataValue |
+   TaggedValue.modelELEMENT |
+   TaggedValue.type |
+   TaggedValue.referenceValue'>
+<!ENTITY % TaggedValueAtts '%ModelELEMENTAtts;
+   modelELEMENT IDREFS #IMPLIED
+   type IDREFS #IMPLIED
+   referenceValue IDREFS #IMPLIED'>
+<!ELEMENT TaggedValue (%TaggedValueFeatures;)*>
+<!ATTLIST TaggedValue %TaggedValueAtts;>
+
+<!-- ========= ProgrammingLanguageDataType ========= -->
+<!ELEMENT ProgrammingLanguageDataType.expression (TypeExpression)*>
+<!ENTITY % ProgrammingLanguageDataTypeFeatures '%DataTypeFeatures; |
+   ProgrammingLanguageDataType.expression'>
+<!ENTITY % ProgrammingLanguageDataTypeAtts '%DataTypeAtts;'>
+<!ELEMENT ProgrammingLanguageDataType (%ProgrammingLanguageDataTypeFeatures;)*>
+<!ATTLIST ProgrammingLanguageDataType %ProgrammingLanguageDataTypeAtts;>
+
+<!-- ========= Artifact ========= -->
+<!ENTITY % ArtifactFeatures '%ClassifierFeatures;'>
+<!ENTITY % ArtifactAtts '%ClassifierAtts;'>
+<!ELEMENT Artifact (%ArtifactFeatures;)*>
+<!ATTLIST Artifact %ArtifactAtts;>
+
+<!-- ========= TemplateArgument ========= -->
+<!ELEMENT TemplateArgument.modelELEMENT (ModelELEMENT)*>
+<!ELEMENT TemplateArgument.binding (Binding)*>
+<!ENTITY % TemplateArgumentFeatures 'XMI.extension |
+   TemplateArgument.modelELEMENT |
+   TemplateArgument.binding'>
+<!ENTITY % TemplateArgumentAtts '%XMI.ELEMENT.att; 
+   modelELEMENT IDREFS #IMPLIED
+   binding IDREFS #IMPLIED'>
+<!ELEMENT TemplateArgument (%TemplateArgumentFeatures;)*>
+<!ATTLIST TemplateArgument %TemplateArgumentAtts;>
+
+<!-- ========= Common_Behavior ========= -->
+
+<!-- ========= Instance ========= -->
+<!ELEMENT Instance.classifier (Classifier)*>
+<!ELEMENT Instance.linkEnd (LinkEnd)*>
+<!ELEMENT Instance.slot (AttributeLink)*>
+<!ELEMENT Instance.componentInstance (ComponentInstance)*>
+<!ELEMENT Instance.ownedInstance (Instance|Object|LinkObject|
+   DataValue|ComponentInstance|NodeInstance|SubsystemInstance|
+   UseCaseInstance)*>
+<!ELEMENT Instance.ownedLink (Link|LinkObject)*>
+<!ENTITY % InstanceFeatures '%ModelELEMENTFeatures; |
+   Instance.classifier |
+   Instance.linkEnd |
+   Instance.slot |
+   Instance.componentInstance |
+   Instance.ownedInstance |
+   Instance.ownedLink'>
+<!ENTITY % InstanceAtts '%ModelELEMENTAtts;
+   classifier IDREFS #IMPLIED
+   linkEnd IDREFS #IMPLIED
+   componentInstance IDREFS #IMPLIED'>
+<!ELEMENT Instance (%InstanceFeatures;)*>
+<!ATTLIST Instance %InstanceAtts;>
+
+<!-- ========= Signal ========= -->
+<!ENTITY % SignalFeatures '%ClassifierFeatures;'>
+<!ENTITY % SignalAtts '%ClassifierAtts;'>
+<!ELEMENT Signal (%SignalFeatures;)*>
+<!ATTLIST Signal %SignalAtts;>
+
+<!-- ========= Action ========= -->
+<!ELEMENT Action.recurrence (IterationExpression)*>
+<!ELEMENT Action.target (ObjectSetExpression)*>
+<!ELEMENT Action.isAsynchronous EMPTY>
+<!ATTLIST Action.isAsynchronous xmi.value (true|false) #REQUIRED>
+<!ELEMENT Action.script (ActionExpression)*>
+<!ELEMENT Action.actualArgument (Argument)*>
+<!ELEMENT Action.actionSequence (ActionSequence)*>
+<!ENTITY % ActionFeatures '%ModelELEMENTFeatures; |
+   Action.recurrence |
+   Action.target |
+   Action.isAsynchronous |
+   Action.script |
+   Action.actualArgument |
+   Action.actionSequence'>
+<!ENTITY % ActionAtts '%ModelELEMENTAtts;
+   isAsynchronous (true|false) #IMPLIED
+   actionSequence IDREFS #IMPLIED'>
+<!ELEMENT Action (%ActionFeatures;)*>
+<!ATTLIST Action %ActionAtts;>
+
+<!-- ========= CreateAction ========= -->
+<!ELEMENT CreateAction.instantiation (Classifier)*>
+<!ENTITY % CreateActionFeatures '%ActionFeatures; |
+   CreateAction.instantiation'>
+<!ENTITY % CreateActionAtts '%ActionAtts;
+   instantiation IDREFS #IMPLIED'>
+<!ELEMENT CreateAction (%CreateActionFeatures;)*>
+<!ATTLIST CreateAction %CreateActionAtts;>
+
+<!-- ========= DestroyAction ========= -->
+<!ENTITY % DestroyActionFeatures '%ActionFeatures;'>
+<!ENTITY % DestroyActionAtts '%ActionAtts;'>
+<!ELEMENT DestroyAction (%DestroyActionFeatures;)*>
+<!ATTLIST DestroyAction %DestroyActionAtts;>
+
+<!-- ========= UninterpretedAction ========= -->
+<!ENTITY % UninterpretedActionFeatures '%ActionFeatures;'>
+<!ENTITY % UninterpretedActionAtts '%ActionAtts;'>
+<!ELEMENT UninterpretedAction (%UninterpretedActionFeatures;)*>
+<!ATTLIST UninterpretedAction %UninterpretedActionAtts;>
+
+<!-- ========= AttributeLink ========= -->
+<!ELEMENT AttributeLink.attribute (Attribute)*>
+<!ELEMENT AttributeLink.value (Instance)*>
+<!ELEMENT AttributeLink.instance (Instance)*>
+<!ELEMENT AttributeLink.linkEnd (LinkEnd)*>
+<!ENTITY % AttributeLinkFeatures '%ModelELEMENTFeatures; |
+   AttributeLink.attribute |
+   AttributeLink.value |
+   AttributeLink.instance |
+   AttributeLink.linkEnd'>
+<!ENTITY % AttributeLinkAtts '%ModelELEMENTAtts;
+   attribute IDREFS #IMPLIED
+   value IDREFS #IMPLIED
+   instance IDREFS #IMPLIED
+   linkEnd IDREFS #IMPLIED'>
+<!ELEMENT AttributeLink (%AttributeLinkFeatures;)*>
+<!ATTLIST AttributeLink %AttributeLinkAtts;>
+
+<!-- ========= Object ========= -->
+<!ENTITY % ObjectFeatures '%InstanceFeatures;'>
+<!ENTITY % ObjectAtts '%InstanceAtts;'>
+<!ELEMENT Object (%ObjectFeatures;)*>
+<!ATTLIST Object %ObjectAtts;>
+
+<!-- ========= Link ========= -->
+<!ELEMENT Link.association (Association)*>
+<!ELEMENT Link.connection (LinkEnd)*>
+<!ENTITY % LinkFeatures '%ModelELEMENTFeatures; |
+   Link.association |
+   Link.connection'>
+<!ENTITY % LinkAtts '%ModelELEMENTAtts;
+   association IDREFS #IMPLIED'>
+<!ELEMENT Link (%LinkFeatures;)*>
+<!ATTLIST Link %LinkAtts;>
+
+<!-- ========= LinkObject ========= -->
+<!ENTITY % LinkObjectFeatures '%ObjectFeatures; |
+   Link.association |
+   Link.connection'>
+<!ENTITY % LinkObjectAtts '%ObjectAtts;
+   association IDREFS #IMPLIED'>
+<!ELEMENT LinkObject (%LinkObjectFeatures;)*>
+<!ATTLIST LinkObject %LinkObjectAtts;>
+
+<!-- ========= DataValue ========= -->
+<!ENTITY % DataValueFeatures '%InstanceFeatures;'>
+<!ENTITY % DataValueAtts '%InstanceAtts;'>
+<!ELEMENT DataValue (%DataValueFeatures;)*>
+<!ATTLIST DataValue %DataValueAtts;>
+
+<!-- ========= CallAction ========= -->
+<!ELEMENT CallAction.operation (Operation)*>
+<!ENTITY % CallActionFeatures '%ActionFeatures; |
+   CallAction.operation'>
+<!ENTITY % CallActionAtts '%ActionAtts;
+   operation IDREFS #IMPLIED'>
+<!ELEMENT CallAction (%CallActionFeatures;)*>
+<!ATTLIST CallAction %CallActionAtts;>
+
+<!-- ========= SendAction ========= -->
+<!ELEMENT SendAction.signal (Signal)*>
+<!ENTITY % SendActionFeatures '%ActionFeatures; |
+   SendAction.signal'>
+<!ENTITY % SendActionAtts '%ActionAtts;
+   signal IDREFS #IMPLIED'>
+<!ELEMENT SendAction (%SendActionFeatures;)*>
+<!ATTLIST SendAction %SendActionAtts;>
+
+<!-- ========= ActionSequence ========= -->
+<!ELEMENT ActionSequence.action (Action|CreateAction|
+   DestroyAction|UninterpretedAction|CallAction|SendAction|
+   ActionSequence|ReturnAction|TerminateAction)*>
+<!ENTITY % ActionSequenceFeatures '%ActionFeatures; |
+   ActionSequence.action'>
+<!ENTITY % ActionSequenceAtts '%ActionAtts;'>
+<!ELEMENT ActionSequence (%ActionSequenceFeatures;)*>
+<!ATTLIST ActionSequence %ActionSequenceAtts;>
+
+<!-- ========= Argument ========= -->
+<!ELEMENT Argument.value (Expression|BooleanExpression|
+   TypeExpression|MappingExpression|ProcedureExpression|
+   ObjectSetExpression|ActionExpression|IterationExpression|
+   TimeExpression|ArgListsExpression)*>
+<!ELEMENT Argument.action (Action)*>
+<!ENTITY % ArgumentFeatures '%ModelELEMENTFeatures; |
+   Argument.value |
+   Argument.action'>
+<!ENTITY % ArgumentAtts '%ModelELEMENTAtts;
+   action IDREFS #IMPLIED'>
+<!ELEMENT Argument (%ArgumentFeatures;)*>
+<!ATTLIST Argument %ArgumentAtts;>
+
+<!-- ========= Reception ========= -->
+<!ELEMENT Reception.specification (#PCDATA|XMI.reference)*>
+<!ELEMENT Reception.isRoot EMPTY>
+<!ATTLIST Reception.isRoot xmi.value (true|false) #REQUIRED>
+<!ELEMENT Reception.isLeaf EMPTY>
+<!ATTLIST Reception.isLeaf xmi.value (true|false) #REQUIRED>
+<!ELEMENT Reception.isAbstract EMPTY>
+<!ATTLIST Reception.isAbstract xmi.value (true|false) #REQUIRED>
+<!ELEMENT Reception.signal (Signal)*>
+<!ENTITY % ReceptionFeatures '%BehavioralFeatureFeatures; |
+   Reception.specification |
+   Reception.isRoot |
+   Reception.isLeaf |
+   Reception.isAbstract |
+   Reception.signal'>
+<!ENTITY % ReceptionAtts '%BehavioralFeatureAtts;
+   specification CDATA #IMPLIED
+   isRoot (true|false) #IMPLIED
+   isLeaf (true|false) #IMPLIED
+   isAbstract (true|false) #IMPLIED
+   signal IDREFS #IMPLIED'>
+<!ELEMENT Reception (%ReceptionFeatures;)*>
+<!ATTLIST Reception %ReceptionAtts;>
+
+<!-- ========= LinkEnd ========= -->
+<!ELEMENT LinkEnd.instance (Instance)*>
+<!ELEMENT LinkEnd.link (Link)*>
+<!ELEMENT LinkEnd.associationEnd (AssociationEnd)*>
+<!ELEMENT LinkEnd.qualifiedValue (AttributeLink)*>
+<!ENTITY % LinkEndFeatures '%ModelELEMENTFeatures; |
+   LinkEnd.instance |
+   LinkEnd.link |
+   LinkEnd.associationEnd |
+   LinkEnd.qualifiedValue'>
+<!ENTITY % LinkEndAtts '%ModelELEMENTAtts;
+   instance IDREFS #IMPLIED
+   link IDREFS #IMPLIED
+   associationEnd IDREFS #IMPLIED'>
+<!ELEMENT LinkEnd (%LinkEndFeatures;)*>
+<!ATTLIST LinkEnd %LinkEndAtts;>
+
+<!-- ========= ReturnAction ========= -->
+<!ENTITY % ReturnActionFeatures '%ActionFeatures;'>
+<!ENTITY % ReturnActionAtts '%ActionAtts;'>
+<!ELEMENT ReturnAction (%ReturnActionFeatures;)*>
+<!ATTLIST ReturnAction %ReturnActionAtts;>
+
+<!-- ========= TerminateAction ========= -->
+<!ENTITY % TerminateActionFeatures '%ActionFeatures;'>
+<!ENTITY % TerminateActionAtts '%ActionAtts;'>
+<!ELEMENT TerminateAction (%TerminateActionFeatures;)*>
+<!ATTLIST TerminateAction %TerminateActionAtts;>
+
+<!-- ========= Stimulus ========= -->
+<!ELEMENT Stimulus.argument (Instance)*>
+<!ELEMENT Stimulus.sender (Instance)*>
+<!ELEMENT Stimulus.receiver (Instance)*>
+<!ELEMENT Stimulus.communicationLink (Link)*>
+<!ELEMENT Stimulus.dispatchAction (Action)*>
+<!ENTITY % StimulusFeatures '%ModelELEMENTFeatures; |
+   Stimulus.argument |
+   Stimulus.sender |
+   Stimulus.receiver |
+   Stimulus.communicationLink |
+   Stimulus.dispatchAction'>
+<!ENTITY % StimulusAtts '%ModelELEMENTAtts;
+   argument IDREFS #IMPLIED
+   sender IDREFS #IMPLIED
+   receiver IDREFS #IMPLIED
+   communicationLink IDREFS #IMPLIED
+   dispatchAction IDREFS #IMPLIED'>
+<!ELEMENT Stimulus (%StimulusFeatures;)*>
+<!ATTLIST Stimulus %StimulusAtts;>
+
+<!-- ========= Exception ========= -->
+<!ENTITY % ExceptionFeatures '%SignalFeatures;'>
+<!ENTITY % ExceptionAtts '%SignalAtts;'>
+<!ELEMENT Exception (%ExceptionFeatures;)*>
+<!ATTLIST Exception %ExceptionAtts;>
+
+<!-- ========= ComponentInstance ========= -->
+<!ELEMENT ComponentInstance.nodeInstance (NodeInstance)*>
+<!ELEMENT ComponentInstance.resident (Instance)*>
+<!ENTITY % ComponentInstanceFeatures '%InstanceFeatures; |
+   ComponentInstance.nodeInstance |
+   ComponentInstance.resident'>
+<!ENTITY % ComponentInstanceAtts '%InstanceAtts;
+   nodeInstance IDREFS #IMPLIED
+   resident IDREFS #IMPLIED'>
+<!ELEMENT ComponentInstance (%ComponentInstanceFeatures;)*>
+<!ATTLIST ComponentInstance %ComponentInstanceAtts;>
+
+<!-- ========= NodeInstance ========= -->
+<!ELEMENT NodeInstance.resident (ComponentInstance)*>
+<!ENTITY % NodeInstanceFeatures '%InstanceFeatures; |
+   NodeInstance.resident'>
+<!ENTITY % NodeInstanceAtts '%InstanceAtts;
+   resident IDREFS #IMPLIED'>
+<!ELEMENT NodeInstance (%NodeInstanceFeatures;)*>
+<!ATTLIST NodeInstance %NodeInstanceAtts;>
+
+<!-- ========= SubsystemInstance ========= -->
+<!ENTITY % SubsystemInstanceFeatures '%InstanceFeatures;'>
+<!ENTITY % SubsystemInstanceAtts '%InstanceAtts;'>
+<!ELEMENT SubsystemInstance (%SubsystemInstanceFeatures;)*>
+<!ATTLIST SubsystemInstance %SubsystemInstanceAtts;>
+
+<!-- ========= A_context_raisedSignal ========= -->
+<!ELEMENT A_context_raisedSignal.context (BehavioralFeature)?>
+<!ELEMENT A_context_raisedSignal.raisedSignal (Signal)?>
+<!ELEMENT A_context_raisedSignal (
+   A_context_raisedSignal.context |
+   A_context_raisedSignal.raisedSignal)*>
+<!ATTLIST A_context_raisedSignal %XMI.ELEMENT.att; 
+   context IDREFS #IMPLIED
+   raisedSignal IDREFS #IMPLIED>
+
+<!-- ========= Use_Cases ========= -->
+
+<!-- ========= UseCase ========= -->
+<!ELEMENT UseCase.extend (Extend)*>
+<!ELEMENT UseCase.include (Include)*>
+<!ELEMENT UseCase.extensionPoint (ExtensionPoint)*>
+<!ENTITY % UseCaseFeatures '%ClassifierFeatures; |
+   UseCase.extend |
+   UseCase.include |
+   UseCase.extensionPoint'>
+<!ENTITY % UseCaseAtts '%ClassifierAtts;
+   extend IDREFS #IMPLIED
+   include IDREFS #IMPLIED'>
+<!ELEMENT UseCase (%UseCaseFeatures;)*>
+<!ATTLIST UseCase %UseCaseAtts;>
+
+<!-- ========= Actor ========= -->
+<!ENTITY % ActorFeatures '%ClassifierFeatures;'>
+<!ENTITY % ActorAtts '%ClassifierAtts;'>
+<!ELEMENT Actor (%ActorFeatures;)*>
+<!ATTLIST Actor %ActorAtts;>
+
+<!-- ========= UseCaseInstance ========= -->
+<!ENTITY % UseCaseInstanceFeatures '%InstanceFeatures;'>
+<!ENTITY % UseCaseInstanceAtts '%InstanceAtts;'>
+<!ELEMENT UseCaseInstance (%UseCaseInstanceFeatures;)*>
+<!ATTLIST UseCaseInstance %UseCaseInstanceAtts;>
+
+<!-- ========= Extend ========= -->
+<!ELEMENT Extend.condition (BooleanExpression)*>
+<!ELEMENT Extend.base (UseCase)*>
+<!ELEMENT Extend.extension (UseCase)*>
+<!ELEMENT Extend.extensionPoint (ExtensionPoint)*>
+<!ENTITY % ExtendFeatures '%RelationshipFeatures; |
+   Extend.condition |
+   Extend.base |
+   Extend.extension |
+   Extend.extensionPoint'>
+<!ENTITY % ExtendAtts '%RelationshipAtts;
+   base IDREFS #IMPLIED
+   extension IDREFS #IMPLIED
+   extensionPoint IDREFS #IMPLIED'>
+<!ELEMENT Extend (%ExtendFeatures;)*>
+<!ATTLIST Extend %ExtendAtts;>
+
+<!-- ========= Include ========= -->
+<!ELEMENT Include.addition (UseCase)*>
+<!ELEMENT Include.base (UseCase)*>
+<!ENTITY % IncludeFeatures '%RelationshipFeatures; |
+   Include.addition |
+   Include.base'>
+<!ENTITY % IncludeAtts '%RelationshipAtts;
+   addition IDREFS #IMPLIED
+   base IDREFS #IMPLIED'>
+<!ELEMENT Include (%IncludeFeatures;)*>
+<!ATTLIST Include %IncludeAtts;>
+
+<!-- ========= ExtensionPoint ========= -->
+<!ELEMENT ExtensionPoint.location (#PCDATA|XMI.reference)*>
+<!ELEMENT ExtensionPoint.useCase (UseCase)*>
+<!ENTITY % ExtensionPointFeatures '%ModelELEMENTFeatures; |
+   ExtensionPoint.location |
+   ExtensionPoint.useCase'>
+<!ENTITY % ExtensionPointAtts '%ModelELEMENTAtts;
+   location CDATA #IMPLIED
+   useCase IDREFS #IMPLIED'>
+<!ELEMENT ExtensionPoint (%ExtensionPointFeatures;)*>
+<!ATTLIST ExtensionPoint %ExtensionPointAtts;>
+
+<!-- ========= State_Machines ========= -->
+
+<!-- ========= StateMachine ========= -->
+<!ELEMENT StateMachine.context (ModelELEMENT)*>
+<!ELEMENT StateMachine.top (State|CompositeState|
+   SubmachineState|SubactivityState|SimpleState|ActionState|
+   CallState|ObjectFlowState|FinalState)*>
+<!ELEMENT StateMachine.transitions (Transition)*>
+<!ELEMENT StateMachine.submachineState (SubmachineState)*>
+<!ENTITY % StateMachineFeatures '%ModelELEMENTFeatures; |
+   StateMachine.context |
+   StateMachine.top |
+   StateMachine.transitions |
+   StateMachine.submachineState'>
+<!ENTITY % StateMachineAtts '%ModelELEMENTAtts;
+   context IDREFS #IMPLIED
+   submachineState IDREFS #IMPLIED'>
+<!ELEMENT StateMachine (%StateMachineFeatures;)*>
+<!ATTLIST StateMachine %StateMachineAtts;>
+
+<!-- ========= Event ========= -->
+<!ELEMENT Event.parameter (Parameter)*>
+<!ENTITY % EventFeatures '%ModelELEMENTFeatures; |
+   Event.parameter'>
+<!ENTITY % EventAtts '%ModelELEMENTAtts;'>
+<!ELEMENT Event (%EventFeatures;)*>
+<!ATTLIST Event %EventAtts;>
+
+<!-- ========= StateVertex ========= -->
+<!ELEMENT StateVertex.container (CompositeState)*>
+<!ELEMENT StateVertex.outgoing (Transition)*>
+<!ELEMENT StateVertex.incoming (Transition)*>
+<!ENTITY % StateVertexFeatures '%ModelELEMENTFeatures; |
+   StateVertex.container |
+   StateVertex.outgoing |
+   StateVertex.incoming'>
+<!ENTITY % StateVertexAtts '%ModelELEMENTAtts;
+   container IDREFS #IMPLIED
+   outgoing IDREFS #IMPLIED
+   incoming IDREFS #IMPLIED'>
+<!ELEMENT StateVertex (%StateVertexFeatures;)*>
+<!ATTLIST StateVertex %StateVertexAtts;>
+
+<!-- ========= State ========= -->
+<!ELEMENT State.entry (Action|CreateAction|DestroyAction|
+   UninterpretedAction|CallAction|SendAction|ActionSequence|
+   ReturnAction|TerminateAction)*>
+<!ELEMENT State.exit (Action|CreateAction|DestroyAction|
+   UninterpretedAction|CallAction|SendAction|ActionSequence|
+   ReturnAction|TerminateAction)*>
+<!ELEMENT State.deferrableEvent (Event)*>
+<!ELEMENT State.internalTransition (Transition)*>
+<!ELEMENT State.doActivity (Action|CreateAction|DestroyAction|
+   UninterpretedAction|CallAction|SendAction|ActionSequence|
+   ReturnAction|TerminateAction)*>
+<!ELEMENT State.stateMachine (StateMachine)*>
+<!ENTITY % StateFeatures '%StateVertexFeatures; |
+   State.entry |
+   State.exit |
+   State.deferrableEvent |
+   State.internalTransition |
+   State.doActivity |
+   State.stateMachine'>
+<!ENTITY % StateAtts '%StateVertexAtts;
+   deferrableEvent IDREFS #IMPLIED
+   stateMachine IDREFS #IMPLIED'>
+<!ELEMENT State (%StateFeatures;)*>
+<!ATTLIST State %StateAtts;>
+
+<!-- ========= TimeEvent ========= -->
+<!ELEMENT TimeEvent.when (TimeExpression)*>
+<!ENTITY % TimeEventFeatures '%EventFeatures; |
+   TimeEvent.when'>
+<!ENTITY % TimeEventAtts '%EventAtts;'>
+<!ELEMENT TimeEvent (%TimeEventFeatures;)*>
+<!ATTLIST TimeEvent %TimeEventAtts;>
+
+<!-- ========= CallEvent ========= -->
+<!ELEMENT CallEvent.operation (Operation)*>
+<!ENTITY % CallEventFeatures '%EventFeatures; |
+   CallEvent.operation'>
+<!ENTITY % CallEventAtts '%EventAtts;
+   operation IDREFS #IMPLIED'>
+<!ELEMENT CallEvent (%CallEventFeatures;)*>
+<!ATTLIST CallEvent %CallEventAtts;>
+
+<!-- ========= SignalEvent ========= -->
+<!ELEMENT SignalEvent.signal (Signal)*>
+<!ENTITY % SignalEventFeatures '%EventFeatures; |
+   SignalEvent.signal'>
+<!ENTITY % SignalEventAtts '%EventAtts;
+   signal IDREFS #IMPLIED'>
+<!ELEMENT SignalEvent (%SignalEventFeatures;)*>
+<!ATTLIST SignalEvent %SignalEventAtts;>
+
+<!-- ========= Transition ========= -->
+<!ELEMENT Transition.guard (Guard)*>
+<!ELEMENT Transition.effect (Action|CreateAction|
+   DestroyAction|UninterpretedAction|CallAction|SendAction|
+   ActionSequence|ReturnAction|TerminateAction)*>
+<!ELEMENT Transition.trigger (Event)*>
+<!ELEMENT Transition.source (StateVertex)*>
+<!ELEMENT Transition.target (StateVertex)*>
+<!ELEMENT Transition.stateMachine (StateMachine)*>
+<!ENTITY % TransitionFeatures '%ModelELEMENTFeatures; |
+   Transition.guard |
+   Transition.effect |
+   Transition.trigger |
+   Transition.source |
+   Transition.target |
+   Transition.stateMachine'>
+<!ENTITY % TransitionAtts '%ModelELEMENTAtts;
+   trigger IDREFS #IMPLIED
+   source IDREFS #IMPLIED
+   target IDREFS #IMPLIED
+   stateMachine IDREFS #IMPLIED'>
+<!ELEMENT Transition (%TransitionFeatures;)*>
+<!ATTLIST Transition %TransitionAtts;>
+
+<!-- ========= CompositeState ========= -->
+<!ELEMENT CompositeState.isConcurrent EMPTY>
+<!ATTLIST CompositeState.isConcurrent xmi.value (true|false) #REQUIRED>
+<!ELEMENT CompositeState.subvertex (StateVertex|State|
+   CompositeState|SubmachineState|SubactivityState|
+   SimpleState|ActionState|CallState|ObjectFlowState|
+   FinalState|Pseudostate|SynchState|StubState)*>
+<!ENTITY % CompositeStateFeatures '%StateFeatures; |
+   CompositeState.isConcurrent |
+   CompositeState.subvertex'>
+<!ENTITY % CompositeStateAtts '%StateAtts;
+   isConcurrent (true|false) #IMPLIED'>
+<!ELEMENT CompositeState (%CompositeStateFeatures;)*>
+<!ATTLIST CompositeState %CompositeStateAtts;>
+
+<!-- ========= ChangeEvent ========= -->
+<!ELEMENT ChangeEvent.changeExpression (BooleanExpression)*>
+<!ENTITY % ChangeEventFeatures '%EventFeatures; |
+   ChangeEvent.changeExpression'>
+<!ENTITY % ChangeEventAtts '%EventAtts;'>
+<!ELEMENT ChangeEvent (%ChangeEventFeatures;)*>
+<!ATTLIST ChangeEvent %ChangeEventAtts;>
+
+<!-- ========= Guard ========= -->
+<!ELEMENT Guard.expression (BooleanExpression)*>
+<!ELEMENT Guard.transition (Transition)*>
+<!ENTITY % GuardFeatures '%ModelELEMENTFeatures; |
+   Guard.expression |
+   Guard.transition'>
+<!ENTITY % GuardAtts '%ModelELEMENTAtts;
+   transition IDREFS #IMPLIED'>
+<!ELEMENT Guard (%GuardFeatures;)*>
+<!ATTLIST Guard %GuardAtts;>
+
+<!-- ========= Pseudostate ========= -->
+<!ELEMENT Pseudostate.kind EMPTY>
+<!ATTLIST Pseudostate.kind xmi.value %PseudostateKind; #REQUIRED>
+<!ENTITY % PseudostateFeatures '%StateVertexFeatures; |
+   Pseudostate.kind'>
+<!ENTITY % PseudostateAtts '%StateVertexAtts;
+   kind %PseudostateKind; #IMPLIED'>
+<!ELEMENT Pseudostate (%PseudostateFeatures;)*>
+<!ATTLIST Pseudostate %PseudostateAtts;>
+
+<!-- ========= SimpleState ========= -->
+<!ENTITY % SimpleStateFeatures '%StateFeatures;'>
+<!ENTITY % SimpleStateAtts '%StateAtts;'>
+<!ELEMENT SimpleState (%SimpleStateFeatures;)*>
+<!ATTLIST SimpleState %SimpleStateAtts;>
+
+<!-- ========= SubmachineState ========= -->
+<!ELEMENT SubmachineState.submachine (StateMachine)*>
+<!ENTITY % SubmachineStateFeatures '%CompositeStateFeatures; |
+   SubmachineState.submachine'>
+<!ENTITY % SubmachineStateAtts '%CompositeStateAtts;
+   submachine IDREFS #IMPLIED'>
+<!ELEMENT SubmachineState (%SubmachineStateFeatures;)*>
+<!ATTLIST SubmachineState %SubmachineStateAtts;>
+
+<!-- ========= SynchState ========= -->
+<!ELEMENT SynchState.bound (#PCDATA|XMI.reference)*>
+<!ENTITY % SynchStateFeatures '%StateVertexFeatures; |
+   SynchState.bound'>
+<!ENTITY % SynchStateAtts '%StateVertexAtts;
+   bound CDATA #IMPLIED'>
+<!ELEMENT SynchState (%SynchStateFeatures;)*>
+<!ATTLIST SynchState %SynchStateAtts;>
+
+<!-- ========= StubState ========= -->
+<!ELEMENT StubState.referenceState (#PCDATA|XMI.reference)*>
+<!ENTITY % StubStateFeatures '%StateVertexFeatures; |
+   StubState.referenceState'>
+<!ENTITY % StubStateAtts '%StateVertexAtts;
+   referenceState CDATA #IMPLIED'>
+<!ELEMENT StubState (%StubStateFeatures;)*>
+<!ATTLIST StubState %StubStateAtts;>
+
+<!-- ========= FinalState ========= -->
+<!ENTITY % FinalStateFeatures '%StateFeatures;'>
+<!ENTITY % FinalStateAtts '%StateAtts;'>
+<!ELEMENT FinalState (%FinalStateFeatures;)*>
+<!ATTLIST FinalState %FinalStateAtts;>
+
+<!-- ========= Collaborations ========= -->
+
+<!-- ========= Collaboration ========= -->
+<!ELEMENT Collaboration.interaction (Interaction)*>
+<!ELEMENT Collaboration.representedClassifier (Classifier)*>
+<!ELEMENT Collaboration.representedOperation (Operation)*>
+<!ELEMENT Collaboration.constrainingELEMENT (ModelELEMENT)*>
+<!ELEMENT Collaboration.usedCollaboration (Collaboration)*>
+<!ENTITY % CollaborationFeatures '%GeneralizableELEMENTFeatures; |
+   Namespace.ownedELEMENT |
+   Collaboration.interaction |
+   Collaboration.representedClassifier |
+   Collaboration.representedOperation |
+   Collaboration.constrainingELEMENT |
+   Collaboration.usedCollaboration'>
+<!ENTITY % CollaborationAtts '%GeneralizableELEMENTAtts;
+   representedClassifier IDREFS #IMPLIED
+   representedOperation IDREFS #IMPLIED
+   constrainingELEMENT IDREFS #IMPLIED
+   usedCollaboration IDREFS #IMPLIED'>
+<!ELEMENT Collaboration (%CollaborationFeatures;)*>
+<!ATTLIST Collaboration %CollaborationAtts;>
+
+<!-- ========= ClassifierRole ========= -->
+<!ELEMENT ClassifierRole.multiplicity (Multiplicity)*>
+<!ELEMENT ClassifierRole.base (Classifier)*>
+<!ELEMENT ClassifierRole.availableFeature (Feature)*>
+<!ELEMENT ClassifierRole.availableContents (ModelELEMENT)*>
+<!ELEMENT ClassifierRole.conformingInstance (Instance)*>
+<!ENTITY % ClassifierRoleFeatures '%ClassifierFeatures; |
+   ClassifierRole.multiplicity |
+   ClassifierRole.base |
+   ClassifierRole.availableFeature |
+   ClassifierRole.availableContents |
+   ClassifierRole.conformingInstance'>
+<!ENTITY % ClassifierRoleAtts '%ClassifierAtts;
+   base IDREFS #IMPLIED
+   availableFeature IDREFS #IMPLIED
+   availableContents IDREFS #IMPLIED
+   conformingInstance IDREFS #IMPLIED'>
+<!ELEMENT ClassifierRole (%ClassifierRoleFeatures;)*>
+<!ATTLIST ClassifierRole %ClassifierRoleAtts;>
+
+<!-- ========= AssociationRole ========= -->
+<!ELEMENT AssociationRole.multiplicity (Multiplicity)*>
+<!ELEMENT AssociationRole.base (Association)*>
+<!ELEMENT AssociationRole.message (Message)*>
+<!ELEMENT AssociationRole.conformingLink (Link)*>
+<!ENTITY % AssociationRoleFeatures '%AssociationFeatures; |
+   AssociationRole.multiplicity |
+   AssociationRole.base |
+   AssociationRole.message |
+   AssociationRole.conformingLink'>
+<!ENTITY % AssociationRoleAtts '%AssociationAtts;
+   base IDREFS #IMPLIED
+   message IDREFS #IMPLIED
+   conformingLink IDREFS #IMPLIED'>
+<!ELEMENT AssociationRole (%AssociationRoleFeatures;)*>
+<!ATTLIST AssociationRole %AssociationRoleAtts;>
+
+<!-- ========= AssociationEndRole ========= -->
+<!ELEMENT AssociationEndRole.collaborationMultiplicity (Multiplicity)*>
+<!ELEMENT AssociationEndRole.base (AssociationEnd)*>
+<!ELEMENT AssociationEndRole.availableQualifier (Attribute)*>
+<!ENTITY % AssociationEndRoleFeatures '%AssociationEndFeatures; |
+   AssociationEndRole.collaborationMultiplicity |
+   AssociationEndRole.base |
+   AssociationEndRole.availableQualifier'>
+<!ENTITY % AssociationEndRoleAtts '%AssociationEndAtts;
+   base IDREFS #IMPLIED
+   availableQualifier IDREFS #IMPLIED'>
+<!ELEMENT AssociationEndRole (%AssociationEndRoleFeatures;)*>
+<!ATTLIST AssociationEndRole %AssociationEndRoleAtts;>
+
+<!-- ========= Message ========= -->
+<!ELEMENT Message.interaction (Interaction)*>
+<!ELEMENT Message.activator (Message)*>
+<!ELEMENT Message.sender (ClassifierRole)*>
+<!ELEMENT Message.receiver (ClassifierRole)*>
+<!ELEMENT Message.predecessor (Message)*>
+<!ELEMENT Message.communicationConnection (AssociationRole)*>
+<!ELEMENT Message.action (Action)*>
+<!ELEMENT Message.conformingStimulus (Stimulus)*>
+<!ENTITY % MessageFeatures '%ModelELEMENTFeatures; |
+   Message.interaction |
+   Message.activator |
+   Message.sender |
+   Message.receiver |
+   Message.predecessor |
+   Message.communicationConnection |
+   Message.action |
+   Message.conformingStimulus'>
+<!ENTITY % MessageAtts '%ModelELEMENTAtts;
+   interaction IDREFS #IMPLIED
+   activator IDREFS #IMPLIED
+   sender IDREFS #IMPLIED
+   receiver IDREFS #IMPLIED
+   predecessor IDREFS #IMPLIED
+   communicationConnection IDREFS #IMPLIED
+   action IDREFS #IMPLIED
+   conformingStimulus IDREFS #IMPLIED'>
+<!ELEMENT Message (%MessageFeatures;)*>
+<!ATTLIST Message %MessageAtts;>
+
+<!-- ========= Interaction ========= -->
+<!ELEMENT Interaction.message (Message)*>
+<!ELEMENT Interaction.context (Collaboration)*>
+<!ENTITY % InteractionFeatures '%ModelELEMENTFeatures; |
+   Interaction.message |
+   Interaction.context'>
+<!ENTITY % InteractionAtts '%ModelELEMENTAtts;
+   context IDREFS #IMPLIED'>
+<!ELEMENT Interaction (%InteractionFeatures;)*>
+<!ATTLIST Interaction %InteractionAtts;>
+
+<!-- ========= InteractionInstanceSet ========= -->
+<!ELEMENT InteractionInstanceSet.context (CollaborationInstanceSet)*>
+<!ELEMENT InteractionInstanceSet.interaction (Interaction)*>
+<!ELEMENT InteractionInstanceSet.participatingStimulus (Stimulus)*>
+<!ENTITY % InteractionInstanceSetFeatures '%ModelELEMENTFeatures; |
+   InteractionInstanceSet.context |
+   InteractionInstanceSet.interaction |
+   InteractionInstanceSet.participatingStimulus'>
+<!ENTITY % InteractionInstanceSetAtts '%ModelELEMENTAtts;
+   context IDREFS #IMPLIED
+   interaction IDREFS #IMPLIED
+   participatingStimulus IDREFS #IMPLIED'>
+<!ELEMENT InteractionInstanceSet (%InteractionInstanceSetFeatures;)*>
+<!ATTLIST InteractionInstanceSet %InteractionInstanceSetAtts;>
+
+<!-- ========= CollaborationInstanceSet ========= -->
+<!ELEMENT CollaborationInstanceSet.interactionInstanceSet (InteractionInstanceSet)*>
+<!ELEMENT CollaborationInstanceSet.collaboration (Collaboration)*>
+<!ELEMENT CollaborationInstanceSet.participatingInstance (Instance)*>
+<!ELEMENT CollaborationInstanceSet.participatingLink (Link)*>
+<!ELEMENT CollaborationInstanceSet.constrainingELEMENT (ModelELEMENT)*>
+<!ENTITY % CollaborationInstanceSetFeatures '%ModelELEMENTFeatures; |
+   CollaborationInstanceSet.interactionInstanceSet |
+   CollaborationInstanceSet.collaboration |
+   CollaborationInstanceSet.participatingInstance |
+   CollaborationInstanceSet.participatingLink |
+   CollaborationInstanceSet.constrainingELEMENT'>
+<!ENTITY % CollaborationInstanceSetAtts '%ModelELEMENTAtts;
+   collaboration IDREFS #IMPLIED
+   participatingInstance IDREFS #IMPLIED
+   participatingLink IDREFS #IMPLIED
+   constrainingELEMENT IDREFS #IMPLIED'>
+<!ELEMENT CollaborationInstanceSet (%CollaborationInstanceSetFeatures;)*>
+<!ATTLIST CollaborationInstanceSet %CollaborationInstanceSetAtts;>
+
+<!-- ========= Activity_Graphs ========= -->
+
+<!-- ========= ActivityGraph ========= -->
+<!ELEMENT ActivityGraph.partition (Partition)*>
+<!ENTITY % ActivityGraphFeatures '%StateMachineFeatures; |
+   ActivityGraph.partition'>
+<!ENTITY % ActivityGraphAtts '%StateMachineAtts;'>
+<!ELEMENT ActivityGraph (%ActivityGraphFeatures;)*>
+<!ATTLIST ActivityGraph %ActivityGraphAtts;>
+
+<!-- ========= Partition ========= -->
+<!ELEMENT Partition.contents (ModelELEMENT)*>
+<!ELEMENT Partition.activityGraph (ActivityGraph)*>
+<!ENTITY % PartitionFeatures '%ModelELEMENTFeatures; |
+   Partition.contents |
+   Partition.activityGraph'>
+<!ENTITY % PartitionAtts '%ModelELEMENTAtts;
+   contents IDREFS #IMPLIED
+   activityGraph IDREFS #IMPLIED'>
+<!ELEMENT Partition (%PartitionFeatures;)*>
+<!ATTLIST Partition %PartitionAtts;>
+
+<!-- ========= SubactivityState ========= -->
+<!ELEMENT SubactivityState.isDynamic EMPTY>
+<!ATTLIST SubactivityState.isDynamic xmi.value (true|false) #REQUIRED>
+<!ELEMENT SubactivityState.dynamicArguments (ArgListsExpression)*>
+<!ELEMENT SubactivityState.dynamicMultiplicity (Multiplicity)*>
+<!ENTITY % SubactivityStateFeatures '%SubmachineStateFeatures; |
+   SubactivityState.isDynamic |
+   SubactivityState.dynamicArguments |
+   SubactivityState.dynamicMultiplicity'>
+<!ENTITY % SubactivityStateAtts '%SubmachineStateAtts;
+   isDynamic (true|false) #IMPLIED'>
+<!ELEMENT SubactivityState (%SubactivityStateFeatures;)*>
+<!ATTLIST SubactivityState %SubactivityStateAtts;>
+
+<!-- ========= ActionState ========= -->
+<!ELEMENT ActionState.isDynamic EMPTY>
+<!ATTLIST ActionState.isDynamic xmi.value (true|false) #REQUIRED>
+<!ELEMENT ActionState.dynamicArguments (ArgListsExpression)*>
+<!ELEMENT ActionState.dynamicMultiplicity (Multiplicity)*>
+<!ENTITY % ActionStateFeatures '%SimpleStateFeatures; |
+   ActionState.isDynamic |
+   ActionState.dynamicArguments |
+   ActionState.dynamicMultiplicity'>
+<!ENTITY % ActionStateAtts '%SimpleStateAtts;
+   isDynamic (true|false) #IMPLIED'>
+<!ELEMENT ActionState (%ActionStateFeatures;)*>
+<!ATTLIST ActionState %ActionStateAtts;>
+
+<!-- ========= CallState ========= -->
+<!ENTITY % CallStateFeatures '%ActionStateFeatures;'>
+<!ENTITY % CallStateAtts '%ActionStateAtts;'>
+<!ELEMENT CallState (%CallStateFeatures;)*>
+<!ATTLIST CallState %CallStateAtts;>
+
+<!-- ========= ObjectFlowState ========= -->
+<!ELEMENT ObjectFlowState.isSynch EMPTY>
+<!ATTLIST ObjectFlowState.isSynch xmi.value (true|false) #REQUIRED>
+<!ELEMENT ObjectFlowState.parameter (Parameter)*>
+<!ELEMENT ObjectFlowState.type (Classifier)*>
+<!ENTITY % ObjectFlowStateFeatures '%SimpleStateFeatures; |
+   ObjectFlowState.isSynch |
+   ObjectFlowState.parameter |
+   ObjectFlowState.type'>
+<!ENTITY % ObjectFlowStateAtts '%SimpleStateAtts;
+   isSynch (true|false) #IMPLIED
+   parameter IDREFS #IMPLIED
+   type IDREFS #IMPLIED'>
+<!ELEMENT ObjectFlowState (%ObjectFlowStateFeatures;)*>
+<!ATTLIST ObjectFlowState %ObjectFlowStateAtts;>
+
+<!-- ========= ClassifierInState ========= -->
+<!ELEMENT ClassifierInState.type (Classifier)*>
+<!ELEMENT ClassifierInState.inState (State)*>
+<!ENTITY % ClassifierInStateFeatures '%ClassifierFeatures; |
+   ClassifierInState.type |
+   ClassifierInState.inState'>
+<!ENTITY % ClassifierInStateAtts '%ClassifierAtts;
+   type IDREFS #IMPLIED
+   inState IDREFS #IMPLIED'>
+<!ELEMENT ClassifierInState (%ClassifierInStateFeatures;)*>
+<!ATTLIST ClassifierInState %ClassifierInStateAtts;>
+
+<!-- ========= Model_Management ========= -->
+
+<!-- ========= Package ========= -->
+<!ELEMENT Package.ELEMENTImport (ELEMENTImport)*>
+<!ENTITY % PackageFeatures '%GeneralizableELEMENTFeatures; |
+   Namespace.ownedELEMENT |
+   Package.ELEMENTImport'>
+<!ENTITY % PackageAtts '%GeneralizableELEMENTAtts;'>
+<!ELEMENT Package (%PackageFeatures;)*>
+<!ATTLIST Package %PackageAtts;>
+
+<!-- ========= Model ========= -->
+<!ENTITY % ModelFeatures '%PackageFeatures;'>
+<!ENTITY % ModelAtts '%PackageAtts;'>
+<!ELEMENT Model (%ModelFeatures;)*>
+<!ATTLIST Model %ModelAtts;>
+
+<!-- ========= Subsystem ========= -->
+<!ELEMENT Subsystem.isInstantiable EMPTY>
+<!ATTLIST Subsystem.isInstantiable xmi.value (true|false) #REQUIRED>
+<!ENTITY % SubsystemFeatures '%PackageFeatures; |
+   Classifier.feature |
+   Classifier.powertypeRange |
+   Subsystem.isInstantiable'>
+<!ENTITY % SubsystemAtts '%PackageAtts;
+   powertypeRange IDREFS #IMPLIED
+   isInstantiable (true|false) #IMPLIED'>
+<!ELEMENT Subsystem (%SubsystemFeatures;)*>
+<!ATTLIST Subsystem %SubsystemAtts;>
+
+<!-- ========= ELEMENTImport ========= -->
+<!ELEMENT ELEMENTImport.visibility EMPTY>
+<!ATTLIST ELEMENTImport.visibility xmi.value %VisibilityKind; #REQUIRED>
+<!ELEMENT ELEMENTImport.alias (#PCDATA|XMI.reference)*>
+<!ELEMENT ELEMENTImport.isSpecification EMPTY>
+<!ATTLIST ELEMENTImport.isSpecification xmi.value (true|false) #REQUIRED>
+<!ELEMENT ELEMENTImport.package (Package)*>
+<!ELEMENT ELEMENTImport.importedELEMENT (ModelELEMENT)*>
+<!ENTITY % ELEMENTImportFeatures 'XMI.extension |
+   ELEMENTImport.visibility |
+   ELEMENTImport.alias |
+   ELEMENTImport.isSpecification |
+   ELEMENTImport.package |
+   ELEMENTImport.importedELEMENT'>
+<!ENTITY % ELEMENTImportAtts '%XMI.ELEMENT.att; 
+   visibility %VisibilityKind; #IMPLIED
+   alias CDATA #IMPLIED
+   isSpecification (true|false) #IMPLIED
+   package IDREFS #IMPLIED
+   importedELEMENT IDREFS #IMPLIED'>
+<!ELEMENT ELEMENTImport (%ELEMENTImportFeatures;)*>
+<!ATTLIST ELEMENTImport %ELEMENTImportAtts;>
+
+<!-- ========= UML ========= -->

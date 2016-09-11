@@ -1,0 +1,48 @@
+\svnInfo $Id: concl.tex 9195 2012-04-20 12:26:50Z frabe $
+\svnKeyword $HeadURL:
+https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/concl.tex $
+
+  In this paper, we proposed a general statement-level extension mechanism for MKM formats
+  powered by the notion of theory families.  Starting with {\mmt} as a core language, we
+  are able to express most of the pragmatic language features of {\omdoc} 1.2 as instances
+  of our new extension primitive.  Moreover, we can recover extension principles employed
+  in languages for formalized mathematics including the statements employed for
+  conservative extensions in Isabelle/HOL and Mizar. We have also described a principle
+  how to introduce corresponding pragmatic concrete syntax.
+
+  The elegance and utility of the extension language is enhanced by the modularity of the
+  \omdoc2 framework, whose meta-theories provide the natural place to declare extensions:
+  the scoping rules of the {\mmt} module system supply the justification and intended
+  visibility of statement-level extensions. In our examples, the Isabelle/HOL and Mizar
+  extensions come from their meta-logics, which are formalized in {\mmt}.
+
+We also expect our pragmatic syntax to be beneficial in system integration because it permit interchanging documents at the pragmatic {\mmt} level. For example, we can translate implicit definitions of one system to those of another system even if -- as is typical -- the respective strict implementations are very different.
+  
+  For full coverage of \omdoc1.2, we still need to
+  capture abstract data types and proofs; the difficulties in this endeavor lie not in the
+  extension framework but in the design of suitable meta-logics that justify them.
+  For
+  \omdoc-style proofs, the $\overline\lambda\mu\tilde\mu$-calculus has been identified as suitable~\cite{AutSac:fcboapl06}, but remains to be encoded in
+  \mmt. For abstract data types we need a $\lambda$-calculus that can reflect signatures
+  into (inductive) data types; the third author is currently working on this.
+
+  The fact that pragmatic extensions are declared in meta-theories points towards the idea that {\omdoc}
+  metadata and the corresponding metadata ontologies~\cite{LK:MathOntoAuthDoc09} are
+  actually meta-theories as well (albeit at a somewhat different level); we plan to work
+  out this correspondence for \omdoc2.
+
+  Finally, we observe that we can go even further and interpret the feature of definitions that is primitive in {\mmt} as pragmatic
+  extensions of an even more foundational system. Then definitions $c:E=E'$ become pragmatic notations
+  for a declaration $c:E$ and an axiom $c=E'$, where $=$ is an extension symbol introduced in a meta-theory for equality.
+  Typing can be handled similarly. This would also permit introducing other modifiers in declarations such as $<:$ for subtype declarations.
+%  \footnote{Here we have to make sure that $t$ may not contain
+%    $c$, here the work on declaration patterns~\cite{Hor:patterns} comes in handy.}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+
+% LocalWords:  concl.tex fhorozal bluenote omdoc2 omdoc MathOntoAuthDoc09 frabe
+% LocalWords:  RabKoh ednote Fulya's mmt oldpart newpart overline AutSac
+% LocalWords:  fcboapl06

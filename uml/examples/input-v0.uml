@@ -1,0 +1,509 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<?oxygen RNGSchema="../rnc/uml-wo-omdoc.rnc" type="compact"?>
+<uml version="5">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:creator>ArgoUML</dc:creator>
+    <dc:date>2008-07-11T13:16:25</dc:date>
+  </metadata>
+  <content>
+       <Class xmlns:UML = 'org.omg.xmi.namespace.UML'
+	 xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000860'
+          name = 'Phonebook' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+          <Classifier.feature>
+            <Operation xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000882'
+              name = 'addEntry' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <BehavioralFeature.parameter>
+                <Parameter xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000883'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <Parameter.type>
+                    <DataType xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000872'/>
+                  </Parameter.type>
+                </Parameter>
+                <Parameter xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000088D'
+                  name = 'name' isSpecification = 'false'>
+                  <Parameter.type>
+                    <Class xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000871'/>
+                  </Parameter.type>
+                </Parameter>
+                <Parameter xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000088E'
+                  name = 'number' isSpecification = 'false'>
+                  <Parameter.type>
+                    <DataType xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000864'/>
+                  </Parameter.type>
+                </Parameter>
+              </BehavioralFeature.parameter>
+            </Operation>
+            <Operation xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000884'
+              name = 'deleteEntry' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <BehavioralFeature.parameter>
+                <Parameter xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000885'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <Parameter.type>
+                    <DataType xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000872'/>
+                  </Parameter.type>
+                </Parameter>
+                <Parameter xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000889'
+                  name = 'name' isSpecification = 'false'>
+                  <Parameter.type>
+                    <Class xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000871'/>
+                  </Parameter.type>
+                </Parameter>
+              </BehavioralFeature.parameter>
+            </Operation>
+            <Operation xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000886'
+              name = 'searchEntry' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              isQuery = 'false' concurrency = 'sequential' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <BehavioralFeature.parameter>
+                <Parameter xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000887'
+                  name = 'return' isSpecification = 'false' kind = 'return'>
+                  <Parameter.type>
+                    <DataType xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000872'/>
+                  </Parameter.type>
+                </Parameter>
+                <Parameter xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000888'
+                  name = 'name' isSpecification = 'false'>
+                  <Parameter.type>
+                    <Class xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000871'/>
+                  </Parameter.type>
+                </Parameter>
+              </BehavioralFeature.parameter>
+            </Operation>
+          </Classifier.feature>
+        </Class>
+       <Class xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000862'
+          name = 'PhonebookEntry' visibility = 'public' isSpecification = 'false'
+          isRoot = 'false' isLeaf = 'false' isAbstract = 'false' isActive = 'false'>
+          <Classifier.feature>
+            <Attribute xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000865'
+              name = 'number' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <StructuralFeature.multiplicity>
+                <Multiplicity xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000086B'>
+                  <Multiplicity.range>
+                    <MultiplicityRange xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000086A'
+                      lower = '1' upper = '1'/>
+                  </Multiplicity.range>
+                </Multiplicity>
+              </StructuralFeature.multiplicity>
+              <StructuralFeature.type>
+                <DataType xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000864'/>
+              </StructuralFeature.type>
+            </Attribute>
+            <Attribute xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000086C'
+              name = 'name' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+              changeability = 'changeable' targetScope = 'instance'>
+              <StructuralFeature.multiplicity>
+                <Multiplicity xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000870'>
+                  <Multiplicity.range>
+                    <MultiplicityRange xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000086F'
+                      lower = '1' upper = '1'/>
+                  </Multiplicity.range>
+                </Multiplicity>
+              </StructuralFeature.multiplicity>
+              <StructuralFeature.type>
+                <Class xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000871'/>
+              </StructuralFeature.type>
+            </Attribute>
+          </Classifier.feature>
+        </Class>
+       <DataType xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000864'
+          name = 'int' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+          isAbstract = 'false'/>
+       <Class xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000871'
+          name = 'string' visibility = 'public' isSpecification = 'false' isRoot = 'false'
+          isLeaf = 'false' isAbstract = 'false' isActive = 'false'/>
+       <DataType xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000872'
+          name = 'void' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+          isAbstract = 'false'/>
+       <Association xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000879'
+          name = '' isSpecification = 'false' isRoot = 'false' isLeaf = 'false' isAbstract = 'false'>
+          <Association.connection>
+            <AssociationEnd xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000087A'
+              visibility = 'public' isSpecification = 'false' isNavigable = 'true' ordering = 'unordered'
+              aggregation = 'aggregate' targetScope = 'instance' changeability = 'changeable'>
+              <AssociationEnd.multiplicity>
+                <Multiplicity xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000087B'>
+                  <Multiplicity.range>
+                    <MultiplicityRange xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000087C'
+                      lower = '1' upper = '1'/>
+                  </Multiplicity.range>
+                </Multiplicity>
+              </AssociationEnd.multiplicity>
+              <AssociationEnd.participant>
+                <Class xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000860'/>
+              </AssociationEnd.participant>
+            </AssociationEnd>
+            <AssociationEnd xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000087D'
+              visibility = 'public' isSpecification = 'false' isNavigable = 'true' ordering = 'unordered'
+              aggregation = 'none' targetScope = 'instance' changeability = 'changeable'>
+              <AssociationEnd.multiplicity>
+                <Multiplicity xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000881'>
+                  <Multiplicity.range>
+                    <MultiplicityRange xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000880'
+                      lower = '0' upper = '-1'/>
+                  </Multiplicity.range>
+                </Multiplicity>
+              </AssociationEnd.multiplicity>
+              <AssociationEnd.participant>
+                <Class xmi.idref = '-64--88-1-5-d841022:119d3731de6:-8000:0000000000000862'/>
+              </AssociationEnd.participant>
+            </AssociationEnd>
+          </Association.connection>
+        </Association>
+       <Package xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000088A'
+          name = 'java' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+          isAbstract = 'false'>
+          <Namespace.ownedElement>
+            <Package xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000088B'
+              name = 'util' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+              isAbstract = 'false'>
+              <Namespace.ownedElement>
+                <Interface xmi.id = '-64--88-1-5-d841022:119d3731de6:-8000:000000000000088C'
+                  name = 'SortedSet' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+                  isAbstract = 'false'/>
+              </Namespace.ownedElement>
+            </Package>
+          </Namespace.ownedElement>
+        </Package>
+  </content>
+  <pgml description="org.argouml.uml.diagram.static_structure.ui.UMLClassDiagram|-64--88-1-5-d841022:119d3731de6:-8000:000000000000085F"
+      name="ClassDiagram1"
+			>
+  <group name="Fig0"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[48, 48, 200, 96]pathVisible=false;operationsVisible=true;attributesVisible=true"
+       href="-64--88-1-5-d841022:119d3731de6:-8000:0000000000000860"
+       fill="1"
+       fillcolor="white"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+    </private>
+    
+    <rectangle name="Fig0.0"
+      x="48"
+      y="48"
+      width="200"
+      height="96"
+      fill="1"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="0 255 255"
+    />
+    <group name="Fig0.1"
+         description="org.argouml.uml.diagram.ui.FigStereotypesCompartment[48, 48, 200, 2]"
+         href="-64--88-1-5-d841022:119d3731de6:-8000:0000000000000860"
+         fill="1"
+         fillcolor="white"
+         stroke="1"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.1.0"
+        x="48"
+        y="48"
+        width="200"
+        height="2"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      />
+    </group>
+    <text name="Fig0.2"
+      x="48"
+      y="50"
+      fill="1"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="red"
+      font="Dialog"
+      textsize="10"
+    >Phonebook</text>
+    <group name="Fig0.3"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[49, 93, 199, 50]"
+         fill="1"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.3.0"
+        x="49"
+        y="93"
+        width="199"
+        height="50"
+        fill="1"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <path name="Fig0.3.1"
+        description="org.argouml.uml.diagram.ui.FigFeaturesCompartment$FigSeperator"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      >
+        <moveto x="49"
+                y="93" />
+        <lineto x="248"
+                y="93" />
+      </path>
+      <text name="Fig0.3.2"
+        x="49"
+        y="94"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        font="Dialog"
+        textsize="10"
+      >addEntry(name : string,number : int) : void</text>
+      <text name="Fig0.3.3"
+        x="49"
+        y="108"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        font="Dialog"
+        textsize="10"
+      >deleteEntry(name : string) : void</text>
+      <text name="Fig0.3.4"
+        x="49"
+        y="122"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        font="Dialog"
+        textsize="10"
+      >searchEntry(name : string) : void</text>
+    </group>
+    <group name="Fig0.4"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[49, 72, 199, 20]"
+         fill="1"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig0.4.0"
+        x="49"
+        y="72"
+        width="199"
+        height="20"
+        fill="1"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <path name="Fig0.4.1"
+        description="org.argouml.uml.diagram.ui.FigFeaturesCompartment$FigSeperator"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      >
+        <moveto x="49"
+                y="72" />
+        <lineto x="248"
+                y="72" />
+      </path>
+    </group>
+    <rectangle name="Fig0.5"
+      x="48"
+      y="48"
+      width="200"
+      height="96"
+      fill="0"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    />
+  </group>
+  <group name="Fig1"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[80, 192, 136, 81]pathVisible=false;operationsVisible=true;attributesVisible=true"
+       href="-64--88-1-5-d841022:119d3731de6:-8000:0000000000000862"
+       fill="1"
+       fillcolor="white"
+       stroke="1"
+       strokecolor="black"
+  >
+    
+    <rectangle name="Fig1.0"
+      x="80"
+      y="192"
+      width="136"
+      height="81"
+      fill="1"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="0 255 255"
+    />
+    <group name="Fig1.1"
+         description="org.argouml.uml.diagram.ui.FigStereotypesCompartment[80, 192, 136, 2]"
+         href="-64--88-1-5-d841022:119d3731de6:-8000:0000000000000862"
+         fill="1"
+         fillcolor="white"
+         stroke="1"
+         strokecolor="black"
+    >
+      <private>
+      </private>
+      
+      <rectangle name="Fig1.1.0"
+        x="80"
+        y="192"
+        width="136"
+        height="2"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      />
+    </group>
+    <text name="Fig1.2"
+      x="80"
+      y="194"
+      fill="1"
+      fillcolor="white"
+      stroke="0"
+      strokecolor="red"
+      font="Dialog"
+      textsize="10"
+    >PhonebookEntry</text>
+    <group name="Fig1.3"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[81, 253, 135, 20]"
+         fill="1"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      
+      <rectangle name="Fig1.3.0"
+        x="81"
+        y="253"
+        width="135"
+        height="20"
+        fill="1"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <path name="Fig1.3.1"
+        description="org.argouml.uml.diagram.ui.FigFeaturesCompartment$FigSeperator"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      >
+        <moveto x="81"
+                y="253" />
+        <lineto x="216"
+                y="253" />
+      </path>
+    </group>
+    <group name="Fig1.4"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[81, 216, 135, 36]"
+         fill="1"
+         fillcolor="white"
+         stroke="0"
+         strokecolor="black"
+    >
+      
+      <rectangle name="Fig1.4.0"
+        x="81"
+        y="216"
+        width="135"
+        height="36"
+        fill="1"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+      />
+      <path name="Fig1.4.1"
+        description="org.argouml.uml.diagram.ui.FigFeaturesCompartment$FigSeperator"
+        fill="1"
+        fillcolor="white"
+        stroke="1"
+        strokecolor="black"
+      >
+        <moveto x="81"
+                y="216" />
+        <lineto x="216"
+                y="216" />
+      </path>
+      <text name="Fig1.4.2"
+        x="81"
+        y="217"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        font="Dialog"
+        textsize="10"
+      >number : int</text>
+      <text name="Fig1.4.3"
+        x="81"
+        y="231"
+        fill="0"
+        fillcolor="white"
+        stroke="0"
+        strokecolor="black"
+        font="Dialog"
+        textsize="10"
+      >name : string</text>
+    </group>
+    <rectangle name="Fig1.5"
+      x="80"
+      y="192"
+      width="136"
+      height="81"
+      fill="0"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    />
+  </group>
+  <group name="Fig2"
+       description="org.argouml.uml.diagram.ui.FigAssociation"
+       href="-64--88-1-5-d841022:119d3731de6:-8000:0000000000000879"
+       stroke="1"
+       strokecolor="black"
+  >
+    <private>
+      sourcePortFig="Fig0.0"
+      destPortFig="Fig1.0"
+      sourceFigNode="Fig0"
+      destFigNode="Fig1"
+    </private>
+    <path name="Fig2.0"
+      description="org.tigris.gef.presentation.FigPoly"
+      fill="0"
+      fillcolor="white"
+      stroke="1"
+      strokecolor="black"
+    >
+      <moveto x="144"
+              y="144" />
+      <lineto x="144"
+              y="192" />
+    </path>
+  </group>
+  </pgml>
+</uml>

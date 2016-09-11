@@ -1,0 +1,46 @@
+<html>
+<body>
+<h1>An OMDoc interface to Coq via HELM</h1>
+
+In this project we develop interface code for the <a
+href="http://pauillac.inria.fr/coq/" TARGET="_top">Coq</a> theorem prover. The
+project code is available by anonymous <a
+href="http://www.mathweb.org/cvs.html">CVS</a> (path
+<tt>omdoc/projects/helm</tt>), and can viewed <a
+href="http://www.mathweb.org/src/mathweb/omdoc/projects/helm">here</a>.
+
+
+<h2>Authors and Contact</h2>
+<ul>
+<li>
+<a href="http://www.cs.unibo.it/~asperti">Andrea Asperti.</a> (University of
+Bologna)
+<li> <a href="http://www.cs.cmu.edu/~kohlhase" TARGET="_top">Michael Kohlhase</a>
+(Carnegie Mellon University; contact)
+<li><a href="http://www.cs.unibo.it/~schena">Irene Schena. </a>(University of Bologna)
+<li><a href="http://caristudenti.cs.unibo.it/~sacerdot">Claudio Sacerdoti Coen.</a>
+(University of Bologna)
+</ul>
+
+<h2>Components</h2> 
+
+The interface code consists of <a
+href="http://www.mathweb.org/src/mathweb/omdoc/projects/helm">four style
+sheets</a> that take the XML output of Coq produced by the <a
+href="http://www.cs.unibo.it/~asperti/HELM/home.html"/>HELM</a> interface and
+generates OMDoc from this. This is still in a largely preliminary state. In
+particular, we can only work for OMDoc2.0, since the mutuality in definitions in
+OMDoc 1.0 is too weak.
+
+<h2>What is still lacking?</h2>
+<ul>
+  <li> an integration with the HELM stuff, (an interface to uwobo), so that we can
+    actually run  and test it 
+  <li> merging with the progress in the HELM project.
+  <li> some test CIC cases! 
+  <li> more work on OMDoc 2.0 so that it is expressive enough for CIC.
+</ul>
+
+</body>
+</html>
+

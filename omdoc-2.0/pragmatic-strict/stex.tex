@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{metakeys}
+\makeatletter
+% parsing the argument structure
+\def\extension{\@ifnextchar[{\@extension}{\@extension[]}}
+\def\@extension[#1]#2{\@ifnextchar[{\@@extension[#1]{#2}}{\@@extension[#1]{#2}[0]}}
+\def\@@extension[#1]#2[#3]#4#5{%
+\newenvironment{#2}[#3][]%
+{\metasetkeys{#2}{##1} #4}
+{#5}}
+\def\extkey#1#2{\addmetakey{#1}{#2}%
+% \@ifundefined{#1}
+% {\expandafter\def\csname extkey@#1\endcsname{\csname }}
+% {}
+}
+\def\namarg#1#2{\@nameuse{#1@#2}}
+\makeatother
+\begin{document}
+\extkey{idef}{name}
+\extkey{idef}{title}
+\extension{idef}
+{\begin{def}[\namarg{idef}{title}]\label{idef.\namarg{idef}{name}}}
+{\end{def}}
+\extkey{exu}{for}
+\extension[cont=idef]{exu}
+{\begin{thm}[Existence and Uniqueness for \ref{\namarg{exu}{for}}]\label{\namarg{exu}{for}.exu}}
+{\end{thm}}
+\extkey{exup}{for}
+\extension[cont=idef]{exup}
+{\begin{proof} (for \ref{\namarg{exu}})}
+{\end{proof}}
+
+\begin{idef}[name=exp,title=Exponential Function]
+  The exponential function is that function $f$ with $f'=f$ and $f(0)=1$.
+\end{idef}
+\begin{exu}[for=exp]
+  There is exactly one function $f$ with with $f'=f$ and $f(0)=1$.
+\end{exu}
+\begin{exup}[for=exp]
+  \ldots
+\end{exup}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

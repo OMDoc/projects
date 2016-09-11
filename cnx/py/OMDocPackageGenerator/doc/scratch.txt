@@ -1,0 +1,92 @@
+0. Example for current OMDoc pipeline
+=================================================================================================
+[~/omdoc/examples/omstd]
+$ make -n -B arith1.xml
+ls: *.tex: No such file or directory
+xsltproc -o arith1-incl.xsl --stringparam self arith1-tmpl.xsl  ../../xsl/exincl.xsl arith1.omdoc
+../../bin/make2files '../../xsl/omdoc2pmml.xsl' 'arith1-incl.xsl' > arith12pmml.xsl
+xsltproc -o arith1-tmpl.xsl  ../../xsl/expres.xsl arith1.omdoc
+cp ../../lib/ctop.xsl .
+cp ../../lib/mathml.xsl .
+cp ../../lib/pmathml.xsl .
+cp ../../lib/pmathmlcss.xsl .
+cp ../../lib/omdoc-cnx.css .
+xsltproc -o arith1.xml  --stringparam css omdoc-cnx.css  arith12pmml.xsl arith1.omdoc
+
+1. xsltproc -o arith1-tmpl.xsl  ../../../xsl/expres.xsl arith1.omdoc
+2. xsltproc -o arith1-incl.xsl --stringparam self arith1-tmpl.xsl  ../../../xsl/exincl.xsl arith1.omdoc
+3. ../../../bin/make2files '../../../xsl/omdoc2pmml.xsl' 'arith1-incl.xsl' > arith12pmml.xsl
+4. xsltproc -o arith1.xml  --stringparam css omdoc-cnx.css  arith12pmml.xsl arith1.omdoc
+
+
+1. OMDoc package
+=================================================================================================
+In addation to the diagram below have a look at the figure 29.1 in the OMDoc specification.
+
+    OMDoc package v0.1
+    --------------------------------------------------------------------------------
+    |                                           -------------------		   |
+    |                                         1 | XSL Template    |o-------- Think of compiled C files
+    |	----------------            |-----------|                 |		   |
+    |	|  OMDoc file  |            |           | e.g. x-tmpl.xsl |		   |
+    |	|              |------------|           -------------------		   |
+    |	|  e.g x.omdoc |            |						   |
+    |   ----------------            |           -------------------		   |
+    |                               |-----------| XSL Includes    |o-------- Think of linked C files
+    |                               |         1 |                 |		   |
+    |                               |           | e.g. x-incl.xsl |		   | 
+    |                               |           -------------------		   |  The dynamic part of
+    |                               |						   |  a OMDoc package
+  =======================================================================================
+    |				    |						   |  The static part of
+    |				    |		--------------------------	   |  a OMDoc package
+    |				    |-----------| X2Y			 |	   |
+    |					      1 |			 |	   |
+    |						| Y := {html, pmml, tex} |	   |
+    |						|			 |	   |
+    |						| e.g x2html.xsl	 |	   |
+    |						--------------------------	   |
+    |										   |
+    |-------------------------------------------------------------------------------
+
+    OMDoc package v0.2
+    --------------------------------------------------------------------------------
+    |	----------------							   |
+    |	| sTeX file    |							   |
+    |	|	       |							   |
+    |	| e.g x.stex   |							   |
+    |	----------------							   |  
+    |        1 |                                                                   | The core part of
+    |	       |         							   | a OMDoc package
+  ======================================================================================
+    |	       |         							   |
+    |	       |         							   |
+    |	       |         							   |  
+    |          |                                -------------------		   |
+    |          | 1                            1 | XSL Template    |o-------- Think of compiled C files
+    |	----------------            |-----------|                 |		   |
+    |	|  OMDoc file  |            |           | e.g. x-tmpl.xsl |		   |
+    |	|              |------------|           -------------------		   |
+    |	|  e.g x.omdoc |            |						   |
+    |   ----------------            |           -------------------		   |
+    |                               |-----------| XSL Includes    |o-------- Think of linked C files
+    |                               |         1 |                 |		   |
+    |                               |           | e.g. x-incl.xsl |		   | 
+    |                               |           -------------------		   |  The dynamic part of
+    |                               |						   |  a OMDoc package
+  =======================================================================================
+    |				    |						   |  The static part of
+    |				    |		--------------------------	   |  a OMDoc package
+    |				    |-----------| X2Y			 |	   |
+    |					      1 |			 |	   |
+    |						| Y := {html, pmml, tex} |	   |
+    |						|			 |	   |
+    |						| e.g x2html.xsl	 |	   |
+    |						--------------------------	   |
+    |										   |
+    |-------------------------------------------------------------------------------
+
+2. Python modules
+=================================================================================================
+o Implement the creation process of OMDoc packages using python and the libxslt and libxml
+  python bindings. (In other words implement the current OMDoc pipeline [1] within python)

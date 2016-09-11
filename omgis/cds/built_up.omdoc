@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="built_up.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-03-19T16:17:23Z </dc:date>
+  <dc:title xml:lang="en"> built_up </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-03-19T16:17:23Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="built_up">
+  <imports from="maps.omdoc#maps"/>
+  <symbol name="aquaculture_site">
+    <metadata>
+      <dc:description>
+	A set of pools of water and related structures used for producing finfish, shellfish, or
+	aquatic plants.
+	Delineation: The limit of AQUACULTURE SITE is the area encompassing the RESERVOIRS, BUILDINGS, and other
+	associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="archeological_site">
+    <metadata>
+      <dc:description>
+	*An area of scientific interest that contains the material remains of past human
+	activities.
+	Delineation: The limit of ARCHEOLOGICAL SITE/RUIN is the extent of the area containing the material remains.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="athletic_field">
+    <metadata>
+      <dc:description>
+	A defined, but often unbounded, open area constructed and maintained for the purpose of
+	holding sporting events and activities.
+	Delineation: The limit of ATHLETIC FIELD is the perimeter of the open area maintained for a sporting activity or event,
+	including associated structures within the playing field.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="boardwalk">
+    <metadata>
+      <dc:description>
+	A promenade, usually constructed of planks.
+	Delineation: The limit of BOARDWALK is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="building">
+    <metadata>
+      <dc:description>
+	*A permanent construction that is roofed and usually walled.
+	Delineation: The limit of BUILDING is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="built_up_area">
+    <metadata>
+      <dc:description>
+	An area of intensive use, with much of the land covered by structures.
+	Delineation: The limit of BUILT-UP AREA shall be defined by the extent of the area of intensive use.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="cable_pipeline_site">
+    <metadata>
+      <dc:description>
+	*An area where cables or pipelines are located under water.
+	Delineation: The limit of CABLE/PIPELINE SITE is the extent of the area as shown on NOS charts or U.S. Lake Survey
+	Charts.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="cableway">
+    <metadata>
+      <dc:description>
+	*A conveyor system in which carrier units are suspended from wire cables strung between supports.
+	Delineation: The limit of CABLEWAY is the extent of the cables and the supports.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="campground">
+    <metadata>
+      <dc:description>
+	*A designated area on which primitive structure(s) may be erected for temporary shelter and/or
+	where recreational vehicles are temporarily parked.
+	Delineation: The limit of CAMPGROUND is the edge of the area developed for camping.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="cemetery">
+    <metadata>
+      <dc:description>
+	*A burial ground.
+	Delineation: The limit of CEMETERY is the edge of the tended area or the outline of the group of graves if the cemetery is
+	abandoned (untended) and has no fence.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="chimney">
+    <metadata>
+      <dc:description>
+	A structure containing a passage or flue for discharging combustion smoke and gases.
+	Delineation: The limits of CHIMNEY are the edges of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+  <symbol name="conveyor">
+    <metadata>
+      <dc:description>
+	Any permanent mechanism, such as continuous moving belt, that transports materials from one
+	place to another.
+	Delineation: The limit of CONVEYOR is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="dish">
+    <metadata>
+      <dc:description>
+	A concave object used for transmitting or receiving electromagnetic signals.
+	Delineation: The limit of DISH is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="disposal_site">
+    <metadata>
+      <dc:description>
+	*An area where refuse is dumped.
+	Delineation: The limit of DISPOSAL SITE is the extent of the area containing the refuse.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="disturbed_surface">
+    <metadata>
+      <dc:description>
+	An area which is broken into a chaotic pattern of elevations and depressions due to
+	human intervention.
+	Delineation: The limit of DISTURBED SURFACE is the extent of the area containing an unusual pattern of elevations and
+	depressions.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="drive_in_theater_screen">
+    <metadata>
+      <dc:description>
+	The large flat-white or silver surface (and supporting structure) upon which a
+	picture is projected for viewing.
+	Delineation: The limit of DRIVE-IN THEATER SCREEN is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="drydock">
+    <metadata>
+      <dc:description>
+	An artificial basin fitted with a gate or caisson into which a vessel may be floated and from which
+	water may be pumped out to expose the bottom of the vessel.
+	Delineation: The limit of DRYDOCK is defined by the walls and gate(s) that enclose the artificial basin.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="embankment">
+    <metadata>
+      <dc:description>
+	*A raised linear mound of earth, gravel, or similar material.
+	Delineation: The limit of EMBANKMENT is the extent of the raised mound at the base.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="exhibition_ground">
+    <metadata>
+      <dc:description>
+	A public area where outdoor fairs, circuses, and other events are held, which also
+	contains permanent structures for the display of livestock, machinery, agricultural produce, etc.
+	Delineation: The limit of EXHIBITION GROUND is the extent of the area used for exhibitions and includes all associated
+	structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="fence_line">
+    <metadata>
+      <dc:description>
+	An identifiable fence or field line visible on an aerial photograph.
+	Delineation: The limit of FENCE LINE is the extent of the fence or field line.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="filtration_plant">
+    <metadata>
+      <dc:description>
+	A group of structures functioning as a unit used for the purification and distribution of a
+	water supply.
+	Delineation: The limit of FILTRATION PLANT is the extent of the area encompassing all associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="historical_monument">
+    <metadata>
+      <dc:description>
+	A structure, not a building, that commemorates people or past events.
+	Delineation: The limit of HISTORICAL MONUMENT is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="holding_pen">
+    <metadata>
+      <dc:description>
+	*An enclosed area in which livestock are temporarily kept.
+	Delineation: The limit of HOLDING PEN is the outer structure which surrounds the area.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="institutional_site">
+    <metadata>
+      <dc:description>
+	*A group of buildings or associated structures, functioning as a unit, used predominantly
+	for educational, correctional, governmental, medical, or religious purposes.
+	Delineation: The limit of INSTITUTIONAL SITE is the extent of the area used by the institution, including all associated
+	structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="kiln">
+    <metadata>
+      <dc:description>
+	*Any of various ovens for hardening, burning, or drying substances.
+	Delineation: The limit of KILN is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="launch_facility">
+    <metadata>
+      <dc:description>
+	An area where rockets or missiles may be housed and from which they are launched,
+	usually equipped with associated buildings and facilities.
+	Delineation: The limit of LAUNCH FACILITY is the extent of the area encompassing all associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="launch_pad">
+    <metadata>
+      <dc:description>
+	A structure from which a rocket or missile is launched.
+	Delineation: The limit of LAUNCH PAD is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="launching_ramp">
+    <metadata>
+      <dc:description>
+	*A partially submerged hard surface on a shoreline for launching or retrieving vessels or
+	aircraft.
+	Delineation: If LAUNCHING RAMP is at the end of ROAD, the limit is the place where the center of the ROAD intersects
+	the SHORELINE or NONEARTHEN SHORE.
+	If LAUNCHING RAMP is not at the end of ROAD, the limit is the edge of the hard surface.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="locale">
+    <metadata>
+      <dc:description>
+	A named place not otherwise categorized.
+	Delineation: The limit of LOCALE is the extent of the area known by that name.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="marina">
+    <metadata>
+      <dc:description>
+	A harbor facility for recreational craft where supplies, repairs, and various services are available.
+	Delineation: The limit of MARINA is the extent of the area that contains the associated boating facilities.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="mine">
+    <metadata>
+      <dc:description>
+	*An excavation in the earth for the purpose of extracting earth materials.
+	Delineation: The limit of MINE is the edge of the excavation.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="mine_entrance">
+    <metadata>
+      <dc:description>
+	*Passage that affords entry to an underground mine.
+	Delineation: The limit of MINE ENTRANCE is the edge of the passage.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="mobile_home_park">
+    <metadata>
+      <dc:description>
+	An area maintained for the parking of inhabited mobile homes.
+	Delineation: The limit of MOBILE HOME PARK is the extent of the area used for parking mobile homes and may be
+	defined by the outermost roads or the limits of the outermost mobile homes.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="offshore_platform">
+    <metadata>
+      <dc:description>
+	A raised structure located in a sea, equipped for the extraction, loading or unloading
+	of petroleum products.
+	Delineation: The limit of OFFSHORE PLATFORM is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="outdoor_theater">
+    <metadata>
+      <dc:description>
+	*An outdoor area consisting of a stage or other focal point, and an area where the
+	audience can be seated to view the performance or event.
+	Delineation: The limit of OUTDOOR THEATER is the perimeter of the area maintained for performances and viewing,
+	including all associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="park">
+    <metadata>
+      <dc:description>
+	*A place or area developed for public use or recreation.
+	Delineation: The limit of PARK is the extent of the developed area including all associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="pier">
+    <metadata>
+      <dc:description>
+	*Structure extending in the longest dimension from the shore or positioned
+	offshore for protection, berthing vessels, or recreation.
+	Delineation: The limit of PIER/BREAKWATER/JETTY is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="pipeline">
+    <metadata>
+      <dc:description>
+	*A closed conduit, with pumps, valves and control devices, for conveying fluids, gases, or finely
+	divided solids.
+	Delineation: The limit of PIPELINE that is underground is the edge of the ground scars or linear clearings.
+	The limit of PIPELINE that is at or near the ground or elevated, is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="pipeline_regulation_station">
+    <metadata>
+      <dc:description>
+	*An ancillary facility that controls the flow of fluids or gasses along a
+	pipeline route.
+	Delineation: The limit of PIPELINE REGULATION STATION is the extent of the area encompassing the structures, often
+	delimited by a fence.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="populated_place">
+    <metadata>
+      <dc:description>
+	*A place or area with clustered or scattered buildings and a permanent human population.
+	Delineation: The limit of POPULATED PLACE is the extent of the area known by that Name.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="power_site">
+    <metadata>
+      <dc:description>
+	*A group of associated structures, functioning as a unit, used for generating electricity.
+	Delineation: The limit of POWER SITE is the extent of the area encompassing the group of associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="prospect">
+    <metadata>
+      <dc:description>
+	A marked location where mineral exploration has occurred but no mine has been developed.
+	Delineation: The limit of PROSPECT is the edge of the area where mineral exploration has occurred.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="proving_ground">
+    <metadata>
+      <dc:description>
+	An area set aside for performance testing.
+	Delineation: The limit of PROVING GROUND is the extent of the area encompassing all associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="racetrack">
+    <metadata>
+      <dc:description>
+	A course laid out for racing.
+	Delineation: The limit of RACETRACK is the edge of the track.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="recreational_slide">
+    <metadata>
+      <dc:description>
+	An amusement structure consisting of a smooth, usually inclined, surface or track for
+	sliding.
+	Delineation: The limit of RECREATIONAL SLIDE is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="reservoir">
+    <metadata>
+      <dc:description>
+	*A constructed basin formed to contain water or other liquids.
+	Delineation: The limit of RESERVOIR is the rim of the constructed basin.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="sewage_disposal_plant">
+    <metadata>
+      <dc:description>
+	A group of structures functioning as a unit used for the disposal of domestic
+	water-born waste.
+	Delineation: The limit of SEWAGE DISPOSAL PLANT is the extent of the area encompassing all associated structures.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="shopping_center">
+    <metadata>
+      <dc:description>
+	A group of structures used for the sale of products and services.
+	Delineation: The limit of SHOPPING CENTER is the extent of the associated buildings and parking areas.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="ski_jump">
+    <metadata>
+      <dc:description>
+	An inclined structure consisting of a track from which snow skiers vault.
+	Delineation: The limit of SKI JUMP is the edge of the surface of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="sports_site">
+    <metadata>
+      <dc:description>
+	*A collection of facilities (open areas, structures) functioning as a unit for the purpose of holding
+	sporting events and activities.
+	Delineation: The limit of SPORTS SITE is the extent of the area that contains the playing/activity area, as well as all
+	associated facilities and parking areas.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="substation">
+    <metadata>
+      <dc:description>
+	An auxillary facility along a powerline route for transforming electrical current.
+	Delineation: The limit of SUBSTATION is the fence that encloses the transformers.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="tank">
+    <metadata>
+      <dc:description>
+	*A large container used for storage.
+	Delineation: The limit of TANK is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="tower">
+    <metadata>
+      <dc:description>
+	A tall framework or structure, the height of which is required by its function.
+	Delineation: The limit of TOWER is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="transmission_line">
+    <metadata>
+      <dc:description>
+	*A system of wires that transmits electrical signals or electricity over distance.
+	Delineation: The limit of TRANSMISSION LINE is the outer extent of the system of wires.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="underpass">
+    <metadata>
+      <dc:description>
+	The grade separation where part or all of one feature instance is directly above part or all of another
+	feature instance.
+	Delineation: The limit of UNDERPASS is the extent of the horizontal area where the two separated feature instances
+	overlap.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="wall">
+    <metadata>
+      <dc:description>
+	*An upright structure of masonry, wood, plaster, or other building material serving to enclose, divide, or
+	protect an area.
+	Delineation: The limit of WALL is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="well">
+    <metadata>
+      <dc:description>
+	*A pit or hole dug or bored into the earth for the extraction of oil, water, other fluids, or gases.
+	Delineation: The limit of WELL is the extent of the hole in the ground.
+      </dc:description>
+    </metadata>    
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="well_field">
+    <metadata>
+      <dc:description>
+	An area where petroleum and/or natural gas is or was removed from the earth.
+	Delineation: The limit of WELL FIELD is defined by the perimeter wells.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="wharf">
+    <metadata>
+      <dc:description>
+	A structure with its longest axis built parallel to the shoreline to which vessels may be berthed on one
+	side only.
+	Delineation: The limit of WHARF is the line of contact between the water and the area used for loading and unloading
+	vessels.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="windmill">
+    <metadata>
+      <dc:description>
+	*A mill or other machine that runs on the energy generated by a wheel of adjustable blades or flats
+	rotated by the wind.
+	Delineation: The limit of a WINDMILL is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype"/>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+</theory>
+
+</omdoc>

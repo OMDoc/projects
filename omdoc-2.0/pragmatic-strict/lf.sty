@@ -1,0 +1,74 @@
+\renewcommand{\lftype}{\texttt{type}}
+\newcommand{\lfrep}[2]{#1^#2}
+\newcommand{\lfpi}[3]{\Pi #1\!:\!#2.\, #3}
+\newcommand{\lflam}[3]{\lambda #1\!:\!#2.\, #3}
+\newcommand{\lfapp}[2]{#1\, #2}
+\newcommand{\lfnat}{\mathit{Nat}}
+\newcommand{\lfseqmap}[2]{#1 @ #2}
+\newcommand{\lfseqbind}[3]{[#1]_{#2:\lfntp{#3}}}
+\newcommand{\lfseqind}[2]{#1_{#2}}
+\newcommand{\lfseqnats}[1]{1..#1}%{\leq\!#1}
+\newcommand{\lfntp}[1]{[1..#1]}
+\newcommand{\seqnats}[1]{1..#1}
+\newcommand{\lfadd}[2]{#1 + #2}
+\newcommand{\lfmult}[2]{#1\cdot#2}
+\renewcommand{\succ}[1]{\mathit{succ}(#1)}
+%\renewcommand{\pdecl}[2]{#1 = #2}
+
+%Judgments for Wellformed Signatures, Contexts, Substitutions, Sequence Objects
+\newcommand{\wfsig}[1]{\vdash #1\,\mathit{Sig}}
+\newcommand{\wfctx}[2][\Sigma]{\vdash_{#1} #2\,\mathit{Ctx}}
+\newcommand{\wfsubst}[4][\Sigma]{\vdash_{#1} #2 : #3\to #4}
+\newcommand{\wsojudg}[4][\Gamma]{#1\vdash_{#2} #3 : #4}
+
+%Judgments for Wellformed Sequence of Expressions
+\newcommand{\wsejudg}[5][\Gamma]{#1\vdash_{#2} #3 : #4 {\color{gray}{: #5}}}
+\newcommand{\lfsubst}[3]{[#2/#1]#3} %\lfsubst{x}{A}{B} [x/A]B
+\newcommand{\lfseqsubst}[3]{#1[#2//#3]}
+
+\newcommand{\emptySeq}{\mathit{emptySeq}}
+\newcommand{\seqVar}{\mathit{seqVar}}
+\newcommand{\seqConst}{\mathit{seqConst}}
+\newcommand{\seqAbstr}{\mathit{seqAbstr}}
+\newcommand{\seqAppl}{\mathit{seqAppl}}
+\newcommand{\seqMap}{\mathit{seqMap}}
+\newcommand{\seqConcat}{\mathit{seqConcat}}
+\newcommand{\seqIndex}{\mathit{seqIndex}}
+\newcommand{\natZero}{\mathit{natZero}}
+\newcommand{\natOne}{\mathit{natOne}}
+\newcommand{\natAdd}{\mathit{natAdd}}
+\newcommand{\natMult}{\mathit{natMult}}
+\newcommand{\seqNats}{\mathit{seqNats}}
+
+%Judgments for Wellformed Type Families
+\newcommand{\wstjudg}[4][\Gamma]{#1\vdash_{#2} #3 : #4}
+\newcommand{\emptyType}{\mathit{emptyType}}
+\newcommand{\typeConst}{\mathit{typeConst}}
+\newcommand{\typeNat}{\mathit{typeNat}}
+\newcommand{\typeAbstr}{\mathit{typeAbstr}}
+\newcommand{\typeAppl}{\mathit{typeAppl}}
+\newcommand{\typeConcat}{\mathit{typeConcat}}
+\newcommand{\typeIndex}{\mathit{typeIndex}}
+\newcommand{\typeNats}{\mathit{typeNats}}
+\newcommand{\typeSeqMap}{\mathit{typeSeqMap}}
+
+
+%Judgments for Wellformed Kinds
+\newcommand{\wskjudg}[4][\Gamma]{#1\vdash_{#2} #3 : #4}
+\newcommand{\emptyKind}{\mathit{emptyKind}}
+\newcommand{\baseKind}{\mathit{baseKind}}
+\newcommand{\depKind}{\mathit{depKind}}
+\newcommand{\kindConcat}{\mathit{kindConcat}}
+\newcommand{\kindIndex}{\mathit{kindIndex}}
+
+%TPTP Patterns
+\newcommand{\TFF}{\mathit{TFF}}
+\newcommand{\tType}{\mathit{tType}}
+\newcommand{\fun}{\mathit{fun}}
+\newcommand{\ax}{\mathit{ax}}
+\newcommand{\types}{\mathit{types}}
+\newcommand{\tps}{\mathit{tps}}
+\newcommand{\istrue}{\mathit{istrue}}
+
+
+\newcommand{\ie}{\emph{i.e.}}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="DG-Checker" default="build-library" basedir=".">
+
+  <target name="init">
+    <property environment="env" />
+    <property name="java.home" value="${env.JAVA_HOME}" />
+    <!-- Create the time stamp -->
+    <tstamp />
+  </target>
+
+  <target name="clean">
+    <delete dir="bin" />
+  </target>
+
+  <target name="compile-library">
+    <mkdir dir="${basedir}/bin" />
+
+    <path id="library.classpath">
+      <pathelement location="lib/collections-generic-4.01/collections-generic-4.01.jar" />
+      <pathelement location="lib/scala/scala-library.jar" />
+    </path>
+
+    <javac debug="true" destdir="${basedir}/bin" srcdir="${basedir}/src" classpathref="library.classpath" />
+  </target>
+
+  <target name="build-library" depends="compile-library">
+    <mkdir dir="build/lib" />
+    <jar destfile="build/lib/flomdoc.jar">
+      <fileset dir="${basedir}/bin" />
+      <manifest>
+        <attribute name="Built-By" value="${user.name}" />
+        <attribute name="Class-Path" value=". scala-library.jar collections-generic-4.01.jar" />
+      </manifest>
+    </jar>
+    <copy file="lib/scala/scala-library.jar" todir="build/lib" />
+    <copy file="lib/collections-generic-4.01/collections-generic-4.01.jar" todir="build/lib" />
+  </target>
+
+</project>

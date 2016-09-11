@@ -1,0 +1,55 @@
+<omdoc>
+<presentation for="newint" role="applied" class="multi">
+   <map begin="1" end="-1">
+      <element name="frac">
+         <attribute name='linethickness'>
+            <text>0</text>
+         </attribute>
+         <element name="mo">&int;</element>
+         <recurse/>
+      </element>
+   </map>
+</presentation>
+<presentation for="newint" role="binder" class="multi">
+   <element name="frac">
+      <attribute name='linethickness'>
+         <text>0</text>
+      </attribute>
+      <arg pos="0"/>
+      <arg pos="-2"/>
+   </element>
+   <arg pos="-1"/>
+   <map begin="-3" end="1">
+      <text>d</text>
+      <recurse/>
+   </map>
+</presentation>
+<presentation for="newint" role="applied" class="mono">
+   <element name="frac">
+      <attribute name='linethickness'>
+         <text>0</text>
+      </attribute>
+      <element name="mo">&int;</element>
+      <map begin="1" end="-1">
+         <separator>
+            <element name="mo">&times;</element>
+         </separator>
+         <recurse/>
+      </map>
+   </element>
+</presentation>
+<presentation for="newint" role="binder" class="mono">
+   <element name="frac">
+      <attribute name='linethickness'>
+         <text>0</text>
+      </attribute>
+      <arg pos="0"/>
+      <arg pos="-2"/>
+   </element>
+   <arg pos="-1"/>
+   <map begin="1" end="-3">
+      <text>d</text>
+      <recurse/>
+   </map>
+</presentation>
+</omdoc>

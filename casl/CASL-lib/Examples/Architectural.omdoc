@@ -1,0 +1,1327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="Architectural">
+  <theory xml:id="Num">
+    <presentation for="Num">
+      <use format="Hets">[Num,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Num4"/>
+    <presentation for="Num4">
+      <use format="Hets">[Num]</use>
+    </presentation>
+    <symbol name="succ3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Num" name="Num4"/>
+            <OMS cd="Num" name="Num4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ3">
+      <use format="Hets">[succ]</use>
+    </presentation>
+    <symbol name="z3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Num" name="Num4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="z3">
+      <use format="Hets">[z]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Num_Monoid">
+    <presentation for="Num_Monoid">
+      <use format="Hets">[Num_Monoid,,0]</use>
+    </presentation>
+    <imports from="Examples/Simple.omdoc#Monoid">
+      <morphism hiding="Elem __*__ n">
+        <requation>
+          <OMOBJ>
+            <OMS cd="Monoid" name="Elem"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Num_Monoid" name="Num3"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Monoid" name="__Ast__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Num_Monoid" name="__Plus__2"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="Monoid" name="n"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="Num_Monoid" name="z2"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <symbol role="sort" name="Num3"/>
+    <presentation for="Num3">
+      <use format="Hets">[Num]</use>
+    </presentation>
+    <symbol name="__Plus__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Num_Monoid" name="Num3"/>
+            <OMS cd="Num_Monoid" name="Num3"/>
+            <OMS cd="Num_Monoid" name="Num3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__2">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="z2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Num_Monoid" name="Num3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="z2">
+      <use format="Hets">[z]</use>
+    </presentation>
+  </theory>
+  <private for="Num_Monoid">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Monoid" Type:"GlobalDef" Origin:"DGTranslation"
+]]></data>
+  </private>
+  <theory xml:id="Add_Num_E1">
+    <presentation for="Add_Num_E1">
+      <use format="Hets">[Add_Num,E,1]</use>
+    </presentation>
+    <imports from="#Num"/>
+    <imports from="#Num_Monoid"/>
+    <symbol name="succ2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Num_Monoid" name="Num3"/>
+            <OMS cd="Num_Monoid" name="Num3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ2">
+      <use format="Hets">[succ]</use>
+    </presentation>
+  </theory>
+  <private for="Add_Num_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Num_Monoid" Type:"GlobalDef" Origin:"DGUnion"
+From:"Num" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="Add_Num">
+    <presentation for="Add_Num">
+      <use format="Hets">[Add_Num,,0]</use>
+    </presentation>
+    <imports from="#Add_Num_E1"/>
+    <axiom name="Ax11">
+      <CMP>
+  forall  x,y : Num   ·   x+succ(y) = succ(x+y)
+  forall  x,y : Num   ·   x+succ(y) = succ(x+y)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Num_Monoid" name="Num3"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Num_Monoid" name="Num3"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Num_Monoid" name="__Plus__2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Num_Monoid" name="Num3"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Add_Num_E1" name="succ2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Num_Monoid" name="Num3"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_E1" name="succ2"/>
+                <OMA>
+                  <OMS cd="Num_Monoid" name="__Plus__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Num_Monoid" name="Num3"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Num_Monoid" name="Num3"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax11">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <private for="Add_Num">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Add_Num_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Add_Num_Efficiently">
+    <presentation for="Add_Num_Efficiently">
+      <use format="Hets">[Add_Num_Efficiently,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Num1"/>
+    <presentation for="Num1">
+      <use format="Hets">[Num]</use>
+    </presentation>
+    <symbol name="__Plus__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="__PlusPlus__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="__0" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__0">
+      <use format="Hets">[__,0]</use>
+    </presentation>
+    <symbol name="__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__1">
+      <use format="Hets">[__,1]</use>
+    </presentation>
+    <symbol name="e" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="e">
+      <use format="Hets">[e]</use>
+    </presentation>
+    <symbol name="z" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="z">
+      <use format="Hets">[z]</use>
+    </presentation>
+    <axiom name="Ax10">
+      <CMP>
+  forall  x,y : Num
+  ·   z 0=z                            ·   z 1=e
+  ·   z 0=z                            ·   z 1=e
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__0"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__PlusPlus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax10">
+      <use format="Hets">Ax10</use>
+    </presentation>
+    <axiom name="Ax111">
+      <CMP>
+  forall  x,y : Num
+  ·   z 0=z                            ·   z 1=e
+  ·   z 0=z                            ·   z 1=e
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__PlusPlus__"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__1"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__PlusPlus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax111">
+      <use format="Hets">Ax11</use>
+    </presentation>
+    <axiom name="Ax2">
+      <CMP>
+  ·   z 0=z                            ·   z 1=e
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="Add_Num_Efficiently" name="__0"/>
+              <OMS cd="Add_Num_Efficiently" name="z"/>
+            </OMA>
+            <OMS cd="Add_Num_Efficiently" name="z"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax2">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax3">
+      <CMP>
+  ·   z 0=z                            ·   z 1=e
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="Add_Num_Efficiently" name="__1"/>
+              <OMS cd="Add_Num_Efficiently" name="z"/>
+            </OMA>
+            <OMS cd="Add_Num_Efficiently" name="e"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax3">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax4">
+      <CMP>
+  forall  x,y : Num
+  ·   z 0=z                            ·   z 1=e
+  ·   z 0=z                            ·   z 1=e
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__0"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax4">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax5">
+      <CMP>
+  forall  x,y : Num
+  ·   z 0=z                            ·   z 1=e
+  ·   z 0=z                            ·   z 1=e
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__PlusPlus__"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__1"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax5">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="Ax6">
+      <CMP>
+  forall  x,y : Num
+  ·   z 0=z                            ·   z 1=e
+  ·   z 0=z                            ·   z 1=e
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__1"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax6">
+      <use format="Hets">Ax6</use>
+    </presentation>
+    <axiom name="Ax7">
+      <CMP>
+  forall  x,y : Num
+  ·   z 0=z                            ·   z 1=e
+  ·   z 0=z                            ·   z 1=e
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__PlusPlus__"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__0"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__PlusPlus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax7">
+      <use format="Hets">Ax7</use>
+    </presentation>
+    <axiom name="Ax8">
+      <CMP>
+  forall  x,y : Num
+  ·   z 0=z                            ·   z 1=e
+  ·   z 0=z                            ·   z 1=e
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__1"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax8">
+      <use format="Hets">Ax8</use>
+    </presentation>
+    <axiom name="Ax9">
+      <CMP>
+  forall  x,y : Num
+  ·   z 0=z                            ·   z 1=e
+  ·   z 0=z                            ·   z 1=e
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 0=(x + y) 0              ·   x 0  ++  y 0=(x + y) 1
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 0 + y 1=(x + y) 1              ·   x 0  ++  y 1=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 0=(x + y) 1              ·   x 1  ++  y 0=(x  ++  y) 0
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+  ·   x 1 + y 1=(x  ++  y) 0           ·   x 1  ++  y 1=(x  ++  y) 1
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__PlusPlus__"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__0"/>
+                <OMA>
+                  <OMS cd="Add_Num_Efficiently" name="__PlusPlus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax9">
+      <use format="Hets">Ax9</use>
+    </presentation>
+    <axiom name="ga_generated_Num">
+      <CMP/>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="sort-gen-ax"/>
+            <OMBIND>
+              <OMS cd="casl" name="Num"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="constraint-indices"/>
+                    <OMSTR>0|</OMSTR>
+                  </OMATP>
+                  <OMS cd="Add_Num_Efficiently" name="__0"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="constraint-indices"/>
+                    <OMSTR>0|</OMSTR>
+                  </OMATP>
+                  <OMS cd="Add_Num_Efficiently" name="__1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="constraint-indices"/>
+                    <OMSTR/>
+                  </OMATP>
+                  <OMS cd="Add_Num_Efficiently" name="e"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="constraint-indices"/>
+                    <OMSTR/>
+                  </OMATP>
+                  <OMS cd="Add_Num_Efficiently" name="z"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMS cd="casl" name="Num"/>
+            </OMBIND>
+            <OMS cd="casl" name="false"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_generated_Num">
+      <use format="Hets">ga_generated_Num</use>
+    </presentation>
+  </theory>
+  <theory xml:id="AnonNode_">
+    <presentation for="AnonNode_">
+      <use format="Hets">[,,0]</use>
+    </presentation>
+    <imports from="#AnonNode_"/>
+  </theory>
+  <private for="AnonNode_">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Add_Num_Efficiently" Type:"GlobalDef" Origin:"DGSpecInst Add_Num_Efficiently"
+]]></data>
+  </private>
+  <theory xml:id="AnonNode_1">
+    <presentation for="AnonNode_1">
+      <use format="Hets">[,,0]</use>
+    </presentation>
+    <imports from="#AnonNode_"/>
+  </theory>
+  <private for="AnonNode_1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"AnonNode_" Type:"GlobalDef" Origin:"DGImports"
+]]></data>
+  </private>
+  <theory xml:id="AnonNode_2">
+    <presentation for="AnonNode_2">
+      <use format="Hets">[,,0]</use>
+    </presentation>
+    <imports from="#AnonNode_"/>
+  </theory>
+  <private for="AnonNode_2">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"AnonNode_1" Type:"GlobalDef" Origin:"DGImports"
+]]></data>
+  </private>
+  <theory xml:id="AnonNode_3">
+    <presentation for="AnonNode_3">
+      <use format="Hets">[,,0]</use>
+    </presentation>
+    <imports from="#AnonNode_"/>
+    <symbol name="succ" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+            <OMS cd="Add_Num_Efficiently" name="Num1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ">
+      <use format="Hets">[succ]</use>
+    </presentation>
+    <axiom name="Ax1">
+      <CMP>
+           M :  { op succ(n:Num):Num = n+e } given N
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="AnonNode_3" name="succ"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Add_Num_Efficiently" name="__Plus__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Add_Num_Efficiently" name="Num1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+                <OMS cd="Add_Num_Efficiently" name="e"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax1">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <private for="AnonNode_3">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"AnonNode_2" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="AnonNode_4">
+    <presentation for="AnonNode_4">
+      <use format="Hets">[,,0]</use>
+    </presentation>
+    <imports from="#AnonNode_"/>
+    <symbol name="__PlusPlus__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__PlusPlus__1">
+      <use format="Hets">[__,++,__]</use>
+    </presentation>
+    <symbol name="__01" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__01">
+      <use format="Hets">[__,0]</use>
+    </presentation>
+    <symbol name="__11" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__11">
+      <use format="Hets">[__,1]</use>
+    </presentation>
+    <symbol name="e1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="e1">
+      <use format="Hets">[e]</use>
+    </presentation>
+  </theory>
+  <private for="AnonNode_4">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"AnonNode_5" Type:"GlobalDef" Origin:"DGHiding"
+From:"AnonNode_3" Type:"GlobalDef" Origin:"DGImports"
+From:"AnonNode_2" Type:"GlobalDef" Origin:"DGImports"
+]]></data>
+  </private>
+  <theory xml:id="AnonNode_5">
+    <presentation for="AnonNode_5">
+      <use format="Hets">[,,0]</use>
+    </presentation>
+    <imports from="#AnonNode_"/>
+    <symbol role="sort" name="Num2"/>
+    <presentation for="Num2">
+      <use format="Hets">[Num]</use>
+    </presentation>
+    <symbol name="__Plus__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__1">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="succ1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ1">
+      <use format="Hets">[succ]</use>
+    </presentation>
+    <symbol name="z1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="AnonNode_5" name="Num2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="z1">
+      <use format="Hets">[z]</use>
+    </presentation>
+  </theory>
+</omdoc>

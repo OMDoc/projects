@@ -1,0 +1,256 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      8589,        207]*)
+(*NotebookOutlinePosition[      9248,        230]*)
+(*  CellTagsIndexPosition[      9204,        226]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Show Structure 0", "Section"],
+
+Cell[BoxData[
+    \(\(ProcessNotebook[
+          nb : Notebook[\ {cells__}, 
+              options___\ ]]\  := \ \[IndentingNewLine]Block[{res}, \
+\[IndentingNewLine]\t$indent\  = \ 0; \[IndentingNewLine]\t
+          res\  = \ Map[\ processCell, \ {cells}\ ]; \[IndentingNewLine]\t
+          Print["\<eof\>"]; \[IndentingNewLine]\t
+          res\[IndentingNewLine]];\)\)], "Input"],
+
+Cell[BoxData[{
+    \(Clear[processCell]\[IndentingNewLine]\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[CellGroupData[\ {ch_, 
+                cc___}, ___]\ ]]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t
+          Print["\<---->  \>", 
+            CellType[
+              ch]]; \[IndentingNewLine]\t$indent\  += \ $deltaindent; \
+\[IndentingNewLine]\t
+          res\  = \ 
+            Map[processCell, \ {cc}\ ]; \[IndentingNewLine]\t$indent\  -= \ \
+$deltaindent; \[IndentingNewLine]\tPrint["\<<----\>"]; \[IndentingNewLine]\t
+          res\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ TextData[\ 
+              td_List\ ], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t
+          Print[makeSpace[], "\<*TextData List\>"\ ]; \[IndentingNewLine]\t
+          Map[\ processCell, \ 
+            td\ ];\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ TextData[\ 
+              sb_StyleBox\ ], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ \
+{res}, \[IndentingNewLine]\t\(Print[
+              makeSpace[], "\<*StyleBox\>"\ ];\)\[IndentingNewLine]];\)\
+\[IndentingNewLine]\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ BoxData[\ 
+              bd_], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t\(Print[\ 
+              makeSpace[], "\<*BoxData\>"\ ];\)\[IndentingNewLine]];\)\), "\
+\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ str_String, \ 
+            tp_, \ ___\ \ ]\ ]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t\(Print[makeSpace[], "\<*String  \>", \ 
+              tp\ ];\)\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ GraphicsData[\ 
+              bd__], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t\(Print[\ 
+              makeSpace[], "\<*GraphicsData\>"\ \
+];\)\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ \ \ str_String\ \ ]\  := \ \[IndentingNewLine]Block[\ \
+{res}, \[IndentingNewLine]\t\(Print[
+              makeSpace[], "\<*String  \>"\ ];\)\[IndentingNewLine]];\)\
+\[IndentingNewLine]\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ xxx_, \ ___\ \ ]\ ]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t\(Print[makeSpace[], "\<#### missed  \>", \ 
+              xxx\ ];\)\[IndentingNewLine]];\)\)}], "Input"],
+
+Cell[BoxData[
+    \(getGroupType[{ch_, cc___}]\  := \ CellType[c1]\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Show Structure 1", "Section"],
+
+Cell[BoxData[
+    \(\(ProcessNotebook[
+          nb : Notebook[\ {cells__}, 
+              options___\ ]]\  := \ \[IndentingNewLine]Block[{res}, \
+\[IndentingNewLine]\t$indent\  = \ 0; \[IndentingNewLine]\t
+          res\  = \ Map[\ processCell, \ {cells}\ ]; \[IndentingNewLine]\t
+          Print["\<eof\>"]; \[IndentingNewLine]\t
+          res\[IndentingNewLine]];\)\)], "Input"],
+
+Cell[BoxData[{
+    \(Clear[processCell]\[IndentingNewLine]\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[CellGroupData[\ {ch_, 
+                cc___}, ___]\ ]]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t
+          Print["\<---->  \>", 
+            CellType[
+              ch]]; \[IndentingNewLine]\t$indent\  += \ $deltaindent; \
+\[IndentingNewLine]\t
+          res\  = \ 
+            Map[\ processCell, \ {cc}\ ]; \[IndentingNewLine]\t$indent\  -= \ \
+$deltaindent; \[IndentingNewLine]\t
+          Print["\<<----\>"]; \[IndentingNewLine]\t\ \
+XMLElement["\<omgroup\>", {"\<id\>" -> "\<XXX\>"}, 
+            res\ ]\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ TextData[\ 
+              td_List\ ], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t
+          Print[makeSpace[], "\<*TextData List\>"\ ]; \[IndentingNewLine]\t
+          XMLElement["\<omtext\>", {}, 
+            Map[\ processCell, \ 
+              td\ ]\ ]\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ TextData[\ 
+              sb_StyleBox\ ], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ \
+{res}, \[IndentingNewLine]\t\(Print[
+              makeSpace[], "\<*StyleBox\>"\ ];\)\[IndentingNewLine]];\)\
+\[IndentingNewLine]\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ BoxData[\ 
+              bd_], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t
+          Print[\ makeSpace[], "\<*BoxData\>"\ ]; \[IndentingNewLine]\t
+          btoSML[bd]\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ str_String, \ 
+            tp_, \ ___\ \ ]\ ]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t
+          Print[makeSpace[], "\<*String  \>", \ 
+            tp\ ]; \[IndentingNewLine]\t (*\ 
+            XMLElement["\<String\>", {}, {str}\ ]\ *) \ 
+          str\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ \ \ str_String\ \ ]\  := \ \[IndentingNewLine]Block[\ \
+{res}, \[IndentingNewLine]\t
+          Print[makeSpace[], "\<*String  \>"\ ]; \[IndentingNewLine]\t (*\ 
+            XMLElement["\<String-naked\>", {}, {str}\ ]\ *) \ \ str\
+\[IndentingNewLine]];\)\[IndentingNewLine]\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ GraphicsData[\ 
+              bd__], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t\(Print[\ 
+              makeSpace[], "\<*GraphicsData\>"\ ];\)\[IndentingNewLine]];\)\
+\[IndentingNewLine]\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          Cell[\ xxx_, \ ___\ \ ]\ ]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t\(Print[makeSpace[], "\<#### missed  \>", \ 
+              xxx\ ];\)\[IndentingNewLine]];\)\)}], "Input"],
+
+Cell[BoxData[{
+    \(ClearAll[btoSMLraw, btoSML]\), "\n", 
+    \(btoSMLraw[\ FormBox[bb_, TraditionalForm]\ ]\  := \ 
+      btoSML[RowBox[{bb}]]; \), "\n", 
+    \(\(btoSMLraw[
+          ee_]\  := \ \[IndentingNewLine]XML`MathML`BoxesToSymbolicMathML[\ 
+          Unevaluated[
+            ee], "\<Annotations\>" \[Rule] {}, "\<Formats\>" \[Rule] \
+{"\<ContentMathML\>"}\ ];\)\), "\n", 
+    \(\(btoSML[ee_]\  := \ btoSMLraw[ee]\ \  //. \ omrules;\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+AutoGeneratedPackage->None,
+WindowSize->{520, 600},
+WindowMargins->{{Automatic, 167}, {17, Automatic}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 35, 0, 58, "Section"],
+Cell[1814, 55, 381, 7, 177, "Input"],
+Cell[2198, 64, 2491, 51, 982, "Input"],
+Cell[4692, 117, 79, 1, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[4808, 123, 35, 0, 38, "Section"],
+Cell[4846, 125, 381, 7, 177, "Input"],
+Cell[5230, 134, 2852, 58, 1074, "Input"],
+Cell[8085, 194, 488, 10, 154, "Input",
+  InitializationCell->True]
+}, Closed]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

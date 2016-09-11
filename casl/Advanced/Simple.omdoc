@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN"
+                "../../dtd/omdoc.dtd" []>
+
+<omdoc xmlns:dc="http://purl.org/dc/elements/1.1/" 
+       xmlns="http://www.mathweb.org/omdoc"
+       xml:id="casl.omdoc">
+
+  <metadata>
+    <dc:creator role="aut">Immanuel Normann</dc:creator>
+    <dc:date action="created">2005-05-16T00:00:00</dc:date>
+    <dc:title>Simple.casl</dc:title>
+    <dc:rights>GPL</dc:rights>
+  </metadata>
+  
+  
+  <omtext xml:id="intro">
+    <CMP>
+      This document is a handwritten partial conversion of
+      <link href="http://www.cofi.info/Documents/CASL/Sample/index.html">simple.casl</link>
+      to OMDoc. The missing part is indicated by xml comments.
+    </CMP>
+  </omtext>
+
+
+  <theory xml:id="Total_Order">
+
+    <imports from="omdoc/examples/logics/casl.omdoc#casl"/>
+
+    <symbol name="Elem" kind="sort"/>
+    <symbol name="less-equal" kind="object">
+      <type system="casl">
+	<OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	  <OMA>
+	    <OMS cd="casl" name="predication"/>
+	    <OMS cd="Total_Order" name="Elem"/>
+	    <OMS cd="Total_Order" name="Elem"/>
+	  </OMA>
+	</OMOBJ>
+      </type>
+    </symbol>
+
+    <axiom xml:id="reflexive" name="reflexive">
+      <FMP>
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMBIND>
+	  <OMS cd="casl" name="universal"/>
+	  <OMBVAR>
+	    <OMATTR>
+	      <OMATP>
+		<OMS cd="casl" name="type"/>
+		<OMS cd="Total_Order" name="Elem"/>
+	      </OMATP>
+	      <OMV name="x"/>
+	    </OMATTR>
+	  </OMBVAR>
+	  <OMA>
+	    <OMS cd="Total_Order" name="less-equal"/>
+	    <OMV name="x"/>
+	    <OMV name="x"/>
+	  </OMA>
+	</OMBIND>
+      </OMOBJ>
+      </FMP>
+    </axiom>
+
+    <axiom xml:id="anti-symmetric" name="anti-symmetric">
+      <FMP>
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMBIND>
+	  <OMS cd="casl" name="universal"/>
+	  <OMBVAR>
+	    <OMATTR>
+	      <OMATP>
+		<OMS cd="casl" name="type"/>
+		<OMS cd="Total_Order" name="Elem"/>
+	      </OMATP>
+	      <OMV name="x"/>
+	    </OMATTR>
+	    <OMATTR>
+	      <OMATP>
+		<OMS cd="casl" name="type"/>
+		<OMS cd="Total_Order" name="Elem"/>
+	      </OMATP>
+	      <OMV name="y"/>
+	    </OMATTR>
+	  </OMBVAR>
+	  <OMA>
+	    <OMS cd="casl" name="implication"/>
+	    <OMA>
+	      <OMS cd="casl" name="conjunction"/>
+	      <OMA>
+		<OMS cd="Total_Order" name="less-equal"/>
+		<OMV name="x"/>
+		<OMV name="y"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="Total_Order" name="less-equal"/>
+		<OMV name="y"/>
+		<OMV name="x"/>
+	      </OMA>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="casl" name="existential-equation"/> <!-- or strong-equation ??? -->
+	      <OMV name="x"/>
+	      <OMV name="y"/>
+	    </OMA>
+	  </OMA>
+	</OMBIND>
+      </OMOBJ>
+      </FMP>
+    </axiom>
+    
+    <axiom xml:id="transitive" name="transitive">
+      <FMP>
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMBIND>
+	  <OMS cd="casl" name="universal"/>
+	  <OMBVAR>
+	    <OMATTR>
+	      <OMATP>
+		<OMS cd="casl" name="type"/>
+		<OMS cd="Total_Order" name="Elem"/>
+	      </OMATP>
+	      <OMV name="x"/>
+	    </OMATTR>
+	    <OMATTR>
+	      <OMATP>
+		<OMS cd="casl" name="type"/>
+		<OMS cd="Total_Order" name="Elem"/>
+	      </OMATP>
+	      <OMV name="y"/>
+	    </OMATTR>
+	    <OMATTR>
+	      <OMATP>
+		<OMS cd="casl" name="type"/>
+		<OMS cd="Total_Order" name="Elem"/>
+	      </OMATP>
+	      <OMV name="z"/>
+	    </OMATTR>
+	  </OMBVAR>
+	  <OMA>
+	    <OMS cd="casl" name="implication"/>
+	    <OMA>
+	      <OMS cd="casl" name="conjunction"/>
+	      <OMA>
+		<OMS cd="Total_Order" name="less-equal"/>
+		<OMV name="x"/>
+		<OMV name="y"/>
+	      </OMA>
+	      <OMA>
+		<OMS cd="Total_Order" name="less-equal"/>
+		<OMV name="y"/>
+		<OMV name="z"/>
+	      </OMA>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="casl" name="less-equal"/>
+	      <OMV name="x"/>
+	      <OMV name="z"/>
+	    </OMA>
+	  </OMA>
+	</OMBIND>
+      </OMOBJ>
+      </FMP>
+    </axiom>
+    
+    <axiom xml:id="total" name="total">
+      <FMP>
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMBIND>
+	  <OMS cd="casl" name="universal"/>
+	  <OMBVAR>
+	    <OMATTR>
+	      <OMATP>
+		<OMS cd="casl" name="type"/>
+		<OMS cd="Total_Order" name="Elem"/>
+	      </OMATP>
+	      <OMV name="x"/>
+	    </OMATTR>
+	    <OMATTR>
+	      <OMATP>
+		<OMS cd="casl" name="type"/>
+		<OMS cd="Total_Order" name="Elem"/>
+	      </OMATP>
+	      <OMV name="y"/>
+	    </OMATTR>
+	  </OMBVAR>
+	  <OMA>
+	    <OMS cd="casl" name="disjunction"/>
+	    <OMA>
+	      <OMS cd="Total_Order" name="less-equal"/>
+	      <OMV name="x"/>
+	      <OMV name="y"/>
+	    </OMA>
+	    <OMA>
+	      <OMS cd="Total_Order" name="less-equal"/>
+	      <OMV name="y"/>
+	      <OMV name="x"/>
+	    </OMA>
+	  </OMA>
+	</OMBIND>
+      </OMOBJ>
+      </FMP>
+    </axiom>
+    
+  </theory>
+
+  <!-- todo:
+
+spec Monoid = 
+  sort Elem 
+  ops  n : Elem; 
+       __*__ : Elem × Elem  -> Elem, unit n 
+       %% Alternatively, just specify the corresponding axioms:
+       forall  x ,y,z : Elem 
+       .  n*x=x             %(1)%
+       .  x*n=x             %(2)%
+       .  x*y*z=x*(y*z)   %(3)%
+-->
+
+  <theory xml:id="Nat-base">
+    <adt xml:id="Nat.adt">
+      <sortdef name="Zero" type="free"> 
+	<constructor name="zero"/>
+      </sortdef>
+      <sortdef name="Pos" type="free">
+	<constructor name="succ">
+	  <argument>
+	    <type system="casl">
+	      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+		<OMS cd="Nat-base" name="Nat"/>
+	      </OMOBJ>
+	    </type>
+	  </argument>
+	</constructor>
+      </sortdef>
+      <sortdef name="Nat" type="free">
+	<insort for="Zero"/>
+	<insort for="Pos"/>
+      </sortdef>
+    </adt>
+  </theory>
+
+
+
+  <theory xml:id="Nat-pre">
+    <imports from="#Nat-base"/>
+    <symbol name="pre" kind="object"/>
+    
+    <axiom xml:id="pre-axiom" name="pre-axiom">
+      <FMP>
+	<OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	  <OMBIND>
+	    <OMS cd="casl" name="universal"/>
+	    <OMBVAR>
+	      <OMATTR>
+		<OMATP>
+		  <OMS cd="casl" name="type"/>
+		  <OMS cd="Nat-base" name="Nat"/>
+		</OMATP>
+		<OMV name="x"/>
+	      </OMATTR>
+	    </OMBVAR>
+	    <OMA>
+	      <OMS cd="Nat-pre" name="pre"/>
+	      <OMA>
+		<OMS cd="Nat-base" name="succ"/>
+		<OMV name="x"/>
+	      </OMA>
+	    </OMA>
+	  </OMBIND>
+	</OMOBJ>
+      </FMP>
+    </axiom>
+  </theory>
+
+<!-- todo:
+then 
+ local pred odd__ : Nat 
+       forall  x : Nat 
+       . not odd zero 
+       . odd(succ x) <=> not odd x 
+ within 
+       sort Odd = {n:Nat . odd n} 
+ then
+   sort Nat<Int
+   op zero:Int
+   . def zero 
+-->
+
+</omdoc>

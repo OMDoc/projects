@@ -1,0 +1,74 @@
+\documentclass[pdftex,bibtotocnumbered,idxtotoc,twoside]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsfonts}
+%\usepackage{lmodern}
+\usepackage{graphicx,wrapfig}
+\usepackage{url,acronyms,myref}
+\usepackage{listings}
+\usepackage{lstomdoc}
+\usepackage{xmlindex}
+\usepackage{tikz}
+\usepackage[show]{ed}
+\usepackage[margin={2.5cm,2.5cm,1.5cm,1.5cm}]{geometry}
+\usepackage[fancyhdr,today,draft]{svninfo}
+%\usepackage{hyperref}% Load this last!
+\pagestyle{fancyplain}\fancyhead[RE,LO]{\leftmark}\fancyhead[LE,RO]{\thepage}
+\def\javascript{{\sc{JavaScript}}}
+\def\llquote#1{\ensuremath{\langle\kern-.25em\langle\hbox{\sl{#1}}\rangle\kern-.25em\rangle}}
+\def\mod{{\rm{mod}}}
+\def\pres#1#2{\overline{#1}^{#2}}  
+\def\lden{[\kern-.15em[}\def\rden{]\kern-.15em]}
+\def\defemph#1{{\bf{#1}}}
+\def\imarg#1#2{\fbox{\ensuremath{\left.#1\right|_{#2}}}}
+\def\fimarg#1#2#3{\fbox{\ensuremath{\left.#1\right|_{#2}^{#3}}}}
+\def\recu#1{#1}%should be changed to notation for <recurse precedence="#1"/>, maybe a circle around p
+\lstset{float=htb,columns=flexible,frame=lines,language=[omdoc]XML,basicstyle=\scriptsize,
+        indexstyle=\indextt,indexstyle=[1]\indexelement,indexstyle=[2]\indexattribute,
+        numbers=left,stepnumber=5,numberstyle=\tiny,showstringspaces=false}
+
+\newcommand{\PC}{\mathcal{PC}}
+
+\def\name#1{{{\small{\sc{#1}}}}}
+
+\title{Presenting Mathematical Content With Flexible Elisions}
+\author{Michael Kohlhase, Christoph Lange, Florian Rabe\\ 
+  Computer Science, Jacobs University Bremen\\
+  D-28759 Bremen, Germany \\ 
+  \url{http://kwarc.info}}
+ %\url{<m|c|f|n|ch|a|i>.<lastname>}@jacobs-university.de}
+%m.kohlhase/c.mueller/f.rabe/n.mueller/ch.lange/a.kohlhase/i.normann
+
+\begin{document}
+\svnInfo $Id: presel.tex 7030 2007-10-17 12:47:55Z frabe $
+\svnKeyword $HeadURL:https://svn.omdoc.org/repos/omdoc/branches/omdoc-1.2/projects/omdoc-2.0/OpenMath-paper/presel.tex
+$
+\maketitle
+\begin{abstract}
+  Mathematicians frequently elide brackets or symbols in formulae to concentrate on
+  essential facts and to avoid distracting experienced mathematicians with notation that
+  can easily be deduced from context. In this paper we propose a extension of the notation
+  specification infrastructure in {\omdoc} by functionality for flexible elisions.
+\end{abstract}
+\tableofcontents
+
+\include{intro}
+\include{flexary}
+\include{elision}
+\include{proposal}
+\include{compatibility}
+\include{outlook}
+\bibliography{kwarc} 
+\bibliographystyle{alpha}
+\include{appendix}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% fill-column: 90
+%%% sentence-end-double-space: nil
+%%% End: 
+
+% LocalWords:  kwarc

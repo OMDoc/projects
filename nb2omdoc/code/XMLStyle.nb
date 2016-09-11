@@ -1,0 +1,2024 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     42105,       1514]*)
+(*NotebookOutlinePosition[     42735,       1536]*)
+(*  CellTagsIndexPosition[     42691,       1532]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Style Definitions", "Subtitle"],
+
+Cell["\<\
+Modify the definitions below to change the default appearance of \
+all cells in a given style.  Make modifications to any definition using \
+commands in the Format menu.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Style Environment Names", "Section"],
+
+Cell[StyleData[All, "Working"],
+  PageWidth->WindowWidth,
+  CellLabelMargins->{{12, Inherited}, {Inherited, Inherited}},
+  ScriptMinSize->9],
+
+Cell[StyleData[All, "Presentation"],
+  PageWidth->WindowWidth,
+  CellLabelMargins->{{24, Inherited}, {Inherited, Inherited}},
+  ScriptMinSize->12],
+
+Cell[StyleData[All, "Condensed"],
+  PageWidth->WindowWidth,
+  CellLabelMargins->{{8, Inherited}, {Inherited, Inherited}},
+  ScriptMinSize->8],
+
+Cell[StyleData[All, "Printout"],
+  PageWidth->PaperWidth,
+  CellLabelMargins->{{2, Inherited}, {Inherited, Inherited}},
+  ScriptMinSize->5,
+  PrivateFontOptions->{"FontType"->"Outline"}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Notebook Options", "Section"],
+
+Cell["\<\
+The options defined for the style below will be used at the \
+Notebook level.\
+\>", "Text"],
+
+Cell[StyleData["Notebook"],
+  PageHeaders->{{Cell[ 
+          TextData[ {
+            CounterBox[ "Page"]}], "PageNumber"], None, Cell[ 
+          TextData[ {
+            ValueBox[ "FileName"]}], "Header"]}, {Cell[ 
+          TextData[ {
+            ValueBox[ "FileName"]}], "Header"], None, Cell[ 
+          TextData[ {
+            CounterBox[ "Page"]}], "PageNumber"]}},
+  CellFrameLabelMargins->6,
+  StyleMenuListing->None]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Styles for Headings", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Title"],
+  CellMargins->{{12, Inherited}, {20, 40}},
+  CellGroupingRules->{"TitleGrouping", 0},
+  PageBreakBelow->False,
+  DefaultNewInlineCellStyle->"None",
+  InputAutoReplacements->{"TeX"->StyleBox[ 
+          RowBox[ {"T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "LaTeX"->StyleBox[ 
+          RowBox[ {"L", 
+            StyleBox[ 
+              AdjustmentBox[ 
+              "A", BoxMargins -> {{-0.36, -0.1}, {0, -0}}, 
+                BoxBaselineShift -> -0.2], FontSize -> Smaller], "T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "mma"->"Mathematica", "Mma"->"Mathematica", 
+      "MMA"->"Mathematica", "webMathematica"->FormBox[ 
+          RowBox[ {"web", 
+            AdjustmentBox[ 
+              StyleBox[ "Mathematica", FontSlant -> "Italic"], 
+              BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], Inherited},
+  LineSpacing->{1, 11},
+  LanguageCategory->"NaturalLanguage",
+  CounterIncrements->"Title",
+  CounterAssignments->{{"Section", 0}, {"Equation", 0}, {"Figure", 0}, {
+      "Subtitle", 0}, {"Subsubtitle", 0}},
+  FontFamily->"Helvetica",
+  FontSize->36,
+  FontWeight->"Bold"],
+
+Cell[StyleData["Title", "Presentation"],
+  CellMargins->{{24, 10}, {20, 40}},
+  LineSpacing->{1, 0},
+  FontSize->44],
+
+Cell[StyleData["Title", "Condensed"],
+  CellMargins->{{8, 10}, {4, 8}},
+  FontSize->20],
+
+Cell[StyleData["Title", "Printout"],
+  CellMargins->{{2, 10}, {12, 30}},
+  FontSize->24]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Subtitle"],
+  CellMargins->{{12, Inherited}, {20, 15}},
+  CellGroupingRules->{"TitleGrouping", 10},
+  PageBreakBelow->False,
+  DefaultNewInlineCellStyle->"None",
+  InputAutoReplacements->{"TeX"->StyleBox[ 
+          RowBox[ {"T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "LaTeX"->StyleBox[ 
+          RowBox[ {"L", 
+            StyleBox[ 
+              AdjustmentBox[ 
+              "A", BoxMargins -> {{-0.36, -0.1}, {0, -0}}, 
+                BoxBaselineShift -> -0.2], FontSize -> Smaller], "T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "mma"->"Mathematica", "Mma"->"Mathematica", 
+      "MMA"->"Mathematica", "webMathematica"->FormBox[ 
+          RowBox[ {"web", 
+            AdjustmentBox[ 
+              StyleBox[ "Mathematica", FontSlant -> "Italic"], 
+              BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], Inherited},
+  LanguageCategory->"NaturalLanguage",
+  CounterIncrements->"Subtitle",
+  CounterAssignments->{{"Section", 0}, {"Equation", 0}, {"Figure", 0}, {
+      "Subsubtitle", 0}},
+  FontFamily->"Helvetica",
+  FontSize->24],
+
+Cell[StyleData["Subtitle", "Presentation"],
+  CellMargins->{{24, 10}, {20, 20}},
+  LineSpacing->{1, 0},
+  FontSize->36],
+
+Cell[StyleData["Subtitle", "Condensed"],
+  CellMargins->{{8, 10}, {4, 4}},
+  FontSize->14],
+
+Cell[StyleData["Subtitle", "Printout"],
+  CellMargins->{{2, 10}, {12, 8}},
+  FontSize->18]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Subsubtitle"],
+  CellMargins->{{12, Inherited}, {20, 15}},
+  CellGroupingRules->{"TitleGrouping", 20},
+  PageBreakBelow->False,
+  DefaultNewInlineCellStyle->"None",
+  InputAutoReplacements->{"TeX"->StyleBox[ 
+          RowBox[ {"T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "LaTeX"->StyleBox[ 
+          RowBox[ {"L", 
+            StyleBox[ 
+              AdjustmentBox[ 
+              "A", BoxMargins -> {{-0.36, -0.1}, {0, -0}}, 
+                BoxBaselineShift -> -0.2], FontSize -> Smaller], "T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "mma"->"Mathematica", "Mma"->"Mathematica", 
+      "MMA"->"Mathematica", "webMathematica"->FormBox[ 
+          RowBox[ {"web", 
+            AdjustmentBox[ 
+              StyleBox[ "Mathematica", FontSlant -> "Italic"], 
+              BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], Inherited},
+  LanguageCategory->"NaturalLanguage",
+  CounterIncrements->"Subsubtitle",
+  CounterAssignments->{{"Section", 0}, {"Equation", 0}, {"Figure", 0}},
+  FontFamily->"Helvetica",
+  FontSize->14,
+  FontSlant->"Italic"],
+
+Cell[StyleData["Subsubtitle", "Presentation"],
+  CellMargins->{{24, 10}, {20, 20}},
+  LineSpacing->{1, 0},
+  FontSize->24],
+
+Cell[StyleData["Subsubtitle", "Condensed"],
+  CellMargins->{{8, 10}, {8, 8}},
+  FontSize->12],
+
+Cell[StyleData["Subsubtitle", "Printout"],
+  CellMargins->{{2, 10}, {12, 8}},
+  FontSize->14]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Section"],
+  CellDingbat->"\[FilledSquare]",
+  CellMargins->{{25, Inherited}, {8, 24}},
+  CellGroupingRules->{"SectionGrouping", 30},
+  PageBreakBelow->False,
+  DefaultNewInlineCellStyle->"None",
+  InputAutoReplacements->{"TeX"->StyleBox[ 
+          RowBox[ {"T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "LaTeX"->StyleBox[ 
+          RowBox[ {"L", 
+            StyleBox[ 
+              AdjustmentBox[ 
+              "A", BoxMargins -> {{-0.36, -0.1}, {0, -0}}, 
+                BoxBaselineShift -> -0.2], FontSize -> Smaller], "T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "mma"->"Mathematica", "Mma"->"Mathematica", 
+      "MMA"->"Mathematica", "webMathematica"->FormBox[ 
+          RowBox[ {"web", 
+            AdjustmentBox[ 
+              StyleBox[ "Mathematica", FontSlant -> "Italic"], 
+              BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], Inherited},
+  LineSpacing->{1, 7},
+  LanguageCategory->"NaturalLanguage",
+  CounterIncrements->"Section",
+  CounterAssignments->{{"Subsection", 0}, {"Subsubsection", 0}},
+  FontFamily->"Helvetica",
+  FontSize->16,
+  FontWeight->"Bold"],
+
+Cell[StyleData["Section", "Presentation"],
+  CellMargins->{{40, 10}, {11, 32}},
+  LineSpacing->{1, 0},
+  FontSize->24],
+
+Cell[StyleData["Section", "Condensed"],
+  CellMargins->{{18, Inherited}, {6, 12}},
+  FontSize->12],
+
+Cell[StyleData["Section", "Printout"],
+  CellMargins->{{13, 0}, {7, 22}},
+  FontSize->14]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Subsection"],
+  CellDingbat->"\[FilledSmallSquare]",
+  CellMargins->{{22, Inherited}, {8, 20}},
+  CellGroupingRules->{"SectionGrouping", 40},
+  PageBreakBelow->False,
+  DefaultNewInlineCellStyle->"None",
+  InputAutoReplacements->{"TeX"->StyleBox[ 
+          RowBox[ {"T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "LaTeX"->StyleBox[ 
+          RowBox[ {"L", 
+            StyleBox[ 
+              AdjustmentBox[ 
+              "A", BoxMargins -> {{-0.36, -0.1}, {0, -0}}, 
+                BoxBaselineShift -> -0.2], FontSize -> Smaller], "T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "mma"->"Mathematica", "Mma"->"Mathematica", 
+      "MMA"->"Mathematica", "webMathematica"->FormBox[ 
+          RowBox[ {"web", 
+            AdjustmentBox[ 
+              StyleBox[ "Mathematica", FontSlant -> "Italic"], 
+              BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], Inherited},
+  LanguageCategory->"NaturalLanguage",
+  CounterIncrements->"Subsection",
+  CounterAssignments->{{"Subsubsection", 0}},
+  FontFamily->"Times",
+  FontSize->14,
+  FontWeight->"Bold"],
+
+Cell[StyleData["Subsection", "Presentation"],
+  CellMargins->{{36, 10}, {11, 32}},
+  LineSpacing->{1, 0},
+  FontSize->22],
+
+Cell[StyleData["Subsection", "Condensed"],
+  CellMargins->{{16, Inherited}, {6, 12}},
+  FontSize->12],
+
+Cell[StyleData["Subsection", "Printout"],
+  CellMargins->{{9, 0}, {7, 22}},
+  FontSize->12]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Subsubsection"],
+  CellDingbat->"\[FilledSmallSquare]",
+  CellMargins->{{22, Inherited}, {8, 18}},
+  CellGroupingRules->{"SectionGrouping", 50},
+  PageBreakBelow->False,
+  DefaultNewInlineCellStyle->"None",
+  InputAutoReplacements->{"TeX"->StyleBox[ 
+          RowBox[ {"T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "LaTeX"->StyleBox[ 
+          RowBox[ {"L", 
+            StyleBox[ 
+              AdjustmentBox[ 
+              "A", BoxMargins -> {{-0.36, -0.1}, {0, -0}}, 
+                BoxBaselineShift -> -0.2], FontSize -> Smaller], "T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "mma"->"Mathematica", "Mma"->"Mathematica", 
+      "MMA"->"Mathematica", "webMathematica"->FormBox[ 
+          RowBox[ {"web", 
+            AdjustmentBox[ 
+              StyleBox[ "Mathematica", FontSlant -> "Italic"], 
+              BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], Inherited},
+  LanguageCategory->"NaturalLanguage",
+  CounterIncrements->"Subsubsection",
+  FontFamily->"Times",
+  FontWeight->"Bold"],
+
+Cell[StyleData["Subsubsection", "Presentation"],
+  CellMargins->{{34, 10}, {11, 26}},
+  LineSpacing->{1, 0},
+  FontSize->18],
+
+Cell[StyleData["Subsubsection", "Condensed"],
+  CellMargins->{{17, Inherited}, {6, 12}},
+  FontSize->10],
+
+Cell[StyleData["Subsubsection", "Printout"],
+  CellMargins->{{9, 0}, {7, 14}},
+  FontSize->11]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Styles for Body Text", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Text"],
+  CellMargins->{{12, 10}, {7, 7}},
+  InputAutoReplacements->{"TeX"->StyleBox[ 
+          RowBox[ {"T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "LaTeX"->StyleBox[ 
+          RowBox[ {"L", 
+            StyleBox[ 
+              AdjustmentBox[ 
+              "A", BoxMargins -> {{-0.36, -0.1}, {0, -0}}, 
+                BoxBaselineShift -> -0.2], FontSize -> Smaller], "T", 
+            AdjustmentBox[ 
+            "E", BoxMargins -> {{-0.075, -0.085}, {0, 0}}, BoxBaselineShift -> 
+              0.5], "X"}]], "mma"->"Mathematica", "Mma"->"Mathematica", 
+      "MMA"->"Mathematica", "webMathematica"->FormBox[ 
+          RowBox[ {"web", 
+            AdjustmentBox[ 
+              StyleBox[ "Mathematica", FontSlant -> "Italic"], 
+              BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], Inherited},
+  Hyphenation->True,
+  LineSpacing->{1, 3},
+  CounterIncrements->"Text"],
+
+Cell[StyleData["Text", "Presentation"],
+  CellMargins->{{24, 10}, {10, 10}},
+  LineSpacing->{1, 5},
+  FontSize->16],
+
+Cell[StyleData["Text", "Condensed"],
+  CellMargins->{{8, 10}, {6, 6}},
+  LineSpacing->{1, 1},
+  FontSize->11],
+
+Cell[StyleData["Text", "Printout"],
+  CellMargins->{{2, 2}, {6, 6}},
+  TextJustification->0.5,
+  FontSize->10]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["SmallText"],
+  CellMargins->{{12, 10}, {6, 6}},
+  DefaultNewInlineCellStyle->"None",
+  Hyphenation->True,
+  LineSpacing->{1, 3},
+  LanguageCategory->"NaturalLanguage",
+  CounterIncrements->"SmallText",
+  FontFamily->"Helvetica",
+  FontSize->9],
+
+Cell[StyleData["SmallText", "Presentation"],
+  CellMargins->{{24, 10}, {8, 8}},
+  LineSpacing->{1, 5},
+  FontSize->12],
+
+Cell[StyleData["SmallText", "Condensed"],
+  CellMargins->{{8, 10}, {5, 5}},
+  LineSpacing->{1, 2},
+  FontSize->9],
+
+Cell[StyleData["SmallText", "Printout"],
+  CellMargins->{{2, 2}, {5, 5}},
+  TextJustification->0.5,
+  FontSize->7]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Styles for Input/Output", "Section"],
+
+Cell["\<\
+The cells in this section define styles used for input and output \
+to the kernel.  Be careful when modifying, renaming, or removing these \
+styles, because the front end associates special meanings with these style \
+names. Some attributes for these styles are actually set in FormatType Styles \
+(in the last section of this stylesheet). \
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Input"],
+  CellMargins->{{45, 10}, {5, 7}},
+  Evaluatable->True,
+  CellGroupingRules->"InputGrouping",
+  CellHorizontalScrolling->True,
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  DefaultFormatType->DefaultInputFormatType,
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  AutoItalicWords->{},
+  LanguageCategory->"Mathematica",
+  FormatType->InputForm,
+  ShowStringCharacters->True,
+  NumberMarks->True,
+  LinebreakAdjustments->{0.85, 2, 10, 0, 1},
+  CounterIncrements->"Input",
+  FontWeight->"Bold"],
+
+Cell[StyleData["Input", "Presentation"],
+  CellMargins->{{72, Inherited}, {8, 10}},
+  LineSpacing->{1, 0},
+  FontSize->16],
+
+Cell[StyleData["Input", "Condensed"],
+  CellMargins->{{40, 10}, {2, 3}},
+  FontSize->11],
+
+Cell[StyleData["Input", "Printout"],
+  CellMargins->{{39, 0}, {4, 6}},
+  LinebreakAdjustments->{0.85, 2, 10, 1, 1},
+  FontSize->9]
+}, Closed]],
+
+Cell[StyleData["InputOnly"],
+  Evaluatable->True,
+  CellGroupingRules->"InputGrouping",
+  CellHorizontalScrolling->True,
+  DefaultFormatType->DefaultInputFormatType,
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  AutoItalicWords->{},
+  LanguageCategory->"Mathematica",
+  FormatType->InputForm,
+  ShowStringCharacters->True,
+  NumberMarks->True,
+  LinebreakAdjustments->{0.85, 2, 10, 0, 1},
+  CounterIncrements->"Input",
+  StyleMenuListing->None,
+  FontWeight->"Bold"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Output"],
+  CellMargins->{{47, 10}, {7, 5}},
+  CellEditDuplicate->True,
+  CellGroupingRules->"OutputGrouping",
+  CellHorizontalScrolling->True,
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  GeneratedCell->True,
+  CellAutoOverwrite->True,
+  DefaultFormatType->DefaultOutputFormatType,
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  AutoItalicWords->{},
+  LanguageCategory->None,
+  FormatType->InputForm,
+  CounterIncrements->"Output"],
+
+Cell[StyleData["Output", "Presentation"],
+  CellMargins->{{72, Inherited}, {10, 8}},
+  LineSpacing->{1, 0},
+  FontSize->16],
+
+Cell[StyleData["Output", "Condensed"],
+  CellMargins->{{41, Inherited}, {3, 2}},
+  FontSize->11],
+
+Cell[StyleData["Output", "Printout"],
+  CellMargins->{{39, 0}, {6, 4}},
+  FontSize->9]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Message"],
+  CellMargins->{{45, Inherited}, {Inherited, Inherited}},
+  CellGroupingRules->"OutputGrouping",
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  GeneratedCell->True,
+  CellAutoOverwrite->True,
+  ShowCellLabel->False,
+  DefaultFormatType->DefaultOutputFormatType,
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  AutoItalicWords->{},
+  LanguageCategory->None,
+  FormatType->InputForm,
+  CounterIncrements->"Message",
+  StyleMenuListing->None,
+  FontSize->11,
+  FontColor->RGBColor[0, 0, 1]],
+
+Cell[StyleData["Message", "Presentation"],
+  CellMargins->{{72, Inherited}, {Inherited, Inherited}},
+  LineSpacing->{1, 0},
+  FontSize->16],
+
+Cell[StyleData["Message", "Condensed"],
+  CellMargins->{{41, Inherited}, {Inherited, Inherited}},
+  FontSize->11],
+
+Cell[StyleData["Message", "Printout"],
+  CellMargins->{{39, Inherited}, {Inherited, Inherited}},
+  FontSize->7,
+  FontColor->GrayLevel[0]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Print"],
+  CellMargins->{{45, Inherited}, {Inherited, Inherited}},
+  CellGroupingRules->"OutputGrouping",
+  CellHorizontalScrolling->True,
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  GeneratedCell->True,
+  CellAutoOverwrite->True,
+  ShowCellLabel->False,
+  DefaultFormatType->DefaultOutputFormatType,
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  AutoItalicWords->{},
+  LanguageCategory->None,
+  FormatType->InputForm,
+  CounterIncrements->"Print",
+  StyleMenuListing->None],
+
+Cell[StyleData["Print", "Presentation"],
+  CellMargins->{{72, Inherited}, {Inherited, Inherited}},
+  LineSpacing->{1, 0},
+  FontSize->16],
+
+Cell[StyleData["Print", "Condensed"],
+  CellMargins->{{41, Inherited}, {Inherited, Inherited}},
+  FontSize->11],
+
+Cell[StyleData["Print", "Printout"],
+  CellMargins->{{39, Inherited}, {Inherited, Inherited}},
+  FontSize->8]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Graphics"],
+  CellMargins->{{4, Inherited}, {Inherited, Inherited}},
+  CellGroupingRules->"GraphicsGrouping",
+  CellHorizontalScrolling->True,
+  PageBreakWithin->False,
+  GeneratedCell->True,
+  CellAutoOverwrite->True,
+  ShowCellLabel->False,
+  DefaultFormatType->DefaultOutputFormatType,
+  LanguageCategory->None,
+  FormatType->InputForm,
+  CounterIncrements->"Graphics",
+  ImageMargins->{{43, Inherited}, {Inherited, 0}},
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontSize->10],
+
+Cell[StyleData["Graphics", "Presentation"],
+  ImageMargins->{{62, Inherited}, {Inherited, 0}}],
+
+Cell[StyleData["Graphics", "Condensed"],
+  ImageMargins->{{38, Inherited}, {Inherited, 0}},
+  Magnification->0.6],
+
+Cell[StyleData["Graphics", "Printout"],
+  ImageMargins->{{30, Inherited}, {Inherited, 0}},
+  Magnification->0.8]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["CellLabel"],
+  LanguageCategory->None,
+  StyleMenuListing->None,
+  FontFamily->"Helvetica",
+  FontSize->9,
+  FontColor->RGBColor[0, 0, 1]],
+
+Cell[StyleData["CellLabel", "Presentation"],
+  FontSize->12],
+
+Cell[StyleData["CellLabel", "Condensed"],
+  FontSize->9],
+
+Cell[StyleData["CellLabel", "Printout"],
+  FontFamily->"Courier",
+  FontSize->8,
+  FontSlant->"Italic",
+  FontColor->GrayLevel[0]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["FrameLabel"],
+  LanguageCategory->None,
+  StyleMenuListing->None,
+  FontFamily->"Helvetica",
+  FontSize->9],
+
+Cell[StyleData["FrameLabel", "Presentation"],
+  FontSize->12],
+
+Cell[StyleData["FrameLabel", "Condensed"],
+  FontSize->9],
+
+Cell[StyleData["FrameLabel", "Printout"],
+  FontFamily->"Courier",
+  FontSize->8,
+  FontSlant->"Italic",
+  FontColor->GrayLevel[0]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Definitions, Assertions, etc.", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Definition"],
+  CellMargins->{{12, 10}, {5, 12}},
+  Hyphenation->True,
+  LineSpacing->{1, 3},
+  ParagraphSpacing->{0, 12},
+  CounterIncrements->"Example",
+  FontFamily->"Times",
+  Background->RGBColor[1, 1, 0]],
+
+Cell[StyleData["Definition", "Presentation"],
+  CellMargins->{{18, 10}, {8, 20}},
+  LineSpacing->{1, 5},
+  ParagraphSpacing->{0, 12}],
+
+Cell[StyleData["Definition", "Condensed"],
+  CellMargins->{{8, 10}, {4, 8}},
+  ParagraphSpacing->{0, 4}],
+
+Cell[StyleData["Definition", "Printout"],
+  CellMargins->{{9, 0}, {4, 10}},
+  LineSpacing->{1, 2},
+  ParagraphSpacing->{0, 6}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Theorem"],
+  CellFrame->False,
+  CellMargins->{{52, 10}, {8, 8}},
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  CellLabelMargins->{{23, Inherited}, {Inherited, Inherited}},
+  Hyphenation->True,
+  LineSpacing->{1, 3},
+  ParagraphSpacing->{0, 12},
+  ShowStringCharacters->True,
+  CounterIncrements->"Theorem",
+  FontFamily->"Times",
+  Background->RGBColor[0.690196, 0.956863, 0.952941]],
+
+Cell[StyleData["Theorem", "Presentation"],
+  CellMargins->{{72, Inherited}, {5, 12}},
+  LineSpacing->{1, 5},
+  ParagraphSpacing->{0, 12}],
+
+Cell[StyleData["Theorem", "Condensed"],
+  CellMargins->{{40, 10}, {1, 4}}],
+
+Cell[StyleData["Theorem", "Printout"],
+  CellMargins->{{37, 0}, {2, 6}},
+  LineSpacing->{1, 2}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Assertion"],
+  CellFrame->False,
+  CellMargins->{{52, 10}, {8, 8}},
+  PageBreakWithin->False,
+  GroupPageBreakWithin->False,
+  CellLabelMargins->{{23, Inherited}, {Inherited, Inherited}},
+  Hyphenation->True,
+  LineSpacing->{1, 3},
+  ParagraphSpacing->{0, 12},
+  ShowStringCharacters->True,
+  CounterIncrements->"Theorem",
+  FontFamily->"Times",
+  Background->GrayLevel[1]],
+
+Cell[StyleData["Assertion", "Presentation"],
+  CellMargins->{{72, Inherited}, {5, 12}},
+  LineSpacing->{1, 5},
+  ParagraphSpacing->{0, 12}],
+
+Cell[StyleData["Assertion", "Condensed"],
+  CellMargins->{{40, 10}, {1, 4}}],
+
+Cell[StyleData["Assertion", "Printout"],
+  CellMargins->{{37, 0}, {2, 6}},
+  LineSpacing->{1, 2}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Exercise"],
+  CellMargins->{{12, 10}, {5, 12}},
+  Hyphenation->True,
+  LineSpacing->{1, 3},
+  ParagraphSpacing->{0, 12},
+  CounterIncrements->"Example",
+  FontFamily->"Times",
+  Background->GrayLevel[1]],
+
+Cell[StyleData["Exercise", "Presentation"],
+  CellMargins->{{18, 10}, {8, 20}},
+  LineSpacing->{1, 5},
+  ParagraphSpacing->{0, 12}],
+
+Cell[StyleData["Exercise", "Condensed"],
+  CellMargins->{{8, 10}, {4, 8}},
+  ParagraphSpacing->{0, 4}],
+
+Cell[StyleData["Exercise", "Printout"],
+  CellMargins->{{9, 0}, {4, 10}},
+  LineSpacing->{1, 2},
+  ParagraphSpacing->{0, 6}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Comment"],
+  CellMargins->{{12, 10}, {5, 12}},
+  Hyphenation->True,
+  LineSpacing->{1, 3},
+  ParagraphSpacing->{0, 12},
+  CounterIncrements->"Example",
+  FontFamily->"Times",
+  Background->GrayLevel[1]],
+
+Cell[StyleData["Comment", "Presentation"],
+  CellMargins->{{18, 10}, {8, 20}},
+  LineSpacing->{1, 5},
+  ParagraphSpacing->{0, 12}],
+
+Cell[StyleData["Comment", "Condensed"],
+  CellMargins->{{8, 10}, {4, 8}},
+  ParagraphSpacing->{0, 4}],
+
+Cell[StyleData["Comment", "Printout"],
+  CellMargins->{{9, 0}, {4, 10}},
+  LineSpacing->{1, 2},
+  ParagraphSpacing->{0, 6}]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Inline Formatting", "Section"],
+
+Cell["\<\
+These styles are for modifying individual words or letters in a \
+cell exclusive of the cell tag.\
+\>", "Text"],
+
+Cell[StyleData["RM"],
+  StyleMenuListing->None,
+  FontWeight->"Plain",
+  FontSlant->"Plain"],
+
+Cell[StyleData["BF"],
+  StyleMenuListing->None,
+  FontWeight->"Bold"],
+
+Cell[StyleData["IT"],
+  StyleMenuListing->None,
+  FontSlant->"Italic"],
+
+Cell[StyleData["TR"],
+  StyleMenuListing->None,
+  FontFamily->"Times",
+  FontWeight->"Plain",
+  FontSlant->"Plain"],
+
+Cell[StyleData["TI"],
+  StyleMenuListing->None,
+  FontFamily->"Times",
+  FontWeight->"Plain",
+  FontSlant->"Italic"],
+
+Cell[StyleData["TB"],
+  StyleMenuListing->None,
+  FontFamily->"Times",
+  FontWeight->"Bold",
+  FontSlant->"Plain"],
+
+Cell[StyleData["TBI"],
+  StyleMenuListing->None,
+  FontFamily->"Times",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+
+Cell[StyleData["MR"],
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontWeight->"Plain",
+  FontSlant->"Plain"],
+
+Cell[StyleData["MO"],
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontWeight->"Plain",
+  FontSlant->"Italic"],
+
+Cell[StyleData["MB"],
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontWeight->"Bold",
+  FontSlant->"Plain"],
+
+Cell[StyleData["MBO"],
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+
+Cell[StyleData["SR"],
+  StyleMenuListing->None,
+  FontFamily->"Helvetica",
+  FontWeight->"Plain",
+  FontSlant->"Plain"],
+
+Cell[StyleData["SO"],
+  StyleMenuListing->None,
+  FontFamily->"Helvetica",
+  FontWeight->"Plain",
+  FontSlant->"Italic"],
+
+Cell[StyleData["SB"],
+  StyleMenuListing->None,
+  FontFamily->"Helvetica",
+  FontWeight->"Bold",
+  FontSlant->"Plain"],
+
+Cell[StyleData["SBO"],
+  StyleMenuListing->None,
+  FontFamily->"Helvetica",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["SO10"],
+  StyleMenuListing->None,
+  FontFamily->"Helvetica",
+  FontSize->10,
+  FontWeight->"Plain",
+  FontSlant->"Italic"],
+
+Cell[StyleData["SO10", "Printout"],
+  StyleMenuListing->None,
+  FontFamily->"Helvetica",
+  FontSize->7,
+  FontWeight->"Plain",
+  FontSlant->"Italic"],
+
+Cell[StyleData["SO10", "EnhancedPrintout"],
+  StyleMenuListing->None,
+  FontFamily->"Futura",
+  FontSize->7,
+  FontWeight->"Plain",
+  FontSlant->"Italic"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Formulas and Programming", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["InlineFormula"],
+  CellMargins->{{10, 4}, {0, 8}},
+  CellHorizontalScrolling->True,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  LanguageCategory->"Formula",
+  ScriptLevel->1,
+  SingleLetterItalics->True],
+
+Cell[StyleData["InlineFormula", "Presentation"],
+  CellMargins->{{24, 10}, {10, 10}},
+  LineSpacing->{1, 5},
+  FontSize->16],
+
+Cell[StyleData["InlineFormula", "Condensed"],
+  CellMargins->{{8, 10}, {6, 6}},
+  LineSpacing->{1, 1},
+  FontSize->11],
+
+Cell[StyleData["InlineFormula", "Printout"],
+  CellMargins->{{2, 0}, {6, 6}},
+  FontSize->10]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["DisplayFormula"],
+  CellMargins->{{42, Inherited}, {Inherited, Inherited}},
+  CellHorizontalScrolling->True,
+  DefaultFormatType->DefaultInputFormatType,
+  HyphenationOptions->{"HyphenationCharacter"->"\[Continuation]"},
+  LanguageCategory->"Formula",
+  ScriptLevel->0,
+  SingleLetterItalics->True,
+  UnderoverscriptBoxOptions->{LimitsPositioning->True}],
+
+Cell[StyleData["DisplayFormula", "Presentation"],
+  LineSpacing->{1, 5},
+  FontSize->16],
+
+Cell[StyleData["DisplayFormula", "Condensed"],
+  LineSpacing->{1, 1},
+  FontSize->11],
+
+Cell[StyleData["DisplayFormula", "Printout"],
+  FontSize->10]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Program"],
+  CellFrame->{{0, 0}, {0.5, 0.5}},
+  CellMargins->{{10, 4}, {0, 8}},
+  CellHorizontalScrolling->True,
+  Hyphenation->False,
+  LanguageCategory->"Formula",
+  ScriptLevel->1,
+  FontFamily->"Courier"],
+
+Cell[StyleData["Program", "Presentation"],
+  CellMargins->{{24, 10}, {10, 10}},
+  LineSpacing->{1, 5},
+  FontSize->16],
+
+Cell[StyleData["Program", "Condensed"],
+  CellMargins->{{8, 10}, {6, 6}},
+  LineSpacing->{1, 1},
+  FontSize->11],
+
+Cell[StyleData["Program", "Printout"],
+  CellMargins->{{2, 0}, {6, 6}},
+  FontSize->9]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Outline Styles", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Outline1"],
+  CellMargins->{{12, 10}, {7, 7}},
+  CellGroupingRules->{"SectionGrouping", 50},
+  ParagraphIndent->-38,
+  CounterIncrements->"Outline1",
+  FontSize->18,
+  FontWeight->"Bold",
+  CounterBoxOptions->{CounterFunction:>CapitalRomanNumeral}],
+
+Cell[StyleData["Outline1", "Printout"],
+  CounterBoxOptions->{CounterFunction:>CapitalRomanNumeral}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Outline2"],
+  CellMargins->{{59, 10}, {7, 7}},
+  CellGroupingRules->{"SectionGrouping", 60},
+  ParagraphIndent->-27,
+  CounterIncrements->"Outline2",
+  FontSize->15,
+  FontWeight->"Bold",
+  CounterBoxOptions->{CounterFunction:>(Part[ 
+      CharacterRange[ "A", "Z"], #]&)}],
+
+Cell[StyleData["Outline2", "Printout"],
+  CounterBoxOptions->{CounterFunction:>(Part[ 
+      CharacterRange[ "A", "Z"], #]&)}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Outline3"],
+  CellMargins->{{108, 10}, {7, 7}},
+  CellGroupingRules->{"SectionGrouping", 70},
+  ParagraphIndent->-21,
+  CounterIncrements->"Outline3",
+  FontSize->12,
+  CounterBoxOptions->{CounterFunction:>Identity}],
+
+Cell[StyleData["Outline3", "Printout"],
+  CounterBoxOptions->{CounterFunction:>Identity}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Outline4"],
+  CellMargins->{{158, 10}, {7, 7}},
+  CellGroupingRules->{"SectionGrouping", 80},
+  ParagraphIndent->-18,
+  CounterIncrements->"Outline4",
+  FontSize->10,
+  CounterBoxOptions->{CounterFunction:>(Part[ 
+      CharacterRange[ "a", "z"], #]&)}],
+
+Cell[StyleData["Outline4", "Printout"]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Hyperlink Styles", "Section"],
+
+Cell["\<\
+The cells below define styles useful for making hypertext \
+ButtonBoxes.  The \"Hyperlink\" style is for links within the same Notebook, \
+or between Notebooks.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Hyperlink"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  FontColor->RGBColor[0, 0, 1],
+  FontVariations->{"Underline"->True},
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`NotebookLocate[ #2]}]&),
+  Active->True,
+  ButtonFrame->"None",
+  ButtonNote->ButtonData}],
+
+Cell[StyleData["Hyperlink", "Presentation"],
+  FontSize->16],
+
+Cell[StyleData["Hyperlink", "Condensed"],
+  FontSize->11],
+
+Cell[StyleData["Hyperlink", "Printout"],
+  FontSize->10,
+  FontColor->GrayLevel[0],
+  FontVariations->{"Underline"->False}]
+}, Closed]],
+
+Cell["\<\
+The following styles are for linking automatically to the on-line \
+help system.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["MainBookLink"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  FontColor->RGBColor[0, 0, 1],
+  FontVariations->{"Underline"->True},
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`HelpBrowserLookup[ "MainBook", #]}]&),
+  Active->True,
+  ButtonFrame->"None"}],
+
+Cell[StyleData["MainBookLink", "Presentation"],
+  FontSize->16],
+
+Cell[StyleData["MainBookLink", "Condensed"],
+  FontSize->11],
+
+Cell[StyleData["MainBookLink", "Printout"],
+  FontSize->10,
+  FontColor->GrayLevel[0],
+  FontVariations->{"Underline"->False}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["AddOnsLink"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  FontFamily->"Courier",
+  FontColor->RGBColor[0, 0, 1],
+  FontVariations->{"Underline"->True},
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`HelpBrowserLookup[ "AddOns", #]}]&),
+  Active->True,
+  ButtonFrame->"None"}],
+
+Cell[StyleData["AddOnsLink", "Presentation"],
+  FontSize->16],
+
+Cell[StyleData["AddOnsLink", "Condensed"],
+  FontSize->11],
+
+Cell[StyleData["AddOnsLink", "Printout"],
+  FontSize->10,
+  FontColor->GrayLevel[0],
+  FontVariations->{"Underline"->False}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["RefGuideLink"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  FontFamily->"Courier",
+  FontColor->RGBColor[0, 0, 1],
+  FontVariations->{"Underline"->True},
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`HelpBrowserLookup[ "RefGuide", #]}]&),
+  Active->True,
+  ButtonFrame->"None"}],
+
+Cell[StyleData["RefGuideLink", "Presentation"],
+  FontSize->16],
+
+Cell[StyleData["RefGuideLink", "Condensed"],
+  FontSize->11],
+
+Cell[StyleData["RefGuideLink", "Printout"],
+  FontSize->10,
+  FontColor->GrayLevel[0],
+  FontVariations->{"Underline"->False}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["GettingStartedLink"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  FontColor->RGBColor[0, 0, 1],
+  FontVariations->{"Underline"->True},
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`HelpBrowserLookup[ "GettingStarted", #]}]&),
+  Active->True,
+  ButtonFrame->"None"}],
+
+Cell[StyleData["GettingStartedLink", "Presentation"],
+  FontSize->16],
+
+Cell[StyleData["GettingStartedLink", "Condensed"],
+  FontSize->11],
+
+Cell[StyleData["GettingStartedLink", "Printout"],
+  FontSize->10,
+  FontColor->GrayLevel[0],
+  FontVariations->{"Underline"->False}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["OtherInformationLink"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  FontColor->RGBColor[0, 0, 1],
+  FontVariations->{"Underline"->True},
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`HelpBrowserLookup[ "OtherInformation", #]}]&),
+  Active->True,
+  ButtonFrame->"None"}],
+
+Cell[StyleData["OtherInformationLink", "Presentation"],
+  FontSize->16],
+
+Cell[StyleData["OtherInformationLink", "Condensed"],
+  FontSize->11],
+
+Cell[StyleData["OtherInformationLink", "Printout"],
+  FontSize->10,
+  FontColor->GrayLevel[0],
+  FontVariations->{"Underline"->False}]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Styles for Headers and Footers", "Section"],
+
+Cell[StyleData["Header"],
+  CellMargins->{{0, 0}, {4, 1}},
+  DefaultNewInlineCellStyle->"None",
+  LanguageCategory->"NaturalLanguage",
+  StyleMenuListing->None,
+  FontSize->10,
+  FontSlant->"Italic"],
+
+Cell[StyleData["Footer"],
+  CellMargins->{{0, 0}, {0, 4}},
+  DefaultNewInlineCellStyle->"None",
+  LanguageCategory->"NaturalLanguage",
+  StyleMenuListing->None,
+  FontSize->9,
+  FontSlant->"Italic"],
+
+Cell[StyleData["PageNumber"],
+  CellMargins->{{0, 0}, {4, 1}},
+  StyleMenuListing->None,
+  FontFamily->"Times",
+  FontSize->10]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Palette Styles", "Section"],
+
+Cell["\<\
+The cells below define styles that define standard ButtonFunctions, \
+for use in palette buttons.\
+\>", "Text"],
+
+Cell[StyleData["Paste"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`NotebookApply[ 
+        FrontEnd`InputNotebook[ ], #, Placeholder]}]&)}],
+
+Cell[StyleData["Evaluate"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`NotebookApply[ 
+        FrontEnd`InputNotebook[ ], #, All], 
+      SelectionEvaluate[ 
+        FrontEnd`InputNotebook[ ], All]}]&)}],
+
+Cell[StyleData["EvaluateCell"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`NotebookApply[ 
+        FrontEnd`InputNotebook[ ], #, All], 
+      FrontEnd`SelectionMove[ 
+        FrontEnd`InputNotebook[ ], All, Cell, 1], 
+      FrontEnd`SelectionEvaluateCreateCell[ 
+        FrontEnd`InputNotebook[ ], All]}]&)}],
+
+Cell[StyleData["CopyEvaluate"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`SelectionCreateCell[ 
+        FrontEnd`InputNotebook[ ], All], 
+      FrontEnd`NotebookApply[ 
+        FrontEnd`InputNotebook[ ], #, All], 
+      FrontEnd`SelectionEvaluate[ 
+        FrontEnd`InputNotebook[ ], All]}]&)}],
+
+Cell[StyleData["CopyEvaluateCell"],
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic,
+  ButtonBoxOptions->{ButtonFunction:>(FrontEndExecute[ {
+      FrontEnd`SelectionCreateCell[ 
+        FrontEnd`InputNotebook[ ], All], 
+      FrontEnd`NotebookApply[ 
+        FrontEnd`InputNotebook[ ], #, All], 
+      FrontEnd`SelectionEvaluateCreateCell[ 
+        FrontEnd`InputNotebook[ ], All]}]&)}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Placeholder Styles", "Section"],
+
+Cell["\<\
+The cells below define styles useful for making placeholder objects \
+in palette templates.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["Placeholder"],
+  Placeholder->True,
+  StyleMenuListing->None,
+  FontSlant->"Italic",
+  FontColor->RGBColor[0.890623, 0.864698, 0.384756],
+  TagBoxOptions->{Editable->False,
+  Selectable->False,
+  StripWrapperBoxes->False}],
+
+Cell[StyleData["Placeholder", "Presentation"]],
+
+Cell[StyleData["Placeholder", "Condensed"]],
+
+Cell[StyleData["Placeholder", "Printout"]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[StyleData["PrimaryPlaceholder"],
+  StyleMenuListing->None,
+  DrawHighlighted->True,
+  FontSlant->"Italic",
+  Background->RGBColor[0.912505, 0.891798, 0.507774],
+  TagBoxOptions->{Editable->False,
+  Selectable->False,
+  StripWrapperBoxes->False}],
+
+Cell[StyleData["PrimaryPlaceholder", "Presentation"]],
+
+Cell[StyleData["PrimaryPlaceholder", "Condensed"]],
+
+Cell[StyleData["PrimaryPlaceholder", "Printout"]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FormatType Styles", "Section"],
+
+Cell["\<\
+The cells below define styles that are mixed in with the styles of \
+most cells.  If a cell's FormatType matches the name of one of the styles \
+defined below, then that style is applied between the cell's style and its \
+own options. This is particularly true of Input and Output.\
+\>", "Text"],
+
+Cell[StyleData["CellExpression"],
+  PageWidth->Infinity,
+  CellMargins->{{6, Inherited}, {Inherited, Inherited}},
+  ShowCellLabel->False,
+  ShowSpecialCharacters->False,
+  AllowInlineCells->False,
+  Hyphenation->False,
+  AutoItalicWords->{},
+  StyleMenuListing->None,
+  FontFamily->"Courier",
+  FontSize->12,
+  Background->GrayLevel[1]],
+
+Cell[StyleData["InputForm"],
+  InputAutoReplacements->{},
+  AllowInlineCells->False,
+  Hyphenation->False,
+  StyleMenuListing->None,
+  FontFamily->"Courier"],
+
+Cell[StyleData["OutputForm"],
+  PageWidth->Infinity,
+  TextAlignment->Left,
+  LineSpacing->{0.6, 1},
+  StyleMenuListing->None,
+  FontFamily->"Courier"],
+
+Cell[StyleData["StandardForm"],
+  InputAutoReplacements->{
+    "->"->"\[Rule]", ":>"->"\[RuleDelayed]", "<="->"\[LessEqual]", 
+      ">="->"\[GreaterEqual]", "!="->"\[NotEqual]", "=="->"\[Equal]", 
+      Inherited},
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  LineSpacing->{1.25, 0},
+  StyleMenuListing->None,
+  FontFamily->"Courier"],
+
+Cell[StyleData["TraditionalForm"],
+  InputAutoReplacements->{
+    "->"->"\[Rule]", ":>"->"\[RuleDelayed]", "<="->"\[LessEqual]", 
+      ">="->"\[GreaterEqual]", "!="->"\[NotEqual]", "=="->"\[Equal]", 
+      Inherited},
+  "TwoByteSyntaxCharacterAutoReplacement"->True,
+  LineSpacing->{1.25, 0},
+  SingleLetterItalics->True,
+  TraditionalFunctionNotation->True,
+  DelimiterMatching->None,
+  StyleMenuListing->None],
+
+Cell["\<\
+The style defined below is mixed in to any cell that is in an \
+inline cell within another.\
+\>", "Text"],
+
+Cell[StyleData["InlineCell"],
+  LanguageCategory->"Formula",
+  ScriptLevel->1,
+  StyleMenuListing->None],
+
+Cell[StyleData["InlineCellEditing"],
+  StyleMenuListing->None,
+  Background->RGBColor[1, 0.749996, 0.8]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Automatic Styles", "Section"],
+
+Cell["\<\
+The cells below define styles that are used to affect the display \
+of certain types of objects in typeset expressions.  For example, \
+\"UnmatchedBracket\" style defines how unmatched bracket, curly bracket, and \
+parenthesis characters are displayed (typically by coloring them to make them \
+stand out).\
+\>", "Text"],
+
+Cell[StyleData["UnmatchedBracket"],
+  StyleMenuListing->None,
+  FontColor->RGBColor[0.760006, 0.330007, 0.8]]
+}, Closed]]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{500, 500},
+WindowMargins->{{Automatic, 31}, {Automatic, 63}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 37, 0, 64, "Subtitle"],
+Cell[1816, 55, 193, 4, 50, "Text"],
+
+Cell[CellGroupData[{
+Cell[2034, 63, 42, 0, 58, "Section"],
+Cell[2079, 65, 140, 3, 70, 31, 0, "StyleData", "All", "Working"],
+Cell[2222, 70, 146, 3, 70, 36, 0, "StyleData", "All", "Presentation"],
+Cell[2371, 75, 141, 3, 70, 33, 0, "StyleData", "All", "Condensed"],
+Cell[2515, 80, 186, 4, 70, 32, 0, "StyleData", "All", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[2738, 89, 35, 0, 38, "Section"],
+Cell[2776, 91, 101, 3, 70, "Text"],
+Cell[2880, 96, 426, 11, 70, 27, 0, "StyleData", "Notebook", "All",
+  StyleMenuListing->None]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[3343, 112, 38, 0, 38, "Section"],
+
+Cell[CellGroupData[{
+Cell[3406, 116, 1314, 30, 70, 24, 0, "StyleData", "Title", "All",
+  CounterIncrements->"Title",
+  CounterAssignments->{{"Section", 0}, {"Equation", 0}, {"Figure", 0}, {
+      "Subtitle", 0}, {"Subsubtitle", 0}}],
+Cell[4723, 148, 116, 3, 70, 40, 0, "StyleData", "Title", "Presentation"],
+Cell[4842, 153, 87, 2, 70, 37, 0, "StyleData", "Title", "Condensed"],
+Cell[4932, 157, 88, 2, 70, 36, 0, "StyleData", "Title", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5057, 164, 1258, 28, 70, 27, 0, "StyleData", "Subtitle", "All",
+  CounterIncrements->"Subtitle",
+  CounterAssignments->{{"Section", 0}, {"Equation", 0}, {"Figure", 0}, {
+      "Subsubtitle", 0}}],
+Cell[6318, 194, 119, 3, 70, 43, 0, "StyleData", "Subtitle", "Presentation"],
+Cell[6440, 199, 90, 2, 70, 40, 0, "StyleData", "Subtitle", "Condensed"],
+Cell[6533, 203, 90, 2, 70, 39, 0, "StyleData", "Subtitle", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6660, 210, 1260, 28, 70, 30, 0, "StyleData", "Subsubtitle", "All",
+  CounterIncrements->"Subsubtitle",
+  CounterAssignments->{{"Section", 0}, {"Equation", 0}, {"Figure", 0}}],
+Cell[7923, 240, 122, 3, 70, 46, 0, "StyleData", "Subsubtitle", \
+"Presentation"],
+Cell[8048, 245, 93, 2, 70, 43, 0, "StyleData", "Subsubtitle", "Condensed"],
+Cell[8144, 249, 93, 2, 70, 42, 0, "StyleData", "Subsubtitle", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8274, 256, 1302, 30, 70, 26, 0, "StyleData", "Section", "All",
+  CounterIncrements->"Section",
+  CounterAssignments->{{"Subsection", 0}, {"Subsubsection", 0}}],
+Cell[9579, 288, 118, 3, 70, 42, 0, "StyleData", "Section", "Presentation"],
+Cell[9700, 293, 98, 2, 70, 39, 0, "StyleData", "Section", "Condensed"],
+Cell[9801, 297, 89, 2, 70, 38, 0, "StyleData", "Section", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9927, 304, 1267, 29, 70, 29, 0, "StyleData", "Subsection", "All",
+  CounterIncrements->"Subsection",
+  CounterAssignments->{{"Subsubsection", 0}}],
+Cell[11197, 335, 121, 3, 70, 45, 0, "StyleData", "Subsection", \
+"Presentation"],
+Cell[11321, 340, 101, 2, 70, 42, 0, "StyleData", "Subsection", "Condensed"],
+Cell[11425, 344, 91, 2, 70, 41, 0, "StyleData", "Subsection", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[11553, 351, 1211, 27, 70, 32, 0, "StyleData", "Subsubsection", "All",
+  CounterIncrements->"Subsubsection"],
+Cell[12767, 380, 124, 3, 70, 48, 0, "StyleData", "Subsubsection", \
+"Presentation"],
+Cell[12894, 385, 104, 2, 70, 45, 0, "StyleData", "Subsubsection", \
+"Condensed"],
+Cell[13001, 389, 94, 2, 70, 44, 0, "StyleData", "Subsubsection", "Printout"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[13144, 397, 39, 0, 38, "Section"],
+
+Cell[CellGroupData[{
+Cell[13208, 401, 998, 22, 70, 23, 0, "StyleData", "Text", "All",
+  CounterIncrements->"Text"],
+Cell[14209, 425, 115, 3, 70, 39, 0, "StyleData", "Text", "Presentation"],
+Cell[14327, 430, 109, 3, 70, 36, 0, "StyleData", "Text", "Condensed"],
+Cell[14439, 435, 110, 3, 70, 35, 0, "StyleData", "Text", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[14586, 443, 259, 8, 70, 28, 0, "StyleData", "SmallText", "All",
+  CounterIncrements->"SmallText"],
+Cell[14848, 453, 118, 3, 70, 44, 0, "StyleData", "SmallText", \
+"Presentation"],
+Cell[14969, 458, 113, 3, 70, 41, 0, "StyleData", "SmallText", "Condensed"],
+Cell[15085, 463, 114, 3, 70, 40, 0, "StyleData", "SmallText", "Printout"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[15248, 472, 42, 0, 38, "Section"],
+Cell[15293, 474, 364, 6, 70, "Text"],
+
+Cell[CellGroupData[{
+Cell[15682, 484, 600, 17, 70, 24, 0, "StyleData", "Input", "All",
+  CounterIncrements->"Input"],
+Cell[16285, 503, 122, 3, 70, 40, 0, "StyleData", "Input", "Presentation"],
+Cell[16410, 508, 88, 2, 70, 37, 0, "StyleData", "Input", "Condensed"],
+Cell[16501, 512, 130, 3, 70, 36, 0, "StyleData", "Input", "Printout"]
+}, Closed]],
+Cell[16646, 518, 538, 15, 70, 28, 0, "StyleData", "InputOnly", "All",
+  CounterIncrements->"Input",
+  StyleMenuListing->None],
+
+Cell[CellGroupData[{
+Cell[17209, 537, 533, 15, 70, 25, 0, "StyleData", "Output", "All",
+  CounterIncrements->"Output"],
+Cell[17745, 554, 123, 3, 70, 41, 0, "StyleData", "Output", "Presentation"],
+Cell[17871, 559, 96, 2, 70, 38, 0, "StyleData", "Output", "Condensed"],
+Cell[17970, 563, 86, 2, 70, 37, 0, "StyleData", "Output", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[18093, 570, 596, 17, 70, 26, 0, "StyleData", "Message", "All",
+  CounterIncrements->"Message",
+  StyleMenuListing->None],
+Cell[18692, 589, 139, 3, 70, 42, 0, "StyleData", "Message", "Presentation"],
+Cell[18834, 594, 113, 2, 70, 39, 0, "StyleData", "Message", "Condensed"],
+Cell[18950, 598, 138, 3, 70, 38, 0, "StyleData", "Message", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[19125, 606, 577, 16, 70, 24, 0, "StyleData", "Print", "All",
+  CounterIncrements->"Print",
+  StyleMenuListing->None],
+Cell[19705, 624, 137, 3, 70, 40, 0, "StyleData", "Print", "Presentation"],
+Cell[19845, 629, 111, 2, 70, 37, 0, "StyleData", "Print", "Condensed"],
+Cell[19959, 633, 109, 2, 70, 36, 0, "StyleData", "Print", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[20105, 640, 506, 15, 70, 27, 0, "StyleData", "Graphics", "All",
+  CounterIncrements->"Graphics",
+  StyleMenuListing->None],
+Cell[20614, 657, 94, 1, 70, 43, 0, "StyleData", "Graphics", "Presentation"],
+Cell[20711, 660, 113, 2, 70, 40, 0, "StyleData", "Graphics", "Condensed"],
+Cell[20827, 664, 112, 2, 70, 39, 0, "StyleData", "Graphics", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[20976, 671, 154, 5, 70, 28, 0, "StyleData", "CellLabel", "All",
+  StyleMenuListing->None],
+Cell[21133, 678, 60, 1, 70, 44, 0, "StyleData", "CellLabel", "Presentation"],
+Cell[21196, 681, 56, 1, 70, 41, 0, "StyleData", "CellLabel", "Condensed"],
+Cell[21255, 684, 130, 4, 70, 40, 0, "StyleData", "CellLabel", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[21422, 693, 123, 4, 70, 29, 0, "StyleData", "FrameLabel", "All",
+  StyleMenuListing->None],
+Cell[21548, 699, 61, 1, 70, 45, 0, "StyleData", "FrameLabel", \
+"Presentation"],
+Cell[21612, 702, 57, 1, 70, 42, 0, "StyleData", "FrameLabel", "Condensed"],
+Cell[21672, 705, 131, 4, 70, 41, 0, "StyleData", "FrameLabel", "Printout"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[21852, 715, 48, 0, 38, "Section"],
+
+Cell[CellGroupData[{
+Cell[21925, 719, 226, 7, 63, 29, 0, "StyleData", "Definition", "All",
+  CounterIncrements->"Example"],
+Cell[22154, 728, 133, 3, 74, 45, 0, "StyleData", "Definition", \
+"Presentation"],
+Cell[22290, 733, 104, 2, 58, 42, 0, "StyleData", "Definition", "Condensed"],
+Cell[22397, 737, 126, 3, 60, 41, 0, "StyleData", "Definition", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[22560, 745, 413, 12, 58, 26, 0, "StyleData", "Theorem", "All",
+  CounterIncrements->"Theorem"],
+Cell[22976, 759, 137, 3, 63, 42, 0, "StyleData", "Theorem", "Presentation"],
+Cell[23116, 764, 74, 1, 51, 39, 0, "StyleData", "Theorem", "Condensed"],
+Cell[23193, 767, 95, 2, 54, 38, 0, "StyleData", "Theorem", "Printout"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[23325, 774, 389, 12, 46, 28, 0, "StyleData", "Assertion", "All",
+  CounterIncrements->"Theorem"],
+Cell[23717, 788, 139, 3, 47, 44, 0, "StyleData", "Assertion", \
+"Presentation"],
+Cell[23859, 793, 76, 1, 35, 41, 0, "StyleData", "Assertion", "Condensed"],
+Cell[23938, 796, 97, 2, 38, 40, 0, "StyleData", "Assertion", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[24072, 803, 219, 7, 39, 27, 0, "StyleData", "Exercise", "All",
+  CounterIncrements->"Example"],
+Cell[24294, 812, 131, 3, 58, 43, 0, "StyleData", "Exercise", "Presentation"],
+Cell[24428, 817, 102, 2, 42, 40, 0, "StyleData", "Exercise", "Condensed"],
+Cell[24533, 821, 124, 3, 44, 39, 0, "StyleData", "Exercise", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[24694, 829, 218, 7, 39, 26, 0, "StyleData", "Comment", "All",
+  CounterIncrements->"Example"],
+Cell[24915, 838, 130, 3, 58, 42, 0, "StyleData", "Comment", "Presentation"],
+Cell[25048, 843, 101, 2, 42, 39, 0, "StyleData", "Comment", "Condensed"],
+Cell[25152, 847, 123, 3, 44, 38, 0, "StyleData", "Comment", "Printout"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[25324, 856, 36, 0, 58, "Section"],
+Cell[25363, 858, 121, 3, 70, "Text"],
+Cell[25487, 863, 92, 3, 70, 21, 0, "StyleData", "RM", "All",
+  StyleMenuListing->None],
+Cell[25582, 868, 69, 2, 70, 21, 0, "StyleData", "BF", "All",
+  StyleMenuListing->None],
+Cell[25654, 872, 70, 2, 70, 21, 0, "StyleData", "IT", "All",
+  StyleMenuListing->None],
+Cell[25727, 876, 115, 4, 70, 21, 0, "StyleData", "TR", "All",
+  StyleMenuListing->None],
+Cell[25845, 882, 116, 4, 70, 21, 0, "StyleData", "TI", "All",
+  StyleMenuListing->None],
+Cell[25964, 888, 114, 4, 70, 21, 0, "StyleData", "TB", "All",
+  StyleMenuListing->None],
+Cell[26081, 894, 116, 4, 70, 22, 0, "StyleData", "TBI", "All",
+  StyleMenuListing->None],
+Cell[26200, 900, 233, 6, 70, 21, 0, "StyleData", "MR", "All",
+  StyleMenuListing->None],
+Cell[26436, 908, 234, 6, 70, 21, 0, "StyleData", "MO", "All",
+  StyleMenuListing->None],
+Cell[26673, 916, 232, 6, 70, 21, 0, "StyleData", "MB", "All",
+  StyleMenuListing->None],
+Cell[26908, 924, 234, 6, 70, 22, 0, "StyleData", "MBO", "All",
+  StyleMenuListing->None],
+Cell[27145, 932, 119, 4, 70, 21, 0, "StyleData", "SR", "All",
+  StyleMenuListing->None],
+Cell[27267, 938, 120, 4, 70, 21, 0, "StyleData", "SO", "All",
+  StyleMenuListing->None],
+Cell[27390, 944, 118, 4, 70, 21, 0, "StyleData", "SB", "All",
+  StyleMenuListing->None],
+Cell[27511, 950, 120, 4, 70, 22, 0, "StyleData", "SBO", "All",
+  StyleMenuListing->None],
+
+Cell[CellGroupData[{
+Cell[27656, 958, 138, 5, 70, 23, 0, "StyleData", "SO10", "All",
+  StyleMenuListing->None],
+Cell[27797, 965, 149, 5, 70, 35, 0, "StyleData", "SO10", "Printout",
+  StyleMenuListing->None],
+Cell[27949, 972, 154, 5, 70, 43, 0, "StyleData", "SO10", "EnhancedPrintout",
+  StyleMenuListing->None]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[28152, 983, 43, 0, 38, "Section"],
+
+Cell[CellGroupData[{
+Cell[28220, 987, 244, 6, 70, 32, 0, "StyleData", "InlineFormula", "All"],
+Cell[28467, 995, 124, 3, 70, 48, 0, "StyleData", "InlineFormula", \
+"Presentation"],
+Cell[28594, 1000, 118, 3, 70, 45, 0, "StyleData", "InlineFormula", \
+"Condensed"],
+Cell[28715, 1005, 93, 2, 70, 44, 0, "StyleData", "InlineFormula", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[28845, 1012, 370, 8, 70, 33, 0, "StyleData", "DisplayFormula", "All"],
+Cell[29218, 1022, 88, 2, 70, 49, 0, "StyleData", "DisplayFormula", \
+"Presentation"],
+Cell[29309, 1026, 85, 2, 70, 46, 0, "StyleData", "DisplayFormula", \
+"Condensed"],
+Cell[29397, 1030, 61, 1, 70, 45, 0, "StyleData", "DisplayFormula", \
+"Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[29495, 1036, 224, 7, 70, 26, 0, "StyleData", "Program", "All"],
+Cell[29722, 1045, 118, 3, 70, 42, 0, "StyleData", "Program", "Presentation"],
+Cell[29843, 1050, 112, 3, 70, 39, 0, "StyleData", "Program", "Condensed"],
+Cell[29958, 1055, 86, 2, 70, 38, 0, "StyleData", "Program", "Printout"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[30093, 1063, 33, 0, 38, "Section"],
+
+Cell[CellGroupData[{
+Cell[30151, 1067, 264, 7, 70, 27, 0, "StyleData", "Outline1", "All",
+  CounterIncrements->"Outline1"],
+Cell[30418, 1076, 100, 1, 70, 39, 0, "StyleData", "Outline1", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[30555, 1082, 290, 8, 70, 27, 0, "StyleData", "Outline2", "All",
+  CounterIncrements->"Outline2"],
+Cell[30848, 1092, 126, 2, 70, 39, 0, "StyleData", "Outline2", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[31011, 1099, 232, 6, 70, 27, 0, "StyleData", "Outline3", "All",
+  CounterIncrements->"Outline3"],
+Cell[31246, 1107, 89, 1, 70, 39, 0, "StyleData", "Outline3", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[31372, 1113, 269, 7, 70, 27, 0, "StyleData", "Outline4", "All",
+  CounterIncrements->"Outline4"],
+Cell[31644, 1122, 39, 0, 70, 39, 0, "StyleData", "Outline4", "Printout"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[31732, 1128, 35, 0, 38, "Section"],
+Cell[31770, 1130, 184, 4, 70, "Text"],
+
+Cell[CellGroupData[{
+Cell[31979, 1138, 325, 9, 70, 28, 0, "StyleData", "Hyperlink", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[32307, 1149, 60, 1, 70, 44, 0, "StyleData", "Hyperlink", \
+"Presentation"],
+Cell[32370, 1152, 57, 1, 70, 41, 0, "StyleData", "Hyperlink", "Condensed"],
+Cell[32430, 1155, 123, 3, 70, 40, 0, "StyleData", "Hyperlink", "Printout"]
+}, Closed]],
+Cell[32568, 1161, 104, 3, 70, "Text"],
+
+Cell[CellGroupData[{
+Cell[32697, 1168, 316, 8, 70, 31, 0, "StyleData", "MainBookLink", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[33016, 1178, 63, 1, 70, 47, 0, "StyleData", "MainBookLink", \
+"Presentation"],
+Cell[33082, 1181, 60, 1, 70, 44, 0, "StyleData", "MainBookLink", \
+"Condensed"],
+Cell[33145, 1184, 126, 3, 70, 43, 0, "StyleData", "MainBookLink", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[33308, 1192, 337, 9, 70, 29, 0, "StyleData", "AddOnsLink", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[33648, 1203, 61, 1, 70, 45, 0, "StyleData", "AddOnsLink", \
+"Presentation"],
+Cell[33712, 1206, 58, 1, 70, 42, 0, "StyleData", "AddOnsLink", "Condensed"],
+Cell[33773, 1209, 124, 3, 70, 41, 0, "StyleData", "AddOnsLink", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[33934, 1217, 341, 9, 70, 31, 0, "StyleData", "RefGuideLink", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[34278, 1228, 63, 1, 70, 47, 0, "StyleData", "RefGuideLink", \
+"Presentation"],
+Cell[34344, 1231, 60, 1, 70, 44, 0, "StyleData", "RefGuideLink", \
+"Condensed"],
+Cell[34407, 1234, 126, 3, 70, 43, 0, "StyleData", "RefGuideLink", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[34570, 1242, 328, 8, 70, 37, 0, "StyleData", "GettingStartedLink", "All",
+  
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[34901, 1252, 69, 1, 70, 53, 0, "StyleData", "GettingStartedLink", \
+"Presentation"],
+Cell[34973, 1255, 66, 1, 70, 50, 0, "StyleData", "GettingStartedLink", \
+"Condensed"],
+Cell[35042, 1258, 132, 3, 70, 49, 0, "StyleData", "GettingStartedLink", \
+"Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[35211, 1266, 332, 8, 70, 39, 0, "StyleData", "OtherInformationLink", \
+"All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[35546, 1276, 71, 1, 70, 55, 0, "StyleData", "OtherInformationLink", \
+"Presentation"],
+Cell[35620, 1279, 68, 1, 70, 52, 0, "StyleData", "OtherInformationLink", \
+"Condensed"],
+Cell[35691, 1282, 134, 3, 70, 51, 0, "StyleData", "OtherInformationLink", \
+"Printout"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[35874, 1291, 49, 0, 38, "Section"],
+Cell[35926, 1293, 199, 6, 70, 25, 0, "StyleData", "Header", "All",
+  StyleMenuListing->None],
+Cell[36128, 1301, 198, 6, 70, 25, 0, "StyleData", "Footer", "All",
+  StyleMenuListing->None],
+Cell[36329, 1309, 127, 4, 70, 29, 0, "StyleData", "PageNumber", "All",
+  StyleMenuListing->None]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[36493, 1318, 33, 0, 38, "Section"],
+Cell[36529, 1320, 121, 3, 70, "Text"],
+Cell[36653, 1325, 232, 5, 70, 24, 0, "StyleData", "Paste", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[36888, 1332, 295, 7, 70, 27, 0, "StyleData", "Evaluate", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[37186, 1341, 400, 9, 70, 31, 0, "StyleData", "EvaluateCell", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[37589, 1352, 387, 9, 70, 31, 0, "StyleData", "CopyEvaluate", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic],
+Cell[37979, 1363, 401, 9, 70, 35, 0, "StyleData", "CopyEvaluateCell", "All",
+  StyleMenuListing->None,
+  ButtonStyleMenuListing->Automatic]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[38417, 1377, 37, 0, 38, "Section"],
+Cell[38457, 1379, 115, 3, 70, "Text"],
+
+Cell[CellGroupData[{
+Cell[38597, 1386, 238, 7, 70, 30, 0, "StyleData", "Placeholder", "All",
+  StyleMenuListing->None],
+Cell[38838, 1395, 46, 0, 70, 46, 0, "StyleData", "Placeholder", \
+"Presentation"],
+Cell[38887, 1397, 43, 0, 70, 43, 0, "StyleData", "Placeholder", "Condensed"],
+Cell[38933, 1399, 42, 0, 70, 42, 0, "StyleData", "Placeholder", "Printout"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[39012, 1404, 250, 7, 70, 37, 0, "StyleData", "PrimaryPlaceholder", "All",
+  
+  StyleMenuListing->None],
+Cell[39265, 1413, 53, 0, 70, 53, 0, "StyleData", "PrimaryPlaceholder", \
+"Presentation"],
+Cell[39321, 1415, 50, 0, 70, 50, 0, "StyleData", "PrimaryPlaceholder", \
+"Condensed"],
+Cell[39374, 1417, 49, 0, 70, 49, 0, "StyleData", "PrimaryPlaceholder", \
+"Printout"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[39472, 1423, 36, 0, 38, "Section"],
+Cell[39511, 1425, 305, 5, 70, "Text"],
+Cell[39819, 1432, 336, 11, 70, 33, 0, "StyleData", "CellExpression", "All",
+  StyleMenuListing->None],
+Cell[40158, 1445, 157, 5, 70, 28, 0, "StyleData", "InputForm", "All",
+  StyleMenuListing->None],
+Cell[40318, 1452, 151, 5, 70, 29, 0, "StyleData", "OutputForm", "All",
+  StyleMenuListing->None],
+Cell[40472, 1459, 341, 8, 70, 31, 0, "StyleData", "StandardForm", "All",
+  StyleMenuListing->None],
+Cell[40816, 1469, 412, 10, 70, 34, 0, "StyleData", "TraditionalForm", "All",
+  StyleMenuListing->None],
+Cell[41231, 1481, 115, 3, 70, "Text"],
+Cell[41349, 1486, 104, 3, 70, 29, 0, "StyleData", "InlineCell", "All",
+  StyleMenuListing->None],
+Cell[41456, 1491, 104, 2, 70, 36, 0, "StyleData", "InlineCellEditing", "All",
+  StyleMenuListing->None]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[41597, 1498, 35, 0, 38, "Section"],
+Cell[41635, 1500, 330, 6, 70, "Text"],
+Cell[41968, 1508, 109, 2, 70, 35, 0, "StyleData", "UnmatchedBracket", "All",
+  StyleMenuListing->None]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

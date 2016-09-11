@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.CR-THEOREM" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.CR-THEOREM</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.CR-THEOREM</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="tps.abbr.REFLEXIVE.xhtml#tps.abbr.REFLEXIVE">tps.abbr.REFLEXIVE</a>, 
+        <a href="tps.abbr.TRANSITIVE.xhtml#tps.abbr.TRANSITIVE">tps.abbr.TRANSITIVE</a>, 
+        <a href="tps.abbr.DIAM.xhtml#tps.abbr.DIAM">tps.abbr.DIAM</a>, 
+        <a href="tps.abbr.EQ.star.xhtml#tps.abbr.EQ.star">tps.abbr.EQ.star</a>, 
+        <a href="tps.abbr.COMMON-REWRITE.xhtml#tps.abbr.COMMON-REWRITE">tps.abbr.COMMON-REWRITE</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.CR-THEOREM" role="Assertion" about="#gwff.CR-THEOREM" xml:id="gwff.CR-THEOREM">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.CR-THEOREM"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> FORALL R(OTT).REFLEXIVE(O(OTT)) R AND TRANSITIVE(O(OTT)) R AND DIAM R IMPLIES FORALL M(T) FORALL N(T).EQ* R M N IMPLIES COMMON-REWRITE R M N</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e36" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mo>∀</m:mo>
+                <m:mi>T</m:mi>
+                <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                <m:mrow>
+                  <m:mo>∀</m:mo>
+                  <m:msub>
+                    <m:mi>R</m:mi>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>→</m:mo>
+                      <m:mrow>
+                        <m:mi>T</m:mi>
+                        <m:mo>→</m:mo>
+                        <m:mo>o</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mrow>
+                        <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mrow>
+                          <m:mo>REFLEXIVE</m:mo>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>R</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo>∧</m:mo>
+                        <m:mrow>
+                          <m:mo>TRANSITIVE</m:mo>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>R</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo>∧</m:mo>
+                      <m:mrow>
+                        <m:mo>DIAM</m:mo>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>R</m:mi>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>⇒</m:mo>
+                    <m:mrow>
+                      <m:mo>∀</m:mo>
+                      <m:msub>
+                        <m:mi>M</m:mi>
+                        <m:mi>T</m:mi>
+                      </m:msub>
+                      <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                      <m:msub>
+                        <m:mi>N</m:mi>
+                        <m:mi>T</m:mi>
+                      </m:msub>
+                      <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mo>EQ*</m:mo>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>R</m:mi>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mi>M</m:mi>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mi>N</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo>⇒</m:mo>
+                        <m:mrow>
+                          <m:mo>COMMON-REWRITE</m:mo>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>R</m:mi>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mi>M</m:mi>
+                          <m:mo separator="true">,</m:mo>
+                          <m:mi>N</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

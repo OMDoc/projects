@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN"
+                "../../dtd/omdoc.dtd" []>
+
+<!--  A small proof from nuprl.  -->
+
+<?xml-stylesheet href="../../xsl/omdoc-html-netscape.xsl" type="text/xsl"?>
+<?cocoon-process type="xslt"?>
+
+<omdoc xml:id="cases" catalogue="../../examples/omstd/catalogue.omdoc" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.mathweb.org/omdoc">
+
+<metadata>
+  <dc:title>Example: decidable__equal_int_seg</dc:title>
+  <dc:creator role="aut">Lori Lorigo</dc:creator> 
+  <dc:contributor role="aut">PRL Project</dc:contributor>
+  <dc:date>2003-05-28T00:00:00</dc:date>
+</metadata>
+
+<assertion type="theorem" xml:id="t1" theory="int_1">
+  <CMP>
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+	<OMBIND>
+	  <OMS cd="quant1" name="forall"/>
+	  <OMBVAR><OMV name="i"/></OMBVAR>
+	  <OMA>
+	    <OMS cd="logic1" name="implies"/>
+	    <OMA>
+	      <OMS cd="set1" name="in"/>
+	      <OMV name="i"/>
+	      <OMS cd="setname1" name="Z"/>
+	    </OMA>
+	    <OMA>
+	      <OMBIND><OMS cd="quant1" name="forall"/>
+		<OMBVAR><OMV name="j"/></OMBVAR>
+		<OMA>
+		  <OMS cd="logic1" name="implies"/>
+		  <OMA>
+		    <OMS cd="set1" name="in"/>
+		    <OMV name="j"/>
+		    <OMS cd="setname1" name="Z"/>
+		  </OMA>
+		  <OMA>
+		    <OMBIND><OMS cd="quant1" name="forall"/>
+		      <OMBVAR><OMV name="x"/></OMBVAR>
+		      <OMA>
+			<OMS cd="logic1" name="implies"/>
+			<OMA>
+			  <OMS cd="set1" name="in"/>
+			  <OMV name="x"/>
+			  <OMA>
+			    <OMS cd="interval1" name="integer_interval_co"/>
+			    <OMV name="i"/>
+			    <OMV name="j"/>
+			  </OMA>
+			</OMA>							
+			<OMA>
+			  <OMBIND><OMS cd="quant1" name="forall"/>
+			    <OMBVAR><OMV name="y"/></OMBVAR>
+			    <OMA>
+			      <OMS cd="logic1" name="implies"/>
+			      <OMA>
+				<OMS cd="set1" name="in"/>
+				<OMV name="y"/>
+				<OMA>
+				  <OMS cd="interval1" name="integer_interval_co"/>
+				  <OMV name="i"/>
+				  <OMV name="j"/>
+				</OMA>
+			      </OMA>
+			      <OMA>
+				<OMS cd="nuprl" name="decidable"/>
+				<OMA>
+				  <OMS cd="relation1" name="eq"/>
+				  <OMV name="x"/>
+				  <OMV name="y"/>
+				</OMA>
+			      </OMA>
+			    </OMA>
+			  </OMBIND>
+			</OMA>
+		      </OMA>
+		    </OMBIND>
+		  </OMA>
+		</OMA>
+	      </OMBIND>
+	    </OMA>
+	  </OMA>
+	</OMBIND>
+      </OMA>
+    </OMOBJ>
+  </CMP>   
+</assertion>  
+
+<proof xml:id="t1-p1" for="t1" theory="int_1"> 
+  <derive xml:id="t1-p1-c">
+    <CMP> We apply the following rule:
+      Unfold `decidable` <ref xml:id="ref1" xref="t1" type="cite"/> THEN RepD THENA Auto
+    </CMP>
+    <proof xml:id="t1-p1-c-p" for="t1-p1-c" theory="sets">
+      <derive xml:id="l1">
+	<FMP>
+	  <assumption xml:id="l1-A">
+	    <!--lori - could put ands to make 1 assump but then lose nunmbering info used in tactics-->
+	    <CMP>
+	      <OMOBJ>
+		<OMA id="l1-A-top-source">
+		  <OMS cd="set1" name="in"/>
+		  <OMV name="i"/>
+		  <OMS cd="setname1" name="Z"/>
+		</OMA>
+	      </OMOBJ>
+	    </CMP>
+	  </assumption>
+	  <assumption xml:id="l2-A">
+	    <!--lori - could put ands to make 1 assump but then lose nunmbering info used in tactics-->
+	    <CMP>
+	      <OMOBJ>
+		<OMA id="l2-A-top-source">
+		  <OMS cd="set1" name="in"/>
+		  <OMV name="j"/>
+		  <OMS cd="setname1" name="Z"/>
+		</OMA>
+	      </OMOBJ>
+	    </CMP>
+	  </assumption>
+	  <assumption xml:id="l3-A">
+	    <!--lori - could put ands to make 1 assump but then lose nunmbering info used in tactics-->
+	    <CMP> 
+	      <OMOBJ>
+		<OMA id="l3-A-top-source">
+		  <OMS cd="set1" name="in"/>
+		  <OMV name="x"/>
+		  <OMA>
+		    <OMS cd="interval1" name="integer_interval_co"/>
+		    <OMV name="i"/>
+		    <OMV name="j"/>
+		  </OMA>
+		</OMA>
+	      </OMOBJ>
+	    </CMP>
+	  </assumption>
+	  <assumption xml:id="l4-A">
+	    <!--lori - could put ands to make 1 assump but then lose nunmbering info used in tactics-->
+	    <CMP>
+	      <OMOBJ>
+		<OMA id="l4-A-top-source">
+		  <OMS cd="set1" name="in"/>
+		  <OMV name="y"/>
+		  <OMA>
+		    <OMS cd="interval1" name="integer_interval_co"/>
+		    <OMV name="i"/>
+		    <OMV name="j"/>
+		  </OMA>
+		</OMA>
+	      </OMOBJ>
+	    </CMP> 
+	  </assumption>
+	  <conclusion xml:id="l1-C">
+	    <CMP>
+	      <OMOBJ>
+		<OMA>
+		  <OMS cd="logic1" name="or"/>
+		  <OMA>
+		    <OMS cd="relation1" name="eq"/>
+		    <OMV name="x"/>
+		    <OMV name="y"/>
+		  </OMA>
+		  <OMA>
+		    <OMS cd="logic1" name="not"/>
+		    <OMA>
+		      <OMS cd="relation1" name="eq"/>
+		      <OMV name="x"/>
+		      <OMV name="y"/>
+		    </OMA>
+		  </OMA>
+		</OMA>
+	      </OMOBJ>.
+	    </CMP>
+	  </conclusion>
+	</FMP>
+	
+	<proof xml:id="l1-p" for="l1" theory="int_1"> 
+	  <conclude xml:id="l1-p-d1">
+	    <CMP> We apply the following rule:
+	      Decide
+	      <OMOBJ>
+		<OMA>
+		  <OMS cd="relation1" name="eq"/>
+		  <OMV name="x"/>
+		  <OMV name="y"/>
+		</OMA>
+	      </OMOBJ> THENA Auto 
+	    </CMP>
+	    <FMP>
+	      <assumption xml:id="l5-A"> 
+		<OMOBJ><OMR href="l1-A-top-source"/>
+		</OMOBJ>
+	      </assumption>
+	      <assumption xml:id="l6-A"> 
+		<OMOBJ><OMR href="l2-A-top-source"/>
+		</OMOBJ>
+	      </assumption>
+	      <assumption xml:id="l7-A"> 
+		<OMOBJ><OMR href="l3-A-top-source"/>
+		</OMOBJ>
+	      </assumption>
+	      <assumption xml:id="l8-A"> 
+		<OMOBJ><OMR href="l4-A-top-source"/>
+		</OMOBJ>
+	      </assumption>
+	      <assumption xml:id="l9-A"> 
+		<OMOBJ>
+		  <OMA id="l9-A-top-source">
+		    <OMS cd="relation1" name="eq"/>
+		    <OMV name="x"/>
+		    <OMV name="y"/>
+		  </OMA>
+		</OMOBJ>
+	      </assumption>
+	      
+	      <conclusion xml:id="l2-C">
+		<CMP>
+		  <OMOBJ>
+		    <OMA>
+		      <OMS cd="logic1" name="or"/>
+		      <OMA>
+			<OMS cd="relation1" name="eq"/>
+			<OMV name="x"/>
+			<OMV name="y"/>
+		      </OMA>
+		      <OMA>
+			<OMS cd="logic1" name="not"/>
+			<OMA>
+			  <OMS cd="relation1" name="eq"/>
+			  <OMV name="x"/>
+			  <OMV name="y"/>
+			</OMA>
+		      </OMA>
+		    </OMA>
+		  </OMOBJ>.
+		</CMP>
+	      </conclusion>
+	    </FMP>
+	    
+	    <proof xml:id="l2-p" for="l2" theory="int_1"> 
+	      <conclude xml:id="l2-p-d1">
+		<CMP> We apply the following rule:
+		  Sel 1 (D 0) THEN Auto 
+		</CMP>
+		<FMP>
+		  <assumption xml:id="l10-A"> 
+		    <OMOBJ><OMR href="l1-A-top-source"/>
+		    </OMOBJ>
+		  </assumption>
+		  <assumption xml:id="l11-A"> 
+		    <OMOBJ><OMR href="l2-A-top-source"/>
+		    </OMOBJ>
+		  </assumption>
+		  <assumption xml:id="l12-A"> 
+		    <OMOBJ><OMR href="l3-A-top-source"/>
+		    </OMOBJ>
+		  </assumption>
+		  <assumption xml:id="l13-A"> 
+		    <OMOBJ><OMR href="l4-A-top-source"/>
+		    </OMOBJ>
+		  </assumption>
+		  <assumption xml:id="l14-A"> 
+		     <OMOBJ><OMR href="l9-A-top-source"/>
+		    </OMOBJ>
+		  </assumption>
+		  
+		  <conclusion xml:id="l2-C">
+		    <CMP>
+		      <OMOBJ>
+			<OMA>
+			  <OMS cd="logic1" name="or"/>
+			  <OMA>
+			    <OMS cd="relation1" name="eq"/>
+			    <OMV name="x"/>
+			    <OMV name="y"/>
+			  </OMA>
+			  <OMA>
+			    <OMS cd="logic1" name="not"/>
+			    <OMA>
+			      <OMS cd="relation1" name="eq"/>
+			      <OMV name="x"/>
+			      <OMV name="y"/>
+			    </OMA>
+			  </OMA>
+			</OMA>
+		      </OMOBJ>.
+		    </CMP>
+		  </conclusion>
+		</FMP>
+		
+		<proof xml:id="l3-p" for="l3" theory="int_1"> 
+		  <conclude xml:id="l3-p-d1">
+		    <CMP> We apply the following rule:
+		      Sel 2 (D 0) THEN Auto 
+		    </CMP>
+		    <FMP>
+		      <assumption xml:id="l15-A"> 
+			<OMOBJ><OMR href="l1-A-top-source"/>
+			</OMOBJ>
+		      </assumption>
+		      <assumption xml:id="l16-A"> 
+			<OMOBJ><OMR href="l2-A-top-source"/>
+			</OMOBJ>
+		      </assumption>
+		      <assumption xml:id="l17-A"> 
+			<OMOBJ><OMR href="l3-A-top-source"/>
+			</OMOBJ>
+		      </assumption>
+		      <assumption xml:id="l18-A"> 
+			<OMOBJ><OMR href="l4-A-top-source"/>
+			</OMOBJ>
+		      </assumption>
+		      <assumption xml:id="l19-A"> 
+			<OMOBJ>
+			  <OMA id="l19-A-top-source">
+			    <OMS cd="logic1" name="not"/>
+			    <OMA>
+			      <OMS cd="relation1" name="eq"/>
+			      <OMV name="x"/>
+			      <OMV name="y"/>
+			    </OMA>
+			  </OMA>
+			</OMOBJ>
+		      </assumption>
+		      
+		      <conclusion xml:id="l3-C">
+			<CMP>
+			  <OMOBJ>
+			    <OMA>
+			      <OMS cd="logic1" name="or"/>
+			      <OMA>
+				<OMS cd="relation1" name="eq"/>
+				<OMV name="x"/>
+				<OMV name="y"/>
+			      </OMA>
+			      <OMA>
+				<OMS cd="logic1" name="not"/>
+				<OMA>
+				  <OMS cd="relation1" name="eq"/>
+				  <OMV name="x"/>
+				  <OMV name="y"/>
+				</OMA>
+			      </OMA>
+			    </OMA>
+			  </OMOBJ>.
+			</CMP>
+		      </conclusion>
+		    </FMP>
+		    
+		    <proof xml:id="l4-p" for="l4" theory="int_1"> 
+		      <conclude xml:id="l4-p-d1">
+			<CMP> We apply the following rule:
+			  Sel 2 (D 0) THENA Auto 
+			</CMP>
+			<FMP></FMP>
+		      </conclude>
+		    </proof>
+		    
+		  </conclude>
+		</proof>
+		
+	      </conclude>
+	    </proof>
+	    
+	  </conclude>
+	</proof>
+	
+      </derive>
+    </proof>
+    
+  </conclude>
+</proof>
+</omdoc>

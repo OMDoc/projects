@@ -1,0 +1,19 @@
+# A RelaxNG schema for Open Mathematical documents (OMDoc 1.6)           
+# $Id: uml.rnc 8194 2008-12-17 09:34:36Z kohlhase $
+# $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/uml/rnc/uml.rnc $
+# See the documentation and examples at http://www.omdoc.org/projects/uml
+# Copyright (c) 2008 KWARC, released under the GNU Public License (GPL) 
+
+default namespace omdoc = "http://omdoc.org/ns"
+
+#include "../../../trunk/rnc/omdoc.rnc" {Anything = notAllowed}
+include "../../repos/omdoc/trunk/rnc/omdoc.rnc" {Anything = notAllowed}
+
+omdoc.class |= uml
+
+uml = element uml {attlist.uml, metadata?, content?, pgml? }
+attlist.uml = attribute version { text }?
+
+content = grammar {include "xmi.rnc"}
+
+pgml = grammar {include "pgml.rnc" }

@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{listings,ed}
+\usepackage{lstomdoc}
+
+\begin{document}
+
+Idea of semantics: A substitution component is given by arglist/.../arglist/arg and accessed by iterate/.../iterate/render with corresponding names. The substitution component at the current position in the match of arglist/.../arglist/arglist is accessed by iterate/.../iterate/render, too. If a render cannot be resolved, the name of its iterate parent is prepended.
+
+Flexary bounded integral as non-atomic binder presented by using nested patterns
+
+\ednote{I use Latex because I don't know MathML.}
+\ednote{I don't use the official symbol and theory names because I don't know them.}
+
+\begin{lstlisting}
+<presentation format="latex">
+  <prototype>
+    <OMBIND>
+      <OMA>
+        <OMS name="int"/>
+        <arglist name="domains">
+          <OMA>
+            <OMS name="interval"/>
+            <arg name="lower_bound"/>
+            <arg name="upper_bound"/>
+          </OMA>
+        </arglist>
+      </OMA>
+      <OMBVAR>
+        <arglist name="variables"/>
+      </OMBVAR>
+      <arg name="condition"/>
+      <arg name="body"/>
+    </OMBIND>
+  </prototype>
+  <rendering>
+    <text>\mathop{</text>
+    <iterate name="domains">
+      <separator><text> </text></separator>
+      <text>\int_{</text>
+      <render name="lower_bound"/>
+      <text>}^{</text>
+      <render name="upper_bound"/>
+      <text>}</text>
+    </iterate>
+    <text>}_{</text>
+    <render name="condition"/>
+    <text>}</text>
+    <render name="body"/>
+    <iterate name="variables" reverse="Yes">
+      <text>d <text>
+      <render name="variables"/>
+    </iterate>
+\end{lstlisting}
+
+Intended presentation of \[\beta(@(int,interval(a_1,b_1),interval(a_2,b_2)),x_1,x_2,@(>,x_1,x_2),@(f,x_1,x_2))\] is
+\[\mathop{\int_{a_1}^{b_1}\int_{a_2}^{b_2}}_{x_1>x_2}f(x_1,x_2)d x_2 d x_1\]
+
+Note: This does not work for a flexary integral where set and interval bounds are mixed.
+
+Note: This does not work if the bound variables have attributions. (The same problems occurs for the pattern that matches a lambda binder that is already used in the specification.)
+\end{document}

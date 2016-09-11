@@ -1,0 +1,105 @@
+\svnInfo $Id: csyntax.tex 9195 2012-04-20 12:26:50Z frabe $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/csyntax.tex $
+
+\section{Pragmatic {\omdoc} Syntax}\label{sec:omdoc-pragmatic}
+
+For implicit definitions we have the notation definition in listing~\ref{lst:notation}
+(slightly simplified elemental XML notation). Recall from~\cite{KMR:presentation:08} that notation
+definitions are essentially transformation rules that use named \lstinline|expr| elements
+as variables in the heads and \lstinline|render| for the recursive calls of the
+transformation.
+\begin{lstlisting}[mathescape,label=lst:notation,morekeywords={pragmatic},
+  caption=A Notation Definition for implicit Definitions]
+<notation format="OMDoc-pragmatic">
+  <prototype>
+    <pragmatic name="$c$" extension="$\mmturi{\llquote{V}}\Description\implDef$">
+      <expr name="prop"/>
+      <expr name="proof"/>
+    </pragmatic>
+  </prototype>
+  <rendering> 
+   <definition type="implicit" name="$c$" exunique="$c.\exu$">
+      <render name="prop"/>   
+    </definition>
+    <assertion name="$c.\exu$" type="theorem">
+       <OMA>
+          <OMS cd="$\Description$" name="\implDef"/>
+          <render name="prop"/>
+        </OMA>
+    </assertion>
+    <proof for="$c.\exu$"><render name="proof"/></proof>
+  <rendering>
+</notation>
+\end{lstlisting}
+Note that the ``direction'' of the notation definition may be confusing at first. But it
+becomes natural: Here the \omdoc1.2 syntax can be regarded as a surface language into
+which the \lstinline{statement} elements are presented into. But note that the notation
+definitions can also be ``turned around'' for parsing. We are currently working on parsing
+technology that integrates this idea.
+
+\section{Pragmatic Concrete Syntax in \protect\sTeX}\label{sec:stex-pragmatic}
+\lstset{language={[sTeX]TeX},morekeywords={extkey,extension}}
+
+Now we show how to extend one of the {\omdoc} surface languages (formats intended for
+human authoring and transformation to OMDoc) with pragmatic concrete syntax. We have
+extended the \sTeX format~\cite{Kohlhase:ulsmf08} with an extension language, which we
+present here as an example how the ideas presented in this paper can be extended to
+semi-formal MKM formats. The next listing shows the extensions for implicit definitions.
+The \lstinline|\extension| macro takes the name of the extension as a first required
+argument and then uses the second and third arguments to define an environment of that
+name in the usual way. The main problem in {\TeX}-based formats is argument passing; in
+our extension language we use two ways. ``Small'' arguments are passed as key/value pairs;
+we use the \lstinline|\extkey| macro to declare keys. ``Large'' arguments are naturally
+packaged in environments of their own which are declared as ``continuations'' by the
+\lstinline|cont| key in the optional argument of \lstinline|extension|. 
+
+\begin{lstlisting}[caption=Extending \protect\sTeX by Implicit Definitions]
+\begin{module}[id=ImplicitDefinitions]
+\ldots
+\extkey{idef}{name}
+\extkey{idef}{title}
+\extension{idef}
+{\begin{def}[\namarg{idef}{title}]\label{idef.\namarg{idef}{name}}}
+{\end{def}}
+\extkey{exu}{for}
+\extension[cont=idef]{exu}
+{\begin{thm}[Existence and Uniqueness for \ref{\namarg{exu}{for}}]
+\label{\namarg{exu}{for}.exu}}
+{\end{thm}}
+\extkey{exup}{for}
+\extension[cont=idef]{exup}
+{\begin{proof} (for \ref{\namarg{exu}})}
+{\end{proof}}
+\end{module}
+\end{lstlisting}
+Note the structural similarity of these extension declarations to the
+\lstinline[language={[1.3]OMDoc}]|rendering| element in
+Listing~\ref{lst:notation}.
+Given this we can use the three induced environments
+once we have imported the module above. 
+
+\begin{lstlisting}[language={[sTeX]TeX},morekeywords={extkey,extension}]
+\importmodule{ImplicitDefinitions}
+\begin{idef}[name=exp,title=Exponential Function]
+  The exponential function is that function $f$ with $f'=f$ and $f(0)=1$.
+\end{idef}
+\begin{exu}[for=exp]
+  There is exactly one function $f$ with with $f'=f$ and $f(0)=1$.
+\end{exu}
+\begin{exup}[for=exp]
+  \ldots
+\end{exup}
+\end{lstlisting}
+Note that the OMDoc generated from the \sTeX can either be in the pragmatic concrete syntax from
+Section~\ref{sec:omdoc-pragmatic} or directly in the concrete syntax from
+Section~\ref{sec:omdoc-concrete}.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+
+% LocalWords:  csyntax.tex omdoc omdoc-pragmatic lst expr lstlisting mathescape
+% LocalWords:  morekeywords mmturi llquote implDef exunique exu stex-pragmatic
+% LocalWords:  lstset extkey ulsmf08 cont ldots idef namarg namarg thm exup exp

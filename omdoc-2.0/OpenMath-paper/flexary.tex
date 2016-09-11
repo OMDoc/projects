@@ -1,0 +1,104 @@
+\svnInfo $Id: flexary.tex 6541 2007-06-21 17:46:22Z kohlhase $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/OpenMath-paper/flexary.tex $
+\section{A Mixfix Presentation Model for Flexary Terms}\label{sec:flexary}
+The {\isabelle} presentation process allows to model all of the symbol characteristics
+discussed in section~\ref{sec:characteristics} by a single notation definition: the
+{\defemph{mixfix declaration}}. For an $n$-ary symbol, $f$ is a declaration of the form
+$w_0\imarg{p_1}{\pi_1}w_1\imarg{p_2}{\pi_2}\ldots\imarg{p_n}{\pi_n}w_n:p$, where the $w_i$
+are strings in the output language and $p$ is the {\defemph{output precedence}} of $f$. We
+call the boxes {\defemph{argument specifications}}, the $p_i$ are {\defemph{input
+    precedences}}. In accordance with Prolog, which, in contrast to {\isabelle},
+predefines precedences for many common mathematical operators, and staying compatible with
+previous {\omdoc} standards, we assign low precedence values to strongly binding operators
+and high precedence values to weakly binding operators.
+
+In the presentation process, a term $t$ is presented as a string
+$\pres{t}{q}$, given an initial precedence $q$, according to the following definition:
+\[\pres{f(t_1,\ldots,t_n)}{q}=w_0\pres{t_{\pi_1}}{p_1}w_1\ldots w_{n-1}\pres{t_{\pi_n}}{p_n}w_n\]
+Note that the $w_i$ contain meta-tokens for brackets (actually pretty-printing blocks that
+also handle indentation in {\isabelle}) that will be elided according to the ``current
+precedence'' at that point.
+
+A declaration of a right-associative infix operator $\to$ with precedence $p$ can be
+modeled by a mixfix declaration $\imarg{p-1}{1}\to\imarg{p}{2}:p$. That means, the first
+argument must be an atom or an operator that binds stronger than $\to$, or is bracketed
+otherwise, and the second argument must have a maximum output precedence of $p$, which
+would present an input of $a\to (b\to c)$ as $a\to b\to c$.
+
+However, the {\isabelle} model is not directly applicable to presentation of {\openmath}
+objects, as {\isabelle} crucially depends on the assumption that terms have a fixed arity.
+In {\openmath} objects, applications can have flexible arities depending on the operator,
+i.\,e.\ application nodes can have different numbers of children, even if they coincide in
+the first child (the function). This is used to model a {\defemph{flexary}} addition
+function, i.\,e.\ a function that takes any number of arguments, e.\,g.\ $@(add,1,2,3,4)$.
+In {\isabelle}, we would have to model addition as a binary, associative operator, and the
+term above as $plus(plus(1,2),plus(3,4))$ which would have the same presentation
+$1+2+3+4$, but a different structure. Similarly, {\isabelle} only supports unary binding
+constructions.
+
+We will now extend the presentation model to the flexary case, and the types of
+{\openmath} objects not covered by {\isabelle}, and come back to flexible elision and
+abbreviation of non-brackets (we will come back to this in section~\ref{sec:elision}).
+  
+The first part of the flexary extension is to generalize the idea of an argument vector,
+to a list of {\defemph{components}} of an {\openmath} object $O$ as follows (where indices
+starts at $0$):
+\begin{itemize}
+\item for applications and errors: the list of children of $O$, e.\,g.,
+  $(f,a_1,\ldots,a_n)$ for the object $@(f,a_1,\ldots,a_n)$,
+\item for bindings: the binder, followed by the list of variables, followed by the body,
+  e.\,g., $(b,x_1,\ldots,x_n,a)$ for the binding $\beta(b;x_1,\ldots,x_n;a)$,
+\item for attributions: a three-element list consisting of the key and the value of the
+  first attribution and the original object with the first attribution removed, e.\,g.,
+  $(k_1,v_1,\alpha(k_2\mapsto v_2,\ldots,k_n\mapsto v_n;a))$ for $\alpha(k_1\mapsto
+  v_1,\ldots,k_n\mapsto v_n;a)$,
+\item otherwise: the object itself as a one-element list.
+\end{itemize}
+As a running example, consider the space of $n$-ary functions. We can model the function
+space constructor as a flexary function symbol ${\sf{nfuns}}$ whose last argument is the
+codomain and all previous ones the domains. We would like to present an {\openmath} object
+$O\colon=@({\sf{nfuns}},A_1,\ldots,A_n,C)$ as $A_1\times \cdots \times A_n\to C$. By the
+definition above, the set of components of the object $O$ is the list
+${\sf{nfuns}},A_1,\ldots,A_n,C$.
+
+In an obvious generalization of the mixfix notations, we would like to represent the
+notation definition for $\sf{nfuns}$ as
+$\fimarg{\times:\recu{p-1}}{1}{n-1}\to\imarg{\recu{p}}{n}:p$. In this, we had to
+generalize the argument specification for the domains so it can deal with an argument
+list. The new {\defemph{argument mapping specification}} represented by the box here
+specifies the range of components it covers (the first $n-1$ arguments in our example),
+their input precedence\footnote{Note that the input precedences of all members of the
+  component range is equal, since they are indistinguishable as list members.}, and
+finally, the {\defemph{separator}}, (the $\times$ operator in our example). The
+precedences are chosen so that the arrows associate to the right in our example.
+  
+The general form a of a component mapping specification is $\fimarg{sep:N}be$, where $sep$
+is the separator, $N$ is an arbitrary notation that may contain $\recu{p}$ to recurse into
+the arguments with input precedence $p$, and $b/e$ are the {\defemph{component sequence
+    begin/end indices}}.
+
+Now let $w_0\fimarg{s_1:\recu{p_1}}{b_1}{e_1}w_1\ldots
+w_{n-1}\fimarg{s_n:\recu{p_n}}{b_n}{e_n}w_n:p$ be a notation declaration for a function
+$f$, then
+
+  \[\pres{@(f,t_1,\ldots,t_m)}{q}=
+        w_0\pres{t_{b_1}}{p_1}s_1\ldots s_1\pres{t_{e_1}}{p_1}w_1\ldots
+        w_{n-1}\pres{t_{b_n}}{p_n}s_n\ldots s_n\pres{t_{e_n}}{p_n}w_n
+  \]
+  Note that an {\isabelle}-style argument specification $\imarg{p}\pi$ can be regained as
+  $\fimarg{\epsilon:\recu{p}}\pi\pi$, where $\epsilon$ is e.\,g.\  the empty
+  string. This legitimizes our example above.
+
+  Note that again, the $w_i$ can contain brackets and other material that can be elided
+  taking precedence and other factors into account. We will describe the necessary
+  infrastructure at a conceptual level in the next section. 
+
+
+%%% Local Variables: 
+%%% mode: stex
+%%% TeX-master: "presel"
+%%% fill-column: 90
+%%% sentence-end-double-space: nil
+%%% End: 
+
+% LocalWords:  stex presel

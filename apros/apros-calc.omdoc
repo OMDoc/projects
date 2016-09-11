@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN"
+                "../../dtd/omdoc.dtd" []>
+
+<omdoc xml:id="pl0-omdoc" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.mathweb.org/omdoc
+                           http://www.mathweb.org/omdoc/xsd/omdoc.xsd"
+       catalogue="../../examples/logics/catalogue.omdoc">
+
+ <metadata>
+  <Title>Deduction Rules for Apros Theorem Prover</Title>
+  <dc:creator role="aut">Michael Kohlhase</dc:creator>
+  <Date>20020227</Date>
+  <Description>	
+    This theory provides symbols for the deduction rules of the
+    Apros theorem prover developed at the Philosophy Department of Carnegie Mellon
+    University.
+  </Description> 
+ </metadata>
+
+ <theory xml:id="apros-nd">
+   <imports xml:id="imp1" from="inference-rules"/>
+   <imports xml:id="imp2" from="pl1"/>
+   <imports xml:id="imp3" from="substitution"/>
+
+   <symbol name="AllE">
+     <CMP>The universal elimination rule (AllE).</CMP>
+   </symbol>
+
+   <definition xml:id="AllE-def" for="AllE" type="simple">
+     <CMP>The universal elimination rule (AllE). This has the following form:
+       <OMOBJ style="display:block"><OMR xlink:href="AllE-def.1"/></OMOBJ>
+     </CMP>
+     <OMOBJ style="display:block" xml:id="AllE-def.1">
+       <OMBIND>
+	 <OMS cd="inference-rules" name="schema"/>
+	 <OMBVAR><OMV name="P"/><OMV name="a"/></OMBVAR>
+	 <OMA>
+	   <OMS cd="inference-rules" name="rule"/>
+	   <OMBIND>
+	     <OMS cd="pl1" name="forall"/>
+	     <OMBVAR><OMV name="x"/></OMBVAR>
+	     <OMA><OMV name="P"/><OMV name="x"/></OMA>
+	   </OMBIND>
+	   <OMA>
+	     <OMS cd="substitution" name="substitute"/>
+	     <OMV name="a"/>
+	     <OMV name="x"/>
+	     <OMA><OMV name="P"/><OMV name="x"/></OMA>
+	   </OMA>
+	 </OMA>
+       </OMBIND>
+     </OMOBJ>
+   </definition>
+
+   <symbol name="AllI">
+     <CMP>The universal introduction rule (AllI).</CMP>
+   </symbol>
+
+   <definition xml:id="AllI-def" for="AllI" type="simple">
+     <CMP>The universal introduction rule (AllI). This has the following form:
+       <OMOBJ style="display:block"><OMR xlink:href="AllI-def.1"/></OMOBJ>
+       where <OMOBJ><OMV name="a"/></OMOBJ> does not occur in
+      the formula <OMOBJ><OMR xlink:href="AllI-def.2"/></OMOBJ> or in any
+      assumption of the scope.
+     </CMP>
+     <OMOBJ style="display:block" xml:id="AllI-def.1">
+       <OMBIND>
+	 <OMS cd="inference-rules" name="schema"/>
+	 <OMBVAR><OMV name="P"/><OMV name="a"/></OMBVAR>
+	 <OMA>
+	   <OMS cd="inference-rules" name="rule"/>
+	   <OMA><OMV name="P"/><OMV name="x"/></OMA>
+	   <OMBIND id="AllI-def.2">
+	     <OMS cd="pl1" name="forall"/>
+	     <OMBVAR><OMV name="x"/></OMBVAR>
+	     <OMA><OMV name="P"/><OMV name="x"/></OMA>
+	   </OMBIND>
+	 </OMA>
+       </OMBIND>
+     </OMOBJ>
+   </definition>
+
+<!-- 3. The and elimination (left) rule (AndEL). This has the following form:
+
+    * Premise 1: P & Q (in scope S).
+    * Conclusion: P (in scope S).
+
+4. The and elimination (left) rule (AndER). This has the following form:
+
+    * Premise 1: P & Q (in scope S).
+    * Conclusion: Q (in scope S).
+
+5. The and elimination (left) rule (AndI). This has the following form:
+
+    * Premise 1: P (in scope S).
+    * Premise 2: Q (in scope S).
+    * Conclusion: P & Q (in scope S).
+
+6. Introduces an assumption into a proof (Assum). This has the following
+form:
+
+    * Conclusion: P (in non-top-level scope S).
+
+7. Introduces the statement of an axiom into a proof (Axiom). This has
+the following form:
+
+    * Conclusion: P (in any scope S).
+
+8. The existential elimination rule (ExE). This has the following form:
+
+    * Premise 1: (Ex)(Phi(x)) (in scope S).
+    * Premise 2: G (in scope S-&gt;{Phi(x)[a/x]}, where a does not occur
+      (i) in the formula (Ex)(Phi(x)), (ii) in the formula G, or (iii)
+      in any assumption of the scope S).
+    * Conclusion: G (in scope S).
+
+9. The existential introduction rule (ExI). This has the following form:
+
+    * Premise 1: Phi(a) (in scope S).
+    * Conclusion: (Ex)(Phi(x)) (in scope S).
+
+10. The biconditional elimination (left) rule (IffEL). This has the
+following form:
+
+    * Premise 1: P &lt;-&gt; Q (in scope S).
+    * Premise 2: P (in scope S).
+    * Conclusion: Q (in scope S).
+
+11. The biconditional elimination (right) rule (IffER). This has the
+following form:
+
+    * Premise 1: P &lt;-&gt; Q (in scope S).
+    * Premise 2: Q (in scope S).
+    * Conclusion: P (in scope S).
+
+12. The implication elimination rule (ImpE). This has the following form:
+
+    * Premise 1: P -&gt; Q (in scope S).
+    * Premise 2: P (in scope S).
+    * Conclusion: Q (in scope S).
+
+13. The implication introduction rule (ImpI). This has the following form:
+
+    * Premise 1: Q (in scope S-&gt;{P}).
+    * Premise 2: P (in scope S-&gt;{Q}).
+    * Conclusion: P &lt;-&gt; Q (in scope S).
+
+14. The negation elimination rule (NotE). This has the following form:
+
+    * Premise 1: P (in scope S-&gt;{~Q}).
+    * Premise 2: ~P (in scope S-&gt;{~Q}).
+    * Conclusion: Q (in scope S).
+
+15. The classical negation introduction rule (NotI). This has the
+following form:
+
+    * Premise 1: P (in scope S-&gt;{Q}).
+    * Premise 2: ~P (in scope S-&gt;{Q}).
+    * Conclusion: ~Q (in scope S).
+
+16. The intuitionistic falsum-Q rule (NotQ). This has the following form:
+
+    * Premise 1: P (in scope S).
+    * Premise 2: ~P (in scope S).
+    * Conclusion: Q (in scope S).
+
+17. The or elimination rule (OrE). This has the following form:
+
+    * Premise 1: P v Q (in scope S).
+    * Premise 2: R (in scope S-&gt;{P}).
+    * Premise 3: R (in scope S-&gt;{Q}).
+    * Conclusion: R (in scope S).
+
+18. The or introduction (left) rule (OrIL). This has the following form:
+
+    * Premise 1: P (in scope S).
+    * Conclusion: P V Q (in scope S).
+
+19. The or introduction (right) rule (OrIR). This has the following form:
+
+    * Premise 1: Q (in scope S).
+    * Conclusion: P V Q (in scope S).
+
+20. Introduces a premise into a proof (Prem). This has the following form:
+
+    * Conclusion: P (in top-level scope S).
+
+21. Introduces the statement of a theorem into a proof (Theorem). This
+has the following form:
+
+    * Conclusion: P (in any scope S). -->
+  </theory>
+</omdoc>
+
+

@@ -1,0 +1,170 @@
+\svnInfo $Id: mmt.tex 9195 2012-04-20 12:26:50Z frabe $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/mmt.tex $
+
+\begin{wrapfigure}r{3.2cm}\vspace*{-2em}
+\begin{tikzpicture}[yscale=.7]
+\draw (0,0) rectangle (3,3);
+\draw (0,1) -- (2,1);
+\draw (0,2) -- (2,2);
+\draw (2,0) -- (2,3);
+\node (thy) at (1,2.5) {Theories};
+\node (st) at (1,1.5) {Statements};
+\node (obj) at (1,0.5) {Objects};
+\node (doc) at (2.5,1.5){\begin{sideways}Documents\end{sideways}};
+\end{tikzpicture}
+\vspace*{-2em}
+\end{wrapfigure}
+\omdoc is a comprehensive content-based format for representing mathematical knowledge and
+documents. It represents mathematical knowledge at three levels: mathematical formulae at the
+\emph{object level}, symbol declarations, definitions, notation definitions, axioms, theorems, and
+proofs at the \emph{statement level}, and finally modular scopes at the \emph{theory level}. Moreover, it adds
+an infrastructure for representing functional aspects of \emph{mathematical documents} at the
+content markup level. \omdoc1.2 has been successfully used as a representational basis in applications
+ranging from theorem prover interfaces, via knowledge based up to eLearning systems. To allow
+this diversity of applications, the format has acquired a large, interconnected set of language
+constructs motivated by coverage and user familiarity (i.e., by pragmatic concerns) and not by
+minimality and orthogonality of language primitives (strict concerns).
+
+To reconcile these language design issues for \omdoc2, we want to separate the format into a \emph{strict} core language
+and a \emph{pragmatic} extension layer that is elaborated into strict \omdoc via a ``pragmatic-to-strict'' ($\ptos$) translation.
+
+For strict \omdoc we employ the foundation-independent, syntactically minimal {\mmt} framework
+(see below). For pragmatic \omdoc, we aim at a language that is feature-complete with
+respect to \omdoc1.2~\cite{Kohlhase:OMDoc1.2}, but incorporates language features from
+other MKM formats, most notably from Isabelle/Isar~\cite{isar},
+PVS~\cite{pvs}, and Mizar~\cite{mizar}.
+
+The {\mmt} language was emerged from a complete redesign of the formal core\footnote{We are currently
+  working on adding an informal (natural language) representation and a non-trivial (strict)
+  document level to {\mmt}, their lack does not restrict the results reported in this paper.} of \omdoc
+focusing on foundation-independence, scalability, modularity, while maintaining coverage of formal
+systems. The {\mmt} language is described in~\cite{RK:mmt:10} and implemented
+in~\cite{project:mmt}.
+
+\begin{wrapfigure}{l}{5.2cm}\vspace*{-2em}
+\begin{center}
+\begin{tikzpicture}[xscale=.95,yscale=.7]
+\node[thy] (A) at (0,3)  {$\mathit{LF}$};
+\node[thy] (A') at (2,3)  {$\mathit{Isabelle}$};
+\node[thy] (C) at (-1,1.5)   {$\mathit{FOL}$};
+\node[thy] (C') at (1,1.5) {$\mathit{HOL}$};
+\node[thy] (E) at (-2,0) {$\mathit{Monoid}$};
+\node[thy] (E') at (0,0)  {$\mathit{Ring}$};
+\draw[meta](A) -- (C);
+\draw[meta](A) -- (C');
+\draw[meta](C) -- (E);
+\draw[meta](C) -- (E');
+\draw[struct](A) --node[above] {} (A');
+\draw[struct](C) --node[above] {} (C');
+\draw[struct](E) --node[above] {} (E');
+%\draw[struct](A) --node[above] {$m$} (A');
+%\draw[struct](C) --node[above] {$m'$} (C');
+%\draw[struct](E) --node[above] {$i$} (E');
+\end{tikzpicture}
+\caption{An {\mmt} Theory Graph}\label{fig:mmt:intro:metatheory}
+\end{center}\vspace*{-2em}
+\end{wrapfigure}
+
+MMT uses \defemph{theories} as a single primitive to represent formal systems such as logical frameworks, logics, or theories.
+These form theory graphs such as the one on the left, where single arrows $\rightarrow$ denote theory translations and hooked arrows $\hookrightarrow$ denote the meta-theory relation between two theories.
+The theory $\mathit{FOL}$ for first-order logic is the meta-theory for $\mathit{Monoid}$ and $\mathit{Ring}$. And the theory $\mathit{LF}$
+for the logical framework LF~\cite{lf} is the meta-theory of $\mathit{FOL}$ and $\mathit{HOL}$ for higher-order logic.
+In general, we describe the theories with meta-theory $M$ as \defemph{$M$-theories}.
+The importance of meta-theories in {\mmt} is that the syntax and semantics of $M$ induces the syntax and semantics of all $M$-theories.
+For example, if the syntax and semantics are fixed for $\mathit{LF}$, they determine those of $\mathit{FOL}$ and $\mathit{Monoid}$.
+
+At the statement level, {\mmt} uses \defemph{constant} declarations as a single primitive to represent all OMDoc statement declarations. These are differentiated by the type system of the respective meta-theory. In particular, the Curry-Howard correspondence is used to represent axioms and theorems as plain constants (with special types).
+\medskip
+
+In Figure~\ref{fig:mmt-grammar}, we show a small fragment of the {\mmt} grammar that we need in the remainder of this paper. Meta-symbols of the BNF format are given in \bnf{color}.
+%the salient language features layered according the \omdoc stratification.
+
+%{\mmt} is meant to be applicable to all base languages based on \emph{theories}. Relations between theories (theory morphisms) are represented as {\mmt} \emph{views}. Both theories and views form the {\mmt} \emph{theory} level. A \emph{theory morphism} $\overline{\sigma} : S \rightarrow T$ is a \emph{signature morphism} $\sigma : S \rightarrow T$ interpreting all symbols of $S$ in $T$ and, in addition, $\overline{\sigma}$ translates all theorems of $S$ to theorems of $T$. {\mmt} uses the \emph{Curry-Howard representation} to drop the distinction between symbols and axioms (and thus between signatures and theories). As a result, {\mmt} needs only theories and theory morphisms.
+
+\begin{figure}[ht]
+\begin{center}
+\begin{tabular}{|@{\hspace{.4em}}l@{\tb}l@{\hspace{.4em}}l@{\hspace{.4em}}l@{\hspace{.4em}}|}
+\hline
+Modules              & $G$      &$\bnfas$& $\bnf{(}\lfkw{theory}\;\,T = \{\Sigma\}\bnf{)^{\ast}}$\\
+Theories             & $\Sigma$ &$\bnfas$& $\cdot\bnfalts\Sigma,\,%\lfkw{constant}\;\,
+c \bnf{[}:E \bnf{][}=E\bnf{]}\bnfalts \lfkw{meta}\;\,T$\\   
+Contexts     & $\Gamma$ &$\bnfas$& $\cdot\bnfalts\Gamma,\,x\bnf{[}:E\bnf{]}$\\ 
+Expressions          & $E$      &$\bnfas$& $x\bnfalts c\bnfalts E\,E^{\bnf{+}}\bnfalts E\,\Gamma.\,E$ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{{\mmt} Grammar}\label{fig:mmt-grammar}
+\end{figure}
+
+The module level of {\mmt} introduces \emph{theory declarations} $\lfkw{theory}\;\,T = \{\Sigma\}$. %\stackrel{M}{=}
+Theories $\Sigma$ contain \emph{constant declarations} $c[:E_1][=E_2]$ that introduce named atomic expressions $c$ with optional type $E_1$ or definition $E_2$. Moreover, %theories can include other theories $T$ via $\lfkw{include}\;T$, and 
+each theory may declare its meta-theory $T$ via $\lfkw{meta}\;T$.
+
+{\mmt} expressions are a fragment of OpenMath~\cite{openmath} objects, for which we introduce a short syntax. They are formed from variables $x$, constants $c$, applications $E\,E_1\,\ldots\, E_n$ of functions $E$ to a sequence of arguments $E_i$, and bindings $E_1\,\Gamma.\,E_2$ that use a binder $E_1$, a context $\Gamma$ of bound variables, and a scope $E_2$.
+Contexts $\Gamma$ consist of variables $x[:E]$ that can optionally attribute a type $E$.
+
+The semantics of {\mmt} is given in terms of \emph{foundations} for the upper-most meta-theories. Foundations define in particular the typing relation between expressions, in which {\mmt} is parametric.
+For example, the foundation for $\mathit{LF}$ induces the type-checking relation for all theories with meta-theory $\mathit{LF}$.
+
+\begin{example}[{\mmt}-Theories]Below we give an {\mmt} theory $\Forms$, which will serve as the meta-theory of several logics introduced in this paper. It introduces all symbols needed to declare logical connectives and inference rules of a logic.
+The syntax and semantics of this theory are defined in terms of type theory, e.g., the logical framework LF \cite{lf}.
+
+\begin{tabular}{@{\hspace{-.55cm}}l@{\hspace{1cm}}l}
+\begin{minipage}[b]{7cm}
+$\kity$, $\rightarrow$, and $\lmbd$ are untyped constants representing the primitives of type theory. $\kity$ represents the universe of all types, $\rightarrow$ constructs function types $\alpha\to\beta$, and $\lmbd$ represents the $\lambda$-binder.
+$\form$ is the type of logical formulas and  
+%a typed constant representing the set of logical formulas. 
+$\ded$ is a constant that assigns to each logical formula $F:\form$ the type $\ded\,F$ of its proof. 
+\end{minipage} &
+\begin{minipage}[b]{4cm}
+\begin{twelfsig}
+\tsig{\Forms}\\
+$\kity$\\
+$\rightarrow$\\
+$\lmbd$\\
+\decl{\form}{\kity}\\
+\decl{\ded}{\form\to\kity}\\
+\tsigend
+\end{twelfsig}
+\end{minipage}
+\end{tabular}
+\end{example}
+
+
+%\begin{wrapfigure}{r}{4cm}
+%\vspace{-3em}
+%\begin{center}
+%\begin{twelfsig}
+%\tsig{\Forms}\\
+%$\kity$\\
+%$\rightarrow$\\
+%$\lmbd$\\
+%\decl{\form}{\kity}\\
+%\decl{\ded}{\form\to\kity}\\
+%\tsigend
+%\end{twelfsig}
+%\end{center}
+%\vspace{-5em}
+%\caption{An Example {\mmt} Theory}\label{fig:ex-mmt}
+%\end{wrapfigure}
+
+%{\mmt} theories consist of \emph{symbol declarations}. 
+%{\mmt} views consist of \emph{symbol assignments}.  
+%\emph{Constants} represent declarations of the base language.
+%\emph{Structures} represent inheritance between theories.  
+%\emph{Constant assignments} and \emph{structure assignments} represent assignments between constants and structures respectively. \emph{Links} are an {\mmt} module level notion that generalizes both structures and views. 
+%Symbol declarations and assignments form a {\mmt} symbol level.  
+%\emph{Terms} appear inside {\mmt} constants (e.g. as type or definition) and their grammar is motivated by the OpenMath grammar. They form the {\mmt} object level.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+
+% LocalWords:  mmt.tex wrapfigure vspace tikzpicture yscale omdoc emph Rudnicki
+% LocalWords:  isabelle-isar aomp92 ednote RabKoh mmt-ontology overline hspace
+% LocalWords:  rightarrow rightarrow ysep theo-name symb-name 5.2truecm xscale
+% LocalWords:  cn mmt defemph frabe ptos pvs mathit hookrightarrow lf medskip
+% LocalWords:  bnf hline bnfas lfkw cdot bnfalts stackrel ldots kity lmbd kity
+% LocalWords:  ded ded twelfsig tsig tsigend

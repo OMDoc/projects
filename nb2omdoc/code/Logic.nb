@@ -1,0 +1,3306 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     71917,       2423]*)
+(*NotebookOutlinePosition[     77676,       2608]*)
+(*  CellTagsIndexPosition[     77109,       2582]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Analytica Prover", "Title",
+  FontFamily->"Charter"],
+
+Cell[CellGroupData[{
+
+Cell["Auxiliary", "Subsubsection"],
+
+Cell[BoxData[{
+    \(printmssg[x__String]\  := \ 
+      If[\ $prndebug, Print["\<**** \>", x]]; \), "\n", 
+    \(printsec[x__String]\  := \ 
+      If[\ $secdebug, Print["\<**** \>", x]]; \)}], "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  "This is a *bad* hack to clear functionals.  System command ",
+  StyleBox["Clear", "Input"],
+  " complains about wrong argument."
+}], "Text"],
+
+Cell[BoxData[
+    \(\(clear[xx___]\  := Clear[xx];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Subsection"],
+
+Cell[BoxData[{
+    \(\(BasicTerms = {};\)\), "\n", 
+    \(\(KnownUpper = {};\)\), "\n", 
+    \(\(KnownLower = {};\)\), "\n", 
+    \(\(Facts[_] := True;\)\), "\n", 
+    \(\(Lemmas[_] := True;\)\), "\n", 
+    \(\(UserRules = {};\)\), "\n", 
+    \(\(UserFunctions = {};\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Proof Context", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Data in current proof section", "Subsubsection"],
+
+Cell[BoxData[{
+    \(GivenIdentitiesAt[_] := {}; \), "\n", 
+    \(RulesGivenIn[_] := {}; \), "\n", 
+    \(GivenFormulasIn[_] := {}; \), "\n", 
+    \(CurrentPath = {}; \), "\n", 
+    \(CurrentSection := 
+      CurrentPath\[LeftDoubleBracket]1\[RightDoubleBracket]; \)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Start a new proof section ", "Subsubsection"],
+
+Cell[BoxData[{
+    \(StartSection[] := StartSection[Unique["\<temp\>"]]; \), "\n", 
+    \(\(StartSection[
+          a_] := \[IndentingNewLine]\((\[IndentingNewLine]printsec["\<\
+StartSection\>"]; \[IndentingNewLine]ResetKnownBounds[]; \
+\[IndentingNewLine]PrependTo[CurrentPath, 
+            a];\[IndentingNewLine])\);\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["End the current proof section ", "Subsubsection"],
+
+Cell[TextData[{
+  "This looks like a bug:  why follow ",
+  StyleBox["Clear[x]", "Input"],
+  " by  ",
+  StyleBox["x = .   ??", "Input"]
+}], "Text"],
+
+Cell[BoxData[
+    \(\(EndSection[] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          printsec["\<EndSection\>"]; \[IndentingNewLine]\t
+          clear[GivenUpperAt[CurrentSection]]; \[IndentingNewLine]\t
+          clear[GivenLowerAt[CurrentSection]]; \[IndentingNewLine]\t
+          GivenUpperAt[CurrentSection] =. ; \[IndentingNewLine]\t
+          GivenLowerAt[CurrentSection] =. ; \[IndentingNewLine]\t
+          RulesGivenIn[CurrentSection] = {}; \[IndentingNewLine]\t
+          GivenIdentitiesAt[CurrentSection] = {}; \[IndentingNewLine]\t
+          CurrentPath = Drop[CurrentPath, 1]; \[IndentingNewLine]\t
+          RulesGivenIn[a] = {}; \[IndentingNewLine]\t
+          ResetKnownBounds[];\[IndentingNewLine])\);\)\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(ResetKnownBounds[] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          KnownUpper = Table[Unknown, {NumberOfTerms}]; \[IndentingNewLine]\t
+          KnownLower = 
+            Table[Unknown, {NumberOfTerms}];\[IndentingNewLine])\);\)\)], \
+"Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+EvaluateAssuming tries to calculate \"result\" assuming \"cond\" is \
+true \
+\>", "Subsubsection"],
+
+Cell["\<\
+if not True:  start a temporary proof context for it, make \"cond\" \
+as given
+calculate \"result\" under the new context, then end the temporal context and \
+return with the result\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(SetAttributes[EvaluateAssuming, HoldRest]; \), "\n", 
+    \(EvaluateAssuming[True, result_] := result; \), "\n", 
+    \(\(EvaluateAssuming[cond_, 
+          result_] := \[IndentingNewLine]Block[{tempresult}, \
+\[IndentingNewLine]\tStartSection[]; \[IndentingNewLine]\t
+          AddKnowledge[cond, CurrentSection]; \[IndentingNewLine]\t
+          tempresult = result; \[IndentingNewLine]\t
+          EndSection[]; \[IndentingNewLine]\t
+          tempresult\[IndentingNewLine]];\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Save the theorems so that they can be used later ", "Subsubsection"],
+
+Cell[BoxData[{
+    \(SetAttributes[ProveAndSave, {HoldAll}]; \), "\n", 
+    \(ProveAndSave[form_] := \((Prove[form]; Given[form])\); \), "\n", 
+    \(ProveAndSave[form__] := \((Prove[and[form]]; 
+        Given[form])\); \)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Save to another section ", "Subsubsection",
+  CellTags->"c:12"],
+
+Cell[BoxData[
+    \(ProveAndSaveTo[form__, a_] := \((Prove[and[form]]; 
+        GivenTo[and[form], a])\); \)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Save given formulas in current section ", "Subsubsection",
+  CellTags->"c:13"],
+
+Cell[BoxData[
+    \(Given[a__] := GivenTo[and[a], CurrentSection]; \)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Save given formulas to some directed section ", "Subsubsection",
+  CellTags->"c:14"],
+
+Cell[BoxData[{
+    \(GivenTo[form_, section_] := 
+      AddKnowledge[WeakSimplify[form], section]; \), "\n", 
+    \(\(AddKnowledge[and[a_, b__], 
+          section_] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          AddKnowledge[a, section]; \[IndentingNewLine]\t
+          AddKnowledge[and[b], section]\[IndentingNewLine])\);\)\), "\n", 
+    \(\(AddKnowledge[form_, 
+          section_] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          AppendTo[GivenFormulasIn[section], form]; \[IndentingNewLine]\t
+          If[Head[form] == LessEqual, 
+            AddUpperBound[
+              form\[LeftDoubleBracket]1\[RightDoubleBracket] - 
+                form\[LeftDoubleBracket]2\[RightDoubleBracket], 0, 
+              section]]; \[IndentingNewLine]\t
+          If[Head[form] == Less, 
+            AddUpperBound[
+              form\[LeftDoubleBracket]1\[RightDoubleBracket] - 
+                form\[LeftDoubleBracket]2\[RightDoubleBracket], Strict[0], 
+              section]]; \[IndentingNewLine]\t
+          If[Head[form] == Equal, 
+            AddIdentity[form, section]]; \[IndentingNewLine]\t
+          AddSimplifyRules[form, 
+            section];\[IndentingNewLine])\);\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["GivenIdentities is the conjunctions of given identities ", \
+"Subsubsection",
+  CellTags->"c:15"],
+
+Cell[BoxData[
+    \(GivenIdentities := 
+      Union @@ \(GivenIdentitiesAt /@ CurrentPath\); \)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+RulesFormGiven specifies the simplify rules come from the given \
+knowledge in current proof context\
+\>", "Subsubsection",
+  CellTags->"c:16"],
+
+Cell[BoxData[{
+    \(RulesFromGiven := Union @@ \(RulesGivenIn /@ CurrentPath\); \), "\n", 
+    \(GivenFormulas[] := 
+      Union @@ \(GivenFormulasIn /@ CurrentPath\); \)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "The given upper/lower bound for the  ",
+  StyleBox["n", "Input"],
+  " th basic term "
+}], "Subsubsection",
+  CellTags->"c:17"],
+
+Cell[BoxData[{
+    \(GivenUpper[n_] := 
+      Union @@ \(\((\(GivenUpperAt[#1]\)[n] &)\) /@ CurrentPath\); \), "\n", 
+    \(GivenLower[n_] := 
+      Union @@ \(\((\(GivenLowerAt[#1]\)[n] &)\) /@ 
+          CurrentPath\); \)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Install the Upper or Lower bounds given in a section ", "Subsubsection",
+  CellTags->"c:19"],
+
+Cell[BoxData[{
+    \(\(GivenUpperAt[section_] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          GivenUpperAt[section] = 
+            Unique["\<Upper\>"]; \[IndentingNewLine]\t\(GivenUpperAt[
+                section]\)[_] := {}; \[IndentingNewLine]\t
+          GivenUpperAt[section]\[IndentingNewLine])\);\)\), "\n", 
+    \(\(GivenLowerAt[section_] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          GivenLowerAt[section] = 
+            Unique["\<Lower\>"]; \[IndentingNewLine]\t\(GivenLowerAt[
+                section]\)[_] := {}; \[IndentingNewLine]\t
+          GivenLowerAt[section]\[IndentingNewLine])\);\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Deal with sums", "Subsubsection",
+  CellTags->"c:20"],
+
+Cell[BoxData[{
+    \(\(AddUpperBound[f1_ + f2_, upper_, 
+          section_] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          AddUpperBound[f1, upper - f2, section]; \[IndentingNewLine]\t
+          AddUpperBound[f2, upper - f1, 
+            section]\[IndentingNewLine])\);\)\), "\n", 
+    \(\(AddLowerBound[f1_ + f2_, lower_, 
+          section_] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          AddLowerBound[f1, lower - f2, section]; \[IndentingNewLine]\t
+          AddLowerBound[f2, lower - f1, 
+            section]\[IndentingNewLine])\);\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Deal with integral multiples", "Subsubsection",
+  CellTags->"c:21"],
+
+Cell[BoxData[{
+    \(\(AddUpperBound[n_?NumberQ\ f_, upper_, section_] := 
+        If[n > 0, AddUpperBound[f, upper\/n, section], 
+          AddLowerBound[f, upper\/n, section]];\)\), "\n", 
+    \(\(\(AddUpperBound[f_\ g_\^\(n_Integer?Negative\ e_. \), upper_, 
+          section_] := 
+        AddUpperBound[f, upper\ g\^\(\(-n\)\ e\), section] /; 
+          EvenQ[n] || WeakSimplify[g \[GreaterEqual] 0];\)\(\n\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(AddUpperBound[f_\ g_\^\(n_Integer?Negative\ e_. \), upper_, 
+          section_] := 
+        AddLowerBound[f, upper\ g\^\(\(-n\)\ e\), section] /; 
+          OddQ[n] && WeakSimplify[g \[LessEqual] 0];\)\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(AddLowerBound[n_?NumberQ\ f_, lower_, section_] := 
+        If[n > 0, AddLowerBound[f, lower\/n, section], 
+          AddUpperBound[f, lower\/n, section]];\)\), "\n", 
+    \(\(\(AddLowerBound[f_\ g_\^\(n_Integer?Negative\ e_. \), upper_, 
+          section_] := 
+        AddLowerBound[f, upper\ g\^\(\(-n\)\ e\), section] /; 
+          EvenQ[n] || WeakSimplify[g \[GreaterEqual] 0];\)\(\n\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(AddLowerBound[f_\ g_\^\(n_Integer?Negative\ e_. \), upper_, 
+          section_] := 
+        AddUpperBound[f, upper\ g\^\(\(-n\)\ e\), section] /; 
+          OddQ[n] && WeakSimplify[g \[LessEqual] 0];\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Add ",
+  StyleBox["upper", "Input"],
+  "/",
+  StyleBox["lower", "Input"],
+  " as an extra upper bound for ",
+  StyleBox["f", "Input"],
+  "  in context ",
+  StyleBox["section", "Input"],
+  " "
+}], "Subsubsection",
+  CellTags->"c:22"],
+
+Cell[BoxData[
+    \(\(AddUpperBound[f_, upper_, 
+          section_] := \[IndentingNewLine]\((\[IndentingNewLine]If[
+            NumberQ[f] || \(! FreeQ[upper, f]\), 
+            Return[]]; \[IndentingNewLine]ResetKnownBounds[]; \
+\[IndentingNewLine]PrependTo[\(GivenUpperAt[section]\)[TermNumber[f]], 
+            upper]\[IndentingNewLine])\);\)\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(AddLowerBound[f_, lower_, 
+          section_] := \[IndentingNewLine]\((\[IndentingNewLine]If[
+            NumberQ[f] || \(! FreeQ[lower, f]\), 
+            Return[]]; \[IndentingNewLine]ResetKnownBounds[]; \
+\[IndentingNewLine]PrependTo[\(GivenLowerAt[section]\)[TermNumber[f]], 
+            lower]\[IndentingNewLine])\);\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Add an identity to the context \"section\" ", "Subsubsection",
+  CellTags->"c:26"],
+
+Cell[BoxData[
+    \(\(AddIdentity[a_ == b_, section_] := 
+        AppendTo[GivenIdentitiesAt[section], a \[Rule] b];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Add simplify rules which comes from \"form\", to the context \
+\"section\" \
+\>", "Subsubsection",
+  CellTags->"c:27"],
+
+Cell[BoxData[
+    \(\(AddSimplifyRules[form_, section_] := \(RulesGivenIn[section] = 
+          RulesFrom[form] \[Union] RulesGivenIn[section]\);\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Initialize the current proof context ", "Subsubsection",
+  CellTags->"c:28"],
+
+Cell["\<\
+If the prover is at a temporal context, end it.  Clear the set of \
+given properties, clear the set of given upper or lower bounds of \
+expressions, reset the known upper or lower bound, reset the branch \
+stack.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(Initialize[] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          While[\(! FreeQ[CurrentPath, Temp]\), 
+            EndSection[]]; \[IndentingNewLine]\t
+          RulesGivenIn[CurrentSection] = {}; \[IndentingNewLine]\t
+          GivenIdentitiesAt[CurrentSection] = {}; \[IndentingNewLine]\t
+          clear[GivenUpperAt[CurrentSection]]; \[IndentingNewLine]\t
+          clear[GivenLowerAt[
+              CurrentSection]]; \[IndentingNewLine]\t\(GivenUpperAt[
+                CurrentSection]\)[_] := {}; \[IndentingNewLine]\t\
+\(GivenLowerAt[CurrentSection]\)[_] := {}; \[IndentingNewLine]\t
+          ResetKnownBounds[]; \[IndentingNewLine]\t
+          BranchStack = {};\[IndentingNewLine])\);\)\)], "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Prover", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["FalseQ", "Input"]], "Subsubsection",
+  CellTags->"c:19"],
+
+Cell[BoxData[
+    \(FalseQ[x_] := x === False; \)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["orelse", "Input"]], "Subsubsection",
+  CellTags->"c:20"],
+
+Cell[TextData[{
+  " ",
+  StyleBox["orelse", "Input"],
+  " checks if either one of the two formulas is not false. "
+}], "Text",
+  CellTags->"c:20"],
+
+Cell[BoxData[{
+    \(SetAttributes[orelse, HoldRest]; \), "\n", 
+    \(orelse[f_] := f; \), "\n", 
+    \(orelse[False, f2__] := orelse[f2]; \), "\n", 
+    \(orelse[f1_, f2__] := f1; \)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Function Definitions", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(OpenDefinition[
+          seq_] := \[IndentingNewLine]Block[{s0}, \[IndentingNewLine]\t
+          s0 = Skolemize[seq /. \[InvisibleSpace]UserFunctions, 
+              NegPos, {}]; \[IndentingNewLine]\t
+          If[s0 =!= seq, print["\<open definition\>"]]; \[IndentingNewLine]\t
+          s0\[IndentingNewLine]];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Instantiation for current sequent", "Subsubsection"],
+
+Cell[BoxData[{
+    \(curinstantiation = True; \), "\n", 
+    \(TheoremsProved = {}; \), "\n", 
+    \(ProveHistory = {}; \)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["ProveByInduction", "Input"]], "Subsubsection",
+  CellTags->"c:3"],
+
+Cell[TextData[{
+  StyleBox["ProveByInduction", "Input"],
+  " tries to prove  ",
+  Cell[BoxData[
+      \(TraditionalForm\`f[0]\  \[And] \ \((f[n - 1] \[Rule] f[n])\)\)]],
+  " "
+}], "Text",
+  CellTags->"c:3"],
+
+Cell[BoxData[{
+    \(\(\(SetAttributes[ProveByInduction, {HoldRest}];\)\(\n\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(ProveByInduction[{n_, n0_, nbases_}, 
+          f_] := \[IndentingNewLine]Module[{k}, \
+\((\[IndentingNewLine]StartProof; \[IndentingNewLine]ProveHistory = {}; \
+\[IndentingNewLine]StartSection[
+              Temp]; \[IndentingNewLine]label = "\<1\>"; \
+\[IndentingNewLine]PrintBold["\<Theorem :\>"]; \
+\[IndentingNewLine]PrintSequent[HoldForm[f]]; \[IndentingNewLine]AppendTo[
+              TheoremsProved, 
+              Printform[
+                HoldForm[
+                  f]]]; \[IndentingNewLine]PrintBold["\<Proof :\>"]; \
+\[IndentingNewLine]print["\<prove by induction on \>", 
+              ToString[n], "\<\n\>"]; \[IndentingNewLine]integer[n] = 
+              True; \[IndentingNewLine]\[IndentingNewLine]For[k = 0, 
+              k < nbases, \(k++\), \[IndentingNewLine]\t
+              print["\<base case with \>", ToString[n], "\< = \>", 
+                ToString[n0 + k]]; \[IndentingNewLine]\t
+              If[\ \ \ FalseQ[\ 
+                  Verify[\ 
+                    seq[\ True, 
+                      Skolemize[\ 
+                        f /. \[InvisibleSpace]\((n \[Rule] n0 + k)\), 
+                        NegPos, {}]]]], \[IndentingNewLine]\t\t\
+PrintResult["\<RESULT\>", Fail]; \[IndentingNewLine]\t\tsequent = 
+                  False; \[IndentingNewLine]\t\tEndSection[]; \
+\[IndentingNewLine]\t\tEndProof; \[IndentingNewLine]\t\tReturn[]\
+\[IndentingNewLine]\t];\[IndentingNewLine]]; \[IndentingNewLine]\
+\[IndentingNewLine]print["\<induction step\>"]; \[IndentingNewLine]Given[
+              n \[GreaterEqual] 
+                n0]; \[IndentingNewLine]printmssg["\<ProveByInduction: before \
+Verify \>"]; \[IndentingNewLine]\ 
+            Verify[\ \ seq[
+                Apply[\ and, 
+                  Map[Skolemize[
+                        f /. \((\[InvisibleSpace]n \[Rule] n + # - 1)\), 
+                        PosPos, {}] &, 
+                    Range[nbases]]], \[IndentingNewLine]Skolemize[
+                  f /. \((\[InvisibleSpace]n \[Rule] n + nbases)\), 
+                  NegPos, {}]]]; \
+\[IndentingNewLine]printmssg["\<ProveByInduction: after Verify \>"]; \
+\[IndentingNewLine]\[IndentingNewLine]EndSection[]; \
+\[IndentingNewLine]EndProof;\[IndentingNewLine])\)];\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\(ProveByInduction[{n_, n0_}, f_] := 
+        ProveByInduction[{n, n0, 1}, f];\)\), "\n", 
+    \(\(ProveByInduction[n_, f_] := 
+        ProveByInduction[{n, 0}, f];\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Try to prove a formula with quantifiers ", "Subsubsection",
+  CellTags->"c:4"],
+
+Cell[BoxData[{
+    \(SetAttributes[Prove, {HoldFirst}]; \), "\n", 
+    \(\(Prove[f_] := \[IndentingNewLine]\((\[IndentingNewLine]\t
+          StartProof; \[IndentingNewLine]\t
+          ProveHistory = {}; \[IndentingNewLine]\t
+          StartSection[Temp]; \[IndentingNewLine]\t
+          PrintBold["\<Theorem :\>"]; \[IndentingNewLine]\t
+          PrintSequent[HoldForm[f]]; \[IndentingNewLine]\t
+          AppendTo[TheoremsProved, 
+            Printform[HoldForm[f]]]; \[IndentingNewLine]\t
+          PrintBold["\<Proof :\>"]; \[IndentingNewLine]\t
+          sequent = seq[True, Skolemize[f, NegPos, {}]]; \[IndentingNewLine]\t
+          label = "\<1\>"; \[IndentingNewLine]\t
+          Verify[sequent]; \[IndentingNewLine]\t
+          EndSection[]; \[IndentingNewLine]\t
+          EndProof;\[IndentingNewLine])\);\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Verify", "Input"]], "Subsubsection",
+  CellTags->"c:5"],
+
+Cell[BoxData[
+    \(VerifyIfNotSame[t_, s_] := If[s =!= t, Verify[s], False]; \)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(Verify[
+          s_] := \[IndentingNewLine]Block[{sequent}, \[IndentingNewLine]\t
+          sequent = StrongSimplify[s]; \[IndentingNewLine]\t
+          PrintMessage[SimpMsgList]; \[IndentingNewLine]\t
+          If[DepthCount > 0, 
+            Return[TryProving[sequent]]]; \[IndentingNewLine]\t
+          orelse[TryProving[sequent], \[IndentingNewLine]\t\tRewriteAndProve[
+              sequent], \[IndentingNewLine]\t\tVerifyIfNotSame[sequent, 
+              OpenDefinition[
+                sequent]], \[IndentingNewLine]\t\tPrintResult["\<after \
+all\>", Fail]; False\[IndentingNewLine]\t]\[IndentingNewLine]];\)\)], "Input",\
+
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Rewriting and proving the given formula ", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(RewriteAndProve[s_] := \[IndentingNewLine]orelse[\ 
+          TryProveIfNotSame[sequent, 
+            sequent = SubstEquation[sequent]], \[IndentingNewLine]\t
+          TryProveIfNotSame[sequent, 
+            sequent = Rewriting[sequent]], \[IndentingNewLine]\t
+          TryInduction[sequent], \[IndentingNewLine]\t
+          TryProveIfNotSame[sequent, 
+            sequent = RewriteSum[sequent]], \[IndentingNewLine]\t
+          TryProveIfNotSame[sequent, 
+            sequent = RewriteTrigg[sequent]], \[IndentingNewLine]\t
+          TryProveIfNotSame[sequent, 
+            sequent = Factorize[sequent]], \[IndentingNewLine]\t
+          TryProveIfNotSame[sequent, 
+            sequent = SolveEquation[sequent]], \[IndentingNewLine]\t
+          If[s =!= sequent, RewriteAndProve[sequent], 
+            False]\[IndentingNewLine]];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+If first sequent is difference from second, try proving the \
+latter\
+\>", "Subsubsection",
+  CellTags->"c:8"],
+
+Cell[BoxData[{
+    \(\(TryProveIfNotSame[t_, s_] := 
+        If[s =!= t, TryProving[s], False];\)\), "\n", 
+    \(\(TryProving[
+          s_] := \[IndentingNewLine]Block[{temp, temph}, \[IndentingNewLine]\t
+          PrintSequent[s]; \[IndentingNewLine]\t
+          SucceedWith[\ 
+            If[TrueQ[s], 
+              TryOtherBranches[True], \[IndentingNewLine]\t\t\torelse[
+                Imply[s], 
+                ProveUsingBound[s]]]]\[IndentingNewLine]];\)\)}], "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Imply", "Subsection"],
+
+Cell["\<\
+ Check if there is a equation in the conclusion which is \
+satisfiable \
+\>", "Text"],
+
+Cell["\<\
+Imply[seq[h_, a_  ==  b_]] :=  
+Block[{u, u1, temph},
+\tu1 /;  (!FalseQ[u = unify[a, b]] && 
+\t        !FalseQ[u1 = SucceedWith[ PrintResult[\"equation\", u]; \t
+\t        \t\t\t\t\t\t  TryOtherBranches[u]]])
+];
+Imply[seq[h_, or[c1___, a_  ==  b_,  c2___]]] :=  
+Block[{u,u1, temph},
+\tu1 /; (!FalseQ[u = unify[a, b]] && 
+\t       !FalseQ[u1 = SucceedWith[ PrintResult[\"equation\", u];
+\t       \t\t\t\t\t\t\t TryOtherBranches[u]]])
+];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Check if there is an inequality in the conclusion which is \
+satisfiable \
+\>", "Text"],
+
+Cell["\<\
+Imply[seq[h_, a_  <=  b_]] :=  
+Block[{u,u1},
+\tu1 /;\t( !FalseQ[u = unify[a, b]] && 
+\t          !FalseQ[u1 = SucceedWith[ PrintResult[\"inequality\", u];
+\t          \t\t\t\t\t\t\tTryOtherBranches[u]]] )
+];
+
+Imply[seq[h_, or[c1___, a_  <=  b_,  c2___]]] := 
+Block[{u,u1},
+\tu1 /;  (!FalseQ[u = unify[a, b]] && 
+\t        !FalseQ[u1 = SucceedWith[ PrintResult[\"inequality\", u];
+\t       \t\t\t\t\t\t\t  TryOtherBranches[u]]])
+];
+
+Imply[seq[Var[x_] == f_, c_]] := 
+Block[{u,u1},
+\tu1 /; ( FreeQ[f, x] && 
+\t        !FalseQ[u1 = SucceedWith[ PrintResult[\"add restriction:\", x != \
+f]; 
+\t\t\t\t Restriction = and[Restriction, not[Var[x] == f]]; 
+\t\t\t\t Given[not[Var[x] == f]];
+\t\t\t\t TryOtherBranches[True]]] )
+];
+
+Imply[seq[and[h1___, Var[x_] == f_, h2___], c_]] := 
+Block[{u,u1},
+\tu1 /;
+\t( FreeQ[f, x] && 
+\t  !FalseQ[u1 = SucceedWith[ PrintResult[\"add restriction:\", x != f]; 
+\t\t\t Restriction = and[Restriction, not[Var[x] == f]]; 
+\t\t\t Given[not[Var[x] == f]];
+\t\t\t TryOtherBranches[True]]])
+];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+Check if a disjunct of the conclusion matches a conjunct of the \
+hypothesis.\
+\>", "Text"],
+
+Cell["\<\
+Imply[seq[h_, c_]] := u /; (!FalseQ[SucceedWith[u = disjunct[h, \
+c]]]); \
+\>", "Input",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell[" prove by \"and split\" ", "Subsubsection",
+  CellTags->"c:13"],
+
+Cell[TextData[{
+  Cell[BoxData[
+      \(TraditionalForm\`H\  \[Rule] \ \((A\  \[And] \ B)\)\)]],
+  " is equivalent to  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\((H\  \[Rule] \ 
+            A)\)\(\ \)\(\[And]\)\(\ \)\((\((H\  \[And] \ A)\)\  \[Rule] \ 
+            B)\)\(\ \)\)\)]]
+}], "Text"],
+
+Cell["\<\
+Imply[seq[h_, and[a_, b__]]] := 
+(
+\tprint[\"and split \\n\"];
+\tSequentialTry[ seq[h, a], seq[and[h, simple[a]], and[b]]]
+);\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  " to prove  ",
+  Cell[BoxData[
+      \(TraditionalForm\`H\  \[Rule] \ \((A\  \[And] B)\)\  \[Or] \ C\)]]
+}], "Subsubsection",
+  CellTags->"c:14"],
+
+Cell[TextData[{
+  " try  ",
+  Cell[BoxData[
+      \(TraditionalForm\`H\  \[Rule] \ \((A\  \[Or] \ C)\)\)]],
+  "  first and then ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((H\  \[And] \ A)\)\  \[Rule] \ \((B\  \[Or] \ 
+            C)\)\)]]
+}], "Text"],
+
+Cell["\<\
+Imply[seq[h_, or[c1___, and[a_, b__], c2___]]] :=
+(
+\tprint[\"and split\\n\"];
+\tSequentialTry[ seq[h, or[c1, a, c2]], seq[and[h, simple[a]],  or[c1, \
+and[b], c2]]]
+);\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" prove by \"cases\" ", "Subsubsection",
+  CellTags->"c:15"],
+
+Cell[TextData[{
+  Cell[BoxData[
+      \(TraditionalForm\`\(\((A\  \[Or] 
+            B)\)\(\ \)\(\[Rule]\)\(\ \)\(C\)\(\ \)\)\)]],
+  "  is equivalent to   ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((A\  \[Rule] \ 
+            C)\)\  \[And] \ \((B\  \[Rule] \ \((C\  \[Or] \ A)\))\)\)]],
+  " "
+}], "Text"],
+
+Cell["\<\
+Imply[seq[or[a_, b__], c_]] := 
+(
+\tprint[\"cases\\n\"];
+\tSequentialTry[ seq[a, c], seq[or[b], or[c, simple[a]]]]
+);\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  " to prove  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((H\  \[And] \ \((A \[Or] B)\))\)\  \[Rule] \ C\)]]
+}], "Subsubsection",
+  CellTags->"c:16"],
+
+Cell[TextData[{
+  "try   ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((H\  \[Or] \ A)\)\  \[Rule] \ \ C\)]],
+  "  first and then  ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((H\  \[And] \ B)\)\  \[Rule] \ \((C\  \[Or] \ 
+            A)\)\)]]
+}], "Text"],
+
+Cell["\<\
+Imply[seq[and[h1___, or[a_, b__], h2___], c_]] := 
+(
+\tprint[\"cases\\n\"];
+\tSequentialTry[ seq[and[h1, a, h2],  c],
+\t\tseq[and[h1, or[b], h2],  or[c, simple[a]]]]
+);
+simple[_or] = simple[_and] = simple[_imp] = NIL;
+simple[a_] := a;\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Back-chain ", "Subsubsection",
+  CellTags->"c:17"],
+
+Cell["\<\
+Imply[seq[h0_, or[c0___, c_, c1___]]] := 
+Block[{u}, u /; !FalseQ[u = Backchain[seq[h0, or[c0, c1]], Lemmas[Head[c]], \
+c]]];
+Imply[seq[h0_, c_]] := 
+Block[{u}, u /; !FalseQ[u = Backchain[seq[h0, False], Lemmas[Head[c]], \
+c]]];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" otherwise fail ", "Subsubsection",
+  CellTags->"c:18"],
+
+Cell["Imply[s_] := False;", "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Back Chaining", "Subsection",
+  CellTags->"c:21"],
+
+Cell[TextData[{
+  "The first argument of ",
+  StyleBox["Backchain", "Input"],
+  " is the current sequent, the second is a conjunction of lemmas and the \
+third is the conclusion part want to be matched with one of the lemmas.  Try \
+each lemma sequentially ."
+}], "Text"],
+
+Cell["\<\
+Backchain[s_, and[a_,rest__], c_] :=
+\torelse[ Backchain[s, a, c],\tBackchain[s, and[rest], c] ];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["When \"c\" matches the conclusion part of a lemma, back chain.", "Text"],
+
+Cell["\<\
+Backchain[s_, imp[b_, c1_], c_] :=   
+Block[{u1},
+\tMatchingState = MSlemma;
+\tCurrentLemma  = imp[b, c1];
+\tBranchStackPush[{or[b, s], 0}];
+\t(* if the backchaining rule can be applied here *)
+\tIf[ FalseQ[u1 = conjunct[c1, c]], BranchStackPop[] ];
+\tu1
+];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" If backchaining can not be used ", "Text"],
+
+Cell["Backchain[___] :=  False; ", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Try Constructs", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["TryPart", "Subsubsection",
+  CellTags->"c:23"],
+
+Cell["\<\
+TryPart[f_, lab_] :=  
+If[label===0, 
+\t(label = templ; print[\"back chaining\"]; Verify[f]),
+\t(SetAndPrintLabel[StringJoin[label, \".\", lab]]; Verify[f])
+]; \
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" SequentialTry", "Subsubsection",
+  CellTags->"c:24"],
+
+Cell[TextData[{
+  StyleBox["SequentialTry[p1, p2]", "Input"],
+  " attempts to prove p1 first and then p2,  the instantiation obtained from \
+proving p1 should be applied to p2."
+}], "Text"],
+
+Cell["\<\
+SequentialTry[p1_, p2_] := 
+Block[{u1},
+\tBranchStackPush[{p2, label}];
+\tIf[ FalseQ[u1 = TryPart[p1, \"1\"]], BranchStackPop[]];
+\tu1
+];
+\t
+TryOtherBranches[u_] := 
+Block[{\tu1, tempseq, templ = label, 
+\tcurinstantiation = subrules[curinstantiation, u],
+\ttempstack = BranchStack},
+\tIf[BranchStackEmpty[], 
+\t\tIf[FalseQ[u1 = TryRestrict[curinstantiation]], 
+\t\t\tprint[\"back tracking\"]; SetAndPrintLabel[templ]; 
+\t\t\tPrintSequent[sequent];
+\t\t\tBranchStack = tempstack; Return[False],
+\t\tReturn[u1]]];
+\ttempseq = BranchStackPop[];
+\tlabel = tempseq[[2]];
+\ttempseq = tempseq[[1]];
+\tIf[FalseQ[u1 = TryPart[apply[curinstantiation, tempseq], \"2\"]], 
+\t\tprint[\"back tracking\"]; SetAndPrintLabel[templ]; 
+\t\tPrintSequent[sequent]; 
+\t\tBranchStack = tempstack; Return[False]];
+\t(* then the second part *)
+\tTryOtherBranches[u1]
+];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" TryRestrict", "Subsubsection",
+  CellTags->"c:27"],
+
+Cell[TextData[{
+  StyleBox["TryRestrict[u]", "Input"],
+  " tries to see if the instantiation u satisfies the restrictions on \
+variables.  If failed in proving that the restrictions hold, recover the \
+Restriction and return with false.  Otherwise return the result."
+}], "Text"],
+
+Cell["\<\
+Restriction = True;
+
+TryRestrict[u_] := 
+Block[{temp = Restriction, temp0}, 
+\tRestriction = True;
+\tIf[temp === True, Return[u]];
+\tprint[\"check restrict on instantiation\"];
+\tIf[ FalseQ[temp0 = Verify[seq[True, apply[u, temp]]]], 
+\t\tRestriction = temp; Return[False]
+\t];
+\tsubrules[u, temp0]
+];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Branch Stack", "Subsection"],
+
+Cell["BranchStack = {};", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+BranchStackEmpty[] := (BranchStack === {});
+
+BranchStackPush[a_] := PrependTo[BranchStack, a];
+
+BranchStackPop[] := 
+With[{temp = First[BranchStack]}, 
+\tBranchStack = Rest[BranchStack];
+\ttemp
+];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Induction", "Section"],
+
+Cell["InductionVariables := {};", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+TryInduction[s_] := TryInductionOn[s, VariablesIn[s]];
+TryInductionOn[s_, {}] = False;
+TryInductionOn[s_, {x_, rest___}] :=
+\torelse[ SucceedWith[InductionOn[x, DeriveInductScheme[x, s]]], 
+\t\t\tTryInductionOn[s, {rest}]];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+InductionOn[x_, {}] := False;
+InductionOn[x_, {-Infinity, {main_, others_}}] := False;
+
+InductionOn[x_, {n_, {main_, others_}}] := 
+Block[{temp}, 
+\tIf[!FreeQ[InductionVariables, x], Return[False]];
+\ttemp = EvaluateAssuming[and[n<=x, integer[x]], WeakSimplify[main]];
+\tAppendTo[InductionVariables, x];
+\tprint[\"prove\"];
+\tPrintSequent[temp];
+\tprint[\"by induction on \", ToString[x], \"\\n\"];
+\tprint[\"base case with \", ToString[x], \" = \", ToString[n]];
+\t(* if one of the bases fails, return with fail *)
+\tIf[ FalseQ[ Verify[or[others, temp /. x -> n]]], 
+\t\tPrintResult[\"RESULT\", Fail];
+\t\tInductionVariables = Drop[InductionVariables, -1];
+\t\tReturn[False]
+\t];
+\t(* the induction steps *)
+\tprint[\"induction step\"];
+\ttemp = Verify[or[others, seq[and[integer[x], n<=x, temp], temp/.x->x+1]]];
+\tInductionVariables = Drop[InductionVariables, -1];
+\tReturn[temp];
+];
+
+DeriveInductScheme[x_, f_] := {GetBase[x, f], SeperateMain[x, f, {False, \
+False}]};
+
+SeperateMain[x_, seq[True, or[a_, b__]], {main_, others_}] := 
+\tIf[FreeQ[a, x],
+\t   SeperateMain[x, seq[True, or[b]], {main, or[others, a]}],
+\t   SeperateMain[x, seq[True, or[b]], {or[a, main], others}]];
+SeperateMain[x_, seq[True, c_], {main_, others_}] := 
+\tIf[FreeQ[c, x],
+\t   {main, or[others, c]},
+\t   {or[c, main], others}];
+SeperateMain[x_, seq[and[a_, b__], c_], {main_, others_}] := 
+\tIf[FreeQ[a, x],
+\t   SeperateMain[x, seq[and[b], c], {main, seq[a, others]}],
+\t   SeperateMain[x, seq[and[b], c], {seq[a, main], others}]];
+SeperateMain[x_, seq[h_, c_], {main_, others_}] := 
+\tIf[FreeQ[h, x],
+\t   SeperateMain[x, seq[True, c], {main, seq[h, others]}],
+\t   SeperateMain[x, seq[True, c], {seq[h, main], others}]];
+SeperateMain[x_, a_, {main_, others_}] := 
+\tIf[FreeQ[a, x],
+\t   {main, or[others, a]},
+\t   {or[a, main], others}];
+GetBase[x_, f_] := EvaluateAssuming[ not[f], 
+\t  If[ !TrueQ[ WeakSimplify[integer[x]]] || 
+\t  \t\t!useful[x, f, StrongSimplify[f/.x->x+1]], -Infinity, \
+SelectBase[Lower[x]]]];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+useful[x_, f1_, seq[h_, c_]] := useful[x, seq[h, f1], c];
+useful[x_, f1_, or[a_, b__]] := useful[x, f1, a] && useful[x, f2, or[b]];
+useful[x_, f1_, and[a_, b__]] := useful[x, f1, a] && useful[x, f2, and[b]];
+useful[x_, f1_, imp[a_, b_]] := useful[x, f1, a] && useful[x, f1, b];
+useful[x_, f1_, a_ <= b_] := useful[x, f1, a] && useful[x, f1, b];
+useful[x_, f1_, a_ < b_] := useful[x, f1, a] && useful[x, f1, b];
+useful[x_, f1_, a_ == b_] := useful[x, f1, a] && useful[x, f1, b];
+useful[x_, f1_, a_ + b_] := useful[x, f1, a] && useful[x, f1, b];
+useful[x_, f1_, a_ b_] := useful[x, f1, a] && useful[x, f1, b];
+useful[x_, f1_, a_^b_] := useful[x, f1, a] && useful[x, f1, b];
+useful[x_, f1_, f2_] := FreeQ[f2, x] || PolynomialQ[f2, x] || !FreeQ[f1, f2];\
+\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+SelectBase[{S[a_], b___}] := SelectBase[{a, b}];
+SelectBase[{a_?NumberQ, b___}] := Max[Ceiling[a], SelectBase[{b}]];
+SelectBase[{a_, b___}] := SelectBase[{b}];
+SelectBase[{}] := -Infinity;\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Adding Lemmata, Rules, Definitions", "Section"],
+
+Cell[TextData[{
+  StyleBox["AddLemma", "Input"],
+  " adds a lemma to the data base.  \n",
+  StyleBox["Facts", "Input"],
+  "  is the conjunction of  those lemmas which have no hypothesis,  \n",
+  StyleBox["Lemmas", "Input"],
+  "  is the conjunction of those having hypothesis.  \nBoth are grouped with \
+respect to the head of  the conclusion."
+}], "Text"],
+
+Cell["\<\
+AddLemma[lemma_] := 
+\tAddToDataBase[ Skolemize[WeakSimplify[lemma], PosPos, {}]];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+AddToDataBase[and[a_, b__]] := (AddToDataBase[a]; \
+AddToDataBase[and[b]];);
+AddToDataBase[imp[a_, and[b_, c__]]] := 
+\t(AddToDataBase[imp[a, b]]; AddToDataBase[imp[a, and[c]]];);\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+AddToDataBase[imp[a_, b_]] := (Lemmas[Head[b]] = and[imp[a, b], \
+Lemmas[Head[b]]];);\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+AddToDataBase[a_] := (Facts[Head[a]] = and[a, \
+Facts[Head[a]]];);\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  StyleBox["UserRules", "Input"],
+  " is a collection of substitution rules,   ",
+  StyleBox["AddRule", "Input"],
+  "  adds a new rule that comes from an equation which may be quantified. \
+Universally quantified variables ",
+  StyleBox["Var[n]", "Input"],
+  " appearing in the rules will be used as general patterns."
+}], "Text"],
+
+Cell[BoxData[{
+    \(\(AddRule[rule_] := 
+        PrependTo[UserRules, 
+          GetRule[Skolemize[rule, PosPos, {}]]];\)\), "\[IndentingNewLine]", 
+    \(\(GetRule[
+          a_ == b_] := \((a /. \[InvisibleSpace]Var[n_] \[RuleDelayed] 
+                n_)\) \[Rule] \((b /. \[InvisibleSpace]Var[n_] \[Rule] 
+                n)\);\)\), "\n", 
+    \(\(GetRule[imp[cond_, a_ == b_]] := \[IndentingNewLine]\t
+        ConditionalRule[cond /. \[InvisibleSpace]Var[n_] \[Rule] n, 
+          a /. \[InvisibleSpace]Var[n_] \[Rule] n_, 
+          b /. \[InvisibleSpace]Var[n_] \[Rule] n];\)\), "\n", 
+    \(\(ConditionalRule[cond_, left_, right_] := 
+        left \[RuleDelayed] right /; WeakSimplify[cond];\)\)}], "Input",
+  InitializationCell->True],
+
+Cell[" Add the definition of a new function to data base. ", "Text"],
+
+Cell[BoxData[
+    \(AddDefinition[f_ == b_] := 
+      AppendTo[UserFunctions, f \[RuleDelayed] b]; \)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Logical Operators", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[" Rules for \"seq\"", "Subsubsection",
+  CellTags->"c:3"],
+
+Cell["Truth rules.", "Text",
+  CellTags->"c:4"],
+
+Cell["\<\
+seq[_, True] := True;
+seq[False, _] := True;
+seq[a_, a_] := True;
+seq[and[a___, b_, c___], b_] := True;\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" Implication in the conclusion.", "Text",
+  CellTags->"c:4"],
+
+Cell["\<\
+seq[a_, imp[b_, c_]] := seq[and[b, a], c];
+seq[a_, seq[b_, c_]] := seq[and[b, a], c];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" Implication in the hypothesis.", "Text",
+  CellTags->"c:5"],
+
+Cell["\<\
+seq[imp[a_, b_], c_] := seq[or[not[a], b], c];
+seq[and[h1___, imp[a_, b_], h2___], c_] := 
+        seq[and[h1, or[not[a], b], h2], c];
+seq[seq[a_, b_], c_] := seq[or[not[a], b], c];
+seq[and[h1___, seq[a_, b_], h2___], c_] := 
+        seq[and[h1, or[not[a], b], h2], c];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" Negation.", "Text"],
+
+Cell["not[seq[a_, b_]] := and[a, not[b]];", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+seq[not[a_], c_] := seq[True, or[a, c]];
+seq[and[h1___, not[a_], h2___], c_] := seq[and[h1, h2], or[a, c]];\
+\>", \
+"Input",
+  InitializationCell->True],
+
+Cell["\<\
+seq[h_, not[a_]] := seq[and[h, a], False];
+seq[h_, or[c1___, not[a_], c2___]] := seq[and[h, a], or[c1, c2]];\
+\>", \
+"Input",
+  InitializationCell->True],
+
+Cell[" Additional operations on sequents.", "Text"],
+
+Cell["\<\
+or[a___, seq[h_, c_], b___] := seq[h, or[a, c, b]];
+imp[a_, seq[h_, c_]] := seq[and[a, h], c];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Rules for \"or\" ", "Subsubsection",
+  CellTags->"c:11"],
+
+Cell["\<\
+or[] := False;
+or[a___, NIL, b___] := or[a, b];
+or[x_] := x;
+or[d___, or[a_, b__], c___] := or[d, a, b, c];
+or[d___, imp[a_, b_], c___] := imp[a, or[d, b, c]];
+or[a___, False, b___] := or[a, b];
+or[t1___, True, t2___] = True;
+or[a___, b_, c___, b_, d___] := or[a, b, c, d];
+or[___, a_, ___, not[a_], ___] = True;
+or[___, not[a_], ___, a_, ___] = True;
+or[a___, b_, c___, and[___, b_, ___], d___] := or[a, b, c, d];
+or[a___, and[___, b_, ___], c___, b_, d___] := or[a, b, c, d];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Rules for \"and\" ", "Subsubsection",
+  CellTags->"c:12"],
+
+Cell["\<\
+and[] := True;
+and[a___, NIL, b___] := and[a, b];
+and[x_] := x;
+and[d___, and[a_, b__], c___] := and[d, a, b, c];
+and[a___, True, b___] := and[a, b];
+and[t1___, False, t2___] = False;
+and[a___, b_, c___, b_, d___] := and[a, b, c, d];
+and[___, a_, ___, not[a_], ___] = False;
+and[___, not[a_], ___, a_, ___] = False;
+and[a___, b_, c___, or[___, b_, ___], d___] := and[a, b, c, d];
+and[a___, or[___, b_, ___], c___, b_, d___] := and[a, b, c, d];\
+\>", "Input",\
+
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Rules for \"implies\" ", "Subsubsection",
+  CellTags->"c:13"],
+
+Cell["\<\
+imp[_, True] := True;
+imp[False, _] := True;
+imp[True, x_] := x;
+imp[x_, False] := not[x];
+imp[x_, x_] := True;
+imp[a_, imp[b_, c_]] := imp[and[a, b], c];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Rules for  \"not\" ", "Subsubsection",
+  CellTags->"c:14"],
+
+Cell["\<\
+not[True] = False;
+not[False] = True;
+not[not[a_]] := a;
+not[and[a_, b__]] := or[not[a],not[and[b]]];
+not[or[a_, b__]] := and[not[a],not[or[b]]];
+not[imp[a_, b_]] := and[a, not[b]];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Logical equivalence ", "Subsubsection",
+  CellTags->"c:15"],
+
+Cell["eqv[a_, b_] = and[imp[a, b], imp[b, a]];", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Conditional expressions ", "Subsubsection",
+  CellTags->"c:16"],
+
+Cell["\<\
+if[_, f_, f_] := f;
+if[test_, f1_, f2_] :=   and[imp[test, f1],  imp[not[test], f2]];\
+\>", \
+"Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Convert Mathematica logical operators into our own ", "Subsubsection",
+  CellTags->"c:17"],
+
+Cell["OperatorRules = { Or -> or, And -> and, Not -> not };", "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Skolemization", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Quantifier Simplification", "Subsubsection"],
+
+Cell["Convert to single variable.", "Text"],
+
+Cell["\<\
+all[{a_, b___}, f_] := all[a, all[{b}, f]];
+all[{}, f_] := f;
+some[{a_, b___}, f_] := some[a, some[{b}, f]];
+some[{}, f_] := f;\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" Reduce scope of quantifiers when possible.", "Text"],
+
+Cell["\<\
+all[x_, f_] := f /; FreeQ[f, x];
+all[x_, and[a___, b_, c___]] := and[a, all[x, b], c] /; FreeQ[{a, c}, x];
+all[x_, or[a___, b_, c___]] := or[a, all[x, b], c] /; FreeQ[{a, c}, x];
+all[x_, not[b_]] := not[some[x, b]];
+all[x_, imp[a_, b_]] := imp[a, all[x, b]] /; FreeQ[a, x];
+all[x_, imp[a_, b_]] := imp[some[x, a], b] /; FreeQ[b, x];
+some[x_, f_] := f /; FreeQ[f, x];
+some[x_, and[a___, b_, c___]] := and[a, some[x, b], c] /; FreeQ[{a, c}, x];
+some[x_, or[a___, b_, c___]] := or[a, some[x, b], c] /; FreeQ[{a, c}, x];
+some[x_, not[b_]] := not[all[x, b]];
+some[x_, imp[a_, b_]] := imp[a, some[x, b]] /; FreeQ[a, x];
+some[x_, imp[a_, b_]] := imp[all[x, a], b] /; FreeQ[b, x];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" Convert restricted quantifiers into ordinary quantifiers", "Text"],
+
+Cell["\<\
+all[x_, restrict_, f_] := all[x, imp[restrict, f]];
+some[x_, restrict_, f_] := some[x, and[f, restrict]];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Skolemization", "Subsubsection"],
+
+Cell["\<\
+The first argument is the formula. The second gives the position of \
+the quantifier within the formula. The last is the current set of global \
+variables--a Skolem function will depend on this set.\
+\>", "Text",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(VariableNumber = 0;\)\), "\n", 
+    \(\(Quantifiers = {};\)\), "\n", 
+    \(\(QuantifierNames = {};\)\), "\n", 
+    \(\(AllQuantifier = 1;\)\), "\n", 
+    \(\(SomeQuantifier = \(-1\);\)\), "\[IndentingNewLine]", 
+    \(\(PosPos = 1;\)\), "\n", 
+    \(\(\(NegPos = \(-1\);\)\(\n\)
+    \)\), "\n", 
+    \(\(Skolemize[seq[a_, b_], pos_, vars_] := \[IndentingNewLine]\t
+        seq[Skolemize[a, \(-pos\), vars], 
+          Skolemize[b, pos, vars]];\)\), "\n", 
+    \(\(Skolemize[and[a_, b__], pos_, vars_] := \[IndentingNewLine]\t
+        and[Skolemize[a, pos, vars], 
+          Skolemize[and[b], pos, vars]];\)\), "\n", 
+    \(\(Skolemize[HoldPattern[and[a_]], pos_, vars_] := 
+        Skolemize[a, pos, vars];\)\), "\n", 
+    \(\(Skolemize[or[a_, b__], pos_, vars_] := \[IndentingNewLine]\t
+        or[Skolemize[a, pos, vars], Skolemize[or[b], pos, vars]];\)\), "\n", 
+    \(\(Skolemize[HoldPattern[or[a_]], pos_, vars_] := \ 
+        Skolemize[a, pos, vars];\)\), "\n", 
+    \(\(Skolemize[imp[a_, b_], pos_, vars_] := \[IndentingNewLine]\t
+        imp[Skolemize[a, \(-pos\), vars], 
+          Skolemize[b, pos, vars]];\)\), "\n", 
+    \(\(Skolemize[not[a_], pos_, vars_] := \ 
+        not[Skolemize[a, \(-pos\), vars]];\)\), "\n", 
+    \(\(Skolemize[all[x_, a_], pos_, vars_] := \[IndentingNewLine]\t
+        If[Positive[pos], Universal[x, a, pos, vars], 
+          Existential[x, a, pos, vars]];\)\), "\n", 
+    \(\(\(Skolemize[some[x_, a_], pos_, vars_] := \[IndentingNewLine]\t
+        If[Negative[pos], Universal[x, a, pos, vars], 
+          Existential[x, a, pos, vars]];\)\(\n\)
+    \)\), "\n", 
+    \(\(\(Skolemize[a_, _, _] := a;\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\(\(Universal[\ x_, a_, pos_, 
+          vars_\ ] := \[IndentingNewLine]Block[{newvar}, \[IndentingNewLine]\t
+          AppendTo[Quantifiers, AllQuantifier]; \[IndentingNewLine]\t
+          AppendTo[QuantifierNames, x]; \[IndentingNewLine]\t
+          newvar = Var[V[\(++VariableNumber\)]]; \[IndentingNewLine]\t
+          Skolemize[a /. \[InvisibleSpace]x \[Rule] newvar, pos, 
+            Append[vars, 
+              newvar]]\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\(Existential[\ x_, a_, pos_, 
+          vars_\ ] := \[IndentingNewLine]Block[{newfun}, \[IndentingNewLine]\t
+          AppendTo[Quantifiers, SomeQuantifier]; \[IndentingNewLine]\t
+          AppendTo[QuantifierNames, x]; \[IndentingNewLine]\t
+          newfun = Funct[V[\(++VariableNumber\)], vars]; \[IndentingNewLine]\t
+          Skolemize[a /. \[InvisibleSpace]x \[Rule] newfun, pos, 
+            vars]\[IndentingNewLine]];\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Un-Skolemization", "Subsubsection"],
+
+Cell["\<\
+CleanUp[f_] := f /. {Funct[v_, ___] :> v, Var[v_] :> v};
+Requantify[_, subrules[a_]] :=  Rename[CleanUp[a]];
+Requantify[PosPos, f_] := Rename[ AddQuantifiers[ Quantifiers, CleanUp[f]] ];
+Requantify[NegPos, f_] := Rename[ AddQuantifiers[-Quantifiers, CleanUp[f]] ];
+Rename[f_] := f /. {V[n_] :> QuantifierNames[[n]]};
+AddQuantifiers[{}, f_] := f;
+AddQuantifiers[{a___, 1}, f_]  := AddQuantifiers[{a},  all[V[Length[{a}]+1], \
+f]];
+AddQuantifiers[{a___, -1}, f_] := AddQuantifiers[{a}, some[V[Length[{a}]+1], \
+f]];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Rewrite Using Equations in Hypothesis", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[" Substitution of equals. ", "Subsubsection"],
+
+Cell["\<\
+Try repeatedly to rewrite sequent using given identities. If the \
+sequent changed during equation substitution,try to simplify it. If the \
+sequent has changed,print it out.\
+\>", "Text"],
+
+Cell["\<\
+SubstEquation[seq_] := 
+Block[{s0, s1}, 
+\ts0 = FixedPoint[Substitute, seq] /. GivenIdentities;
+\ts1 = SimplifyIfChanged[seq, s0];
+\tIf[s1 =!= seq,
+\t\t(print[\"substitute using equation\"]; PrintMessage[SimpMsgList])];
+\ts1
+];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[" Substitute using an equation in the hypothesis. ", "Subsubsection",
+  CellTags->"c:3"],
+
+Cell["\<\
+The equation should be kept in the hypothesis after substitution.\
+\
+\>", "Text"],
+
+Cell["\<\
+IsVarConsSymbol[a_] := Head[a]===Var || Head[a]===Const || \
+Head[a]===Symbol;
+
+Substitute[ seq[ and[h1___, a_ == b_, h2___], c_] ] := 
+\tseq[and[h1, h2] /. a -> b, c /. a -> b] /; IsVarConsSymbol[a];
+Substitute[ seq[ a_ == b_, c_] ] := 
+\tseq[True, c /. a -> b] /; IsVarConsSymbol[a];
+Substitute[ seq[ and[h1___, a_^n_ == b_, h2___], c_] ] := 
+\tseq[and[h1, h2], c] /; (IsVarConsSymbol[a] && FreeQ[{h1, h2, c}, a]);
+Substitute[ seq[ a_^n_ == b_, c_] ] := 
+\tseq[True, c] /; (IsVarConsSymbol[a] && FreeQ[c, a]);
+Substitute[ seq[and[h1___, a_  ==  b_, h2___], c_] ] := 
+\tseq[and[and[h1, h2] /. a->b, a == b], c /. a->b] /; !FreeQ[{h1, h2, c}, a];
+Substitute[ seq[ a_ == b_, c_] ] := seq[ a == b, c /. a->b ] /; !FreeQ[c, a];
+Substitute[s_] := s;\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Terms and Variables", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[" Managing the basic term list", "Subsubsection",
+  CellTags->"c:3"],
+
+Cell["\<\
+NumberOfTerms := Length[BasicTerms];
+IndexOf[{b___, a_, c___}, a_] := Length[{b}] + 1;
+IndexOf[_, a_] := NewTerm[a];
+TermNumber[a_] := IndexOf[ BasicTerms, a ];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+NewTerm[a_] := 
+(
+\tAppendTo[BasicTerms, a];
+\tAppendTo[KnownUpper, Unknown];
+\tAppendTo[KnownLower, Unknown];
+\tNumberOfTerms
+);\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+ Compute the number of different appearances of some  pattern in a \
+formula.\
+\>", "Subsubsection"],
+
+Cell["\<\
+NumberOfAppearances[a_, pat_] := Length[Appearances[a, pat]];
+
+Appearances[a_, pat_] := Union[Map[subexpressions[a], Position[a, pat]]];
+
+subexpressions[a_][{pos__}] := a[[pos]];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Get all variables in a formulas ", "Subsubsection",
+  CellTags->"c:8"],
+
+Cell["\<\
+VariablesIn[a_Const]  := {a};
+VariablesIn[a_Var]    := {a};
+VariablesIn[a_Symbol] := {a};
+VariablesIn[f_[a___]] := Apply[Union, Map[VariablesIn, {a}]];
+VariablesIn[_]        := {};\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Get a list of all basic terms in a formula ", "Subsubsection"],
+
+Cell["\<\
+TermsIn[imp[a_, b_]]  := Union[TermsIn[a], TermsIn[b]];
+TermsIn[seq[a_, b_]]  := Union[TermsIn[a], TermsIn[b]];
+TermsIn[and[a_, b__]] := Apply[Union, Map[TermsIn, {a, b}]];
+TermsIn[or[a_, b__]]  := Apply[Union, Map[TermsIn, {a, b}]];
+TermsIn[not[a_]]      := TermsIn[a];
+
+TermsIn[p_[a___]]     := Apply[Union, Map[BasicTermsIn, {a}]];
+TermsIn[_] := {};\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+BasicTermsIn[a_Const]  := {a};
+BasicTermsIn[a_Var]    := {a};
+BasicTermsIn[a_Symbol] := If[ Defined[a], {}, {a}];
+
+BasicTermsIn[ f_[t_, {k_, index__}] ] := 
+\tComplement[ Apply[Union, Map[BasicTermsIn, {t, index}]], {k} ] /;
+\t\tMemberQ[{sum, product, limit}, f];
+\t
+BasicTermsIn[f_[a___]] := 
+\tIf[ Defined[f], Apply[Union, Map[BasicTermsIn, {a}]], {f[a]}];
+BasicTermsIn[_] := {};\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+Defined[Pi] = True;
+Defined[Plus] = True;
+Defined[Times] = True;
+Defined[Power] = True;
+Defined[infinity] = True;
+Defined[_] = False;\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Unification", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  " ",
+  Cell[BoxData[
+      \(TraditionalForm\`H\_1\  \[And] \ \[Ellipsis]\  \[And] \ 
+          H\_n\ \  \[Rule] \ C\_1\  \[Or] \[Ellipsis] \[Or] \ C\_m\)]],
+  "  is true if some ",
+  Cell[BoxData[
+      \(TraditionalForm\`C\_j\)]],
+  " matches some ",
+  Cell[BoxData[
+      \(TraditionalForm\`H\_i\)]],
+  " or some given fact. "
+}], "Subsubsection"],
+
+Cell["\<\
+disjunct[h_, or[a_, b__]] := orelse[disjunct[h, a], disjunct[h, \
+or[b]]];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+ check if \"c\" matches a conjunct of \"h\" or some fact similar to \
+\"c\". \
+\>", "Subsubsection",
+  CellTags->"c:3"],
+
+Cell["\<\
+disjunct[h_, c_] := 
+        orelse[(MatchingState = MShypothesis; conjunct[h, c]),  
+               (MatchingState = MSfacts; conjunct[Facts[Head[c]], c ])];
+               \
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+ Check if the second argument matches a conjunct of the first. \
+\
+\>", "Subsubsection",
+  CellTags->"c:4"],
+
+Cell["\<\
+If the conclusion matches a fact, set the current lemma.  
+If unification fails,return False.  Otherwise, print out the lemma used and \
+the unifier.
+Lastly, try to prove other branches of the theorem.\
+\>", "Text"],
+
+Cell["\<\
+conjunct[and[a_, b__],  c_] :=  orelse[conjunct[a, c],  \
+conjunct[and[b],  c]];
+conjunct[h_, c_] :=  
+Block[{u},
+        If[MatchingState === MSfacts, CurrentLemma = h ]; 
+        If[FalseQ[ u = unify[h, c]], Return[False] ];
+        SucceedWith[ 
+        \tIf[ MatchingState === MShypothesis, 
+                  PrintResult[\"matching hypothesis with\", u], 
+                  (print[\"matching lemma\"]; 
+                   PrintLemma[CurrentLemma];
+                   PrintResult[\"with\", u])];
+\t\t\tTryOtherBranches[u]]
+];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["unify", "Subsubsection"],
+
+Cell[TextData[{
+  " Check if two formulas unify.  If so, return the substitution or ",
+  StyleBox["True", "Input"],
+  ".  If the formulas do not unify, return ",
+  StyleBox["False", "Input"],
+  ". "
+}], "Text",
+  CellTags->"c:5"],
+
+Cell["unify[a_, a_] := subrules[];", "Input",
+  InitializationCell->True],
+
+Cell[" Unification of a variable and a term ", "Text"],
+
+Cell["\<\
+unify[ a_, Var[n_] ]    := subrules[{Var[n] -> a}]  /; FreeQ[a, n];
+unify[ Var[n_], a_ ]    := subrules[{Var[n] -> a}]  /; FreeQ[a, n];
+unify[ Var[n_] + a_, 0] := subrules[{Var[n] -> -a}] /; FreeQ[a, n];
+unify[-Var[n_] + a_, 0] := subrules[{Var[n] -> a }] /; FreeQ[a, n];\
+\>", \
+"Input",
+  InitializationCell->True],
+
+Cell[" Unification of atomic formulas ", "Text"],
+
+Cell["\<\
+unify[a_ == b_, c_ == d_] := unify[a - b, c - d];
+unify[a_ <= b_, c_ <= d_] := unify[a - b, c - d];
+unify[ a_ < b_, c_ < d_ ] := unify[a - b, c - d];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" Unification of arithmetical expressions. ", "Text",
+  CellTags->"c:8"],
+
+Cell["\<\
+unify[a_ + b_., a_ + c_.] := unify[b, c];
+unify[a_ + b_, c_ + d_] := 
+Block[{u}, 
+\tsubrules[u, unify[apply[u, b], apply[u, d]]] /; !FalseQ[u = unify[a, c]]
+];
+
+unify[a_ b_., a_ c_.] := unify[b, c];
+unify[a_ b_, c_ d_] := 
+Block[{u}, 
+\tsubrules[u, unify[apply[u, b], apply[u, d]]] /; !FalseQ[u = unify[a, c]]
+];
+
+unify[1/Var[n_], a_] := subrules[{Var[n] -> 1/a}] /; FreeQ[a, n];
+unify[a_, 1/Var[n_]] := subrules[{Var[n] -> 1/a}] /; FreeQ[a, n];\
+\>", \
+"Input",
+  InitializationCell->True],
+
+Cell[" Unification of compound expressions.", "Text"],
+
+Cell["unify[f_[a___], f_[b___]] := unifylist[{a}, {b}];", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Default case \[LongDash] arguments do not unify. \
+\>", "Text"],
+
+Cell["unify[_, _] := False;", "Input",
+  InitializationCell->True],
+
+Cell[" Check if two lists of formulas unify. ", "Text",
+  CellTags->"c:11"],
+
+Cell["\<\
+unifylist[_, False] := False;
+unifylist[False, _] := False;
+unifylist[{}, {}]   := subrules[];
+unifylist[{}, {__}] := False;
+unifylist[{__}, {}] := False;
+unifylist[{a_}, {b_}] := unify[a, b];
+unifylist[{a_, x___}, {b_, y___}] := 
+With[{u = unify[a, b]},
+\tsubrules[u, unifylist[apply[u, {x}], apply[u, {y}]]]
+];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Simplifying substitutions", "Subsubsection",
+  CellTags->"c:12"],
+
+Cell["\<\
+subrules[] = True;
+subrules[___, False, ___]  := False;
+subrules[a___, True, b___] := subrules[a, b];
+subrules[a___, subrules[b__], c___] := subrules[a, b, c];
+subrules[{a__}, {b__}, c___] := subrules[Union[{a}, {b}], c];
+subrules[{a___, b_, c___, b_, d___}, e___] := subrules[{a, b, c, d}, \
+e];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" Apply a substitution/Boolean to a formula. ", "Text",
+  CellTags->"c:13"],
+
+Cell["\<\
+apply[False, a_] := False;
+apply[True,  a_] := a;
+apply[subrules[s_], term_] := term //. s;\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["User-Defined Rewrite Rules", "Section"],
+
+Cell["\<\
+Apply user-defined rewrite rules. If changed during \
+rewriting,simplify the sequent.  If the sequent changed print it out. \
+\>", \
+"Text"],
+
+Cell["\<\
+Rewriting[s_] := 
+Module[{s0, s1}, 
+\ts0 = EvaluateAssuming[ not[s], s //. UserRules ];
+\ts1 = SimplifyIfChanged[s, s0];
+\tIf[s1 =!= s, 
+\t\tprint[\"using rewrite rules\"]; 
+\t\tPrintMessage[SimpMsgList]
+\t];
+\ts1
+];\
+\>", "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Simplification", "Section"],
+
+Cell[BoxData[
+    \(\($StrongSimpBnd\  = \ 20;\)\)], "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  " ",
+  StyleBox["WeakSimplify", "Input"],
+  " is used to simplify sub-formula and is a tactic in ",
+  StyleBox["StrongSimplify", "Input"],
+  "."
+}], "Text"],
+
+Cell[BoxData[{\(OperatorRules = {Or \[Rule] or, And \[Rule] and, 
+          Not \[Rule] not};\), "\n", 
+    RowBox[{\(SimplifyRules := \ 
+          Dispatch[\[IndentingNewLine]Join[\ OperatorRules, AbsRule, 
+              ExpressionRules, \[IndentingNewLine]\ \ \ \ \ \ \ \ \ \ \
+MaxMinRules, EquationRules, InequalityRules]\ ];\), 
+      "\n"}], "\[IndentingNewLine]", 
+    RowBox[{
+      RowBox[{
+        RowBox[{
+          StyleBox["WeakSimplify",
+            FontColor->RGBColor[0, 0, 1]], "[", "A_", "]"}], ":=", 
+        "\[IndentingNewLine]", 
+        "\t", \(\((Simplify[\ 
+                A //. \[InvisibleSpace]SimplifyRules\ ] \
+/. \[InvisibleSpace]RulesFromGiven)\) \
+/. \[InvisibleSpace]RulesForRelations\)}], ";"}]}], "Input",
+  InitializationCell->True],
+
+Cell[" Simplification Tactics and their messages.", "Text"],
+
+Cell[BoxData[
+    \(\(SimplifyMethods = \[IndentingNewLine]{\[IndentingNewLine]{"\<reduces \
+to\>", WeakSimplify}, \[IndentingNewLine]{"\<simplify formula using local \
+context\>", SimplifyUsingContext}, {"\<check denominators\>", 
+            CheckSoundness}, \[IndentingNewLine]{"\<calculate summations via \
+Gosper\>", SimplifySummation[
+              1]}, \[IndentingNewLine]{"\<calculate summations\>", 
+            SimplifySummation[
+              2]}, \[IndentingNewLine]{"\<simplify summations\>", 
+            SimplifySummation[
+              3]}, \[IndentingNewLine]{"\<simplify products\>", 
+            SimplifyProduct}, \[IndentingNewLine]{"\<simplify limits\>", 
+            SimplifyLimit}\[IndentingNewLine]};\)\)], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Try each of the simplification tactics, record message for each \
+step.\
+\>", "Text"],
+
+Cell["\<\
+TrySimplifyMethods[A_] := Fold[ tryop, A, SimplifyMethods ];
+
+tryop[A_,{msg_,op_}] := 
+  With[ {AA = op[A]}, If[A=!=AA,AppendTo[SimpMsgList,{msg,A}]]; AA ]\
+\>", \
+"Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Repeatedly try simplification tactics until a fixed point is \
+reached. \
+\>", "Text"],
+
+Cell["\<\
+StrongSimplify[A_] := 
+(\t
+\tSimpMsgList = {};
+\tFixedPoint[ TrySimplifyMethods, A, $StrongSimpBnd ]
+);\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[" Simplify formulas using local context. ", "Text"],
+
+Cell["\<\
+SimplifyUsingContext[ or[a_, b__] ] := 
+\tUsingContext[Map[SimplifyUsingContext, or[a, b]]];
+SimplifyUsingContext[ and[a_, b__] ] := 
+\tUsingContext[Map[SimplifyUsingContext, and[a, b]]];
+SimplifyUsingContext[ imp[a_, b_] ] := 
+\tUsingContext[Map[SimplifyUsingContext, imp[a, b]]];
+SimplifyUsingContext[ seq[a_, b_] ] := 
+\tUsingContext[Map[SimplifyUsingContext, seq[a, b]]];
+SimplifyUsingContext[A_] := A;\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Simplify a sub-formula using information provided by its context. \
+\
+\>", "Text"],
+
+Cell["\<\
+UsingContext[and[a_, b__]] := SimplifyAnd[True, and[a, b]];
+UsingContext[or[a_, b__]]  := SimplifyOr[False, or[a, b]];
+UsingContext[imp[a_, b_]]  := (imp[AssumeFalse[#, a], #]&) [AssumeTrue[a, \
+b]];
+UsingContext[seq[a_, b_]]  := (seq[AssumeFalse[#, a], #]&) [AssumeTrue[a, \
+b]];
+UsingContext[A_] := A;\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Use each conjunct to simplify the remainder of the conjunction. \
+\
+\>", "Text"],
+
+Cell["\<\
+SimplifyAnd[ A_, and[a_, b__] ] := 
+\tSimplifyAnd[ and[ AssumeTrue[a, A], a], AssumeTrue[a, and[b]] ];
+SimplifyAnd[ A_, a_ ] := and[ AssumeTrue[a, A], a ];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Use each disjunct to simplify the remainder of the disjunction. \
+\
+\>", "Text"],
+
+Cell["\<\
+SimplifyOr[ A_, or[a_, b__]] := 
+\tSimplifyOr[ or[ AssumeFalse[a, A], a], AssumeFalse[a, or[b]] ];
+SimplifyOr[ A_, a_] := or[AssumeFalse[a, A], a];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Simplify the second argument assuming the first argument is \
+true/false. \
+\>", "Text"],
+
+Cell["\<\
+AssumeTrue[ h_, A_ ]  :=  A /. RulesFrom[h];
+AssumeFalse[ h_, A_ ] :=  A /. RulesFrom[not[h]];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  "Extract simplicification rules from a formula.  Rules come from equations \
+and inequalities. \nIf ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((a - b)\)\  - \ \((x - y)\)\  === \ 0\)]],
+  ", then ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[Equal] \ b\)]],
+  " is equivalent, to ",
+  Cell[BoxData[
+      \(TraditionalForm\`x \[Equal] \ y\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[LessEqual] b\)]],
+  " is equivalent to ",
+  Cell[BoxData[
+      \(TraditionalForm\`x \[LessEqual] y\)]],
+  ", etc. \nIf ",
+  Cell[BoxData[
+      \(TraditionalForm\`\((a - b)\)\  + \ \((x - y)\)\  === \ 0\)]],
+  ", then ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[Equal] \ b\)]],
+  " is equivalent to ",
+  Cell[BoxData[
+      \(TraditionalForm\`y \[Equal] \ x\)]],
+  ",  ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[LessEqual] b\)]],
+  " is equivalent ",
+  Cell[BoxData[
+      \(TraditionalForm\`y \[LessEqual] x\)]],
+  ", etc. \nIf ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\  \[Equal] \ b\)]],
+  ", then ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[LessEqual] b\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`b \[LessEqual] a\)]],
+  " and",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(a \[Equal] \ b\)\)\)]],
+  " are all true, while ",
+  Cell[BoxData[
+      \(TraditionalForm\`a < b\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`b < a\)]],
+  " are false. "
+}], "Text"],
+
+Cell["\<\
+RulesFrom[ a_==b_ ] := 
+\t{(x_ <= y_) :> True /; (a-b) - (x-y) === 0 || (a-b) + (x-y) === 0,
+\t (x_ < y_) :> False /; (a-b) - (x-y) === 0 || (a-b) + (x-y) === 0,
+\t (x_ == y_) :> True /; (a-b) - (x-y) === 0 || (a-b) + (x-y) === 0};\
+\>", \
+"Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  " If ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\  < \ b\)]],
+  ", then ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[LessEqual] b\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`a < b\)]],
+  " are both true, while ",
+  Cell[BoxData[
+      \(TraditionalForm\`b < a\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`b \[LessEqual] a\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`a == b\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\  == \ a\)]],
+  " are all false. "
+}], "Text"],
+
+Cell["\<\
+RulesFrom[a_ < b_] :=
+\t{(x_ <= y_) :> True  /; (a-b) - (x-y) === 0,
+\t (x_ <= y_) :> False /; (a-b) + (x-y) === 0,
+\t (x_ <  y_) :> True  /; (a-b) - (x-y) === 0,
+\t (x_ <  y_) :> False /; (a-b) + (x-y) === 0,
+\t (x_ == y_) :> False /; (a-b) - (x-y) === 0 || (a-b) + (x-y) === 0};\
+\>", \
+"Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  " If ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[LessEqual] \ b\)]],
+  ", then ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[LessEqual] b\)]],
+  " is true, ",
+  Cell[BoxData[
+      \(TraditionalForm\`b \[LessEqual] a\)]],
+  " is equivalent to ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\  == \ b\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`a < b\)]],
+  " equivalent ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[NotEqual] b\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`b < a\)]],
+  " is false. "
+}], "Text"],
+
+Cell["\<\
+RulesFrom[a_ <= b_] :=
+\t{(x_ <= y_) :> True  /; (a-b) - (x-y) === 0,
+\t (x_ <= y_) :> (x == y) /; (a-b) + (x-y) === 0,
+\t (x_ <  y_) :> not[x == y] /; (a-b) - (x-y) === 0,
+\t (x_ <  y_) :> False /; (a-b) + (x-y) === 0};\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  " If ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[NotEqual] b\)]],
+  ", then ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[Equal] \ b\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`b \[Equal] \ a\)]],
+  " are both false,",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(a\  \[LessEqual] \ b\)\)\)]],
+  " is equivalent to ",
+  Cell[BoxData[
+      \(TraditionalForm\`a < b\)]],
+  " and",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(b \[LessEqual] a\)\)\)]],
+  " is equivalent to ",
+  Cell[BoxData[
+      \(TraditionalForm\`b < a\)]],
+  ". "
+}], "Text"],
+
+Cell["\<\
+RulesFrom[not[a_ == b_]] :=
+\t{(x_ == y_) :> False /; (a-b) - (x-y) === 0 || (a-b) + (x-y) === 0,
+\t (x_ <= y_) :> (x < y) /; (a-b) - (x-y) === 0 || (a-b) + (x-y) === \
+0};\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  " If ",
+  Cell[BoxData[
+      \(TraditionalForm\`and[a, \ b]\)]],
+  ", then ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\)]],
+  " are both true. "
+}], "Text"],
+
+Cell["\<\
+RulesFrom[and[a_, b__]] := Union[RulesFrom[a], \
+RulesFrom[and[b]]];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  " Don't use complicated formulas as simplifying rules.  Note that ",
+  StyleBox["not[A]", "Input"],
+  " translates into a rewrite rule."
+}], "Text"],
+
+Cell[BoxData[{
+    \(\(RulesFrom[\ imp[__]\ ] := {};\)\), "\n", 
+    \(\(RulesFrom[\ or[a_, b__]\ ] := {};\)\), "\n", 
+    \(\(RulesFrom[\ not[A_]\ ] := {A \[Rule] False};\)\), "\n", 
+    \(\(RulesFrom[\ H_\ ] := {H \[Rule] True};\)\)}], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ If the first expression is difference from the second, simplify \
+it. \
+\>", "Text"],
+
+Cell["\<\
+SimplifyIfChanged[ A_, B_ ] := If[ A =!= B, StrongSimplify[B], B ];\
+\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  " For each appearance of ",
+  Cell[BoxData[
+      \(TraditionalForm\`a/b\)]],
+  ", justify it by proving ",
+  Cell[BoxData[
+      \(TraditionalForm\`b \[NotEqual] 0\)]],
+  "."
+}], "Text"],
+
+Cell["\<\
+CheckSoundness[s_] := 
+\tIf[ FreeQ[s, over], s, WeakSimplify[ AddSoundnessConstraint[s, 1]] ];\
+\>", \
+"Input",
+  InitializationCell->True],
+
+Cell["\<\
+ If position is 1, the subformula is within an even number of \
+negations; otherwise it is -1. \
+\>", "Text"],
+
+Cell["\<\
+AddSoundnessConstraint[ seq[h_, c_], pos_ ] :=
+\tseq[ AddSoundnessConstraint[h, -pos], AddSoundnessConstraint[c, pos] ];
+AddSoundnessConstraint[ imp[h_, c_], pos_ ] :=
+\timp[ AddSoundnessConstraint[h, -pos], AddSoundnessConstraint[c, pos] ];
+AddSoundnessConstraint[ or[a_, b__], pos_ ] :=
+\tMap[ AddSoundnessConstraint[#, pos]&, or[a, b] ];
+AddSoundnessConstraint[ and[a_, b__], pos_ ] :=
+\tMap[ AddSoundnessConstraint[#, pos]&, and[a, b] ];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  "The soundness constraint for an atomic formula is the conjunction of \
+constraints for each of the quotients within the formula. If the atomic \
+formula is within even number of negations, the soundness constraint is put \
+as an additional conclusion to be proved. ",
+  " If the atomic formula is within odd number of negations, the soundness \
+constraint becomes a prerequisite for the truth of ",
+  Cell[BoxData[
+      \(TraditionalForm\`A\)]],
+  ". "
+}], "Text"],
+
+Cell["\<\
+AddSoundnessConstraint[ A_, _ ] := A  /; FreeQ[A, over];
+AddSoundnessConstraint[ A_, PosPos ] := 
+\tand[ Apply[ and, Map[Soundness[A], Position[A, _over]]], A ] //. 
+\t\t{over[a_,b_] :> a/b};
+AddSoundnessConstraint[ A_, NegPos ] :=
+\timp[ Apply[and, Map[Soundness[A], Position[A, _over]]], A ] //. 
+\t\t{over[a_, b_] :> a/b};\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ The constraint for quotient is that the denominator is not zero. \
+\
+\>", "Text"],
+
+Cell["Soundness[A_][{a__}] := (not[A[[a]][[2]] == 0]);", "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Some Lemmata", "Section"],
+
+Cell[TextData[StyleBox["This should not be part of the prover, move out.",
+  FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell["\<\
+Continuity of infinite series. 
+If the summation is continuous term by term and uniformly convergent over \
+some interval around x0,then it is continuous at x0.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(AddLemma[\ 
+        all[{f, n, x, x0, min}, \[IndentingNewLine]imp[\ 
+            and[Continuous[
+                f, {x, x0}], \[IndentingNewLine]UniformlyConvergent[
+                sum[f, {n, min, infinity}], {x, x0 - sigma, x0 + sigma}]], 
+            Continuous[
+              sum[f, {n, min, infinity}], {x, x0}]]]\ ];\)\)], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+Uniform convergence of infinite series (Weierstrass M-test). 
+If there is some convergent series whose terms are constants with respect to \
+x  and each term is greater than the corresponding term of the given series, \
+then the given series is uniformly convergent. \
+\>", "Text",
+  CellTags->"c:3"],
+
+Cell[BoxData[
+    \(\(AddLemma[\ 
+        all[{f, n, x, c1, c2, min}, 
+          imp[\ some[f1, 
+              and[imp[and[c1 < x, x < c2], Abs[f] \[LessEqual] f1], 
+                IsConstant[f1, x], Convergent[sum[f1, {n, min, infinity}]]]], 
+            UniformlyConvergent[
+              sum[f, {n, min, infinity}], {x, c1, c2}]]]];\)\)], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ Some sufficient conditions for deciding the sign of a summation. \
+\
+\>", "Text",
+  CellTags->"c:4"],
+
+Cell[BoxData[{
+    \(\(AddLemma[
+        all[{k, low, up, f}, \[IndentingNewLine]imp[
+            imp[and[low \[LessEqual] k, k \[LessEqual] up], 
+              0 \[LessEqual] f], 
+            0 \[LessEqual] sum[f, {k, low, up}]]]];\)\), "\n", 
+    \(\(AddLemma[
+        all[{k, low, up, f}, \[IndentingNewLine]imp[
+            imp[and[low \[LessEqual] k, k \[LessEqual] up], 
+              f \[LessEqual] 0], 
+            sum[f, {k, low, up}] \[LessEqual] 0]]];\)\), "\n", 
+    \(\(AddLemma[
+        all[{k, low, up, f}, \[IndentingNewLine]imp[
+            imp[and[low \[LessEqual] k, k \[LessEqual] up], f == 0], 
+            sum[f, {k, low, up}] == 0]]];\)\), "\n", 
+    \(\(AddLemma[
+        all[{k, low, up, f, cond}, 
+          imp[imp[and[low \[LessEqual] k, k \[LessEqual] up, cond], 
+              0 \[LessEqual] f], 
+            0 \[LessEqual] sum[f, {k, low, up, cond}]]]];\)\), "\n", 
+    \(\(AddLemma[
+        all[{k, low, up, f, cond}, 
+          imp[imp[and[low \[LessEqual] k, k \[LessEqual] up, cond], 
+              f \[LessEqual] 0], 
+            sum[f, {k, low, up, cond}] \[LessEqual] 0]]];\)\), "\n", 
+    \(\(AddLemma[
+        all[{k, low, up, f, cond}, 
+          imp[imp[and[low \[LessEqual] k, k \[LessEqual] up, cond], f == 0], 
+            sum[f, {k, low, up, cond}] == 0]]];\)\)}], "Input",
+  InitializationCell->True],
+
+Cell[" Values for the Sin and Cos in particular ranges. ", "Text",
+  CellTags->"c:5"],
+
+Cell[BoxData[{
+    \(AddLemma[
+      all[x, imp[
+          and[x \[GreaterEqual] \(-\(\[Pi]\/2\)\), x \[LessEqual] \[Pi]\/2], 
+          0 \[LessEqual] Cos[x]]]]; \), "\n", 
+    \(AddLemma[
+      all[x, imp[and[x \[GreaterEqual] 0, x \[LessEqual] \[Pi]], 
+          0 \[LessEqual] Sin[x]]]]; \)}], "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+AutoGeneratedPackage->Automatic,
+WindowSize->{1077, 954},
+WindowMargins->{{66, Automatic}, {Automatic, 0}},
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PaperSize"->{612, 792},
+"PaperOrientation"->"Portrait",
+"PostScriptOutputFile":>FrontEnd`FileName[{$RootDirectory, "home", "sutner", \
+"projects", "Analytica", "Analytica02"}, "Logic.ps", CharacterEncoding -> \
+"iso8859-1"],
+"Magnification"->1},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "c:12"->{
+    Cell[6307, 200, 69, 1, 60, "Subsubsection",
+      CellTags->"c:12"],
+    Cell[40251, 1315, 64, 1, 60, "Subsubsection",
+      CellTags->"c:12"],
+    Cell[55702, 1859, 70, 1, 60, "Subsubsection",
+      CellTags->"c:12"]},
+  "c:13"->{
+    Cell[6563, 211, 84, 1, 60, "Subsubsection",
+      CellTags->"c:13"],
+    Cell[25177, 759, 69, 1, 60, "Subsubsection",
+      CellTags->"c:13"],
+    Cell[40853, 1337, 68, 1, 60, "Subsubsection",
+      CellTags->"c:13"],
+    Cell[56127, 1873, 80, 1, 46, "Text",
+      CellTags->"c:13"]},
+  "c:14"->{
+    Cell[6795, 221, 90, 1, 60, "Subsubsection",
+      CellTags->"c:14"],
+    Cell[25765, 784, 163, 5, 37, "Subsubsection",
+      CellTags->"c:14"],
+    Cell[41168, 1353, 65, 1, 60, "Subsubsection",
+      CellTags->"c:14"]},
+  "c:15"->{
+    Cell[8154, 253, 103, 2, 60, "Subsubsection",
+      CellTags->"c:15"],
+    Cell[26445, 814, 65, 1, 37, "Subsubsection",
+      CellTags->"c:15"],
+    Cell[41507, 1369, 66, 1, 60, "Subsubsection",
+      CellTags->"c:15"]},
+  "c:16"->{
+    Cell[8431, 265, 153, 4, 60, "Subsubsection",
+      CellTags->"c:16"],
+    Cell[27030, 840, 167, 5, 37, "Subsubsection",
+      CellTags->"c:16"],
+    Cell[41698, 1378, 70, 1, 60, "Subsubsection",
+      CellTags->"c:16"]},
+  "c:17"->{
+    Cell[8835, 280, 145, 5, 60, "Subsubsection",
+      CellTags->"c:17"],
+    Cell[27783, 872, 57, 1, 37, "Subsubsection",
+      CellTags->"c:17"],
+    Cell[41948, 1391, 97, 1, 60, "Subsubsection",
+      CellTags->"c:17"]},
+  "c:19"->{
+    Cell[9283, 298, 98, 1, 60, "Subsubsection",
+      CellTags->"c:19"],
+    Cell[15200, 464, 80, 1, 59, "Subsubsection",
+      CellTags->"c:19"]},
+  "c:20"->{
+    Cell[10085, 317, 59, 1, 60, "Subsubsection",
+      CellTags->"c:20"],
+    Cell[15408, 474, 80, 1, 36, "Subsubsection",
+      CellTags->"c:20"],
+    Cell[15491, 477, 146, 5, 46, "Text",
+      CellTags->"c:20"]},
+  "c:21"->{
+    Cell[10786, 336, 73, 1, 60, "Subsubsection",
+      CellTags->"c:21"],
+    Cell[28338, 898, 55, 1, 64, "Subsection",
+      CellTags->"c:21"]},
+  "c:22"->{
+    Cell[12302, 372, 251, 11, 60, "Subsubsection",
+      CellTags->"c:22"]},
+  "c:26"->{
+    Cell[13370, 406, 88, 1, 60, "Subsubsection",
+      CellTags->"c:26"]},
+  "c:27"->{
+    Cell[13657, 417, 128, 4, 60, "Subsubsection",
+      CellTags->"c:27"],
+    Cell[30932, 1000, 57, 1, 60, "Subsubsection",
+      CellTags->"c:27"]},
+  "c:28"->{
+    Cell[14013, 431, 82, 1, 60, "Subsubsection",
+      CellTags->"c:28"]},
+  "c:3"->{
+    Cell[16624, 519, 89, 1, 36, "Subsubsection",
+      CellTags->"c:3"],
+    Cell[16716, 522, 206, 7, 46, "Text",
+      CellTags->"c:3"],
+    Cell[38059, 1227, 62, 1, 60, "Subsubsection",
+      CellTags->"c:3"],
+    Cell[47912, 1558, 93, 1, 60, "Subsubsection",
+      CellTags->"c:3"],
+    Cell[49012, 1593, 73, 1, 60, "Subsubsection",
+      CellTags->"c:3"],
+    Cell[51994, 1720, 129, 4, 60, "Subsubsection",
+      CellTags->"c:3"],
+    Cell[69308, 2353, 310, 6, 96, "Text",
+      CellTags->"c:3"]},
+  "c:4"->{
+    Cell[19554, 586, 84, 1, 37, "Subsubsection",
+      CellTags->"c:4"],
+    Cell[38124, 1230, 47, 1, 46, "Text",
+      CellTags->"c:4"],
+    Cell[38333, 1241, 66, 1, 46, "Text",
+      CellTags->"c:4"],
+    Cell[52390, 1737, 117, 4, 60, "Subsubsection",
+      CellTags->"c:4"],
+    Cell[70003, 2371, 111, 4, 46, "Text",
+      CellTags->"c:4"]},
+  "c:5"->{
+    Cell[20538, 610, 79, 1, 36, "Subsubsection",
+      CellTags->"c:5"],
+    Cell[38543, 1250, 66, 1, 46, "Text",
+      CellTags->"c:5"],
+    Cell[53390, 1773, 229, 7, 46, "Text",
+      CellTags->"c:5"],
+    Cell[71467, 2408, 85, 1, 46, "Text",
+      CellTags->"c:5"]},
+  "c:8"->{
+    Cell[22461, 659, 120, 4, 37, "Subsubsection",
+      CellTags->"c:8"],
+    Cell[49904, 1635, 76, 1, 60, "Subsubsection",
+      CellTags->"c:8"],
+    Cell[54340, 1805, 77, 1, 46, "Text",
+      CellTags->"c:8"]},
+  "c:18"->{
+    Cell[28161, 888, 61, 1, 37, "Subsubsection",
+      CellTags->"c:18"]},
+  "c:23"->{
+    Cell[29438, 942, 52, 1, 60, "Subsubsection",
+      CellTags->"c:23"]},
+  "c:24"->{
+    Cell[29743, 957, 59, 1, 60, "Subsubsection",
+      CellTags->"c:24"]},
+  "c:11"->{
+    Cell[39618, 1293, 63, 1, 60, "Subsubsection",
+      CellTags->"c:11"],
+    Cell[55222, 1839, 75, 1, 46, "Text",
+      CellTags->"c:11"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"c:12", 72853, 2447},
+  {"c:13", 73089, 2454},
+  {"c:14", 73390, 2463},
+  {"c:15", 73626, 2470},
+  {"c:16", 73862, 2477},
+  {"c:17", 74099, 2484},
+  {"c:19", 74335, 2491},
+  {"c:20", 74495, 2496},
+  {"c:21", 74722, 2503},
+  {"c:22", 74880, 2508},
+  {"c:26", 74969, 2511},
+  {"c:27", 75056, 2514},
+  {"c:28", 75219, 2519},
+  {"c:3", 75305, 2522},
+  {"c:4", 75818, 2537},
+  {"c:5", 76174, 2548},
+  {"c:8", 76455, 2557},
+  {"c:18", 76681, 2564},
+  {"c:23", 76768, 2567},
+  {"c:24", 76855, 2570},
+  {"c:11", 76942, 2573}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 58, 1, 175, "Title"],
+
+Cell[CellGroupData[{
+Cell[1859, 58, 34, 0, 60, "Subsubsection"],
+Cell[1896, 60, 229, 5, 62, "Input",
+  InitializationCell->True],
+Cell[2128, 67, 159, 4, 46, "Text"],
+Cell[2290, 73, 93, 2, 39, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[2420, 80, 36, 0, 38, "Subsection"],
+Cell[2459, 82, 310, 8, 177, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[2806, 95, 32, 0, 55, "Section"],
+
+Cell[CellGroupData[{
+Cell[2863, 99, 54, 0, 60, "Subsubsection"],
+Cell[2920, 101, 306, 7, 131, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[3263, 113, 51, 0, 60, "Subsubsection"],
+Cell[3317, 115, 362, 7, 177, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[3716, 127, 55, 0, 60, "Subsubsection"],
+Cell[3774, 129, 146, 5, 46, "Text"],
+Cell[3923, 136, 768, 12, 315, "Input",
+  InitializationCell->True],
+Cell[4694, 150, 302, 6, 131, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5033, 161, 108, 3, 60, "Subsubsection"],
+Cell[5144, 166, 205, 5, 71, "Text"],
+Cell[5352, 173, 542, 10, 246, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5931, 188, 74, 0, 60, "Subsubsection"],
+Cell[6008, 190, 262, 5, 85, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6307, 200, 69, 1, 60, "Subsubsection",
+  CellTags->"c:12"],
+Cell[6379, 203, 147, 3, 39, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6563, 211, 84, 1, 60, "Subsubsection",
+  CellTags->"c:13"],
+Cell[6650, 214, 108, 2, 39, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6795, 221, 90, 1, 60, "Subsubsection",
+  CellTags->"c:14"],
+Cell[6888, 224, 1229, 24, 338, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8154, 253, 103, 2, 60, "Subsubsection",
+  CellTags->"c:15"],
+Cell[8260, 257, 134, 3, 39, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8431, 265, 153, 4, 60, "Subsubsection",
+  CellTags->"c:16"],
+Cell[8587, 271, 211, 4, 62, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8835, 280, 145, 5, 60, "Subsubsection",
+  CellTags->"c:17"],
+Cell[8983, 287, 263, 6, 62, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9283, 298, 98, 1, 60, "Subsubsection",
+  CellTags->"c:19"],
+Cell[9384, 301, 664, 11, 292, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[10085, 317, 59, 1, 60, "Subsubsection",
+  CellTags->"c:20"],
+Cell[10147, 320, 602, 11, 246, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[10786, 336, 73, 1, 60, "Subsubsection",
+  CellTags->"c:21"],
+Cell[10862, 339, 700, 13, 227, "Input",
+  InitializationCell->True],
+Cell[11565, 354, 700, 13, 230, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[12302, 372, 251, 11, 60, "Subsubsection",
+  CellTags->"c:22"],
+Cell[12556, 385, 387, 7, 154, "Input",
+  InitializationCell->True],
+Cell[12946, 394, 387, 7, 154, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[13370, 406, 88, 1, 60, "Subsubsection",
+  CellTags->"c:26"],
+Cell[13461, 409, 159, 3, 39, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[13657, 417, 128, 4, 60, "Subsubsection",
+  CellTags->"c:27"],
+Cell[13788, 423, 188, 3, 62, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[14013, 431, 82, 1, 60, "Subsubsection",
+  CellTags->"c:28"],
+Cell[14098, 434, 236, 5, 71, "Text"],
+Cell[14337, 441, 764, 13, 292, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[15150, 460, 25, 0, 55, "Section"],
+
+Cell[CellGroupData[{
+Cell[15200, 464, 80, 1, 59, "Subsubsection",
+  CellTags->"c:19"],
+Cell[15283, 467, 88, 2, 39, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[15408, 474, 80, 1, 36, "Subsubsection",
+  CellTags->"c:20"],
+Cell[15491, 477, 146, 5, 46, "Text",
+  CellTags->"c:20"],
+Cell[15640, 484, 224, 5, 108, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[15901, 494, 45, 0, 37, "Subsubsection"],
+Cell[15949, 496, 378, 7, 154, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[16364, 508, 58, 0, 37, "Subsubsection"],
+Cell[16425, 510, 162, 4, 85, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[16624, 519, 89, 1, 36, "Subsubsection",
+  CellTags->"c:3"],
+Cell[16716, 522, 206, 7, 46, "Text",
+  CellTags->"c:3"],
+Cell[16925, 531, 2592, 50, 936, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[19554, 586, 84, 1, 37, "Subsubsection",
+  CellTags->"c:4"],
+Cell[19641, 589, 860, 16, 384, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[20538, 610, 79, 1, 36, "Subsubsection",
+  CellTags->"c:5"],
+Cell[20620, 613, 119, 2, 39, "Input",
+  InitializationCell->True],
+Cell[20742, 617, 681, 13, 269, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[21460, 635, 65, 0, 37, "Subsubsection"],
+Cell[21528, 637, 896, 17, 246, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[22461, 659, 120, 4, 37, "Subsubsection",
+  CellTags->"c:8"],
+Cell[22584, 665, 507, 11, 177, "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[23128, 681, 27, 0, 64, "Subsection"],
+Cell[23158, 683, 95, 3, 46, "Text"],
+Cell[23256, 688, 489, 14, 258, "Input",
+  InitializationCell->True],
+Cell[23748, 704, 98, 3, 46, "Text"],
+Cell[23849, 709, 1070, 35, 658, "Input",
+  InitializationCell->True],
+Cell[24922, 746, 101, 3, 46, "Text"],
+Cell[25026, 751, 126, 4, 38, "Input",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+Cell[25177, 759, 69, 1, 60, "Subsubsection",
+  CellTags->"c:13"],
+Cell[25249, 762, 298, 8, 46, "Text"],
+Cell[25550, 772, 178, 7, 118, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[25765, 784, 163, 5, 37, "Subsubsection",
+  CellTags->"c:14"],
+Cell[25931, 791, 253, 8, 46, "Text"],
+Cell[26187, 801, 221, 8, 138, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[26445, 814, 65, 1, 37, "Subsubsection",
+  CellTags->"c:15"],
+Cell[26513, 817, 307, 9, 46, "Text"],
+Cell[26823, 828, 170, 7, 118, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[27030, 840, 167, 5, 37, "Subsubsection",
+  CellTags->"c:16"],
+Cell[27200, 847, 256, 8, 46, "Text"],
+Cell[27459, 857, 287, 10, 178, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[27783, 872, 57, 1, 37, "Subsubsection",
+  CellTags->"c:17"],
+Cell[27843, 875, 281, 8, 98, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[28161, 888, 61, 1, 37, "Subsubsection",
+  CellTags->"c:18"],
+Cell[28225, 891, 64, 1, 38, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[28338, 898, 55, 1, 64, "Subsection",
+  CellTags->"c:21"],
+Cell[28396, 901, 271, 6, 71, "Text"],
+Cell[28670, 909, 150, 4, 58, "Input",
+  InitializationCell->True],
+Cell[28823, 915, 78, 0, 46, "Text"],
+Cell[28904, 917, 310, 11, 198, "Input",
+  InitializationCell->True],
+Cell[29217, 930, 49, 0, 46, "Text"],
+Cell[29269, 932, 71, 1, 38, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[29377, 938, 36, 0, 38, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[29438, 942, 52, 1, 60, "Subsubsection",
+  CellTags->"c:23"],
+Cell[29493, 945, 213, 7, 118, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[29743, 957, 59, 1, 60, "Subsubsection",
+  CellTags->"c:24"],
+Cell[29805, 960, 189, 4, 71, "Text"],
+Cell[29997, 966, 898, 29, 558, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[30932, 1000, 57, 1, 60, "Subsubsection",
+  CellTags->"c:27"],
+Cell[30992, 1003, 279, 5, 71, "Text"],
+Cell[31274, 1010, 354, 14, 258, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[31677, 1030, 34, 0, 38, "Subsection"],
+Cell[31714, 1032, 62, 1, 38, "Input",
+  InitializationCell->True],
+Cell[31779, 1035, 249, 11, 198, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[32077, 1052, 28, 0, 87, "Section"],
+Cell[32108, 1054, 70, 1, 38, "Input",
+  InitializationCell->True],
+Cell[32181, 1057, 276, 7, 118, "Input",
+  InitializationCell->True],
+Cell[32460, 1066, 2056, 54, 1038, "Input",
+  InitializationCell->True],
+Cell[34519, 1122, 804, 14, 238, "Input",
+  InitializationCell->True],
+Cell[35326, 1138, 241, 6, 98, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[35604, 1149, 53, 0, 55, "Section"],
+Cell[35660, 1151, 355, 8, 121, "Text"],
+Cell[36018, 1161, 135, 4, 58, "Input",
+  InitializationCell->True],
+Cell[36156, 1167, 232, 6, 78, "Input",
+  InitializationCell->True],
+Cell[36391, 1175, 138, 4, 38, "Input",
+  InitializationCell->True],
+Cell[36532, 1181, 119, 4, 38, "Input",
+  InitializationCell->True],
+Cell[36654, 1187, 346, 8, 71, "Text"],
+Cell[37003, 1197, 744, 14, 131, "Input",
+  InitializationCell->True],
+Cell[37750, 1213, 68, 0, 46, "Text"],
+Cell[37821, 1215, 140, 3, 39, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[37998, 1223, 36, 0, 55, "Section"],
+
+Cell[CellGroupData[{
+Cell[38059, 1227, 62, 1, 60, "Subsubsection",
+  CellTags->"c:3"],
+Cell[38124, 1230, 47, 1, 46, "Text",
+  CellTags->"c:4"],
+Cell[38174, 1233, 156, 6, 98, "Input",
+  InitializationCell->True],
+Cell[38333, 1241, 66, 1, 46, "Text",
+  CellTags->"c:4"],
+Cell[38402, 1244, 138, 4, 58, "Input",
+  InitializationCell->True],
+Cell[38543, 1250, 66, 1, 46, "Text",
+  CellTags->"c:5"],
+Cell[38612, 1253, 322, 8, 138, "Input",
+  InitializationCell->True],
+Cell[38937, 1263, 26, 0, 46, "Text"],
+Cell[38966, 1265, 80, 1, 38, "Input",
+  InitializationCell->True],
+Cell[39049, 1268, 162, 5, 58, "Input",
+  InitializationCell->True],
+Cell[39214, 1275, 163, 5, 58, "Input",
+  InitializationCell->True],
+Cell[39380, 1282, 51, 0, 46, "Text"],
+Cell[39434, 1284, 147, 4, 58, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[39618, 1293, 63, 1, 60, "Subsubsection",
+  CellTags->"c:11"],
+Cell[39684, 1296, 530, 14, 258, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[40251, 1315, 64, 1, 60, "Subsubsection",
+  CellTags->"c:12"],
+Cell[40318, 1318, 498, 14, 238, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[40853, 1337, 68, 1, 60, "Subsubsection",
+  CellTags->"c:13"],
+Cell[40924, 1340, 207, 8, 138, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[41168, 1353, 65, 1, 60, "Subsubsection",
+  CellTags->"c:14"],
+Cell[41236, 1356, 234, 8, 138, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[41507, 1369, 66, 1, 60, "Subsubsection",
+  CellTags->"c:15"],
+Cell[41576, 1372, 85, 1, 38, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[41698, 1378, 70, 1, 60, "Subsubsection",
+  CellTags->"c:16"],
+Cell[41771, 1381, 140, 5, 58, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[41948, 1391, 97, 1, 60, "Subsubsection",
+  CellTags->"c:17"],
+Cell[42048, 1394, 98, 1, 38, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[42195, 1401, 32, 0, 55, "Section"],
+
+Cell[CellGroupData[{
+Cell[42252, 1405, 50, 0, 60, "Subsubsection"],
+Cell[42305, 1407, 43, 0, 46, "Text"],
+Cell[42351, 1409, 180, 6, 98, "Input",
+  InitializationCell->True],
+Cell[42534, 1417, 59, 0, 46, "Text"],
+Cell[42596, 1419, 725, 14, 258, "Input",
+  InitializationCell->True],
+Cell[43324, 1435, 73, 0, 46, "Text"],
+Cell[43400, 1437, 158, 4, 58, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[43595, 1446, 38, 0, 60, "Subsubsection"],
+Cell[43636, 1448, 250, 5, 71, "Text",
+  InitializationCell->True],
+Cell[43889, 1455, 2675, 51, 959, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[46601, 1511, 41, 0, 60, "Subsubsection"],
+Cell[46645, 1513, 566, 12, 178, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[47260, 1531, 56, 0, 55, "Section"],
+
+Cell[CellGroupData[{
+Cell[47341, 1535, 50, 0, 60, "Subsubsection"],
+Cell[47394, 1537, 198, 4, 71, "Text"],
+Cell[47595, 1543, 280, 10, 178, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[47912, 1558, 93, 1, 60, "Subsubsection",
+  CellTags->"c:3"],
+Cell[48008, 1561, 91, 3, 46, "Text"],
+Cell[48102, 1566, 798, 17, 298, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[48949, 1589, 38, 0, 55, "Section"],
+
+Cell[CellGroupData[{
+Cell[49012, 1593, 73, 1, 60, "Subsubsection",
+  CellTags->"c:3"],
+Cell[49088, 1596, 213, 6, 98, "Input",
+  InitializationCell->True],
+Cell[49304, 1604, 182, 9, 158, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[49523, 1618, 110, 3, 60, "Subsubsection"],
+Cell[49636, 1623, 231, 7, 118, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[49904, 1635, 76, 1, 60, "Subsubsection",
+  CellTags->"c:8"],
+Cell[49983, 1638, 233, 7, 118, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[50253, 1650, 68, 0, 60, "Subsubsection"],
+Cell[50324, 1652, 405, 10, 178, "Input",
+  InitializationCell->True],
+Cell[50732, 1664, 434, 13, 238, "Input",
+  InitializationCell->True],
+Cell[51169, 1679, 186, 8, 138, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[51404, 1693, 30, 0, 55, "Section"],
+
+Cell[CellGroupData[{
+Cell[51459, 1697, 368, 12, 62, "Subsubsection"],
+Cell[51830, 1711, 127, 4, 38, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[51994, 1720, 129, 4, 60, "Subsubsection",
+  CellTags->"c:3"],
+Cell[52126, 1726, 227, 6, 98, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[52390, 1737, 117, 4, 60, "Subsubsection",
+  CellTags->"c:4"],
+Cell[52510, 1743, 225, 5, 96, "Text"],
+Cell[52738, 1750, 582, 16, 278, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[53357, 1771, 30, 0, 60, "Subsubsection"],
+Cell[53390, 1773, 229, 7, 46, "Text",
+  CellTags->"c:5"],
+Cell[53622, 1782, 73, 1, 38, "Input",
+  InitializationCell->True],
+Cell[53698, 1785, 54, 0, 46, "Text"],
+Cell[53755, 1787, 326, 7, 98, "Input",
+  InitializationCell->True],
+Cell[54084, 1796, 48, 0, 46, "Text"],
+Cell[54135, 1798, 202, 5, 78, "Input",
+  InitializationCell->True],
+Cell[54340, 1805, 77, 1, 46, "Text",
+  CellTags->"c:8"],
+Cell[54420, 1808, 500, 17, 298, "Input",
+  InitializationCell->True],
+Cell[54923, 1827, 53, 0, 46, "Text"],
+Cell[54979, 1829, 94, 1, 38, "Input",
+  InitializationCell->True],
+Cell[55076, 1832, 74, 2, 46, "Text"],
+Cell[55153, 1836, 66, 1, 38, "Input",
+  InitializationCell->True],
+Cell[55222, 1839, 75, 1, 46, "Text",
+  CellTags->"c:11"],
+Cell[55300, 1842, 365, 12, 218, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[55702, 1859, 70, 1, 60, "Subsubsection",
+  CellTags->"c:12"],
+Cell[55775, 1862, 349, 9, 138, "Input",
+  InitializationCell->True],
+Cell[56127, 1873, 80, 1, 46, "Text",
+  CellTags->"c:13"],
+Cell[56210, 1876, 144, 5, 78, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[56403, 1887, 45, 0, 55, "Section"],
+Cell[56451, 1889, 150, 4, 46, "Text"],
+Cell[56604, 1895, 269, 12, 218, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[56910, 1912, 33, 0, 55, "Section"],
+Cell[56946, 1914, 89, 2, 39, "Input",
+  InitializationCell->True],
+Cell[57038, 1918, 174, 6, 46, "Text"],
+Cell[57215, 1926, 768, 17, 177, "Input",
+  InitializationCell->True],
+Cell[57986, 1945, 59, 0, 46, "Text"],
+Cell[58048, 1947, 767, 13, 269, "Input",
+  InitializationCell->True],
+Cell[58818, 1962, 96, 3, 46, "Text"],
+Cell[58917, 1967, 210, 7, 98, "Input",
+  InitializationCell->True],
+Cell[59130, 1976, 97, 3, 46, "Text"],
+Cell[59230, 1981, 156, 7, 118, "Input",
+  InitializationCell->True],
+Cell[59389, 1990, 56, 0, 46, "Text"],
+Cell[59448, 1992, 459, 11, 198, "Input",
+  InitializationCell->True],
+Cell[59910, 2005, 93, 3, 46, "Text"],
+Cell[60006, 2010, 356, 9, 118, "Input",
+  InitializationCell->True],
+Cell[60365, 2021, 91, 3, 46, "Text"],
+Cell[60459, 2026, 208, 5, 78, "Input",
+  InitializationCell->True],
+Cell[60670, 2033, 91, 3, 46, "Text"],
+Cell[60764, 2038, 200, 5, 78, "Input",
+  InitializationCell->True],
+Cell[60967, 2045, 99, 3, 46, "Text"],
+Cell[61069, 2050, 147, 4, 58, "Input",
+  InitializationCell->True],
+Cell[61219, 2056, 1427, 51, 121, "Text"],
+Cell[62649, 2109, 286, 7, 98, "Input",
+  InitializationCell->True],
+Cell[62938, 2118, 533, 23, 46, "Text"],
+Cell[63474, 2143, 335, 9, 138, "Input",
+  InitializationCell->True],
+Cell[63812, 2154, 557, 23, 46, "Text"],
+Cell[64372, 2179, 273, 7, 118, "Input",
+  InitializationCell->True],
+Cell[64648, 2188, 594, 23, 46, "Text"],
+Cell[65245, 2213, 225, 6, 78, "Input",
+  InitializationCell->True],
+Cell[65473, 2221, 236, 11, 46, "Text"],
+Cell[65712, 2234, 121, 4, 38, "Input",
+  InitializationCell->True],
+Cell[65836, 2240, 166, 4, 46, "Text"],
+Cell[66005, 2246, 274, 5, 108, "Input",
+  InitializationCell->True],
+Cell[66282, 2253, 95, 3, 46, "Text"],
+Cell[66380, 2258, 122, 4, 38, "Input",
+  InitializationCell->True],
+Cell[66505, 2264, 205, 8, 46, "Text"],
+Cell[66713, 2274, 149, 5, 58, "Input",
+  InitializationCell->True],
+Cell[66865, 2281, 119, 3, 46, "Text"],
+Cell[66987, 2286, 494, 10, 178, "Input",
+  InitializationCell->True],
+Cell[67484, 2298, 484, 10, 96, "Text"],
+Cell[67971, 2310, 378, 9, 158, "Input",
+  InitializationCell->True],
+Cell[68352, 2321, 92, 3, 46, "Text"],
+Cell[68447, 2326, 93, 1, 38, "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[68577, 2332, 31, 0, 55, "Section"],
+Cell[68611, 2334, 116, 1, 46, "Text"],
+Cell[68730, 2337, 184, 4, 71, "Text"],
+Cell[68917, 2343, 388, 8, 108, "Input",
+  InitializationCell->True],
+Cell[69308, 2353, 310, 6, 96, "Text",
+  CellTags->"c:3"],
+Cell[69621, 2361, 379, 8, 108, "Input",
+  InitializationCell->True],
+Cell[70003, 2371, 111, 4, 46, "Text",
+  CellTags->"c:4"],
+Cell[70117, 2377, 1347, 29, 292, "Input",
+  InitializationCell->True],
+Cell[71467, 2408, 85, 1, 46, "Text",
+  CellTags->"c:5"],
+Cell[71555, 2411, 334, 8, 89, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

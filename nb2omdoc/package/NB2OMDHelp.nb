@@ -1,0 +1,675 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      8918,        368]*)
+(*NotebookOutlinePosition[     14690,        540]*)
+(*  CellTagsIndexPosition[     14348,        525]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["$nb2omversion", "ObjectName",
+  CellTags->"$nb2omversion"],
+
+Cell["SystemVariable", "Highlight",
+  CellTags->"$nb2omversion"],
+
+Cell[TextData[{
+  StyleBox["$nb2omversion", "MR"],
+  "   is a string containg version information."
+}], "Usage",
+  CellTags->"$nb2omversion"],
+
+Cell["OMRules", "ObjectName",
+  CellTags->"OMRules"],
+
+Cell["SystemVariable", "Highlight",
+  CellTags->"OMRules"],
+
+Cell[TextData[{
+  StyleBox["OMRules", "MR"],
+  "   is a system variable that controls the rewrite rules for the conversion \
+from MathML to OpenMath."
+}], "Usage",
+  CellTags->"OMRules"],
+
+Cell[TextData[{
+  "The default value is a collection of heuristic rewrite rules for ",
+  StyleBox["XMLElement", "MR"],
+  " expressions.  The collection is far from complete."
+}], "Notes",
+  CellTags->"OMRules"],
+
+Cell["\<\
+You can change the default value by adding more rules. Note that \
+order is important.\
+\>", "Notes",
+  CellTags->"OMRules"],
+
+Cell[TextData[{
+  "The rules are kept in a ",
+  StyleBox["Dispatch", "MR"],
+  " table."
+}], "Notes",
+  CellTags->"OMRules"],
+
+Cell["Examples", "ExampleSection",
+  CellTags->"OMRules"],
+
+Cell["\<\
+Here is a rule rewriting expressions involving the sin \
+function.\
+\>", "ExampleText",
+  CellTags->"OMRules"],
+
+Cell[BoxData[
+    \(\(First[OMRules]\)[\([\)\(40\)\(]\)]\)], "Input",
+  CellLabel->"In[11]:=",
+  CellTags->"OMRules"],
+
+Cell[BoxData[
+    \(OMRules[\([\)\(1, 40\)\(]\)]\)], "Input",
+  CellLabel->"In[12]:=",
+  CellTags->"OMRules"],
+
+Cell[BoxData[
+    \(XMLElement["sin", nb2omdoc`nb2omdoc`Private`att_, 
+        nb2omdoc`nb2omdoc`Private`dat_] \[RuleDelayed] 
+      XMLElement["OMS", {"cd" \[Rule] "transc1", "name" \[Rule] "sin"}, 
+        nb2omdoc`nb2omdoc`Private`dat]\)], "Output",
+  CellLabel->"Out[12]=",
+  CellTags->"OMRules"],
+
+Cell["PrintHeaderInfo", "ObjectName",
+  CellTags->"PrintHeaderInfo"],
+
+Cell["Function", "Highlight",
+  CellTags->"PrintHeaderInfo"],
+
+Cell[TextData[{
+  StyleBox["PrintHeaderInfo[]", "MR"],
+  " prints the current setting of the system variables associated with the \
+document header."
+}], "Usage",
+  CellTags->"PrintHeaderInfo"],
+
+Cell[TextData[{
+  "Prints current values of  ",
+  StyleBox["$omsystem", "MR"],
+  ", ",
+  StyleBox["$omident", "MR"],
+  ", ",
+  StyleBox["$omtitle", "MR"],
+  ", ",
+  StyleBox["$omcreator", "MR"],
+  ", ",
+  StyleBox["$omsubject", "MR"],
+  ". "
+}], "Notes",
+  CellTags->"PrintHeaderInfo"],
+
+Cell["Examples", "ExampleSection",
+  CellTags->"PrintHeaderInfo"],
+
+Cell["The defaults.", "ExampleText",
+  CellTags->"PrintHeaderInfo"],
+
+Cell[BoxData[
+    \(PrintHeaderInfo[]\)], "Input",
+  CellTags->"PrintHeaderInfo"],
+
+Cell["SetVerbose", "ObjectName",
+  CellTags->"SetVerbose"],
+
+Cell["Function", "Highlight",
+  CellTags->"SetVerbose"],
+
+Cell[TextData[{
+  StyleBox["SetVerbose[b]", "MR"],
+  " controls printing of debugging information during conversion."
+}], "Usage",
+  CellTags->"SetVerbose"],
+
+Cell[TextData[{
+  "A call  ",
+  StyleBox["SetVerbose[]", "MR"],
+  "turns on verbose conversion,  use  ",
+  StyleBox["SetVerbose[False]", "MR"],
+  "to turn debugging off. "
+}], "Notes",
+  CellTags->"SetVerbose"],
+
+Cell["Examples", "ExampleSection",
+  CellTags->"SetVerbose"],
+
+Cell["\<\
+By default debugging is off.  Here is how to obtain debugging \
+information.\
+\>", "ExampleText",
+  CellTags->"SetVerbose"],
+
+Cell[BoxData[
+    \(SetVerbose[]\)], "Input",
+  CellTags->"SetVerbose"],
+
+Cell[BoxData[
+    \(True\)], "Output",
+  CellTags->"SetVerbose"],
+
+Cell["NB2OMDoc", "ObjectName",
+  CellTags->"NB2OMDoc"],
+
+Cell["Function", "Highlight",
+  CellTags->"NB2OMDoc"],
+
+Cell[TextData[{
+  StyleBox["NB2OMDoc[nb,dir,opts]", "MR"],
+  " converts a notebook into OMDoc."
+}], "Usage",
+  CellTags->"NB2OMDoc"],
+
+Cell[TextData[{
+  "Argument ",
+  StyleBox["dir", "MR"],
+  " is optional and defaults to the current directory."
+}], "Notes",
+  CellTags->"NB2OMDoc"],
+
+Cell[TextData[{
+  "Argument ",
+  StyleBox["nb", "MR"],
+  " is the name of the notebook to be converted."
+}], "Notes",
+  CellTags->"NB2OMDoc"],
+
+Cell[TextData[{
+  "Returns a potentially large XML expression. You can test this expression \
+with ",
+  ButtonBox["XML`SymbolicXMLErrors",
+    ButtonData:>"XMLUserGuide.nb",
+    ButtonStyle->"AddOnsLink"],
+  "  for errors."
+}], "Notes",
+  CellTags->"NB2OMDoc"],
+
+Cell[TextData[{
+  "The generated OMDoc can be validated with\n ",
+  StyleBox["Import[\"Sample.omdoc\", \"XML\", \n\t\tConversionOptions -> \
+{\"ValidateAgainstDTD\" -> True}]", "MR"],
+  ". "
+}], "Notes",
+  CellTags->"NB2OMDoc"],
+
+Cell[TextData[{
+  "The options can be used to control header information such as the location \
+of ",
+  StyleBox["omdoc.dtc", "MR"],
+  ", author, and so forth."
+}], "Notes",
+  CellTags->"NB2OMDoc"],
+
+Cell["Examples", "ExampleSection",
+  CellTags->"NB2OMDoc"],
+
+Cell["Converting a notebook in the current directory.", "ExampleText",
+  CellTags->"NB2OMDoc"],
+
+Cell[BoxData[
+    \(NB2OMDoc[\ "\<cellular.nb\>"]\)], "Input",
+  CellTags->"NB2OMDoc"],
+
+Cell["\<\
+Converting a notebook in a given directory with a special \
+identifier.\
+\>", "ExampleText",
+  CellTags->"NB2OMDoc"],
+
+Cell[BoxData[
+    \(NB2OMDoc[\ "\<cellular.nb\>", \ "\<~/projects/convert\>", \ \
+\[IndentingNewLine]\t\tHeaderMeta \[Rule] {"\<omident\>" \[Rule] \ \
+"\<cell\>"}]\)], "Input",
+  CellTags->"NB2OMDoc"],
+
+Cell["$omsystem", "ObjectName",
+  CellTags->"$omsystem"],
+
+Cell["SystemVariable", "Highlight",
+  CellTags->"$omsystem"],
+
+Cell[TextData[{
+  StyleBox["$omsystem", "MR"],
+  "   determines the OMDoc DTD used in the document header."
+}], "Usage",
+  CellTags->"$omsystem"],
+
+Cell[TextData[{
+  "Default value is  ",
+  StyleBox["omdoc.dtc", "MR"],
+  "."
+}], "Notes",
+  CellTags->"$omsystem"],
+
+Cell["$omident", "ObjectName",
+  CellTags->"$omident"],
+
+Cell["SystemVariable", "Highlight",
+  CellTags->"$omident"],
+
+Cell[TextData[{
+  StyleBox["$omsystem", "MR"],
+  "   determines the identifier used in the document header."
+}], "Usage",
+  CellTags->"$omident"],
+
+Cell[TextData[{
+  "Default value is  ",
+  StyleBox["NN", "MR"],
+  "."
+}], "Notes",
+  CellTags->"$omident"],
+
+Cell["$omtitle", "ObjectName",
+  CellTags->"$omtitle"],
+
+Cell["SystemVariable", "Highlight",
+  CellTags->"$omtitle"],
+
+Cell[TextData[{
+  StyleBox["$omsystem", "MR"],
+  "   determines the title used in the document header."
+}], "Usage",
+  CellTags->"$omtitle"],
+
+Cell[TextData[{
+  "Default value is  ",
+  StyleBox["NN", "MR"],
+  "."
+}], "Notes",
+  CellTags->"$omtitle"],
+
+Cell["$omcreator", "ObjectName",
+  CellTags->"$omcreator"],
+
+Cell["SystemVariable", "Highlight",
+  CellTags->"$omcreator"],
+
+Cell[TextData[{
+  StyleBox["$omsystem", "MR"],
+  "   determines the creator used in the document header."
+}], "Usage",
+  CellTags->"$omcreator"],
+
+Cell[TextData[{
+  "Default value is  ",
+  StyleBox["NN", "MR"],
+  "."
+}], "Notes",
+  CellTags->"$omcreator"],
+
+Cell["$omsubject", "ObjectName",
+  CellTags->"$omsubject"],
+
+Cell["SystemVariable", "Highlight",
+  CellTags->"$omsubject"],
+
+Cell[TextData[{
+  StyleBox["$omsystem", "MR"],
+  "   determines the subject used in the document header."
+}], "Usage",
+  CellTags->"$omsubject"],
+
+Cell[TextData[{
+  "Default value is  ",
+  StyleBox["NN", "MR"],
+  "."
+}], "Notes",
+  CellTags->"$omsubject"]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{520, 600},
+WindowMargins->{{380, Automatic}, {Automatic, 212}},
+Visible->False,
+LanguageCategory->"Mathematica",
+Magnification->1,
+StyleDefinitions -> "HelpBrowser.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "$nb2omversion"->{
+    Cell[1754, 51, 64, 1, 32, "ObjectName",
+      CellTags->"$nb2omversion"],
+    Cell[1821, 54, 64, 1, 50, "Highlight",
+      CellTags->"$nb2omversion"],
+    Cell[1888, 57, 141, 4, 31, "Usage",
+      CellTags->"$nb2omversion"]},
+  "OMRules"->{
+    Cell[2032, 63, 52, 1, 32, "ObjectName",
+      CellTags->"OMRules"],
+    Cell[2087, 66, 58, 1, 50, "Highlight",
+      CellTags->"OMRules"],
+    Cell[2148, 69, 186, 5, 47, "Usage",
+      CellTags->"OMRules"],
+    Cell[2337, 76, 210, 5, 40, "Notes",
+      CellTags->"OMRules"],
+    Cell[2550, 83, 134, 4, 24, "Notes",
+      CellTags->"OMRules"],
+    Cell[2687, 89, 123, 5, 24, "Notes",
+      CellTags->"OMRules"],
+    Cell[2813, 96, 57, 1, 39, "ExampleSection",
+      CellTags->"OMRules"],
+    Cell[2873, 99, 120, 4, 34, "ExampleText",
+      CellTags->"OMRules"],
+    Cell[2996, 105, 117, 3, 26, "Input",
+      CellTags->"OMRules"],
+    Cell[3116, 110, 109, 3, 26, "Input",
+      CellTags->"OMRules"],
+    Cell[3228, 115, 300, 6, 53, "Output",
+      CellTags->"OMRules"]},
+  "PrintHeaderInfo"->{
+    Cell[3531, 123, 68, 1, 32, "ObjectName",
+      CellTags->"PrintHeaderInfo"],
+    Cell[3602, 126, 60, 1, 50, "Highlight",
+      CellTags->"PrintHeaderInfo"],
+    Cell[3665, 129, 193, 5, 47, "Usage",
+      CellTags->"PrintHeaderInfo"],
+    Cell[3861, 136, 285, 13, 24, "Notes",
+      CellTags->"PrintHeaderInfo"],
+    Cell[4149, 151, 65, 1, 39, "ExampleSection",
+      CellTags->"PrintHeaderInfo"],
+    Cell[4217, 154, 67, 1, 34, "ExampleText",
+      CellTags->"PrintHeaderInfo"],
+    Cell[4287, 157, 81, 2, 26, "Input",
+      CellTags->"PrintHeaderInfo"]},
+  "SetVerbose"->{
+    Cell[4371, 161, 58, 1, 32, "ObjectName",
+      CellTags->"SetVerbose"],
+    Cell[4432, 164, 55, 1, 50, "Highlight",
+      CellTags->"SetVerbose"],
+    Cell[4490, 167, 156, 4, 31, "Usage",
+      CellTags->"SetVerbose"],
+    Cell[4649, 173, 210, 7, 40, "Notes",
+      CellTags->"SetVerbose"],
+    Cell[4862, 182, 60, 1, 39, "ExampleSection",
+      CellTags->"SetVerbose"],
+    Cell[4925, 185, 133, 4, 34, "ExampleText",
+      CellTags->"SetVerbose"],
+    Cell[5061, 191, 71, 2, 26, "Input",
+      CellTags->"SetVerbose"],
+    Cell[5135, 195, 64, 2, 21, "Output",
+      CellTags->"SetVerbose"]},
+  "NB2OMDoc"->{
+    Cell[5202, 199, 54, 1, 32, "ObjectName",
+      CellTags->"NB2OMDoc"],
+    Cell[5259, 202, 53, 1, 50, "Highlight",
+      CellTags->"NB2OMDoc"],
+    Cell[5315, 205, 132, 4, 31, "Usage",
+      CellTags->"NB2OMDoc"],
+    Cell[5450, 211, 148, 5, 24, "Notes",
+      CellTags->"NB2OMDoc"],
+    Cell[5601, 218, 141, 5, 24, "Notes",
+      CellTags->"NB2OMDoc"],
+    Cell[5745, 225, 260, 8, 40, "Notes",
+      CellTags->"NB2OMDoc"],
+    Cell[6008, 235, 227, 6, 67, "Notes",
+      CellTags->"NB2OMDoc"],
+    Cell[6238, 243, 197, 6, 40, "Notes",
+      CellTags->"NB2OMDoc"],
+    Cell[6438, 251, 58, 1, 39, "ExampleSection",
+      CellTags->"NB2OMDoc"],
+    Cell[6499, 254, 94, 1, 34, "ExampleText",
+      CellTags->"NB2OMDoc"],
+    Cell[6596, 257, 86, 2, 26, "Input",
+      CellTags->"NB2OMDoc"],
+    Cell[6685, 261, 126, 4, 34, "ExampleText",
+      CellTags->"NB2OMDoc"],
+    Cell[6814, 267, 200, 4, 42, "Input",
+      CellTags->"NB2OMDoc"]},
+  "$omsystem"->{
+    Cell[7017, 273, 56, 1, 32, "ObjectName",
+      CellTags->"$omsystem"],
+    Cell[7076, 276, 60, 1, 50, "Highlight",
+      CellTags->"$omsystem"],
+    Cell[7139, 279, 145, 4, 31, "Usage",
+      CellTags->"$omsystem"],
+    Cell[7287, 285, 114, 5, 24, "Notes",
+      CellTags->"$omsystem"]},
+  "$omident"->{
+    Cell[7404, 292, 54, 1, 32, "ObjectName",
+      CellTags->"$omident"],
+    Cell[7461, 295, 59, 1, 50, "Highlight",
+      CellTags->"$omident"],
+    Cell[7523, 298, 145, 4, 31, "Usage",
+      CellTags->"$omident"],
+    Cell[7671, 304, 106, 5, 24, "Notes",
+      CellTags->"$omident"]},
+  "$omtitle"->{
+    Cell[7780, 311, 54, 1, 32, "ObjectName",
+      CellTags->"$omtitle"],
+    Cell[7837, 314, 59, 1, 50, "Highlight",
+      CellTags->"$omtitle"],
+    Cell[7899, 317, 140, 4, 31, "Usage",
+      CellTags->"$omtitle"],
+    Cell[8042, 323, 106, 5, 24, "Notes",
+      CellTags->"$omtitle"]},
+  "$omcreator"->{
+    Cell[8151, 330, 58, 1, 32, "ObjectName",
+      CellTags->"$omcreator"],
+    Cell[8212, 333, 61, 1, 50, "Highlight",
+      CellTags->"$omcreator"],
+    Cell[8276, 336, 144, 4, 31, "Usage",
+      CellTags->"$omcreator"],
+    Cell[8423, 342, 108, 5, 24, "Notes",
+      CellTags->"$omcreator"]},
+  "$omsubject"->{
+    Cell[8534, 349, 58, 1, 32, "ObjectName",
+      CellTags->"$omsubject"],
+    Cell[8595, 352, 61, 1, 50, "Highlight",
+      CellTags->"$omsubject"],
+    Cell[8659, 355, 144, 4, 31, "Usage",
+      CellTags->"$omsubject"],
+    Cell[8806, 361, 108, 5, 24, "Notes",
+      CellTags->"$omsubject"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"$nb2omversion", 9609, 387},
+  {"OMRules", 9854, 394},
+  {"PrintHeaderInfo", 10651, 417},
+  {"SetVerbose", 11229, 432},
+  {"NB2OMDoc", 11842, 449},
+  {"$omsystem", 12795, 476},
+  {"$omident", 13103, 485},
+  {"$omtitle", 13407, 494},
+  {"$omcreator", 13713, 503},
+  {"$omsubject", 14027, 512}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 64, 1, 32, "ObjectName",
+  CellTags->"$nb2omversion"],
+Cell[1821, 54, 64, 1, 50, "Highlight",
+  CellTags->"$nb2omversion"],
+Cell[1888, 57, 141, 4, 31, "Usage",
+  CellTags->"$nb2omversion"],
+Cell[2032, 63, 52, 1, 32, "ObjectName",
+  CellTags->"OMRules"],
+Cell[2087, 66, 58, 1, 50, "Highlight",
+  CellTags->"OMRules"],
+Cell[2148, 69, 186, 5, 47, "Usage",
+  CellTags->"OMRules"],
+Cell[2337, 76, 210, 5, 40, "Notes",
+  CellTags->"OMRules"],
+Cell[2550, 83, 134, 4, 24, "Notes",
+  CellTags->"OMRules"],
+Cell[2687, 89, 123, 5, 24, "Notes",
+  CellTags->"OMRules"],
+Cell[2813, 96, 57, 1, 39, "ExampleSection",
+  CellTags->"OMRules"],
+Cell[2873, 99, 120, 4, 34, "ExampleText",
+  CellTags->"OMRules"],
+Cell[2996, 105, 117, 3, 26, "Input",
+  CellTags->"OMRules"],
+Cell[3116, 110, 109, 3, 26, "Input",
+  CellTags->"OMRules"],
+Cell[3228, 115, 300, 6, 53, "Output",
+  CellTags->"OMRules"],
+Cell[3531, 123, 68, 1, 32, "ObjectName",
+  CellTags->"PrintHeaderInfo"],
+Cell[3602, 126, 60, 1, 50, "Highlight",
+  CellTags->"PrintHeaderInfo"],
+Cell[3665, 129, 193, 5, 47, "Usage",
+  CellTags->"PrintHeaderInfo"],
+Cell[3861, 136, 285, 13, 24, "Notes",
+  CellTags->"PrintHeaderInfo"],
+Cell[4149, 151, 65, 1, 39, "ExampleSection",
+  CellTags->"PrintHeaderInfo"],
+Cell[4217, 154, 67, 1, 34, "ExampleText",
+  CellTags->"PrintHeaderInfo"],
+Cell[4287, 157, 81, 2, 26, "Input",
+  CellTags->"PrintHeaderInfo"],
+Cell[4371, 161, 58, 1, 32, "ObjectName",
+  CellTags->"SetVerbose"],
+Cell[4432, 164, 55, 1, 50, "Highlight",
+  CellTags->"SetVerbose"],
+Cell[4490, 167, 156, 4, 31, "Usage",
+  CellTags->"SetVerbose"],
+Cell[4649, 173, 210, 7, 40, "Notes",
+  CellTags->"SetVerbose"],
+Cell[4862, 182, 60, 1, 39, "ExampleSection",
+  CellTags->"SetVerbose"],
+Cell[4925, 185, 133, 4, 34, "ExampleText",
+  CellTags->"SetVerbose"],
+Cell[5061, 191, 71, 2, 26, "Input",
+  CellTags->"SetVerbose"],
+Cell[5135, 195, 64, 2, 21, "Output",
+  CellTags->"SetVerbose"],
+Cell[5202, 199, 54, 1, 32, "ObjectName",
+  CellTags->"NB2OMDoc"],
+Cell[5259, 202, 53, 1, 50, "Highlight",
+  CellTags->"NB2OMDoc"],
+Cell[5315, 205, 132, 4, 31, "Usage",
+  CellTags->"NB2OMDoc"],
+Cell[5450, 211, 148, 5, 24, "Notes",
+  CellTags->"NB2OMDoc"],
+Cell[5601, 218, 141, 5, 24, "Notes",
+  CellTags->"NB2OMDoc"],
+Cell[5745, 225, 260, 8, 40, "Notes",
+  CellTags->"NB2OMDoc"],
+Cell[6008, 235, 227, 6, 67, "Notes",
+  CellTags->"NB2OMDoc"],
+Cell[6238, 243, 197, 6, 40, "Notes",
+  CellTags->"NB2OMDoc"],
+Cell[6438, 251, 58, 1, 39, "ExampleSection",
+  CellTags->"NB2OMDoc"],
+Cell[6499, 254, 94, 1, 34, "ExampleText",
+  CellTags->"NB2OMDoc"],
+Cell[6596, 257, 86, 2, 26, "Input",
+  CellTags->"NB2OMDoc"],
+Cell[6685, 261, 126, 4, 34, "ExampleText",
+  CellTags->"NB2OMDoc"],
+Cell[6814, 267, 200, 4, 42, "Input",
+  CellTags->"NB2OMDoc"],
+Cell[7017, 273, 56, 1, 32, "ObjectName",
+  CellTags->"$omsystem"],
+Cell[7076, 276, 60, 1, 50, "Highlight",
+  CellTags->"$omsystem"],
+Cell[7139, 279, 145, 4, 31, "Usage",
+  CellTags->"$omsystem"],
+Cell[7287, 285, 114, 5, 24, "Notes",
+  CellTags->"$omsystem"],
+Cell[7404, 292, 54, 1, 32, "ObjectName",
+  CellTags->"$omident"],
+Cell[7461, 295, 59, 1, 50, "Highlight",
+  CellTags->"$omident"],
+Cell[7523, 298, 145, 4, 31, "Usage",
+  CellTags->"$omident"],
+Cell[7671, 304, 106, 5, 24, "Notes",
+  CellTags->"$omident"],
+Cell[7780, 311, 54, 1, 32, "ObjectName",
+  CellTags->"$omtitle"],
+Cell[7837, 314, 59, 1, 50, "Highlight",
+  CellTags->"$omtitle"],
+Cell[7899, 317, 140, 4, 31, "Usage",
+  CellTags->"$omtitle"],
+Cell[8042, 323, 106, 5, 24, "Notes",
+  CellTags->"$omtitle"],
+Cell[8151, 330, 58, 1, 32, "ObjectName",
+  CellTags->"$omcreator"],
+Cell[8212, 333, 61, 1, 50, "Highlight",
+  CellTags->"$omcreator"],
+Cell[8276, 336, 144, 4, 31, "Usage",
+  CellTags->"$omcreator"],
+Cell[8423, 342, 108, 5, 24, "Notes",
+  CellTags->"$omcreator"],
+Cell[8534, 349, 58, 1, 32, "ObjectName",
+  CellTags->"$omsubject"],
+Cell[8595, 352, 61, 1, 50, "Highlight",
+  CellTags->"$omsubject"],
+Cell[8659, 355, 144, 4, 31, "Usage",
+  CellTags->"$omsubject"],
+Cell[8806, 361, 108, 5, 24, "Notes",
+  CellTags->"$omsubject"]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

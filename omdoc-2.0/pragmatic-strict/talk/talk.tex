@@ -1,0 +1,94 @@
+\documentclass{beamer}
+\usetheme{Fulya}
+%\usepackage{color}
+%\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{rotating} %for sideways letters
+\usepackage{multicol}
+%\usepackage{stmaryrd} %for \llbracket (semantic bracket)
+%\usepackage{lstomdoc}\lstset{language=[1.3]OMDoc,columns=fullflexible,basicstyle=\sf}
+\usepackage{listings}
+\usepackage{mmt_listings}
+%\usepackage{xcolor}
+\usepackage{../florian/basics}
+\usepackage{../florian/ded}
+\usepackage{../twelf-math}
+\usepackage{../pattern}
+\usepackage{local}
+
+
+
+
+%\useoutertheme{fulyaplain}
+%\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{headline}{}
+%\setbeamercolor{block title}{bg=blue!50}
+%\setbeamercolor{block body}{bg=blue!20}
+%\setbeamertemplate{blocks}[rounded]
+%
+%\setbeamertemplate{footline}{
+%\begin{center}\insertpagenumber\end{center}
+%}
+%%\lstset{mathescape,basicstyle=\footnotesize,breaklines,breakatwhitespace}
+\setbeamercovered{transparent=0}
+\newcommand{\lec}[1]{\strut\hfil\strut\null\nobreak\hfill\hbox{{\color{blue}#1}}\par}
+
+\begin{document}
+
+\title{Extending MKM Formats at the \\ Statement Level}
+\author{\underline{Fulya Horozal}, Michael Kohlhase and Florian Rabe}
+\institute{Jacobs University Bremen}
+\date{CICM, 8.-13. July 2012 \\ Bremen, Germany}
+\begin{frame}
+ \titlepage
+\end{frame}
+
+\section*{Introduction}
+\input{intro}
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents
+%\end{frame}
+
+\section{Our core language}%A module system for mathematical theories}
+\input{mmt}
+
+\section{A framework for language extensions}
+\input{extension}
+
+
+\section{Concrete syntax} %Syntax extensions and surface language}
+\input{concrete}
+
+\section*{Summary}
+\input{conc}
+
+
+\end{document}
+
+\begin{frame}
+\frametitle{}
+\begin{itemize}
+\item 
+\item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{test}
+\begin{itemize}
+\onslide<1>{
+\item A
+}
+\onslide<2>{
+\item B
+}
+
+

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="Groups">
+  <theory xml:id="Group">
+    <presentation for="Group">
+      <use format="Hets">[Group,,0]</use>
+    </presentation>
+    <symbol role="sort" name="s"/>
+    <presentation for="s">
+      <use format="Hets">[s]</use>
+    </presentation>
+    <symbol name="Minus__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Group" name="s"/>
+            <OMS cd="Group" name="s"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="Minus__">
+      <use format="Hets">[-,__]</use>
+    </presentation>
+    <symbol name="N0" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Group" name="s"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N0">
+      <use format="Hets">[0]</use>
+    </presentation>
+    <symbol name="__Plus__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Group" name="s"/>
+            <OMS cd="Group" name="s"/>
+            <OMS cd="Group" name="s"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <axiom name="Ax2">
+      <CMP>
+  forall x,y:s
+  . x+(-x) = 0
+  . x+0=x %(leftunit)%
+  . 0+x=x %(rightunit)% %implied
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Group" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Group" name="__Plus__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Group" name="s"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Group" name="Minus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Group" name="s"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="Group" name="N0"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax2">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="ga_assoc___Plus__">
+      <CMP>
+      __+__ :s*s-&#62;s, assoc
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Group" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Group" name="s"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Group" name="s"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Group" name="__Plus__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Group" name="s"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Group" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Group" name="s"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Group" name="s"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Group" name="__Plus__"/>
+                <OMA>
+                  <OMS cd="Group" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Group" name="s"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Group" name="s"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Group" name="s"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_assoc___Plus__">
+      <use format="Hets">ga_assoc___+__</use>
+    </presentation>
+    <axiom name="leftunit">
+      <CMP>
+  forall x,y:s
+  . x+(-x) = 0
+  . x+0=x %(leftunit)%
+  . 0+x=x %(rightunit)% %implied
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Group" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Group" name="__Plus__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Group" name="s"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="Group" name="N0"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Group" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="leftunit">
+      <use format="Hets">leftunit</use>
+    </presentation>
+    <axiom name="rightunit">
+      <CMP>
+  forall x,y:s
+  . x+(-x) = 0
+  . x+0=x %(leftunit)%
+  . 0+x=x %(rightunit)% %implied
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Group" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Group" name="__Plus__"/>
+                <OMS cd="Group" name="N0"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Group" name="s"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Group" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="rightunit">
+      <use format="Hets">rightunit</use>
+    </presentation>
+  </theory>
+</omdoc>

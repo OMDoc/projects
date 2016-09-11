@@ -1,0 +1,34 @@
+theory with o, ded, and axiom/theorem pattern
+ * A meta-theory can declare an object O as the '''type of formulas'''. This is used to define the judgment wff(F) in terms of the typing judgment F : O.
+ * A meta-theory can declare an object P as the '''type family of proof'''. This is used to translate the MMT truth judgment |- p : F  (as induced by assertions) into p : P(F). Together with the type of formulas, it defines logics.
+
+theory with curry-typing and pattern for typed constants
+ * A meta-theory can declare an object T as the '''typing predicate'''. This is used to translate MMT type judgments c : A into axioms T(c,a) for meta-theories that handle typing internally.
+
+theory with curry-typing and pattern for subtyped constants 
+ * A meta-theory can declare an object S as the '''subtyping predicate'''. This is used to translate MMT supertype judgments c <: A into axioms S(c,a) for meta-theories that handle subtyping internally.
+
+theory with existsU, ... and pattern for implicit definition
+ * A meta-theory can declare objects D (description), U (unique existence) and A (conjunction). This can be used to translate '''implicit definitions''' "the c such that F1, ..., Fn; p" into D(c,A(F1,...,Fn)) under the condition that |- p : U(c,A(F1,...,Fn)).
+
+theory with exists, ... and pattern for underspecified definition
+ * The same as before for '''underspecified definitions''' and choice.
+
+theory with type intersection and pattern for multiple types
+ * A meta-theory can declare an object I as the type intersection. This is used to define the meaning of symbols with multiple types. 
+
+theory with simple function types and pattern for functions
+  + A meta-theory can declare a morphism from simple type theory (or dependent type theory). This is used to define functions by explicitly marking up the arguments.
+
+pattern for binders?
+ + If a theory supports HOAS via lambda, then OMBIND(b,C,s) elaborates to OMA(b,OMBIND(lambda,C,s))
+
+////////////////////////////
+other cases
+ * Some translation for '''abstract data types'''.
+
+ + Based on functions, it is also possible to define abstract data (co)types (where functions are needed for the constructors/selectors) and parametric morphisms (where functions are needed for flattening). 
+
+ * A meta-theory can declare an object E as the '''equality symbol'''. This can be used to translate MMT definitions c = A into axioms E(c,A) for meta-languages that cannot handle definitions.
+
+ + We need more: a constructor for sequents:

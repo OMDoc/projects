@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.THM108" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.THM108</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.THM108</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="tps.abbr.INTERSECT.xhtml#tps.abbr.INTERSECT">tps.abbr.INTERSECT</a>, 
+        <a href="tps.abbr.COMPLEMENT.xhtml#tps.abbr.COMPLEMENT">tps.abbr.COMPLEMENT</a>, 
+        <a href="tps.abbr.SETDIFF.xhtml#tps.abbr.SETDIFF">tps.abbr.SETDIFF</a>, 
+        <a href="tps.abbr.NULLSET.xhtml#tps.abbr.NULLSET">tps.abbr.NULLSET</a>, 
+        <a href="tps.abbr.SUBSET.xhtml#tps.abbr.SUBSET">tps.abbr.SUBSET</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.THM108" role="Assertion" about="#gwff.THM108" xml:id="gwff.THM108">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.THM108"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> 21-127 exam problem requiring case analysis. REWRITE-EQUAL-EXT drastically affects performance. FORALL w(OA) FORALL y(OA) FORALL z(OA).w INTERSECT COMPLEMENT z SUBSET y AND z SETDIFF y = NULLSET IMPLIES w SUBSET y</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e36" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mo>∀</m:mo>
+                <m:mi>A</m:mi>
+                <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                <m:mrow>
+                  <m:mo>∀</m:mo>
+                  <m:msub>
+                    <m:mi>w</m:mi>
+                    <m:mrow>
+                      <m:mi>A</m:mi>
+                      <m:mo>→</m:mo>
+                      <m:mo>o</m:mo>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mrow>
+                      <m:mi>A</m:mi>
+                      <m:mo>→</m:mo>
+                      <m:mo>o</m:mo>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mi>A</m:mi>
+                      <m:mo>→</m:mo>
+                      <m:mo>o</m:mo>
+                    </m:mrow>
+                  </m:msub>
+                  <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>w</m:mi>
+                          <m:mo>INTERSECT</m:mo>
+                          <m:mrow>
+                            <m:mo>(~)</m:mo>
+                            <!-- Face using unicode: ~. -->
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                            <m:mi>z</m:mi>
+                            <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                        <m:mo>SUBSET</m:mo>
+                        <m:mi>y</m:mi>
+                      </m:mrow>
+                      <m:mo>∧</m:mo>
+                      <m:mrow>
+                        <m:mrow>
+                          <m:mi>z</m:mi>
+                          <m:mo>(-)</m:mo>
+                          <m:mi>y</m:mi>
+                        </m:mrow>
+                        <m:mo>=</m:mo>
+                        <m:mo>NULLSET</m:mo>
+                      </m:mrow>
+                      <m:mo mcd:egroup="fence" fence="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                    </m:mrow>
+                    <m:mo>⇒</m:mo>
+                    <m:mrow>
+                      <m:mi>w</m:mi>
+                      <m:mo>SUBSET</m:mo>
+                      <m:mi>y</m:mi>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

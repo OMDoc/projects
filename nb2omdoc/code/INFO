@@ -1,0 +1,294 @@
+
+Parser
+======
+
+
+Handled:
+
+  strings
+  TextData
+  BoxData
+
+Improperly handled:
+
+  GraphicsData
+
+Currently ignored:
+
+
+  OutputFormData
+  RawData
+
+
+  StyleData	only in StyleDefinitions -> Notebook[{...}] ??
+
+
+
+CellGroupData
+  Title, Subtitle, ... ;Section, Subsection, ...
+  Input
+  Graphics
+
+
+TextData	can be List or StyleBox
+
+
+---------------------------------------------------------------------------
+Notebook Structure
+
+Typed Cells
+
+   Title, Section, Subsection, ...
+
+   Text
+
+   Input, Output, Graphics
+
+Text:      String, TextData
+TextData:  String, StyleBox, Cell[BoxData[..]]
+
+
+Untyped Cells
+
+   CellGroupData
+   BoxData
+
+
+Cell contents
+-------------
+
+"string"
+
+TextData[{txt1,txt2,...}]
+
+BoxData[boxes]
+
+CellGroupData[{cell1,cell2,...},_]
+
+StyleData[...]
+
+GraphicsData["type",data]
+
+OutputFormData
+
+RawData[data]
+
+
+---------------------------------------------------------------------------
+
+InterpretationBox[ boxes, content ]
+TagBox[ boxes, tag ]
+
+
+MakeExpression
+MakeBoxes
+
+
+
+
+
+---------------------------------------------------------------------------
+
+
+Problems with Complex nbs
+
+Notebooks must be executable in batch mode. 
+Use  Needs[] or Get[]  instead of written instructions. 
+
+Clear[] variables or use Block[] to localize bindings. 
+
+
+Constructs such as 
+
+	StyleBox["\[Beta]",FontWeight->"Bold"] 
+	StyleBox["n\[GreaterEqual]k",FontWeight->"Bold"] 
+
+in the middle of text cannot be recognized automatically. 
+
+
+
+---------------------------------------------------------------------------
+
+
+Program
+Input
+	Definition 
+	Macro
+	Demonstration
+	Example 		Ap, Ac, Cp, Cc  assertion/concept, pro/con
+
+
+
+
+<CMP>
+	<OMOBJ xref="foobag"/>
+</CMP>
+<FMP>
+	<OMOBJ id="foobag">
+	....
+	</OMOBJ>
+</FMP>
+
+
+
+
+statt 
+        <assertion id="Thm0">
+          <CMP>
+            Theorem.
+              Equivalence modulo a non-zero, non-constant polynomial is a 
+            <with style="emph">
+sollte es 
+
+        <assertion id="Thm0" type="theorem">
+          <CMP>
+              Equivalence modulo a non-zero, non-constant polynomial is a 
+            <with style="emph">
+
+sein
+
+
+
+
+<omgroup id="G50">
+  <omtext id="T68" type="comment">
+    <CMP>
+      The particular multiple to be chosen of course depends on 
+      <OMOBJ>
+       <OMV name="f"/>
+      </OMOBJ>
+
+
+
+<symbol id="norm">
+<definition  id="norm-def" for="norm">
+
+
+
+<CMP>
+<omlet style="mtainit" function="fct1">
+Off with your spell.
+</omlet>
+</CMP>
+
+<code id="fct1">
+<CDATA>Off[General::spell]; Off[General::spell1];</CDATA>
+</code>
+
+
+ 
+
+
+
+XMLElement[ element, {attribute -> value}, { data } ]
+
+
+XMLElement[ type ][ stuff ]
+type: Declaration Comment Document Doctype ProcessingInstruction CDATASection
+
+
+
+
+Import[ file, format ]
+format:    "XML", "NotebookML", "ExpressionML", "MathML", "SymbolicXML"
+
+ConversionOptions -> {option -> value}
+"NormalizeWhitespace"
+"AllowRemoteDTDAccess"
+"AllowUnrecognizedEntities"
+"ReadDTD"
+"ValidateAgainstDTD"
+"IncludeDefaultedAttributes"
+"IncludeEmbeddedObjects"
+"IncludeNamespaces"
+"PreserveCDATASections"
+
+ImportString[ string, format ]
+
+
+
+
+XML`MathML`ExpressionToMathML[ x^2 + 1, 
+	"Annotations" -> {}, "OutputForms" -> {"Content"} ]
+
+Use Unevaluated[...]  to keep Mathematica from evaluating expressions.
+
+
+
+BoxesToMathML, ExpressionToMathML, BoxesToSymbolicMathML, 
+ExpressionToSymbolicMathML, and Import.  
+
+---------------------------------------------------------------------------
+
+ButtonBox
+
+    boxes		appears as button text
+    ButtonContents	first argument of ButtonBox
+
+    ButtonNote		message in status line
+
+    ButtonStyle		Paste, Evaluate, ...
+
+    ButtonFunction	called when clicked, two arguments, 
+			has reasonable defaults
+    ButtonSource	where first argument, Automatic
+    ButtonData		second argument, Null
+
+    Active->True	active in notebook (not just palette)
+
+
+
+ButtonFunction
+
+Can be Module[{..},CompoundExpression[ ... ]]
+
+
+(FrontEndExecute[ {
+        FrontEnd`HelpBrowserLookup[ "MainBook", #]}]&)
+
+
+Paste
+ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`NotebookApply[ 
+          FrontEnd`InputNotebook[ ], #, After]}]&)
+  
+Evaluate
+ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`NotebookApply[ 
+          FrontEnd`InputNotebook[], #, All], 
+        SelectionEvaluate[ 
+          FrontEnd`InputNotebook[], All]}]&)
+  
+EvaluateCell
+ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`NotebookApply[ 
+          FrontEnd`InputNotebook[ ], #, All], 
+        FrontEnd`SelectionMove[ 
+          FrontEnd`InputNotebook[ ], All, Cell, 1], 
+        FrontEnd`SelectionEvaluateCreateCell[ 
+          FrontEnd`InputNotebook[ ], All]}]&)
+  
+CopyEvaluate
+ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`SelectionCreateCell[ 
+          FrontEnd`InputNotebook[ ], All], 
+        FrontEnd`NotebookApply[ 
+          FrontEnd`InputNotebook[ ], #, All], 
+        FrontEnd`SelectionEvaluate[ 
+          FrontEnd`InputNotebook[ ], All]}]&)
+  
+CopyEvaluateCell
+ButtonFunction:>(FrontEndExecute[ {
+        FrontEnd`SelectionCreateCell[ 
+          FrontEnd`InputNotebook[ ], All], 
+        FrontEnd`NotebookApply[ 
+          FrontEnd`InputNotebook[ ], #, All], 
+        FrontEnd`SelectionEvaluateCreateCell[ 
+          FrontEnd`InputNotebook[ ], All]}]&)
+
+
+
+---------------------------------------------------------------------------------
+
+Conversion Functions in Mta
+

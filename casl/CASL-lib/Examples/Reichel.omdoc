@@ -1,0 +1,3803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="Reichel">
+  <theory xml:id="Natsub">
+    <presentation for="Natsub">
+      <use format="Hets">[Natsub,,0]</use>
+    </presentation>
+    <symbol role="sort" name="pos"/>
+    <presentation for="pos">
+      <use format="Hets">[pos]</use>
+    </presentation>
+    <symbol role="sort" name="nat3"/>
+    <presentation for="nat3">
+      <use format="Hets">[nat]</use>
+    </presentation>
+    <symbol role="sort" name="Odd"/>
+    <presentation for="Odd">
+      <use format="Hets">[Odd]</use>
+    </presentation>
+    <adt>
+      <sortdef name="nat3" type="free">
+        <insort for="#Odd"/>
+        <insort for="#pos"/>
+      </sortdef>
+    </adt>
+    <symbol name="odd" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Natsub" name="nat3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="odd">
+      <use format="Hets">[odd]</use>
+    </presentation>
+    <symbol name="predec" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Natsub" name="pos"/>
+            <OMS cd="Natsub" name="nat3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="predec">
+      <use format="Hets">[predec]</use>
+    </presentation>
+    <symbol name="predec" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Natsub" name="nat3"/>
+            <OMS cd="Natsub" name="nat3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="predec">
+      <use format="Hets">[predec]</use>
+    </presentation>
+    <symbol name="succ3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Natsub" name="nat3"/>
+            <OMS cd="Natsub" name="pos"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ3">
+      <use format="Hets">[succ]</use>
+    </presentation>
+    <symbol name="zero3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Natsub" name="nat3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero3">
+      <use format="Hets">[zero]</use>
+    </presentation>
+    <axiom name="Ax112">
+      <CMP>
+axioms	not odd(zero); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="neg"/>
+            <OMA>
+              <OMS cd="casl" name="predication"/>
+              <OMS cd="Natsub" name="odd"/>
+              <OMS cd="Natsub" name="zero3"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax112">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax24">
+      <CMP>
+	odd(succ(zero)); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Natsub" name="odd"/>
+            <OMA>
+              <OMS cd="Natsub" name="succ3"/>
+              <OMS cd="Natsub" name="zero3"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax24">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax34">
+      <CMP>
+axioms	not odd(zero); 
+axioms	not odd(zero); 
+	odd(succ(zero)); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Natsub" name="nat3"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Natsub" name="odd"/>
+                <OMA>
+                  <OMS cd="Natsub" name="succ3"/>
+                  <OMA>
+                    <OMS cd="Natsub" name="succ3"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Natsub" name="nat3"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Natsub" name="odd"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Natsub" name="nat3"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax34">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax44">
+      <CMP>
+sorts	Odd = {n:nat . odd(n)} 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Natsub" name="nat3"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="membership"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Natsub" name="nat3"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+                <OMS cd="Natsub" name="Odd"/>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Natsub" name="odd"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Natsub" name="nat3"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax44">
+      <use format="Hets">Ax4</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Nat">
+    <presentation for="Nat">
+      <use format="Hets">[Nat,,0]</use>
+    </presentation>
+    <symbol role="sort" name="nat2"/>
+    <presentation for="nat2">
+      <use format="Hets">[nat]</use>
+    </presentation>
+    <symbol name="__Ast__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="nat2"/>
+            <OMS cd="Nat" name="nat2"/>
+            <OMS cd="Nat" name="nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Ast__">
+      <use format="Hets">[__,*,__]</use>
+    </presentation>
+    <symbol name="__Plus__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="nat2"/>
+            <OMS cd="Nat" name="nat2"/>
+            <OMS cd="Nat" name="nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__2">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="succ2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="nat2"/>
+            <OMS cd="Nat" name="nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ2">
+      <use format="Hets">[succ]</use>
+    </presentation>
+    <symbol name="zero2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat" name="nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero2">
+      <use format="Hets">[zero]</use>
+    </presentation>
+    <axiom name="Ax110">
+      <CMP>
+axioms	forall n:nat. zero+n=n; 
+axioms	forall n:nat. zero+n=n; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="nat2"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat" name="__Plus__2"/>
+                <OMS cd="Nat" name="zero2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="nat2"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="nat2"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax110">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax23">
+      <CMP>
+	forall m,n:nat. succ(m)+n=succ(m+n); 
+	forall m,n:nat. succ(m)+n=succ(m+n); 
+	forall m,n:nat. succ(m)+n=succ(m+n); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="nat2"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="nat2"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat" name="__Plus__2"/>
+                <OMA>
+                  <OMS cd="Nat" name="succ2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="nat2"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="nat2"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Nat" name="succ2"/>
+                <OMA>
+                  <OMS cd="Nat" name="__Plus__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="nat2"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="nat2"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax23">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax33">
+      <CMP>
+	forall n:nat. zero*n=zero; 
+	forall n:nat. zero*n=zero; 
+	forall n:nat. zero*n=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="nat2"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat" name="__Ast__"/>
+                <OMS cd="Nat" name="zero2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="nat2"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="Nat" name="zero2"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax33">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax43">
+      <CMP>
+	forall m,n:nat. succ(m)*n=n + (m*n); 
+	forall m,n:nat. succ(m)*n=n + (m*n); 
+	forall m,n:nat. succ(m)*n=n + (m*n); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="nat2"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat" name="nat2"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat" name="__Ast__"/>
+                <OMA>
+                  <OMS cd="Nat" name="succ2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="nat2"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="nat2"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Nat" name="__Plus__2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat" name="nat2"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Nat" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="nat2"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat" name="nat2"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax43">
+      <use format="Hets">Ax4</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Rseq">
+    <presentation for="Rseq">
+      <use format="Hets">[Rseq,,0]</use>
+    </presentation>
+    <symbol role="sort" name="rseq"/>
+    <presentation for="rseq">
+      <use format="Hets">[rseq]</use>
+    </presentation>
+    <symbol role="sort" name="nat4"/>
+    <presentation for="nat4">
+      <use format="Hets">[nat]</use>
+    </presentation>
+    <symbol name="__e__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Rseq" name="nat4"/>
+            <OMS cd="Rseq" name="rseq"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__e__">
+      <use format="Hets">[__,e,__]</use>
+    </presentation>
+    <symbol name="__Plus__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Rseq" name="nat4"/>
+            <OMS cd="Rseq" name="rseq"/>
+            <OMS cd="Rseq" name="rseq"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__3">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="nil2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Rseq" name="rseq"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil2">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="succ4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Rseq" name="nat4"/>
+            <OMS cd="Rseq" name="nat4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ4">
+      <use format="Hets">[succ]</use>
+    </presentation>
+    <symbol name="zero4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Rseq" name="nat4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero4">
+      <use format="Hets">[zero]</use>
+    </presentation>
+    <axiom name="Ax113">
+      <CMP>
+axioms	def x+r &#60;=&#62; not (x e r);   
+axioms	def x+r &#60;=&#62; not (x e r);   
+	not (x e nil); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Rseq" name="rseq"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Rseq" name="nat4"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="Rseq" name="__Plus__3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="nat4"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="rseq"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Rseq" name="__e__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="nat4"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="rseq"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax113">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax25">
+      <CMP>
+axioms	def x+r &#60;=&#62; not (x e r);   
+axioms	def x+r &#60;=&#62; not (x e r);   
+	not (x e nil); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Rseq" name="nat4"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Rseq" name="__e__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Rseq" name="nat4"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="Rseq" name="nil2"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax25">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax35">
+      <CMP>
+axioms	def x+r &#60;=&#62; not (x e r);   
+axioms	def x+r &#60;=&#62; not (x e r);   
+	not (x e nil); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Rseq" name="rseq"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Rseq" name="nat4"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Rseq" name="nat4"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Rseq" name="__e__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="nat4"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="rseq"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="equivalence"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Rseq" name="__e__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="nat4"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMA>
+                    <OMS cd="Rseq" name="__Plus__3"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Rseq" name="nat4"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Rseq" name="rseq"/>
+                      </OMATP>
+                      <OMV name="r"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="nat4"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Rseq" name="nat4"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax35">
+      <use format="Hets">Ax3</use>
+    </presentation>
+  </theory>
+  <theory xml:id="DGraph_with_paths">
+    <presentation for="DGraph_with_paths">
+      <use format="Hets">[DGraph_with_paths,,0]</use>
+    </presentation>
+    <symbol role="sort" name="path"/>
+    <presentation for="path">
+      <use format="Hets">[path]</use>
+    </presentation>
+    <symbol role="sort" name="nodes"/>
+    <presentation for="nodes">
+      <use format="Hets">[nodes]</use>
+    </presentation>
+    <symbol role="sort" name="edges"/>
+    <presentation for="edges">
+      <use format="Hets">[edges]</use>
+    </presentation>
+    <symbol name="__Plus__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="DGraph_with_paths" name="path"/>
+            <OMS cd="DGraph_with_paths" name="edges"/>
+            <OMS cd="DGraph_with_paths" name="path"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="begin" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="DGraph_with_paths" name="edges"/>
+            <OMS cd="DGraph_with_paths" name="nodes"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="begin">
+      <use format="Hets">[begin]</use>
+    </presentation>
+    <symbol name="begin" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="DGraph_with_paths" name="path"/>
+            <OMS cd="DGraph_with_paths" name="nodes"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="begin">
+      <use format="Hets">[begin]</use>
+    </presentation>
+    <symbol name="nil" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="DGraph_with_paths" name="nodes"/>
+            <OMS cd="DGraph_with_paths" name="path"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="theend" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="DGraph_with_paths" name="edges"/>
+            <OMS cd="DGraph_with_paths" name="nodes"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="theend">
+      <use format="Hets">[theend]</use>
+    </presentation>
+    <symbol name="theend" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="DGraph_with_paths" name="path"/>
+            <OMS cd="DGraph_with_paths" name="nodes"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="theend">
+      <use format="Hets">[theend]</use>
+    </presentation>
+    <axiom name="Ax11">
+      <CMP>
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+	begin(nil(n))=n; 
+	theend(nil(n))=n; 
+	p1 =e= p+e =&#62; begin(p1)=begin(p); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="edges"/>
+                </OMATP>
+                <OMV name="e"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="path"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="path"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="edges"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="theend"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="path"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="begin"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="edges"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax11">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax21">
+      <CMP>
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+	begin(nil(n))=n; 
+	theend(nil(n))=n; 
+	p1 =e= p+e =&#62; begin(p1)=begin(p); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="nodes"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="DGraph_with_paths" name="begin"/>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="nil"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="nodes"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="nodes"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax21">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax31">
+      <CMP>
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+	begin(nil(n))=n; 
+	theend(nil(n))=n; 
+	p1 =e= p+e =&#62; begin(p1)=begin(p); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="nodes"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="DGraph_with_paths" name="theend"/>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="nil"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="nodes"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="nodes"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax31">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax41">
+      <CMP>
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+	begin(nil(n))=n; 
+	theend(nil(n))=n; 
+	p1 =e= p+e =&#62; begin(p1)=begin(p); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="edges"/>
+                </OMATP>
+                <OMV name="e"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="path"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="path"/>
+                </OMATP>
+                <OMV name="p1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="existial-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="DGraph_with_paths" name="path"/>
+                  </OMATP>
+                  <OMV name="p1"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="path"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="edges"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="begin"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="path"/>
+                    </OMATP>
+                    <OMV name="p1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="begin"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="path"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax41">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax51">
+      <CMP>
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+axioms	def (p+e) &#60;=&#62; theend(p)=begin(e); 
+	begin(nil(n))=n; 
+	theend(nil(n))=n; 
+	p1 =e= p+e =&#62; begin(p1)=begin(p); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="edges"/>
+                </OMATP>
+                <OMV name="e"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="path"/>
+                </OMATP>
+                <OMV name="p"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="DGraph_with_paths" name="path"/>
+                </OMATP>
+                <OMV name="p1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="existial-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="DGraph_with_paths" name="path"/>
+                  </OMATP>
+                  <OMV name="p1"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="path"/>
+                    </OMATP>
+                    <OMV name="p"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="edges"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="theend"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="path"/>
+                    </OMATP>
+                    <OMV name="p1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="DGraph_with_paths" name="theend"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="DGraph_with_paths" name="edges"/>
+                    </OMATP>
+                    <OMV name="e"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax51">
+      <use format="Hets">Ax5</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Decreasing_edge_valued_trees">
+    <presentation for="Decreasing_edge_valued_trees">
+      <use format="Hets">[Decreasing_edge_valued_trees,,0]</use>
+    </presentation>
+    <symbol role="sort" name="treeseq"/>
+    <presentation for="treeseq">
+      <use format="Hets">[treeseq]</use>
+    </presentation>
+    <symbol role="sort" name="tree"/>
+    <presentation for="tree">
+      <use format="Hets">[tree]</use>
+    </presentation>
+    <symbol role="sort" name="nat1"/>
+    <presentation for="nat1">
+      <use format="Hets">[nat]</use>
+    </presentation>
+    <symbol name="__Lower__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__Plus__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__1">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="add" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="add">
+      <use format="Hets">[add]</use>
+    </presentation>
+    <symbol name="add" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="add">
+      <use format="Hets">[add]</use>
+    </presentation>
+    <symbol name="combine" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="combine">
+      <use format="Hets">[combine]</use>
+    </presentation>
+    <symbol name="depth" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="depth">
+      <use format="Hets">[depth]</use>
+    </presentation>
+    <symbol name="depth" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="depth">
+      <use format="Hets">[depth]</use>
+    </presentation>
+    <symbol name="max" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="max">
+      <use format="Hets">[max]</use>
+    </presentation>
+    <symbol name="nil1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="nil1">
+      <use format="Hets">[nil]</use>
+    </presentation>
+    <symbol name="seq_attr" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="seq_attr">
+      <use format="Hets">[seq_attr]</use>
+    </presentation>
+    <symbol name="succ1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ1">
+      <use format="Hets">[succ]</use>
+    </presentation>
+    <symbol name="sum" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="sum">
+      <use format="Hets">[sum]</use>
+    </presentation>
+    <symbol name="sum" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="sum">
+      <use format="Hets">[sum]</use>
+    </presentation>
+    <symbol name="t_attr" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="t_attr">
+      <use format="Hets">[t_attr]</use>
+    </presentation>
+    <symbol name="zero1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero1">
+      <use format="Hets">[zero]</use>
+    </presentation>
+    <axiom name="Ax12">
+      <CMP>
+axioms	not (x&#60;zero); 
+axioms	not (x&#60;zero); 
+	zero&#60;succ(x); 
+	x&#60;y &#60;=&#62; succ(x)&#60;succ(y); 
+	max(x,x)=x; 
+	max(x,y)=max(y,x); 
+	x&#60;y =&#62; max(x,y)=y ;
+	x+zero=zero;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax12">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax10">
+      <CMP>
+	seq_attr(nil) = zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="Decreasing_edge_valued_trees" name="seq_attr"/>
+              <OMS cd="Decreasing_edge_valued_trees" name="nil1"/>
+            </OMA>
+            <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax10">
+      <use format="Hets">Ax10</use>
+    </presentation>
+    <axiom name="Ax111">
+      <CMP>
+axioms	def add(s,r,n) &#60;=&#62; t_attr(r) &#60; n; 
+axioms	def add(s,r,n) &#60;=&#62; t_attr(r) &#60; n; 
+	seq_attr(nil) = zero; 
+	t_attr(combine(s)) = seq_attr(s); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="t_attr"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="combine"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="seq_attr"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                  </OMATP>
+                  <OMV name="s"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax111">
+      <use format="Hets">Ax11</use>
+    </presentation>
+    <axiom name="Ax121">
+      <CMP>
+axioms	def add(s,r,n) &#60;=&#62; t_attr(r) &#60; n; 
+axioms	def add(s,r,n) &#60;=&#62; t_attr(r) &#60; n; 
+	seq_attr(nil) = zero; 
+	t_attr(combine(s)) = seq_attr(s); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                </OMATP>
+                <OMV name="s1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                </OMATP>
+                <OMV name="s2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                  </OMATP>
+                  <OMV name="s1"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="add"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                    </OMATP>
+                    <OMV name="s2"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="seq_attr"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                    </OMATP>
+                    <OMV name="s1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="max"/>
+                  <OMA>
+                    <OMS cd="Decreasing_edge_valued_trees" name="seq_attr"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                      </OMATP>
+                      <OMV name="s2"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax121">
+      <use format="Hets">Ax12</use>
+    </presentation>
+    <axiom name="Ax13">
+      <CMP>
+axioms	depth(combine(nil))=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="Decreasing_edge_valued_trees" name="depth"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="combine"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="nil1"/>
+              </OMA>
+            </OMA>
+            <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax13">
+      <use format="Hets">Ax13</use>
+    </presentation>
+    <axiom name="Ax14">
+      <CMP>
+	depth(nil)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="Decreasing_edge_valued_trees" name="depth"/>
+              <OMS cd="Decreasing_edge_valued_trees" name="nil1"/>
+            </OMA>
+            <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax14">
+      <use format="Hets">Ax14</use>
+    </presentation>
+    <axiom name="Ax15">
+      <CMP>
+axioms	depth(combine(nil))=zero; 
+axioms	depth(combine(nil))=zero; 
+	depth(nil)=zero; 
+	t_attr(r)&#60;n =&#62; depth(combine(add(s,r,n)))=succ(depth(s)); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="t_attr"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="depth"/>
+                  <OMA>
+                    <OMS cd="Decreasing_edge_valued_trees" name="combine"/>
+                    <OMA>
+                      <OMS cd="Decreasing_edge_valued_trees" name="add"/>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                        </OMATP>
+                        <OMV name="s"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                        </OMATP>
+                        <OMV name="r"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                        </OMATP>
+                        <OMV name="n"/>
+                      </OMATTR>
+                    </OMA>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="succ1"/>
+                  <OMA>
+                    <OMS cd="Decreasing_edge_valued_trees" name="depth"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                      </OMATP>
+                      <OMV name="s"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax15">
+      <use format="Hets">Ax15</use>
+    </presentation>
+    <axiom name="Ax16">
+      <CMP>
+axioms	depth(combine(nil))=zero; 
+axioms	depth(combine(nil))=zero; 
+	depth(nil)=zero; 
+	t_attr(r)&#60;n =&#62; depth(combine(add(s,r,n)))=succ(depth(s)); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="t_attr"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="depth"/>
+                  <OMA>
+                    <OMS cd="Decreasing_edge_valued_trees" name="add"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                      </OMATP>
+                      <OMV name="s"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                      </OMATP>
+                      <OMV name="r"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                      </OMATP>
+                      <OMV name="n"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="max"/>
+                  <OMA>
+                    <OMS cd="Decreasing_edge_valued_trees" name="depth"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                      </OMATP>
+                      <OMV name="s"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMA>
+                    <OMS cd="Decreasing_edge_valued_trees" name="depth"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                      </OMATP>
+                      <OMV name="r"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax16">
+      <use format="Hets">Ax16</use>
+    </presentation>
+    <axiom name="Ax17">
+      <CMP>
+axioms	forall n:nat. add(zero,n)=n; 
+axioms	forall n:nat. add(zero,n)=n; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="add"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax17">
+      <use format="Hets">Ax17</use>
+    </presentation>
+    <axiom name="Ax18">
+      <CMP>
+	forall m,n:nat. add(succ(m),n)=succ(add(m,n)) 
+	forall m,n:nat. add(succ(m),n)=succ(add(m,n)) 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="add"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="succ1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="succ1"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="add"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax18">
+      <use format="Hets">Ax18</use>
+    </presentation>
+    <axiom name="Ax19">
+      <CMP>
+axioms	sum(combine(s))=sum(s); 
+axioms	sum(combine(s))=sum(s); 
+	sum(nil)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="sum"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="combine"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="sum"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                  </OMATP>
+                  <OMV name="s"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax19">
+      <use format="Hets">Ax19</use>
+    </presentation>
+    <axiom name="Ax22">
+      <CMP>
+axioms	not (x&#60;zero); 
+axioms	not (x&#60;zero); 
+	zero&#60;succ(x); 
+	x&#60;y &#60;=&#62; succ(x)&#60;succ(y); 
+	max(x,x)=x; 
+	max(x,y)=max(y,x); 
+	x&#60;y =&#62; max(x,y)=y ;
+	x+zero=zero;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="predication"/>
+              <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+              <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="succ1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax22">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax20">
+      <CMP>
+	sum(nil)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="Decreasing_edge_valued_trees" name="sum"/>
+              <OMS cd="Decreasing_edge_valued_trees" name="nil1"/>
+            </OMA>
+            <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax20">
+      <use format="Hets">Ax20</use>
+    </presentation>
+    <axiom name="Ax211">
+      <CMP>
+axioms	sum(combine(s))=sum(s); 
+axioms	sum(combine(s))=sum(s); 
+	sum(nil)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="t_attr"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="sum"/>
+                  <OMA>
+                    <OMS cd="Decreasing_edge_valued_trees" name="add"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                      </OMATP>
+                      <OMV name="s"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                      </OMATP>
+                      <OMV name="r"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="__Plus__1"/>
+                  <OMA>
+                    <OMS cd="Decreasing_edge_valued_trees" name="__Plus__1"/>
+                    <OMA>
+                      <OMS cd="Decreasing_edge_valued_trees" name="sum"/>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                        </OMATP>
+                        <OMV name="s"/>
+                      </OMATTR>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="Decreasing_edge_valued_trees" name="sum"/>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                        </OMATP>
+                        <OMV name="r"/>
+                      </OMATTR>
+                    </OMA>
+                  </OMA>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax211">
+      <use format="Hets">Ax21</use>
+    </presentation>
+    <axiom name="Ax32">
+      <CMP>
+axioms	not (x&#60;zero); 
+axioms	not (x&#60;zero); 
+	zero&#60;succ(x); 
+	x&#60;y &#60;=&#62; succ(x)&#60;succ(y); 
+	max(x,x)=x; 
+	max(x,y)=max(y,x); 
+	x&#60;y =&#62; max(x,y)=y ;
+	x+zero=zero;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="succ1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="succ1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax32">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax42">
+      <CMP>
+axioms	not (x&#60;zero); 
+axioms	not (x&#60;zero); 
+	zero&#60;succ(x); 
+	x&#60;y &#60;=&#62; succ(x)&#60;succ(y); 
+	max(x,x)=x; 
+	max(x,y)=max(y,x); 
+	x&#60;y =&#62; max(x,y)=y ;
+	x+zero=zero;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="max"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax42">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax52">
+      <CMP>
+axioms	not (x&#60;zero); 
+axioms	not (x&#60;zero); 
+	zero&#60;succ(x); 
+	x&#60;y &#60;=&#62; succ(x)&#60;succ(y); 
+	max(x,x)=x; 
+	max(x,y)=max(y,x); 
+	x&#60;y =&#62; max(x,y)=y ;
+	x+zero=zero;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="max"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="max"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax52">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="Ax61">
+      <CMP>
+axioms	not (x&#60;zero); 
+axioms	not (x&#60;zero); 
+	zero&#60;succ(x); 
+	x&#60;y &#60;=&#62; succ(x)&#60;succ(y); 
+	max(x,x)=x; 
+	max(x,y)=max(y,x); 
+	x&#60;y =&#62; max(x,y)=y ;
+	x+zero=zero;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="max"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax61">
+      <use format="Hets">Ax6</use>
+    </presentation>
+    <axiom name="Ax71">
+      <CMP>
+axioms	not (x&#60;zero); 
+axioms	not (x&#60;zero); 
+	zero&#60;succ(x); 
+	x&#60;y &#60;=&#62; succ(x)&#60;succ(y); 
+	max(x,x)=x; 
+	max(x,y)=max(y,x); 
+	x&#60;y =&#62; max(x,y)=y ;
+	x+zero=zero;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Plus__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+              </OMA>
+              <OMS cd="Decreasing_edge_valued_trees" name="zero1"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax71">
+      <use format="Hets">Ax7</use>
+    </presentation>
+    <axiom name="Ax8">
+      <CMP>
+axioms	not (x&#60;zero); 
+axioms	not (x&#60;zero); 
+	zero&#60;succ(x); 
+	x&#60;y &#60;=&#62; succ(x)&#60;succ(y); 
+	max(x,x)=x; 
+	max(x,y)=max(y,x); 
+	x&#60;y =&#62; max(x,y)=y ;
+	x+zero=zero;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Plus__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="succ1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="Decreasing_edge_valued_trees" name="succ1"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="__Plus__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax8">
+      <use format="Hets">Ax8</use>
+    </presentation>
+    <axiom name="Ax9">
+      <CMP>
+axioms	def add(s,r,n) &#60;=&#62; t_attr(r) &#60; n; 
+axioms	def add(s,r,n) &#60;=&#62; t_attr(r) &#60; n; 
+	seq_attr(nil) = zero; 
+	t_attr(combine(s)) = seq_attr(s); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                </OMATP>
+                <OMV name="r"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="definedness"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="add"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="treeseq"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                    </OMATP>
+                    <OMV name="n"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Decreasing_edge_valued_trees" name="__Lower__"/>
+                <OMA>
+                  <OMS cd="Decreasing_edge_valued_trees" name="t_attr"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Decreasing_edge_valued_trees" name="tree"/>
+                    </OMATP>
+                    <OMV name="r"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Decreasing_edge_valued_trees" name="nat1"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax9">
+      <use format="Hets">Ax9</use>
+    </presentation>
+  </theory>
+  <theory xml:id="While">
+    <presentation for="While">
+      <use format="Hets">[While,,0]</use>
+    </presentation>
+    <symbol role="sort" name="M"/>
+    <presentation for="M">
+      <use format="Hets">[M]</use>
+    </presentation>
+    <symbol name="p" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="While" name="M"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="p">
+      <use format="Hets">[p]</use>
+    </presentation>
+    <symbol name="f" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="While" name="M"/>
+            <OMS cd="While" name="M"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="f">
+      <use format="Hets">[f]</use>
+    </presentation>
+    <symbol name="g" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="While" name="M"/>
+            <OMS cd="While" name="M"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="g">
+      <use format="Hets">[g]</use>
+    </presentation>
+    <symbol name="while" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="While" name="M"/>
+            <OMS cd="While" name="M"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="while">
+      <use format="Hets">[while]</use>
+    </presentation>
+    <axiom name="Ax114">
+      <CMP>
+axioms	not p(x) =&#62; while(x)=f(x); 
+axioms	not p(x) =&#62; while(x)=f(x); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="While" name="M"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="While" name="p"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="While" name="M"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="While" name="while"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="While" name="M"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="While" name="f"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="While" name="M"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax114">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax26">
+      <CMP>
+axioms	not p(x) =&#62; while(x)=f(x); 
+axioms	not p(x) =&#62; while(x)=f(x); 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="While" name="M"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="While" name="p"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="While" name="M"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="While" name="while"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="While" name="M"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="While" name="while"/>
+                  <OMA>
+                    <OMS cd="While" name="g"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="While" name="M"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax26">
+      <use format="Hets">Ax2</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Cardinality">
+    <presentation for="Cardinality">
+      <use format="Hets">[Cardinality,,0]</use>
+    </presentation>
+    <symbol role="sort" name="sets"/>
+    <presentation for="sets">
+      <use format="Hets">[sets]</use>
+    </presentation>
+    <symbol role="sort" name="nat"/>
+    <presentation for="nat">
+      <use format="Hets">[nat]</use>
+    </presentation>
+    <symbol name="elem" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Cardinality" name="nat"/>
+            <OMS cd="Cardinality" name="sets"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="elem">
+      <use format="Hets">[elem]</use>
+    </presentation>
+    <symbol name="card" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Cardinality" name="sets"/>
+            <OMS cd="Cardinality" name="nat"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="card">
+      <use format="Hets">[card]</use>
+    </presentation>
+    <symbol name="empty" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Cardinality" name="sets"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="empty">
+      <use format="Hets">[empty]</use>
+    </presentation>
+    <symbol name="succ" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Cardinality" name="nat"/>
+            <OMS cd="Cardinality" name="nat"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ">
+      <use format="Hets">[succ]</use>
+    </presentation>
+    <symbol name="union" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Cardinality" name="sets"/>
+            <OMS cd="Cardinality" name="nat"/>
+            <OMS cd="Cardinality" name="sets"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="union">
+      <use format="Hets">[union]</use>
+    </presentation>
+    <symbol name="zero" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Cardinality" name="nat"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero">
+      <use format="Hets">[zero]</use>
+    </presentation>
+    <axiom name="Ax1">
+      <CMP>
+axioms	union(union(m,x),x)=union(m,x); 
+axioms	union(union(m,x),x)=union(m,x); 
+	union(union(m,x),y)=union(union(m,y),x); 
+	not elem(x,empty); 
+	elem(x,union(m,x)); 
+	not elem(y,m) =&#62; (elem(y,union(m,x)) &#60;=&#62; x=y); 
+	card(empty)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="sets"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Cardinality" name="union"/>
+                <OMA>
+                  <OMS cd="Cardinality" name="union"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="sets"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="nat"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Cardinality" name="nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Cardinality" name="union"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Cardinality" name="sets"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Cardinality" name="nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax1">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax2">
+      <CMP>
+axioms	union(union(m,x),x)=union(m,x); 
+axioms	union(union(m,x),x)=union(m,x); 
+	union(union(m,x),y)=union(union(m,y),x); 
+	not elem(x,empty); 
+	elem(x,union(m,x)); 
+	not elem(y,m) =&#62; (elem(y,union(m,x)) &#60;=&#62; x=y); 
+	card(empty)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="sets"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Cardinality" name="union"/>
+                <OMA>
+                  <OMS cd="Cardinality" name="union"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="sets"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="nat"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Cardinality" name="nat"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Cardinality" name="union"/>
+                <OMA>
+                  <OMS cd="Cardinality" name="union"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="sets"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="nat"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Cardinality" name="nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax2">
+      <use format="Hets">Ax2</use>
+    </presentation>
+    <axiom name="Ax3">
+      <CMP>
+axioms	union(union(m,x),x)=union(m,x); 
+axioms	union(union(m,x),x)=union(m,x); 
+	union(union(m,x),y)=union(union(m,y),x); 
+	not elem(x,empty); 
+	elem(x,union(m,x)); 
+	not elem(y,m) =&#62; (elem(y,union(m,x)) &#60;=&#62; x=y); 
+	card(empty)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Cardinality" name="elem"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Cardinality" name="nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="Cardinality" name="empty"/>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax3">
+      <use format="Hets">Ax3</use>
+    </presentation>
+    <axiom name="Ax4">
+      <CMP>
+axioms	union(union(m,x),x)=union(m,x); 
+axioms	union(union(m,x),x)=union(m,x); 
+	union(union(m,x),y)=union(union(m,y),x); 
+	not elem(x,empty); 
+	elem(x,union(m,x)); 
+	not elem(y,m) =&#62; (elem(y,union(m,x)) &#60;=&#62; x=y); 
+	card(empty)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="sets"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="predication"/>
+              <OMS cd="Cardinality" name="elem"/>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMA>
+                <OMS cd="Cardinality" name="union"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Cardinality" name="sets"/>
+                  </OMATP>
+                  <OMV name="m"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Cardinality" name="nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax4">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax5">
+      <CMP>
+axioms	union(union(m,x),x)=union(m,x); 
+axioms	union(union(m,x),x)=union(m,x); 
+	union(union(m,x),y)=union(union(m,y),x); 
+	not elem(x,empty); 
+	elem(x,union(m,x)); 
+	not elem(y,m) =&#62; (elem(y,union(m,x)) &#60;=&#62; x=y); 
+	card(empty)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="sets"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Cardinality" name="elem"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="nat"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="sets"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="equivalence"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Cardinality" name="elem"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="nat"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMA>
+                    <OMS cd="Cardinality" name="union"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Cardinality" name="sets"/>
+                      </OMATP>
+                      <OMV name="m"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Cardinality" name="nat"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="nat"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="nat"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax5">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="Ax6">
+      <CMP>
+	card(empty)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="strong-equation"/>
+            <OMA>
+              <OMS cd="Cardinality" name="card"/>
+              <OMS cd="Cardinality" name="empty"/>
+            </OMA>
+            <OMS cd="Cardinality" name="zero"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax6">
+      <use format="Hets">Ax6</use>
+    </presentation>
+    <axiom name="Ax7">
+      <CMP>
+axioms	union(union(m,x),x)=union(m,x); 
+axioms	union(union(m,x),x)=union(m,x); 
+	union(union(m,x),y)=union(union(m,y),x); 
+	not elem(x,empty); 
+	elem(x,union(m,x)); 
+	not elem(y,m) =&#62; (elem(y,union(m,x)) &#60;=&#62; x=y); 
+	card(empty)=zero; 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="sets"/>
+                </OMATP>
+                <OMV name="m"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Cardinality" name="nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Cardinality" name="elem"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="nat"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Cardinality" name="sets"/>
+                    </OMATP>
+                    <OMV name="m"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="Cardinality" name="card"/>
+                  <OMA>
+                    <OMS cd="Cardinality" name="union"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Cardinality" name="sets"/>
+                      </OMATP>
+                      <OMV name="m"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Cardinality" name="nat"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="Cardinality" name="succ"/>
+                  <OMA>
+                    <OMS cd="Cardinality" name="card"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Cardinality" name="sets"/>
+                      </OMATP>
+                      <OMV name="m"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax7">
+      <use format="Hets">Ax7</use>
+    </presentation>
+  </theory>
+</omdoc>

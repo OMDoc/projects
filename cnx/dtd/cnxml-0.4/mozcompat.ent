@@ -1,0 +1,25 @@
+<!-- Compatibility entities for MathML in Mozilla             -->
+<!-- Version 0.1                                              -->
+<!--                                                          -->   
+<!-- This entity may be identified by the following PUBLIC    -->
+<!-- and SYSTEM identifiers                                   -->
+<!--                                                          -->
+<!-- PUBLIC:  -//CNX//ENTITIES Mozilla Compat 0.4//EN         -->
+<!-- SYSTEM:  http://cnx.rice.edu/cnxml/0.4/DTD/mozcompat.ent -->
+<!--                                                          -->
+<!-- CVS Version: $Revision: 3720 $                            -->
+<!-- Modified: $Date: 2003-02-12 12:10:06 +0100 (Wed, 12 Feb 2003) $                   -->
+<!-- Maintained by the CNXML langauge team                    -->
+<!-- email: cnxml@cnx.rice.edu                                -->
+<!--                                                          -->
+
+<!ENTITY InvisibleTimes ""> <!ENTITY it "">
+<!ENTITY InvisibleComma ""> <!ENTITY ic "">
+<!ENTITY ApplyFunction ""> <!ENTITY af "">
+<!ENTITY ImaginaryI "j"> <!ENTITY ii "j">
+<!ENTITY ExponentialE "e"> <!ENTITY ee "e">
+
+<!ENTITY % ent-mozilla SYSTEM "moz-mathml.ent">
+%ent-mozilla;
+
+

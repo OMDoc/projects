@@ -1,0 +1,2275 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "../dtd/omdoc-basic.dtd" [<!ENTITY % om.prefixed "INCLUDE">]>
+
+<omdoc xml:id="INDICATORS-omdoc"
+       xmlns="http://www.mathweb.org/omdoc"
+       xmlns:dc="http://dublincore.org"
+       xmlns:om="http://www.openmath.org/OpenMath">
+
+<metadata>
+ <dc:title>The theory INDICATORS in IMPS</dc:title>
+ <dc:source>
+  <dc:title>IMPS: An Interactive Mathematical Proof System</dc:title>
+  <dc:creator role="aut">W.M. Farmer</dc:creator>
+  <dc:creator role="aut">J.D. Guttman</dc:creator>
+  <dc:creator role="aut">F.J. Thayer</dc:creator>
+  <dc:date action="created">2001</dc:date>
+ </dc:source>
+ <dc:creator role="aut">W.M. Farmer</dc:creator>
+ <dc:creator role="aut">J.D. Guttman</dc:creator>
+ <dc:creator role="aut">F.J. Thayer</dc:creator>
+ <dc:contributor role="trl">Yan Li</dc:contributor>
+ <dc:contributor role="edt">Marc Bender</dc:contributor>
+ <dc:date action="created">2002</dc:date>
+ <dc:date action="updated">2005</dc:date>
+</metadata>
+
+
+<theory xml:id="indicators">
+
+<omgroup xml:id="indicators-component-theories" type="sequence">
+<metadata>
+ <dc:title>Component theories</dc:title>
+</metadata>
+
+
+<imports xml:id="the-kernel-theory.import"  from="the-kernel-theory"/>
+<omtext xml:id="the-kernel-theory.import-display">
+ <CMP>
+ "the-kernel-theory" - component theory of "indicators".
+ </CMP>
+</omtext>
+
+</omgroup>
+
+
+
+
+<omgroup xml:id="indicators-language" type="sequence">
+<metadata>
+ <dc:title> The symbols in "indicators-language" </dc:title>
+</metadata>
+
+<omtext xml:id="indicators-language-intro">
+ <CMP> "indicators-language" - language of the theory "indicators". </CMP>
+</omtext>
+
+<symbol xml:id="uu" kind="sort">
+ <CMP> "uu" - primitive sort of the theory "indicators". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="uu">
+ <CMP> The enclosing sort of "uu" is "uu". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="indicators" name="uu"/>
+ </om:OMOBJ>
+</type>
+
+
+</omgroup>
+
+
+<omgroup xml:id="events-of-indicators" type="sequence">
+<metadata>
+ <dc:title>Events</dc:title>
+</metadata>
+
+<omtext xml:id="indicators-events-intro">
+ <CMP>
+  The events of the theory "indicators" in load order.
+ </CMP>
+</omtext>
+
+
+<assertion xml:id="value-of-a-defined-indicator-application"  type="theorem">
+<CMP>
+ Theorem name: "value-of-a-defined-indicator-application". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[uu],x:uu,x in a implies a(x)=an%individual)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a) (uu x))
+ (implies (i-in x a) (= (apply-operator a x) an%individual)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMV name="a"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+      <om:OMS cd="the-kernel-theory" name="an%individual"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="meaning-of-indic-from-pred-element"  type="theorem">
+<CMP>
+ Theorem name: "meaning-of-indic-from-pred-element". <with style="linebreak"/>
+
+ Formula (string): "forall(x:uu,p:[uu,prop],x in pred_to_indic(p) iff p(x))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu prop) p))
+ (iff (i-in x (predicate-to-indicator p)) (apply-operator p x)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="predicate-to-indicator"/>
+       <om:OMV name="p"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMV name="p"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="meaning-of-indic-from-sort-element"  type="theorem">
+<CMP>
+ Theorem name: "meaning-of-indic-from-sort-element". <with style="linebreak"/>
+
+ Formula (string): "forall(x:uu,x in sort_to_indic{uu} iff #(x,uu))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x))
+ (iff (i-in x (sort-to-indicator (undefined uu))) (is-defined-in-sort x uu)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="sort-to-indicator"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMS cd="indicators" name="uu"/>
+        </om:OMA>
+
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="is-defined-in-sort"/>
+       <om:OMV name="x"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="empty_indic-is-empty"  type="theorem">
+<CMP>
+ Theorem name: "empty_indic-is-empty". <with style="linebreak"/>
+
+ Formula (string): "empty_indic_q{empty_indic{uu}}". <with style="linebreak"/>
+
+ Formula (s-expression): "(i-empty-indicator? (i-empty-indicator (undefined uu)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable", "transportable-rewrite". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMA>
+    <om:OMS cd="the-kernel-theory" name="i-empty-indicator?"/>
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="i-empty-indicator"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="undefined"/>
+      <om:OMS cd="indicators" name="uu"/>
+      </om:OMA>
+
+     </om:OMA>
+    </om:OMA>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="equals-empty-indic-iff-empty"  type="theorem">
+<CMP>
+ Theorem name: "equals-empty-indic-iff-empty". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[uu],a=empty_indic{uu} iff empty_indic_q{a})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a))
+ (iff (= a (i-empty-indicator (undefined uu))) (i-empty-indicator? a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable", "transportable-rewrite". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="a"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-empty-indicator"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMS cd="indicators" name="uu"/>
+        </om:OMA>
+
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-empty-indicator?"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="rev%equals-empty-indic-iff-empty"  type="theorem">
+<CMP>
+ Theorem name: "rev%equals-empty-indic-iff-empty". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[uu],empty_indic_q{a} iff a=empty_indic{uu})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a))
+ (iff (i-empty-indicator? a) (= a (i-empty-indicator (undefined uu)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-empty-indicator?"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="a"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-empty-indicator"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMS cd="indicators" name="uu"/>
+        </om:OMA>
+
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="union-commutativity"  type="theorem">
+<CMP>
+ Theorem name: "union-commutativity". <with style="linebreak"/>
+
+ Formula (string): "forall(a,b:sets[uu],a union b=b union a)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((uu unit%sort) a b)) (= (i-union a b) (i-union b a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-union"/>
+      <om:OMV name="a"/>
+      <om:OMV name="b"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-union"/>
+      <om:OMV name="b"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="intersection-commutativity"  type="theorem">
+<CMP>
+ Theorem name: "intersection-commutativity". <with style="linebreak"/>
+
+ Formula (string): "forall(a,b:sets[uu],a inters b=b inters a)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((uu unit%sort) a b)) (= (i-intersection a b) (i-intersection b a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+      <om:OMV name="a"/>
+      <om:OMV name="b"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+      <om:OMV name="b"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="membership-in-union"  type="theorem">
+<CMP>
+ Theorem name: "membership-in-union". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:uu,a,b:sets[uu],
+  x in a union b iff (x in a or x in b))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu unit%sort) a b))
+ (iff (i-in x (i-union a b)) (or (i-in x a) (i-in x b))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-union"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="or"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="membership-in-intersection"  type="theorem">
+<CMP>
+ Theorem name: "membership-in-intersection". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:uu,a,b:sets[uu],
+  x in a inters b iff (x in a and x in b))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu unit%sort) a b))
+ (iff (i-in x (i-intersection a b)) (and (i-in x a) (i-in x b))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="diff-union-equal-whole"  type="theorem">
+<CMP>
+ Theorem name: "diff-union-equal-whole". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:uu,a,b:sets[uu],
+  b subseteq a implies (a diff b) union b=a)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu unit%sort) a b))
+ (implies (i-subseteq b a) (= (i-union (i-difference a b) b) a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMV name="b"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-union"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-difference"/>
+        <om:OMV name="a"/>
+        <om:OMV name="b"/>
+       </om:OMA>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="element-of-a-subset-is-an-element"  type="theorem">
+<CMP>
+ Theorem name: "element-of-a-subset-is-an-element". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:uu,b:sets[uu],
+  forsome(a:sets[uu],x in a and a subseteq b) implies 
+  x in b)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu unit%sort) b))
+ (implies (forsome (((uu unit%sort) a)) (and (i-in x a) (i-subseteq a b)))
+  (i-in x b)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forsome"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="funsort"/>
+           <om:OMS cd="indicators" name="uu"/>
+           <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+         </om:OMA>
+        </om:OMATP>
+        <om:OMV name="a"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="and"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-in"/>
+        <om:OMV name="x"/>
+        <om:OMV name="a"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+        <om:OMV name="a"/>
+        <om:OMV name="b"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMV name="b"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="subseteq-reflexivity"  type="theorem">
+<CMP>
+ Theorem name: "subseteq-reflexivity". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[uu],a subseteq a)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((uu unit%sort) a)) (i-subseteq a a))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+     <om:OMV name="a"/>
+     <om:OMV name="a"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="subseteq-antisymmetry"  type="theorem">
+<CMP>
+ Theorem name: "subseteq-antisymmetry". <with style="linebreak"/>
+
+ Formula (string): "forall(a,b:sets[uu],a=b iff (a subseteq b and b subseteq a))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a b))
+ (iff (= a b) (and (i-subseteq a b) (i-subseteq b a))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="a"/>
+      <om:OMV name="b"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+       <om:OMV name="b"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="subseteq-transitivity"  type="theorem">
+<CMP>
+ Theorem name: "subseteq-transitivity". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a,b,c:sets[uu],
+  a subseteq b and b subseteq c implies a subseteq c)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a b c))
+ (implies (and (i-subseteq a b) (i-subseteq b c)) (i-subseteq a c)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="c"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+       <om:OMV name="b"/>
+       <om:OMV name="c"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMV name="a"/>
+      <om:OMV name="c"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="membership-in-union"  type="theorem">
+<CMP>
+ Theorem name: "membership-in-union". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:uu,a,b:sets[uu],
+  x in a union b iff (x in a or x in b))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu unit%sort) a b))
+ (iff (i-in x (i-union a b)) (or (i-in x a) (i-in x b))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-union"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="or"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="membership-in-intersection"  type="theorem">
+<CMP>
+ Theorem name: "membership-in-intersection". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:uu,a,b:sets[uu],
+  x in a inters b iff (x in a and x in b))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu unit%sort) a b))
+ (iff (i-in x (i-intersection a b)) (and (i-in x a) (i-in x b))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="singleton-equality-conversion"  type="theorem">
+<CMP>
+ Theorem name: "singleton-equality-conversion". <with style="linebreak"/>
+
+ Formula (string): "forall(x,a:uu,x in singleton{a} iff x=a)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((uu x a)) (iff (i-in x (i-singleton a)) (= x a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-rewrite", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-singleton"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="x"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="difference-conjunction-conversion"  type="theorem">
+<CMP>
+ Theorem name: "difference-conjunction-conversion". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:uu,a,b:sets[uu],
+  x in a diff b iff (x in a and not(x in b)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu unit%sort) a b))
+ (iff (i-in x (i-difference a b)) (and (i-in x a) (not (i-in x b)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-difference"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="not"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-in"/>
+        <om:OMV name="x"/>
+        <om:OMV name="b"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="in-singleton-iff-equals-single-member"  type="theorem">
+<CMP>
+ Theorem name: "in-singleton-iff-equals-single-member". <with style="linebreak"/>
+
+ Formula (string): "forall(x,y:uu,x in singleton{y} iff x=y)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((uu x y)) (iff (i-in x (i-singleton y)) (= x y)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-singleton"/>
+       <om:OMV name="y"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="x"/>
+      <om:OMV name="y"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="rev%in-singleton-iff-equals-single-member"  type="theorem">
+<CMP>
+ Theorem name: "rev%in-singleton-iff-equals-single-member". <with style="linebreak"/>
+
+ Formula (string): "forall(a,x:uu,x=a iff x in singleton{a})". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((uu a x)) (iff (= x a) (i-in x (i-singleton a))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="x"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-singleton"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="singletons-have-a-unique-member"  type="theorem">
+<CMP>
+ Theorem name: "singletons-have-a-unique-member". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a:sets[uu],y:uu,
+  a=singleton{y} iff y=iota(x:uu,x in a))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a) (uu y))
+ (iff (= a (i-singleton y)) (= y (iota ((uu x)) (i-in x a)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="a"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-singleton"/>
+       <om:OMV name="y"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="y"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="indicators" name="uu"/>
+         </om:OMATP>
+         <om:OMV name="x"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-in"/>
+        <om:OMV name="x"/>
+        <om:OMV name="a"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="diff-with-indic-is-disj-from-indic"  type="theorem">
+<CMP>
+ Theorem name: "diff-with-indic-is-disj-from-indic". <with style="linebreak"/>
+
+ Formula (string): "forall(a,b:sets[uu],(a diff b) disj b)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((uu unit%sort) a b)) (i-disjoint (i-difference a b) b))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="i-disjoint"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-difference"/>
+      <om:OMV name="a"/>
+      <om:OMV name="b"/>
+     </om:OMA>
+     <om:OMV name="b"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="difference-conjunction-conversion"  type="theorem">
+<CMP>
+ Theorem name: "difference-conjunction-conversion". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:uu,a,b:sets[uu],
+  x in a diff b iff (x in a and not(x in b)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((uu x) ((uu unit%sort) a b))
+ (iff (i-in x (i-difference a b)) (and (i-in x a) (not (i-in x b)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="indicators" name="uu"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-difference"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="not"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-in"/>
+        <om:OMV name="x"/>
+        <om:OMV name="b"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="decremented-partition-lemma"  type="theorem">
+<CMP>
+ Theorem name: "decremented-partition-lemma". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(w:sets[sets[uu]],a,b:sets[uu],
+  partition_q{w,a} and b in w
+   implies 
+  partition_q{w diff singleton{b},a diff b})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((((uu unit%sort) unit%sort) w) ((uu unit%sort) a b))
+ (implies (and (i-partition? w a) (i-in b w))
+  (i-partition? (i-difference w (i-singleton b)) (i-difference a b))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="funsort"/>
+           <om:OMS cd="indicators" name="uu"/>
+           <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+         </om:OMA>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="w"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-partition?"/>
+       <om:OMV name="w"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="b"/>
+       <om:OMV name="w"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-partition?"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-difference"/>
+       <om:OMV name="w"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-singleton"/>
+        <om:OMV name="b"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-difference"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="union-of-a-difference"  type="theorem">
+<CMP>
+ Theorem name: "union-of-a-difference". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a,b:sets[uu],
+  a subseteq b implies a union (b diff a)=b)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a b))
+ (implies (i-subseteq a b) (= (i-union a (i-difference b a)) b)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMV name="a"/>
+      <om:OMV name="b"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-union"/>
+       <om:OMV name="a"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-difference"/>
+        <om:OMV name="b"/>
+        <om:OMV name="a"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMV name="b"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="difference-of-a-disjoint-union"  type="theorem">
+<CMP>
+ Theorem name: "difference-of-a-disjoint-union". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a,b:sets[uu],
+  a inters b=empty_indic{uu} implies a union b diff a=b)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a b))
+ (implies (= (i-intersection a b) (i-empty-indicator (undefined uu)))
+  (= (i-difference (i-union a b) a) b)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-empty-indicator"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMS cd="indicators" name="uu"/>
+        </om:OMA>
+
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-difference"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="i-union"/>
+         <om:OMV name="a"/>
+         <om:OMV name="b"/>
+        </om:OMA>
+        <om:OMV name="a"/>
+       </om:OMA>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="difference-of-disjoint-sets"  type="theorem">
+<CMP>
+ Theorem name: "difference-of-disjoint-sets". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a,b:sets[uu],
+  a inters b=empty_indic{uu} implies a diff b=a)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a b))
+ (implies (= (i-intersection a b) (i-empty-indicator (undefined uu)))
+  (= (i-difference a b) a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-empty-indicator"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMS cd="indicators" name="uu"/>
+        </om:OMA>
+
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-difference"/>
+        <om:OMV name="a"/>
+        <om:OMV name="b"/>
+       </om:OMA>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="difference-of-a-union"  type="theorem">
+<CMP>
+ Theorem name: "difference-of-a-union". <with style="linebreak"/>
+
+ Formula (string): "forall(a,b:sets[uu],a union b diff a=b diff a)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a b))
+ (= (i-difference (i-union a b) a) (i-difference b a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-difference"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-union"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMV name="a"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-difference"/>
+      <om:OMV name="b"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="union-with-empty"  type="theorem">
+<CMP>
+ Theorem name: "union-with-empty". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[uu],a union empty_indic{uu}=a)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((uu unit%sort) a))
+ (= (i-union a (i-empty-indicator (undefined uu))) a))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="indicators" name="uu"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-union"/>
+      <om:OMV name="a"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-empty-indicator"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMS cd="indicators" name="uu"/>
+        </om:OMA>
+
+       </om:OMA>
+      </om:OMA>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+</omgroup>
+
+
+</theory>
+
+</omdoc>

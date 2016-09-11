@@ -1,0 +1,357 @@
+\begin{frame}
+\frametitle{Our Extension Layer (pragmatic OMDoc 2)}
+\begin{itemize}
+\item Built on top of MMT
+\vspace{.5em}
+\item Specify extension principles {\color{blue}{declaratively}}
+\vspace{.5em}
+%\item Write pragmatic features as extension schemes
+%\vspace{.5em}
+%\item Pragmatic language features
+%\begin{itemize}
+%\item defined as \alert{extension declarations}
+%\item written as \alert{pragmatic declarations}
+%\end{itemize}
+\item Two new primitives 
+\begin{itemize}
+\vspace{.3em}
+\item \alert{extension declarations} to {\color{blue}introduce} extension principles
+\vspace{.3em}
+\item \alert{pragmatic declarations} to {\color{blue}use} extension principles
+\end{itemize}
+\end{itemize}
+%\item Defines pragmatic language features as \alert{extension}s
+%\item Include extensions to write \alert{pragmatic} declarations 
+\begin{block}{Syntax}
+%\vspace{-.3em}
+\begin{tabular}{llll}
+Theories        &$\Sigma$ &$\bnfas$  & $\bnf{(}\ldots$\\[.3em]%\conDeclOp[E]{c}{E} \bnfalts \lfkw{include}\;\,T\bnfalts \lfkw{meta}\;\,T$\\
+                &         &$\bnfalts$& $\extInGrammar{e}{\Lam[E_1]{x_1}\ldots\Lam[E_n]{x_n}\{\Sigma\}}$\\[.3em]
+                &         &$\bnfalts$& $\pragInGrammar{c}{e\;E_1\ldots E_n}\bnf{)}^{\bnf{\ast}}$\\
+%Theory families & $\Phi$  &$\bnfas$  & $\sigfr{\bnf{(}\conDeclOp[E]{c}{E}\bnf{)}^{\bnf{\ast}}}\bnfalts \pbind{x}{E}\Phi$\\ %\sigfr{\sfr}
+%                & $\phi$  &$\bnfas$  & $e \bnfalts \pappl{\Phi}{E}$\\
+
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Examples}
+\begin{block}{An extension principle}
+\begin{twelfsig}
+%\tsig{\Theorems}\\
+%\tmeta{\Forms}{}\\
+\tpattern{\thm}{\lflam[\form]{F}\lflam[\ded\,F]{D}}{
+ \tsfdecl[D]{c}{\ded\,F}\\
+}\\
+%\tsigend
+\end{twelfsig}
+\end{block}
+
+\begin{block}{A pragmatic declaration}
+\vspace{-.3em}
+\begin{twelfsig}
+%\tsig{\MyTheorem}\\
+%\tmeta{\Theorems}{}\\
+\tpragmatic{\foo}{\thm\;(1 + 1\doteq 2)\;(\mathit{proof}\textrm{-}\mathit{term})}\\
+%\tsigend
+\end{twelfsig}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Modularity}
+\begin{block}{An extension principle}
+\vspace{-.3em}
+\begin{twelfsig}
+\tsig{\Theorems}\\
+\tmeta{\Forms}{}\\
+\tpattern{\thm}{\lflam[\form]{F}\lflam[\ded\,F]{D}}{
+ \tsfdecl[D]{c}{\ded\,F}\\
+}\\
+\tsigend
+\end{twelfsig}
+\vspace{-.3em}
+\end{block}
+
+\begin{block}{A pragmatic declaration}
+\vspace{-.3em}
+\begin{twelfsig}
+\tsig{\MyTheorem}\\
+\tmeta{\Theorems}{}\\
+\tinclude{\mathit{Nats}}{}\\
+\tpragmatic{\foo}{\thm\;(1 + 1\doteq 2)\;(\mathit{proof}\textrm{-}\mathit{term})}\\
+\tsigend
+\end{twelfsig}
+\vspace{-.3em}
+\end{block}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Examples}
+%\begin{block}{Implicit Definitions}
+%%\begin{twelfsig}
+%%\tsig{\Assertions}\\
+%%\tmeta{\Forms}{}\\
+%%\tpattern{\axiom}{\lflam[\form]{F}}{
+%% \tsfdecl{c}{\ded\,F}\\
+%%}\\
+%%\tpattern{\thm}{\lflam[\form]{F}\lflam[\ded\,F]{D}}{
+%% \tsfdecl[D]{c}{\ded\,F}\\
+%%}\\
+%%\tsigend
+%%\end{twelfsig}
+%%\begin{twelfsig}
+%%\tsig{\Description}\\
+%%\tmeta{\FOL}{}\\
+%%\tpattern{\implDef}{\lflam[\term\to\form]{\psi}}{
+%% \tsfdecl{p}{\term\to\term\to\term}\\
+%% \tsfdecl{p_\ax}{\ded\,\forall x.\,\forall y.\,p(x,y) \Leftrightarrow \psi(x,y)}\\
+%%}\\
+%%\tsigend
+%%\end{twelfsig}
+%\begin{twelfsig}
+%%\tsig{\Description}\\
+%%\tmeta{\Forms}{}\\
+%%\decl{\forall}{(\alpha\to\form)\to\form}\\
+%%\decl{\uexists}{(\alpha\to\form)\to\form}\\
+%\multicolumn{4}{@{\tb}l}{$\lfkw{extension}\;\implDef\;\tequal\;\lflam[\kity]{\alpha}\lflam[\kity]{\beta}$}\\
+%\multicolumn{4}{@{\tb\;\;\;}l}{$\lflam[\alpha\to\beta\to\form]{\psi}$}\\
+%\multicolumn{4}{@{\tb\;\;\;}l}{$\lflam[\ded\,\forall x\,\uexists y\mmtdot\psi\mmtpar{x\mmtcomma y}]{\welldefn}\,\clrb{\{}$}\\
+%\multicolumn{4}{@{\tb\tb}l}{
+%\begin{tabular}{lll}
+%\tsfdecl{f}{\alpha\to\beta}\\
+%\tsfdecl{\ax}{\ded\,\forall x\mmtdot \psi\mmtpar{x\mmtcomma f\mmtpar{x}}}\\
+%\end{tabular}}\\
+%$\clrb{\}}$
+%%\tsigend
+%\end{twelfsig}
+%\end{block}
+%
+%\begin{block}{A Pragmatic Declaration}
+%\begin{twelfsig}
+%%\tsig{\Sqrt}\\
+%%\tmeta{\FOL}{}\\
+%%\tmeta{\Description}{}\\
+%%\decl{\nat}{\kity}\\
+%%\decl{\real}{\kity}\\
+%%$\vdots$\\%\decl{\caret}{\kity}\\
+%\tpragmatic{\sqrt{}}{\implDef\;\nat\;\real\;(\lmbd\,r.\,\lmbd\,n.\,r^2 = n\;\wedge\;r\geq 0)\;(\ded\ldots)}\\
+%%(\lflam[\nat]{n}\lflam[\real]{r} r^2\doteq n\;\wedge\;r\geq 0)\;(\ded\ldots)}\\
+%%\tsigend
+%\end{twelfsig}
+%\end{block}
+%
+%%$\psi$ denotes an MMT term representing $r^2 = n\;\wedge\;r\geq 0$\\ for $r\in\Real$ and $n\in\Nat$.
+%%\begin{block}{}%{Pragmatic Declarations}
+%%\vspace{-.3em}
+%%%\begin{itemize}
+%%%\item 
+%%Extension $\implDef$ permits pragmatic declarations of the form
+%%\vspace{-.5em}
+%%\center{$\pragmatic{c}{\implDef\;\alpha\,\beta\,\psi}$.}
+%%%{\color{blue}$f : \implDef\;\alpha\,\beta\,\psi$}.
+%%%\item E.g., $\sqrt : \implDef$
+%%%%\item Extension $\thm$ permits {\color{blue}$c : \thm\;F\;D$}.
+%%%\end{itemize}
+%%\end{block}
+%\end{frame}
+
+
+%\begin{frame}
+%\frametitle{Example}
+%\begin{block}{Pragmatic Declarations}
+%\begin{twelfsig}
+%\tsig{\Sqrt}\\
+%\tmeta{\FOL}{}\\
+%\tmeta{\Description}{}\\
+%\decl{\nat}{\kity}\\
+%\decl{\real}{\kity}\\
+%$\vdots$\\%\decl{\caret}{\kity}\\
+%\tpragmatic{\sqrt{}}{\implDef\;\nat\;\real\;\psi\;(\ded\ldots)}\\
+%%(\lflam[\nat]{n}\lflam[\real]{r} r^2\doteq n\;\wedge\;r\geq 0)\;(\ded\ldots)}\\
+%\tsigend
+%\end{twelfsig}
+%\end{block}
+%
+%$\psi$ denotes an MMT term representing $r^2 = n\;\wedge\;r\geq 0$.
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Pragmatic-to-Strict Translation}
+Semantics of pragmatic declarations:\\
+Elaborate pragmatic declarations into strict (core) declarations.
+
+\begin{block}{}
+\vspace{-.3em}
+\begin{twelfsig}
+\multicolumn{4}{@{\tb}l}{$\lfkw{extension}\;e\;\tequal\;\lflam[E_1]{x_1}\ldots\lflam[E_n]{x_n}\clrb{\{}$}\\
+\multicolumn{4}{@{\tb\tb}l}{
+\begin{tabular}{lll}
+\tsfdecl[D_1]{c_1}{\tau_1}\\
+$\vdots$\\
+\tsfdecl[D_n]{c_n}{\tau_n}\\
+\end{tabular}}\\
+$\clrb{\}}$
+\\
+\tpragmatic{p}{e\;A_1\ldots\;A_n}
+\end{twelfsig}
+\vspace{-.3em}
+\end{block}
+
+%\begin{flushleft}
+\begin{tikzpicture}
+%\node(p) at (5,3) {
+\node(p) at (-4,.6) {
+\begin{twelfsig}
+\decl{p}{e\;A_1\ldots\;A_n}
+\end{twelfsig}
+};
+
+\node(c1) at (3,1) {$p\mmtdot c_1\mmtcolon\gamma(\tau_1)\;\tequal\;\gamma(D_1)$};
+\node(m) at (3,.6) {$\vdots$};
+\node(cn) at (3,0) {$p\mmtdot c_n\mmtcolon\gamma(\tau_n)\;\tequal\;\gamma(D_n)$};
+\draw[blue,-\arrowtip] (p) --node[above] {elaborate} (.8,.6);
+\end{tikzpicture}
+%\end{flushleft}
+
+$\gamma$ substitutes $A_i$ for $x_i$ and $p.c_i$ for $c_i$.
+%\end{center}
+
+%\begin{block}{}
+%\vspace{-.6em}
+%\begin{twelfsig}
+%\tpragmatic{p}{e\;A_1\ldots\;A_n}
+%\end{twelfsig}
+%\end{block}
+%
+%\begin{center}
+%\begin{tikzpicture}
+%\node(c)  at (0,.5) {$p$};
+%\node(c1) at (5,1) {$p\mmtdot c_1\mmtcolon\gamma(\tau_1)\;\tequal\;\gamma(D_1)$};
+%\node(m) at (5,.6) {$\vdots$};
+%\node(cn) at (5,0) {$p\mmtdot c_n\mmtcolon\gamma(\tau_n)\;\tequal\;\gamma(D_n)$};
+%\draw[blue,->] (c) --node[above] {elaborate} (3,.5);
+%\end{tikzpicture}
+%\end{center}
+
+
+%Elaborate pragmatic declaration 
+%\[\pragmatic{c}{e\,E_1\,\ldots\,E_n}\]
+%to a list of strict declarations
+%\[
+%c\mmtdot d_1\mmtcolon \gamma(D_1)\mmteq\gamma(D_1)
+%\]
+%\begin{tikzpicture}
+%\node at (0,4) {$\pragmatic{c}{e\,E_1\,\ldots\,E_n}$};
+%\node at (0,3) {$\conDecl{\mmtdot{c}{d_1}}{\Gamma{}}$};
+%\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Various Extension Principles}
+%\only<1>{
+%\begin{block}{Implicit Definitions in OMDoc}
+%\begin{twelfsig}
+%\tsig{\Description}\\
+%\tmeta{\Forms}{}\\
+%\decl{\uexists}{(\alpha\to\form)\to\form}\\
+%\decl{\descr}{(\alpha\to\form)\to\alpha}\\
+%\decl{\descr_{\ax}}{\ded\,\uexists x\,P\,x\to \ded\,P\,(\descr\,P)}\\
+%[.5em]
+%\tpattern{\implDef}{\lflam[\kity]{\alpha}\lflam[\alpha\to\form]{P}\lflam[\ded\,\uexists x:\alpha.\,P\,x]{m}}{
+% \tsfdecl{c}{\alpha\;\;=\;\;\descr\,P}\\
+% \tsfdecl{c_\ax}{\ded\,\uexists x:\alpha.\,P\,x}\\
+%}\\
+%\tsigend
+%\end{twelfsig}
+%\end{block}
+%}
+\only<1>{
+\begin{block}{Mizar-Style Functor Definitions}
+\begin{twelfsig}
+\tsig{\FunctorDefinitions}\\
+\tmeta{\Forms}{}\\
+%$\vdots$\\
+%\decl{\wedge}{\form\to\form\to\form}\\
+%\decl{\impl}{\form\to\form\to\form}\\
+%\decl{\forall}{(\alpha\to\form)\to\alpha}\\
+%\decl{\exists}{(\alpha\to\form)\to\alpha}\\
+%\decl{\eqn}{\alpha\to\alpha\to\form}\\
+\multicolumn{4}{@{\tb}l}{$\lfkw{extension}\;\functor\;=\lflam[\kity]{\alpha}\lflam[\kity]{\beta}$}\\
+\multicolumn{4}{@{\tb\;\;\;}l}{$\lflam[\alpha\to\beta\to\form]{\means}\lflam[\ded\ldots]{\existence}$}\\
+\multicolumn{4}{@{\tb\;\;\;}l}{$\lflam[\ded\ldots]{\uniqueness}\,\clrb{\{}$}\\
+\multicolumn{4}{@{\tb\tb}l}{
+\begin{tabular}{lll}
+\tsfdecl{f}{\alpha\to\beta}\\
+\tsfdecl{\defthm}{\ded\,\forall x\mmtcolon\alpha\mmtdot\,\means\,x\,\mmtpar{f\,x}}\\
+\end{tabular}}\\
+$\clrb{\}}$\\
+\tsigend
+\end{twelfsig}
+\end{block}
+
+%\begin{block}{$\pragmatic{F}{\functor\;\alpha\;\beta\;P\;\rho_1\;\rho_2}$}%Pragmatic Declaration}
+%\vspace{-.5em}
+%%
+%\end{block}
+}
+\only<2>{
+\begin{block}{HOL-Style Type Definitions}
+\begin{twelfsig}
+\tsig{\Types}\\
+\tmeta{\Forms}{}\\
+%$\vdots$\\
+%\decl{\forall}{(\alpha\to\form)\to\form}\\
+%\decl{\exists}{(\alpha\to\form)\to\form}\\
+%\decl{\doteq}{(\alpha\to\alpha)\to\form}\\
+\tpattern{\typeDef}{\lflam[\kity]{\alpha}\lflam[\alpha\to\form]{A}\lflam[\ded\ldots]{\rho}}{ %[\ded\,\exists x:\alpha.\,A\,x]
+ \tsfdecl{T}{\kity}\\
+ \tsfdecl{\Rep}{T\to\alpha}\\
+ \tsfdecl{\Abs}{\alpha\to T}\\
+ \tsfdecl{{\Rep'}}{\ded\,\forall x\mmtcolon T\mmtdot\,A\,\mmtpar{\Rep\,x}}\\
+ \tsfdecl{{\RepInv}}{\ded\,\forall x\mmtcolon T\mmtdot\,\Abs\,\mmtpar{\Rep\,x} \doteq x}\\
+ \tsfdecl{{\AbsInv}}{\ded\,\forall x\mmtcolon\alpha\mmtdot\,A\,x\impl\Rep\,\mmtpar{\Abs\,x} \doteq x}\\
+}\\
+\tsigend
+\end{twelfsig}
+\end{block}
+
+%\begin{block}{$\pragmatic{t}{\typeDef\;\alpha\,A\,\rho}$}
+%\vspace{-.5em}
+%\end{block}
+
+%$\rho$ denotes a proof for the non-emptiness of $A$.
+}
+%\only<3>{
+%\begin{block}{Case-Based Definitions}
+%\begin{twelfsig}
+%\tsig{\CaseBased}\\
+%\tmeta{\Forms}{}\\
+%%$\wedge$\\
+%%$\impl$\\
+%%$\forall$\\
+%%\decl{\wedge}{\form^n\to\form}\\
+%%\decl{\vee^{!}}{\form^n\to\form}\\
+%%\decl{\impl}{\form\to\form\to\form}\\
+%%\decl{\forall}{(\alpha\to\form)\to\form}\\
+%\multicolumn{4}{@{\tb}l}{$\lfkw{extension}\;\casedef\;=\;\lflam[\mathbb{N}]{n}\lflam[\kity]{\alpha}\lflam[\kity]{\beta}\lflam[(\alpha\to\form)^n]{c}$}\\
+%& &$\hspace{2.65cm}\lflam[(\alpha\to\beta)^n]{d}\lflam[\ded\,\forall x:\alpha.\, \vee^{!} \lfseqbind{c_i\,x}{i}{n}]{\rho}\{$ \\
+%\multicolumn{4}{@{\tb\tb}l}{
+%\begin{tabular}{lll}
+%\tsfdecl{f}{\alpha\to\beta}\\
+%$\ax$ & $:$ &$\ded\,\forall x:\alpha.\,\wedge\,\lfseqbind{c_i\,x\,\impl\,(f\,x) = (d_i\,x)}{i}{n}$\\
+%\end{tabular}}\\
+%\multicolumn{4}{@{\tb}l}{$\}$}\\
+%%\tpattern{\caseBasedDef}{\lflam[\mathbb{N}]{n}\lflam[\kity]{\alpha}\lflam[\kity]{\beta}\lflam[(\alpha\to\form)^n]{c}\lflam[(\alpha\to\beta)^n]{d}\lflam[\ded\,\forall x:\alpha.\, \vee^{!} \lfseqbind{c_i\,x}{i}{n}]{m}}{
+%% \tsfdecl{f}{\alpha\to\beta}\\
+%% \tsfdecl{\ax}{\ded\,\forall x:\alpha.\,\wedge\,\lfseqbind{c_i\,x\,\impl\,(f\,x) = (d_i\,x)}{i}{n}}\\ 
+%%}\\
+%\tsigend
+%\end{twelfsig}
+%\end{block}
+%}
+\end{frame}

@@ -1,0 +1,2508 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "../dtd/omdoc-basic.dtd" [<!ENTITY % om.prefixed "INCLUDE">]>
+
+<omdoc xml:id="METRIC-SPACES-2-TUPLES-omdoc"
+       xmlns="http://www.mathweb.org/omdoc"
+       xmlns:dc="http://dublincore.org"
+       xmlns:om="http://www.openmath.org/OpenMath">
+
+<metadata>
+ <dc:title>The theory METRIC-SPACES-2-TUPLES in IMPS</dc:title>
+ <dc:source>
+  <dc:title>IMPS: An Interactive Mathematical Proof System</dc:title>
+  <dc:creator role="aut">W.M. Farmer</dc:creator>
+  <dc:creator role="aut">J.D. Guttman</dc:creator>
+  <dc:creator role="aut">F.J. Thayer</dc:creator>
+  <dc:date action="created">2001</dc:date>
+ </dc:source>
+ <dc:creator role="aut">W.M. Farmer</dc:creator>
+ <dc:creator role="aut">J.D. Guttman</dc:creator>
+ <dc:creator role="aut">F.J. Thayer</dc:creator>
+ <dc:contributor role="trl">Yan Li</dc:contributor>
+ <dc:contributor role="edt">Marc Bender</dc:contributor>
+ <dc:date action="created">2002</dc:date>
+ <dc:date action="updated">2005</dc:date>
+</metadata>
+
+
+<theory xml:id="metric-spaces-2-tuples">
+
+<omgroup xml:id="metric-spaces-2-tuples-component-theories" type="sequence">
+<metadata>
+ <dc:title>Component theories</dc:title>
+</metadata>
+
+
+<imports xml:id="metric-spaces-1.import"  from="metric-spaces-1"/>
+<omtext xml:id="metric-spaces-1.import-display">
+ <CMP>
+ "metric-spaces-1" - component theory of "metric-spaces-2-tuples".
+ </CMP>
+</omtext>
+
+
+<imports xml:id="metric-spaces-0.import"  from="metric-spaces-0"/>
+<omtext xml:id="metric-spaces-0.import-display">
+ <CMP>
+ "metric-spaces-0" - component theory of "metric-spaces-2-tuples".
+ </CMP>
+</omtext>
+
+</omgroup>
+
+
+
+
+<omgroup xml:id="events-of-metric-spaces-2-tuples" type="sequence">
+<metadata>
+ <dc:title>Events</dc:title>
+</metadata>
+
+<omtext xml:id="metric-spaces-2-tuples-events-intro">
+ <CMP>
+  The events of the theory "metric-spaces-2-tuples" in load order.
+ </CMP>
+</omtext>
+
+<symbol xml:id="continuous%at%point" kind="object">
+<CMP> "continuous%at%point" - defined constant in the theory "metric-spaces-2-tuples". </CMP>
+</symbol>
+
+<definition xml:id="continuous%at%point-def"  for="continuous%at%point"  type="simple">
+<CMP>
+ Symbol name: "continuous%at%point". <with style="linebreak"/>
+
+ String defining expression: 
+"lambda(f:[pp_0,pp_1],x:pp_0,
+  forall(eps:rr,
+    0&lt;eps
+     implies 
+    forsome(delta:rr,
+      0&lt;delta
+       and 
+      forall(y:pp_0,
+        dist_0(x,y)&lt;=delta implies 
+        dist_1(f(x),f(y))&lt;=eps))))". <with style="linebreak"/>
+
+ Defining s-expression: 
+"(lambda (((pp_0 pp_1) f) (pp_0 x))
+ (forall ((rr eps))
+  (implies (apply-operator &lt; 0 eps)
+   (forsome ((rr delta))
+    (and (apply-operator &lt; 0 delta)
+     (forall ((pp_0 y))
+      (implies (apply-operator &lt;= (apply-operator dist_0 x y) delta)
+       (apply-operator &lt;=
+        (apply-operator dist_1 (apply-operator f x) (apply-operator f y))
+        eps))))))))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="lambda"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="metric-spaces-0" name="pp_0"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMBIND>
+     <om:OMS cd="the-kernel-theory" name="forall"/>
+     <om:OMBVAR>
+
+      <om:OMATTR>
+       <om:OMATP>
+        <om:OMS cd="the-kernel-theory" name="sort"/>
+        <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+       </om:OMATP>
+       <om:OMV name="eps"/>
+      </om:OMATTR>
+
+     </om:OMBVAR>
+
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="implies"/>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="eps"/>
+      </om:OMA>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forsome"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+         </om:OMATP>
+         <om:OMV name="delta"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="and"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+         <om:OMS cd="h-o-real-arithmetic" name="0"/>
+         <om:OMV name="delta"/>
+        </om:OMA>
+        <om:OMBIND>
+         <om:OMS cd="the-kernel-theory" name="forall"/>
+         <om:OMBVAR>
+
+          <om:OMATTR>
+           <om:OMATP>
+            <om:OMS cd="the-kernel-theory" name="sort"/>
+            <om:OMS cd="metric-spaces-0" name="pp_0"/>
+           </om:OMATP>
+           <om:OMV name="y"/>
+          </om:OMATTR>
+
+         </om:OMBVAR>
+
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="implies"/>
+          <om:OMA>
+           <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+           <om:OMA>
+            <om:OMS cd="metric-spaces-0" name="dist_0"/>
+            <om:OMV name="x"/>
+            <om:OMV name="y"/>
+           </om:OMA>
+           <om:OMV name="delta"/>
+          </om:OMA>
+          <om:OMA>
+           <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+           <om:OMA>
+            <om:OMS cd="metric-spaces-1" name="dist_1"/>
+            <om:OMA>
+             <om:OMV name="f"/>
+             <om:OMV name="x"/>
+            </om:OMA>
+            <om:OMA>
+             <om:OMV name="f"/>
+             <om:OMV name="y"/>
+            </om:OMA>
+           </om:OMA>
+           <om:OMV name="eps"/>
+          </om:OMA>
+         </om:OMA>
+        </om:OMBIND>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMBIND>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</definition>
+
+
+<symbol xml:id="continuous" kind="object">
+<CMP> "continuous" - defined constant in the theory "metric-spaces-2-tuples". </CMP>
+</symbol>
+
+<definition xml:id="continuous-def"  for="continuous"  type="simple">
+<CMP>
+ Symbol name: "continuous". <with style="linebreak"/>
+
+ String defining expression: 
+"lambda(f:[pp_0,pp_1],
+  forall(v:sets[pp_1],open(v) implies open(inv_image{f,v})))". <with style="linebreak"/>
+
+ Defining s-expression: 
+"(lambda (((pp_0 pp_1) f))
+ (forall (((pp_1 unit%sort) v))
+  (implies (apply-operator open v)
+   (apply-operator open (m-inverse-image f v)))))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="lambda"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMBIND>
+     <om:OMS cd="the-kernel-theory" name="forall"/>
+     <om:OMBVAR>
+
+      <om:OMATTR>
+       <om:OMATP>
+        <om:OMS cd="the-kernel-theory" name="sort"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="funsort"/>
+          <om:OMS cd="metric-spaces-1" name="pp_1"/>
+          <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+        </om:OMA>
+       </om:OMATP>
+       <om:OMV name="v"/>
+      </om:OMATTR>
+
+     </om:OMBVAR>
+
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="implies"/>
+      <om:OMA>
+       <om:OMS cd="nil" name="open"/>
+       <om:OMV name="v"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="nil" name="open"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+        <om:OMV name="f"/>
+        <om:OMV name="v"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMBIND>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</definition>
+
+
+
+<assertion xml:id="abstract-intermediate-value"  type="theorem">
+<CMP>
+ Theorem name: "abstract-intermediate-value". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],o:sets[pp_0],
+  continuous(f) and total_q{f,[pp_0,pp_1]} and connected(o)
+   implies 
+  connected(image{f,o}))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f) ((pp_0 unit%sort) o))
+ (implies
+  (and (apply-operator continuous f) (total? f (undefined (pp_0 pp_1)))
+   (apply-operator connected o))
+  (apply-operator connected (m-image f o))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="o"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="continuous"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="total?"/>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="funsort"/>
+          <om:OMS cd="metric-spaces-0" name="pp_0"/>
+          <om:OMS cd="metric-spaces-1" name="pp_1"/>
+        </om:OMA>
+       </om:OMA>
+
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="nil" name="connected"/>
+       <om:OMV name="o"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="nil" name="connected"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="o"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="abstract-bolzano-weierstrass"  type="theorem">
+<CMP>
+ Theorem name: "abstract-bolzano-weierstrass". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],o:sets[pp_0],
+  continuous(f) and total_q{f,[pp_0,pp_1]} and compact(o)
+   implies 
+  compact(image{f,o}))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f) ((pp_0 unit%sort) o))
+ (implies
+  (and (apply-operator continuous f) (total? f (undefined (pp_0 pp_1)))
+   (apply-operator compact o))
+  (apply-operator compact (m-image f o))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="o"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="continuous"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="total?"/>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="funsort"/>
+          <om:OMS cd="metric-spaces-0" name="pp_0"/>
+          <om:OMS cd="metric-spaces-1" name="pp_1"/>
+        </om:OMA>
+       </om:OMA>
+
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="nil" name="compact"/>
+       <om:OMV name="o"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="nil" name="compact"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="o"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="eps-delta-characterization-of-continuity"  type="theorem">
+<CMP>
+ Theorem name: "eps-delta-characterization-of-continuity". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],
+  total_q{f,[pp_0,pp_1]}
+   implies 
+  continuous(f) iff forall(x:pp_0,continuous%at%point(f,x)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f))
+ (implies (total? f (undefined (pp_0 pp_1)))
+  (iff (apply-operator continuous f)
+   (forall ((pp_0 x)) (apply-operator continuous%at%point f x)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="total?"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="undefined"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMA>
+
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="iff"/>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="continuous"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forall"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         </om:OMATP>
+         <om:OMV name="x"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+        <om:OMV name="f"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+<symbol xml:id="lipschitz%bound%on" kind="object">
+<CMP> "lipschitz%bound%on" - defined constant in the theory "metric-spaces-2-tuples". </CMP>
+</symbol>
+
+<definition xml:id="lipschitz%bound%on-def"  for="lipschitz%bound%on"  type="simple">
+<CMP>
+ Symbol name: "lipschitz%bound%on". <with style="linebreak"/>
+
+ String defining expression: 
+"lambda(phi:[pp_0,pp_1],r:rr,s:sets[pp_0],
+  0&lt;r
+   and 
+  forall(x,y:pp_0,
+    x in s and y in s
+     implies 
+    dist_1(phi(x),phi(y))&lt;=r*dist_0(x,y)))". <with style="linebreak"/>
+
+ Defining s-expression: 
+"(lambda (((pp_0 pp_1) phi) (rr r) ((pp_0 unit%sort) s))
+ (and (apply-operator &lt; 0 r)
+  (forall ((pp_0 x y))
+   (implies (and (i-in x s) (i-in y s))
+    (apply-operator &lt;=
+     (apply-operator dist_1 (apply-operator phi x) (apply-operator phi y))
+     (apply-operator * r (apply-operator dist_0 x y)))))))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="lambda"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="phi"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="s"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="and"/>
+     <om:OMA>
+      <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+      <om:OMS cd="h-o-real-arithmetic" name="0"/>
+      <om:OMV name="r"/>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forall"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+        </om:OMATP>
+        <om:OMV name="x"/>
+       </om:OMATTR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+        </om:OMATP>
+        <om:OMV name="y"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="implies"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="and"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="i-in"/>
+         <om:OMV name="x"/>
+         <om:OMV name="s"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="i-in"/>
+         <om:OMV name="y"/>
+         <om:OMV name="s"/>
+        </om:OMA>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+        <om:OMA>
+         <om:OMS cd="metric-spaces-1" name="dist_1"/>
+         <om:OMA>
+          <om:OMV name="phi"/>
+          <om:OMV name="x"/>
+         </om:OMA>
+         <om:OMA>
+          <om:OMV name="phi"/>
+          <om:OMV name="y"/>
+         </om:OMA>
+        </om:OMA>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="*"/>
+         <om:OMV name="r"/>
+         <om:OMA>
+          <om:OMS cd="metric-spaces-0" name="dist_0"/>
+          <om:OMV name="x"/>
+          <om:OMV name="y"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</definition>
+
+
+<symbol xml:id="lipschitz%bound" kind="object">
+<CMP> "lipschitz%bound" - defined constant in the theory "metric-spaces-2-tuples". </CMP>
+</symbol>
+
+<definition xml:id="lipschitz%bound-def"  for="lipschitz%bound"  type="simple">
+<CMP>
+ Symbol name: "lipschitz%bound". <with style="linebreak"/>
+
+ String defining expression: 
+"lambda(phi:[pp_0,pp_1],r:rr,
+  lipschitz%bound%on(phi,r,sort_to_indic{pp_0}))". <with style="linebreak"/>
+
+ Defining s-expression: 
+"(lambda (((pp_0 pp_1) phi) (rr r))
+ (apply-operator lipschitz%bound%on phi r
+  (sort-to-indicator (undefined pp_0))))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="lambda"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="phi"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="metric-spaces-2-tuples" name="lipschitz%bound%on"/>
+     <om:OMV name="phi"/>
+     <om:OMV name="r"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="sort-to-indicator"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="undefined"/>
+       <om:OMS cd="metric-spaces-0" name="pp_0"/>
+       </om:OMA>
+
+      </om:OMA>
+     </om:OMA>
+    </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</definition>
+
+
+
+<assertion xml:id="lipschitz-bound-is-total"  type="theorem">
+<CMP>
+ Theorem name: "lipschitz-bound-is-total". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],r:rr,
+  lipschitz%bound(f,r) implies total_q{f,[pp_0,pp_1]})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f) (rr r))
+ (implies (apply-operator lipschitz%bound f r)
+  (total? f (undefined (pp_0 pp_1)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="lipschitz%bound"/>
+      <om:OMV name="f"/>
+      <om:OMV name="r"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="total?"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="undefined"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMA>
+
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+<symbol xml:id="uniformly%continuous" kind="object">
+<CMP> "uniformly%continuous" - defined constant in the theory "metric-spaces-2-tuples". </CMP>
+</symbol>
+
+<definition xml:id="uniformly%continuous-def"  for="uniformly%continuous"  type="simple">
+<CMP>
+ Symbol name: "uniformly%continuous". <with style="linebreak"/>
+
+ String defining expression: 
+"lambda(f:[pp_0,pp_1],
+  forall(eps:rr,
+    0&lt;eps
+     implies 
+    forsome(delta:rr,
+      0&lt;delta
+       and 
+      forall(x,y:pp_0,
+        #(f(x)) and #(f(y)) and dist_0(x,y)&lt;=delta
+         implies 
+        dist_1(f(x),f(y))&lt;=eps))))". <with style="linebreak"/>
+
+ Defining s-expression: 
+"(lambda (((pp_0 pp_1) f))
+ (forall ((rr eps))
+  (implies (apply-operator &lt; 0 eps)
+   (forsome ((rr delta))
+    (and (apply-operator &lt; 0 delta)
+     (forall ((pp_0 x y))
+      (implies
+       (and (is-defined (apply-operator f x)) (is-defined (apply-operator f y))
+        (apply-operator &lt;= (apply-operator dist_0 x y) delta))
+       (apply-operator &lt;=
+        (apply-operator dist_1 (apply-operator f x) (apply-operator f y))
+        eps))))))))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="lambda"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMBIND>
+     <om:OMS cd="the-kernel-theory" name="forall"/>
+     <om:OMBVAR>
+
+      <om:OMATTR>
+       <om:OMATP>
+        <om:OMS cd="the-kernel-theory" name="sort"/>
+        <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+       </om:OMATP>
+       <om:OMV name="eps"/>
+      </om:OMATTR>
+
+     </om:OMBVAR>
+
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="implies"/>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="eps"/>
+      </om:OMA>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forsome"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+         </om:OMATP>
+         <om:OMV name="delta"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="and"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+         <om:OMS cd="h-o-real-arithmetic" name="0"/>
+         <om:OMV name="delta"/>
+        </om:OMA>
+        <om:OMBIND>
+         <om:OMS cd="the-kernel-theory" name="forall"/>
+         <om:OMBVAR>
+
+          <om:OMATTR>
+           <om:OMATP>
+            <om:OMS cd="the-kernel-theory" name="sort"/>
+            <om:OMS cd="metric-spaces-0" name="pp_0"/>
+           </om:OMATP>
+           <om:OMV name="x"/>
+          </om:OMATTR>
+
+          <om:OMATTR>
+           <om:OMATP>
+            <om:OMS cd="the-kernel-theory" name="sort"/>
+            <om:OMS cd="metric-spaces-0" name="pp_0"/>
+           </om:OMATP>
+           <om:OMV name="y"/>
+          </om:OMATTR>
+
+         </om:OMBVAR>
+
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="implies"/>
+          <om:OMA>
+           <om:OMS cd="the-kernel-theory" name="and"/>
+           <om:OMA>
+            <om:OMS cd="the-kernel-theory" name="is-defined"/>
+            <om:OMA>
+             <om:OMV name="f"/>
+             <om:OMV name="x"/>
+            </om:OMA>
+           </om:OMA>
+           <om:OMA>
+            <om:OMS cd="the-kernel-theory" name="is-defined"/>
+            <om:OMA>
+             <om:OMV name="f"/>
+             <om:OMV name="y"/>
+            </om:OMA>
+           </om:OMA>
+           <om:OMA>
+            <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+            <om:OMA>
+             <om:OMS cd="metric-spaces-0" name="dist_0"/>
+             <om:OMV name="x"/>
+             <om:OMV name="y"/>
+            </om:OMA>
+            <om:OMV name="delta"/>
+           </om:OMA>
+          </om:OMA>
+          <om:OMA>
+           <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+           <om:OMA>
+            <om:OMS cd="metric-spaces-1" name="dist_1"/>
+            <om:OMA>
+             <om:OMV name="f"/>
+             <om:OMV name="x"/>
+            </om:OMA>
+            <om:OMA>
+             <om:OMV name="f"/>
+             <om:OMV name="y"/>
+            </om:OMA>
+           </om:OMA>
+           <om:OMV name="eps"/>
+          </om:OMA>
+         </om:OMA>
+        </om:OMBIND>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMBIND>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</definition>
+
+
+
+<assertion xml:id="lipschitz-bound-is-uniformly-continuous"  type="theorem">
+<CMP>
+ Theorem name: "lipschitz-bound-is-uniformly-continuous". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],r:rr,
+  lipschitz%bound(f,r) implies uniformly%continuous(f))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f) (rr r))
+ (implies (apply-operator lipschitz%bound f r)
+  (apply-operator uniformly%continuous f)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="lipschitz%bound"/>
+      <om:OMV name="f"/>
+      <om:OMV name="r"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="uniformly%continuous"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="total-uniformly-continuous-is-continuous"  type="theorem">
+<CMP>
+ Theorem name: "total-uniformly-continuous-is-continuous". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],
+  uniformly%continuous(f) and total_q{f,[pp_0,pp_1]}
+   implies 
+  forall(x:pp_0,continuous%at%point(f,x)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f))
+ (implies
+  (and (apply-operator uniformly%continuous f)
+   (total? f (undefined (pp_0 pp_1))))
+  (forall ((pp_0 x)) (apply-operator continuous%at%point f x))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="uniformly%continuous"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="total?"/>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="funsort"/>
+          <om:OMS cd="metric-spaces-0" name="pp_0"/>
+          <om:OMS cd="metric-spaces-1" name="pp_1"/>
+        </om:OMA>
+       </om:OMA>
+
+      </om:OMA>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forall"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+        </om:OMATP>
+        <om:OMV name="x"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="lipschitz-bound-is-continuous"  type="theorem">
+<CMP>
+ Theorem name: "lipschitz-bound-is-continuous". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],r:rr,x:pp_0,
+  lipschitz%bound(f,r) implies continuous%at%point(f,x))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f) (rr r) (pp_0 x))
+ (implies (apply-operator lipschitz%bound f r)
+  (apply-operator continuous%at%point f x)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="metric-spaces-0" name="pp_0"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="lipschitz%bound"/>
+      <om:OMV name="f"/>
+      <om:OMV name="r"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+      <om:OMV name="f"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="geometric-series-formula"  type="theorem">
+<CMP>
+ Theorem name: "geometric-series-formula". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a,r:rr,p,q:zz,
+  0&lt;=p and p&lt;=q and not(r=0) and not(r=1)
+   implies 
+  sum(p,q,lambda(j:zz,r^j*a))=a*(r^p/(1-r))*(1-r^(q-p+1)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((rr a r) (zz p q))
+ (implies
+  (and (apply-operator &lt;= 0 p) (apply-operator &lt;= p q) (not (= r 0))
+   (not (= r 1)))
+  (=
+   (apply-operator sum p q
+    (lambda ((zz j)) (apply-operator * (apply-operator ^ r j) a)))
+   (apply-operator *
+    (apply-operator * a
+     (apply-operator / (apply-operator ^ r p) (apply-operator sub 1 r)))
+    (apply-operator sub 1
+     (apply-operator ^ r (apply-operator + (apply-operator sub q p) 1)))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+      </om:OMATP>
+      <om:OMV name="q"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="p"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMV name="p"/>
+       <om:OMV name="q"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="not"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="="/>
+        <om:OMV name="r"/>
+        <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="not"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="="/>
+        <om:OMV name="r"/>
+        <om:OMS cd="h-o-real-arithmetic" name="1"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-1" name="sum"/>
+       <om:OMV name="p"/>
+       <om:OMV name="q"/>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="lambda"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+          </om:OMATP>
+          <om:OMV name="j"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="*"/>
+         <om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="^"/>
+          <om:OMV name="r"/>
+          <om:OMV name="j"/>
+         </om:OMA>
+         <om:OMV name="a"/>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="*"/>
+       <om:OMA>
+        <om:OMS cd="h-o-real-arithmetic" name="*"/>
+        <om:OMV name="a"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="/"/>
+         <om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="^"/>
+          <om:OMV name="r"/>
+          <om:OMV name="p"/>
+         </om:OMA>
+         <om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="sub"/>
+          <om:OMS cd="h-o-real-arithmetic" name="1"/>
+          <om:OMV name="r"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="h-o-real-arithmetic" name="sub"/>
+        <om:OMS cd="h-o-real-arithmetic" name="1"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="^"/>
+         <om:OMV name="r"/>
+         <om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="+"/>
+          <om:OMA>
+           <om:OMS cd="h-o-real-arithmetic" name="sub"/>
+           <om:OMV name="q"/>
+           <om:OMV name="p"/>
+          </om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="1"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="geometric-series-upper-estimate-lemma"  type="theorem">
+<CMP>
+ Theorem name: "geometric-series-upper-estimate-lemma". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a,r:rr,p,q:zz,
+  1&lt;=p and p&lt;=q and 0&lt;r and r&lt;1 and 0&lt;=a
+   implies 
+  a*(r^p/(1-r))*(1-r^(q-p+1))&lt;=a*(r^p/(1-r)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((rr a r) (zz p q))
+ (implies
+  (and (apply-operator &lt;= 1 p) (apply-operator &lt;= p q) (apply-operator &lt; 0 r)
+   (apply-operator &lt; r 1) (apply-operator &lt;= 0 a))
+  (apply-operator &lt;=
+   (apply-operator *
+    (apply-operator * a
+     (apply-operator / (apply-operator ^ r p) (apply-operator sub 1 r)))
+    (apply-operator sub 1
+     (apply-operator ^ r (apply-operator + (apply-operator sub q p) 1))))
+   (apply-operator * a
+    (apply-operator / (apply-operator ^ r p) (apply-operator sub 1 r))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+      </om:OMATP>
+      <om:OMV name="q"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMS cd="h-o-real-arithmetic" name="1"/>
+       <om:OMV name="p"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMV name="p"/>
+       <om:OMV name="q"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="r"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+       <om:OMV name="r"/>
+       <om:OMS cd="h-o-real-arithmetic" name="1"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="*"/>
+       <om:OMA>
+        <om:OMS cd="h-o-real-arithmetic" name="*"/>
+        <om:OMV name="a"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="/"/>
+         <om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="^"/>
+          <om:OMV name="r"/>
+          <om:OMV name="p"/>
+         </om:OMA>
+         <om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="sub"/>
+          <om:OMS cd="h-o-real-arithmetic" name="1"/>
+          <om:OMV name="r"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="h-o-real-arithmetic" name="sub"/>
+        <om:OMS cd="h-o-real-arithmetic" name="1"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="^"/>
+         <om:OMV name="r"/>
+         <om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="+"/>
+          <om:OMA>
+           <om:OMS cd="h-o-real-arithmetic" name="sub"/>
+           <om:OMV name="q"/>
+           <om:OMV name="p"/>
+          </om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="1"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="*"/>
+       <om:OMV name="a"/>
+       <om:OMA>
+        <om:OMS cd="h-o-real-arithmetic" name="/"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="^"/>
+         <om:OMV name="r"/>
+         <om:OMV name="p"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="sub"/>
+         <om:OMS cd="h-o-real-arithmetic" name="1"/>
+         <om:OMV name="r"/>
+        </om:OMA>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="geometric-series-upper-estimate"  type="theorem">
+<CMP>
+ Theorem name: "geometric-series-upper-estimate". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a,r:rr,p,q:zz,
+  1&lt;=p and p&lt;=q and 0&lt;r and r&lt;1 and 0&lt;=a
+   implies 
+  sum(p,q,lambda(j:zz,r^j*a))&lt;=a*(r^p/(1-r)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((rr a r) (zz p q))
+ (implies
+  (and (apply-operator &lt;= 1 p) (apply-operator &lt;= p q) (apply-operator &lt; 0 r)
+   (apply-operator &lt; r 1) (apply-operator &lt;= 0 a))
+  (apply-operator &lt;=
+   (apply-operator sum p q
+    (lambda ((zz j)) (apply-operator * (apply-operator ^ r j) a)))
+   (apply-operator * a
+    (apply-operator / (apply-operator ^ r p) (apply-operator sub 1 r))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+      </om:OMATP>
+      <om:OMV name="q"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMS cd="h-o-real-arithmetic" name="1"/>
+       <om:OMV name="p"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMV name="p"/>
+       <om:OMV name="q"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="r"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+       <om:OMV name="r"/>
+       <om:OMS cd="h-o-real-arithmetic" name="1"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-1" name="sum"/>
+       <om:OMV name="p"/>
+       <om:OMV name="q"/>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="lambda"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+          </om:OMATP>
+          <om:OMV name="j"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="*"/>
+         <om:OMA>
+          <om:OMS cd="h-o-real-arithmetic" name="^"/>
+          <om:OMV name="r"/>
+          <om:OMV name="j"/>
+         </om:OMA>
+         <om:OMV name="a"/>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="*"/>
+       <om:OMV name="a"/>
+       <om:OMA>
+        <om:OMS cd="h-o-real-arithmetic" name="/"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="^"/>
+         <om:OMV name="r"/>
+         <om:OMV name="p"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="sub"/>
+         <om:OMS cd="h-o-real-arithmetic" name="1"/>
+         <om:OMV name="r"/>
+        </om:OMA>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="geometric-series-is-summable%nonnegative"  type="theorem">
+<CMP>
+ Theorem name: "geometric-series-is-summable%nonnegative". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a,r:rr,p,q:zz,
+  0&lt;r and r&lt;1 and 0&lt;=a
+   implies 
+  summable%nonnegative(lambda(j:zz,r^j*a)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((rr a r) (zz p q))
+ (implies
+  (and (apply-operator &lt; 0 r) (apply-operator &lt; r 1) (apply-operator &lt;= 0 a))
+  (apply-operator summable%nonnegative
+   (lambda ((zz j)) (apply-operator * (apply-operator ^ r j) a)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+      </om:OMATP>
+      <om:OMV name="r"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+      </om:OMATP>
+      <om:OMV name="q"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="r"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+       <om:OMV name="r"/>
+       <om:OMS cd="h-o-real-arithmetic" name="1"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="h-o-real-arithmetic" name="&lt;="/>
+       <om:OMS cd="h-o-real-arithmetic" name="0"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-1" name="summable%nonnegative"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="lambda"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+         </om:OMATP>
+         <om:OMV name="j"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="h-o-real-arithmetic" name="*"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="^"/>
+         <om:OMV name="r"/>
+         <om:OMV name="j"/>
+        </om:OMA>
+        <om:OMV name="a"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="lim-preservation"  type="theorem">
+<CMP>
+ Theorem name: "lim-preservation". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],x:pp_0,s:[zz,pp_0],
+  continuous%at%point(f,lim(s))
+   implies 
+  lim(f oo s)=f(lim(s)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f) (pp_0 x) ((zz pp_0) s))
+ (implies (apply-operator continuous%at%point f (apply-operator lim s))
+  (= (apply-operator lim (m-composition f s))
+   (apply-operator f (apply-operator lim s)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="metric-spaces-0" name="pp_0"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="s"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="nil" name="lim"/>
+       <om:OMV name="s"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="nil" name="lim"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-composition"/>
+        <om:OMV name="f"/>
+        <om:OMV name="s"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="nil" name="lim"/>
+        <om:OMV name="s"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="rev%lim-preservation"  type="theorem">
+<CMP>
+ Theorem name: "rev%lim-preservation". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(s:[zz,pp_0],f:[pp_0,pp_1],
+  continuous%at%point(f,lim(s))
+   implies 
+  f(lim(s))=lim(f oo s))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((zz pp_0) s) ((pp_0 pp_1) f))
+ (implies (apply-operator continuous%at%point f (apply-operator lim s))
+  (= (apply-operator f (apply-operator lim s))
+   (apply-operator lim (m-composition f s)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="s"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="nil" name="lim"/>
+       <om:OMV name="s"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="nil" name="lim"/>
+        <om:OMV name="s"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="nil" name="lim"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-composition"/>
+        <om:OMV name="f"/>
+        <om:OMV name="s"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="lim-preservation-global"  type="theorem">
+<CMP>
+ Theorem name: "lim-preservation-global". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[pp_0,pp_1],
+  total_q{f,[pp_0,pp_1]} and continuous(f)
+   implies 
+  forall(s:[zz,pp_0],
+    #(lim(s)) implies lim(f oo s)=f(lim(s))))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f))
+ (implies
+  (and (total? f (undefined (pp_0 pp_1))) (apply-operator continuous f))
+  (forall (((zz pp_0) s))
+   (implies (is-defined (apply-operator lim s))
+    (= (apply-operator lim (m-composition f s))
+     (apply-operator f (apply-operator lim s)))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="total?"/>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="funsort"/>
+          <om:OMS cd="metric-spaces-0" name="pp_0"/>
+          <om:OMS cd="metric-spaces-1" name="pp_1"/>
+        </om:OMA>
+       </om:OMA>
+
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="continuous"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forall"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="funsort"/>
+           <om:OMS cd="h-o-real-arithmetic" name="zz"/>
+           <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         </om:OMA>
+        </om:OMATP>
+        <om:OMV name="s"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="implies"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="is-defined"/>
+        <om:OMA>
+         <om:OMS cd="nil" name="lim"/>
+         <om:OMV name="s"/>
+        </om:OMA>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="="/>
+        <om:OMA>
+         <om:OMS cd="nil" name="lim"/>
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="m-composition"/>
+          <om:OMV name="f"/>
+          <om:OMV name="s"/>
+         </om:OMA>
+        </om:OMA>
+        <om:OMA>
+         <om:OMV name="f"/>
+         <om:OMA>
+          <om:OMS cd="nil" name="lim"/>
+          <om:OMV name="s"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="splicing-continuous-functions-lemma-1"  type="theorem">
+<CMP>
+ Theorem name: "splicing-continuous-functions-lemma-1". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f,g:[pp_0,pp_1],s:sets[pp_0],x:pp_0,
+  continuous%at%point(f,x)
+   and 
+  continuous%at%point(g,x)
+   and 
+  f(x)=g(x)
+   implies 
+  continuous%at%point(lambda(z:pp_0,if(z in s, f(z), g(z))),
+                      x))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f g) ((pp_0 unit%sort) s) (pp_0 x))
+ (implies
+  (and (apply-operator continuous%at%point f x)
+   (apply-operator continuous%at%point g x)
+   (= (apply-operator f x) (apply-operator g x)))
+  (apply-operator continuous%at%point
+   (lambda ((pp_0 z))
+    (if (i-in z s) (apply-operator f z) (apply-operator g z)))
+   x)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="s"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="metric-spaces-0" name="pp_0"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+       <om:OMV name="g"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMA>
+        <om:OMV name="f"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMV name="g"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="lambda"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         </om:OMATP>
+         <om:OMV name="z"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="if"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="i-in"/>
+         <om:OMV name="z"/>
+         <om:OMV name="s"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMV name="f"/>
+         <om:OMV name="z"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMV name="g"/>
+         <om:OMV name="z"/>
+        </om:OMA>
+       </om:OMA>
+      </om:OMBIND>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="splicing-continuous-functions-lemma-2"  type="theorem">
+<CMP>
+ Theorem name: "splicing-continuous-functions-lemma-2". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f,g:[pp_0,pp_1],x:pp_0,
+  continuous%at%point(f,x)
+   and 
+  forsome(r:rr,
+    0&lt;r
+     and 
+    forall(z:pp_0,z in open%ball(x,r) implies f(z)=g(z)))
+   implies 
+  continuous%at%point(g,x))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((pp_0 pp_1) f g) (pp_0 x))
+ (implies
+  (and (apply-operator continuous%at%point f x)
+   (forsome ((rr r))
+    (and (apply-operator &lt; 0 r)
+     (forall ((pp_0 z))
+      (implies (i-in z (apply-operator open%ball x r))
+       (= (apply-operator f z) (apply-operator g z)))))))
+  (apply-operator continuous%at%point g x)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="metric-spaces-0" name="pp_0"/>
+         <om:OMS cd="metric-spaces-1" name="pp_1"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="metric-spaces-0" name="pp_0"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forsome"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="h-o-real-arithmetic" name="rr"/>
+         </om:OMATP>
+         <om:OMV name="r"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="and"/>
+        <om:OMA>
+         <om:OMS cd="h-o-real-arithmetic" name="&lt;"/>
+         <om:OMS cd="h-o-real-arithmetic" name="0"/>
+         <om:OMV name="r"/>
+        </om:OMA>
+        <om:OMBIND>
+         <om:OMS cd="the-kernel-theory" name="forall"/>
+         <om:OMBVAR>
+
+          <om:OMATTR>
+           <om:OMATP>
+            <om:OMS cd="the-kernel-theory" name="sort"/>
+            <om:OMS cd="metric-spaces-0" name="pp_0"/>
+           </om:OMATP>
+           <om:OMV name="z"/>
+          </om:OMATTR>
+
+         </om:OMBVAR>
+
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="implies"/>
+          <om:OMA>
+           <om:OMS cd="the-kernel-theory" name="i-in"/>
+           <om:OMV name="z"/>
+           <om:OMA>
+            <om:OMS cd="nil" name="open%ball"/>
+            <om:OMV name="x"/>
+            <om:OMV name="r"/>
+           </om:OMA>
+          </om:OMA>
+          <om:OMA>
+           <om:OMS cd="the-kernel-theory" name="="/>
+           <om:OMA>
+            <om:OMV name="f"/>
+            <om:OMV name="z"/>
+           </om:OMA>
+           <om:OMA>
+            <om:OMV name="g"/>
+            <om:OMV name="z"/>
+           </om:OMA>
+          </om:OMA>
+         </om:OMA>
+        </om:OMBIND>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="metric-spaces-2-tuples" name="continuous%at%point"/>
+      <om:OMV name="g"/>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+</omgroup>
+
+
+</theory>
+
+</omdoc>

@@ -1,0 +1,150 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE module PUBLIC "-//CNX//DTD CNXML 0.4//EN" 
+	  "../dtd/cnxml-0.4/cnxml_mathml.dtd">
+
+<module id="m0048"
+	xmlns="http://cnx.rice.edu/cnxml/0.4"
+	xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <name>A hello world test</name>
+
+  <content>
+    <para id='spectrum'> 
+     We say something about the subject matter here, in a paragraph just that we
+    have some text top play with. Now we have some math, which I pilfered from
+    another article.
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:ci type="fn">X</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+
+
+    <example id="example">
+      <para id="sampleprobs"> 
+	Let's see how an example would look like, this time we use an equation.
+	<equation id="freqresponse">
+	  <name>A name here</name>
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">P</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>&Delta;</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>    
+	  </m:math>
+	</equation>
+
+We can also to lists, and they can even contain math, even though this is not essential.
+	<list id="listone" type="bulleted">
+	  <item> 
+	    Multiplication by   
+	    <m:math>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply> 
+	    </m:math>
+	    means integration.
+	  </item>
+	  <item> 
+	    Multiplication by the complex exponential   
+	    <m:math> 
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>&Delta;</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    means delay by   
+	    <m:math> 
+	      <m:ci>&Delta;</m:ci>
+	    </m:math>
+	    seconds in the time domain.
+	  </item>
+	</list>
+	
+	This concludes the example.	
+      </para>
+    </example>
+
+
+
+    <exercise id="exer1">
+      <problem>
+	<para id="exer1probtext">
+	  On to an exercise: here we put the example text.
+	</para>
+      </problem>
+      <solution>
+	<para id="exer1probsoln">The solution goes here</para>
+      </solution>
+    </exercise>
+
+
+    <para id="conclusion">
+      We now conclude the test document.
+    </para>
+
+  </content>
+</module>

@@ -1,0 +1,18 @@
+The aim of this project is a basic integration of \uml into \omdoc. To achieve this two main tasks
+have to be completed: 
+
+\section{Specification of an \omdoc/\uml module}
+An \xml schema needs to be written that comprises all \uml diagram types currently supported in
+\argouml, which are Class Diagrams, Sequence Diagrams, Use Case Diagrams, Collaboration Diagrams,
+State Diagrams and Deployment Diagrams. Furthermore all possibilities of interleaving these \uml
+elements with native \omdoc elements need to be specified. More concretely: \uml diagrams may be
+part of \omdoc theories and certain \omdoc objects, e.g. in \mathml formalized constraints, may be
+part of \uml diagrams. The \xml schema will be written in the \rng schema language based on the
+\dtd provided with \argouml, which in turn is based on the \xmischema production from the \uml
+metamodel specified in \mof. Dependencies between \uml elements that are not inherent in the \xml
+structure need to be documented and may be subject to future modifications of the \xml schema.
+
+\section{Presentation of \omdoc/\uml documents}
+An \xslt needs to be written that converts \xml documents adhering to the \xml schema written in
+the first task to \xhtml. Most importantly the presentation layer of the \uml diagrams in \argouml
+given in \pgml needs to be converted to \svg diagrams that can be embedded in \xhtml.

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//om:OMDoc//DTD om:OMDoc V1.2//EN" "../../dtd/omdoc.dtd">
+<omdoc cdbase="http://www.mathweb.org/twelf/twelf" xmlns="http://www.omdoc.org/ns/" xmlns:om="http://www.openmath.org/OpenMath" xmlns:visib="http://www.mathweb.org/omdoc" version="1.2">
+   <presentation for="." format="ascii" role="morphism">
+      <components pos="0">
+         <components>
+            <recurse/>
+            <text value="("/>
+         </components>
+      </components>         
+      <components pos="1"/>
+      <components pos="0">
+         <components>
+            <text value=")"/>
+         </components>
+      </components>         
+   </presentation>
+   <presentation for="./type" format="ascii" role="constant">
+      <text value="type"/>
+   </presentation>
+   <presentation for="./omitted" format="ascii" role="constant">
+      <text>_</text>
+   </presentation>
+   <presentation for="./lambda" format="ascii" role="binder">
+      <text>[</text>
+      <components pos="1">
+         <recurse/>
+         <attribution key="./oftype">
+            <text>:</text>
+            <recurse/>
+         </attribution>
+      </components>
+      <text>]</text>
+      <components pos="3"/>
+   </presentation>
+   <presentation for="./implicit_lambda" format="ascii" role="binder">
+     <group group="implicitargument" level="100">
+      <text>[</text>
+      <components pos="1">
+         <recurse/>
+         <attribution key="./oftype">
+            <text>:</text>
+            <recurse/>
+        </attribution>
+      </components>
+      <text>]</text>
+      </group>
+      <components pos="3"/>
+   </presentation>
+   <presentation for="./Pi" format="ascii" role="binder">
+      <text>{</text>
+      <components begin="1" end="1">
+         <recurse/>
+         <attribution key="./oftype">
+            <text>:</text>
+            <recurse/>
+         </attribution>
+      </components>
+      <text>}</text>
+      <components pos="3"/>
+   </presentation>
+   <presentation for="./arrow" format="ascii" role="application">
+      <use fixity="infixr">
+         <operator>
+            <text value=" -&gt; "/>
+         </operator>
+      </use>
+   </presentation>
+   
+   <presentation for="." format="ascii" role="application" precedence="0">
+      <use bracketstyle="lisp">
+         <separator><text value=" "/></separator>
+      </use>
+   </presentation>
+
+   <presentation for="." format="ascii" role="theory">
+      <text value="%% Theory: "/>
+      <components pos="0"/>
+      <text value="&#x000a;"/>
+      <text value="%% Meta-Theory: "/>
+      <components pos="1"/>
+      <text value="&#x000a;"/>
+      <components begin="2"/>
+   </presentation>
+   <presentation for="." format="ascii" role="symbol">
+      <components pos="0"/>
+      <ifpresent pos="1">
+      	<text value=" : "/>
+        <components pos="1"/>
+      </ifpresent>
+      <ifpresent pos="2">
+      	<text value=" = "/>
+        <components pos="2"/>
+      </ifpresent>
+      <text value=".&#x000a;"/>
+   </presentation>
+   <presentation for="." format="ascii" role="assertion">
+      <components pos="0"/>
+      <ifpresent pos="1">
+      	<text value=" : "/>
+        <components pos="1"/>
+      </ifpresent>
+      <ifpresent pos="2">
+      	<text value=" = "/>
+        <components pos="2"/>
+      </ifpresent>
+      <text value=".&#x000a;"/>
+   </presentation>
+   <presentation for="." format="ascii" role="import">
+      <text value="%struct "/>
+      <components pos="0"/>
+      <text value=" : "/>
+      <components pos="1"/>
+      <text value=" %where {.. := "/>
+      <components pos="2"/>
+      <ifpresent pos="3"><text value=", "/></ifpresent>
+      <components begin="3">
+        <separator><text value=", "/></separator>
+      </components>
+      <text value="}.&#x000a;"/>
+   </presentation>
+   <presentation for="." format="ascii" role="map">
+      <components pos="0"/>
+      <text value=" := "/>
+      <components pos="1"/>
+   </presentation>
+   <presentation for="." format="ascii" role="name">
+      <components pos="1"/>
+      <text value="-"/>
+      <components pos="2"/>
+   </presentation>
+   <presentation for="." format="ascii" role="theorypath">
+      <components>
+        <separator><text value="/"/></separator>
+        <recurse/>
+      </components>
+   </presentation>
+   <presentation for="." format="ascii" role="flatname">
+      <components>
+        <separator><text value="."/></separator>
+        <recurse/>
+      </components>
+   </presentation>
+   <presentation for="." format="ascii" role="constant">
+      <components pos="1"/>
+      <text value="-"/>
+      <components pos="2"/>
+   </presentation>
+   <presentation for="." format="ascii" role="composition">
+      <components>
+        <separator><text value="."/></separator>
+      </components>
+   </presentation>
+
+</omdoc>

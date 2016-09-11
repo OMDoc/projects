@@ -1,0 +1,189 @@
+----------------------- REVIEW 1 ---------------------
+PAPER: 33
+TITLE: Extending MKM Formats at the Statement Level
+AUTHORS: (anonymous)
+
+The paper explores how to combine an extensible pragmatic OMDoc system
+with a strict OMDoc system, the former being able to accommodate for
+practical needs, the latter serving as a foundation system with a
+fixed (minimal) set of primitives. The connection is provided by a
+translation P2S, which is exemplified e.g., by the introduction of
+implicit definitions (and definitions by cases).
+
+The paper is very well written, at times quite formal and not easy to
+follow. 
+
+
+1. It was also not completely clear to me what the primitives are
+in order to make extensions. E.g., for implicit definitions you need
+the description operator. I assume that there are limitations to what
+you can do this way, i.e., if you wanted to introduce something else
+you may need a different primitive. How would you address this?
+ANSWER: 
+Your question stems from the fact that we omitted much of the MMT module system for simplicity in that paper. In the full MMT system, it is a strong point that every extension is introduced in a separate theory containing exactly the needed primitives: Thus meta-theories can be composed modularly importing exactly the relevant extension and the module system guarantees that an extension can only be imported if its requirements are available.
+We will discuss that point more clearly in the final version.
+--FIXED
+
+Summarizing: A very interesting and very relevant contribution to MKM.
+
+[Some minor points:
+p.4 "to to eLearning", --FIXED
+Fig1: An MMT --FIXED
+Footnote 1: representation --FIXED
+p.6: extension used --FIXED
+p.9: its [the] meaning --FIXED
+
+p.17: from the ? can...] --FIXED
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 33
+TITLE: Extending MKM Formats at the Statement Level
+AUTHORS: (anonymous)
+
+The paper is aimed at decomposing OMDoc in two layers: a first minimal
+layer that corresponds to MMT and a second layer that compiles all features
+of OMDoc down to the MMT core. What is presented in this paper is the
+decomposition for the statement level. The layer on top allows to declare
+new macros for statement level declarations (e.g. implicit proofs, definition
+schemata, etc.) that are compiled down to MMT (that only admits explicit
+definitions and declarations).
+
+1. In a sense the paper seems a bit disappointing since it requires a lot of
+formal technical details to achieve something that is surely interesting in
+practice, but also quite trivial. However, I believe that this is true for
+the examples picked by the authors, but that the application of the idea
+to more complex examples (e.g. declarations of inductive families), not
+supported at the moment, will make the idea non trivial. Therefore I am
+sympathetic with the authors and I think that the paper deserves publishing.
+
+ANSWER:
+Regarding the more complex examples: Those are supported in principle, we have not yet written the meta-theories for them. The intended use of our extension framework is that it permits users to write their own extensions.
+
+2. However, I also strongly invite them to add to the paper a section where
+they describe what are the benefits of the proposed approach w.r.t. a direct
+translation of the pragmatic surface syntax into MMT. For example, do you
+expect different systems to exchange documents at the second layer? Or only
+at the MMT layer? Do you expect to be able to compare definitions only at the
+first layer (MMT) or also at the second layer? Etc. These answers are relevant
+because most of them are non-sensical at the pragmatic surface syntax.
+ANSWER:
+The main benefits of our approach (pragmatic surface -> pragmatic MMT -> strict MMT) over a direct translation (pragmatic surface -> MMT) are:
+- It makes it very easy for users to introduce their own language extensions. In particular, all semantic issues (e.g., type checking) are handled generically during the transation from pragmatic MMT to strict MMT so that the translation from pragmatic surface to pragmatic MMT becomes trivial.
+- We expect systems to interchange document at the pragmatic MMT level. For example, we want to translate implicit definitions of one system to those of another system even if - which is typical - the respective strict implementations are very different.
+- It is essential that user interfaces have access to the pragmatic MMT syntax.
+We did indeed not discuss this well enough, and we will add discussion in the final version. 
+--FIXED
+
+Other comments. Some of these are more serious and should be addressed in the rebuttal.
+
+1) "Moreover, semantic services like validation only need..." There is an
+   hidden major issue here that Wiedijk calls "Pollack's inconsistency"
+   (in honour of Randy Pollack). The issue is the following: since the user
+   operates on the second layer, but semantic services operate on the first
+   layer after translation, the system can fool the user by taking a weird
+   translation. For example, if every statement is mapped to True and every
+   proof to a proof of True, then False seems to be provable to the user.
+   Of course the problem is more serious when the translation is user definable.
+   Practically all proof assistants (Coq, Isabelle, etc.) suffer from Pollack
+   inconsistency since it is possible to fool the user to believe that False
+   is provable.
+ANSWER: 
+Our approach indeed suffers from Pollack inconsistency in the same way as existing systems do. However, we believe our approach is well-suited to alleviate the situation because it permits user interfaces that can switch between pragmatic and strict syntax.
+   
+2) "P2S" written with the font you picked is really ugly and almost unreadable.
+FIXED.
+
+3) "this problem is well-understoof for mathematical objects" add a citation
+   here
+@MK: TODO or ignore
+   
+4) Page 5. Are -> and lam really untyped?
+ANSWER: 
+The symbols \type, ->  and lam introduced in Ex. 1 are untyped, because they are special MMT constants (OpenMath symbols) that serve as type-theoretical constructs needed to formalize concrete theories. Making those symbols typed would require a meta type theory at the MMT/OpenMath level. 
+
+5) Page 6, BNF for \phi: \Phi should be \phi I think
+ANSWER: 
+No, the non-terminal $\phi$ is formed by constant extensions $e$ and applications of $\Phi$ (which can be lambda-expressions) to an MMT expression E. Note that $\phi$ can't be a lambda-expression.
+
+6) A major problem of the paper is that on the one hand it tries to be self
+   contained by describing MMT; on the other hand it is not because the typing
+   rules of MMT are not really explained and remain obscure. For example,
+   in Definition 1, what does well formed mean? Is xi allowed to occur only
+   in E_{i+k}? In Definition 2, what does it mean that E1 has type E1'?
+   In definition 3, where it is written "Ei has type Ei'", in what context
+   should this happen?   
+ANSWER: Except for a few structural rules, MMT is parametric in the set of typing rules.
+We will discuss that and add a description of these rules. Then the paper will be essentially self-contained.
+--FIXED
+   
+7) Page 9, FunctorDefinitions. I do not understand here. If means(x,y) is
+   False, then declaring a functor declares a proof f_thm of False and this
+   is logically inconsistent. What is happening here?   
+ANSWER: 
+Indeed, the extension declaration FunctorDefinitions is missing two parameters: one for the existence of the functor and one for its functional property. We fixed them.
+FIXED
+
+8) Page 11: t.Rep can be called an injection because it is injective, but
+   t.Abs is not. Maybe you can call it an ejection.
+ANSWER: 
+Yes, t.Abs is not an injection. It is the inverse of t.Rep.
+We fixed it.
+--FIXED
+   
+9) A potential big problem is the following. A pragmatic declaration
+   is legal iff it is well typed before expansion, not if the expansion is.
+   This is in principle a very good feature. However, this may require lots
+   of "typing" constraints to be done on the pragmatic declaration and it is
+   unclear in what sense they can be captured by typing only. For example,
+   consider the current inductive type  declarations of Coq. They can be
+   considered a pragmatic declaration for a bunch of declarations (types,
+   constructors) and theorems (iota reduction rules). However, in order to
+   accept the pragmatic declaration, one needs to check quite a number of
+   syntactic constraints (e.g. strict positivity of the constructors) and
+   semantic constraints on transformed declaration (e.g. the type of
+   the type of the constructors after removal of the parameters of the
+   declaration must be a universe included in the universe of the arity of
+   the inductive type of the constructor computed after removal of the
+   parameters of the declaration). Do you expect to capture all these things
+   using pragmatic abstract syntax? If you do, do you expect to capture the
+   constraints using typing only? How?
+ANSWER: 
+Our design is such that extensions are type-checked in a way that guarantees that any pragmatic declaration with well-typed parameters elaborates to well-typed declarations. Thus, our framework is only applicable to an extension if the meta-theory is strong enough to express all necessary constraints. For example, for Coq's inductive types, the meta-theory would have to declare and axiomatize judgment for positivity, which would occur as additional parameters of the extension.
+   
+10) In the conclusions: "We exemplified this by defining..." Not in the paper.
+ANSWER: We will remove that sentence.
+--FIXED
+----------------------- REVIEW 3 ---------------------
+PAPER: 33
+TITLE: Extending MKM Formats at the Statement Level
+AUTHORS: Fulya Horozal, Michael Kohlhase and Florian Rabe
+
+1) Description of the paper.
+
+This paper introduces a general methodology to extend the OMDoc format at the statement level e.g. axioms, theorems, case statements, showing how a kernel language can be used to provide a semantics to an extended set of statements often used by mathematicians in practice. The authors first motivate their work by describing the design issues with an MKM representation language. The ideas discussed are then grounded with an example showing how an implicit definition statement could be formalised. Background material is then introduced to introduce the user to the mathematical language of OMDoc.
+
+The framework itself is then introduced, based on the idea of theory families, where a particular theory can introduce extensions by declaring a theory fragment, with parameters possible by adding a lambda calculus on top of it; then, so-called pragmatic extensions can be added in sub-theories by providing paramaters to the lambda term.
+
+The paper then gives numerous examples of language extensions, including axioms and theorems, implicit definitions, case-based defintions and type definitions a la Gordon. Finally, the authors describe how these abstract extensions can then be mapped onto the surface syntax of the language.
+
+2) Review comments.
+
+This paper is clearly motivated, well written and is well-endowed with examples to help the reader. The reviewer could find no obvious mistakes in the technical content of the paper; however, we have the following general comments:
+
+- There is not an obvious comparision with related work. Are there any alternative approaches to this?
+ANSWER: 
+We discussed all similar approaches we know about. We would appreciate pointers to further related work.
+
+- The reference [Pau94] is used for Isabelle/Isar, but it might be more appropriate to also reference a paper directly related to Isar.
+--FIXED
+
+- It was diffult initially to understand the meanings of 'extension' and 'pragmatic' in the extension language. Perhaps a more detailed introduction to these would help readability. Perhaps an example right at the top of page 6.
+--FIXED (added a few sentences "Intuitively, ...")
+
+- Perhaps the authors can explain what a Mizar functor is.
+--FIXED
+
+3) Concluding remarks.
+
+It is the reviewer's opinion that this paper is very worthy of acceptance to this conference.

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+               "http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:omdoc="http://www.mathweb.org/omdoc">
+  <head>
+    <title>Elision Demo</title>
+    <script type="text/javascript">
+      function nsResolver(prefix) {
+        var ns = {
+	  // 'math': 'http://www.w3.org/1998/Math/MathML',
+          'xhtml': 'http://www.w3.org/1999/xhtml',
+          'omdoc': 'http://www.mathweb.org/omdoc'
+        };
+        return ns[prefix] || null;
+      }
+
+      function _update(group, fun) {
+        var fdoc = document.getElementById("formula").contentDocument;
+        var xpath_egroup = 
+          group == null ? "starts-with(@class, 'm') and @omdoc:elevel" :
+          group == 'bracket' ? '@class="mo" and @omdoc:elevel and not(@omdoc:egroup)' :
+          "starts-with(@class, 'm') and @omdoc:egroup='" + group + "'";
+        /* get all nodes of the selected elision group */
+        var snapshot = fdoc.evaluate(
+          '//xhtml:span[@omdoc:elevel and ' + xpath_egroup + ']',
+          fdoc, nsResolver, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null );
+        for (var i = 0; i &lt; snapshot.snapshotLength; i++) {
+          var item = snapshot.snapshotItem(i);
+          /* toggle the visibility */
+	  var visibLevel = item.getAttributeNodeNS(
+              'http://www.mathweb.org/omdoc', 'elevel').value;
+	  if (visibLevel == 'infinity') visibLevel = Number.POSITIVE_INFINITY;
+          fun(item, group, visibLevel);
+        }
+      }
+
+      function elide(group, threshold) {
+        _update(group, function(item, group, visibLevel) {
+	  item.style.display = visibLevel &lt;= threshold ? 'inline' : 'none';
+        });
+      }
+
+      function colorize() {
+        _update('bracket', function(item, group, visibLevel) {
+	  if (visibLevel == Number.POSITIVE_INFINITY) visibLevel = 600;
+          var saturation = Math.round(visibLevel / 900 * 256);
+          item.style.color = 'rgb(' + saturation + ',' + saturation + ',' +
+           saturation + ')';
+        });
+        _update('types', function(item, group, visibLevel) {
+          var saturation = Math.round(visibLevel / 512 * 256);
+          item.style.color = 'rgb(' + saturation + ',' + saturation + ',' +
+           saturation + ')';
+        });
+      }
+    </script>
+    <link rel="stylesheet" type="text/css" href="omdoc.css"/>
+  </head>
+  <body>
+    <div class="tright">
+      <img src="omdoc-small.png" width="263" height="96"/>
+    </div>
+    <h1>Flexible Elision Demo</h1>
+    <ul>
+      <li>Powered by <a href="https://jomdoc.omdoc.org">JOMDoc</a> and <a href="https://jomdoc.omdoc.org/wiki/JOBAD">JOBAD</a></li>
+      <li>Tested with <a href="http://www.mozilla.com/firefox/">Firefox ≥ 2.0</a>
+      and <a href="http://www.opera.com/products/desktop/">Opera ≥ 9.0</a></li>
+      <li>Authors: Michael Kohlhase, Christoph Lange, Florian Rabe</li>
+    </ul>
+    <iframe src="index.xml" width="100%" id="formula" onload="colorize();"/>
+    <p>
+      <form id="form" action="">
+	Visibility Thresholds:
+	<ul>
+	  <li>brackets: <label title="0" accesskey="0"><input type="radio"
+	onchange="elide('bracket', 0);" name="threshold_bracket" checked="checked"/><u>0</u></label>
+	    <label title="1" accesskey="1"><input type="radio" onchange="elide('bracket', 100);" name="threshold_bracket"/><u>1</u>00</label>
+	    <label title="200" accesskey="2"><input type="radio" onchange="elide('bracket', 200);" name="threshold_bracket"/><u>2</u>00</label>
+	    <label title="300" accesskey="3"><input type="radio" onchange="elide('bracket', 300);" name="threshold_bracket"/><u>3</u>00</label>
+	    <label title="400" accesskey="4"><input type="radio" onchange="elide('bracket', 400);" name="threshold_bracket"/><u>4</u>00</label>
+	    <label title="500" accesskey="5"><input type="radio" onchange="elide('bracket', 500);" name="threshold_bracket"/><u>5</u>00</label>
+	    <label title="infinite" accesskey="i"><input type="radio"
+	    onchange="elide('bracket', Number.POSITIVE_INFINITY)"
+	    name="threshold_bracket"/><u>i</u>nfinite</label></li>
+	  <li>types: <label title="necessary" accesskey="a"><input type="radio"
+	onchange="elide('types', 0);" name="threshold_types"
+	checked="checked"/>0</label>
+	    <label title="inferable" accesskey="s"><input type="radio" onchange="elide('types', 100);" name="threshold_types"/>100</label>
+	    <label title="functions" accesskey="d"><input type="radio" onchange="elide('types', 200);" name="threshold_types"/>200</label>
+	    <label title="symbols" accesskey="f"><input type="radio" onchange="elide('types', 300);" name="threshold_types"/>300</label></li>
+	</ul>
+      </form>
+    </p>
+    <div style="display:inline; float:left">
+      <table>
+	<tr><th>Operator</th><th>Mixfix declaration</th></tr>
+	<tr><td>x<sup>y</sup></td><td><span
+	class="box">199|<sub>1</sub></span><sup style="font-size:smaller"><span class="box">∞|<sub>2</sub></span></sup>:200</td></tr>
+	<tr><td>!</td><td><span class="box">300|<sub>1</sub></span>!:300</td></tr>
+	<tr><td>·</td><td><span class="box">400|<sub>1</sub></span>·<span class="box">400|<sub>2</sub></span>:400</td></tr>
+	<tr><td>+</td><td><span class="box">500|<sub>1</sub></span>+<span class="box">500|<sub>2</sub></span>:500</td></tr>
+      </table>
+    </div>
+    <div style="width:3em;display:inline;float:left">&#xa0;</div>
+    <div style="display:inline">
+      <table>
+	<tr><th>Operator</th><th>Mixfix declaration</th></tr>
+	<tr><td>¬</td><td>¬<span class="box">600|<sub>1</sub></span>:600</td></tr>
+	<tr><td>≤</td><td><span class="box">700|<sub>1</sub></span>≤<span class="box">700|<sub>2</sub></span>:700</td></tr>
+	<tr><td>∧</td><td><span class="box">1000|<sub>1</sub></span>∧<span class="box">1000|<sub>2</sub></span>:1000</td></tr>
+	<tr><td>∨</td><td><span class="box">1200|<sub>1</sub></span>∨<span class="box">1200|<sub>2</sub></span>:1200</td></tr>
+      </table>
+    </div>
+    <!-- <p>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+	<mrow>
+	  <mo style="display:none" visib:level="500">(</mo>
+	  <mo style="display:none" visib:level="300">(</mo>
+	  <msup>
+	    <mrow>
+	      <mn>5</mn>
+	      <mo>·</mo>
+	      <mo>(</mo>
+	      <mi>x</mi>
+	      <mo>+</mo>
+	      <mi>y</mi>
+	      <mo>)</mo>
+	    </mrow>
+	    <mrow>
+	      <mo style="display:none" visib:level="10000">(</mo>
+	      <mi>n</mi>
+	      <mo>+</mo>
+	      <mn>3</mn>
+	      <mo style="display:none" visib:level="10000">)</mo>
+	    </mrow>
+	   </msup>
+	   <mo style="display:none" visib:level="300">)</mo>
+	   <mo>≤</mo>
+	   <mo style="display:none" visib:level="400">(</mo>
+	   <mo>(</mo>
+	   <mi>a</mi>
+	   <mo>·</mo>
+	   <mi>b</mi>
+	   <mo>)</mo>
+	   <mo>!</mo>
+	   <mo style="display:none" visib:level="400">)</mo>
+	   <mo style="display:none" visib:level="500">)</mo>
+	   <mo>∨</mo>
+	   <mo style="display:none" visib:level="200">(</mo>
+	   <mo style="display:none" visib:level="400">(</mo>
+	   <mo>¬</mo>
+	   <mi>p</mi>
+	   <mo style="display:none" visib:level="400">)</mo>
+	   <mo>∧</mo>
+	   <mo style="display:none" visib:level="400">(</mo>
+	   <mo>¬</mo>
+	   <mo>(</mo>
+	   <mi>q</mi>
+	   <mo>≤</mo>
+	   <mi>π</mi>
+	   <mo>)</mo>
+	   <mo style="display:none" visib:level="400">)</mo>
+	   <mo style="display:none" visib:level="200">)</mo>
+	</mrow>
+      </math>
+    </p> -->
+  </body>
+</html>

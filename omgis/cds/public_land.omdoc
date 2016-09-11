@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="public_land.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-03-18T14:56:13Z </dc:date>
+  <dc:title xml:lang="en"> public_land </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-03-18T14:56:13Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="public_land">
+  <imports from="maps.omdoc#maps"/>
+
+  <symbol name="land_grant">
+    <metadata>
+      <dc:description>
+	An area of land to which title was conferred by a predecessor government and confirmed by the
+	U.S. Government after the territory in which it is situated was acquired by the United States.
+	Delineation: The limit of LAND GRANT is the extent of the private land holding as defined by the original title, approved
+	BLM/GLO plats, or approved plats of dependent resurveys by private surveyors.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="point_monument">
+    <metadata>
+      <dc:description>
+	A structure that marks the location of a point determined by surveying.
+	Delineation: The limit of POINT MONUMENT is the extent of the marker.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="principal_meridian">
+    <metadata>
+      <dc:description>
+	The line extending north and south, intended to follow along a true meridian, from the
+	initial point of a Rectangular Survey. Ranges are referenced east or west of the principal meridian.
+	Delineation: The limit of PRINCIPAL MERIDIAN is the extent of the component SURVEY LINES. All PRINCIPAL
+	MERIDIANS have been defined by the Bureau of Land Management (BLM) as depicted on the map entitled
+	Principal Meridians and Base Lines Governing the United States Public Land Surveys, BLM, 1988.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="public_land_survey_system_area">
+    <metadata>
+      <dc:description>
+	*An area of land which is subdivided by the Public Land Survey
+	System (PLSS), and was originally created on public domain lands, and the rules for its use were defined by the
+	authority of the U.S. Government. The PLSS has since been extended, following similar rules, into non-public
+	domain areas.
+	Delineation: The limit of PUBLIC LAND SURVEY SYSTEM AREA is the extent of the first division type as defined by
+	approved BLM/GLO plats, or BLM approved plats of dependent resurveys by private surveyors, or other
+	accepted survey plats.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="special_survey_area">
+    <metadata>
+      <dc:description>
+	*An area of land within the original holdings secured by the Federal Government
+	(within Public Land states), subdivided by surveys that involve unusual applications of, or departures from, the
+	rectangular system. The subdivided surveys often carry out the provisions of a special legislative act.
+	Delineation: The limit of SPECIAL SURVEY AREA is the extent of the area as defined by approved BLM/GLO plats, or
+	BLM approved plats of dependant resurveys by private surveyors.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="survey_corner">
+    <metadata>
+      <dc:description>
+	*A survey location that was originally established for the purpose of referencing and/or
+	defining the limits of a survey.
+      Delineation: SURVEY CORNER is the location as marked by POINT MONUMENT or is the theoretical position of an
+	established survey location, based on the best available evidence. This evidence may include plat data, field
+	notes, photoimages, original map positions, and secondary information from other agencies. Physical evidence
+	of the original monuments (the existence of POINT MONUMENT) must stand as the true SURVEY CORNER
+	it was intended to represent and must be given controlling preference over recorded directions and lengths of
+	lines.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="survey_line">
+    <metadata>
+      <dc:description>
+	*The limiting line between Public-Land and/or Private subdivisions.
+      Delineation: SURVEY LINE is defined by the best available evidence for SURVEY CORNERS. The ground positions of
+	the original monuments remain the true positions, even though directions and lengths of lines indicate positions
+	different from the ground positions.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+</theory>
+
+</omdoc>

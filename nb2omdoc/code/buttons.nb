@@ -1,0 +1,401 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     14960,        340]*)
+(*NotebookOutlinePosition[     15610,        363]*)
+(*  CellTagsIndexPosition[     15566,        359]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Palette nb2om", "Title",
+  FontFamily->"Charter"],
+
+Cell[CellGroupData[{
+
+Cell["The Buttons", "Subsubsection"],
+
+Cell[BoxData[GridBox[{
+        {
+          ButtonBox["OMType",
+            ButtonData:>Cell[ 
+                BoxData[ 
+                  FormBox[ 
+                    
+                    InterpretationBox[ \!\(\[SelectionPlaceholder]\[Rule]\
+\[Placeholder]\), 
+                      
+                      RowBox[ {"OMType", "[", "\[Placeholder]", ",", 
+                        "\[Placeholder]", "]"}]], TraditionalForm]]]]},
+        {
+          ButtonBox["OMFunction",
+            ButtonData:>Cell[ 
+                BoxData[ 
+                  FormBox[ 
+                    
+                    InterpretationBox[ \!\(\[SelectionPlaceholder]\[Colon]\
+\[Placeholder]\[Rule]\[Placeholder]\), 
+                      
+                      RowBox[ {"OMFunction", "[", "\[Placeholder]", ",", 
+                        "\[Placeholder]", ",", "\[Placeholder]", "]"}]], 
+                    TraditionalForm]]]]},
+        {
+          ButtonBox["OMPair",
+            ButtonData:>Cell[ 
+                BoxData[ 
+                  FormBox[ 
+                    
+                    InterpretationBox[ \!\((\[SelectionPlaceholder],\
+\[Placeholder])\), 
+                      
+                      RowBox[ {"OMPair", "[", "\[Placeholder]", ",", 
+                        "\[Placeholder]", "]"}]], TraditionalForm]]]]},
+        {
+          ButtonBox["OMTuple",
+            ButtonData:>Cell[ 
+                BoxData[ 
+                  FormBox[ 
+                    
+                    InterpretationBox[ \!\((\[SelectionPlaceholder],\
+\[Placeholder],\[Ellipsis],\[Placeholder])\), 
+                      
+                      RowBox[ {"OMTuple", "[", "\[Placeholder]", ",", 
+                        "\[Placeholder]", ",", "\[Placeholder]", "]"}]], 
+                    TraditionalForm]]]]},
+        {
+          ButtonBox["OMSequence",
+            ButtonData:>Cell[ 
+                BoxData[ 
+                  FormBox[ 
+                    
+                    InterpretationBox[ \!\(\[SelectionPlaceholder],\
+\[Placeholder],\[Ellipsis],\[Placeholder]\), 
+                      
+                      RowBox[ {"OMSequence", "[", "\[Placeholder]", ",", 
+                        "\[Placeholder]", ",", "\[Placeholder]", "]"}]], 
+                    TraditionalForm]]]]},
+        {
+          ButtonBox["\[Placeholder]"]}
+        },
+      RowSpacings->0.2,
+      ColumnSpacings->0,
+      GridDefaultElement:>ButtonBox[ "\\[Placeholder]"]]], "Input",
+  Active->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Special tags", "Subsubsection"],
+
+Cell[BoxData[{
+    \(ClearAll[OMType]\), "\n", 
+    \(SetAttributes[OMType, HoldAllComplete]\)}], "Input"],
+
+Cell[BoxData[
+    \(\(MakeBoxes[OMType[a_, b_], 
+          StandardForm] := \[IndentingNewLine]InterpretationBox[
+          RowBox[{a, "\<\[Rule]\>", b}], \[IndentingNewLine]OMType[a, 
+            b]];\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(MakeBoxes[OMType[a_, b_], 
+          StandardForm] := \[IndentingNewLine]With[{aa\  = \ 
+              MakeBoxes[a, StandardForm], bb = MakeBoxes[b, StandardForm]}, 
+          InterpretationBox[
+            RowBox[{aa, "\<\[Rule]\>", 
+                bb}], \[IndentingNewLine]5]\ ];\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FormalExpression[a]\  + \ b\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{"b", "+", 
+      TagBox["a",
+        "FormalExpression"]}]], "Output"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(MakeExpression[TagBox[exp_, "\<FormalExpression\>", ___], 
+          StandardForm] := 
+        MakeExpression[
+          RowBox[{"\<FormalExpression\>", "\<[\>", exp, "\<]\>"}], 
+          StandardForm];\)\)], "Input"],
+
+Cell[BoxData[
+    TagBox[Cell[BoxData[
+          \({\(\(MakeBoxes[FormalExpression[exp_], StandardForm] := 
+                TagBox[MakeBoxes[exp, 
+                    StandardForm], "\<FormalExpression\>"];\)\(\
+\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeExpression[
+                  TagBox[exp_, "\<FormalExpression\>", ___], StandardForm] := 
+                MakeExpression[
+                  RowBox[{"\<FormalExpression\>", "\<[\>", exp, "\<]\>"}], 
+                  StandardForm];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeBoxes[TypeDeclaration[f_, t_], 
+                  StandardForm] := 
+                TagBox[RowBox[{TagBox[
+                        MakeBoxes[f, StandardForm], "\<Object\>"], "\<:\>", 
+                      TagBox[MakeBoxes[t, 
+                          StandardForm], "\<Type\>"]}], \
+"\<TypeDeclaration\>"];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeExpression[
+                  TagBox[RowBox[{TagBox[f_, "\<Object\>", ___], "\<:\>", 
+                        TagBox[
+                          t_, "\<Type\>", ___]}], "\<TypeDeclaration\>", \
+___], StandardForm] := 
+                MakeExpression[
+                  RowBox[{"\<TypeDeclaration\>", "\<[\>", 
+                      RowBox[{f, "\<,\>", t}], "\<]\>"}], 
+                  StandardForm];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeBoxes[ImplicitSeries[f_, {a__}, {b___}], 
+                  StandardForm] := 
+                TagBox[MakeBoxes[f[a, \[CenterEllipsis], b], 
+                    StandardForm], "\<ImplicitSeries\>"];\)\(\
+\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeExpression[
+                  TagBox[exp_, "\<ImplicitSeries\>", ___], StandardForm] := 
+                MakeExpression[
+                  RowBox[{"\<FormalExpression\>", "\<[\>", exp, "\<]\>"}], 
+                  StandardForm];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeBoxes[SquareGrouping[exp_], StandardForm] := 
+                TagBox[RowBox[{"\<[\>", 
+                      MakeBoxes[exp, 
+                        StandardForm], "\<]\>"}], "\<SquareGrouping\>"];\)\(\
+\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeExpression[
+                  TagBox[RowBox[{"\<[\>", 
+                        exp_, "\<]\>"}], "\<SquareGrouping\>", ___], 
+                  StandardForm] := 
+                MakeExpression[
+                  RowBox[{"\<SquareGrouping\>", "\<[\>", exp, "\<]\>"}], 
+                  StandardForm];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(SetAttributes[FormalExpression, 
+                HoldAllComplete];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(SetAttributes[ImplicitSeries, 
+                HoldAllComplete];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(FormalExpression[
+                  f_[a__, \[CenterEllipsis], b___]] := 
+                ImplicitSeries[f, {a}, {b}];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(SquareGrouping[exp_] := 
+                exp;\)\(\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(\(FormalExpression::usage\  = \ \
+"\<A CCAPS formatting command.  FormalExpression[exp] acts as an invisible \
+wrapper, preventing exp from being evaluated.  FormalExpression differs from \
+HoldForm in that FormalExpression attempts to categorize its input upon \
+evaluation.  For example, FormalExpression[1+2+\[CenterEllipsis]+n] evaluates \
+to ImplicitSeries[Plus,{1,2},{n}].\>";\)\(\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(\(ImplicitSeries::usage\  = \ \
+"\<A CCAPS formatting command.  ImplicitSeries[f,alist,blist] represents a \
+series of arguments to the function f that are given implicitly.  For \
+example, ImplicitSeries[Plus,{1,2},{n}] represents the series 1+2+\
+\[CenterEllipsis]+n.  This representation is purely formal, returning itself \
+if evaluated.\>";\)\(\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(\(SquareGrouping::usage\  = \ \
+"\<A CCAPS formatting command.  SquareGrouping wraps it argument in square \
+brackets.  Effectively, these square brackets evaluate like \
+parentheses.\>";\)\(\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(\(TypeDeclaration::usage\  = \ "\
+\<A CCAPS formatting command.  TypeDeclaration[f,t] represents a declaration \
+that object f has type t.  For example, TypeDeclaration[f,A\[Rule]B] \
+represents the declaration that f is a function from A to B.  This \
+representation is purely formal, returning itself if evaluated.\>";\)\(\
+\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(NotebookClose[
+                EvaluationNotebook[]];\)}\)], "Input"],
+      DisplayForm]], "Output"]
+}, Closed]],
+
+Cell[BoxData[
+    TagBox[Cell[BoxData[
+          \({\(\(MakeBoxes[FormalExpression[exp_], StandardForm] := 
+                TagBox[MakeBoxes[exp, 
+                    StandardForm], "\<FormalExpression\>"];\)\(\
+\[IndentingNewLine]\)
+            \), "\<\n\>", \(MakeExpression[
+                  TagBox[exp_, "\<FormalExpression\>", ___], StandardForm] := 
+                MakeExpression[
+                  RowBox[{"\<FormalExpression\>", "\<[\>", exp, "\<]\>"}], 
+                  StandardForm];\)\[IndentingNewLine]\[IndentingNewLine], "\<\
+\n\>", \(\(MakeBoxes[TypeDeclaration[f_, t_], StandardForm] := 
+                TagBox[RowBox[{TagBox[
+                        MakeBoxes[f, StandardForm], "\<Object\>"], "\<:\>", 
+                      TagBox[MakeBoxes[t, 
+                          StandardForm], "\<Type\>"]}], \
+"\<TypeDeclaration\>"];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeExpression[
+                  TagBox[RowBox[{TagBox[f_, "\<Object\>", ___], "\<:\>", 
+                        TagBox[
+                          t_, "\<Type\>", ___]}], "\<TypeDeclaration\>", \
+___], StandardForm] := 
+                MakeExpression[
+                  RowBox[{"\<TypeDeclaration\>", "\<[\>", 
+                      RowBox[{f, "\<,\>", t}], "\<]\>"}], 
+                  StandardForm];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeBoxes[ImplicitSeries[f_, {a__}, {b___}], 
+                  StandardForm] := 
+                TagBox[MakeBoxes[f[a, \[CenterEllipsis], b], 
+                    StandardForm], "\<ImplicitSeries\>"];\)\(\
+\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeExpression[
+                  TagBox[exp_, "\<ImplicitSeries\>", ___], StandardForm] := 
+                MakeExpression[
+                  RowBox[{"\<FormalExpression\>", "\<[\>", exp, "\<]\>"}], 
+                  StandardForm];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeBoxes[SquareGrouping[exp_], StandardForm] := 
+                TagBox[RowBox[{"\<[\>", 
+                      MakeBoxes[exp, 
+                        StandardForm], "\<]\>"}], "\<SquareGrouping\>"];\)\(\
+\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(MakeExpression[
+                  TagBox[RowBox[{"\<[\>", 
+                        exp_, "\<]\>"}], "\<SquareGrouping\>", ___], 
+                  StandardForm] := 
+                MakeExpression[
+                  RowBox[{"\<SquareGrouping\>", "\<[\>", exp, "\<]\>"}], 
+                  StandardForm];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(SetAttributes[FormalExpression, 
+                HoldAllComplete];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(SetAttributes[ImplicitSeries, 
+                HoldAllComplete];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(FormalExpression[
+                  f_[a__, \[CenterEllipsis], b___]] := 
+                ImplicitSeries[f, {a}, {b}];\)\(\[IndentingNewLine]\)
+            \), "\<\n\>", \(\(SquareGrouping[exp_] := 
+                exp;\)\(\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(\(FormalExpression::usage\  = \ \
+"\<A CCAPS formatting command.  FormalExpression[exp] acts as an invisible \
+wrapper, preventing exp from being evaluated.  FormalExpression differs from \
+HoldForm in that FormalExpression attempts to categorize its input upon \
+evaluation.  For example, FormalExpression[1+2+\[CenterEllipsis]+n] evaluates \
+to ImplicitSeries[Plus,{1,2},{n}].\>";\)\(\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(\(ImplicitSeries::usage\  = \ \
+"\<A CCAPS formatting command.  ImplicitSeries[f,alist,blist] represents a \
+series of arguments to the function f that are given implicitly.  For \
+example, ImplicitSeries[Plus,{1,2},{n}] represents the series 1+2+\
+\[CenterEllipsis]+n.  This representation is purely formal, returning itself \
+if evaluated.\>";\)\(\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(\(SquareGrouping::usage\  = \ \
+"\<A CCAPS formatting command.  SquareGrouping wraps it argument in square \
+brackets.  Effectively, these square brackets evaluate like \
+parentheses.\>";\)\(\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(\(TypeDeclaration::usage\  = \ "\
+\<A CCAPS formatting command.  TypeDeclaration[f,t] represents a declaration \
+that object f has type t.  For example, TypeDeclaration[f,A\[Rule]B] \
+represents the declaration that f is a function from A to B.  This \
+representation is purely formal, returning itself if evaluated.\>";\)\(\
+\[IndentingNewLine]\)
+            \), "\<\[IndentingNewLine]\>", \(NotebookClose[
+                EvaluationNotebook[]];\)}\)], "Input"],
+      DisplayForm]], "Input"]
+}, Closed]]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{1141, 938},
+WindowMargins->{{Automatic, 22}, {1, Automatic}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 55, 1, 175, "Title"],
+
+Cell[CellGroupData[{
+Cell[1856, 58, 36, 0, 60, "Subsubsection"],
+Cell[1895, 60, 2452, 65, 187, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4384, 130, 37, 0, 60, "Subsubsection"],
+Cell[4424, 132, 106, 2, 62, "Input"],
+Cell[4533, 136, 216, 4, 85, "Input"],
+Cell[4752, 142, 319, 6, 108, "Input"],
+
+Cell[CellGroupData[{
+Cell[5096, 152, 60, 1, 39, "Input"],
+Cell[5159, 155, 96, 3, 39, "Output"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5292, 163, 240, 5, 55, "Input"],
+Cell[5535, 170, 4701, 82, 1208, "Output"]
+}, Closed]],
+Cell[10251, 255, 4681, 81, 1297, "Input"]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

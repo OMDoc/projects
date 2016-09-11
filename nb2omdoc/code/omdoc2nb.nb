@@ -1,0 +1,485 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     13607,        386]*)
+(*NotebookOutlinePosition[     14256,        409]*)
+(*  CellTagsIndexPosition[     14212,        405]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["OM2NB", "Title",
+  FontFamily->"Charter"],
+
+Cell[BoxData[{
+    \(Needs["\<Automata`automata`\>"]\), "\[IndentingNewLine]", 
+    \(Get["\<Automata`experimental`\>"]\), "\[IndentingNewLine]", 
+    \(makeAbbrevs[]\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Conversion Code", "Section"],
+
+Cell[BoxData[{
+    \(groupHeader[0]\  := \ "\<Title\>"\), "\[IndentingNewLine]", 
+    \(groupHeader[1]\  := \ "\<Section\>"\), "\[IndentingNewLine]", 
+    \(groupHeader[2]\  := \ "\<Subsection\>"\), "\[IndentingNewLine]", 
+    \(groupHeader[3]\  := \ "\<Subsubsection\>"\), "\[IndentingNewLine]", 
+    \(groupHeader[4]\  := \ "\<Subsubsubsection\>"\), "\[IndentingNewLine]", 
+    \(\(groupHeader[_]\  := \ \((Print["\<****  group depth > 4\>"]; \
+"\<Subsubsubsection\>")\);\)\), "\[IndentingNewLine]", 
+    \(\)}], "Input"],
+
+Cell[BoxData[{
+    \(ClearAll[ProcessXML]\), "\n", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<omdoc\>", {___}, {cells___}]\ ]\  := \ \
+\[IndentingNewLine]\((\[IndentingNewLine]\t$grpdpt\  = \ 
+            0; \[IndentingNewLine]\t
+          Notebook[\ 
+            Flatten[ProcessXML\  /@ \ {cells}], \[IndentingNewLine]\t\t\
+Magnification \[Rule] 
+              1.5, \[IndentingNewLine]\t\tStyleDefinitions \[Rule] \
+"\<XMLStyle.nb\>"\ \[IndentingNewLine]\t]\[IndentingNewLine])\);\)\), "\n", 
+    \(ProcessXML[\ 
+        XMLElement["\<metadata\>", {___}, {cont___}]\ ]\  := \ \ Flatten[
+        ProcessXML\  /@ \ {cont}]\), "\n", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<Title\>", {___}, {cont___}]\ ]\  := \ \ \
+\[IndentingNewLine]Cell[\ cont, \ \ \ groupHeader[$grpdpt]\ \ ];\)\), "\n", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<Creator\>", {___}, {cont___}]\ ]\  := \ \ \
+\[IndentingNewLine]Cell[\ cont, \ "\<Creator\>"\ ];\)\), "\n", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<Date\>", {___}, {cont___}]\ ]\  := \ \ \
+\[IndentingNewLine]Cell[\ cont, \ "\<Date\>"\ ];\)\), "\n", 
+    \(\(\(ProcessXML[\ 
+          XMLElement["\<Subject\>", {___}, {cont___}]\ ]\  := \ {};\)\(\
+\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\(\(ProcessXML[\ 
+          XMLElement["\<omgroup\>", {___}, {cont___}]\ ]\  := \ \ \
+\[IndentingNewLine]\((\[IndentingNewLine]\($grpdpt++\); \
+\[IndentingNewLine]tmp\  = \ 
+            Cell[\ CellGroupData[\ \ Flatten[ProcessXML\  /@ \ {cont}], \ 
+                Open\ ]]; \[IndentingNewLine]\($grpdpt--\); \
+\[IndentingNewLine]tmp\[IndentingNewLine])\);\)\(\n\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(ProcessXML[\ 
+        XMLElement["\<omtext\>", {___}, {cont__}]\ ]\  := \ \ \
+\[IndentingNewLine]Cell[\ 
+        TextData[\ \ Flatten[
+            ProcessXML\  /@ \ {cont}]], \ "\<Text\>"\ \
+]\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(ProcessXML[\ 
+        XMLElement["\<CMP\>", {___}, {cont___}]\ ]\  := \ \ Flatten[
+        ProcessXML\  /@ \ {cont}]\), "\n", 
+    \(\(ProcessXML[\ "\<\>"\ ]\  := \ \ {};\)\), "\[IndentingNewLine]", 
+    \(\(\(ProcessXML[\ str_String\ ]\  := \ \ Cell[str, "\<Text\>"];\)\(\n\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<definition\>", {___}, {cont___}]\ ]\  := \ \ \
+\[IndentingNewLine]Cell[\ 
+          TextData[\ \ Flatten[
+              ProcessXML\  /@ \ {cont}]], \ "\<Definition\>"\ ];\)\), "\
+\[IndentingNewLine]", 
+    \(\(\(ProcessXML[\ 
+          XMLElement["\<assertion\>", {___}, {cont___}]\ ]\  := \ \ \
+\[IndentingNewLine]Cell[\ 
+          TextData[\ \ Flatten[
+              ProcessXML\  /@ \ {cont}]], \ "\<Theorem\>"\ ];\)\(\
+\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\(\(ProcessXML[
+          XMLElement["\<with\>", {"\<style\>" \[Rule] "\<emph\>"}, {cont__}]]\
+\  := \ \[IndentingNewLine]StyleBox[cont, 
+          FontWeight -> "\<Bold\>"];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<code\>", {___}, {cont_}]\ ]\  := \ \ ProcessXML[
+          cont];\)\), "\n", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<data\>", {"\<format\>" -> "\<mathematica\>"}, \
+{cont_}]\ ]\  := \ \ ProcessXML[cont];\)\), "\[IndentingNewLine]", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<data\>", {"\<format\>" -> "\<image/gif\>", "\<href\>" \
+\[Rule] gf_String}, {}]\ ]\  := \ \ \((\ Print["\<****  \>", \ gf]; \ 
+          Cell["\<Show[Import[\"\>" <> 
+              gf <> "\<\"]];\>", "\<InputExec\>"]\ )\);\)\), "\
+\[IndentingNewLine]", 
+    \(\(ProcessXML[\ \(XMLObject["\<CDATASection\>"]\)[
+            cont__]]\  := \ \[IndentingNewLine]\((\[IndentingNewLine]Print[
+            cont]; \[IndentingNewLine]Cell[
+            BoxData[ToExpression[
+                cont]], "\<Input\>"]\n)\);\)\), "\[IndentingNewLine]", 
+    \(\(\(ProcessXML[\ 
+        XMLElement["\<private\>", {___}, {cont___}]\ ]\  := \ \ Flatten[
+        ProcessXML\  /@ \ {cont}]\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Missing parts", "Subsubsection"],
+
+Cell[BoxData[{
+    \(\(\(ProcessXML[\ 
+          XMLElement["\<catalogue\>" | "\<symbol\>", {___}, {cont___}]\ ]\  \
+:= \ \ {};\)\(\n\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(ProcessXML[\ 
+          XMLElement["\<OMOBJ\>", {___}, {cont___}]\ ]\  := \ \ Cell[
+          TextData[
+            StyleBox["\< -math- \>", 
+              FontColor \[Rule] 
+                RGBColor[1, 0, 0]]], "\<Text\>"];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(ProcessXML[\ 
+          XMLElement["\<omlet\>", {___}, {cont___}]\ ]\  := \ \ Cell[
+          TextData[
+            StyleBox["\< -omlet- \>", 
+              FontColor \[Rule] 
+                RGBColor[0, 1, 1]]], "\<Text\>"];\)\)}], "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Testing", "Section"],
+
+Cell[BoxData[
+    \(\(\(ImageImport[file_String] := 
+      Module[{nb = NotebookCreate[]}, 
+        NotebookWrite[nb, 
+          Cell[BoxData[{RowBox[{RowBox[{"\<Show\>", "\<[\>", 
+                        RowBox[{"\<Import\>", "\<[\>", "\<\"\>" <> 
+                              file <> "\<\"\>", "\<]\>"}], "\<]\>"}], \
+"\<;\>"}], "\<
+            \>", 
+                RowBox[{RowBox[{"\<SelectionMove\>", "\<[\>", 
+                        RowBox[{RowBox[{"\<EvaluationNotebook\>", "\<[\>", \
+"\<]\>"}], "\<,\>", "\<Previous\>", "\<,\>", "\<Cell\>"}], "\<]\>"}], \
+"\<;\>"}], "\<
+            \>", 
+                RowBox[{RowBox[{"\<SelectionMove\>", "\<[\>", 
+                        RowBox[{RowBox[{"\<EvaluationNotebook\>", "\<[\>", \
+"\<]\>"}], "\<,\>", "\<Previous\>", "\<,\>", "\<Cell\>"}], "\<]\>"}], \
+"\<;\>"}], "\<
+            \>", 
+                RowBox[{RowBox[{"\<NotebookDelete\>", "\<[\>", 
+                        RowBox[{"\<EvaluationNotebook\>", "\<[\>", "\<]\>"}], \
+"\<]\>"}], "\<;\>"}]}], "\<Input\>"], 
+          All]; \[IndentingNewLine]SelectionEvaluate[nb, 
+          All]; \[IndentingNewLine]NotebookSave[
+          nb]; \[IndentingNewLine]nb\[IndentingNewLine]]\)\(\n\)
+    \)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["top", "Subsubsection"],
+
+Cell[BoxData[
+    \(SetDirectory["\<~/projects/Conversion/Mta2OMdoc\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(\(src\  = \ 
+        Import["\<top.omdoc\>", "\<XML\>", \
+\[IndentingNewLine]ConversionOptions \[Rule] {"\<AllowRemoteDTDAccess\>" -> 
+                True, "\<IncludeNamespaces\>" \[Rule] 
+                False, "\<PreserveCDATASections\>" \[Rule] 
+                True}];\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(nb\  = \ ProcessXML[\ src[\([2]\)]\ ];\)\)], "Input"],
+
+Cell[BoxData[
+    \(NotebookSave[\ nb, \ "\<toptop.nb\>"\ ]\)], "Input"],
+
+Cell[BoxData[
+    \(NotebookClose["\<toptop.nb\>"\ ]\)], "Input"],
+
+Cell[BoxData[
+    \(SetDirectory["\<~/projects/MtaXML/Conversion42\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(nbb\  = \ 
+      NotebookOpen["\</home/sutner/projects/MtaXML/Conversion42/toptop.nb\>"]\
+\)], "Input"],
+
+Cell[BoxData[{
+    \(SelectionMove[\ nbb, Before, \ Notebook\ ]\), "\n", 
+    \(While[\ True, \ \[IndentingNewLine]\t
+      If[\ \ $Failed\  === \ 
+          NotebookFind[\ nbb, "\<InputExec\>", \ Next, \ 
+            CellStyle\ ], \[IndentingNewLine]\t\tBreak[]\ ]; \
+\[IndentingNewLine]\t
+      SelectionEvaluate[nbb, None];\[IndentingNewLine]]\)}], "Input"],
+
+Cell[BoxData[{
+    \(\(SelectionMove[\ nbb, Before, \ 
+        Notebook\ ];\)\), "\[IndentingNewLine]", 
+    \(While[\ True, \ \[IndentingNewLine]\t
+      If[\ \ $Failed\  === \ 
+          NotebookFind[\ nbb, "\<InputExec\>", \ Next, \ 
+            CellStyle\ ], \[IndentingNewLine]\t\tReturn[]\ ]; \
+\[IndentingNewLine]\tNotebookDelete[nbb];\[IndentingNewLine]]\)}], "Input"],
+
+Cell[BoxData[{
+    \(NotebookFind[\ nbb, "\<InputExec\>", \ Next, \ 
+      CellStyle\ ]\), "\[IndentingNewLine]", 
+    \(\(SelectionEvaluate[nbb, None];\)\)}], "Input"],
+
+Cell[BoxData[
+    \(SelectionMove[\ nbb, Before, \ Notebook\ ]\)], "Input"],
+
+Cell[BoxData[{
+    \(NotebookFind[\ nbb, "\<InputExec\>", \ Next, \ 
+      CellStyle\ ]\), "\[IndentingNewLine]", 
+    \(\(NotebookDelete[nbb];\)\), "\[IndentingNewLine]", 
+    \(\)}], "Input"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\n\)\(\t\)\(\(SelectionEvaluate[nbb, 
+        None];\)\[IndentingNewLine]
+    \t\(Pause[1];\)\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\t\)\(\(SelectionMove[\ nbb, Previous, Cell];\)\n
+    \t\(Pause[1];\)\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\t\)\(\(SelectionMove[\ nbb, Previous, Cell];\)\n
+    \t\(Pause[1];\)\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\t\)\(NotebookDelete[nbb];\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\n\)\(\t\)\(\(SelectionEvaluate[nbb, 
+        None];\)\[IndentingNewLine]
+    \t\(Pause[3];\)\n
+    \t\(SelectionMove[\ nbb, Previous, Cell];\)\n
+    \t\(Pause[1];\)\n
+    \t\(SelectionMove[\ nbb, Previous, Cell];\)\n
+    \t\(Pause[1];\)\n
+    \t\(NotebookDelete[nbb];\)\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(While[\ \ True, \ \[IndentingNewLine]\t
+      If[\ $Failed\  === \ 
+          NotebookFind[\ nbb, "\<InputExec\>", \ Next, \ 
+            CellStyle\ ], \[IndentingNewLine]\t\tReturn[]\ ]; \ \n\t
+      SelectionEvaluate[nbb, None]\n\tSelectionMove[\ nbb, Previous, Cell]\n\t
+        SelectionMove[\ nbb, Previous, Cell]\n\t
+        NotebookDelete[nbb]\[IndentingNewLine]]\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["compexer", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(src\  = \ 
+        Import["\<compexer.omdoc\>", "\<XML\>", \
+\[IndentingNewLine]ConversionOptions \[Rule] {"\<AllowRemoteDTDAccess\>" -> 
+                True, "\<IncludeNamespaces\>" \[Rule] 
+                False, "\<PreserveCDATASections\>" \[Rule] 
+                True}];\)\)], "Input"],
+
+Cell[BoxData[
+    \(ByteCount[src]\)], "Input"],
+
+Cell[BoxData[
+    \(ByteCount[src[\([2]\)]]\)], "Input"],
+
+Cell[BoxData[
+    \(src[\([1]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(\(nb\  = \ ProcessXML[\ src[\([2]\)]\ ];\)\)], "Input"],
+
+Cell[BoxData[
+    \(NotebookSave[\ nb, \ "\<compexer.nb\>"\ ]\)], "Input"],
+
+Cell[BoxData[
+    \(NotebookOpen["\</home/sutner/projects/MtaXML/Conversion42/compexer.nb\>\
+"]\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Lecture2", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(src\  = \ 
+        Import["\<Lecture2.omdoc\>", "\<XML\>", \
+\[IndentingNewLine]ConversionOptions \[Rule] {"\<AllowRemoteDTDAccess\>" \
+\[Rule] True, "\<IncludeNamespaces\>" \[Rule] 
+                False, "\<PreserveCDATASections\>" \[Rule] 
+                True, "\<ValidateAgainstDTD\>" \[Rule] False}];\)\)], "Input"],
+
+Cell[BoxData[
+    \(ByteCount[src]\)], "Input"],
+
+Cell[BoxData[
+    \(ByteCount[src[\([2]\)]]\)], "Input"],
+
+Cell[BoxData[
+    \(src[\([1]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(\(nb\  = \ ProcessXML[\ src[\([2]\)]\ ];\)\)], "Input"],
+
+Cell[BoxData[
+    \(NotebookSave[\ nb, \ "\<Lecture2.nb\>"\ ]\)], "Input"],
+
+Cell[BoxData[
+    \(NotebookOpen["\</home/sutner/projects/MtaXML/Conversion42/Lecture2.nb\>\
+"]\)], "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1280}, {0, 1024}},
+WindowSize->{1100, 989},
+WindowMargins->{{4, Automatic}, {Automatic, 2}},
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 47, 1, 175, "Title"],
+Cell[1826, 56, 180, 3, 85, "Input"],
+
+Cell[CellGroupData[{
+Cell[2031, 63, 34, 0, 87, "Section"],
+Cell[2068, 65, 523, 8, 177, "Input"],
+Cell[2594, 75, 4014, 87, 1258, "Input"],
+
+Cell[CellGroupData[{
+Cell[6633, 166, 38, 0, 60, "Subsubsection"],
+Cell[6674, 168, 713, 17, 177, "Input"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[7436, 191, 26, 0, 87, "Section"],
+Cell[7465, 193, 1218, 25, 591, "Input"],
+
+Cell[CellGroupData[{
+Cell[8708, 222, 28, 0, 60, "Subsubsection"],
+Cell[8739, 224, 84, 1, 39, "Input"],
+Cell[8826, 227, 308, 6, 85, "Input"],
+Cell[9137, 235, 75, 1, 39, "Input"],
+Cell[9215, 238, 72, 1, 39, "Input"],
+Cell[9290, 241, 65, 1, 39, "Input"],
+Cell[9358, 244, 83, 1, 39, "Input"],
+Cell[9444, 247, 123, 3, 39, "Input"],
+Cell[9570, 252, 360, 7, 154, "Input"],
+Cell[9933, 261, 376, 7, 154, "Input"],
+Cell[10312, 270, 168, 3, 62, "Input"],
+Cell[10483, 275, 75, 1, 39, "Input"],
+Cell[10561, 278, 193, 4, 85, "Input"],
+Cell[10757, 284, 140, 3, 85, "Input"],
+Cell[10900, 289, 110, 2, 62, "Input"],
+Cell[11013, 293, 110, 2, 62, "Input"],
+Cell[11126, 297, 67, 1, 39, "Input"],
+Cell[11196, 300, 317, 8, 200, "Input"],
+Cell[11516, 310, 403, 7, 200, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[11956, 322, 33, 0, 60, "Subsubsection"],
+Cell[11992, 324, 313, 6, 85, "Input"],
+Cell[12308, 332, 47, 1, 39, "Input"],
+Cell[12358, 335, 56, 1, 39, "Input"],
+Cell[12417, 338, 45, 1, 39, "Input"],
+Cell[12465, 341, 75, 1, 39, "Input"],
+Cell[12543, 344, 74, 1, 39, "Input"],
+Cell[12620, 347, 108, 2, 39, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[12765, 354, 33, 0, 37, "Subsubsection"],
+Cell[12801, 356, 343, 6, 85, "Input"],
+Cell[13147, 364, 47, 1, 39, "Input"],
+Cell[13197, 367, 56, 1, 39, "Input"],
+Cell[13256, 370, 45, 1, 39, "Input"],
+Cell[13304, 373, 75, 1, 39, "Input"],
+Cell[13382, 376, 74, 1, 39, "Input"],
+Cell[13459, 379, 108, 2, 39, "Input"]
+}, Closed]]
+}, Closed]]
+}, Closed]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

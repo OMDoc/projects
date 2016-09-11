@@ -1,0 +1,30 @@
+<!-- Multiple integral example -->
+<OMOBJ version="3.0">
+  <OMBIND>
+    <OMA><OMS cd="newint" name="int"/><OMV name="S1"/><OMV name="S2"/><OMV name="S3"/></OMA>
+    <OMBVAR><OMV name="x1"/><OMV name="x2"/><OMV name="x3"/></OMBVAR>
+    <OMC>
+      <OMA>
+	<OMS cd="logic1" name="and"/>
+	<OMA><OMS cd="relation1" name="gt"/><OMV name="x1"/><OMI>1</OMI></OMA>
+	<OMA><OMS cd="relation1" name="gt"/><OMV name="x2"/><OMI>1</OMI></OMA>
+	<OMA><OMS cd="relation1" name="gt"/><OMV name="x3"/><OMI>1</OMI></OMA>
+      </OMA>
+    </OMC>
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMV name="x1"/>
+      <OMA><OMS cd="arith1" name="times"/>
+	<OMI>2</OMI>
+	<OMA><OMS cd="arith1" name="power"/><OMV name="x2"/><OMI>2</OMI></OMA>
+      </OMA>
+      <OMA><OMS cd="arith1" name="times"/>
+	<OMI>3</OMI>
+	<OMA><OMS cd="arith1" name="power"/><OMV name="x3"/><OMI>3</OMI></OMA>
+      </OMA>
+    </OMA>
+  </OMBIND>
+</OMOBJ>
+
+
+

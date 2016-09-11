@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="vegetative_cover.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-03-18T19:35:53Z </dc:date>
+  <dc:title xml:lang="en"> vegetative_cover </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-03-18T19:35:53Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="vegetative_cover">
+  <imports from="maps.omdoc#maps"/>
+
+  <symbol name="cultivated_cropland">
+    <metadata>
+      <dc:description>
+	*Land that has been plowed or otherwise cultivated for crop production.
+	Delineation: The limit of CULTIVATED CROPLAND is the extent of the area under production. When CULTIVATED
+	CROPLAND is a planting of trees, the edge is defined as the center line of the bounding row. When
+	CULTIVATED CROPLAND is a planting of cranberries, the edge is defined by the outermost ditch or
+	embankment surrounding the planting.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="shrubland">
+    <metadata>
+      <dc:description>
+	Area covered with plants that have persistent woody stems and a relatively low growth habit, and
+	that generally produce several basal shoots instead of a single shoot.
+      Delineation: The limit of SHRUBLAND is the extent of the area covered with the low growing shrubs.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="tree">
+    <metadata>
+      <dc:description>
+	A woody perennial plant having a self supporting main stem or trunk and a definite crown.
+      Delineation: The limit of TREE is the extent of the crown.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="trees">
+    <metadata>
+      <dc:description>
+	*An extensive area of land covered with woody perennial plants having a self-supporting main stem or
+	trunk, a definite crown and usually reaching a mature height of more than 6 feet.
+      Delineation: The limit of TREES is the extent of the treed area. The limit is the center of the outermost trees, not the edge of
+	their crowns.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+</theory>
+
+</omdoc>

@@ -1,0 +1,59 @@
+\documentclass[pdftex,a4paper]{article}
+
+\title{Phonebook example: Relations}
+\author{S{\"o}nke Holsten\\[1ex]
+\begin{minipage}{.5\textwidth}
+  \centering
+  Jacobs University Bremen \\
+  D-28759, Bremen, Germany\\
+  s.holsten@jacobs-university.de
+\end{minipage}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\maketitle{}
+
+\begin{tabular}{|l|l|l|}
+\hline
+ElementID 1 & ElementID 2 & Relation \\
+\hline
+Phonebook-Requirements & uml-phonebook & satisfiedBy \\ \hline
+func1-req & uml-phonebook-op1 & satisfiedBy \\ \hline
+func2-req & uml-phonebook-op2 & satisfiedBy \\ \hline
+func3-req & uml-phonebook-op3 & satisfiedBy \\ \hline
+func1-name & uml-phonebook-op1 & nameEquality \\ \hline
+func2-name & uml-phonebook-op2 & nameEquality \\ \hline
+func3-name & uml-phonebook-op3 & nameEquality \\ \hline
+nfunc1-req-text & nfunc1-req-om & formalizes \\ \hline
+nfunc1-req-om & uml-phonebook & isInvariantOn \\ \hline
+nfunc1-req-om & uml-phonebook-op1 & isPostconditionOf \\ \hline
+nfunc1-req-om-e1 & uml-phonebook-entry & isOfType \\ \hline
+nfunc1-req-om-e2 & uml-phonebook-entry & isOfType \\ \hline
+nfunc1-req-om-PB & uml-phonebook & isOfType \\ \hline
+nfunc1-req-om-e1.phone & uml-phonebook-entry-number & typeEquality \\ \hline
+nfunc1-req-om-e2.phone & uml-phonebook-entry-number & typeEquality \\ \hline
+nfunc1-req-om-e1.phone & uml-dt-int & isOfType \\ \hline
+nfunc1-req-om-e2.phone & uml-dt-int & isOfType \\ \hline
+pgml-phonebook & uml-phonebook & visualizes \\ \hline
+\end{tabular}
+
+\begin{itemize}
+\item The \textit{satisfiedBy}-relation holds between a functional requirement and the
+    function(s) that provide this functionality.
+\item The \textit{nameEquality}-relation holds between elements that are named the same.
+\item The \textit{formalizes}-relation holds between two elements that represent the same at
+    different levels of formalization.
+\item The \textit{isInvariantOn}-relation holds between a openmath formula and a uml class
+    element, where the formula is an invariant on the uml class
+\item The \textit{isPostconditionOf}-relation holds between a openmath formula and a uml
+    operation element, where the formula is a postcondition of the uml operation
+\item The \textit{isOfType}-relation holds between an element and another element that defines
+    the type of the first element, i.e. a uml class element or a uml datatype element
+\item The \textit{typeEquality}-relation holds between two elements that have the same type.
+\item The \textit{visualizes}-relation holds between a uml element and a pgml element that
+    visualizes an aspect of the uml element
+\end{itemize}
+
+\end{document}

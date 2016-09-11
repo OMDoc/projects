@@ -1,0 +1,12 @@
+
+End[]
+
+NB2OMDoc::args = "Wrong argument(s), try NB2OMDoc[nb,dir,opts]";
+NB2OMDoc[__] := $Failed /; Message[NB2OMDoc::args];
+PrintHeaderInfo::args = "Wrong argument(s), try PrintHeaderInfo[]";
+PrintHeaderInfo[__] := $Failed /; Message[PrintHeaderInfo::args];
+
+Protect[NB2OMDoc,PrintHeaderInfo];
+
+EndPackage[]
+

@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   RelaxNG Schema for the Precision Graphics
+  
+  Markup Language, PGML.
+  
+  version = 1.0 status = draft date = 23.March.1998
+  
+  syntax = XML author = jnava@adobe.com
+-->
+<!-- =============================================================== -->
+<!--
+  Begin Graphics State attributes
+  
+  The gs_ prefix is added to stand for Graphics State, whose
+  
+  scoping rules are as follows:
+  
+  When the PGML interpreter encounters a new pgml, group,
+  
+  path, text, textspan or predefined graphic element,
+  
+  the Graphics State is "saved." Any changes in the Graphics State
+  
+  that occur during processing these elements apply only to the
+  
+  graphics defined within the element. When the PGML interpreter
+  
+  encounters the end of the element the Graphics State is "restored"
+  
+  to its prior condition.
+  
+-->
+<!--
+  
+  The value of the concat attribute is a sequence of 6 numbers
+  
+  separated by spaces which represents an arbitrary 2x3 matrix
+  
+  in the form of six values: a b c d e f. The given matrix is
+  
+  concatenated with the current transformation matrix to produce
+  
+  a new transformation matrix.
+  
+-->
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="gs_general_attributes">
+    <optional>
+      <attribute name="concat"/>
+    </optional>
+    <optional>
+      <attribute name="clippath"/>
+    </optional>
+  </define>
+  <define name="gs_fillstroke_attributes">
+    <optional>
+      <attribute name="fill" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="fillrule" a:defaultValue="nonzero">
+        <choice>
+          <value>nonzero</value>
+          <value>evenodd</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="fillcolor" a:defaultValue="black"/>
+    </optional>
+    <optional>
+      <attribute name="fillcolorspace" a:defaultValue="sRGB"/>
+    </optional>
+    <optional>
+      <attribute name="fillpaintserver" a:defaultValue="color"/>
+    </optional>
+    <optional>
+      <attribute name="fillparams"/>
+    </optional>
+    <optional>
+      <attribute name="fillname"/>
+    </optional>
+    <optional>
+      <attribute name="stroke" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="strokecolor" a:defaultValue="black"/>
+    </optional>
+    <optional>
+      <attribute name="strokecolorspace" a:defaultValue="sRGB"/>
+    </optional>
+    <optional>
+      <attribute name="strokepaintserver" a:defaultValue="color"/>
+    </optional>
+    <optional>
+      <attribute name="strokeparams"/>
+    </optional>
+    <optional>
+      <attribute name="strokename"/>
+    </optional>
+    <optional>
+      <attribute name="opacity" a:defaultValue="1"/>
+    </optional>
+    <optional>
+      <attribute name="antialias" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="gs_stroking_attributes">
+    <optional>
+      <attribute name="linecap" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+          <value>2</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="linejoin" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+          <value>2</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="miterlimit" a:defaultValue="10"/>
+    </optional>
+    <optional>
+      <attribute name="dasharray" a:defaultValue="solid"/>
+    </optional>
+    <optional>
+      <attribute name="dashoffset" a:defaultValue="0"/>
+    </optional>
+    <optional>
+      <attribute name="linewidth" a:defaultValue="1"/>
+    </optional>
+  </define>
+  <define name="gs_font_attribute">
+    <optional>
+      <attribute name="font"/>
+    </optional>
+  </define>
+  <define name="gs_text_attributes">
+    <ref name="gs_font_attribute"/>
+    <optional>
+      <attribute name="textsize"/>
+    </optional>
+    <optional>
+      <attribute name="charspacing" a:defaultValue="0"/>
+    </optional>
+    <optional>
+      <attribute name="wordspacing" a:defaultValue="0"/>
+    </optional>
+    <optional>
+      <attribute name="textrise" a:defaultValue="0"/>
+    </optional>
+  </define>
+  <define name="gs_all_attributes">
+    <ref name="gs_general_attributes"/>
+    <ref name="gs_fillstroke_attributes"/>
+    <ref name="gs_stroking_attributes"/>
+    <ref name="gs_text_attributes"/>
+  </define>
+  <!--
+    
+    End of Graphics State attributes
+    
+  -->
+  <!-- =============================================================== -->
+  <define name="event_handler_attributes">
+    <optional>
+      <attribute name="onmousedown"/>
+    </optional>
+    <optional>
+      <attribute name="onmouseup"/>
+    </optional>
+    <optional>
+      <attribute name="onclick"/>
+    </optional>
+    <optional>
+      <attribute name="ondblclick"/>
+    </optional>
+    <optional>
+      <attribute name="onmouseover"/>
+    </optional>
+    <optional>
+      <attribute name="onmousemove"/>
+    </optional>
+    <optional>
+      <attribute name="onmouseout"/>
+    </optional>
+    <optional>
+      <attribute name="onkeydown"/>
+    </optional>
+    <optional>
+      <attribute name="onkeypress"/>
+    </optional>
+    <optional>
+      <attribute name="onkeyup"/>
+    </optional>
+    <optional>
+      <attribute name="onload"/>
+    </optional>
+    <optional>
+      <attribute name="onunload"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <define name="base_content_model">
+    <zeroOrMore>
+      <choice>
+        <ref name="pgml"/>
+        <ref name="group"/>
+        <ref name="path"/>
+        <ref name="img"/>
+        <ref name="text"/>
+        <ref name="rectangle"/>
+        <ref name="circle"/>
+        <ref name="ellipse"/>
+        <ref name="piewedge"/>
+        <ref name="script"/>
+        <ref name="private"/>
+        <ref name="drawobject"/>
+        <ref name="animation"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="base_content_attributes">
+    <ref name="gs_all_attributes"/>
+    <optional>
+      <attribute name="name">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="description"/>
+    </optional>
+    <optional>
+      <attribute name="visibility" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="xml:link" a:defaultValue="simple">
+        <value type="string" datatypeLibrary="">simple</value>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="href"/>
+    </optional>
+    <optional>
+      <attribute name="refx"/>
+    </optional>
+    <optional>
+      <attribute name="refy"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    boundingbox takes values for x, y, width and height separated
+    
+    by a space.
+    
+  -->
+  <define name="gs_bounding_box_attribute">
+    <optional>
+      <attribute name="boundingbox"/>
+    </optional>
+  </define>
+  <!--
+    
+    The base_content_model; pgml and head elements
+    
+  -->
+  <define name="pgml">
+    <element name="pgml">
+      <ref name="pgml_attlist"/>
+      <optional>
+        <ref name="head"/>
+      </optional>
+      <ref name="base_content_model"/>
+    </element>
+  </define>
+  <define name="pgml_attlist" combine="interleave">
+    <ref name="base_content_attributes"/>
+    <ref name="gs_bounding_box_attribute"/>
+    <ref name="event_handler_attributes"/>
+    <optional>
+      <attribute name="preserveaspectratio" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="width"/>
+    </optional>
+    <optional>
+      <attribute name="height"/>
+    </optional>
+    <optional>
+      <attribute name="src"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    head element .
+    
+  -->
+  <define name="head">
+    <element name="head">
+      <ref name="head_attlist"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="extension"/>
+          <ref name="objectserver"/>
+          <ref name="paintserver"/>
+          <ref name="colorspaceserver"/>
+          <ref name="filterserver"/>
+          <ref name="script"/>
+          <ref name="private"/>
+          <ref name="graphic"/>
+          <ref name="lineargradient"/>
+          <ref name="animation"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="head_attlist" combine="interleave">
+    <empty/>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    group element
+    
+  -->
+  <define name="group">
+    <element name="group">
+      <ref name="group_attlist"/>
+      <ref name="base_content_model"/>
+    </element>
+  </define>
+  <define name="group_attlist" combine="interleave">
+    <ref name="base_content_attributes"/>
+    <ref name="event_handler_attributes"/>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    path element and it's sub-elements
+    
+  -->
+  <define name="path">
+    <element name="path">
+      <ref name="path_attlist"/>
+      <optional>
+        <ref name="private"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="moveto"/>
+          <ref name="lineto"/>
+          <ref name="curveto"/>
+          <ref name="arc"/>
+          <ref name="closepath"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="path_attlist" combine="interleave">
+    <ref name="base_content_attributes"/>
+    <ref name="event_handler_attributes"/>
+    <optional>
+      <attribute name="data"/>
+    </optional>
+  </define>
+  <define name="moveto">
+    <element name="moveto">
+      <ref name="moveto_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="moveto_attlist" combine="interleave">
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="dx"/>
+    </optional>
+    <optional>
+      <attribute name="dy"/>
+    </optional>
+  </define>
+  <define name="lineto">
+    <element name="lineto">
+      <ref name="lineto_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="lineto_attlist" combine="interleave">
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="dx"/>
+    </optional>
+    <optional>
+      <attribute name="dy"/>
+    </optional>
+  </define>
+  <define name="curveto">
+    <element name="curveto">
+      <ref name="curveto_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="curveto_attlist" combine="interleave">
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="x1"/>
+    </optional>
+    <optional>
+      <attribute name="y1"/>
+    </optional>
+    <optional>
+      <attribute name="x2"/>
+    </optional>
+    <optional>
+      <attribute name="y2"/>
+    </optional>
+    <optional>
+      <attribute name="dx"/>
+    </optional>
+    <optional>
+      <attribute name="dy"/>
+    </optional>
+    <optional>
+      <attribute name="dx1"/>
+    </optional>
+    <optional>
+      <attribute name="dy1"/>
+    </optional>
+    <optional>
+      <attribute name="dx2"/>
+    </optional>
+    <optional>
+      <attribute name="dy2"/>
+    </optional>
+  </define>
+  <define name="arc">
+    <element name="arc">
+      <ref name="arc_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="arc_attlist" combine="interleave">
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="dx"/>
+    </optional>
+    <optional>
+      <attribute name="dy"/>
+    </optional>
+    <optional>
+      <attribute name="r"/>
+    </optional>
+    <optional>
+      <attribute name="ang1"/>
+    </optional>
+    <optional>
+      <attribute name="ang2"/>
+    </optional>
+    <optional>
+      <attribute name="clockwise" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="closepath">
+    <element name="closepath">
+      <ref name="closepath_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="closepath_attlist" combine="interleave">
+    <empty/>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    predefined graphic elements
+    
+  -->
+  <define name="rectangle">
+    <element name="rectangle">
+      <ref name="rectangle_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="rectangle_attlist" combine="interleave">
+    <ref name="base_content_attributes"/>
+    <ref name="event_handler_attributes"/>
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="width"/>
+    </optional>
+    <optional>
+      <attribute name="height"/>
+    </optional>
+    <optional>
+      <attribute name="rounding"/>
+    </optional>
+  </define>
+  <define name="circle">
+    <element name="circle">
+      <ref name="circle_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="circle_attlist" combine="interleave">
+    <ref name="base_content_attributes"/>
+    <ref name="event_handler_attributes"/>
+    <optional>
+      <attribute name="cx"/>
+    </optional>
+    <optional>
+      <attribute name="cy"/>
+    </optional>
+    <optional>
+      <attribute name="r"/>
+    </optional>
+  </define>
+  <define name="ellipse">
+    <element name="ellipse">
+      <ref name="ellipse_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="ellipse_attlist" combine="interleave">
+    <ref name="base_content_attributes"/>
+    <ref name="event_handler_attributes"/>
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="rx"/>
+    </optional>
+    <optional>
+      <attribute name="ry"/>
+    </optional>
+  </define>
+  <define name="piewedge">
+    <element name="piewedge">
+      <ref name="piewedge_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="piewedge_attlist" combine="interleave">
+    <ref name="base_content_attributes"/>
+    <ref name="event_handler_attributes"/>
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="r"/>
+    </optional>
+    <optional>
+      <attribute name="ang1"/>
+    </optional>
+    <optional>
+      <attribute name="ang2"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    img element
+    
+    Below, the ATTLIST only shows x, y, width, height and src,
+    
+    but the actual ATTLIST would have (nearly) everything
+    
+    that HTML's <img> element has.
+    
+  -->
+  <define name="img">
+    <element name="img">
+      <ref name="img_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="img_attlist" combine="interleave">
+    <ref name="event_handler_attributes"/>
+    <ref name="gs_general_attributes"/>
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="width"/>
+    </optional>
+    <optional>
+      <attribute name="height"/>
+    </optional>
+    <optional>
+      <attribute name="src"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    text and textspan elements
+    
+  -->
+  <!-- =============================================================== -->
+  <!--
+    
+    drawobject element
+    
+  -->
+  <define name="drawobject">
+    <element name="drawobject">
+      <ref name="drawobject_attlist"/>
+      <optional>
+        <ref name="private"/>
+      </optional>
+    </element>
+  </define>
+  <define name="drawobject_attlist" combine="interleave">
+    <optional>
+      <attribute name="objectserver"/>
+    </optional>
+    <optional>
+      <attribute name="params"/>
+    </optional>
+    <optional>
+      <attribute name="objectref">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="x"/>
+    </optional>
+    <optional>
+      <attribute name="y"/>
+    </optional>
+    <optional>
+      <attribute name="width"/>
+    </optional>
+    <optional>
+      <attribute name="height"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    script element
+    
+    Below, the ATTLIST is specified as EMPTY, but the actual
+    
+    ATTLIST would match what HTML's <script> element has.
+    
+  -->
+  <define name="script">
+    <element name="script">
+      <ref name="script_attlist"/>
+      <text/>
+    </element>
+  </define>
+  <define name="script_attlist" combine="interleave">
+    <empty/>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    private element
+    
+    For application-specific private data.
+    
+  -->
+  <define name="private">
+    <element name="private">
+      <ref name="private_attlist"/>
+      <text/>
+    </element>
+  </define>
+  <define name="private_attlist" combine="interleave">
+    <empty/>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    animation element
+    
+  -->
+  <define name="animation">
+    <element name="animation">
+      <ref name="animation_attlist"/>
+      <optional>
+        <ref name="private"/>
+      </optional>
+    </element>
+  </define>
+  <define name="animation_attlist" combine="interleave">
+    <optional>
+      <attribute name="target"/>
+    </optional>
+    <optional>
+      <attribute name="starttime"/>
+    </optional>
+    <optional>
+      <attribute name="duration"/>
+    </optional>
+    <optional>
+      <attribute name="repetitions"/>
+    </optional>
+    <optional>
+      <attribute name="motion"/>
+    </optional>
+    <optional>
+      <attribute name="motionspeed"/>
+    </optional>
+    <optional>
+      <attribute name="autorotate"/>
+    </optional>
+    <optional>
+      <attribute name="scale"/>
+    </optional>
+    <optional>
+      <attribute name="scalespeed"/>
+    </optional>
+    <optional>
+      <attribute name="rotate"/>
+    </optional>
+    <optional>
+      <attribute name="rotatespeed"/>
+    </optional>
+    <optional>
+      <attribute name="xtranslate"/>
+    </optional>
+    <optional>
+      <attribute name="xtranslatespeed"/>
+    </optional>
+    <optional>
+      <attribute name="ytranslate"/>
+    </optional>
+    <optional>
+      <attribute name="ytranslatespeed"/>
+    </optional>
+    <optional>
+      <attribute name="xshear"/>
+    </optional>
+    <optional>
+      <attribute name="xshearspeed"/>
+    </optional>
+    <optional>
+      <attribute name="yshear"/>
+    </optional>
+    <optional>
+      <attribute name="yshearspeed"/>
+    </optional>
+    <optional>
+      <attribute name="opacity"/>
+    </optional>
+    <optional>
+      <attribute name="opacityspeed"/>
+    </optional>
+    <optional>
+      <attribute name="red"/>
+    </optional>
+    <optional>
+      <attribute name="redspeed"/>
+    </optional>
+    <optional>
+      <attribute name="green"/>
+    </optional>
+    <optional>
+      <attribute name="greenspeed"/>
+    </optional>
+    <optional>
+      <attribute name="blue"/>
+    </optional>
+    <optional>
+      <attribute name="bluespeed"/>
+    </optional>
+    <optional>
+      <attribute name="hue"/>
+    </optional>
+    <optional>
+      <attribute name="huespeed"/>
+    </optional>
+    <optional>
+      <attribute name="saturation"/>
+    </optional>
+    <optional>
+      <attribute name="saturationspeed"/>
+    </optional>
+    <optional>
+      <attribute name="brightness"/>
+    </optional>
+    <optional>
+      <attribute name="brightnessspeed"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    extension element
+    
+  -->
+  <define name="extension">
+    <element name="extension">
+      <ref name="extension_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="extension_attlist" combine="interleave">
+    <optional>
+      <attribute name="name">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="applet"/>
+    </optional>
+    <optional>
+      <attribute name="class"/>
+    </optional>
+    <optional>
+      <attribute name="proc"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    objectserver, paintserver, colorspaceserver and filterserver elements
+    
+  -->
+  <define name="objectserver">
+    <element name="objectserver">
+      <ref name="objectserver_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="objectserver_attlist" combine="interleave">
+    <optional>
+      <attribute name="name">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="extension">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="paintserver">
+    <element name="paintserver">
+      <ref name="paintserver_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="paintserver_attlist" combine="interleave">
+    <optional>
+      <attribute name="name">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="extension">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="colorspaceserver">
+    <element name="colorspaceserver">
+      <ref name="colorspaceserver_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="colorspaceserver_attlist" combine="interleave">
+    <optional>
+      <attribute name="name">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="extension">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="filterserver">
+    <element name="filterserver">
+      <ref name="filterserver_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="filterserver_attlist" combine="interleave">
+    <optional>
+      <attribute name="name">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="extension">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    graphic element
+    
+  -->
+  <define name="graphic">
+    <element name="graphic">
+      <ref name="graphic_attlist"/>
+      <ref name="base_content_model"/>
+    </element>
+  </define>
+  <define name="graphic_attlist" combine="interleave">
+    <optional>
+      <attribute name="fill" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="graphic_attlist" combine="interleave">
+    <ref name="gs_general_attributes"/>
+    <optional>
+      <attribute name="fillrule" a:defaultValue="nonzero">
+        <choice>
+          <value>nonzero</value>
+          <value>evenodd</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="fillcolor" a:defaultValue="black"/>
+    </optional>
+    <optional>
+      <attribute name="fillcolorspace" a:defaultValue="sRGB"/>
+    </optional>
+    <optional>
+      <attribute name="fillpaintserver" a:defaultValue="color"/>
+    </optional>
+    <optional>
+      <attribute name="fillparams"/>
+    </optional>
+    <optional>
+      <attribute name="fillname"/>
+    </optional>
+    <optional>
+      <attribute name="stroke" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="strokecolor" a:defaultValue="black"/>
+    </optional>
+    <optional>
+      <attribute name="strokecolorspace" a:defaultValue="sRGB"/>
+    </optional>
+    <optional>
+      <attribute name="strokepaintserver" a:defaultValue="color"/>
+    </optional>
+    <optional>
+      <attribute name="strokeparams"/>
+    </optional>
+    <optional>
+      <attribute name="strokename"/>
+    </optional>
+    <optional>
+      <attribute name="opacity" a:defaultValue="1"/>
+    </optional>
+    <optional>
+      <attribute name="antialias" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+    <ref name="gs_stroking_attributes"/>
+    <ref name="gs_text_attributes"/>
+    <optional>
+      <attribute name="name">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="description"/>
+    </optional>
+    <optional>
+      <attribute name="visibility" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="xml:link" a:defaultValue="simple">
+        <value type="string" datatypeLibrary="">simple</value>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="href"/>
+    </optional>
+    <optional>
+      <attribute name="refx"/>
+    </optional>
+    <optional>
+      <attribute name="refy"/>
+    </optional>
+    <optional>
+      <attribute name="painttype" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="boundingbox"/>
+    </optional>
+    <optional>
+      <attribute name="xstep"/>
+    </optional>
+    <optional>
+      <attribute name="ystep"/>
+    </optional>
+  </define>
+  <!-- =============================================================== -->
+  <!--
+    
+    lineargradient element and it's sub-elements
+    
+  -->
+  <define name="lineargradient">
+    <element name="lineargradient">
+      <ref name="lineargradient_attlist"/>
+      <zeroOrMore>
+        <ref name="gradientstop"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="lineargradient_attlist" combine="interleave">
+    <optional>
+      <attribute name="name">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="gradientstop">
+    <element name="gradientstop">
+      <ref name="gradientstop_attlist"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="gradientstop_attlist" combine="interleave">
+    <optional>
+      <attribute name="offset"/>
+    </optional>
+    <optional>
+      <attribute name="midoffset"/>
+    </optional>
+    <optional>
+      <attribute name="color"/>
+    </optional>
+  </define>
+  <define name="text" combine="choice">
+    <notAllowed/>
+  </define>
+  <start>
+    <choice>
+      <ref name="objectserver"/>
+      <ref name="private"/>
+      <ref name="piewedge"/>
+      <ref name="circle"/>
+      <ref name="head"/>
+      <ref name="paintserver"/>
+      <ref name="lineargradient"/>
+      <ref name="arc"/>
+      <ref name="group"/>
+      <ref name="curveto"/>
+      <ref name="lineto"/>
+      <ref name="extension"/>
+      <ref name="moveto"/>
+      <ref name="drawobject"/>
+      <ref name="pgml"/>
+      <ref name="gradientstop"/>
+      <ref name="graphic"/>
+      <ref name="path"/>
+      <ref name="colorspaceserver"/>
+      <ref name="animation"/>
+      <ref name="filterserver"/>
+      <ref name="script"/>
+      <ref name="ellipse"/>
+      <ref name="closepath"/>
+      <ref name="rectangle"/>
+      <ref name="img"/>
+    </choice>
+  </start>
+</grammar>
+<!-- =============================================================== -->
+<!--
+  
+  End of RNG for PGML
+  
+-->

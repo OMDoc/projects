@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="tps.gwff.CS-DUC-RELNS" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="omdoc-default.css"/>
+    <title>tps.gwff.CS-DUC-RELNS</title>
+  </head>
+  <body>
+    <div class="dc-titleblock">
+      <div class="dc-title">tps.gwff.CS-DUC-RELNS</div>
+      <div class="dc-authors">The TPS Project, cebrown</div>
+      <div class="dc-date">2009-06-01</div>
+    </div>
+    <div class="theory" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <div class="imports">imports from: 
+        <a href="tps.abbr.CLOS-SYS2.xhtml#tps.abbr.CLOS-SYS2">tps.abbr.CLOS-SYS2</a>, 
+        <a href="tps.abbr.S-DUC.xhtml#tps.abbr.S-DUC">tps.abbr.S-DUC</a>
+      </div>
+      <div class="omdoc-theorem" id="gwff.CS-DUC-RELNS" role="Assertion" about="#gwff.CS-DUC-RELNS" xml:id="gwff.CS-DUC-RELNS">
+        <a class="omdoc" rel="oso:homeTheory" href="#tps.gwff.CS-DUC-RELNS"/>
+        <span class="omdoc-titleword">Theorem</span>
+        <p> Given a pairing algebra B (with zero element 0(B) and pairing operation P(BBB)), we can define a notion of join and a notion of inclusion. A subset of the pairing algebra is a DUC-set (downward union closed) if it is downward closed with respect to inclusion, and closed with respect to joins. A relation R between any set C and the pairing algebra is DUC-valued if for any c in C, {y | R(c,y)} is a DUC-set. The theorem CS-DUC-RELNS states that the DUC-valued relations form a closure system, i.e., an arbitrary intersection of DUC-valued relations is a DUC-valued relation. CS-DUC-RELNS: CLOS-SYS2(O(O(OBC))).LAMBDA R(OBC) FORALL c(C) S-DUC(O(OB)(BBB)B) 0(B) P(BBB).R c To prove the theorem, the definitions of join and inclusion are irrelevant (they do not need to be instantiated). Even without instantiating these definitions, the search space is quite large, as many literals have flexible heads, allowing them to unify with any other literal. TPS finds a proof after about 6 hrs. CLOS-SYS2(O(O(OBC))).LAMBDA R(OBC) FORALL c(C) S-DUC(O(OB)(BBB)B) 0(B) P(BBB).R c</p>
+        <span class="omdoc-FMP">
+          <span id="MCRd20e33" class="displaymath">
+            <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://omdoc.org/ns">
+              <m:mrow>
+                <m:mo>∀</m:mo>
+                <m:mi>B</m:mi>
+                <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">,</m:mo>
+                <m:mi>C</m:mi>
+                <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                <m:mrow>
+                  <m:mo>CLOS-SYS2</m:mo>
+                  <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                  <m:mrow>λ
+                    <m:msub>
+                      <m:mi>R</m:mi>
+                      <m:mrow>
+                        <m:mi>C</m:mi>
+                        <m:mo>→</m:mo>
+                        <m:mrow>
+                          <m:mi>B</m:mi>
+                          <m:mo>→</m:mo>
+                          <m:mo>o</m:mo>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:msub>
+                    <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                    <m:mrow>
+                      <m:mo>∀</m:mo>
+                      <m:msub>
+                        <m:mi>c</m:mi>
+                        <m:mi>C</m:mi>
+                      </m:msub>
+                      <m:mo mcd:egroup="separator" separator="true" xmlns:mcd="http://www.w3.org/ns/mathml-cd">.</m:mo>
+                      <m:mrow>
+                        <m:mo>S-DUC</m:mo>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                        <m:mi>a0</m:mi>
+                        <m:mo separator="true">,</m:mo>
+                        <m:mi>P</m:mi>
+                        <m:mo separator="true">,</m:mo>
+                        <m:mrow>
+                          <m:mi>R</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">(</m:mo>
+                          <m:mi>c</m:mi>
+                          <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                        </m:mrow>
+                        <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mrow>
+                  <m:mo fence="true" mcd:egroup="fence" xmlns:mcd="http://www.w3.org/ns/mathml-cd">)</m:mo>
+                </m:mrow>
+              </m:mrow>
+            </m:math>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

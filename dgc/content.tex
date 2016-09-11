@@ -1,0 +1,147 @@
+\section{Theory Graphs in OMDoc}\label{sec:omdoc}
+
+
+To make the notation more compact, we will condense some of the XML markup of {\omdoc}. A \emph{theory graph} is an {\omdoc} document consisting of theory and theory-inclusion elements. A \emph{theory} $T$ has the form
+\begin{lstlisting}
+<theory xml:id="$T$" meta="$M$">
+  symbols, definitions, axioms, imports
+</theory>
+\end{lstlisting}
+where the optional $M$ refers to another theory, called the \emph{meta-theory} of $T$. A \emph{logic} $L$ is a theory that does not declare axioms and additionally singles out a valid object over $L$, which we denote by $L^*$. Objects represent terms, types, etc.; they are defined below.
+
+A \emph{symbol} is an element with an attribute giving its name and a child giving its \emph{type}; the type must be a valid object over $T$.  A \emph{definition} has an attribute referring to a symbol of $T$ and a child giving the definiens for that symbol as a valid object over $T$. An \emph{axiom} has an attribute giving its name, an attribute giving a theory morphism into $T$, and a child giving the axiom's formula as a valid object over the source of that theory morphism.
+
+%\begin{lstlisting}
+%<symbol name="$n$">
+%  <type>
+%    <OMOBJ>$O$</OMOBJ>
+%  </type>
+%</symbol>
+%\end{lstlisting}
+%where $O$ must be valid over the enclosing theory. We call $O$ the type of $n$.
+%
+%A definition:
+%\begin{lstlisting}
+%<definition for="$\#n$">
+%  <OMOBJ>$O$</OMOBJ>
+%</definition>
+%\end{lstlisting}
+%where $n$ must be a symbol name in the enclosing theory and $O$ must be valid over that theory. We call $O$ the definiens of the symbol $n$
+%
+%An axiom:
+%\begin{lstlisting}
+%<axiom xml:id="$id$">
+%  <FMP via="$via$><OMOBJ>$O$</OMOBJ></FMP>
+%</axiom>
+%\end{lstlisting}
+%where $via$ is a theory morphism and $O$ is valid over the source of $via$.
+
+An \emph{import} $imp$ from the theory $S$ (into $T$) has the following form
+\begin{lstlisting}
+<imports xml:id="$imp$" from="$S$" meta="$m$">
+  <morphism>$[O\mapsto O']^*$</morphism>
+</imports>
+\end{lstlisting}
+where $m$ is a theory morphism (defined below) from the meta-theory of $S$ into the meta-theory of $T$, called the meta-morphism of $imp$. ($m$ is omitted if $S$ has no meta-theory.) $[O\mapsto O']^*$ abbreviates markup specifying that $imp$ maps some elementary objects $O$ of $S$ to valid objects $O'$ over $T$. Allowed as $O$ are symbols, imported symbols, and theory morphisms. The intuition is that symbols $O$ in the domain of the map are instantiated with their images $O'$ whereas the unmapped symbols of $S$ are imported into $T$ as new symbols. We require that $O'$ is a theory morphism iff $O$ is; and if so, that they have the same domain and that the codomain of $O'$ is $T$. If $imp$ maps an import $imp'$ into $S$ to some import into $T$, it defines maps for all symbols imported via $imp'$, which represents an (asymmetric) sharing specification.
+
+A \emph{theory-inclusion} $inc$ from $S$ to $S'$ is of the form
+\begin{lstlisting}
+<theory-inclusion xml:id="$inc$" from="$S$" to=$S'$ meta="$m$">
+  <morphism>$[O\mapsto O']^*$</morphism>
+  obligations
+</theory-inclusion>
+\end{lstlisting}
+where $m$ is as for imports. The morphism child of a theory-inclusion element must be as for an imports element except that it must map every (local or imported) symbol of $S$. A \emph{logic translation} is a theory-inclusion between logics that additionally singles out a valid object over $S'$, which we denote by $inc^*$. We will explain the obligations below.
+
+Then it remains to define what \emph{valid objects} and \emph{theory morphisms} are.
+\begin{itemize}
+	\item If $n$ is a local symbol of $T$, then \lstinline{<OMS cd="$T$" name="$n$"/>} is valid over $T$.
+	\item For a name $v$, the variable \lstinline{<OMV name="$v$"/>} is valid over $T$.
+	\item If $O$ is valid over the meta-theory of $T$, it is valid over $T$.
+	\item If $O$ and $O_1,\ldots,O_n$ are valid over $T$, then so is the application of $O$ to $O_1,\ldots,O_n$ written \lstinline{<OMA>$O\;O_1\;\ldots\;O_n$</OMA>}.
+	\item If $O_1$, $O_2$, $O_3$ are valid over $T$, then so is the binding with binder $O_1$, variable type $O_2$, and expression $O_3$ under the binder. (We omit the XML syntax.)
+	\item If $O$ is valid over $S$ and \lstinline{<OMM via="$via$"/>} is a theory morphism from $S$ to $T$, then \lstinline{<OMM via="$via$">O</OMM>} is valid over $T$.
+	\item \lstinline{<OMM via=""/>} is a theory morphism from any theory into itself.
+	\item If \lstinline{<OMM via="$via$"/>} is a theory morphism from $R$ into $S$, and $m$ refers to an imports or a theory-inclusion from $S$ into $T$, then \lstinline{<OMM via="$via\;m$"/>} is a theory morphism from $R$ into $T$.
+\end{itemize}
+Except during this inductive definition, we require that no variable occurs freely in a valid object. We will use $via$ to abbreviate \lstinline{<OMM via="$via$"/>}.
+
+Thus an {\omdoc} theory is a list of typed, possibly defined symbols, axioms, and imports of symbols and axioms from other theories.  And every theory morphism $via$ from $S$ to $T$ induces a mapping which maps a valid object $O$ over $S$ to the valid object \lstinline{<OMM via="$via$">$O$</OMM>} over $T$. This map is the composition of the natural extensions of the maps specified by the imports or theory-inclusion elements in $via$. In particular, if an import $imp$ imports a symbol $s$ into $T$, $T$ can refer to this imported symbol as \lstinline{<OMM via="$imp$">s</OMM>}. And \lstinline{<OMM via="$via$"><OMM via="$via'$"/></OMM>} represents the composition $via \circ via'$.
+
+imports elements correspond to definitional theory morphisms of a development graph, but they are more general because they permit to import not only axioms but also symbols. A theory-inclusion $inc$ corresponds to a postulated theory morphism: For every axiom with formula $A$ of the source theory, the target theory must have a proof of \lstinline{<OMM via="$inc$">A</OMM>}, to which the \emph{obligation} elements refer. We do not give the full {\omdoc} syntax for \emph{proofs} and instead give a proof step as an example:
+\begin{lstlisting}
+<derive xml:id="$id$">
+  <method><OMOBJ>R</OMOBJ></method>
+  parameters, premises
+  <OMOBJ>F</OMOBJ>
+</derive>
+\end{lstlisting}
+A derive element represents a node of a proof tree over a theory $T$. $F$ is the formula at the node, $R$ is the proof rule used to establish $F$, typically a symbol in the meta-language of $T$, parameters are objects over $T$ with which $R$ is instantiated, and the premise elements refer to the children of the node. The leaves are given by references to axioms of $T$ or to \emph{hypotheses} introduced in the proof. The latter permits {\omdoc} to support hypothetical reasoning as in natural deduction proofs. Furthermore, {\omdoc} supports incomplete proofs by so-called \emph{gap} steps.
+
+Finally, the graph induced by the references to theories, symbols, imports, and theory-inclusions must be acyclic. Without loss of generality, we require the stronger condition that all these references go against the order in which the elements occur in the {\omdoc} document. (Note that this does not exclude mutual recursion: Only the types of two symbols may not be mutually recursive, their definitions can be.)
+
+It is not easy to define directly which maps are allowed in an imports or theory-inclusion element: We need to expand all imports elements recursively to find out what the symbols that can (or in the case of theory-inclusion: must) be mapped are. Furthermore, since images may be specified both for an imported symbol and for the imports importing it, there may be conflicting images. But these requirements can be expressed in a straightforward but technical way on the {\omdoc} level.
+
+However, the following questions relevant for the correctness of a theory graph cannot be answered on the {\omdoc} level: Which objects are eligible as the type and definiens of a symbol, or as axioms? Which definiens-type combinations are permitted? Which imports and theory-inclusion elements preserve types? (This depends on subtle typing conditions such as: If a sort $a$ is mapped to $a'$, a constant of sort $a$ must be mapped to a term of sort $a'$.) When can an imports $imp$ map a theory morphism $m$ to $m'$? (This depends on even subtler conditions regarding the equality of $imp$ composed with $m$ and $m'$ for certain arguments.) In the next section, we define and limit attention to a special case for which LF can be used to give the answers.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Interpreting a Theory Graph in Twelf}\label{sec:lf}
+
+We restrict theory graphs as follows: Firstly, every theory graph starts with a theory $twelf$ declaring the (untyped) symbols $\kity$, $\lambda$, $\Pi$, as well as symbols for the implicit versions of the binders. And secondly, all logics must have $twelf$ and all other theories must have a logic as their meta-theory. And imports or theory-inclusion elements between logics must be logic translations with the identity of $twelf$ as their meta-morphism. 
+
+Intuitively, the logics declare, e.g., connectives, quantifiers, and proof rules, essentially mirroring the syntax used for Twelf logic encodings. And the other theories declare, e.g., sorts, function and predicate symbols, and axioms using both the symbols of Twelf and of their logic. For example, assume that we have a theory $PL$ for propositional logic:
+\begin{lstlisting}
+<theory xml:id="$PL$" meta="$twelf$">
+  <symbol name="$o$">
+    <type><OMOBJ><OMS cd="$twelf$" name="$type$"/></OMOBJ></type>
+  </symbol>  <!-- other symbols omitted -->
+</theory>
+\end{lstlisting}
+Here a symbol $o$ is declared for the type of formulas, its {\omdoc} type is given in the syntax of the meta-language Twelf. Similarly, the connectives and proof rules can be defined. A theory $FOL$ for first-order logic could start with a declaration \lstinline{<imports xml:id="$pl\sep fol$" from="$PL$"/>} and would refer to the imported type of formulas as  \lstinline{<OMM via="$pl\sep fol$"><OMS cd="$PL$" name="$o$"/></OMM>}. Similarly, a theory $ML$ for modal logic could be defined. Then a theory for first-order modal logic would look like this:
+\begin{lstlisting}
+<theory xml:id="$FOML$" meta="$twelf$">
+  <imports xml:id="$fol\sep foml$" from="$FOL$"/>
+  <imports xml:id="$ml\sep foml$" from="$ML$">
+    <morphism><OMM via="$pl\sep ml$/> $\mapsto$ <OMM via="$pl\sep fol$ $fol\sep foml$"/></morphism>
+  </imports>
+</theory>
+\end{lstlisting}
+
+The object $L^*$ of a logic $L$ is interpreted as a type family over a certain type $t$, intuitively the truth judgment over formulas. Only objects type-checking against $t$ may be axioms in theories having $L$ as their meta-theory. The need for $inc^*$ in a logic translation $inc$ is less obvious and detailed in \cite{rabe:instlf:07}. Assume we want to represent as a logic translation $ml\sep fol$ from $ML$ to $FOL$ the standard relational translation from modal to first-order logic by making worlds explicit (\cite{SchmidtHustadt06a}). This will be a theory-inclusion specifying maps for all local and imported symbols of $ML$; in particular, the Twelf type \lstinline{<OMM via="$pl\sep ml$"><OMS cd="$PL$" name="$o$"/></OMM>} of $ML$-formulas is translated to the Twelf type of $FOL$-formulas in one free variable (where the free variable expresses the world-dependency of truth). It is easy to see that this translation can be defined as a syntax-directed recursive function and thus as a theory morphism, e.g., $\square F\mapsto\forall x\;(acc(x,y)\arr F'[y])$ if $F\mapsto F'[x]$. But in order to make statements about the preservation of the semantics, a one-time top-level step is needed going from $F'[x]$ to $\forall x F'[x]$; because of this top-level step, the translation as a whole cannot be represented by a theory morphism. Therefore, $inc^*$ is used to express this last step as a $\lambda$ term.
+
+
+To interpret a theory graph in Twelf, we will process its elements in document order according to the following algorithm. This will generate a sequence of Twelf declarations for every theory and every theory-inclusion. We will write $\ov{O}$ for the {\omdoc} object $O$ printed in Twelf syntax as defined below. And we will use the character $\sep$, assuming it does not occur in identifiers in the theory graph, to generate fresh unique Twelf identifiers.
+
+Firstly, the theory $twelf$ is ignored. Secondly, for a theory $T$, process in document order all its symbols and imports children as follows:
+\begin{itemize}
+	\item For a symbol with name $n$, type $T$, and (if present) definiens $D$, generate $T\sep n\;:\ov{T}\;=\ov{D}$.
+	\item\label{it:1} For an imports $imp$ from $S$, do the following:
+	  \begin{enumerate}
+	    \item\label{it:2} For every Twelf declaration $m_r\sep\ldots \sep m_1\sep R\sep n:\ov{T}=\ov{D}$ generated by interpreting $S$ (including the cases where there is no $D$), compute the map of $m_r\sep \ldots m_1\sep R\sep n$ by $imp$ by
+	       \begin{enumerate}
+	         \item If $imp$ specifies a map \lstinline{<OMM via="$m_1\;\ldots\;m_r$"><OMS cd="$R$" name="$n$"/></OMM>}$\mapsto O'$, put $M:=O'$ and go to Step~(\ref{it:3}). Otherwise put $i=1$.
+	         \item If $imp$ specifies a map \lstinline{<OMM via="$m_i\;\ldots\;m_r$"/> $\mapsto$ <OMM via="$via$"/>}, put $M:=$\\\lstinline{<OMM via="$m_1\;\ldots\;m_{i-1}\;via$"><OMS cd="$R$" name="$n$"/></OMM>} and go to Step~(\ref{it:3}). Otherwise, if $i=r$, go to Step~(\ref{it:3}); otherwise, increment $i$ and repeat this step.
+         \end{enumerate}
+      \item\label{it:3} If $M$ was defined, generate
+         \begin{itemize}
+	         \item $imp\sep m_r\sep \ldots \sep m_1\sep T\sep n:\ov{imp(T)}=\ov{M}$. Here $imp(O)$ abbreviates the object \lstinline{<OMM via="$imp$">O</OMM>}.
+	         \item And if $D$ was present, also generate declarations that succeed iff $\ov{imp(D)}$ is definitionally equal to $\ov{M}$. (It is actually not obvious how to express definitional equality in Twelf, but it is possible.)
+         \end{itemize}
+       \item If $M$ was not defined, generate $imp\sep m_r\sep \ldots m_1\sep T\sep n:id(T)=id(D)$ (and accordingly if $D$ was not present).
+	  \end{enumerate}
+	\item For every axiom of $T$ with name $n$, theory morphism $m_1\;\ldots\;m_r$, and formula $A$, generate the declaration $T\sep m : \ov{L^*}\;\ov{t_n(\ldots(t_1(A))\ldots)}$. Here $L$ is the meta-theory of $T$, $\mu_i$ is the meta-morphism of $m_i$, and $t_i(O)$ is \lstinline{<OMA>$\mu_i^*\;m_i(O)$</OMA>}.
+\end{itemize}
+
+And finally, process a theory-inclusion $inc$ from $S$ to $S'$ as follows. For every declaration of a Twelf symbol generated when processing $S$ except for those stemming from axioms, generate a Twelf declaration in the same way as in step~\ref{it:1} above with $inc$ instead of $imp$. And for those declarations $c:A$ stemming from an axiom, generate a Twelf declaration $inc\sep c:\ov{A'}=P$ where $\mu$ is the meta-morphism of $inc$, $A'=$\lstinline{<OMA>$\mu^*\;inc(A)$</OMA>} and $P$ is the rendering of the proof referred to by the corresponding obligation child of $inc$ (defined below).
+
+It remains to define how to print an {\omdoc} object $O$ in Twelf syntax. This is straightforward except that we have to eliminate OMM elements. In a first step, all OMM elements are pushed to the inside of $O$ while merging consecutive OMM elements.
+%For example,\\
+% \lstinline{<OMM via="$m_1$"><OMA><OMS cd="$T$" name="$n$"/><OMM via="$m_2$"><OMS cd="$T'$" name="$n'$"/></OMM></OMA></OMM>}\\
+%  becomes \\ \lstinline{<OMA><OMM via="$m_1$"><OMS cd="$T$" name="$n$"/></OMM><OMM via="$m_2\;m_1$"><OMS cd="$T'$" name="$n'$"/></OMM></OMA>}.\\
+Then references to imports elements are replaced with their meta-morphism if they are applied to a symbol of the meta-theory. And then a reference to a theory-inclusion elements is eliminated by replacing a symbol with its map. This is repeated until $O$ has been transformed to an object which only contains OMM elements of the form \lstinline{<OMM via="$imp_1\;\ldots\;imp_r$"><OMS cd="$T$" name="$n$"/></OMM>} such that all $imp_i$ refer to imports elements and the source of $imp_1$ is $T$; then a Twelf declaration for the name $imp_m\sep \ldots imp_1\sep T\sep n$ exists. Thus all {\omdoc} objects can be printed.
+
+The printing of proofs as Twelf terms is done by first transforming them to an {\omdoc} object which is then printed as above. This is straightforward since the {\omdoc} proof structure already corresponds to the syntax tree of a proof term: Every proof step is transformed to an OMA element that applies the proof rule to the list of parameters and the objects generated by transforming the premises. Only gap steps, hypotheses, and implicit arguments require some attention. If a gap step is encountered, a proof rule filling the gap is added before generating the declaration that checks the proof; and this new proof rule is shadowed by some irrelevant declaration immediately afterwards so that the additional proof rule is not used anywhere else. If a proof declares local hypotheses, we wrap it in the corresponding $\lambda$ binders. And if a proof rule $R$ takes $n$ implicit arguments, its {\omdoc} type must start with $n$ binders using the symbol for the implicit $\Pi$; this type is inspected to obtain $n$, and then the first $n$ parameters of every proof step using $R$ are omitted.
+
+We say that a theory $T$ of a theory graph is correct if the following Twelf signature type-checks: The signature formed by taking the result of processing the meta-theory of $T$ and appending the result of processing $T$ itself. And we say that a theory-inclusion $inc$ from $S$ to $T$ of a theory graph is correct if the following Twelf signature type-checks: The signature formed by joining the result of processing the meta-theory of $T$, the result of processing $T$, and the result of processing $inc$. Then we have the following result: 
+A heterogeneous theory graph is correct if every theory and every theory-inclusion in it is correct.

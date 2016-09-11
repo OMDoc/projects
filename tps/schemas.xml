@@ -1,0 +1,10 @@
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+  <uri pattern="*.omdoc" typeId="OMDoc2"/>
+  <namespace ns="http://www.mathweb.org/omdoc" typeId="OMDoc1"/>
+  <namespace ns="http://omdoc.org/ns" typeId="OMDoc2"/>
+  <documentElement localName="omdoc" typeId="OMDoc2"/>
+
+  <typeId id="OMDoc1" uri="../../branches/omdoc-1.2/rnc/omdoc.rnc"/>
+  <typeId id="OMDoc2" uri="../../branches/omdoc-1.2/rnc/omdoc.rnc"/>
+
+</locatingRules>

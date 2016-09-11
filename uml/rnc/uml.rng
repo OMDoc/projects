@@ -1,0 +1,38 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+
+<start>
+<element name="uml">
+ <ref name="attlist.uml"/>
+ <ref name="metadata"/>
+ <ref name="content"/>
+ <ref name="pgml"/>
+</element>
+</start>
+
+<define name="attlist.uml">
+ <attribute name="version">
+  <text/>
+ </attribute>
+</define>
+
+<define name="metadata">
+ <element name="metadata">
+  <externalRef href="dublincore.rng"/>
+ </element>
+</define>
+
+<define name="content">
+
+  <externalRef href="xmi.rng"/>
+
+</define>
+
+<define name="pgml">
+ <element name="pgml">
+  <zeroOrMore>
+   <externalRef href="pgml.rng"/>
+  </zeroOrMore>
+ </element>
+</define>
+
+</grammar>

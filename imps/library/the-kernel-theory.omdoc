@@ -1,0 +1,894 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "../dtd/omdoc-basic.dtd" [<!ENTITY % om.prefixed "INCLUDE">]>
+
+<omdoc xml:id="THE-KERNEL-THEORY-omdoc"
+       xmlns="http://www.mathweb.org/omdoc"
+       xmlns:dc="http://dublincore.org"
+       xmlns:om="http://www.openmath.org/OpenMath">
+
+<metadata>
+ <dc:title>The theory THE-KERNEL-THEORY in IMPS</dc:title>
+ <dc:source>
+  <dc:title>IMPS: An Interactive Mathematical Proof System</dc:title>
+  <dc:creator role="aut">W.M. Farmer</dc:creator>
+  <dc:creator role="aut">J.D. Guttman</dc:creator>
+  <dc:creator role="aut">F.J. Thayer</dc:creator>
+  <dc:date action="new">2002</dc:date>
+ </dc:source>
+ <dc:creator role="trl">Yan Li</dc:creator>
+ <dc:creator role="ths">W.M. Farmer</dc:creator>
+ <dc:date action="new">2002-08</dc:date>
+</metadata>
+
+
+<theory xml:id="the-kernel-theory">
+
+<symbol xml:id="sort">
+  <CMP> Attribute name for the sort of a variable. </CMP>
+</symbol>
+
+<presentation for="sort" parent="om:OMATTR" lbrack="" rbrack="">
+         <use  format="default">:</use>
+         <use  format="html" element="sub" crossref-symbol="no"/>
+         <use  format="TeX" lbrack="_{" rbrack="}" crossref-symbol="no"/>
+         <use  format="pmml" element="msub"/>
+      </presentation>
+
+
+<symbol xml:id="funsort">
+  <CMP> Partial function sort constructor. </CMP>
+</symbol>
+
+<presentation for="funsort" parent="om:OMA" bracket-style="lisp">
+         <xslt format="html|pmml"><![CDATA[
+            <xsl:for-each select="*[position()!=last() and position() &gt; 1]">
+               <xsl:apply-templates select="."/>
+               <xsl:if test="position()!= last()"><xsl:text>,</xsl:text></xsl:if>
+            </xsl:for-each>
+            <xsl:text>&#x021A6;</xsl:text>
+            <xsl:apply-templates select="*[last()]"/>]]>
+         </xslt>
+         <xslt format="TeX"><![CDATA[
+            <xsl:for-each select="*[position()!=last() and position() &gt; 1]">
+               <xsl:apply-templates select="."/>
+               <xsl:if test="position()!= last()"><xsl:text>,</xsl:text></xsl:if>
+            </xsl:for-each>
+            <xsl:text>\rightarrow</xsl:text>
+            <xsl:text>{</xsl:text>
+            <xsl:apply-templates select="*[last()]"/>
+            <xsl:text>}</xsl:text>]]>
+         </xslt>
+      </presentation>
+
+
+<omstyle element="omdoc:with" style="linebreak">
+ <style format='html|pmml'><element name="br"/></style>
+ <style format='TeX'><text>\par\noindent</text></style>
+</omstyle>
+
+<omgroup xml:id="constructors-in-the-kernel" type="sequence">
+ <metadata>
+  <dc:title>Constructors</dc:title>
+ </metadata>
+
+ <omtext xml:id="constructors-intro">
+ <CMP>The constructors in the Kernel Theory.</CMP>
+ </omtext> 
+
+ <symbol xml:id="truth">
+   <CMP> the-true </CMP>
+ </symbol>
+ <private xml:id="truth-private" for="truth" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="falsehood">
+   <CMP> the-false </CMP>
+ </symbol>
+ <private xml:id="falsehood-private" for="falsehood" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="not">
+   <CMP> negation </CMP>
+ </symbol>
+ <private xml:id="not-private" for="not" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="and">
+    <CMP> conjunction </CMP>
+ </symbol>
+ <private xml:id="and-private" for="and" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="or">
+    <CMP> disjunction </CMP>
+ </symbol>
+ <private xml:id="or-private" for="or" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="implies">
+    <CMP> implication </CMP>
+ </symbol>
+ <private xml:id="implies-private" for="implies" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="iff">
+   <CMP> biconditional </CMP>
+ </symbol>
+ <private xml:id="iff-private" for="iff" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="if-form">
+     <CMP> if-then-else for formulas </CMP>
+ </symbol>
+ <private xml:id="if-form-private" for="if-form" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="forall">
+    <CMP> universal quantification </CMP>
+ </symbol>
+ <private xml:id="forall-private" for="forall" pto="imps">
+   <data> constructor </data>
+ </private>
+
+<presentation xml:id="pr-forall" for="forall">
+   <use format="TeX">{\forall}</use>
+   <use format="html|pmml">&#x02200;</use>
+   <use format="cmml" element="forall"/>
+   <use format="pvs">FORALL</use>
+   <use format="imps">forall</use>
+  </presentation>
+
+
+ <symbol xml:id="forsome">
+    <CMP> existential quantification </CMP>
+ </symbol> 
+ <private xml:id="forsome-private" for="forsome" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="=">
+  <CMP> equality </CMP>
+ </symbol>
+ <private xml:id="=-private" for="=" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="apply-operator">
+     <CMP> function application operator </CMP>
+ </symbol>
+ <private xml:id="apply-operator-private" for="apply-operator" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="lambda">
+    <CMP> function abstraction operator </CMP>
+ </symbol>
+ <private xml:id="lambda-private" for="lambda" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="iota">
+    <CMP> definite description operator for objects of kind "prop" </CMP>
+ </symbol>
+ <private xml:id="iota-private" for="iota" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="iota-p">
+     <CMP> definite description operator for objects of kind "prop" </CMP>
+ </symbol>
+ <private xml:id="iota-p-private" for="iota-p" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="if">
+    <CMP> if-then-else for expressions </CMP>
+ </symbol>
+ <private xml:id="if-private" for="if" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="is-defined">
+    <CMP> convergence </CMP>
+ </symbol>
+ <private xml:id="is-defined" for="is-defined" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="is-defined-in-sort">
+    <CMP> convergence in sort </CMP>
+ </symbol>
+ <private xml:id="is-defined-in-sort-private" for="is-defined-in-sort" pto="imps">
+   <data> constructor </data>
+ </private>
+
+ <symbol xml:id="undefined">
+   <CMP> undefined of sort </CMP>
+ </symbol>
+ <private xml:id="undefined-private" for="undefined" pto="imps">
+   <data> constructor </data>
+ </private>
+
+</omgroup>
+
+
+<omgroup xml:id="built-in-quasi-constructors-in-the-kernel" type="sequence">
+ <metadata>
+  <dc:title>Built-in quasi-constructors</dc:title>
+ </metadata>
+
+<omtext xml:id="built-in-quasi-constructors-intro">
+<CMP>The built-in quasi-constructors in the Kernel Theory.</CMP>
+</omtext>
+
+ <symbol xml:id="==">
+    <CMP> quasi-equality </CMP>
+ </symbol>
+ <private xml:id="==-private" for="==" pto="imps">
+   <data> quasi-constructor </data>
+ </private>
+
+ <symbol xml:id="falselike">
+    <CMP> falselike of sort </CMP>
+ </symbol>
+ <private xml:id="falselike-private" for="falselike" pto="imps">
+   <data> quasi-constructor </data>
+ </private>
+
+ <symbol xml:id="domain">
+    <CMP> function domain </CMP>
+ </symbol>
+ <private xml:id="domain-private" for="domain" pto="imps">
+   <data> quasi-constructor </data>
+ </private>
+
+ <symbol xml:id="total?">
+    <CMP> total? </CMP>
+ </symbol>
+ <private xml:id="total?-private" for="total?" pto="imps">
+   <data> quasi-constructor </data>
+ </private>
+
+ <symbol xml:id="nonvacuous?">
+      <CMP> nonvacuous? </CMP>
+ </symbol>
+ <private xml:id="novacuous?-private" for="novacuous?" pto="imps">
+   <data> quasi-constructor </data>
+ </private>
+
+</omgroup>
+
+
+<omgroup xml:id="the-kernel-language" type="sequence">
+<metadata>
+ <dc:title> The symbols in "the-kernel-language" </dc:title>
+</metadata>
+
+<omtext xml:id="the-kernel-language-intro">
+ <CMP> "the-kernel-language" - language of the theory "the-kernel-theory". </CMP>
+</omtext>
+
+<symbol xml:id="ind" kind="sort">
+ <CMP> "ind" - primitive sort of the theory "the-kernel-theory". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="ind">
+ <CMP> The enclosing sort of "ind" is "ind". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="the-kernel-theory" name="ind"/>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="prop" kind="sort">
+ <CMP> "prop" - primitive sort of the theory "the-kernel-theory". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="prop">
+ <CMP> The enclosing sort of "prop" is "prop". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="the-kernel-theory" name="prop"/>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="unit%sort" kind="sort">
+ <CMP> "unit%sort" - primitive sort of the theory "the-kernel-theory". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="unit%sort">
+ <CMP> The enclosing sort of "unit%sort" is "unit%sort". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+ </om:OMOBJ>
+</type>
+
+
+<symbol xml:id="an%individual" kind="object">
+ <CMP> "an%individual" - primitive constant of the theory "the-kernel-theory". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="an%individual">
+ <CMP> The sort of "an%individual" is "unit%sort". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+ </om:OMOBJ>
+</type>
+
+
+</omgroup>
+
+
+<omgroup xml:id="axioms-of-the-kernel-theory" type="sequence">
+<metadata>
+ <dc:title> Axioms </dc:title>
+</metadata>
+
+<omtext xml:id="the-kernel-theory-axioms-intro">
+ <CMP> The axioms of the theory "the-kernel-theory" (which are not from its component theories). </CMP>
+</omtext>
+
+
+<axiom xml:id="unit-sort-defining-axiom">
+<CMP>
+ Axiom name: "unit-sort-defining-axiom". <with style="linebreak"/>
+
+ Formula (string): "forall(x:unit%sort,x=an%individual)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((unit%sort x)) (= x an%individual))". <with style="linebreak"/>
+
+ Usage list: none. <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMV name="x"/>
+     <om:OMS cd="the-kernel-theory" name="an%individual"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</axiom>
+
+</omgroup>
+
+
+<omgroup xml:id="events-of-the-kernel-theory" type="sequence">
+<metadata>
+ <dc:title>Events</dc:title>
+</metadata>
+
+<omtext xml:id="the-kernel-theory-events-intro">
+ <CMP>
+  The events of the theory "the-kernel-theory" in load order.
+ </CMP>
+</omtext>
+
+
+<assertion xml:id="unit-sort-defining-axiom"  type="theorem">
+<CMP>
+ Theorem name: "unit-sort-defining-axiom". <with style="linebreak"/>
+
+ Formula (string): "forall(x:unit%sort,x=an%individual)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((unit%sort x)) (= x an%individual))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMV name="x"/>
+     <om:OMS cd="the-kernel-theory" name="an%individual"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="nil"  type="theorem">
+<CMP>
+ Theorem name: "nil". <with style="linebreak"/>
+
+ Formula (string): "forall(x,y:unit%sort,x=y iff truth)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((unit%sort x y)) (iff (= x y) truth))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="x"/>
+      <om:OMV name="y"/>
+     </om:OMA>
+     <om:OMS cd="the-kernel-theory" name="truth"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+</omgroup>
+
+
+<omgroup xml:id="translations-of-the-kernel-theory" type="sequence">
+<metadata>
+ <dc:title>Translations</dc:title>
+</metadata>
+
+<omtext xml:id="the-kernel-theory-translations-intro">
+ <CMP>
+  The translations that have theory "the-kernel-theory" as target theory.
+</CMP>
+</omtext>
+
+
+<imports xml:id="the-kernel-translation" from="the-kernel-theory">
+<CMP>
+ Translation name: "the-kernel-translation". <with style="linebreak"/> 
+ Source theory: "the-kernel-theory". <with style="linebreak"/>
+ Target theory: "the-kernel-theory". <with style="linebreak"/>
+ Fixed theories: none. <with style="linebreak"/>
+ Assumptions: none. <with style="linebreak"/>
+ Sort pairs: "(ind ind)", "(prop prop)", "(unit%sort unit%sort)". <with style="linebreak"/>
+ Constant pairs: "(an%individual an%individual)". <with style="linebreak"/>
+ Interpretation?: yes. <with style="linebreak"/>
+</CMP>
+
+<morphism>
+
+ <requation>
+  <pattern>
+   <om:OMOBJ>
+    <om:OMS cd="the-kernel-theory" name="ind"/>
+   </om:OMOBJ>
+  </pattern>
+
+  <value>
+   <om:OMOBJ>
+    <om:OMS cd="the-kernel-theory" name="ind"/>
+   </om:OMOBJ>
+  </value>
+ </requation>
+
+ <requation>
+  <pattern>
+   <om:OMOBJ>
+    <om:OMS cd="the-kernel-theory" name="prop"/>
+   </om:OMOBJ>
+  </pattern>
+
+  <value>
+   <om:OMOBJ>
+    <om:OMS cd="the-kernel-theory" name="prop"/>
+   </om:OMOBJ>
+  </value>
+ </requation>
+
+ <requation>
+  <pattern>
+   <om:OMOBJ>
+    <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+   </om:OMOBJ>
+  </pattern>
+
+  <value>
+   <om:OMOBJ>
+    <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+   </om:OMOBJ>
+  </value>
+ </requation>
+
+ <requation>
+  <pattern>
+   <om:OMOBJ>
+    <om:OMS cd="the-kernel-theory" name="an%individual"/>
+    </om:OMOBJ>
+   </pattern>
+
+  <value>
+   <om:OMOBJ>
+    <om:OMS cd="the-kernel-theory" name="an%individual"/>
+   </om:OMOBJ>
+  </value>
+ </requation>
+
+</morphism>
+</imports>
+</omgroup>
+
+
+<omgroup xml:id="user-defined-quasi-constructor" type="sequence">
+<metadata>
+<dc:title>User-defined quasi-constructors</dc:title>
+</metadata>
+
+<omtext xml:id="user-defined-quasi-constructors-intro">
+<CMP> User-defined quasi-constructors. </CMP>
+</omtext>
+
+<symbol xml:id="finite%cover">
+<CMP> finite%cover </CMP>
+</symbol>
+
+<private xml:id="finite%cover-private" for="finite%cover" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="countable%cover">
+<CMP> countable%cover </CMP>
+</symbol>
+
+<private xml:id="countable%cover-private" for="countable%cover" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-bijective-on?">
+<CMP> m-bijective-on? </CMP>
+</symbol>
+
+<private xml:id="m-bijective-on?-private" for="m-bijective-on?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-injective-on?">
+<CMP> m-injective-on? </CMP>
+</symbol>
+
+<private xml:id="m-injective-on?-private" for="m-injective-on?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-surjective-on?">
+<CMP> m-surjective-on? </CMP>
+</symbol>
+
+<private xml:id="m-surjective-on?-private" for="m-surjective-on?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-bijective?">
+<CMP> m-bijective? </CMP>
+</symbol>
+
+<private xml:id="m-bijective?-private" for="m-bijective?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-injective?">
+<CMP> m-injective? </CMP>
+</symbol>
+
+<private xml:id="m-injective?-private" for="m-injective?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-surjective?">
+<CMP> m-surjective? </CMP>
+</symbol>
+
+<private xml:id="m-surjective?-private" for="m-surjective?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-restrict2">
+<CMP> m-restrict2 </CMP>
+</symbol>
+
+<private xml:id="m-restrict2-private" for="m-restrict2" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-restrict">
+<CMP> m-restrict </CMP>
+</symbol>
+
+<private xml:id="m-restrict-private" for="m-restrict" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-id">
+<CMP> m-id </CMP>
+</symbol>
+
+<private xml:id="m-id-private" for="m-id" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-inverse">
+<CMP> m-inverse </CMP>
+</symbol>
+
+<private xml:id="m-inverse-private" for="m-inverse" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-inverse-image">
+<CMP> m-inverse-image </CMP>
+</symbol>
+
+<private xml:id="m-inverse-image-private" for="m-inverse-image" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-image">
+<CMP> m-image </CMP>
+</symbol>
+
+<private xml:id="m-image-private" for="m-image" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-range">
+<CMP> m-range </CMP>
+</symbol>
+
+<private xml:id="m-range-private" for="m-range" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-domain">
+<CMP> m-domain </CMP>
+</symbol>
+
+<private xml:id="m-domain-private" for="m-domain" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="m-composition">
+<CMP> m-composition </CMP>
+</symbol>
+
+<private xml:id="m-composition-private" for="m-composition" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-big-intersection">
+<CMP> i-big-intersection </CMP>
+</symbol>
+
+<private xml:id="i-big-intersection-private" for="i-big-intersection" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-big-union">
+<CMP> i-big-union </CMP>
+</symbol>
+
+<private xml:id="i-big-union-private" for="i-big-union" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-singleton">
+<CMP> i-singleton </CMP>
+</symbol>
+
+<private xml:id="i-singleton-private" for="i-singleton" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-partition?">
+<CMP> i-partition? </CMP>
+</symbol>
+
+<private xml:id="i-partition?-private" for="i-partition?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-disjoint">
+<CMP> i-disjoint </CMP>
+</symbol>
+
+<private xml:id="i-disjoint-private" for="i-disjoint" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-sym-difference">
+<CMP> i-sym-difference </CMP>
+</symbol>
+
+<private xml:id="i-sym-difference-private" for="i-sym-difference" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-difference">
+<CMP> i-difference </CMP>
+</symbol>
+
+<private xml:id="i-difference-private" for="i-difference" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-intersection">
+<CMP> i-intersection </CMP>
+</symbol>
+
+<private xml:id="i-intersection-private" for="i-intersection" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-union">
+<CMP> i-union </CMP>
+</symbol>
+
+<private xml:id="i-union-private" for="i-union" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-complement">
+<CMP> i-complement </CMP>
+</symbol>
+
+<private xml:id="i-complement-private" for="i-complement" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-empty-indicator?">
+<CMP> i-empty-indicator? </CMP>
+</symbol>
+
+<private xml:id="i-empty-indicator?-private" for="i-empty-indicator?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-nonempty-indicator?">
+<CMP> i-nonempty-indicator? </CMP>
+</symbol>
+
+<private xml:id="i-nonempty-indicator?-private" for="i-nonempty-indicator?" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-empty-indicator">
+<CMP> i-empty-indicator </CMP>
+</symbol>
+
+<private xml:id="i-empty-indicator-private" for="i-empty-indicator" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-subset">
+<CMP> i-subset </CMP>
+</symbol>
+
+<private xml:id="i-subset-private" for="i-subset" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-subseteq">
+<CMP> i-subseteq </CMP>
+</symbol>
+
+<private xml:id="i-subseteq-private" for="i-subseteq" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="i-in">
+<CMP> i-in </CMP>
+</symbol>
+
+<private xml:id="i-in-private" for="i-in" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="sort-to-indicator">
+<CMP> sort-to-indicator </CMP>
+</symbol>
+
+<private xml:id="sort-to-indicator-private" for="sort-to-indicator" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="predicate-to-indicator">
+<CMP> predicate-to-indicator </CMP>
+</symbol>
+
+<private xml:id="predicate-to-indicator-private" for="predicate-to-indicator" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="lambda-application">
+<CMP> lambda-application </CMP>
+</symbol>
+
+<private xml:id="lambda-application-private" for="lambda-application" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="sub-predicate">
+<CMP> sub-predicate </CMP>
+</symbol>
+
+<private xml:id="sub-predicate-private" for="sub-predicate" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+<symbol xml:id="sub-function">
+<CMP> sub-function </CMP>
+</symbol>
+
+<private xml:id="sub-function-private" for="sub-function" pto="imps">
+<data> user-defined quasi-constructor </data>
+</private>
+
+</omgroup>
+
+
+</theory>
+
+</omdoc>

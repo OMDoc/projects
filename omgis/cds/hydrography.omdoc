@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="hydrography.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-03-17T21:25:57Z </dc:date>
+  <dc:title xml:lang="en"> hydrography </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-03-17T21:25:57Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="hydrography">
+  <imports from="maps.omdoc#maps"/>
+
+  <symbol name="anchorage">
+    <metadata>
+      <dc:description>
+	An area where a vessel anchors or may anchor, either because of suitability or designation.
+	Delineation: The limit of ANCHORAGE is the extent of the area suitable or designated for anchoring.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="area_of_complex_channels">
+    <metadata>
+      <dc:description>
+	An area where a stream or river flows in an intricate network of interlacing channels.
+	Delineation: The limit of AREA OF COMPLEX CHANNELS is the outer bank of the outermost channel.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+  <symbol name="area_to_be_submerged">
+    <metadata>
+      <dc:description>
+	The known extent of the intended lake that will be created behind a dam under construction.
+	Delineation: The limit of AREA TO BE SUBMERGED is the line corresponding to the average water 
+      elevation of the intended lake.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>    
+  </symbol>
+
+  <symbol name="bay">
+    <metadata>
+      <dc:description>
+	A water area that is an opening of the sea/ocean into the land, or of an estuary, lake, or river into its shore.
+	Delineation: The limit of BAY/INLET is SHORELINE of ESTUARY, LAKE/POND, SEA/OCEAN, or STREAM/RIVER, and the
+      extension of shoreline across the mouth of BAY/INLET and across any area where a river enters BAY/INLET.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="bridge">
+    <metadata>
+      <dc:description>
+	A structure spanning and providing passage over a waterway, railroad, or other obstacle.
+	Delineation: The limit of BRIDGE is the extent of the span as defined by the edges of the deck and the end abutments.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="canal">
+    <metadata>
+      <dc:description>
+	An artificial open waterway constructed to transport water, to irrigate or drain land, to connect two or more
+	bodies of water, or to server as a waterway for watercraft.
+	Delineation: The limit of CANAL/DITCH is the top of the banks of the artificial waterway.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="connector">
+    <metadata>
+      <dc:description>
+	A known, but nonspecific, connection between two nonadjacent network segments.
+	Delineation: The limit of CONNECTOR is the imaginary line connecting two nonadjacent network segments.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="crevasse_field">
+    <metadata>
+      <dc:description>
+	An area of deep fissures in the surface of an ice mass caused by breaking or parting.
+	Delineation: The limit of CREVASSE FIELD is the extent of the field.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+  
+  <symbol name="dam">
+    <metadata>
+      <dc:description>
+	A barrier constructed to control the flow or raise the level of water.
+	Delineation: The limit of DAM/WEIR is the extent of the exposed built-up barrier.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="estuary">
+    <metadata>
+      <dc:description>
+	The lower end of a river, or a semienclosed coastal body of water with access to the open ocean, which is affected
+	by the tides and where fresh and salt water mix.
+	Delineation: The limit of ESTUARY is the extent of the area where fresh and salt water mix, as defined by National
+      Wetlands Inventory.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="fish_ladder">
+    <metadata>
+      <dc:description>
+	A facility consisting of a series of small pools, each one slightly higher than the preceding, built around
+	an obstruction to enable fish to make their way upstream.
+	Delineation: The limit of FISH LADDER is the extent of the small pools.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="flume">
+    <metadata>
+      <dc:description>
+	An open, inclined, artificial channel constructed of wood, metal, or concrete; generally elevated.
+	Delineation: The limit of FLUME is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="foreshore">
+    <metadata>
+      <dc:description>
+	The part of a seashore between high-water and low-water marks.
+	Delineation: The limit of FORESHORE is the approximate line of mean high water, and the approximate line of mean
+      lower low water.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="fumarole">
+    <metadata>
+      <dc:description>
+	A hole in the Earth's crust from which steam and gases are emitted.
+	Delineation: The limit of FUMAROLE is the extent of the hole from which vapors are emitted.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="gaging_station">
+    <metadata>
+      <dc:description>
+	*A structure used to measure the characteristics of a hydrographic feature.
+	Delineation: The limit of GAGING STATION is the extent of the housing of the equipment.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="gate">
+    <metadata>
+      <dc:description>
+	*A structure that may be swung, drawn, or lowered to block an entrance or passageway.
+	Delineation: The limit of GATE is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="geyser">
+    <metadata>
+      <dc:description>
+	A natural fountain that intermittently ejects a column of water into the air from a hole in the Earth's crust.
+	Delineation: The limit of GEYSER is the extent of the hole from which the eruption occurs.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="hazard_zone">
+    <metadata>
+      <dc:description>
+	*An area identified as a danger to maritime navigation.
+	Delineation: The limit of HAZARD ZONE is the extent of the area that is dangerous to navigation. This extent is provided
+	to the USGS by NOS.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="ice_mass">
+    <metadata>
+      <dc:description>
+	*A field of ice, formed in regions of perennial frost.
+	Delineation: The limit of ICE MASS is the extent of the ice or snow.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="inundation_area">
+    <metadata>
+      <dc:description>
+	*An area of land subject to flooding.
+	Delineation: In flat coastal areas where the shoreline varies with the tide and meteorological conditions, the limit of
+	INUNDATION AREA is the approximate mean low or mean lower low water line, and the approximate limit of
+	flooding.
+	The limit of INUNDATION AREA controlled by DAM/WEIR is the average water line and the line
+	corresponding to the highest controlling structure.
+	For all other controlled INUNDATION AREAS, the limit is the average water line and the crest of
+	EMBANKMENT or, if there is no EMBANKMENT, the limit of flooding.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="junction">
+    <metadata>
+      <dc:description>
+	An intersection or confluence of two or more adjacent network segments, or a terminus of a single
+	network segment. Network segments are those links in a roadway network or drainage network that have direction
+	of flow or carry traffic.
+	Delineation: The limit of JUNCTION is the imaginary point or line at the terminal end of a network segment,
+	Or
+	The imaginary point or line that separates two adjacent network segments,
+	Or
+	The imaginary point or spoke-shaped set of lines that separate three or more network segments at an
+	intersection, confluence, merge point, or decision point.
+	In general, the limit of JUNCTION delineated with lines is the shortest straight line or shortest set of
+	spoke-shaped lines that separates the adjacent network segments.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="lake">
+    <metadata>
+      <dc:description>
+	*A standing body of water with a predominantly natural shoreline surrounded by land.
+	Delineation: The limit of LAKE/POND where STREAM/RIVER enters or leaves, is determined by the conformation of the
+	land.
+	The limit of a naturally formed, perennial LAKE/POND is the position of SHORELINE when the water is at
+	the stage that prevails for the greater part of the year (Average Water Elevation), or if this limit cannot be
+	determined, the visible edge of the water body (Date of Photography).
+	The limit of an artificially formed, perennial LAKE/POND is the position of SHORELINE when the water is at
+	the stage that prevails for the greater part of the year (Normal Pool), or if this limit cannot be determined, the
+	limits defined by the spillway (Spillway Elevation), or the visible edge of the water body (Date of
+	Photography).
+	The limit of an intermittent LAKE/POND is the position of SHORELINE when the water is at the stage that
+	prevails when the feature is at or near capacity (High Water Elevation) or, if this limit cannot be determined, the
+	visible edge of the water body (Date of Photography).
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="lock_chamber">
+    <metadata>
+      <dc:description>
+	An enclosure on a waterway used to raise and lower vessels as they pass from one level to another.
+	Delineation: The limit of LOCK CHAMBER is the gates and sidewalls that enclose the portion of a waterway to be raised or
+	lowered.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="mile_marker">
+    <metadata>
+      <dc:description>
+	A point on a feature indicating the distance, in miles, measured along the course or path of the feature, from an established 
+	origin point on the feature.
+	Delineation: The limit of MILE MARKER is specific to each jurisdictional authority.
+      </dc:description>
+    </metadata>    
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="mud_pot">
+    <metadata>
+      <dc:description>
+	A pool of mud from which gas or vapors issue.
+	Delineation: The limit of MUD POT is the extent of the pool of mud.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="nonearthen_shore">
+    <metadata>
+      <dc:description>
+	A structure built of stone, brick, concrete, or other building materials that borders a body of water.
+  	Delineation: The limit of NONEARTHEN SHORE is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="pipeline">
+    <metadata>
+      <dc:description>
+	*A closed conduit, with pumps, valves and control devices, for conveying fluids, gases, or finely divided solids.
+	Delineation: The limit of PIPELINE that is underground is the edge of the ground scars or linear clearings.
+	The limit of PIPELINE that is at or near the ground or elevated, is the extent of the structure.
+	The limit of PIPELINE that is underwater is as shown on the final compilation provided to USGS by NOS.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="playa">
+    <metadata>
+      <dc:description>
+	The flat area at the lowest part of an undrained desert basin, generally devoid of vegetation.
+  	Delineation: The limit of PLAYA is the extent of the lowest part of the basin.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="post">
+    <metadata>
+      <dc:description>
+	*An upright piece of timber or other material, in or adjacent to a body of water, used for mooring ships or
+	supporting other structures.
+	Delineation: The limit of POST is the extent of the timber or other material.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="rapids">
+    <metadata>
+      <dc:description>
+	An area of swift current in a stream or river, characterized by standing waves or by boulders and rocks.
+	Delineation: The limit of RAPIDS is the extent of the turbulent water.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="reef">
+    <metadata>
+      <dc:description>
+	A chain of rocks or coral at or near the surface of the water.
+  	Delineation: The limit of REEF is the edge of the rock or coral.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="reservoir">
+    <metadata>
+      <dc:description>
+	*A constructed basin formed to contain water or other liquids.
+  	Delineation: The limit of RESERVOIR is the rim of the constructed basin.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="rock">
+    <metadata>
+      <dc:description>
+	*A concreted mass of stony material.
+  	Delineation: The limit of ROCK that is abovewater is the edge of the mass exposed at mean lower low water.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="sea_ocean">
+    <metadata>
+      <dc:description>
+	*The great body of salt water that covers much of the earth.
+  	Delineation: The limit of SEA/OCEAN is the approximate line of mean high water.
+	In areas where rivers enter SEA/OCEAN, the limit is where the conformation of the land and water make the
+	division obvious, or, if the land and water do not suggest an obvious limit, the limit is where the river reaches a
+	width of 1 nautical mile (6076.1 feet, or 1.15 statute miles) with no further constrictions.
+	In an area where ESTUARY enters SEA/OCEAN, the limit is where ESTUARY ends.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="shoreline">
+    <metadata>
+      <dc:description>
+	A naturally occurring line of contact between a body of water and the land.
+  	Delineation: The Definite SHORELINE is the line of contact between water and land. (See ESTUARY, LAKE/POND,
+	SEA/OCEAN, and STREAM/RIVER for delineation of water surface area.)
+	The Indefinite SHORELINE in tidal areas is the seaward edge of marine vegetation where that limit would
+	reasonably appear as the SHORELINE to the mariner.
+	The Indefinite SHORELINE in inland areas is the estimated line of contact between water and land.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="sink">
+    <metadata>
+      <dc:description>
+	The place at which a stream disappears underground or reappears at the surface in a karst area.
+	Delineation: The limit of SINK/RISE is the extent of the hole where the stream disappears or reappears.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="snag">
+    <metadata>
+      <dc:description>
+	*A firmly attached stem or trunk of a tree near the surface of water.
+  	Delineation: N/A
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="sounding_datum_line">
+    <metadata>
+      <dc:description>
+	A line representing the tidal datum to which bathymetric contours are referenced.
+	Delineation: The limit of SOUNDING DATUM LINE is the line of mean lower low water.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="special_use_zone">
+    <metadata>
+      <dc:description>
+	*An area where distinctive types of maritime activities occur.
+  	Delineation: The limit of SPECIAL USE ZONE is the extent of the area used for distinctive activities.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="special_use_zone_limit">
+    <metadata>
+      <dc:description>
+	*The limit of an area used for distinctive types of maritime activities.
+  	Delineation: The position of SPECIAL USE ZONE LIMIT is determined by the extent of SPECIAL USE ZONE.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="spillway">
+    <metadata>
+      <dc:description>
+	A constructed passage for surplus water to run over or around a dam.
+  	Delineation: The limit of SPILLWAY is the extent of the structure over which water flows.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="spring">
+    <metadata>
+      <dc:description>
+	*A place where water issues from the ground naturally.
+  	Delineation: The limit of SPRING/SEEP is the extent of the place where water issues from the ground.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="stream">
+    <metadata>
+      <dc:description>
+	*A body of flowing water.
+  	Delineation: The limit of a perennial STREAM/RIVER is the position of the shoreline when the water is at the stage that
+	prevails for the greater part of the year.
+	The limit of an intermittent STREAM/RIVER is the position of the shoreline when the water is at the stage that
+	prevails when the feature is at or near capacity.
+	The upper limit of STREAM/RIVER is where the feature first becomes evident as a channel.
+	The limit of STREAM/RIVER where it enters or leaves LAKE/POND is determined by the conformation of the land.
+	The limit of STREAM/RIVER where it enters SEA/OCEAN is where the conformation of the land and water
+	make the division obvious, or, if the land and water do not suggest an obvious limit, the limit is where the
+	stream reaches a width of 1 nautical mile (6076.1 feet or 1.15 statute miles) with no further constrictions.
+	The limit of STREAM/RIVER where it enters ESTUARY is where ESTUARY ends.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="submerged_stream">
+    <metadata>
+      <dc:description>
+	An old river course inundated by an impounded water body.
+  	Delineation: The limit of SUBMERGED STREAM is the extent of the banks as previously mapped.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="swamp/marsh">
+    <metadata>
+      <dc:description>
+	A noncultivated, vegetated area that is inundated or saturated for a significant part of the year.
+	The vegetation is adapted for life in saturated soil conditions.
+  	Delineation: The limit of SWAMP/MARSH is the extent of the wet, spongy area.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="tunnel">
+    <metadata>
+      <dc:description>
+	An underground or underwater passage.
+  	Delineation: The limit of TUNNEL is the walls of and openings to the passage.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="underpass">
+    <metadata>
+      <dc:description>
+	The grade separation where part or all of one feature instance is directly above part or all of another
+	feature instance.
+  	Delineation: The limit of UNDERPASS is the extent of the horizontal area where the two separated feature instances
+	overlap.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="wall">
+    <metadata>
+      <dc:description>
+	*An upright structure of masonry, wood, plaster, or other building material serving to enclose, divide, or
+	protect an area.
+	Delineation: The limit of WALL is the edge of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="wash">
+    <metadata>
+      <dc:description>
+	The usually dry portion of a stream bed that contains water only during or after a local rainstorm or heavy
+	snowmelt.
+	Delineation: The limit of WASH is the cut banks of the dry channel.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="outflow">
+    <metadata>
+      <dc:description>
+	*A structure through which water enters or exits a conduit.
+  	Delineation: The limit of WATER INTAKE/OUTFLOW is the extent of the structure.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="watercourse">
+    <metadata>
+      <dc:description>
+	A named path through a drainage network.
+  	Delineation: The limit of WATERCOURSE is the set of one or more, usually continuous, components of the named path.
+	The name applies to the entire set, and not to any individual piece of the set. (In fact, an individual piece may
+	have its own name, different from the name of the compound feature.)
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="waterfall">
+    <metadata>
+      <dc:description>
+	A vertical or near vertical descent of water over a step or ledge in the bed of a river.
+  	Delineation: The limit of WATERFALL is the extent of the vertical or nearly vertical descent, and the SHORELINES.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="well">
+    <metadata>
+      <dc:description>
+	*A pit or hole dug or bored into the earth for the extraction of oil, water, other fluids, or gases.
+  	Delineation: The limit of WELL is the extent of the hole in the ground.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="wreck">
+    <metadata>
+      <dc:description>
+	*The hulk or the ruins of a disabled vessel which is attached to or foul of the bottom or cast up on the
+	shore.
+	Delineation: The limit of WRECK is the extent of the hull or other remaining portion of the disabled vessel.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="maps" name="elementtype" />
+      </OMOBJ>
+    </type>
+  </symbol>
+
+</theory>
+
+</omdoc>

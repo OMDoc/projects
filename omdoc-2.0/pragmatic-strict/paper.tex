@@ -1,0 +1,97 @@
+\documentclass{llncs}
+\usepackage{xspace}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{paralist}
+% \usepackage{multirow}
+% \usepackage{multicol}
+\usepackage{url}
+\usepackage{lstomdoc}\lstset{language=[1.3]OMDoc,columns=fullflexible,basicstyle=\sf}
+%\usepackage{stex-logo}
+\def\stex{\texorpdfstring{\raisebox{-.5ex}S\kern-.5ex\TeX}{sTeX}}
+\def\sTeX{\stex}
+
+\usepackage{rotating}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+%\usepackage[today,eso-foot]{svninfo}
+\usepackage[final]{svninfo}
+
+\svnInfo $Id: paper.tex 9200 2012-04-20 20:37:20Z frabe $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/paper.tex $
+
+\setcounter{tocdepth}{2} % for pdf bookmarks
+\usepackage[bookmarks,linkcolor=red,citecolor=blue,urlcolor=gray,colorlinks,breaklinks,bookmarksopen,bookmarksnumbered]{hyperref}
+
+\usepackage{twelf-math}
+\usepackage{basics}
+\usepackage{pattern}
+\usepackage{local}
+%\usepackage{reltable}
+%\usepackage{ded}
+%\usepackage{mmt_new}
+
+\title{Extending MKM Formats at the Statement Level}
+\author{Fulya Horozal, Michael Kohlhase, and Florian Rabe}
+\authorrunning{Horozal, Kohlhase, Rabe}
+\institute{
+\begin{tabular}[t]{c}
+  Computer Science, Jacobs University Bremen, Germany
+  \url{http://kwarc.info}
+\end{tabular}
+}
+\begin{document}
+\maketitle
+\begin{abstract}
+  Successful representation and markup languages find a good balance between giving the
+  user freedom of expression, enforcing the fundamental semantic invariants of the
+  modeling framework, and allowing machine support for the underlying semantic
+  structures. MKM formats maintain strong invariants while trying to be foundationally
+  unconstrained, which makes the induced design problem particularly challenging.
+
+  In this situation, it is standard practice to define a minimal core language together
+  with a scripting/macro facility for syntactic extensions that map into the core
+  language. In practice, such extension facilities are either fully unconstrained (making
+  invariants and machine support difficult) or limited to the object level (keeping the
+  statement and theory levels fixed). 
+
+  In this paper we develop a general methodology for extending MKM representation formats
+  at the statement level. We show the utility (and indeed necessity) of statement-level
+  extension by redesigning the \omdoc format into a minimal, regular core language (strict
+  \omdoc) and an extension (pragmatic \omdoc) that maps into strict \omdoc.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+ \input{intro}
+ %\input{features}
+  
+  
+\section{MMT/OMDoc}\label{sec:mmt}
+ \input{mmt}
+  
+\section{A Framework for Language Extensions}\label{sec:pattern}  
+ \input{pattern}
+  
+\section{Representing Extension Principles}\label{sec:meta}
+ \input{meta}
+  
+\section{Syntax Extensions and Surface Languages}\label{sec:syntax}
+\input{syntax}
+ 
+\section{Conclusion \& Future Work}\label{sec:concl}
+ \input{concl}
+
+\bibliographystyle{alpha}
+\bibliography{bib/historical,bib/systems,bib/rabe,bib/pub_rabe,bib/kwarc,local}
+%\newpage
+%\begin{appendix}
+%  \input{csyntax}
+%\end{appendix}
+\end{document}
+
+% LocalWords:  maketitle pn pnp pns printbibliography prel ednote foo concl mmt
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+% LocalWords:  omdoc newpage csyntax

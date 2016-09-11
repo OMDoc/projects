@@ -1,0 +1,5851 @@
+<?xml version="1.0"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "../dtd/omdoc-basic.dtd" [<!ENTITY % om.prefixed "INCLUDE">]>
+
+<omdoc xml:id="PURE-GENERIC-THEORY-3-omdoc"
+       xmlns="http://www.mathweb.org/omdoc"
+       xmlns:dc="http://dublincore.org"
+       xmlns:om="http://www.openmath.org/OpenMath">
+
+<metadata>
+ <dc:title>The theory PURE-GENERIC-THEORY-3 in IMPS</dc:title>
+ <dc:source>
+  <dc:title>IMPS: An Interactive Mathematical Proof System</dc:title>
+  <dc:creator role="aut">W.M. Farmer</dc:creator>
+  <dc:creator role="aut">J.D. Guttman</dc:creator>
+  <dc:creator role="aut">F.J. Thayer</dc:creator>
+  <dc:date action="created">2001</dc:date>
+ </dc:source>
+ <dc:creator role="aut">W.M. Farmer</dc:creator>
+ <dc:creator role="aut">J.D. Guttman</dc:creator>
+ <dc:creator role="aut">F.J. Thayer</dc:creator>
+ <dc:contributor role="trl">Yan Li</dc:contributor>
+ <dc:contributor role="edt">Marc Bender</dc:contributor>
+ <dc:date action="created">2002</dc:date>
+ <dc:date action="updated">2005</dc:date>
+</metadata>
+
+
+<theory xml:id="pure-generic-theory-3">
+
+<omgroup xml:id="pure-generic-theory-3-component-theories" type="sequence">
+<metadata>
+ <dc:title>Component theories</dc:title>
+</metadata>
+
+
+<imports xml:id="pure-generic-theory-2.import"  from="pure-generic-theory-2"/>
+<omtext xml:id="pure-generic-theory-2.import-display">
+ <CMP>
+ "pure-generic-theory-2" - component theory of "pure-generic-theory-3".
+ </CMP>
+</omtext>
+
+</omgroup>
+
+
+
+
+<omgroup xml:id="pure-generic-language-3" type="sequence">
+<metadata>
+ <dc:title> The symbols in "pure-generic-language-3" </dc:title>
+</metadata>
+
+<omtext xml:id="pure-generic-language-3-intro">
+ <CMP> "pure-generic-language-3" - language of the theory "pure-generic-theory-3". </CMP>
+</omtext>
+
+<symbol xml:id="ind_3" kind="sort">
+ <CMP> "ind_3" - primitive sort of the theory "pure-generic-theory-3". </CMP>
+</symbol>
+
+<type system="imps-sorts" for="ind_3">
+ <CMP> The enclosing sort of "ind_3" is "ind_3". </CMP>
+ <om:OMOBJ>
+  <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+ </om:OMOBJ>
+</type>
+
+
+</omgroup>
+
+
+<omgroup xml:id="events-of-pure-generic-theory-3" type="sequence">
+<metadata>
+ <dc:title>Events</dc:title>
+</metadata>
+
+<omtext xml:id="pure-generic-theory-3-events-intro">
+ <CMP>
+  The events of the theory "pure-generic-theory-3" in load order.
+ </CMP>
+</omtext>
+
+
+<assertion xml:id="definedness-of-dangling-conditionals"  type="theorem">
+<CMP>
+ Theorem name: "definedness-of-dangling-conditionals". <with style="linebreak"/>
+
+ Formula (string): "forall(a:prop,b:ind_1,#(if(a, b, ?ind_1)) iff a)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall ((prop a) (ind_1 b)) (iff (is-defined (if a b (undefined ind_1))) a))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="the-kernel-theory" name="prop"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="if"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="undefined"/>
+        <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMA>
+
+       </om:OMA>
+      </om:OMA>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="defined-iota-expression"  type="theorem">
+<CMP>
+ Theorem name: "defined-iota-expression". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  #(iota(i:ind_1,p(i)))
+   implies 
+  p(iota(i:ind_1,p(i)))
+   and 
+  forall(j:ind_1,p(j) implies j=iota(i:ind_1,p(i))))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (implies (is-defined (iota ((ind_1 i)) (apply-operator p i)))
+  (and (apply-operator p (iota ((ind_1 i)) (apply-operator p i)))
+   (forall ((ind_1 j))
+    (implies (apply-operator p j)
+     (= j (iota ((ind_1 i)) (apply-operator p i))))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMV name="p"/>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="iota"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+          </om:OMATP>
+          <om:OMV name="i"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="i"/>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forall"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="j"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="implies"/>
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="j"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="="/>
+         <om:OMV name="j"/>
+         <om:OMBIND>
+          <om:OMS cd="the-kernel-theory" name="iota"/>
+          <om:OMBVAR>
+
+           <om:OMATTR>
+            <om:OMATP>
+             <om:OMS cd="the-kernel-theory" name="sort"/>
+             <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+            </om:OMATP>
+            <om:OMV name="i"/>
+           </om:OMATTR>
+
+          </om:OMBVAR>
+
+          <om:OMA>
+           <om:OMV name="p"/>
+           <om:OMV name="i"/>
+          </om:OMA>
+         </om:OMBIND>
+        </om:OMA>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="defined-iota-expression-satisfiability"  type="theorem">
+<CMP>
+ Theorem name: "defined-iota-expression-satisfiability". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  #(iota(i:ind_1,p(i))) implies p(iota(i:ind_1,p(i))))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (implies (is-defined (iota ((ind_1 i)) (apply-operator p i)))
+  (apply-operator p (iota ((ind_1 i)) (apply-operator p i)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMA>
+      <om:OMV name="p"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="defined-iota-expression-existence"  type="theorem">
+<CMP>
+ Theorem name: "defined-iota-expression-existence". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  #(iota(i:ind_1,p(i))) implies nonvacuous_q{p})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (implies (is-defined (iota ((ind_1 i)) (apply-operator p i)))
+  (nonvacuous? p)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="nonvacuous?"/>
+      <om:OMV name="p"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="defined-iota-expression-full-existence"  type="theorem">
+<CMP>
+ Theorem name: "defined-iota-expression-full-existence". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(%%p%%:[ind_1,prop],
+  not(#(iota(i:ind_1,%%p%%(i))))
+   or 
+  forsome(j:ind_1,
+    j=iota(i:ind_1,%%p%%(i))
+     and 
+    %%p%%(j)
+     and 
+    forall(j_1:ind_1,%%p%%(j_1) implies j=j_1)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) %%p%%))
+ (or (not (is-defined (iota ((ind_1 i)) (apply-operator %%p%% i))))
+  (forsome ((ind_1 j))
+   (and (= j (iota ((ind_1 i)) (apply-operator %%p%% i)))
+    (apply-operator %%p%% j)
+    (forall ((ind_1 j_1)) (implies (apply-operator %%p%% j_1) (= j j_1)))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="%%p%%"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="or"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="not"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="is-defined"/>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="iota"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+          </om:OMATP>
+          <om:OMV name="i"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMV name="%%p%%"/>
+         <om:OMV name="i"/>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forsome"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="j"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="and"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="="/>
+        <om:OMV name="j"/>
+        <om:OMBIND>
+         <om:OMS cd="the-kernel-theory" name="iota"/>
+         <om:OMBVAR>
+
+          <om:OMATTR>
+           <om:OMATP>
+            <om:OMS cd="the-kernel-theory" name="sort"/>
+            <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+           </om:OMATP>
+           <om:OMV name="i"/>
+          </om:OMATTR>
+
+         </om:OMBVAR>
+
+         <om:OMA>
+          <om:OMV name="%%p%%"/>
+          <om:OMV name="i"/>
+         </om:OMA>
+        </om:OMBIND>
+       </om:OMA>
+       <om:OMA>
+        <om:OMV name="%%p%%"/>
+        <om:OMV name="j"/>
+       </om:OMA>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="forall"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+          </om:OMATP>
+          <om:OMV name="j_1"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="implies"/>
+         <om:OMA>
+          <om:OMV name="%%p%%"/>
+          <om:OMV name="j_1"/>
+         </om:OMA>
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="="/>
+          <om:OMV name="j"/>
+          <om:OMV name="j_1"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="defined-iota-expression-uniqueness"  type="theorem">
+<CMP>
+ Theorem name: "defined-iota-expression-uniqueness". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  #(iota(i:ind_1,p(i)))
+   implies 
+  forall(j:ind_1,p(j) implies j=iota(i:ind_1,p(i))))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (implies (is-defined (iota ((ind_1 i)) (apply-operator p i)))
+  (forall ((ind_1 j))
+   (implies (apply-operator p j)
+    (= j (iota ((ind_1 i)) (apply-operator p i)))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forall"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="j"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="implies"/>
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="j"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="="/>
+        <om:OMV name="j"/>
+        <om:OMBIND>
+         <om:OMS cd="the-kernel-theory" name="iota"/>
+         <om:OMBVAR>
+
+          <om:OMATTR>
+           <om:OMATP>
+            <om:OMS cd="the-kernel-theory" name="sort"/>
+            <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+           </om:OMATP>
+           <om:OMV name="i"/>
+          </om:OMATTR>
+
+         </om:OMBVAR>
+
+         <om:OMA>
+          <om:OMV name="p"/>
+          <om:OMV name="i"/>
+         </om:OMA>
+        </om:OMBIND>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="defined-iota-expression-iota-free-uniqueness"  type="theorem">
+<CMP>
+ Theorem name: "defined-iota-expression-iota-free-uniqueness". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  #(iota(i:ind_1,p(i)))
+   implies 
+  forall(i,j:ind_1,p(i) and p(j) implies i=j))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (implies (is-defined (iota ((ind_1 i)) (apply-operator p i)))
+  (forall ((ind_1 i j))
+   (implies (and (apply-operator p i) (apply-operator p j)) (= i j)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forall"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="i"/>
+       </om:OMATTR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="j"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="implies"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="and"/>
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="i"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="j"/>
+        </om:OMA>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="="/>
+        <om:OMV name="i"/>
+        <om:OMV name="j"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="equal-iota-expressions-lemma"  type="theorem">
+<CMP>
+ Theorem name: "equal-iota-expressions-lemma". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p,q:[ind_1,prop],
+  iota(i:ind_1,p(i))=iota(i:ind_1,q(i))
+   implies 
+  forall(k:ind_1,p(k) implies q(k)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p q))
+ (implies
+  (= (iota ((ind_1 i)) (apply-operator p i))
+   (iota ((ind_1 i)) (apply-operator q i)))
+  (forall ((ind_1 k)) (implies (apply-operator p k) (apply-operator q k)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="q"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="q"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forall"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="k"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="implies"/>
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="k"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMV name="q"/>
+        <om:OMV name="k"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="equal-iota-expressions"  type="theorem">
+<CMP>
+ Theorem name: "equal-iota-expressions". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p,q:[ind_1,prop],
+  iota(i:ind_1,p(i))=iota(i:ind_1,q(i)) implies p=q)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p q))
+ (implies
+  (= (iota ((ind_1 i)) (apply-operator p i))
+   (iota ((ind_1 i)) (apply-operator q i)))
+  (= p q)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="q"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="q"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="p"/>
+      <om:OMV name="q"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="defined-iota-expression-elimination"  type="theorem">
+<CMP>
+ Theorem name: "defined-iota-expression-elimination". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  #(iota(i:ind_1,p(i)))
+   iff 
+  forsome(i:ind_1,
+    p(i) and forall(j:ind_1,p(j) implies j=i)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (iff (is-defined (iota ((ind_1 i)) (apply-operator p i)))
+  (forsome ((ind_1 i))
+   (and (apply-operator p i)
+    (forall ((ind_1 j)) (implies (apply-operator p j) (= j i)))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forsome"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="i"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="and"/>
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="forall"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+          </om:OMATP>
+          <om:OMV name="j"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="implies"/>
+         <om:OMA>
+          <om:OMV name="p"/>
+          <om:OMV name="j"/>
+         </om:OMA>
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="="/>
+          <om:OMV name="j"/>
+          <om:OMV name="i"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="negated-defined-iota-expression-elimination-1"  type="theorem">
+<CMP>
+ Theorem name: "negated-defined-iota-expression-elimination-1". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  forall(i:ind_1,not(p(i)))
+   implies 
+  not(#(iota(i:ind_1,p(i)))))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (implies (forall ((ind_1 i)) (not (apply-operator p i)))
+  (not (is-defined (iota ((ind_1 i)) (apply-operator p i))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forall"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="i"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="not"/>
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="not"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="is-defined"/>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="iota"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+          </om:OMATP>
+          <om:OMV name="i"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="i"/>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="negated-defined-iota-expression-elimination-2"  type="theorem">
+<CMP>
+ Theorem name: "negated-defined-iota-expression-elimination-2". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  forsome(i,j:ind_1,p(i) and p(j) and not(i=j))
+   implies 
+  not(#(iota(i:ind_1,p(i)))))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (implies
+  (forsome ((ind_1 i j))
+   (and (apply-operator p i) (apply-operator p j) (not (= i j))))
+  (not (is-defined (iota ((ind_1 i)) (apply-operator p i))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forsome"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="i"/>
+       </om:OMATTR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="j"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="and"/>
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="j"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="not"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="="/>
+         <om:OMV name="i"/>
+         <om:OMV name="j"/>
+        </om:OMA>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="not"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="is-defined"/>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="iota"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+          </om:OMATP>
+          <om:OMV name="i"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="i"/>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="negated-defined-iota-expression-elimination"  type="theorem">
+<CMP>
+ Theorem name: "negated-defined-iota-expression-elimination". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(p:[ind_1,prop],
+  not(#(iota(i:ind_1,p(i))))
+   iff 
+  (forall(i:ind_1,not(p(i)))
+   or 
+  forsome(i,j:ind_1,p(i) and p(j) and not(i=j))))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 prop) p))
+ (iff (not (is-defined (iota ((ind_1 i)) (apply-operator p i))))
+  (or (forall ((ind_1 i)) (not (apply-operator p i)))
+   (forsome ((ind_1 i j))
+    (and (apply-operator p i) (apply-operator p j) (not (= i j)))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="not"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="is-defined"/>
+       <om:OMBIND>
+        <om:OMS cd="the-kernel-theory" name="iota"/>
+        <om:OMBVAR>
+
+         <om:OMATTR>
+          <om:OMATP>
+           <om:OMS cd="the-kernel-theory" name="sort"/>
+           <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+          </om:OMATP>
+          <om:OMV name="i"/>
+         </om:OMATTR>
+
+        </om:OMBVAR>
+
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="i"/>
+        </om:OMA>
+       </om:OMBIND>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="or"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forall"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="not"/>
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="i"/>
+        </om:OMA>
+       </om:OMA>
+      </om:OMBIND>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forsome"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="j"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="and"/>
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="i"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="j"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="not"/>
+         <om:OMA>
+          <om:OMS cd="the-kernel-theory" name="="/>
+          <om:OMV name="i"/>
+          <om:OMV name="j"/>
+         </om:OMA>
+        </om:OMA>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="left-iota-expression-equation-elimination"  type="theorem">
+<CMP>
+ Theorem name: "left-iota-expression-equation-elimination". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a:ind_1,p:[ind_1,prop],
+  iota(i:ind_1,p(i))=a
+   iff 
+  (p(a) and forall(b:ind_1,p(b) implies b=a)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((ind_1 a) ((ind_1 prop) p))
+ (iff (= (iota ((ind_1 i)) (apply-operator p i)) a)
+  (and (apply-operator p a)
+   (forall ((ind_1 b)) (implies (apply-operator p b) (= b a))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+      <om:OMV name="a"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMV name="p"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forall"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="b"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="implies"/>
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="b"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="="/>
+         <om:OMV name="b"/>
+         <om:OMV name="a"/>
+        </om:OMA>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="right-iota-expression-equation-elimination"  type="theorem">
+<CMP>
+ Theorem name: "right-iota-expression-equation-elimination". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a:ind_1,p:[ind_1,prop],
+  a=iota(i:ind_1,p(i))
+   iff 
+  (p(a) and forall(b:ind_1,p(b) implies b=a)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((ind_1 a) ((ind_1 prop) p))
+ (iff (= a (iota ((ind_1 i)) (apply-operator p i)))
+  (and (apply-operator p a)
+   (forall ((ind_1 b)) (implies (apply-operator p b) (= b a))))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="prop"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="p"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMV name="a"/>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="iota"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="i"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMV name="p"/>
+        <om:OMV name="i"/>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMV name="p"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forall"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="b"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="implies"/>
+        <om:OMA>
+         <om:OMV name="p"/>
+         <om:OMV name="b"/>
+        </om:OMA>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="="/>
+         <om:OMV name="b"/>
+         <om:OMV name="a"/>
+        </om:OMA>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="unary-eta-reduction"  type="theorem">
+<CMP>
+ Theorem name: "unary-eta-reduction". <with style="linebreak"/>
+
+ Formula (string): "forall(f:[ind_1,ind_2],lambda(x:ind_1,f(x))=f)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 ind_2) f)) (= (lambda ((ind_1 x)) (apply-operator f x)) f))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="lambda"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="x"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+     </om:OMBIND>
+     <om:OMV name="f"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="domain-membership-iff-defined"  type="theorem">
+<CMP>
+ Theorem name: "domain-membership-iff-defined". <with style="linebreak"/>
+
+ Formula (string): "forall(x:ind_1,f:[ind_1,ind_2],x in dom{f} iff #(f(x)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((ind_1 x) ((ind_1 ind_2) f))
+ (iff (i-in x (m-domain f)) (is-defined (apply-operator f x))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="rev%domain-membership-iff-defined"  type="theorem">
+<CMP>
+ Theorem name: "rev%domain-membership-iff-defined". <with style="linebreak"/>
+
+ Formula (string): "forall(x:ind_1,f:[ind_1,ind_2],#(f(x)) iff x in dom{f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((ind_1 x) ((ind_1 ind_2) f))
+ (iff (is-defined (apply-operator f x)) (i-in x (m-domain f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="range-domain-membership"  type="theorem">
+<CMP>
+ Theorem name: "range-domain-membership". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:ind_1,f:[ind_1,ind_2],
+  f(x) in ran{f} iff x in dom{f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((ind_1 x) ((ind_1 ind_2) f))
+ (iff (i-in (apply-operator f x) (m-range f)) (i-in x (m-domain f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete", "transportable-rewrite". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="rev%range-domain-membership"  type="theorem">
+<CMP>
+ Theorem name: "rev%range-domain-membership". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:ind_1,f:[ind_1,ind_2],
+  x in dom{f} iff f(x) in ran{f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((ind_1 x) ((ind_1 ind_2) f))
+ (iff (i-in x (m-domain f)) (i-in (apply-operator f x) (m-range f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="membership-in-a-domain"  type="theorem">
+<CMP>
+ Theorem name: "membership-in-a-domain". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:ind_1,a:sets[ind_1],f:[ind_1,ind_2],
+  dom{f}=a and #(f(x)) implies x in a)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((ind_1 x) ((ind_1 unit%sort) a) ((ind_1 ind_2) f))
+ (implies (and (= (m-domain f) a) (is-defined (apply-operator f x)))
+  (i-in x a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-domain"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="is-defined"/>
+       <om:OMA>
+        <om:OMV name="f"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="membership-in-a-range"  type="theorem">
+<CMP>
+ Theorem name: "membership-in-a-range". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(x:ind_1,y:ind_2,b:sets[ind_2],f:[ind_1,ind_2],
+  ran{f}=b and y=f(x) implies y in b)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall ((ind_1 x) (ind_2 y) ((ind_2 unit%sort) b) ((ind_1 ind_2) f))
+ (implies (and (= (m-range f) b) (= y (apply-operator f x))) (i-in y b)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-range"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMV name="y"/>
+       <om:OMA>
+        <om:OMV name="f"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="y"/>
+      <om:OMV name="b"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="dom-of-an-indicator"  type="theorem">
+<CMP>
+ Theorem name: "dom-of-an-indicator". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[ind_1],dom{a}=a)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 unit%sort) a)) (= (m-domain a) a))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-domain"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+     <om:OMV name="a"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="composition-decreases-domain"  type="theorem">
+<CMP>
+ Theorem name: "composition-decreases-domain". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],g:[ind_2,ind_3],
+  dom{g oo f} subseteq dom{f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 ind_3) g))
+ (i-subseteq (m-domain (m-composition g f)) (m-domain f)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-domain"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-composition"/>
+       <om:OMV name="g"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-domain"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="composition-decreases-range"  type="theorem">
+<CMP>
+ Theorem name: "composition-decreases-range". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],g:[ind_2,ind_3],
+  ran{g oo f} subseteq ran{g})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 ind_3) g))
+ (i-subseteq (m-range (m-composition g f)) (m-range g)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-range"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-composition"/>
+       <om:OMV name="g"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-range"/>
+      <om:OMV name="g"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="domain-composition"  type="theorem">
+<CMP>
+ Theorem name: "domain-composition". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],g:[ind_2,ind_3],
+  ran{f} subseteq dom{g} implies dom{g oo f}=dom{f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 ind_3) g))
+ (implies (i-subseteq (m-range f) (m-domain g))
+  (= (m-domain (m-composition g f)) (m-domain f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="g"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-composition"/>
+        <om:OMV name="g"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="range-composition"  type="theorem">
+<CMP>
+ Theorem name: "range-composition". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],g:[ind_2,ind_3],
+  dom{g} subseteq ran{f} implies ran{g oo f}=ran{g})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 ind_3) g))
+ (implies (i-subseteq (m-domain g) (m-range f))
+  (= (m-range (m-composition g f)) (m-range g))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="g"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-composition"/>
+        <om:OMV name="g"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="g"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="injective-composition"  type="theorem">
+<CMP>
+ Theorem name: "injective-composition". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],g:[ind_2,ind_3],
+  injective_q{f} and injective_on_q{g,ran{f}}
+   implies 
+  injective_q{g oo f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 ind_3) g))
+ (implies (and (m-injective? f) (m-injective-on? g (m-range f)))
+  (m-injective? (m-composition g f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-injective-on?"/>
+       <om:OMV name="g"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-range"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-composition"/>
+       <om:OMV name="g"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="image-of-domain-is-range"  type="theorem">
+<CMP>
+ Theorem name: "image-of-domain-is-range". <with style="linebreak"/>
+
+ Formula (string): "forall(f:[ind_1,ind_2],image{f,dom{f}}=ran{f})". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 ind_2) f)) (= (m-image f (m-domain f)) (m-range f)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-image"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-range"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="image-subset-of-range-characterization"  type="theorem">
+<CMP>
+ Theorem name: "image-subset-of-range-characterization". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(s:sets[ind_1],f:[ind_1,ind_2],
+  s subseteq dom{f} implies image{f,s} subseteq ran{f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 unit%sort) s) ((ind_1 ind_2) f))
+ (implies (i-subseteq s (m-domain f)) (i-subseteq (m-image f s) (m-range f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="s"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMV name="s"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="s"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="image-is-monotone-wrt-subseteq"  type="theorem">
+<CMP>
+ Theorem name: "image-is-monotone-wrt-subseteq". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a,b:sets[ind_1],
+  a subseteq b implies image{f,a} subseteq image{f,b})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a b))
+ (implies (i-subseteq a b) (i-subseteq (m-image f a) (m-image f b))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMV name="a"/>
+      <om:OMV name="b"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="direct-image-disjointness-conversion"  type="theorem">
+<CMP>
+ Theorem name: "direct-image-disjointness-conversion". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_1],b:sets[ind_2],
+  empty_indic_q{b inters image{f,a}}
+   iff 
+  empty_indic_q{inv_image{f,b} inters a})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a) ((ind_2 unit%sort) b))
+ (iff (i-empty-indicator? (i-intersection b (m-image f a)))
+  (i-empty-indicator? (i-intersection (m-inverse-image f b) a))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-empty-indicator?"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+       <om:OMV name="b"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-image"/>
+        <om:OMV name="f"/>
+        <om:OMV name="a"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-empty-indicator?"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+        <om:OMV name="f"/>
+        <om:OMV name="b"/>
+       </om:OMA>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="direct-image-subset-conversion"  type="theorem">
+<CMP>
+ Theorem name: "direct-image-subset-conversion". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_1],b:sets[ind_2],
+  total_q{f,[ind_1,ind_2]}
+   implies 
+  image{f,a} subseteq b iff a subseteq inv_image{f,b})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a) ((ind_2 unit%sort) b))
+ (implies (total? f (undefined (ind_1 ind_2)))
+  (iff (i-subseteq (m-image f a) b) (i-subseteq a (m-inverse-image f b)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="total?"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="undefined"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMA>
+
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="iff"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-image"/>
+        <om:OMV name="f"/>
+        <om:OMV name="a"/>
+       </om:OMA>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+       <om:OMV name="a"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+        <om:OMV name="f"/>
+        <om:OMV name="b"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-image-union-preservation"  type="theorem">
+<CMP>
+ Theorem name: "inverse-image-union-preservation". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a,b:sets[ind_2],
+  inv_image{f,a union b}
+  =inv_image{f,a} union inv_image{f,b})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 unit%sort) a b))
+ (= (m-inverse-image f (i-union a b))
+  (i-union (m-inverse-image f a) (m-inverse-image f b))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-union"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-union"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-image-inters-preservation"  type="theorem">
+<CMP>
+ Theorem name: "inverse-image-inters-preservation". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a,b:sets[ind_2],
+  inv_image{f,a inters b}
+  =inv_image{f,a} inters inv_image{f,b})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 unit%sort) a b))
+ (= (m-inverse-image f (i-intersection a b))
+  (i-intersection (m-inverse-image f a) (m-inverse-image f b))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-intersection"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="meaning-of-inverse-image-membership"  type="theorem">
+<CMP>
+ Theorem name: "meaning-of-inverse-image-membership". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],x:ind_1,o:sets[ind_2],
+  x in inv_image{f,o} iff f(x) in o)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) (ind_1 x) ((ind_2 unit%sort) o))
+ (iff (i-in x (m-inverse-image f o)) (i-in (apply-operator f x) o)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="o"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMV name="x"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="o"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+      <om:OMV name="o"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="dom-of-id"  type="theorem">
+<CMP>
+ Theorem name: "dom-of-id". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[ind_1],dom{id{a}}=a)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 unit%sort) a)) (= (m-domain (m-id a)) a))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-domain"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-id"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMV name="a"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="ran-of-id"  type="theorem">
+<CMP>
+ Theorem name: "ran-of-id". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[ind_1],ran{id{a}}=a)". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 unit%sort) a)) (= (m-range (m-id a)) a))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-range"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-id"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMV name="a"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="id-is-injective-on-dom"  type="theorem">
+<CMP>
+ Theorem name: "id-is-injective-on-dom". <with style="linebreak"/>
+
+ Formula (string): "forall(a:sets[ind_1],injective_on_q{id{a},a})". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 unit%sort) a)) (m-injective-on? (m-id a) a))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="m-injective-on?"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-id"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+     <om:OMV name="a"/>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="composition-with-id-right"  type="theorem">
+<CMP>
+ Theorem name: "composition-with-id-right". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_1],
+  f oo (id{a})=restrict{f,a})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a))
+ (= (m-composition f (m-id a)) (m-restrict f a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete", "transportable-rewrite". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-composition"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-id"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-restrict"/>
+      <om:OMV name="f"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="composition-with-id-left"  type="theorem">
+<CMP>
+ Theorem name: "composition-with-id-left". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_2],
+  (id{a}) oo f=restrict{f,inv_image{f,a}})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 unit%sort) a))
+ (= (m-composition (m-id a) f) (m-restrict f (m-inverse-image f a))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete", "transportable-rewrite". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-composition"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-id"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-restrict"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse-image"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="composition-with-total-id-left"  type="theorem">
+<CMP>
+ Theorem name: "composition-with-total-id-left". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_2],
+  total_q{a,sets[ind_2]} implies (id{a}) oo f=f)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_2 unit%sort) a))
+ (implies (total? a (undefined (ind_2 unit%sort)))
+  (= (m-composition (m-id a) f) f)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="total?"/>
+      <om:OMV name="a"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="undefined"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMA>
+
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-composition"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-id"/>
+        <om:OMV name="a"/>
+       </om:OMA>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMV name="f"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="composition-with-total-id-right"  type="theorem">
+<CMP>
+ Theorem name: "composition-with-total-id-right". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_1],
+  total_q{a,sets[ind_1]} implies f oo (id{a})=f)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a))
+ (implies (total? a (undefined (ind_1 unit%sort)))
+  (= (m-composition f (m-id a)) f)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="total?"/>
+      <om:OMV name="a"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="undefined"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMA>
+
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-composition"/>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-id"/>
+        <om:OMV name="a"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMV name="f"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="surjective-on-lemma"  type="theorem">
+<CMP>
+ Theorem name: "surjective-on-lemma". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a:sets[ind_1],b:sets[ind_2],f:[ind_1,ind_2],x:ind_1,
+  surjective_on_q{f,a,b} and x in a implies f(x) in b)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall
+ (((ind_1 unit%sort) a) ((ind_2 unit%sort) b) ((ind_1 ind_2) f) (ind_1 x))
+ (implies (and (m-surjective-on? f a b) (i-in x a))
+  (i-in (apply-operator f x) b)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-surjective-on?"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-in"/>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMV name="x"/>
+      </om:OMA>
+      <om:OMV name="b"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="domain-of-a-bijective-composition"  type="theorem">
+<CMP>
+ Theorem name: "domain-of-a-bijective-composition". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a:sets[ind_1],b:sets[ind_2],c:sets[ind_3],f:[ind_1,ind_2],g:[ind_2,ind_3],
+  bijective_on_q{f,a,b} and bijective_on_q{g,b,c}
+   implies 
+  dom{g oo f}=a)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall
+ (((ind_1 unit%sort) a) ((ind_2 unit%sort) b) ((ind_3 unit%sort) c)
+  ((ind_1 ind_2) f) ((ind_2 ind_3) g))
+ (implies (and (m-bijective-on? f a b) (m-bijective-on? g b c))
+  (= (m-domain (m-composition g f)) a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="c"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-bijective-on?"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-bijective-on?"/>
+       <om:OMV name="g"/>
+       <om:OMV name="b"/>
+       <om:OMV name="c"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-composition"/>
+        <om:OMV name="g"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="range-of-a-bijective-composition"  type="theorem">
+<CMP>
+ Theorem name: "range-of-a-bijective-composition". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a:sets[ind_1],b:sets[ind_2],c:sets[ind_3],f:[ind_1,ind_2],g:[ind_2,ind_3],
+  bijective_on_q{f,a,b} and bijective_on_q{g,b,c}
+   implies 
+  ran{g oo f}=c)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall
+ (((ind_1 unit%sort) a) ((ind_2 unit%sort) b) ((ind_3 unit%sort) c)
+  ((ind_1 ind_2) f) ((ind_2 ind_3) g))
+ (implies (and (m-bijective-on? f a b) (m-bijective-on? g b c))
+  (= (m-range (m-composition g f)) c)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="c"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="g"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-bijective-on?"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-bijective-on?"/>
+       <om:OMV name="g"/>
+       <om:OMV name="b"/>
+       <om:OMV name="c"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-composition"/>
+        <om:OMV name="g"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMV name="c"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="injective-and-surjective-is-total"  type="theorem">
+<CMP>
+ Theorem name: "injective-and-surjective-is-total". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  injective_q{f} and surjective_q{f}
+   implies 
+  total_q{f,[ind_1,ind_2]})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (implies (and (m-injective? f) (m-surjective? f))
+  (total? f (undefined (ind_1 ind_2)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-surjective?"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="total?"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="undefined"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMA>
+
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="injective-implies-injective-on"  type="theorem">
+<CMP>
+ Theorem name: "injective-implies-injective-on". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_1],
+  injective_q{f} implies injective_on_q{f,a})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a))
+ (implies (m-injective? f) (m-injective-on? f a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective-on?"/>
+      <om:OMV name="f"/>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="injective-iff-injective-on-domain"  type="theorem">
+<CMP>
+ Theorem name: "injective-iff-injective-on-domain". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_1],
+  injective_q{f} iff injective_on_q{f,dom{f}})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a))
+ (iff (m-injective? f) (m-injective-on? f (m-domain f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="iff"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective-on?"/>
+      <om:OMV name="f"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="range-of-bijection-on-singleton"  type="theorem">
+<CMP>
+ Theorem name: "range-of-bijection-on-singleton". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_1],b:sets[ind_2],
+  bijective_on_q{f,a,b} and forsome(x:ind_1,a=singleton{x})
+   implies 
+  forsome(y:ind_2,b=singleton{y}))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a) ((ind_2 unit%sort) b))
+ (implies
+  (and (m-bijective-on? f a b) (forsome ((ind_1 x)) (= a (i-singleton x))))
+  (forsome ((ind_2 y)) (= b (i-singleton y)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-bijective-on?"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMBIND>
+       <om:OMS cd="the-kernel-theory" name="forsome"/>
+       <om:OMBVAR>
+
+        <om:OMATTR>
+         <om:OMATP>
+          <om:OMS cd="the-kernel-theory" name="sort"/>
+          <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         </om:OMATP>
+         <om:OMV name="x"/>
+        </om:OMATTR>
+
+       </om:OMBVAR>
+
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="="/>
+        <om:OMV name="a"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="i-singleton"/>
+         <om:OMV name="x"/>
+        </om:OMA>
+       </om:OMA>
+      </om:OMBIND>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forsome"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+        </om:OMATP>
+        <om:OMV name="y"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMV name="b"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="i-singleton"/>
+        <om:OMV name="y"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-composes-to-id"  type="theorem">
+<CMP>
+ Theorem name: "inverse-composes-to-id". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  (inverse{f}) oo f=id{ran{inverse{f}}})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (= (m-composition (m-inverse f) f) (m-id (m-range (m-inverse f)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="="/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-composition"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-id"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-is-injective"  type="theorem">
+<CMP>
+ Theorem name: "inverse-is-injective". <with style="linebreak"/>
+
+ Formula (string): "forall(f:[ind_1,ind_2],injective_q{inverse{f}})". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 ind_2) f)) (m-injective? (m-inverse f)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-defined-within-range"  type="theorem">
+<CMP>
+ Theorem name: "inverse-defined-within-range". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  injective_q{f} implies ran{f} subseteq dom{inverse{f}})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (implies (m-injective? f) (i-subseteq (m-range f) (m-domain (m-inverse f)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-defined-only-in-range"  type="theorem">
+<CMP>
+ Theorem name: "inverse-defined-only-in-range". <with style="linebreak"/>
+
+ Formula (string): "forall(f:[ind_1,ind_2],dom{inverse{f}} subseteq ran{f})". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 ind_2) f)) (i-subseteq (m-domain (m-inverse f)) (m-range f)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-domain"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-range"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="dom-of-inverse"  type="theorem">
+<CMP>
+ Theorem name: "dom-of-inverse". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  injective_q{f} implies dom{inverse{f}}=ran{f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (implies (m-injective? f) (= (m-domain (m-inverse f)) (m-range f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-range-within-domain"  type="theorem">
+<CMP>
+ Theorem name: "inverse-range-within-domain". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  injective_q{f} implies dom{f} subseteq ran{inverse{f}})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (implies (m-injective? f) (i-subseteq (m-domain f) (m-range (m-inverse f)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-range-only-in-domain"  type="theorem">
+<CMP>
+ Theorem name: "inverse-range-only-in-domain". <with style="linebreak"/>
+
+ Formula (string): "forall(f:[ind_1,ind_2],ran{inverse{f}} subseteq dom{f})". <with style="linebreak"/>
+
+ Formula (s-expression): "(forall (((ind_1 ind_2) f)) (i-subseteq (m-range (m-inverse f)) (m-domain f)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-range"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-domain"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="ran-of-inverse"  type="theorem">
+<CMP>
+ Theorem name: "ran-of-inverse". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  injective_q{f} implies ran{inverse{f}}=dom{f})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (implies (m-injective? f) (= (m-range (m-inverse f)) (m-domain f))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-is-a-left-inverse"  type="theorem">
+<CMP>
+ Theorem name: "inverse-is-a-left-inverse". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  injective_q{f} implies (inverse{f}) oo f=id{dom{f}})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (implies (m-injective? f)
+  (= (m-composition (m-inverse f) f) (m-id (m-domain f)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-composition"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-id"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-domain"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-is-a-left-inverse-applied"  type="theorem">
+<CMP>
+ Theorem name: "inverse-is-a-left-inverse-applied". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],x:ind_1,
+  injective_q{f} and #(f(x)) implies inverse{f}(f(x))=x)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) (ind_1 x))
+ (implies (and (m-injective? f) (is-defined (apply-operator f x)))
+  (= (apply-operator (m-inverse f) (apply-operator f x)) x)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="is-defined"/>
+       <om:OMA>
+        <om:OMV name="f"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMV name="f"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-is-a-right-inverse"  type="theorem">
+<CMP>
+ Theorem name: "inverse-is-a-right-inverse". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  injective_q{f} implies f oo (inverse{f})=id{ran{f}})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (implies (m-injective? f)
+  (= (m-composition f (m-inverse f)) (m-id (m-range f)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-composition"/>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-id"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-range"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-is-a-right-inverse-applied"  type="theorem">
+<CMP>
+ Theorem name: "inverse-is-a-right-inverse-applied". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],x:ind_2,
+  injective_q{f} and x in ran{f} implies f(inverse{f}(x))=x)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) (ind_2 x))
+ (implies (and (m-injective? f) (i-in x (m-range f)))
+  (= (apply-operator f (apply-operator (m-inverse f) x)) x)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+      </om:OMATP>
+      <om:OMV name="x"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-in"/>
+       <om:OMV name="x"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-range"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+         <om:OMV name="f"/>
+        </om:OMA>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMV name="x"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="image-under-inverse-of-injective-mapping"  type="theorem">
+<CMP>
+ Theorem name: "image-under-inverse-of-injective-mapping". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],a:sets[ind_1],b:sets[ind_2],
+  injective_q{f} and image{f,a}=b and a subseteq dom{f}
+   implies 
+  image{inverse{f},b}=a)". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) ((ind_1 unit%sort) a) ((ind_2 unit%sort) b))
+ (implies
+  (and (m-injective? f) (= (m-image f a) b) (i-subseteq a (m-domain f)))
+  (= (m-image (m-inverse f) b) a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="b"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-image"/>
+        <om:OMV name="f"/>
+        <om:OMV name="a"/>
+       </om:OMA>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="i-subseteq"/>
+       <om:OMV name="a"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-domain"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-image"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+       <om:OMV name="b"/>
+      </om:OMA>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-inverse-is-restriction"  type="theorem">
+<CMP>
+ Theorem name: "inverse-inverse-is-restriction". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],
+  injective_q{f}
+   implies 
+  inverse{inverse{f}}=restrict{f,dom{f}})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f))
+ (implies (m-injective? f)
+  (= (m-inverse (m-inverse f)) (m-restrict f (m-domain f)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+      <om:OMV name="f"/>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-restrict"/>
+       <om:OMV name="f"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-domain"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="surjective-inverse"  type="theorem">
+<CMP>
+ Theorem name: "surjective-inverse". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(a:sets[ind_1],f:[ind_1,ind_2],
+  injective_on_q{f,a} and dom{f}=a
+   implies 
+  surjective_on_q{inverse{f},ran{f},a})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 unit%sort) a) ((ind_1 ind_2) f))
+ (implies (and (m-injective-on? f a) (= (m-domain f) a))
+  (m-surjective-on? (m-inverse f) (m-range f) a)))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="the-kernel-theory" name="unit%sort"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="a"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-injective-on?"/>
+       <om:OMV name="f"/>
+       <om:OMV name="a"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-domain"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+       <om:OMV name="a"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="m-surjective-on?"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-range"/>
+       <om:OMV name="f"/>
+      </om:OMA>
+      <om:OMV name="a"/>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-composition-image-lemma"  type="theorem">
+<CMP>
+ Theorem name: "inverse-composition-image-lemma". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(phi:[ind_1,ind_3],psi:[ind_2,ind_3],
+  injective_q{psi} and ran{psi}=ran{phi}
+   implies 
+  image{(inverse{psi}) oo phi,dom{phi}}=dom{psi})". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_3) phi) ((ind_2 ind_3) psi))
+ (implies (and (m-injective? psi) (= (m-range psi) (m-range phi)))
+  (= (m-image (m-composition (m-inverse psi) phi) (m-domain phi))
+   (m-domain psi))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="phi"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+         <om:OMS cd="pure-generic-theory-3" name="ind_3"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="psi"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="and"/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-injective?"/>
+       <om:OMV name="psi"/>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-range"/>
+        <om:OMV name="psi"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-range"/>
+        <om:OMV name="phi"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMA>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="="/>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-image"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-composition"/>
+        <om:OMA>
+         <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+         <om:OMV name="psi"/>
+        </om:OMA>
+        <om:OMV name="phi"/>
+       </om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-domain"/>
+        <om:OMV name="phi"/>
+       </om:OMA>
+      </om:OMA>
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="m-domain"/>
+       <om:OMV name="psi"/>
+      </om:OMA>
+     </om:OMA>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+<assertion xml:id="inverse-defined-only-in-range-existential"  type="theorem">
+<CMP>
+ Theorem name: "inverse-defined-only-in-range-existential". <with style="linebreak"/>
+
+ Formula (string): 
+"forall(f:[ind_1,ind_2],y:ind_2,
+  #(inverse{f}(y)) implies forsome(x:ind_1,y=f(x)))". <with style="linebreak"/>
+
+ Formula (s-expression): 
+"(forall (((ind_1 ind_2) f) (ind_2 y))
+ (implies (is-defined (apply-operator (m-inverse f) y))
+  (forsome ((ind_1 x)) (= y (apply-operator f x)))))". <with style="linebreak"/>
+
+ Usage list: "elementary-macete", "transportable-macete". <with style="linebreak"/>
+</CMP>
+
+<FMP>
+  <om:OMOBJ>
+   <om:OMBIND>
+    <om:OMS cd="the-kernel-theory" name="forall"/>
+    <om:OMBVAR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="funsort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+         <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+       </om:OMA>
+      </om:OMATP>
+      <om:OMV name="f"/>
+     </om:OMATTR>
+
+     <om:OMATTR>
+      <om:OMATP>
+       <om:OMS cd="the-kernel-theory" name="sort"/>
+       <om:OMS cd="pure-generic-theory-2" name="ind_2"/>
+      </om:OMATP>
+      <om:OMV name="y"/>
+     </om:OMATTR>
+
+    </om:OMBVAR>
+
+    <om:OMA>
+     <om:OMS cd="the-kernel-theory" name="implies"/>
+     <om:OMA>
+      <om:OMS cd="the-kernel-theory" name="is-defined"/>
+      <om:OMA>
+       <om:OMA>
+        <om:OMS cd="the-kernel-theory" name="m-inverse"/>
+        <om:OMV name="f"/>
+       </om:OMA>
+       <om:OMV name="y"/>
+      </om:OMA>
+     </om:OMA>
+     <om:OMBIND>
+      <om:OMS cd="the-kernel-theory" name="forsome"/>
+      <om:OMBVAR>
+
+       <om:OMATTR>
+        <om:OMATP>
+         <om:OMS cd="the-kernel-theory" name="sort"/>
+         <om:OMS cd="pure-generic-theory-1" name="ind_1"/>
+        </om:OMATP>
+        <om:OMV name="x"/>
+       </om:OMATTR>
+
+      </om:OMBVAR>
+
+      <om:OMA>
+       <om:OMS cd="the-kernel-theory" name="="/>
+       <om:OMV name="y"/>
+       <om:OMA>
+        <om:OMV name="f"/>
+        <om:OMV name="x"/>
+       </om:OMA>
+      </om:OMA>
+     </om:OMBIND>
+    </om:OMA>
+   </om:OMBIND>
+
+  </om:OMOBJ>
+</FMP>
+
+</assertion>
+
+
+</omgroup>
+
+
+</theory>
+
+</omdoc>

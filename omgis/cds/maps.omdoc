@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="maps.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created"> 2005-02-17T10:40:50Z </dc:date>
+  <dc:title xml:lang="en"> maps </dc:title>
+  <dc:creator role="aut"> Alexandru Chitea </dc:creator>
+  <dc:source>  </dc:source>
+  <dc:date action="updated"> 2005-02-17T10:40:50Z </dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2005 Alexandru Chitea</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="maps">
+  <imports from="../../../examples/omstd/setname1.omdoc#setname1"/>
+  <imports from="../../../examples/logics/simpletypes.omdoc#simpletypes"/>
+  <imports from="../../../examples/omstd/omtypes.omdoc#omtypes"/>
+  <imports from="built_up.omdoc#built_up"/>
+  <imports from="transportation.omdoc#transportation"/>
+  
+  <symbol name="composite_map">
+    <metadata>
+      <dc:description>
+	A composite map constructor that takes more maps and composes them together.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="atypes" name="nassoc"/>
+	  <OMS cd="maps" name="maptype"/>
+	  <OMS cd="maps" name="maptype"/>
+	</OMA>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <example for="#composite_map">
+    <CMP>A simple topographical map:
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+	<OMS cd="maps" name="topographic" />
+	  <OMA>
+	    <OMS name="resolution" cd="maps" />
+	    <OMI>50000</OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS name="srs" cd="maps" />
+	    <OMSTR>EPSG:25833</OMSTR>
+	  </OMA>
+	  <OMA>
+	    <OMS name="latlongboundingbox" cd="maps" />
+	    <OMF dec="51.093867" />
+	    <OMF dec="10.7151518" />
+	    <OMF dec="53.6978408" />
+	    <OMF dec="15.4543864" />
+	  </OMA>
+	  <OMA>
+	    <OMS name="boundingbox" cd="maps" />
+	    <OMA>
+	      <OMS name="srs" cd="maps" />
+	      <OMSTR>EPSG:25833</OMSTR>
+	    </OMA>
+	    <OMF dec="3200000.0" />
+	    <OMF dec="5669000.0" />
+	    <OMF dec="3530000.0" />
+	    <OMF dec="5950000.0" />    
+	  </OMA>
+	  <OMA>
+	    <OMS name="style" cd="maps" />
+	    <OMSTR>orangen</OMSTR>
+	  </OMA>
+	  <OMS cd="transportation" name="road"/>
+	  <OMA>
+	    <OMS name="attributes" cd="maps" />
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	  </OMA>
+	  <OMS cd="maps" name="topographic" />
+	  <OMA>
+	    <OMS name="resolution" cd="maps" />
+	    <OMI>50000</OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS name="srs" cd="maps" />
+	    <OMSTR>EPSG:25833</OMSTR>
+	  </OMA>
+	  <OMA>
+	    <OMS name="latlongboundingbox" cd="maps" />
+	    <OMF dec="51.093867" />
+	    <OMF dec="10.7151518" />
+	    <OMF dec="53.6978408" />
+	    <OMF dec="15.4543864" />
+	  </OMA>
+	  <OMA>
+	    <OMS name="boundingbox" cd="maps" />
+	    <OMA>
+	      <OMS name="srs" cd="maps" />
+	      <OMSTR>EPSG:25833</OMSTR>
+	    </OMA>
+	    <OMF dec="3200000.0" />
+	    <OMF dec="5669000.0" />
+	    <OMF dec="3530000.0" />
+	    <OMF dec="5950000.0" />    
+	  </OMA>
+	  <OMA>
+	    <OMS name="style" cd="maps" />
+	    <OMSTR>orangen</OMSTR>
+	  </OMA>
+	  <OMS cd="transportation" name="road"/>
+	  <OMA>
+	    <OMS name="attributes" cd="maps" />
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	  </OMA>	
+      </OMA>
+      </OMOBJ>, it has resolution 50000 to 1.
+    </CMP>
+  </example>
+
+  <symbol name="maptype">
+    <metadata>
+      <dc:description>The type of maps,e.g. topographic.</dc:description>
+    </metadata>
+  </symbol>
+
+  <symbol name="topographic">
+    <metadata>
+      <dc:description>
+	A topopgraphical map constructor takes the following three arguments: 
+	resolution, content descriptor and the maptype.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="simpletypes" name="funtype"/>
+	  <OMS cd="maps" name="resolutiontype"/>
+	  <OMS cd="maps" name="srstype"/>
+	  <OMS cd="maps" name="latlongboundingboxtype"/>
+	  <OMS cd="maps" name="boundingboxtype"/>
+	  <OMS cd="maps" name="styletype"/>
+	  <OMS cd="maps" name="elementtype"/>
+	  <OMS cd="maps" name="attributestype"/>
+	  <OMS cd="maps" name="maptype"/>
+	</OMA>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <example for="#topographic">
+    <CMP>A simple topographical map:
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="maps" name="topographic" />
+	  <OMA>
+	    <OMS name="resolution" cd="maps" />
+	    <OMI>50000</OMI>
+	  </OMA>
+	  <OMA>
+	    <OMS name="srs" cd="maps" />
+	    <OMSTR>EPSG:25833</OMSTR>
+	  </OMA>
+	  <OMA>
+	    <OMS name="latlongboundingbox" cd="maps" />
+	    <OMF dec="51.093867" />
+	    <OMF dec="10.7151518" />
+	    <OMF dec="53.6978408" />
+	    <OMF dec="15.4543864" />
+	  </OMA>
+	  <OMA>
+	    <OMS name="boundingbox" cd="maps" />
+	    <OMA>
+	      <OMS name="srs" cd="maps" />
+	      <OMSTR>EPSG:25833</OMSTR>
+	    </OMA>
+	    <OMF dec="3200000.0" />
+	    <OMF dec="5669000.0" />
+	    <OMF dec="3530000.0" />
+	    <OMF dec="5950000.0" />    
+	  </OMA>
+	  <OMA>
+	    <OMS name="style" cd="maps" />
+	    <OMSTR>orangen</OMSTR>
+	  </OMA>
+	  <OMS cd="transportation" name="road"/>
+	  <OMA>
+	    <OMS name="attributes" cd="maps" />
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	    <OMI>0</OMI>
+	  </OMA>
+	</OMA>
+      </OMOBJ>, it has resolution 50000 to 1.
+    </CMP>
+  </example>
+
+  <symbol name="resolutiontype">
+    <metadata>
+      <dc:description>The type of resolutions of maps</dc:description>
+    </metadata>
+  </symbol>
+
+  <symbol name="resolution">
+    <metadata>
+      <dc:description>The  resolution constructor; it takes a number as argument, and returns a resolution</dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="simpletypes" name="funtype"/>
+	  <OMS cd="setname1" name="N"/>
+	  <OMS cd="maps" name="resolutiontype"/>
+	</OMA>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="srstype">
+    <metadata>
+      <dc:description>The type of Spatial Reference System (SRS) of maps.</dc:description>
+    </metadata>
+  </symbol>
+
+  <symbol name="srs">
+    <metadata>
+      <dc:description>The srs constructor; it takes a string as an argument, and returns a srs name</dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="simpletypes" name="funtype"/>
+	  <OMS cd="omtypes" name="string"/>
+	  <OMS cd="maps" name="srstype"/>
+	</OMA>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="latlongboundingboxtype">
+    <metadata>
+      <dc:description>The latitude longitude bounding box element</dc:description>
+    </metadata>
+  </symbol>
+
+  <symbol name="latlongboundingbox">
+    <metadata>
+      <dc:description>
+	A latitude longitude bounding box constructor takes the following arguments: 
+	minx, miny, maxx, maxy.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="simpletypes" name="funtype"/>
+	  <OMS cd="omtypes" name="float"/>
+	  <OMS cd="omtypes" name="float"/>
+	  <OMS cd="omtypes" name="float"/>
+	  <OMS cd="omtypes" name="float"/>
+	  <OMS cd="maps" name="latlongboundingboxtype"/>
+	</OMA>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="boundingboxtype">
+    <metadata>
+      <dc:description>The bounding box element</dc:description>
+    </metadata>
+  </symbol>
+
+  <symbol name="boundingbox">
+    <metadata>
+      <dc:description>
+	A bounding box constructor takes the following arguments: 
+	SRS constructor, minx, miny, maxx, maxy.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="simpletypes" name="funtype"/>
+	  <OMS cd="maps" name="srstype"/>
+	  <OMS cd="omtypes" name="float"/>
+	  <OMS cd="omtypes" name="float"/>
+	  <OMS cd="omtypes" name="float"/>
+	  <OMS cd="omtypes" name="float"/>
+	  <OMS cd="maps" name="boundingboxtype"/>
+	</OMA>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="styletype">
+    <metadata>
+      <dc:description>The style associated with an element.</dc:description>
+    </metadata>
+  </symbol>
+
+  <symbol name="style">
+    <metadata>
+      <dc:description>
+	A style constructor takes a string and returns a styletype.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="simpletypes" name="funtype"/>
+	  <OMS cd="omtypes" name="string"/>
+	  <OMS cd="maps" name="styletype"/>
+	</OMA>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+  <symbol name="elementtype">
+    <metadata>
+      <dc:description>The element contained by a map.</dc:description>
+    </metadata>
+  </symbol>
+
+  <symbol name="attributestype">
+    <metadata>
+      <dc:description>The attributes associated with a map.</dc:description>
+    </metadata>
+  </symbol>
+
+  <symbol name="attributes">
+    <metadata>
+      <dc:description>
+	An attributes constructor takes three natural numbers,i.e. queryable, opaque and noSubsets
+	and returns a attributestype.
+      </dc:description>
+    </metadata>
+    <type system="omgeo">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMA>
+	  <OMS cd="simpletypes" name="funtype"/>
+	  <OMS cd="setname1" name="N"/>
+	  <OMS cd="setname1" name="N"/>
+	  <OMS cd="setname1" name="N"/>
+	  <OMS cd="maps" name="attributestype"/>
+	</OMA>
+      </OMOBJ>
+    </type>
+  </symbol>
+
+</theory>
+
+</omdoc>

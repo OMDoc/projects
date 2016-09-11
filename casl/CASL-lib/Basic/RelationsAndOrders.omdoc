@@ -1,0 +1,5476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="RelationsAndOrders">
+  <theory xml:id="Relation">
+    <presentation for="Relation">
+      <use format="Hets">[Relation,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Elem"/>
+    <presentation for="Elem">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+    <symbol name="__Tilde__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Tilde__">
+      <use format="Hets">[__,~,__]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="ReflexiveRelation">
+    <presentation for="ReflexiveRelation">
+      <use format="Hets">[ReflexiveRelation,,0]</use>
+    </presentation>
+    <imports from="#Relation"/>
+    <axiom name="refl">
+      <CMP>
+     forall x:Elem
+     . x ~ x                        %(refl)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="predication"/>
+              <OMS cd="Relation" name="__Tilde__"/>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="refl">
+      <use format="Hets">refl</use>
+    </presentation>
+  </theory>
+  <private for="ReflexiveRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Relation" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="IrreflexiveRelation">
+    <presentation for="IrreflexiveRelation">
+      <use format="Hets">[IrreflexiveRelation,,0]</use>
+    </presentation>
+    <imports from="#Relation"/>
+    <axiom name="irrefl">
+      <CMP>
+     forall x:Elem
+     . not x ~ x                  %(irrefl)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Relation" name="__Tilde__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="irrefl">
+      <use format="Hets">irrefl</use>
+    </presentation>
+  </theory>
+  <private for="IrreflexiveRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Relation" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="SymmetricRelation">
+    <presentation for="SymmetricRelation">
+      <use format="Hets">[SymmetricRelation,,0]</use>
+    </presentation>
+    <imports from="#Relation"/>
+    <axiom name="sym">
+      <CMP>
+then forall x,y:Elem
+     . x ~ y if y ~ x                %(sym)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Relation" name="__Tilde__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Relation" name="__Tilde__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="false"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="sym">
+      <use format="Hets">sym</use>
+    </presentation>
+  </theory>
+  <private for="SymmetricRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Relation" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="AsymmetricRelation">
+    <presentation for="AsymmetricRelation">
+      <use format="Hets">[AsymmetricRelation,,0]</use>
+    </presentation>
+    <imports from="#Relation"/>
+    <axiom name="asym">
+      <CMP>
+then forall x,y:Elem
+     . not x ~ y if y ~ x           %(asym)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Relation" name="__Tilde__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Relation" name="__Tilde__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMS cd="casl" name="false"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="asym">
+      <use format="Hets">asym</use>
+    </presentation>
+  </theory>
+  <private for="AsymmetricRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Relation" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="AntisymmetricRelation">
+    <presentation for="AntisymmetricRelation">
+      <use format="Hets">[AntisymmetricRelation,,0]</use>
+    </presentation>
+    <imports from="#Relation"/>
+    <axiom name="antisym">
+      <CMP>
+then forall x,y:Elem
+     . x = y if x ~ y /\ y ~ x %(antisym)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Relation" name="__Tilde__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Relation" name="__Tilde__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="false"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="antisym">
+      <use format="Hets">antisym</use>
+    </presentation>
+  </theory>
+  <private for="AntisymmetricRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Relation" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="TransitiveRelation">
+    <presentation for="TransitiveRelation">
+      <use format="Hets">[TransitiveRelation,,0]</use>
+    </presentation>
+    <imports from="#Relation"/>
+    <axiom name="trans">
+      <CMP>
+then forall x,y,z:Elem
+     . x ~ z if x ~ y /\ y ~ z     %(trans)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Relation" name="__Tilde__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Relation" name="__Tilde__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Relation" name="__Tilde__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="false"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="trans">
+      <use format="Hets">trans</use>
+    </presentation>
+  </theory>
+  <private for="TransitiveRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Relation" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="SimilarityRelation">
+    <presentation for="SimilarityRelation">
+      <use format="Hets">[SimilarityRelation,,0]</use>
+    </presentation>
+    <imports from="#ReflexiveRelation"/>
+    <imports from="#SymmetricRelation"/>
+  </theory>
+  <private for="SimilarityRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"ReflexiveRelation" Type:"GlobalDef" Origin:"DGUnion"
+From:"SymmetricRelation" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="PartialEquivalenceRelation">
+    <presentation for="PartialEquivalenceRelation">
+      <use format="Hets">[PartialEquivalenceRelation,,0]</use>
+    </presentation>
+    <imports from="#SymmetricRelation"/>
+    <imports from="#TransitiveRelation"/>
+  </theory>
+  <private for="PartialEquivalenceRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"TransitiveRelation" Type:"GlobalDef" Origin:"DGUnion"
+From:"SymmetricRelation" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="EquivalenceRelation">
+    <presentation for="EquivalenceRelation">
+      <use format="Hets">[EquivalenceRelation,,0]</use>
+    </presentation>
+    <imports from="#PartialEquivalenceRelation"/>
+    <imports from="#ReflexiveRelation"/>
+  </theory>
+  <private for="EquivalenceRelation">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"ReflexiveRelation" Type:"GlobalDef" Origin:"DGUnion"
+From:"PartialEquivalenceRelation" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="PreOrder_1">
+    <presentation for="PreOrder_1">
+      <use format="Hets">[PreOrder,,1]</use>
+    </presentation>
+    <imports from="#ReflexiveRelation"/>
+    <imports from="#TransitiveRelation"/>
+  </theory>
+  <private for="PreOrder_1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"TransitiveRelation" Type:"GlobalDef" Origin:"DGUnion"
+From:"ReflexiveRelation" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="PreOrder">
+    <presentation for="PreOrder">
+      <use format="Hets">[PreOrder,,0]</use>
+    </presentation>
+    <imports from="#PreOrder_1">
+      <morphism hiding="__~__">
+        <requation>
+          <OMOBJ>
+            <OMS cd="PreOrder_1" name="__~__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="PreOrder" name="__LowerEquals__4"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <symbol name="__LowerEquals__4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__4">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+  </theory>
+  <private for="PreOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"PreOrder_1" Type:"GlobalDef" Origin:"DGTranslation"
+]]></data>
+  </private>
+  <theory xml:id="StrictOrder_1E1">
+    <presentation for="StrictOrder_1E1">
+      <use format="Hets">[StrictOrder,1E,1]</use>
+    </presentation>
+    <imports from="#IrreflexiveRelation"/>
+    <imports from="#TransitiveRelation"/>
+  </theory>
+  <private for="StrictOrder_1E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"StrictOrder_1" Type:"GlobalThm Open None Open" Origin:"DGExtension"
+From:"TransitiveRelation" Type:"GlobalDef" Origin:"DGUnion"
+From:"IrreflexiveRelation" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="StrictOrder_1">
+    <presentation for="StrictOrder_1">
+      <use format="Hets">[StrictOrder,,1]</use>
+    </presentation>
+    <imports from="#AsymmetricRelation"/>
+    <imports from="#StrictOrder_1E1"/>
+  </theory>
+  <private for="StrictOrder_1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"StrictOrder_1E1" Type:"GlobalDef" Origin:"DGSpecInst AsymmetricRelation"
+From:"AsymmetricRelation" Type:"GlobalDef" Origin:"DGSpecInst AsymmetricRelation"
+]]></data>
+  </private>
+  <theory xml:id="StrictOrder">
+    <presentation for="StrictOrder">
+      <use format="Hets">[StrictOrder,,0]</use>
+    </presentation>
+    <imports from="#StrictOrder_1">
+      <morphism hiding="__~__">
+        <requation>
+          <OMOBJ>
+            <OMS cd="StrictOrder_1" name="__~__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="StrictOrder" name="__Lower__10"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <symbol name="__Lower__10" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__10">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+  </theory>
+  <private for="StrictOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"StrictOrder_1" Type:"GlobalDef" Origin:"DGTranslation"
+]]></data>
+  </private>
+  <theory xml:id="PartialOrder_U1">
+    <presentation for="PartialOrder_U1">
+      <use format="Hets">[PartialOrder,U,1]</use>
+    </presentation>
+    <imports from="#AntisymmetricRelation">
+      <morphism hiding="__~__">
+        <requation>
+          <OMOBJ>
+            <OMS cd="AntisymmetricRelation" name="__~__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <symbol name="__LowerEquals__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__2">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+  </theory>
+  <private for="PartialOrder_U1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"AntisymmetricRelation" Type:"GlobalDef" Origin:"DGTranslation"
+]]></data>
+  </private>
+  <theory xml:id="PartialOrder">
+    <presentation for="PartialOrder">
+      <use format="Hets">[PartialOrder,,0]</use>
+    </presentation>
+    <imports from="#PartialOrder_U1"/>
+    <imports from="#PreOrder"/>
+  </theory>
+  <private for="PartialOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"PartialOrder_U1" Type:"GlobalDef" Origin:"DGUnion"
+From:"PreOrder" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="TotalOrder">
+    <presentation for="TotalOrder">
+      <use format="Hets">[TotalOrder,,0]</use>
+    </presentation>
+    <imports from="#PartialOrder"/>
+    <axiom name="dichotomy_TotalOrder">
+      <CMP>
+then forall x,y:Elem
+     . x &#60;= y \/ y &#60;= x                    %(dichotomy_TotalOrder)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="disjunction"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="dichotomy_TotalOrder">
+      <use format="Hets">dichotomy_TotalOrder</use>
+    </presentation>
+  </theory>
+  <private for="TotalOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"PartialOrder" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="StrictTotalOrder">
+    <presentation for="StrictTotalOrder">
+      <use format="Hets">[StrictTotalOrder,,0]</use>
+    </presentation>
+    <imports from="#StrictOrder"/>
+    <axiom name="trichotomy_StrictTotalOrder">
+      <CMP>
+then forall x,y:Elem
+     . x &#60; y \/ y &#60; x \/ x=y        %(trichotomy_StrictTotalOrder)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="disjunction"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="StrictOrder" name="__Lower__10"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="StrictOrder" name="__Lower__10"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="trichotomy_StrictTotalOrder">
+      <use format="Hets">trichotomy_StrictTotalOrder</use>
+    </presentation>
+  </theory>
+  <private for="StrictTotalOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"StrictOrder" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="RightUniqueRelation">
+    <presentation for="RightUniqueRelation">
+      <use format="Hets">[RightUniqueRelation,,0]</use>
+    </presentation>
+    <symbol role="sort" name="T1"/>
+    <presentation for="T1">
+      <use format="Hets">[T]</use>
+    </presentation>
+    <symbol role="sort" name="S1"/>
+    <presentation for="S1">
+      <use format="Hets">[S]</use>
+    </presentation>
+    <symbol name="__R__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="RightUniqueRelation" name="S1"/>
+            <OMS cd="RightUniqueRelation" name="T1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__R__1">
+      <use format="Hets">[__,R,__]</use>
+    </presentation>
+    <axiom name="Ax11">
+      <CMP>
+     forall s:S; t1,t2:T
+     forall s:S; t1,t2:T
+     . s R t1 /\ s R t2 =&#62; t1=t2
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="RightUniqueRelation" name="S1"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="RightUniqueRelation" name="T1"/>
+                </OMATP>
+                <OMV name="t1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="RightUniqueRelation" name="T1"/>
+                </OMATP>
+                <OMV name="t2"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="RightUniqueRelation" name="__R__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="RightUniqueRelation" name="S1"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="RightUniqueRelation" name="T1"/>
+                    </OMATP>
+                    <OMV name="t1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="RightUniqueRelation" name="__R__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="RightUniqueRelation" name="S1"/>
+                    </OMATP>
+                    <OMV name="s"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="RightUniqueRelation" name="T1"/>
+                    </OMATP>
+                    <OMV name="t2"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="RightUniqueRelation" name="T1"/>
+                  </OMATP>
+                  <OMV name="t1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="RightUniqueRelation" name="T1"/>
+                  </OMATP>
+                  <OMV name="t2"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax11">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <theory xml:id="LeftTotalRelation">
+    <presentation for="LeftTotalRelation">
+      <use format="Hets">[LeftTotalRelation,,0]</use>
+    </presentation>
+    <symbol role="sort" name="T"/>
+    <presentation for="T">
+      <use format="Hets">[T]</use>
+    </presentation>
+    <symbol role="sort" name="S"/>
+    <presentation for="S">
+      <use format="Hets">[S]</use>
+    </presentation>
+    <symbol name="__R__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="LeftTotalRelation" name="S"/>
+            <OMS cd="LeftTotalRelation" name="T"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__R__">
+      <use format="Hets">[__,R,__]</use>
+    </presentation>
+    <axiom name="Ax1">
+      <CMP>
+     forall s:S . exists t:T . s R t
+     forall s:S . exists t:T . s R t
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="LeftTotalRelation" name="S"/>
+                </OMATP>
+                <OMV name="s"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="casl" name="existential"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="LeftTotalRelation" name="T"/>
+                  </OMATP>
+                  <OMV name="t"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="LeftTotalRelation" name="__R__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="LeftTotalRelation" name="S"/>
+                  </OMATP>
+                  <OMV name="s"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="LeftTotalRelation" name="T"/>
+                  </OMATP>
+                  <OMV name="t"/>
+                </OMATTR>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax1">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <theory xml:id="BooleanAlgebra_E1">
+    <presentation for="BooleanAlgebra_E1">
+      <use format="Hets">[BooleanAlgebra,E,1]</use>
+    </presentation>
+    <symbol role="sort" name="Elem1"/>
+    <presentation for="Elem1">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+    <symbol name="N0" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N0">
+      <use format="Hets">[0]</use>
+    </presentation>
+    <symbol name="N1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N1">
+      <use format="Hets">[1]</use>
+    </presentation>
+    <symbol name="__cap__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__cap__">
+      <use format="Hets">[__,cap,__]</use>
+    </presentation>
+    <symbol name="__cup__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__cup__">
+      <use format="Hets">[__,cup,__]</use>
+    </presentation>
+    <axiom name="absorption_def1">
+      <CMP>
+     forall x,y,z:Elem
+     . x cap ( x cup y) = x             %(absorption_def1)%
+     . x cup ( x cap y) = x             %(absorption_def2)%
+     . x cap 0 = 0                      %(zeroAndCap)%
+     . x cup 1 = 1                      %(oneAndCup)%
+     . x cap ( y cup z) = (x cap y) cup ( x cap z)             
+     . x cup ( y cap z) = (x cup y) cap ( x cup z)             
+     . exists x&#39;: Elem . x cup x&#39; = 1 /\ x cap x&#39; = 0             
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="absorption_def1">
+      <use format="Hets">absorption_def1</use>
+    </presentation>
+    <axiom name="absorption_def2">
+      <CMP>
+     forall x,y,z:Elem
+     . x cap ( x cup y) = x             %(absorption_def1)%
+     . x cup ( x cap y) = x             %(absorption_def2)%
+     . x cap 0 = 0                      %(zeroAndCap)%
+     . x cup 1 = 1                      %(oneAndCup)%
+     . x cap ( y cup z) = (x cap y) cup ( x cap z)             
+     . x cup ( y cap z) = (x cup y) cap ( x cup z)             
+     . exists x&#39;: Elem . x cup x&#39; = 1 /\ x cap x&#39; = 0             
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="absorption_def2">
+      <use format="Hets">absorption_def2</use>
+    </presentation>
+    <axiom name="distr1_BooleanAlgebra">
+      <CMP>
+     forall x,y,z:Elem
+     . x cap ( x cup y) = x             %(absorption_def1)%
+     . x cup ( x cap y) = x             %(absorption_def2)%
+     . x cap 0 = 0                      %(zeroAndCap)%
+     . x cup 1 = 1                      %(oneAndCup)%
+     . x cap ( y cup z) = (x cap y) cup ( x cap z)             
+     . x cup ( y cap z) = (x cup y) cap ( x cup z)             
+     . exists x&#39;: Elem . x cup x&#39; = 1 /\ x cap x&#39; = 0             
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="distr1_BooleanAlgebra">
+      <use format="Hets">distr1_BooleanAlgebra</use>
+    </presentation>
+    <axiom name="distr2_BooleanAlgebra">
+      <CMP>
+     forall x,y,z:Elem
+     . x cap ( x cup y) = x             %(absorption_def1)%
+     . x cup ( x cap y) = x             %(absorption_def2)%
+     . x cap 0 = 0                      %(zeroAndCap)%
+     . x cup 1 = 1                      %(oneAndCup)%
+     . x cap ( y cup z) = (x cap y) cup ( x cap z)             
+     . x cup ( y cap z) = (x cup y) cap ( x cup z)             
+     . exists x&#39;: Elem . x cup x&#39; = 1 /\ x cap x&#39; = 0             
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="distr2_BooleanAlgebra">
+      <use format="Hets">distr2_BooleanAlgebra</use>
+    </presentation>
+    <axiom name="ga_assoc___cap__">
+      <CMP>
+         __ cap __: Elem * Elem -&#62; Elem, assoc, comm, unit 1;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_assoc___cap__">
+      <use format="Hets">ga_assoc___cap__</use>
+    </presentation>
+    <axiom name="ga_assoc___cup__">
+      <CMP>
+         __ cup __: Elem * Elem -&#62; Elem, assoc, comm, unit 0;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_assoc___cup__">
+      <use format="Hets">ga_assoc___cup__</use>
+    </presentation>
+    <axiom name="ga_comm___cap__">
+      <CMP>
+         __ cap __: Elem * Elem -&#62; Elem, assoc, comm, unit 1;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_comm___cap__">
+      <use format="Hets">ga_comm___cap__</use>
+    </presentation>
+    <axiom name="ga_comm___cup__">
+      <CMP>
+         __ cup __: Elem * Elem -&#62; Elem, assoc, comm, unit 0;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_comm___cup__">
+      <use format="Hets">ga_comm___cup__</use>
+    </presentation>
+    <axiom name="ga_left_unit___cap__">
+      <CMP>
+         __ cap __: Elem * Elem -&#62; Elem, assoc, comm, unit 1;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMS cd="BooleanAlgebra_E1" name="N1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_left_unit___cap__">
+      <use format="Hets">ga_left_unit___cap__</use>
+    </presentation>
+    <axiom name="ga_left_unit___cup__">
+      <CMP>
+         __ cup __: Elem * Elem -&#62; Elem, assoc, comm, unit 0;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMS cd="BooleanAlgebra_E1" name="N0"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_left_unit___cup__">
+      <use format="Hets">ga_left_unit___cup__</use>
+    </presentation>
+    <axiom name="ga_right_unit___cap__">
+      <CMP>
+         __ cap __: Elem * Elem -&#62; Elem, assoc, comm, unit 1;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="BooleanAlgebra_E1" name="N1"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_right_unit___cap__">
+      <use format="Hets">ga_right_unit___cap__</use>
+    </presentation>
+    <axiom name="ga_right_unit___cup__">
+      <CMP>
+         __ cup __: Elem * Elem -&#62; Elem, assoc, comm, unit 0;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="BooleanAlgebra_E1" name="N0"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_right_unit___cup__">
+      <use format="Hets">ga_right_unit___cup__</use>
+    </presentation>
+    <axiom name="inverse_BooleanAlgebra">
+      <CMP>
+     forall x,y,z:Elem
+     . x cap ( x cup y) = x             %(absorption_def1)%
+     . x cup ( x cap y) = x             %(absorption_def2)%
+     . x cap 0 = 0                      %(zeroAndCap)%
+     . x cup 1 = 1                      %(oneAndCup)%
+     . x cap ( y cup z) = (x cap y) cup ( x cap z)             
+     . x cup ( y cap z) = (x cup y) cap ( x cup z)             
+     . exists x&#39;: Elem . x cup x&#39; = 1 /\ x cap x&#39; = 0             
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="casl" name="existential"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x&#39;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x&#39;"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="N1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x&#39;"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="N0"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="inverse_BooleanAlgebra">
+      <use format="Hets">inverse_BooleanAlgebra</use>
+    </presentation>
+    <axiom name="oneAndCup">
+      <CMP>
+     forall x,y,z:Elem
+     . x cap ( x cup y) = x             %(absorption_def1)%
+     . x cup ( x cap y) = x             %(absorption_def2)%
+     . x cap 0 = 0                      %(zeroAndCap)%
+     . x cup 1 = 1                      %(oneAndCup)%
+     . x cap ( y cup z) = (x cap y) cup ( x cap z)             
+     . x cup ( y cap z) = (x cup y) cap ( x cup z)             
+     . exists x&#39;: Elem . x cup x&#39; = 1 /\ x cap x&#39; = 0             
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="BooleanAlgebra_E1" name="N1"/>
+              </OMA>
+              <OMS cd="BooleanAlgebra_E1" name="N1"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="oneAndCup">
+      <use format="Hets">oneAndCup</use>
+    </presentation>
+    <axiom name="zeroAndCap">
+      <CMP>
+     forall x,y,z:Elem
+     . x cap ( x cup y) = x             %(absorption_def1)%
+     . x cup ( x cap y) = x             %(absorption_def2)%
+     . x cap 0 = 0                      %(zeroAndCap)%
+     . x cup 1 = 1                      %(oneAndCup)%
+     . x cap ( y cup z) = (x cap y) cup ( x cap z)             
+     . x cup ( y cap z) = (x cup y) cap ( x cup z)             
+     . exists x&#39;: Elem . x cup x&#39; = 1 /\ x cap x&#39; = 0             
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="BooleanAlgebra_E1" name="N0"/>
+              </OMA>
+              <OMS cd="BooleanAlgebra_E1" name="N0"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="zeroAndCap">
+      <use format="Hets">zeroAndCap</use>
+    </presentation>
+  </theory>
+  <private for="BooleanAlgebra_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"BooleanAlgebra" Type:"GlobalThm Open None Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="BooleanAlgebra">
+    <presentation for="BooleanAlgebra">
+      <use format="Hets">[BooleanAlgebra,,0]</use>
+    </presentation>
+    <imports from="#BooleanAlgebra_E1"/>
+    <axiom name="ga_idem___cap__">
+      <CMP>
+     op __ cup __, __ cap __ : Elem * Elem -&#62; Elem , idem
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_idem___cap__">
+      <use format="Hets">ga_idem___cap__</use>
+    </presentation>
+    <axiom name="ga_idem___cup__">
+      <CMP>
+     op __ cup __, __ cap __ : Elem * Elem -&#62; Elem , idem
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_idem___cup__">
+      <use format="Hets">ga_idem___cup__</use>
+    </presentation>
+    <axiom name="uniqueComplement_BooleanAlgebra">
+      <CMP>
+     forall x: Elem
+     . exists! x&#39;: Elem . 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMBIND>
+              <OMS cd="casl" name="unique-existential"/>
+              <OMBVAR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x&#39;"/>
+                </OMATTR>
+              </OMBVAR>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x&#39;"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="N1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x&#39;"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="N0"/>
+                </OMA>
+              </OMA>
+            </OMBIND>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="uniqueComplement_BooleanAlgebra">
+      <use format="Hets">uniqueComplement_BooleanAlgebra</use>
+    </presentation>
+  </theory>
+  <private for="BooleanAlgebra">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"BooleanAlgebra_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="ExtPartialOrder_U">
+    <presentation for="ExtPartialOrder_U">
+      <use format="Hets">[ExtPartialOrder,U,0]</use>
+    </presentation>
+    <imports from="#PartialOrder"/>
+    <symbol name="__Lower__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__3">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__Greater__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__3">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__3">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <axiom name="geq_def_ExtPartialOrder">
+      <CMP>
+     forall x,y:Elem
+     . x &#62;= y &#60;=&#62; y &#60;= x                   %(geq_def_ExtPartialOrder)%
+     . x &#60; y &#60;=&#62; (x &#60;= y /\ not (x=y))     %(less_def_ExtPartialOrder)%
+     . x &#62; y &#60;=&#62; y &#60; x                     %(greater_def_ExtPartialOrder)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtPartialOrder_U" name="__GreaterEquals__3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="geq_def_ExtPartialOrder">
+      <use format="Hets">geq_def_ExtPartialOrder</use>
+    </presentation>
+    <axiom name="greater_def_ExtPartialOrder">
+      <CMP>
+     forall x,y:Elem
+     . x &#62;= y &#60;=&#62; y &#60;= x                   %(geq_def_ExtPartialOrder)%
+     . x &#60; y &#60;=&#62; (x &#60;= y /\ not (x=y))     %(less_def_ExtPartialOrder)%
+     . x &#62; y &#60;=&#62; y &#60; x                     %(greater_def_ExtPartialOrder)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtPartialOrder_U" name="__Greater__3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtPartialOrder_U" name="__Lower__3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="greater_def_ExtPartialOrder">
+      <use format="Hets">greater_def_ExtPartialOrder</use>
+    </presentation>
+    <axiom name="less_def_ExtPartialOrder">
+      <CMP>
+     forall x,y:Elem
+     . x &#62;= y &#60;=&#62; y &#60;= x                   %(geq_def_ExtPartialOrder)%
+     . x &#60; y &#60;=&#62; (x &#60;= y /\ not (x=y))     %(less_def_ExtPartialOrder)%
+     . x &#62; y &#60;=&#62; y &#60; x                     %(greater_def_ExtPartialOrder)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtPartialOrder_U" name="__Lower__3"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="neg"/>
+                  <OMA>
+                    <OMS cd="casl" name="strong-equation"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Relation" name="Elem"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Relation" name="Elem"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="less_def_ExtPartialOrder">
+      <use format="Hets">less_def_ExtPartialOrder</use>
+    </presentation>
+  </theory>
+  <private for="ExtPartialOrder_U">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"PartialOrder" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="ExtPartialOrder_U1">
+    <presentation for="ExtPartialOrder_U1">
+      <use format="Hets">[ExtPartialOrder,U,1]</use>
+    </presentation>
+    <imports from="#PartialOrder"/>
+    <symbol name="inf" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="inf">
+      <use format="Hets">[inf]</use>
+    </presentation>
+    <symbol name="sup" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="sup">
+      <use format="Hets">[sup]</use>
+    </presentation>
+    <axiom name="ga_comm_inf">
+      <CMP>
+  { ops inf,sup : Elem * Elem -&#62;? Elem,
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtPartialOrder_U1" name="inf"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="ExtPartialOrder_U1" name="inf"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_comm_inf">
+      <use format="Hets">ga_comm_inf</use>
+    </presentation>
+    <axiom name="ga_comm_sup">
+      <CMP>
+  { ops inf,sup : Elem * Elem -&#62;? Elem,
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtPartialOrder_U1" name="sup"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="ExtPartialOrder_U1" name="sup"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_comm_sup">
+      <use format="Hets">ga_comm_sup</use>
+    </presentation>
+    <axiom name="inf_def_ExtPartialOrder">
+      <CMP>
+    forall x,y,z: Elem
+    . inf(x,y) = z &#60;=&#62;
+    . sup(x,y) = z &#60;=&#62;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="ExtPartialOrder_U1" name="inf"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="casl" name="universal"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Relation" name="Elem"/>
+                      </OMATP>
+                      <OMV name="t"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="casl" name="implication"/>
+                    <OMA>
+                      <OMS cd="casl" name="conjunction"/>
+                      <OMA>
+                        <OMS cd="casl" name="predication"/>
+                        <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="casl" name="type"/>
+                            <OMS cd="Relation" name="Elem"/>
+                          </OMATP>
+                          <OMV name="t"/>
+                        </OMATTR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="casl" name="type"/>
+                            <OMS cd="Relation" name="Elem"/>
+                          </OMATP>
+                          <OMV name="x"/>
+                        </OMATTR>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="casl" name="predication"/>
+                        <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="casl" name="type"/>
+                            <OMS cd="Relation" name="Elem"/>
+                          </OMATP>
+                          <OMV name="t"/>
+                        </OMATTR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="casl" name="type"/>
+                            <OMS cd="Relation" name="Elem"/>
+                          </OMATP>
+                          <OMV name="y"/>
+                        </OMATTR>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="casl" name="predication"/>
+                      <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Relation" name="Elem"/>
+                        </OMATP>
+                        <OMV name="t"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Relation" name="Elem"/>
+                        </OMATP>
+                        <OMV name="z"/>
+                      </OMATTR>
+                    </OMA>
+                    <OMS cd="casl" name="true"/>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="inf_def_ExtPartialOrder">
+      <use format="Hets">inf_def_ExtPartialOrder</use>
+    </presentation>
+    <axiom name="sup_def_ExtPartialOrder">
+      <CMP>
+    forall x,y,z: Elem
+    . inf(x,y) = z &#60;=&#62;
+    . sup(x,y) = z &#60;=&#62;
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="ExtPartialOrder_U1" name="sup"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+                <OMBIND>
+                  <OMS cd="casl" name="universal"/>
+                  <OMBVAR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="Relation" name="Elem"/>
+                      </OMATP>
+                      <OMV name="t"/>
+                    </OMATTR>
+                  </OMBVAR>
+                  <OMA>
+                    <OMS cd="casl" name="implication"/>
+                    <OMA>
+                      <OMS cd="casl" name="conjunction"/>
+                      <OMA>
+                        <OMS cd="casl" name="predication"/>
+                        <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="casl" name="type"/>
+                            <OMS cd="Relation" name="Elem"/>
+                          </OMATP>
+                          <OMV name="x"/>
+                        </OMATTR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="casl" name="type"/>
+                            <OMS cd="Relation" name="Elem"/>
+                          </OMATP>
+                          <OMV name="t"/>
+                        </OMATTR>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="casl" name="predication"/>
+                        <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="casl" name="type"/>
+                            <OMS cd="Relation" name="Elem"/>
+                          </OMATP>
+                          <OMV name="y"/>
+                        </OMATTR>
+                        <OMATTR>
+                          <OMATP>
+                            <OMS cd="casl" name="type"/>
+                            <OMS cd="Relation" name="Elem"/>
+                          </OMATP>
+                          <OMV name="t"/>
+                        </OMATTR>
+                      </OMA>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="casl" name="predication"/>
+                      <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Relation" name="Elem"/>
+                        </OMATP>
+                        <OMV name="z"/>
+                      </OMATTR>
+                      <OMATTR>
+                        <OMATP>
+                          <OMS cd="casl" name="type"/>
+                          <OMS cd="Relation" name="Elem"/>
+                        </OMATP>
+                        <OMV name="t"/>
+                      </OMATTR>
+                    </OMA>
+                    <OMS cd="casl" name="true"/>
+                  </OMA>
+                </OMBIND>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="sup_def_ExtPartialOrder">
+      <use format="Hets">sup_def_ExtPartialOrder</use>
+    </presentation>
+  </theory>
+  <private for="ExtPartialOrder_U1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"PartialOrder" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="ExtPartialOrder">
+    <presentation for="ExtPartialOrder">
+      <use format="Hets">[ExtPartialOrder,,0]</use>
+    </presentation>
+    <imports from="#ExtPartialOrder_U"/>
+    <imports from="#ExtPartialOrder_U1"/>
+    <symbol name="__Lower__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__2">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__Greater__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__2">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__2">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+  </theory>
+  <private for="ExtPartialOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"ExtPartialOrder_U1" Type:"GlobalDef" Origin:"DGUnion"
+From:"ExtPartialOrder_U" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="ExtTotalOrder_E1U">
+    <presentation for="ExtTotalOrder_E1U">
+      <use format="Hets">[ExtTotalOrder,E1U,0]</use>
+    </presentation>
+    <imports from="#ExtPartialOrder">
+      <morphism hiding="">
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtPartialOrder" name="__&#60;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="ExtTotalOrder_E1U" name="__LowerEquals__2"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#PartialOrder"/>
+    <imports from="#TotalOrder"/>
+    <symbol name="__Lower__5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__5">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__Greater__5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__5">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__5">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <symbol name="inf2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="inf2">
+      <use format="Hets">[inf]</use>
+    </presentation>
+    <symbol name="sup2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="sup2">
+      <use format="Hets">[sup]</use>
+    </presentation>
+  </theory>
+  <private for="ExtTotalOrder_E1U">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"PartialOrder" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"TotalOrder" Type:"GlobalDef" Origin:"DGSpecInst ExtPartialOrder"
+From:"ExtPartialOrder" Type:"GlobalDef" Origin:"DGSpecInst ExtPartialOrder"
+]]></data>
+  </private>
+  <theory xml:id="ExtTotalOrder_E1U1">
+    <presentation for="ExtTotalOrder_E1U1">
+      <use format="Hets">[ExtTotalOrder,E1U,1]</use>
+    </presentation>
+    <imports from="#TotalOrder"/>
+    <symbol name="max" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="max">
+      <use format="Hets">[max]</use>
+    </presentation>
+    <symbol name="min" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="min">
+      <use format="Hets">[min]</use>
+    </presentation>
+    <axiom name="ga_assoc_max">
+      <CMP>
+  { ops min, max: Elem * Elem -&#62; Elem,
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="max"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="ExtTotalOrder_E1U1" name="max"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="max"/>
+                <OMA>
+                  <OMS cd="ExtTotalOrder_E1U1" name="max"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_assoc_max">
+      <use format="Hets">ga_assoc_max</use>
+    </presentation>
+    <axiom name="ga_assoc_min">
+      <CMP>
+  { ops min, max: Elem * Elem -&#62; Elem,
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="min"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="ExtTotalOrder_E1U1" name="min"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="min"/>
+                <OMA>
+                  <OMS cd="ExtTotalOrder_E1U1" name="min"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_assoc_min">
+      <use format="Hets">ga_assoc_min</use>
+    </presentation>
+    <axiom name="ga_comm_max">
+      <CMP>
+  { ops min, max: Elem * Elem -&#62; Elem,
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="max"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="max"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_comm_max">
+      <use format="Hets">ga_comm_max</use>
+    </presentation>
+    <axiom name="ga_comm_min">
+      <CMP>
+  { ops min, max: Elem * Elem -&#62; Elem,
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="min"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="min"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_comm_min">
+      <use format="Hets">ga_comm_min</use>
+    </presentation>
+    <axiom name="max_def_ExtTotalOrder">
+      <CMP>
+    forall x,y: Elem
+    . min(x,y) = x when x &#60;= y else y      %(min_def_ExtTotalOrder)%
+    . max(x,y) = y when x &#60;= y else x      %(max_def_ExtTotalOrder)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="max"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="IfThenElse"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="max_def_ExtTotalOrder">
+      <use format="Hets">max_def_ExtTotalOrder</use>
+    </presentation>
+    <axiom name="min_def_ExtTotalOrder">
+      <CMP>
+    forall x,y: Elem
+    . min(x,y) = x when x &#60;= y else y      %(min_def_ExtTotalOrder)%
+    . max(x,y) = y when x &#60;= y else x      %(max_def_ExtTotalOrder)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="min"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="IfThenElse"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="PartialOrder_U1" name="__LowerEquals__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Relation" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="min_def_ExtTotalOrder">
+      <use format="Hets">min_def_ExtTotalOrder</use>
+    </presentation>
+  </theory>
+  <private for="ExtTotalOrder_E1U1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"TotalOrder" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="ExtTotalOrder_E1">
+    <presentation for="ExtTotalOrder_E1">
+      <use format="Hets">[ExtTotalOrder,E,1]</use>
+    </presentation>
+    <imports from="#ExtTotalOrder_E1U"/>
+    <imports from="#ExtTotalOrder_E1U1"/>
+    <symbol name="__Lower__4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__4">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__Greater__4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__4">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__4">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <symbol name="inf1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="inf1">
+      <use format="Hets">[inf]</use>
+    </presentation>
+    <symbol name="sup1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="sup1">
+      <use format="Hets">[sup]</use>
+    </presentation>
+  </theory>
+  <private for="ExtTotalOrder_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"ExtTotalOrder" Type:"GlobalThm Open None Open" Origin:"DGExtension"
+From:"ExtTotalOrder_E1U1" Type:"GlobalDef" Origin:"DGUnion"
+From:"ExtTotalOrder_E1U" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="ExtTotalOrder">
+    <presentation for="ExtTotalOrder">
+      <use format="Hets">[ExtTotalOrder,,0]</use>
+    </presentation>
+    <imports from="#ExtTotalOrder_E1"/>
+    <axiom name="max_sup_relation">
+      <CMP>
+     forall x,y: Elem
+     . min(x,y)=inf(x,y)             %(min_inf_relation)%
+     . max(x,y)=sup(x,y)             %(max_sup_relation)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="max"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1" name="sup1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="max_sup_relation">
+      <use format="Hets">max_sup_relation</use>
+    </presentation>
+    <axiom name="min_inf_relation">
+      <CMP>
+     forall x,y: Elem
+     . min(x,y)=inf(x,y)             %(min_inf_relation)%
+     . max(x,y)=sup(x,y)             %(max_sup_relation)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Relation" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1U1" name="min"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="ExtTotalOrder_E1" name="inf1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Relation" name="Elem"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="min_inf_relation">
+      <use format="Hets">min_inf_relation</use>
+    </presentation>
+  </theory>
+  <private for="ExtTotalOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"ExtTotalOrder_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="ExtBooleanAlgebra_U">
+    <presentation for="ExtBooleanAlgebra_U">
+      <use format="Hets">[ExtBooleanAlgebra,U,0]</use>
+    </presentation>
+    <imports from="#BooleanAlgebra"/>
+    <symbol name="__Lower__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__1">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__LowerEquals__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__1">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <symbol name="__Greater__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__1">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__1">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <axiom name="geq_def_ExtBooleanAlgebra">
+      <CMP>
+         forall x,y:Elem
+         . x &#60;= y &#60;=&#62; x cap y = x           %(leq_def_ExtBooleanAlgebra)%
+         . x &#62;= y &#60;=&#62; y &#60;= x                %(geq_def_ExtBooleanAlgebra)%
+         . x &#60; y &#60;=&#62; (x &#60;= y /\ not (x=y))  %(less_def_ExtBooleanAlgebra)%
+         . x &#62; y &#60;=&#62; y &#60; x                  %(greater_def_ExtBooleanAlgebr)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtBooleanAlgebra_U" name="__GreaterEquals__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtBooleanAlgebra_U" name="__LowerEquals__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="geq_def_ExtBooleanAlgebra">
+      <use format="Hets">geq_def_ExtBooleanAlgebra</use>
+    </presentation>
+    <axiom name="greater_def_ExtBooleanAlgebr">
+      <CMP>
+         forall x,y:Elem
+         . x &#60;= y &#60;=&#62; x cap y = x           %(leq_def_ExtBooleanAlgebra)%
+         . x &#62;= y &#60;=&#62; y &#60;= x                %(geq_def_ExtBooleanAlgebra)%
+         . x &#60; y &#60;=&#62; (x &#60;= y /\ not (x=y))  %(less_def_ExtBooleanAlgebra)%
+         . x &#62; y &#60;=&#62; y &#60; x                  %(greater_def_ExtBooleanAlgebr)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtBooleanAlgebra_U" name="__Greater__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtBooleanAlgebra_U" name="__Lower__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="greater_def_ExtBooleanAlgebr">
+      <use format="Hets">greater_def_ExtBooleanAlgebr</use>
+    </presentation>
+    <axiom name="leq_def_ExtBooleanAlgebra">
+      <CMP>
+         forall x,y:Elem
+         . x &#60;= y &#60;=&#62; x cap y = x           %(leq_def_ExtBooleanAlgebra)%
+         . x &#62;= y &#60;=&#62; y &#60;= x                %(geq_def_ExtBooleanAlgebra)%
+         . x &#60; y &#60;=&#62; (x &#60;= y /\ not (x=y))  %(less_def_ExtBooleanAlgebra)%
+         . x &#62; y &#60;=&#62; y &#60; x                  %(greater_def_ExtBooleanAlgebr)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtBooleanAlgebra_U" name="__LowerEquals__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="leq_def_ExtBooleanAlgebra">
+      <use format="Hets">leq_def_ExtBooleanAlgebra</use>
+    </presentation>
+    <axiom name="less_def_ExtBooleanAlgebra">
+      <CMP>
+         forall x,y:Elem
+         . x &#60;= y &#60;=&#62; x cap y = x           %(leq_def_ExtBooleanAlgebra)%
+         . x &#62;= y &#60;=&#62; y &#60;= x                %(geq_def_ExtBooleanAlgebra)%
+         . x &#60; y &#60;=&#62; (x &#60;= y /\ not (x=y))  %(less_def_ExtBooleanAlgebra)%
+         . x &#62; y &#60;=&#62; y &#60; x                  %(greater_def_ExtBooleanAlgebr)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="ExtBooleanAlgebra_U" name="__Lower__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="ExtBooleanAlgebra_U" name="__LowerEquals__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="neg"/>
+                  <OMA>
+                    <OMS cd="casl" name="strong-equation"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="less_def_ExtBooleanAlgebra">
+      <use format="Hets">less_def_ExtBooleanAlgebra</use>
+    </presentation>
+  </theory>
+  <private for="ExtBooleanAlgebra_U">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"BooleanAlgebra" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="ExtBooleanAlgebra_U1E1">
+    <presentation for="ExtBooleanAlgebra_U1E1">
+      <use format="Hets">[ExtBooleanAlgebra,U1E,1]</use>
+    </presentation>
+    <imports from="#BooleanAlgebra"/>
+    <symbol name="compl__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="compl__">
+      <use format="Hets">[compl,__]</use>
+    </presentation>
+    <axiom name="compl_def_ExtBooleanAlgebra">
+      <CMP>
+       forall x,y:Elem
+       . compl(x)=y &#60;=&#62; x cup y = 1 /\ x cap y = 0    
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="N1"/>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMA>
+                    <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="x"/>
+                    </OMATTR>
+                    <OMATTR>
+                      <OMATP>
+                        <OMS cd="casl" name="type"/>
+                        <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                      </OMATP>
+                      <OMV name="y"/>
+                    </OMATTR>
+                  </OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="N0"/>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="compl_def_ExtBooleanAlgebra">
+      <use format="Hets">compl_def_ExtBooleanAlgebra</use>
+    </presentation>
+  </theory>
+  <private for="ExtBooleanAlgebra_U1E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"BooleanAlgebra" Type:"GlobalDef" Origin:"DGExtension"
+From:"ExtBooleanAlgebra_U1" Type:"GlobalThm Open None Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="ExtBooleanAlgebra_U1">
+    <presentation for="ExtBooleanAlgebra_U1">
+      <use format="Hets">[ExtBooleanAlgebra,U,1]</use>
+    </presentation>
+    <imports from="#ExtBooleanAlgebra_U1E1"/>
+    <axiom name="de_Morgan1">
+      <CMP>
+       forall x,y: Elem
+       . compl(x cap y) = compl(x) cup compl(y)             %(de_Morgan1)%
+       . compl(x cup y) = compl(x) cap compl(y)             %(de_Morgan2)%
+       . compl(compl(x)) = x        %(involution_compl_ExtBooleanAlgebra)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                <OMA>
+                  <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="de_Morgan1">
+      <use format="Hets">de_Morgan1</use>
+    </presentation>
+    <axiom name="de_Morgan2">
+      <CMP>
+       forall x,y: Elem
+       . compl(x cap y) = compl(x) cup compl(y)             %(de_Morgan1)%
+       . compl(x cup y) = compl(x) cap compl(y)             %(de_Morgan2)%
+       . compl(compl(x)) = x        %(involution_compl_ExtBooleanAlgebra)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                <OMA>
+                  <OMS cd="BooleanAlgebra_E1" name="__cup__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="BooleanAlgebra_E1" name="__cap__"/>
+                <OMA>
+                  <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="de_Morgan2">
+      <use format="Hets">de_Morgan2</use>
+    </presentation>
+    <axiom name="involution_compl_ExtBooleanAlgebra">
+      <CMP>
+       forall x,y: Elem
+       . compl(x cap y) = compl(x) cup compl(y)             %(de_Morgan1)%
+       . compl(x cup y) = compl(x) cap compl(y)             %(de_Morgan2)%
+       . compl(compl(x)) = x        %(involution_compl_ExtBooleanAlgebra)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                <OMA>
+                  <OMS cd="ExtBooleanAlgebra_U1E1" name="compl__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="involution_compl_ExtBooleanAlgebra">
+      <use format="Hets">involution_compl_ExtBooleanAlgebra</use>
+    </presentation>
+  </theory>
+  <private for="ExtBooleanAlgebra_U1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"ExtBooleanAlgebra_U1E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="ExtBooleanAlgebra">
+    <presentation for="ExtBooleanAlgebra">
+      <use format="Hets">[ExtBooleanAlgebra,,0]</use>
+    </presentation>
+    <imports from="#ExtBooleanAlgebra_U"/>
+    <imports from="#ExtBooleanAlgebra_U1"/>
+    <symbol name="__Lower__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__LowerEquals__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <symbol name="__Greater__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+  </theory>
+  <private for="ExtBooleanAlgebra">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"ExtBooleanAlgebra_U1" Type:"GlobalDef" Origin:"DGUnion"
+From:"ExtBooleanAlgebra_U" Type:"GlobalDef" Origin:"DGUnion"
+]]></data>
+  </private>
+  <theory xml:id="RichPartialOrder">
+    <presentation for="RichPartialOrder">
+      <use format="Hets">[RichPartialOrder,,0]</use>
+    </presentation>
+    <imports from="#ExtPartialOrder">
+      <morphism hiding="">
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtPartialOrder" name="__&#60;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RichPartialOrder" name="__LowerEquals__2"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#PartialOrder"/>
+    <symbol name="__Lower__8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__8">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__Greater__8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__8">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__8" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__8">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <symbol name="inf3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="inf3">
+      <use format="Hets">[inf]</use>
+    </presentation>
+    <symbol name="sup3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="sup3">
+      <use format="Hets">[sup]</use>
+    </presentation>
+  </theory>
+  <private for="RichPartialOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"PartialOrder" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"ExtPartialOrder" Type:"GlobalDef" Origin:"DGSpecInst ExtPartialOrder"
+]]></data>
+  </private>
+  <theory xml:id="RichTotalOrder">
+    <presentation for="RichTotalOrder">
+      <use format="Hets">[RichTotalOrder,,0]</use>
+    </presentation>
+    <imports from="#ExtTotalOrder">
+      <morphism hiding="">
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtTotalOrder" name="__&#60;=__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RichTotalOrder" name="__LowerEquals__2"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <imports from="#TotalOrder"/>
+    <symbol name="__Lower__9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__9">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__Greater__9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__9">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__9" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__9">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <symbol name="inf4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="inf4">
+      <use format="Hets">[inf]</use>
+    </presentation>
+    <symbol name="max1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="max1">
+      <use format="Hets">[max]</use>
+    </presentation>
+    <symbol name="min1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="min1">
+      <use format="Hets">[min]</use>
+    </presentation>
+    <symbol name="sup4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="partial-function"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+            <OMS cd="Relation" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="sup4">
+      <use format="Hets">[sup]</use>
+    </presentation>
+  </theory>
+  <private for="RichTotalOrder">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"TotalOrder" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"ExtTotalOrder" Type:"GlobalDef" Origin:"DGSpecInst ExtTotalOrder"
+]]></data>
+  </private>
+  <theory xml:id="RichBooleanAlgebra">
+    <presentation for="RichBooleanAlgebra">
+      <use format="Hets">[RichBooleanAlgebra,,0]</use>
+    </presentation>
+    <imports from="#BooleanAlgebra"/>
+    <imports from="#ExtBooleanAlgebra">
+      <morphism hiding="">
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtBooleanAlgebra" name="N0"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RichBooleanAlgebra" name="N0"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtBooleanAlgebra" name="N1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RichBooleanAlgebra" name="N1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtBooleanAlgebra" name="__cap__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RichBooleanAlgebra" name="__cap__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtBooleanAlgebra" name="__cup__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="RichBooleanAlgebra" name="__cup__"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <symbol name="__Lower__7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__7">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__LowerEquals__5" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__5">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <symbol name="__Greater__7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__7">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__7" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__7">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <symbol name="compl__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="compl__2">
+      <use format="Hets">[compl,__]</use>
+    </presentation>
+  </theory>
+  <private for="RichBooleanAlgebra">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"BooleanAlgebra" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"ExtBooleanAlgebra" Type:"GlobalDef" Origin:"DGSpecInst ExtBooleanAlgebra"
+]]></data>
+  </private>
+  <theory xml:id="PartialOrder_in_ExtBooleanAlgebra_T">
+    <presentation for="PartialOrder_in_ExtBooleanAlgebra_T">
+      <use format="Hets">[PartialOrder_in_ExtBooleanAlgebra,T,0]</use>
+    </presentation>
+    <imports from="#BooleanAlgebra"/>
+    <imports from="#ExtBooleanAlgebra">
+      <morphism hiding="">
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtBooleanAlgebra" name="N0"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="PartialOrder_in_ExtBooleanAlgebra_T" name="N0"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtBooleanAlgebra" name="N1"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="PartialOrder_in_ExtBooleanAlgebra_T" name="N1"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtBooleanAlgebra" name="__cap__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="PartialOrder_in_ExtBooleanAlgebra_T" name="__cap__"/>
+          </OMOBJ>
+        </requation>
+        <requation>
+          <OMOBJ>
+            <OMS cd="ExtBooleanAlgebra" name="__cup__"/>
+          </OMOBJ>
+          <OMOBJ>
+            <OMS cd="PartialOrder_in_ExtBooleanAlgebra_T" name="__cup__"/>
+          </OMOBJ>
+        </requation>
+      </morphism>
+    </imports>
+    <symbol name="__Lower__6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Lower__6">
+      <use format="Hets">[__,&#60;,__]</use>
+    </presentation>
+    <symbol name="__LowerEquals__3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__3">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <symbol name="__Greater__6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__6">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="__GreaterEquals__6" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__GreaterEquals__6">
+      <use format="Hets">[__,&#62;=,__]</use>
+    </presentation>
+    <symbol name="compl__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+            <OMS cd="BooleanAlgebra_E1" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="compl__1">
+      <use format="Hets">[compl,__]</use>
+    </presentation>
+  </theory>
+  <private for="PartialOrder_in_ExtBooleanAlgebra_T">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"PartialOrder" Type:"GlobalThm Open None Open" Origin:"DGView PartialOrder_in_ExtBooleanAlgebra"
+From:"BooleanAlgebra" Type:"GlobalDef" Origin:"DGSpecInst ExtBooleanAlgebra"
+From:"BooleanAlgebra" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"ExtBooleanAlgebra" Type:"GlobalDef" Origin:"DGSpecInst ExtBooleanAlgebra"
+]]></data>
+  </private>
+</omdoc>

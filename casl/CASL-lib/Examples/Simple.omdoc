@@ -1,0 +1,1127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="Simple">
+  <theory xml:id="Total_Order">
+    <presentation for="Total_Order">
+      <use format="Hets">[Total_Order,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Elem1"/>
+    <presentation for="Elem1">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+    <symbol name="__LowerEquals__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Total_Order" name="Elem1"/>
+            <OMS cd="Total_Order" name="Elem1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__LowerEquals__">
+      <use format="Hets">[__,&#60;=,__]</use>
+    </presentation>
+    <axiom name="anti_symmetric">
+      <CMP>
+  forall  x,y,z : Elem
+  . x  &#60;= x                               %(reflexive)%
+  . x=y  if x  &#60;= y   /\  y  &#60;= x    %(anti_symmetric)%
+  . x  &#60;= z  if x  &#60;= y   /\  y &#60;= z     %(transitive)%
+  . x  &#60;= y   \/  y  &#60;= x                     %(total)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Total_Order" name="__LowerEquals__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Total_Order" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Total_Order" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Total_Order" name="__LowerEquals__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Total_Order" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Total_Order" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Total_Order" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Total_Order" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="false"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="anti_symmetric">
+      <use format="Hets">anti_symmetric</use>
+    </presentation>
+    <axiom name="reflexive">
+      <CMP>
+  forall  x,y,z : Elem
+  . x  &#60;= x                               %(reflexive)%
+  . x=y  if x  &#60;= y   /\  y  &#60;= x    %(anti_symmetric)%
+  . x  &#60;= z  if x  &#60;= y   /\  y &#60;= z     %(transitive)%
+  . x  &#60;= y   \/  y  &#60;= x                     %(total)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="predication"/>
+              <OMS cd="Total_Order" name="__LowerEquals__"/>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="reflexive">
+      <use format="Hets">reflexive</use>
+    </presentation>
+    <axiom name="total">
+      <CMP>
+  forall  x,y,z : Elem
+  . x  &#60;= x                               %(reflexive)%
+  . x=y  if x  &#60;= y   /\  y  &#60;= x    %(anti_symmetric)%
+  . x  &#60;= z  if x  &#60;= y   /\  y &#60;= z     %(transitive)%
+  . x  &#60;= y   \/  y  &#60;= x                     %(total)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="disjunction"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Total_Order" name="__LowerEquals__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Total_Order" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Total_Order" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Total_Order" name="__LowerEquals__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Total_Order" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Total_Order" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="total">
+      <use format="Hets">total</use>
+    </presentation>
+    <axiom name="transitive">
+      <CMP>
+  forall  x,y,z : Elem
+  . x  &#60;= x                               %(reflexive)%
+  . x=y  if x  &#60;= y   /\  y  &#60;= x    %(anti_symmetric)%
+  . x  &#60;= z  if x  &#60;= y   /\  y &#60;= z     %(transitive)%
+  . x  &#60;= y   \/  y  &#60;= x                     %(total)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Total_Order" name="Elem1"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="conjunction"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Total_Order" name="__LowerEquals__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Total_Order" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Total_Order" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Total_Order" name="__LowerEquals__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Total_Order" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Total_Order" name="Elem1"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Total_Order" name="__LowerEquals__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Total_Order" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Total_Order" name="Elem1"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="false"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="transitive">
+      <use format="Hets">transitive</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Monoid">
+    <presentation for="Monoid">
+      <use format="Hets">[Monoid,,0]</use>
+    </presentation>
+    <symbol role="sort" name="Elem"/>
+    <presentation for="Elem">
+      <use format="Hets">[Elem]</use>
+    </presentation>
+    <symbol name="__Ast__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Monoid" name="Elem"/>
+            <OMS cd="Monoid" name="Elem"/>
+            <OMS cd="Monoid" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Ast__">
+      <use format="Hets">[__,*,__]</use>
+    </presentation>
+    <symbol name="n" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Monoid" name="Elem"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="n">
+      <use format="Hets">[n]</use>
+    </presentation>
+    <axiom name="N1">
+      <CMP>
+       forall  x ,y,z : Elem 
+       .  n*x=x             %(1)%
+       .  x*n=x             %(2)%
+       .  x*y*z=x*(y*z)   %(3)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Monoid" name="__Ast__"/>
+                <OMS cd="Monoid" name="n"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Monoid" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="N1">
+      <use format="Hets">1</use>
+    </presentation>
+    <axiom name="N2">
+      <CMP>
+       forall  x ,y,z : Elem 
+       .  n*x=x             %(1)%
+       .  x*n=x             %(2)%
+       .  x*y*z=x*(y*z)   %(3)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Monoid" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Monoid" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="Monoid" name="n"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="N2">
+      <use format="Hets">2</use>
+    </presentation>
+    <axiom name="N3">
+      <CMP>
+       forall  x ,y,z : Elem 
+       .  n*x=x             %(1)%
+       .  x*n=x             %(2)%
+       .  x*y*z=x*(y*z)   %(3)%
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="z"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Monoid" name="__Ast__"/>
+                <OMA>
+                  <OMS cd="Monoid" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Monoid" name="Elem"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Monoid" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Monoid" name="Elem"/>
+                  </OMATP>
+                  <OMV name="z"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="Monoid" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Monoid" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="Monoid" name="__Ast__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Monoid" name="Elem"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Monoid" name="Elem"/>
+                    </OMATP>
+                    <OMV name="z"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="N3">
+      <use format="Hets">3</use>
+    </presentation>
+    <axiom name="ga_left_unit___Ast__">
+      <CMP>
+       __*__ : Elem × Elem  -&#62; Elem, unit n 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Monoid" name="__Ast__"/>
+                <OMS cd="Monoid" name="n"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Monoid" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_left_unit___Ast__">
+      <use format="Hets">ga_left_unit___*__</use>
+    </presentation>
+    <axiom name="ga_right_unit___Ast__">
+      <CMP>
+       __*__ : Elem × Elem  -&#62; Elem, unit n 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Monoid" name="__Ast__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Monoid" name="Elem"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="Monoid" name="n"/>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Monoid" name="Elem"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_right_unit___Ast__">
+      <use format="Hets">ga_right_unit___*__</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Nat_E4">
+    <presentation for="Nat_E4">
+      <use format="Hets">[Nat,E,4]</use>
+    </presentation>
+    <symbol role="sort" name="Zero2"/>
+    <presentation for="Zero2">
+      <use format="Hets">[Zero]</use>
+    </presentation>
+    <symbol role="sort" name="Pos2"/>
+    <presentation for="Pos2">
+      <use format="Hets">[Pos]</use>
+    </presentation>
+    <symbol role="sort" name="Nat3"/>
+    <presentation for="Nat3">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat3" type="free">
+        <insort for="#Pos2"/>
+        <insort for="#Zero2"/>
+      </sortdef>
+    </adt>
+    <symbol name="succ__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_E4" name="Nat3"/>
+            <OMS cd="Nat_E4" name="Pos2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ__2">
+      <use format="Hets">[succ,__]</use>
+    </presentation>
+    <symbol name="zero2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_E4" name="Zero2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero2">
+      <use format="Hets">[zero]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="Nat_E3">
+    <presentation for="Nat_E3">
+      <use format="Hets">[Nat,E,3]</use>
+    </presentation>
+    <symbol role="sort" name="Zero1"/>
+    <presentation for="Zero1">
+      <use format="Hets">[Zero]</use>
+    </presentation>
+    <symbol role="sort" name="Pos1"/>
+    <presentation for="Pos1">
+      <use format="Hets">[Pos]</use>
+    </presentation>
+    <symbol role="sort" name="Nat2"/>
+    <presentation for="Nat2">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat2" type="free">
+        <insort for="#Pos1"/>
+        <insort for="#Zero1"/>
+      </sortdef>
+    </adt>
+    <symbol name="succ__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_E3" name="Nat2"/>
+            <OMS cd="Nat_E3" name="Pos1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ__1">
+      <use format="Hets">[succ,__]</use>
+    </presentation>
+    <symbol name="zero1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_E3" name="Zero1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero1">
+      <use format="Hets">[zero]</use>
+    </presentation>
+  </theory>
+  <private for="Nat_E3">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat_E4" Type:"FreeDef EmptyNode" Origin:"DGFree"
+]]></data>
+  </private>
+  <theory xml:id="Nat_E2">
+    <presentation for="Nat_E2">
+      <use format="Hets">[Nat,E,2]</use>
+    </presentation>
+    <imports from="#Nat_E3"/>
+    <symbol name="pre__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_E3" name="Pos1"/>
+            <OMS cd="Nat_E3" name="Nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="pre__1">
+      <use format="Hets">[pre,__]</use>
+    </presentation>
+    <axiom name="Ax11">
+      <CMP>
+       forall  x : Nat 
+       . pre(succ x)=x 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat_E3" name="Nat2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="Nat_E2" name="pre__1"/>
+                <OMA>
+                  <OMS cd="Nat_E3" name="succ__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat_E3" name="Nat2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat_E3" name="Nat2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax11">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <private for="Nat_E2">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat_E3" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Nat_E1L">
+    <presentation for="Nat_E1L">
+      <use format="Hets">[Nat,E1L,0]</use>
+    </presentation>
+    <imports from="#Nat_E2"/>
+    <symbol name="odd__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="Nat_E3" name="Nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="odd__">
+      <use format="Hets">[odd,__]</use>
+    </presentation>
+    <axiom name="Ax13">
+      <CMP>
+       . not odd zero 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="neg"/>
+            <OMA>
+              <OMS cd="casl" name="predication"/>
+              <OMS cd="Nat_E1L" name="odd__"/>
+              <OMS cd="Nat_E3" name="zero1"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax13">
+      <use format="Hets">Ax1</use>
+    </presentation>
+    <axiom name="Ax2">
+      <CMP>
+       forall  x : Nat 
+       . not odd zero 
+       . odd(succ x) &#60;=&#62; not odd x 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat_E3" name="Nat2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Nat_E1L" name="odd__"/>
+                <OMA>
+                  <OMS cd="Nat_E3" name="succ__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat_E3" name="Nat2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="predication"/>
+                  <OMS cd="Nat_E1L" name="odd__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="Nat_E3" name="Nat2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax2">
+      <use format="Hets">Ax2</use>
+    </presentation>
+  </theory>
+  <private for="Nat_E1L">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat_E2" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Nat_E21">
+    <presentation for="Nat_E21">
+      <use format="Hets">[Nat,E,2]</use>
+    </presentation>
+    <imports from="#Nat_E1L"/>
+    <symbol role="sort" name="Odd1"/>
+    <presentation for="Odd1">
+      <use format="Hets">[Odd]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat2" type="free">
+        <insort for="#Odd1"/>
+      </sortdef>
+    </adt>
+    <axiom name="Ax12">
+      <CMP>
+       sort Odd = {n:Nat . odd n} 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="Nat_E3" name="Nat2"/>
+                </OMATP>
+                <OMV name="n"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="membership"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat_E3" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+                <OMS cd="Nat_E21" name="Odd1"/>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="Nat_E1L" name="odd__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="Nat_E3" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="n"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax12">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <private for="Nat_E21">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat_E1L" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="Nat_E1">
+    <presentation for="Nat_E1">
+      <use format="Hets">[Nat,E,1]</use>
+    </presentation>
+    <symbol role="sort" name="Zero"/>
+    <presentation for="Zero">
+      <use format="Hets">[Zero]</use>
+    </presentation>
+    <symbol role="sort" name="Pos"/>
+    <presentation for="Pos">
+      <use format="Hets">[Pos]</use>
+    </presentation>
+    <symbol role="sort" name="Odd"/>
+    <presentation for="Odd">
+      <use format="Hets">[Odd]</use>
+    </presentation>
+    <symbol role="sort" name="Nat1"/>
+    <presentation for="Nat1">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat1" type="free">
+        <insort for="#Odd"/>
+        <insort for="#Pos"/>
+        <insort for="#Zero"/>
+      </sortdef>
+    </adt>
+    <symbol name="pre__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_E1" name="Pos"/>
+            <OMS cd="Nat_E1" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="pre__">
+      <use format="Hets">[pre,__]</use>
+    </presentation>
+    <symbol name="succ__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_E1" name="Nat1"/>
+            <OMS cd="Nat_E1" name="Pos"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="succ__">
+      <use format="Hets">[succ,__]</use>
+    </presentation>
+    <symbol name="zero" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="Nat_E1" name="Zero"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="zero">
+      <use format="Hets">[zero]</use>
+    </presentation>
+  </theory>
+  <private for="Nat_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat_E21" Type:"HidingDef" Origin:"DGLocal"
+]]></data>
+  </private>
+  <theory xml:id="Nat">
+    <presentation for="Nat">
+      <use format="Hets">[Nat,,0]</use>
+    </presentation>
+    <imports from="#Nat_E1"/>
+    <symbol role="sort" name="Int"/>
+    <presentation for="Int">
+      <use format="Hets">[Int]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Int" type="free">
+        <insort for="#Nat1"/>
+        <insort for="#Odd"/>
+        <insort for="#Pos"/>
+        <insort for="#Zero"/>
+      </sortdef>
+    </adt>
+    <axiom name="Ax1">
+      <CMP>
+   . def zero 
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="definedness"/>
+            <OMS cd="Nat_E1" name="zero"/>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax1">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <private for="Nat">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"Nat_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+</omdoc>

@@ -1,0 +1,90 @@
+\svnInfo $Id: syntax.tex 9195 2012-04-20 12:26:50Z frabe $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/syntax.tex $
+
+Our definitions from Section~\ref{sec:pattern} permit pragmatic \emph{abstract} syntax,
+which is elaborated into strict abstract syntax.  For human-oriented representations, it
+is desirable to complement this with similar extensions of pragmatic \emph{concrete}
+syntax.  While the pragmatic-to-strict translation at the abstract syntax level is usually
+non-trivial and therefore not invertible, the corresponding translation at the concrete
+syntax level should be compositional and bidirectional.
+
+\subsection{\protect\omdoc Concrete Syntax for EL Declarations}\label{sec:omdoc-concrete}
+
+First we extend {\omdoc} with concrete syntax that exactly mirrors the abstract syntax
+from Section~\ref{sec:pattern}. The declaration $\extension{e}{\lambda x_1:E_1.\,\ldots\lambda x_n:E_n.\,\{\Sigma\}}$
+is written as
+\begin{lstlisting}[mathescape,morekeywords={extension,parameter}]
+<extension name="$e$">
+  <parameter name="$x_1$">$\om{E_1}$</parameter>
+  $\hspace{1cm}\vdots$
+  <parameter name="$x_n$">$\om{E_n}$</parameter>
+  <theory>
+  $\hspace{.45cm}\om{\Sigma}$
+  </theory>
+</extension>
+\end{lstlisting}
+Here we use the box notation $\om{A}$ to gloss the XML representation of an entity $A$ given in abstract syntax.
+
+Similarly, the pragmatic declaration $\pragmatic{c}{e\,E_1\ldots E_n}$ is written as
+
+\begin{lstlisting}[mathescape,morekeywords={pragmatic}]
+<pragmatic name="$c$" extension="$\llquote{M}?e$">
+  $\om{E_1}\ldots\om{E_n}$
+</pragmatic>
+\end{lstlisting}
+Here $\llquote{M}$ is the meta-theory in which $e$ is declared so that $\llquote{M}?e$ is the {\mmt} URI of the extension.
+
+\begin{example}
+  For the implicit definitions discussed in Section~\ref{sec:pattern}, we use the extension
+  $\implDef$ from Figure~\ref{fig:impldef}, which we assume has namespace URI \llquote{U}.
+  If $\rho$ is a proof of unique existence for an $f$ such that $f'=f\wedge f(0)=1$, then the exponential function is defined in XML by
+
+\begin{lstlisting}[mathescape,label=lst:expdef,morekeywords={pragmatic}]
+<pragmatic name="exp" extension="$\mmturi{\llquote{U}}\Description\implDef$">
+  $\om{\lambda f.f'=f\wedge f(0)=1}$  $\om{\rho}$
+</pragmatic>
+\end{lstlisting}
+\end{example}
+
+\subsection{Pragmatic Surface Syntax}
+
+\omdoc is mainly a machine-oriented interoperability format, which is not intended for
+human consumption. Therefore, the EL-isomorphic syntax introduced is sufficient in
+principle -- at least for the formal subset of \omdoc we have discussed so far.
+
+\omdoc is largely written in the form of ``surface languages'' -- domain-specific
+languages that can be written effectively and transformed to \omdoc in an automated
+process. For the formal subset of \omdoc, we use a \mmt-inspired superset of the
+Twelf/LF~\cite{twelf,lf} syntax, and for informal \omdoc we use
+\sTeX~\cite{Kohlhase:ulsmf08}, a semantic extension of {\TeX/\LaTeX}. 
+
+For many
+purposes like learning the surface language or styling \omdoc documents,
+\defemph{pragmatic surface syntax}, i.e., a surface syntax that is closer to the
+notational conventions of the respective domain, has great practical advantages.
+It is possible to support, i.e., generate and parse, pragmatic surface
+syntax by using the macro/scripting framework associated with most representation
+formats.
+
+For instance, we can regain the XML syntax familiar from \omdoc1.2
+via notation definitions that transform between \lstinline|pragmatic| elements and the
+corresponding {\omdoc} 1.2 syntax. For Twelf/LF, we would extend the module system preprocessor, and for Isabelle we would extend the
+SML-based syntax/parsing subsystem. We have also extended \sTeX as an example of a
+semi-formal surface language. Here we used the
+macro facility of {\TeX} as the computational engine. We conjecture that most practical
+surface languages for MKM can be extended similarly.
+
+These translations proceed in two step. Firstly, pragmatic surface syntax is translated into our pragmatic {\mmt} syntax. Our language is designed to make this step trivial: in particular, it does not have to look into the parameters used in a pragmatic surface declaration.
+Secondly, pragmatic {\mmt} syntax is type-checked and, if desired, translated into strict {\mmt} syntax.
+All potentially difficult semantic analysis is part of this second step.
+This design makes it very easy for users to introduce their own pragmatic surface syntax.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+
+% LocalWords:  omdoc ednote lstlisting mathescape llquote llquote llqn ldots cn
+% LocalWords:  llqn mmt frabe newpart emph implDef impldef lst expdef exu-proof
+% LocalWords:  footnotemark exp footnotetext expr exunique exu stex hspace lf
+% LocalWords:  morekeywords vdots mmturi ulsmf08 defemph

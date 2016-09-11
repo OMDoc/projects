@@ -1,0 +1,48 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<omdoc xmlns="http://www.mathweb.org/OMDoc">
+<import from="../omstd/arith1.omdoc#logic1"/>
+<import from="../omstd/arith1.omdoc#relation1"/>
+<import from="../omstd/arith1.omdoc#set1"/>
+
+<omtext>The software should be able to manage phone numbers, i.e. represent a phonebook. Each entry in the 
+<omtext xml:id='Phonebook-Requirements'>
+phonebook should consist of a phone number and a name. It should be possibile to do the following:
+<omtext xml:id='func-req1'>add entries,</omtext>
+<omtext xml:id='func-req2'>delete entries</omtext> and
+<omtext xml:id='func-req3'>query for entries by name.</omtext>
+<omtext xml:id='nfunc-req1-text'>No phone number should be assigned to two distinct persons.</omtext> More formally:
+<OMOBJ  xmlns="http://www.openmath.org/OpenMath" xml:id='nfunc-req1-om'>
+	<OMA cdbase="http://www.openmath.org/cd">
+		<OMS cd="logic1" name="implies">
+		<OMA>
+			<OMS cd="logic1" name="and"/>
+			<OMA>
+				<OMS cd="set1" name="in"/>
+				<OMV name="e1"/>
+				<OMV name="PB"/>
+			</OMA>
+			<OMA>
+				<OMS cd="logic1" name="and"/>
+				<OMA>
+					<OMS cd="set1" name="in"/>
+					<OMV name="e2"/>
+					<OMV name="PB"/>
+				</OMA>
+				<OMA>
+					<OMS cd="relation1" name="eq"/>
+					<OMV name="e1.phone"/>
+					<OMV name="e2.phone"/>
+				</OMA>
+			</OMA>
+		</OMA>
+		<OMA>
+			<OMS cd="relation1" name="eq"/>
+			<OMV name="e1"/>
+			<OMV name="e2"/>
+		</OMA>
+	</OMA>
+</OMOBJ>
+</omtext>
+</omtext>
+</omdoc>

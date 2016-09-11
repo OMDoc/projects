@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//om:OMDoc//DTD om:OMDoc V1.2//EN" "../../dtd/omdoc.dtd">
+<omdoc xml:id=":rings.omdoc" xmlns="http://www.omdoc.org/ns/" xmlns:om="http://www.openmath.org/OpenMath" xmlns:visib="http://www.mathweb.org/omdoc" version="1.2">
+   <theory name="twelf">
+      <symbol name="kind" role="constant"/>
+      <symbol name="type" role="constant"/>
+      <symbol name="Pi" role="binder"/>
+      <symbol name="implicit_pi" role="binder"/>
+      <symbol name="arrow" role="application"/>
+      <symbol name="lambda" role="binder"/>
+      <symbol name="implicit_lambda" role="binder"/>
+      <symbol name="omitted" role="constant"/>
+      <symbol name="oftype" role="semantic-attribution"/>
+   </theory>
+   <presentation for="twelf" format="ascii" role="constant">
+      <name/>
+   </presentation>
+   <presentation for="twelf" format="ascii" role="variable">
+      <name/>
+   </presentation>
+   <presentation for="twelf" format="ascii" role="key">
+      <components begin="2"/>
+   </presentation>
+   <presentation for="twelf" format="ascii" role="application">
+      <use fixity="prefix" precedence="0" bracketstyle="lisp">
+         <separator>
+            <text value=" "/>
+         </separator>
+         <operator>
+            <components begin="0"/>
+         </operator>
+      </use>
+   </presentation>
+   <presentation for="twelf" format="ascii" role="morphism">
+      <components begin="0"/>
+      <text>-</text>
+      <components begin="1"/>
+   </presentation>
+   <presentation for="twelf/type" format="ascii" role="constant">
+      <text value="type"/>
+   </presentation>
+   <presentation for="twelf/omitted" format="ascii" role="constant">
+      <text>_</text>
+   </presentation>
+   <presentation for="twelf/lambda" format="ascii" role="binder">
+      <text>[</text>
+      <components begin="1">
+         <recurse/>
+         <text>:</text>
+         <attribution>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="oftype"/>
+            </OMOBJ>
+         </attribution>
+      </components>
+      <text>]</text>
+      <components begin="2"/>
+   </presentation>
+   <presentation for="twelf/Pi" format="ascii" role="binder">
+      <text>{</text>
+      <components begin="1">
+         <recurse/>
+         <text>:</text>
+         <attribution>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="oftype"/>
+            </OMOBJ>
+         </attribution>
+      </components>
+      <text>}</text>
+      <components begin="2"/>
+   </presentation>
+   <presentation for="twelf/arrow" format="ascii" role="application">
+      <use fixity="infixr" precedence="0">
+         <operator>
+            <text value=" -&gt; "/>
+         </operator>
+      </use>
+   </presentation>
+   <presentation for="twelf" format="latex" role="constant">
+      <text value="\mathop{"/>
+      <name/>
+      <text value="}"/>
+   </presentation>
+   <presentation for="twelf" format="latex" role="variable">
+      <text value="\mathop{"/>
+      <name/>
+      <text value="}"/>
+   </presentation>
+   <presentation for="twelf" format="latex" role="key">
+      <components begin="2"/>
+   </presentation>
+   <presentation for="twelf" format="latex" role="application">
+      <text>(</text>
+      <components begin="0" end="-1">
+         <separator>
+            <text>\;</text>
+         </separator>
+      </components>
+      <text>)</text>
+   </presentation>
+   <presentation for="twelf" format="latex" role="morphism">
+      <text value="\twelfmorphism{"/>
+      <components begin="0"/>
+      <text value="}{"/>
+      <components begin="1"/>
+      <text value="}"/>
+   </presentation>
+   <presentation for="twelf/type" format="latex" role="constant">
+      <text value="\textt{type}"/>
+   </presentation>
+   <presentation for="twelf/type" format="latex" role="constant">
+      <text value="\_"/>
+   </presentation>
+   <presentation for="twelf/lambda" format="latex" role="binder">
+      <text>\lambda</text>
+      <components begin="1">
+         <recurse/>
+         <text>:</text>
+         <attribution>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="oftype"/>
+            </OMOBJ>
+         </attribution>
+      </components>
+      <text>.</text>
+      <components begin="2"/>
+   </presentation>
+   <presentation for="twelf/Pi" format="latex" role="binder">
+      <text>\Pi</text>
+      <components begin="1">
+         <recurse/>
+         <text>:</text>
+         <attribution>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="oftype"/>
+            </OMOBJ>
+         </attribution>
+      </components>
+      <text>.</text>
+      <components begin="2"/>
+   </presentation>
+   <presentation for="twelf/arrow" format="latex" role="application">
+      <use fixity="infixr" precedence="0">
+         <operator>
+            <text value="\rightarrow "/>
+         </operator>
+      </use>
+   </presentation>
+   <presentation for="twelf" format="pmathml" role="constant">
+      <element name="mi">
+         <name/>
+      </element>
+   </presentation>
+   <presentation for="twelf" format="pmathml" role="variable">
+      <element name="mi">
+         <name/>
+      </element>
+   </presentation>
+   <presentation for="twelf" format="pmathml" role="key">
+      <components begin="2"/>
+   </presentation>
+   <presentation for="twelf" format="pmathml" role="application">
+      <element name="mrow">
+         <use fixity="prefix" precedence="0" bracketstyle="lisp">
+            <lbrack>
+               <element name="mo">
+                  <text value="("/>
+         <attribute name="mathcolor">
+            <text value="red"/>
+         </attribute>
+               </element>
+            </lbrack>
+            <rbrack>
+               <element name="mo">
+                  <text value=")"/>
+         <attribute name="mathcolor">
+            <text value="red"/>
+         </attribute>
+               </element>
+            </rbrack>
+            <separator>
+               <element name="mo">
+                  <attribute name="mathcolor">
+                     <text value="red"/>
+                  </attribute>
+                  <text value="_"/>
+               </element>
+            </separator>
+            <operator>
+               <components begin="0"/>
+            </operator>
+         </use>
+      </element>
+   </presentation>
+   <presentation for="twelf" format="pmathml" role="morphism">
+      <components begin="0"/>
+      <element name="mo">
+         <text value="("/>
+      </element>
+      <components begin="1"/>
+      <element name="mo">
+         <text value=")"/>
+      </element>
+   </presentation>
+   <presentation for="twelf/type" format="pmathml" role="constant">
+      <element name="mi">
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+         <text value="type"/>
+      </element>
+   </presentation>
+   <presentation for="twelf/omitted" format="pmathml" role="constant">
+      <element name="mi">
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+         <text value="_"/>
+      </element>
+   </presentation>
+   <presentation for="twelf/lambda" format="pmathml" role="binder" precedence="-100">
+      <element name="mo" visib:level="bracket">
+         <text value="("/>
+          <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+     </element>
+      <element name="mo">
+         <text value="&#x03bb;"/>
+          <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+     </element>
+      <components begin="1">
+         <recurse precedence="infinity"/>
+         <attribution>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="oftype"/>
+            </OMOBJ>
+         <element name="mo">
+            <attribute name="mathcolor">
+               <text value="blue"/>
+            </attribute>
+            <text value=":"/>
+         </element>
+         <recurse precedence="infinity"/>
+         </attribution>
+      </components>
+      <element name="mo">
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+         <text value="."/>
+      </element>
+      <components begin="2">
+        <recurse precedence="-50"/>
+      </components>
+      <element name="mo" visib:level="bracket">
+         <text value=")"/>
+          <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+     </element>
+   </presentation>
+   <presentation for="twelf/Pi" format="pmathml" role="binder" precedence="-100">
+      <element name="mo" visib:level="bracket">
+         <text value="("/>
+          <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+     </element>
+      <element name="mo">
+         <text value="&#x03a0;"/>
+          <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+     </element>
+      <components begin="1">
+         <recurse precedence="infinity"/>
+         <attribution>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="oftype"/>
+            </OMOBJ>
+         <element name="mo">
+            <attribute name="mathcolor">
+               <text value="blue"/>
+            </attribute>
+            <text value=":"/>
+         </element>
+         <recurse precedence="infinity"/>
+         </attribution>
+      </components>
+      <element name="mo">
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+         <text value="."/>
+      </element>
+      <components begin="2">
+        <recurse precedence="-50"/>
+      </components>
+      <element name="mo" visib:level="bracket">
+         <text value=")"/>
+          <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+     </element>
+   </presentation>
+   <presentation for="twelf/arrow" format="pmathml" role="application" precedence="1">
+      <element name="mrow">
+         <use fixity="infixr" precedence="1">
+            <lbrack>
+               <element name="mo">
+                  <text value="("/>
+                  <attribute name="mathcolor">
+                     <text value="blue"/>
+                  </attribute>
+               </element>
+            </lbrack>
+            <rbrack>
+               <element name="mo">
+                  <text value=")"/>
+                  <attribute name="mathcolor">
+                     <text value="blue"/>
+                  </attribute>
+               </element>
+            </rbrack>
+            <separator>
+               <element name="mspace">
+                  <attribute name="width">
+                     <text value="0.25em"/>
+                  </attribute>
+               </element>
+            </separator>
+            <operator>
+               <element name="mo">
+                  <attribute name="mathcolor">
+                     <text value="blue"/>
+                  </attribute>
+                  <text value="&#x2192;"/>
+               </element>
+            </operator>
+         </use>
+      </element>
+   </presentation>
+   <theory name="prop" meta="twelf">
+      <symbol name="o">
+         <type>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="type"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol name="true">
+         <type>
+            <OMOBJ>
+               <om:OMS cd="prop" name="o"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol name="not">
+         <type>
+            <OMOBJ>
+               <OMA>
+                  <om:OMS cd="twelf" name="arrow"/>
+                  <om:OMS cd="prop" name="o"/>
+                  <om:OMS cd="prop" name="o"/>
+               </OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+   </theory>
+   <theory name="modal" meta="twelf">
+      <symbol name="o">
+         <type>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="type"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+   </theory>
+   <theory name="fol" meta="twelf">
+      <symbol name="i">
+         <type>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="type"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <imports name="imp" from="prop"/>
+      <symbol name="impl">
+         <type>
+            <OMOBJ>
+               <om:OMA>
+                  <om:OMS cd="twelf" name="arrow"/>
+                  <OMM via="fol/imp">
+                     <om:OMS cd="prop" name="o"/>
+                  </OMM>
+                  <om:OMA>
+                     <om:OMS cd="twelf" name="arrow"/>
+                     <OMM via="fol/imp">
+                        <om:OMS cd="prop" name="o"/>
+                     </OMM>
+                     <OMM via="fol/imp">
+                        <om:OMS cd="prop" name="o"/>
+                     </OMM>
+                  </om:OMA>
+               </om:OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol name="and">
+         <type>
+            <OMOBJ>
+               <om:OMA>
+                  <om:OMS cd="twelf" name="arrow"/>
+                  <OMM via="fol/imp">
+                     <om:OMS cd="prop" name="o"/>
+                  </OMM>
+                  <om:OMA>
+                     <OMM via ="">
+                        <om:OMS cd="twelf" name="arrow"/>
+                     </OMM>
+                     <OMM via="fol/imp">
+                        <om:OMS cd="prop" name="o"/>
+                     </OMM>
+                     <OMM via="fol/imp">
+                        <om:OMS cd="prop" name="o"/>
+                     </OMM>
+                  </om:OMA>
+               </om:OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+    </theory>
+   <theory name="fol2" meta="twelf">
+      <imports name="imp2" from="fol"/>
+      <symbol name="eq">
+         <type>
+            <OMOBJ>
+               <OMM via="fol2/imp2">
+                  <om:OMA>
+                     <om:OMS cd="twelf" name="arrow"/>
+                     <om:OMS cd="fol" name="i"/>
+                     <om:OMA>
+                        <om:OMS cd="twelf" name="arrow"/>
+                        <om:OMS cd="fol" name="i"/>
+                        <OMM via="fol/imp">
+                           <om:OMS cd="prop" name="o"/>
+                        </OMM>
+                     </om:OMA>
+                  </om:OMA>
+               </OMM>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol name="forall">
+         <type>
+            <OMOBJ>
+               <om:OMA>
+                  <om:OMS cd="twelf" name="arrow"/>
+                  <om:OMA>
+                     <om:OMS cd="twelf" name="arrow"/>
+                     <OMM via="fol2/imp2">
+                        <om:OMS cd="fol" name="i"/>
+                     </OMM>
+                     <OMM via="fol/imp fol2/imp2">
+                        <om:OMS cd="prop" name="o"/>
+                     </OMM>
+                  </om:OMA>
+                  <OMM via="fol/imp fol2/imp2">
+                     <om:OMS cd="prop" name="o"/>
+                  </OMM>
+               </om:OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+   </theory>
+   <theory name="nat" meta="fol2">
+      <symbol name="nat">
+         <type>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="type"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol name="zero">
+         <type>
+            <OMOBJ>
+               <om:OMS cd="nat" name="nat"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol name="succ">
+         <type>
+            <OMOBJ>
+               <OMA>
+                  <om:OMS cd="twelf" name="arrow"/>
+                  <om:OMS cd="nat" name="nat"/>
+                  <om:OMS cd="nat" name="nat"/>
+               </OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+   </theory>
+   <theory name="monoid" meta="fol2">
+      <symbol name="set">
+         <type>
+            <OMOBJ>
+               <om:OMS cd="twelf" name="type"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol name="unit">
+         <type>
+            <OMOBJ>
+               <om:OMS cd="monoid" name="set"/>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <symbol name="comp">
+         <type>
+            <OMOBJ>
+               <OMA>
+                  <om:OMS cd="twelf" name="arrow"/>
+                  <om:OMS cd="monoid" name="set"/>
+                  <OMA>
+                     <om:OMS cd="twelf" name="arrow"/>
+                     <om:OMS cd="monoid" name="set"/>
+                     <om:OMS cd="monoid" name="set"/>
+                  </OMA>
+               </OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <imports name="natmon" from="nat"/>
+      <symbol name="power">
+         <type>
+            <OMOBJ>
+               <OMA>
+                  <om:OMS cd="twelf" name="arrow"/>
+                  <OMM via="monoid/natmon">
+                     <om:OMS cd="nat" name="nat"/>
+                  </OMM>
+                  <OMA>
+                     <om:OMS cd="twelf" name="arrow"/>
+                     <om:OMS cd="monoid" name="set"/>
+                     <om:OMS cd="monoid" name="set"/>
+                  </OMA>
+               </OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+      <axiom name="unit-left">
+         <FMP>
+            <OMOBJ>
+               <om:OMA>
+                  <om:OMS cd="fol2" name="forall"/>
+                  <om:OMBIND>
+                     <om:OMS cd="twelf" name="lambda"/>
+                     <om:OMBVAR>
+                        <om:OMATTR>
+                           <om:OMATP>
+                              <om:OMS cd="twelf" name="oftype"/>
+                              <om:OMS cd="twelf" name="omitted"/>
+                           </om:OMATP>
+                           <om:OMV name="x"/>
+                        </om:OMATTR>
+                     </om:OMBVAR>
+                  <om:OMBIND>
+                     <om:OMS cd="twelf" name="Pi"/>
+                     <om:OMBVAR>
+                          <om:OMV name="y"/>
+                     </om:OMBVAR>
+                     <om:OMA>
+                        <om:OMS name="eq" cd="fol2"/>
+                        <om:OMA>
+                           <om:OMS name="comp" cd="monoid"/>
+                           <om:OMS name="unit" cd="monoid"/>
+                           <om:OMV name="x"/>
+                        </om:OMA>
+                        <om:OMV name="y"/>
+                     </om:OMA>
+                  </om:OMBIND>
+                  </om:OMBIND>
+               </om:OMA>
+            </OMOBJ>
+         </FMP>
+      </axiom>
+   </theory>
+   <theory name="comm_group" meta="fol2">
+      <imports name="moncgr" from="monoid">
+         <includes name="set"/>
+         <includes name="unit" as="zero"/>
+         <includes name="comp" as="plus"/>
+      </imports>
+      <symbol name="minus">
+         <type>
+            <OMOBJ>
+               <OMA>
+                  <om:OMS cd="twelf" name="arrow"/>
+                  <om:OMS cd="comm_group" name="set"/>
+                  <OMA>
+                     <om:OMS cd="twelf" name="arrow"/>
+                     <om:OMS cd="comm_group" name="set"/>
+                     <om:OMS cd="comm_group" name="set"/>
+                  </OMA>
+               </OMA>
+            </OMOBJ>
+         </type>
+      </symbol>
+   </theory>
+   <theory name="ring" meta="fol2">
+      <imports name="add" from="comm_group">
+         <includes name="set"/>
+         <includes name="zero"/>
+         <includes name="plus"/>
+         <includes name="minus"/>
+      </imports>
+      <imports name="mult" from="monoid">
+         <includes name="unit" as="one"/>
+         <includes name="comp" as="times"/>
+         <morphism>
+            <requation>
+               <OMOBJ>
+                  <OMS name="set" cd="monoid"/>
+               </OMOBJ>
+               <OMOBJ>
+                  <OMM via="ring/add">
+                     <om:OMS name="set" cd="monoid"/>
+                  </OMM>
+               </OMOBJ>
+            </requation>
+            <requation>
+               <OMOBJ>
+                  <OMM via="monoid/natmon"/>
+               </OMOBJ>
+               <OMOBJ>
+                  <OMM via="monoid/natmon comm_group/moncgr ring/add"/>
+               </OMOBJ>
+            </requation>
+         </morphism>
+      </imports>
+      <axiom name="non-trivial">
+         <CMP>The additive and the multiplicative unit are not equal.</CMP>
+         <FMP>
+            <OMOBJ>
+               <om:OMA>
+                  <OMM via="fol/imp fol2/imp2">
+                     <om:OMS name="not" cd="prop"/>
+                  </OMM>
+                  <om:OMA>
+                     <om:OMS name="eq" cd="fol2"/>
+                     <OMM via="comm_group/moncgr ring/add">
+                        <om:OMS name="unit" cd="monoid"/>
+                     </OMM>
+                     <OMM via="ring/mult">
+                        <om:OMS name="unit" cd="monoid"/>
+                     </OMM>
+                  </om:OMA>
+               </om:OMA>
+            </OMOBJ>
+         </FMP>
+      </axiom>
+      <!-- Other axioms omitted -->
+   </theory>
+</omdoc>

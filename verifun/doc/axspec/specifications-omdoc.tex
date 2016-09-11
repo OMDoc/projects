@@ -1,0 +1,967 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{pifont}
+\usepackage{cite}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage{url}
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+
+\newcommand{\VeriFun}{\mbox{{\Large $\checkmark $}\hspace{-0.21cm}\texttt{eriFun}}}
+\newcommand{\smallVeriFun}{{$\checkmark $\hspace{-0.13cm}{\small \texttt{eriFun}}}}
+\newcommand{\titleVeriFun}{{\mbox{{\Huge $\checkmark $}\hspace{-0.37cm}{\Large \texttt{eriFun}}} }}
+\newcommand{\footVeriFun}{{\mbox{{\large $\checkmark $}\hspace{-0.18cm}\texttt{eriFun}} }}
+
+\newcommand{\vflang}{\ensuremath{\mathcal{L}}}
+
+\newcommand{\iif}{\mathit{if}\ }
+\newcommand{\ithen}{\mathit{then}\ }
+\newcommand{\ielse}{\mathit{else}\ }
+\newcommand{\iend}{\mathit{end}\ }
+\newcommand{\ilet}{\mathit{let}\ }
+\newcommand{\iin}{\mathit{in}\ }
+\newcommand{\icase}{\mathit{case}\ }
+\newcommand{\iof}{\mathit{of}\ }
+\newcommand{\ifalse}{\mathit{false}\ }
+\newcommand{\itrue}{\mathit{true}\ }
+\newcommand{\ieq}{\,\texttt{=}\,}
+\newcommand{\ineq}{\,\texttt{=\hspace{-0.16cm}/\hspace{-0.01cm}}\,}
+
+\newcommand{\iiff}{\mathit{if}}
+\newcommand{\itruef}{\mathit{true}}
+\newcommand{\ifalsef}{\mathit{false}}
+
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\NN}{\mathds{N}}
+\newcommand{\ZZ}{\mathds{Z}}
+
+\newcommand{\name}[1]{\mathit{#1}}
+
+\newcommand{\rot}[1]{\rotatebox{90}{#1}}
+
+\newcommand{\evalP}{\mathit{eval}_P}
+\newcommand{\vars}{\mathcal{V}}
+\newcommand{\terms}{\mathcal{T}}
+\newcommand{\env}{\mathcal{E}}
+\newcommand{\envterms}{\terms_\env}
+\newcommand{\dom}{\mathit{dom}}
+\newcommand{\Ax}{\mathcal{AX}}
+
+\urldef{\homeandreas}\url{http://www.inferenzsysteme.informatik.tu-darmstadt.de/~schlosser}
+
+\urldef{\homenormen}\url{http://www.kwarc.info/nmueller}
+
+\begin{document}
+
+\title{OMDoc Support for\\ Axiomatic Specifications in \titleVeriFun}
+
+\author{Normen M\"uller
+        \thanks{KWARC Group, Jacobs University Bremen, \homenormen}
+        \and
+        Andreas Schlosser
+        \thanks{Fachgebiet Programmiermethodik, Fachbereich Informatik, Technische Universit\"at Darmstadt, \homeandreas}
+        }
+
+
+\maketitle
+
+\begin{abstract}
+\noindent Axiomatic specifications stipulate properties of operations axiomatically and are used to reason about
+mathematical structures like groups, rings, fields, etc. on an abstract layer. Axiomatic specifications allow the
+organization of the mathematical structures under investigation in a modularized and hierarchical manner, thus
+supporting well-structured presentations.  They also provide representations of non-freely generated data types like
+integers in a way which supports automated reasoning. A further advantage is that concrete implementations inherit the
+instances of all proven properties of a specification after it has been proved that the implementation satisfies the
+axioms of the specification. To utilize these benefits, the interactive verification tool \VeriFun\ has been extended
+to support axiomatic specifications. For a full integration it is necessary to adapt the OMDoc standard~\cite{K:OMDoc}
+to support all features used in axiomatic specifications, such that storing case studies using axiomatic specification
+in the OMDoc format is possible. This paper describes all features of axiomatic specifications in \VeriFun\ and defines
+how they are mapped to OMDoc constructs.
+\end{abstract}
+
+\section{Introduction} \label{sec:intro}
+Most up-to-date programming languages allow modularization of programs to organize increasing amounts of lines of code.
+Modules provide interfaces for the communication with external code. The properties of a module are mostly described by
+additional textual comments. Programmers implementing the same interface in another module know in which way the
+procedures should behave and hopefully stick to the given comments. However, for formal program verification, the
+properties of procedures declared by an interface need to be represented formally. An interface used for program
+verification has to specify the operators and additionally some axioms which constrain the operators to specific
+properties. The formal notion is that of a \emph{specification} which stipulates domains, operators defined on these
+domains, and axioms stating properties on these operators. The classic algebraic concept of axiomatic specifications is
+exposed in detail in~\cite{EM:Spec1,EM:Spec2}.
+
+\begin{figure}[t!]
+
+\begin{tabbing}
+x \= x \= x \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\= x \= x \= x \=\kill
+\texttt{structure} $\name{bool}$ $<$= $\itruef, \ifalsef$ \\
+\texttt{structure} $\nat$ $<$= $0,\, ^+(^-$:$\nat)$ \\
+\texttt{structure} $\name{list}[@X]$ $<$= $\mbox{\o}, [\name{infix}]\name{::}(\name{hd}$:$@X, \name{tl}$:$\name{list}[@X])$ \\
+\\
+\texttt{function} $\name{occurs}(i$:$@X, k$:$\name{list}[@X])$:$\nat$ $<$=\\
+$\iif k$\ieq$\mbox{\o}$ \\
+\> $\ithen 0$\\
+\> $\ielse \iif i$\ieq$\name{hd}(k)\ \ithen ^+(\name{occurs}(i, \name{tl}(k)))\ \ielse \name{occurs}(i, \name{tl}(k))\ \iend$ \\
+$\iend$\\
+\\
+\texttt{function} $\name{ordered}(k$:$\name{list}[\nat])$:$\name{bool}$ $<$=\\
+$\iif k$\ieq$\mbox{\o}$ \\
+\> $\ithen \itrue$ \\
+\> $\ielse \iif \name{tl}(k)$\ieq$\mbox{\o}$ \\
+\> \> $\ithen \itrue$ \\
+\> \> $\ielse \iif \name{hd}(k) > \name{hd}(\name{tl}(k))\ \ithen \ifalse \ielse \name{ordered}(\name{tl}(k))\ \iend$ \\
+\> $\iend$ \\
+$\iend$\\
+\\
+\texttt{function} $\name{insert}(n$:$\nat, k$:$\name{list}[\nat])$:$\name{list}[\nat]$ $<$= \\
+$\iif k$\ieq$\mbox{\o}$ \\
+\> $\ithen n\ \name{::}\ \mbox{\o}$ \\
+\> $\ielse \iif n > \name{hd}(k)\ \ithen \name{hd}(k)\ \name{::}\ \name{insert}(n, \name{tl}(k))\ \ielse n\ \name{::}\ k\ \iend$ \\
+$\iend$ \\
+\\
+\texttt{function} $\name{isort}(k$:$\name{list}[\nat])$:$\name{list}[\nat]$ $<$= \\
+$\iif k$\ieq$\mbox{\o}\ \ithen \mbox{\o}\ \ielse \name{insert}(\name{hd}(k), \name{isort}(\name{tl}(k)))\ \iend$ \\
+\\
+\texttt{lemma} $\name{isort}\ \name{sorts}$ $<$= $\forall k$:$\name{list}[\nat]\ \name{ordered}(\name{isort}(k))$ \\
+\\
+\texttt{lemma} $\name{isort}\ \name{permutes}$ $<$= $\forall n$:$\nat, k$:$\name{list}[\nat]\ \name{occurs}(n,
+k)$\ieq$\name{occurs}(n, \name{isort}(k))$
+\end{tabbing}
+
+\caption{Insertion sort over domain $(\nat,>)$} \label{fig:isort}
+\end{figure}
+
+
+This paper describes the integration of axiomatic specifications into the \VeriFun\
+system~\cite{WS:VeriFun,WS:Classroom,VeriFun:Web}, an interactive theorem prover for the verification of programs
+written in the functional programming language \vflang~\cite{ASW:LPrimer}. Figure~\ref{fig:isort} shows an example of a
+simple \vflang\ program. For each feature of axiomatic specifications we will describe the realization in OMDoc.
+
+The remainder of this paper is organized as follows. Sections~\ref{sec:capabilities} and~\ref{sec:integerarithmetic}
+describe the capabilities of specifications in \VeriFun. The semantics of programs with specifications and lemmas
+stating program properties is defined in Sect.~\ref{sec:semantics}. Section~\ref{sec:related} gives an survey of other
+systems which support axiomatic specifications and Sect.~\ref{sec:conclusion} concludes with the contributions of this
+paper and future work.
+
+\section{Specification Hierarchies} \label{sec:capabilities}
+
+\subsection{Simple Specifications}
+
+\begin{figure}[t]
+\begin{tabbing}
+x \= \kill
+\texttt{specification} $\name{TotalOrder}$ \\
+\> \texttt{domain} $@O$ \\
+\> \texttt{operator} $\name{le} : @O,@O \rightarrow \name{bool}$ \\
+\> \texttt{axiom} $\name{reflexivity}$ $<$= $\forall x$:$@O\ \name{le}(x,x)$ \\
+\> \texttt{axiom} $\name{antisymmetry}$ $<$= $\forall x,y$:$@O\ \name{le}(x,y) \wedge \name{le}(y,x) \rightarrow x \ieq y$ \\
+\> \texttt{axiom} $\name{transitivity}$ $<$= $\forall x,y,z$:$@O\ \name{le}(x,y) \wedge \name{le}(y,z) \rightarrow \name{le}(x,z)$ \\
+\> \texttt{axiom} $\name{totality}$ $<$= $\forall x,y$:$@O\ \name{le}(x,y) \vee \name{le}(y,x)$
+\end{tabbing}
+
+\caption{Axiomatic specification of a total order} \label{fig:totalorder}
+\end{figure}
+
+
+\begin{figure}[t]
+
+\begin{tabbing}
+x \= x \= x \= xxxxxxxx \= x \= x \= x \= x \= xxxx \= \kill
+\texttt{function} $\name{ordered}[O$:$\name{TotalOrder}](k$:$\name{list}[@O])$:$\name{bool}$ $<$=\\
+$\iif k$\ieq$\mbox{\o}$ \\
+\> $\ithen \itrue$ \\
+\> $\ielse \iif \name{tl}(k)$\ieq$\mbox{\o}$ \\
+\> \> $\ithen \itrue$ \\
+\> \> $\ielse \iif \name{le}(\name{hd}(k),\name{hd}(\name{tl}(k)))\ \ithen \name{ordered}[O](\name{tl}(k))\ \ielse \ifalse \iend $ \\
+\> $\iend$ \\
+$\iend$ \\
+\\
+\texttt{function} $\name{insert}[O$:$\name{TotalOrder}](n$:$@O, k$:$\name{list}[@O])$:$\name{list}[@O]$ $<$= \\
+$\iif k$\ieq$\mbox{\o}$\\
+\> $\ithen n\ \name{::}\ \mbox{\o}$ \\
+\> $\ielse \iif \name{le}(n,\name{hd}(k))\ \ithen n\ \name{::}\ k\ \ielse \name{hd}(k)\ \name{::}\ \name{insert}[O](n, \name{tl}(k))\ \iend$ \\
+$\iend$ \\
+\\
+\texttt{function} $\name{isort}[O$:$\name{TotalOrder}](k$:$\name{list}[@O])$:$\name{list}[@O]$ $<$= \\
+$\iif k$\ieq$\mbox{\o}\ \ithen \mbox{\o}\ \ielse \name{insert}[O](\name{hd}(k), \name{isort}[O](\name{tl}(k)))\ \iend$ \\
+\\
+\texttt{lemma} $\name{isort}\ \name{sorts}[O$:$\name{TotalOrder}]$ $<$= $\forall k$:$\name{list}[@O]\ \name{ordered}[O](\name{isort}[O](k))$ \\
+\\
+\texttt{lemma} $\name{isort}\ \name{permutes}[O$:$\name{TotalOrder}]$ $<$= $\forall n$:$\nat, k$:$\name{list}[@O]$\\
+\> $\name{occurs}(n, k)$\ieq$\name{occurs}(n, \name{isort}[O](k))$
+\end{tabbing}
+
+\caption{Insertion sort over total ordered domains} \label{fig:isort:abstr}
+\end{figure}
+
+
+\begin{figure}[t]
+\begin{tabbing}
+x \= x \= xxxxxxxxxxxi \= x \= x \= \kill
+\texttt{specification} $\name{PriorityQueue}[O$:$\name{TotalOrder}]$ \\
+\> \texttt{domain} $Q[@O]$ \\
+\> \texttt{operator} $\name{new}: Q[@O]$ \\
+\> \texttt{operator} $\name{ins}: @O,Q[@O] \rightarrow Q[@O]$ \\
+\> \texttt{operator} $\name{min}: Q[@O] \rightarrow @O$ \\
+\> \texttt{operator} $\name{dm}: Q[@O] \rightarrow Q[@O]$ \\
+\> \texttt{operator} $\name{size}: Q[@O] \rightarrow \nat$ \\
+\> \texttt{axiom} $\name{min}\ \name{ins}\ \name{new}$ $<$= $\forall v$:$@O\ \name{min}(\name{ins}(v,\name{new}))\ieq v$ \\
+\> \texttt{axiom} $\name{dm}\ \name{ins}\ \name{new}$ $<$= $\forall v$:$@O\ \name{dm}(\name{ins}(v,\name{new}))\ieq \name{new}$ \\
+\> \texttt{axiom} $\name{min}\ \name{ins}\ \name{notnew}$ $<$= $\forall v$:$@O, q$:$Q[@O]$ \\
+\> \> $q \ineq \name{new} \rightarrow \iiff\{\name{le}(\name{min}(q),v),\name{min}(\name{ins}(v,q))\ieq\name{min}(q),\name{min}(\name{ins}(v,q))\ieq v\}$ \\
+\> \texttt{axiom} $\name{dm}\ \name{ins}\ \name{notnew}$ $<$= $\forall v$:$@O, q$:$Q[@O]$ \\
+\> \> $q \ineq \name{new} \rightarrow \iiff\{\name{le}(\name{min}(q),v), \name{dm}(\name{ins}(v,q))\ieq\name{ins}(v,\name{dm}(q)), \name{dm}(\name{ins}(v,q))\ieq q\}$ \\
+\> \texttt{axiom} $\name{ins}\ \name{not}\ \name{new}$ $<$= $\forall v$:$@O, q$:$Q[@O]\ \name{ins}(v,q) \ineq \name{new}$ \\
+\> \texttt{axiom} $\name{ins}\ \name{min}\ \name{dm}$ $<$= $\forall q$:$Q[@O]\ q \ineq \name{new} \rightarrow q\ieq\name{ins}(\name{min}(q),\name{dm}(q)))$ \\
+\> \texttt{axiom} $\name{size}\ \name{definition}$ $<$= $\forall v$:$@O, q$:$Q[@O]$ \\
+\> \> $(q\ieq\name{new} \rightarrow \name{size}(q)\ieq 0) \quad \wedge$ \\
+\> \> $(\name{size}(\name{ins}(v,q))\ieq \,^+(\name{size}(q))) \quad \wedge$ \\
+\> \> $(q \ineq \name{new} \rightarrow \name{size}(q) \ineq 0 \wedge
+\name{size}(\name{dm}(q))\ieq\,^-(\name{size}(q)))$
+\end{tabbing}
+\caption{Specification of a priority queue} \label{fig:pqueue}
+\end{figure}
+
+
+
+Lemmas $\name{isort}\ \name{sorts}$ and $\name{isort}\ \name{permutes}$ specify the requirements for $\name{isort}$
+(which must hold for \emph{any} sorting algorithm). Sorting is specified \emph{constructively} here by using a specific
+ordered domain, viz.\ $(\nat,>)$, and procedures, viz.\ $\name{ordered}$ and $\name{occurs}$, which decide list
+properties. However, sorting lists can be specified abstractly without relying on $(\nat,>)$ only.
+Figure~\ref{fig:totalorder} displays the definition of an ordered domain by the axiomatic specification
+$\name{TotalOrder}$. This definition gives the \emph{domain} $@O$ of the specification, an operator $\name{le}$ over
+$@O$, and the axioms defining properties of $\name{le}$.
+
+These basic elements of a specification are encoded in OMDoc as follows:
+
+\begin{itemize}
+
+ \item specification itself (container)
+   \begin{itemize}
+     \item encoding of folders
+     \item modules and
+     \item visibilities
+   \end{itemize}
+
+ \item domains (type variables)
+
+ \item operators (second order term variables)
+
+ \item axioms (standard?)
+
+\end{itemize}
+
+
+The abstract variant of insertion sort for ordered domains is given in Fig.~\ref{fig:isort:abstr}. \emph{Importing} a
+specification into a procedure (denoted by $[\ldots]$) extends the procedure's signature by the symbols defined in the
+specification, thus making these symbols available in the procedure body. For example, procedure $\name{ordered}$,
+importing specification $\name{TotalOrder}$, now is defined upon lists over domain $@O$ and uses the operator
+$\name{le}$ for comparing list elements. By this import, the signature of $\name{ordered}$ is extended by the
+additional specification parameter $O$ of ``type" $\name{TotalOrder}$, an actual instance of which has to be provided
+each time procedure \emph{ordered} is called, cf.\ lemma $\name{isort}\ \name{sorts}$ in Fig.~\ref{fig:isort:abstr}. In
+this lemma the specification is imported, too, and passed to the calls of $\name{ordered}$ and $\name{isort}$.
+Importing a specification into a lemma definition does not only make the domains and operators available in the lemma
+body, but also imports the axioms given for the imported operators. These axioms may be used for the proof of the lemma
+like verified lemmas of a program. Likewise, by importing a specification $S$ into a procedure $f$, the axioms of $S$
+are also available in $f$ to support a termination proof for $f$.
+
+Hence, the information about \emph{imported} specifications---called the \emph{environment}---has to be encoded in
+OMDoc in addition to a procedure's formal parameters and a lemma's quantification, respectively.
+
+\begin{itemize}
+
+ \item extended procedure signature (list of names \& specifications) = environment
+
+ \item extended terms---see below
+
+ \item extended lemma quantification = environment
+
+\end{itemize}
+
+\subsection{Parameterization}
+
+\begin{figure}[t]
+\begin{tabbing}
+x \= x \= x \= x \= x \= \kill
+\texttt{function} $\name{makeQueue}[P$:$\name{PriorityQueue}](l$:$\name{list}[@O])$:$Q[@O]$ $<$=\\
+$\iif l$\ieq$\mbox{\o}\ \ithen \name{new}\ \ielse \name{ins}(\name{hd}(l),\name{makeQueue}[P](\name{tl}(l)))\ \iend$\\
+\\
+\texttt{function} $\name{makeList}[P$:$\name{PriorityQueue}](q$:$Q[@O])$:$\name{list}[@O]$ $<$= \\
+$\iif q$\ieq$\name{new}\ \ithen \mbox{\o}\ \ielse \name{min}(q)\ \name{::}\ \name{makeList}[P](\name{dm}(q))\ \iend$ \\
+\\
+\texttt{function} $\name{sort} [P$:$\name{PriorityQueue}](l$:$\name{list}[@O])$:$\name{list}[@O]$ $<$= \\
+$\name{makeList}[P](\name{makeQueue}[P](l))$ \\
+\\
+\texttt{lemma} $\name{sort}\ \name{sorts}[P$:$\name{PriorityQueue}]$ $<$= $\forall l$:$\name{list}[@O]$
+$\name{ordered}[O(P)](\name{sort}[P](l))$ \\
+\\
+\texttt{lemma} $\name{sort}\ \name{permutes}[P$:$\name{PriorityQueue}]$ $<$= $\forall n$:$@O, l$:$\name{list}[@O]$\\
+\> $\name{occurs}(n,l)$\ieq$\name{occurs}(n,\name{sort}[P](l))$
+\end{tabbing}
+\caption{A sorting algorithm using priority queues} \label{fig:pqsorting}
+\end{figure}
+
+
+
+Specifications may not only be imported into procedures and lemmas, but into other specifications as well---called
+\emph{parameterization}. Figure~\ref{fig:pqueue} shows the definition of a priority queue which is parameterized by a
+total order, i.e.\ the priority queue specification uses a totally ordered domain given by specification
+$\name{TotalOrder}$ of Fig.~\ref{fig:totalorder}. For defining the domain of $\name{PriorityQueue}$, a \emph{type
+operator variable} $Q$ for a container data type like $\name{list}$ containing elements of type $@O$ (imported from
+$\name{TotalOrder}$) is used. Next, the operators for the priority queue are defined: Operator $\name{new}$ creates a
+new queue, $\name{ins}$ inserts an element into the queue, $\name{min}$ yields the minimal element of the queue, and
+$\name{dm}$ deletes the minimal element from the priority queue. Finally, the properties of the operators are given by
+the axioms. Specification $\name{PriorityQueue}$ also defines an operator $\name{size}$ which is used to justify
+termination of procedures which operate on $\name{PriorityQueues}$.
+
+Thus, the signature of a specification is also extended by a list of imports which is handled in OMDoc in analogy to
+the environment of procedures and lemmas:
+
+\begin{itemize}
+ \item extend specification signature
+\end{itemize}
+
+Elements are removed from the queue wrt.\ the given ordering, i.e.\ smallest element first. This property can be used
+to implement a sorting algorithm for lists over an ordered domain: First all elements are inserted into the queue, and
+then the elements are removed and added to an initially empty list in the order in which they were removed from the
+queue. The implementation of this algorithm is given in Fig.~\ref{fig:pqsorting}. Basically, it just creates a priority
+queue from the given list $l$ and converts it back into a list. To check the correctness of the sorting algorithm of
+Fig.~\ref{fig:pqsorting} it has to be proved that $\name{sort}$ returns an ordered permutation of its input list. The
+elements of a priority queue $P$ are ordered wrt.\ the total order $O$ of priority queue $P$, denoted by $O(P)$, by
+which specification $\name{PriorityQueue}$ is parameterized. Hence, procedure $\name{ordered}$ of
+Fig.~\ref{fig:isort:abstr} is called with $O(P)$ in the lemma $\name{sort}\ \name{sorts}$ of Fig.~\ref{fig:pqsorting},
+thus \emph{referencing} the total order of the priority queue specification.
+
+These \emph{references} to specification extend the definition of terms. Now, a term is not only defined by a leading
+function symbol followed by a term list, but---depending on the procedure---a leading function symbol, a list of
+\emph{specification terms} (like $O(P)$ or simply $P$), and a term list (cf.\ recursive calls in the sorting procedures
+using priority queues). Specification terms are decoded in OMDoc as
+
+\begin{itemize}
+ \item describe specification terms here!
+ \item integration into term concept
+\end{itemize}
+
+\subsection{Inheritance, Renaming, and Lemmas}
+
+\begin{figure}[t]
+\begin{tabbing}
+x \= x \= xxxxxxxxxxxxxxxxni \= xxxxxxxxxp \= x \= \kill
+\texttt{specification} $\name{Monoid}$ \\
+\> \texttt{domain} $@M$ \\
+\> \texttt{operator} $\name{op} : @M, @M \rightarrow @M$\\
+\> \texttt{operator} $\name{neut} : @M$ \\
+\> \texttt{axiom} $\name{left}\ \name{neut}$ $<$= $\forall x$:$@M\ \name{op}(\name{neut},x)$\ieq$x$ \\
+\> \texttt{axiom} $\name{right}\ \name{neut}$ $<$= $\forall x$:$@M\ \name{op}(x,\name{neut})$\ieq$x$ \\
+\> \texttt{axiom} $\name{op}\ \name{assoc}$ $<$= $\forall x,y,z$:$@M\ \name{op}(\name{op}(x,y),z)\ieq\name{op}(x,\name{op}(y,z))$ \\
+\\
+\texttt{specification} $\name{Group}[M$:$\name{Monoid}(@G,\name{op},\name{neut})]$ \\
+\> \texttt{operator} $\name{inv} : @G \rightarrow @G$ \\
+\> \texttt{axiom} $\name{inv}\ \name{op}\ \name{right}$ $<$= $\forall x$:$@G\ \name{op}(x,\name{inv}(x))\ieq \name{neut}$ \\
+\> \texttt{lemma} $\name{inv}\ \name{op}\ \name{left}$ $<$= $\forall x$:$@G\ \name{op}(\name{inv}(x),x)\ieq \name{neut}$ \\
+\> \texttt{lemma} $\name{inv}\ \name{inv}$ $<$= $\forall x$:$@G\ \name{inv}(\name{inv}(x))\ieq x$ \\
+\\
+\texttt{specification} $\name{GroupHomomorphism}[G1$:$\name{Group}(@G1,\name{op1},\name{neut1},\name{inv1}),$ \\
+\> \> \> \> $G2$:$\name{Group}(@G2,\name{op2},\name{neut2},\name{inv2})]$ \\
+\> \texttt{operator} $h : @G1 \rightarrow @G2$ \\
+\> \texttt{axiom} $\name{homomorphism}$ $<$= $\forall x,y$:$@G1\ \name{op2}(h(x),h(y))\ieq h(\name{op1}(x,y))$ \\
+\> \texttt{lemma} $\name{h}\ \name{keeps}\ \name{neut}$ $<$= $h(\name{neut1})\ieq \name{neut2}$ \\
+\> \texttt{lemma} $\name{h}\ \name{keeps}\ \name{inv}$ $<$= $\forall x$:$@G1\  h(\name{inv1}(x))\ieq \name{inv2}(h(x))$ \\
+\\
+\texttt{specification} $\name{RingUnit}[G$:$\name{Group}(@R,\name{plus},\name{zero},\name{minus}),$ \\
+\> \> \>  $M$:$\name{Monoid}(@R,\name{mult},\name{one})]$ \\
+\> \texttt{axiom} $\name{plus}\ \name{commutativity}$ $<$= $\forall x,y$:$@R\ \name{plus}(x,y)\ieq \name{plus}(y,x)$ \\
+\> \texttt{axiom} $\name{left}\ \name{distributivity}$ $<$= $\forall x,y,z$:$@R$\\
+\> \> $\name{mult}(x,\name{plus}(y,z))\ieq \name{plus}(\name{mult}(x,y),\name{mult}(x,z))$ \\
+\> \texttt{axiom} $\name{right}\ \name{distributivity}$ $<$= $\forall x,y,z$:$@R$ \\
+\> \> $\name{mult}(\name{plus}(y,z),x)\ieq \name{plus}(\name{mult}(y,x),\name{mult}(z,x))$
+\end{tabbing}
+
+\caption{Axiomatic specifications of algebraic structures} \label{fig:algstruct}
+\end{figure}
+
+The priority queue specification uses the total order specification by adding an additional domain and operators over
+the new domain. Another kind of using a specification is \emph{inheritance}. When inheriting from other specifications,
+these specifications are \emph{refined} by adding new operators on the imported domains and/or restricting the imported
+operators by additional axioms.\footnote{There is no syntactical or semantical difference between importing,
+parameterizing, and inheriting. The different namings only indicate different purposes of utilizing specifications.}
+Inheritance of specifications is related to inheritance in object oriented languages (OO) where a class is extended by
+additional fields and methods (whereas overriding methods is not possible with specifications). An inherited
+specification $S[T$:$U(\ldots)]$ can also be used in contexts where the imported specification $U$ is expected by
+simply referencing it with $T(S)$---corresponding to subtyping in OO. An example for inheritance is the extension of a
+\emph{monoid} to a \emph{group}. A monoid is a structure with an associative operator and a neutral element. By adding
+an inverse operator $\name{inv}$, a group \emph{inherits} from a monoid like in specification $\name{Group}$ of
+Fig.~\ref{fig:algstruct}.
+
+When importing a specification, domains and operators may be \emph{renamed}. For instance, the domain of
+$\name{Monoid}$ is renamed to $@G$ upon inheritance into specification $\name{Group}$. Renaming of local domains and
+operators of specifications particularly allows the import of \emph{multiple instances} of a \emph{single}
+specification into another specification. For example, specification $\name{GroupHomomorphism}$ of
+Fig.~\ref{fig:algstruct} displays a group homomorphism which is defined by importing two separate instances of
+specification $\name{Group}$. By renaming the domains and all operators of $\name{Group}$, both instances are
+distinguished in specification $\name{GroupHomomorphism}$. As another benefit, renaming is also used to \emph{link}
+imported specifications together by sharing domains and/or operators. For instance, Fig.~\ref{fig:algstruct} shows how
+a ring with unit element inherits from a group and a monoid by renaming the domains of $\name{Group}$ and
+$\name{Monoid}$ to $@R$, thus \emph{identifying} both domains. Therefore all operators imported from $\name{Monoid}$
+and $\name{Group}$ are defined on the \emph{same} domain in the context of specification $\name{RingUnit}$.
+
+The signature extensions of procedures, lemmas, and specifications (called inheritance/parameterization here) is thus
+augmented by additional \emph{renaming} operations. In OMDoc these renamings are decoded as
+\begin{itemize}
+  \item type substitutions and
+  \item term substitutions
+\end{itemize}
+
+
+
+\subsection{Instantiation}
+
+\begin{figure}[t]
+\begin{tabbing}
+x \= x \= xxxxxxxxxxxxxxx \= xxxxxxxxxp \= x \= \kill
+\texttt{structure} $\name{singleton}$ $<$= $\name{single}$ \\
+\\
+\texttt{function} $\name{leSingleton}(x,y$:$\name{singleton})$:$\name{bool}$ $<$= $\itrue$ \\
+\\
+\texttt{function} $[\name{outfix}]\,|\,(l$:$\name{list}[@X])$:$\nat$ $<$= $\iif l\ieq \mbox{\o}\  \ithen 0\ \ielse
+^+(|\, \name{tl}(l)\, |)\ \iend$ \\
+\\
+\texttt{instance} $\name{PQInstance}$ $<$= $\name{PriorityQueue}(\name{singleton}, \name{list}, \name{leSingleton},
+\mbox{\o}, \name{::}, \name{hd}, \name{tl}, |\cdot|)$ \\
+\\
+\texttt{function} $\name{fold}[M$:$\name{Monoid}](l$:$\name{list}[@M])$:$@M$ $<$= \\
+$\iif l\ieq \mbox{\o}\ \ithen \name{neut}\ \ielse \name{op}(\name{hd}(l),\name{fold}[M](\name{tl}(l)))\ \iend$ \\
+\\
+\texttt{lemma} $\name{fold}\ \name{append}[M$:$\name{Monoid}]$ $<$= $\forall \name{l1},\name{l2}$:$\name{list}[@M]$ \\
+\> $\name{op}(\name{fold}[M](\name{l1}),\name{fold}[M](\name{l2}))\ieq \name{fold}[M](\name{append}(\name{l1},\name{l2}))$ \\
+\\
+\texttt{instance} $\name{Plus}$ $<$= $\name{Monoid}(\nat,+,0)$ \\
+\\
+\texttt{function} $\name{fold}[\name{Plus}](l$:$\name{list}[\nat])$:$\nat$ $<$= \\
+$\iif l\ieq \mbox{\o}\ \ithen 0\ \ielse \name{hd}(l) + \name{fold}[\name{Plus}](\name{tl}(l))\ \iend$ \\
+\\
+\texttt{lemma} $\name{fold}\ \name{append}[\name{Plus}]$ $<$= $\forall \name{l1},\name{l2}$:$\name{list}[\nat]$ \\
+\> $\name{fold}[\name{Plus}](\name{l1}) + \name{fold}[\name{Plus}](\name{l2}) \ieq
+\name{fold}[\name{Plus}](\name{append}(\name{l1},\name{l2})) $ \\
+\\
+\texttt{instance} $\name{ProductMonoid}[M_1$:$\name{Monoid}(\ldots),M_2$:$\name{Monoid}(\ldots)]$ $<$=
+$\name{Monoid}(\ldots)$
+\end{tabbing}
+
+\caption{Instantiations of specifications} \label{fig:instances}
+\end{figure}
+
+Before proving a lemma which imports a specification $S$, consistency of $S$ has to be verified. To this effect, an
+instantiation of specification $S$ with a structure satisfying the axioms of $S$ has to be provided. Then the
+instantiated axioms have to be proved and---if successful---it is verified that $S$ possesses a \emph{model}. These
+models are quite simple in many cases, often using singleton domains. For example, the instantiation of
+$\name{PriorityQueue}$ (also instantiating $\name{TotalOrder}$) is given in Fig.~\ref{fig:instances}. The domain of
+specification $\name{TotalOrder}$ is instantiated with the free data structure $\name{singleton}$ consisting of the
+single constant constructor $\name{single}$. The domain of $\name{PriorityQueue}$ is instantiated with the data
+structure $\name{list}$ of linear lists. Now all operators are instantiated in the order of their definition in the
+specification using the constant function $\name{leSingleton}$, the constructors and selectors of $\name{list}$ and the
+length function $| \cdot |\,$. Similarly, all specifications of Fig.~\ref{fig:algstruct} can be instantiated by using
+singleton domains and constant functions.
+
+From the OMDoc perspective an instance of specification $S$ is only a collection of \emph{imported
+specifications}---possibly with renamings---and a renaming for the elements of $S$, i.e.\
+\begin{itemize}
+  \item environment
+  \item specification + type/term substitutions
+\end{itemize}
+
+
+Instantiations are also used to assert that a concrete structure \emph{implements} an abstract structure given by an
+axiomatic specification. For instance, using the monoid structure given in Fig.~\ref{fig:algstruct}, a procedure
+$\name{fold}$ can be defined which folds the elements of a list by applying the monoid operation successively to all
+elements of the list, cf.~Fig.~\ref{fig:instances}. Given a further procedure $\name{append}$ for list concatenation,
+it can be proved that applying $\name{fold}$ to a concatenated list is the same as folding both parts separately and
+applying the monoid operation to the results, cf.\ lemma $\name{fold}\ \name{append}$ in Fig.~\ref{fig:instances}.
+Having proved that natural numbers with addition $+$ and $0$, abbreviated by $\name{Plus}$, are an instance of
+$\name{Monoid}$, i.e.\ that $\name{Plus}$ \emph{implements} a monoid as given by $\name{Monoid}$, procedures using
+$\name{Monoid}$ may be instantiated with $\name{Plus}$ and all lemmas holding for monoids hold for $\name{Plus}$ as
+well, cf.\ procedure $\name{fold}[\name{Plus}]$ and lemma $\name{fold}\ \name{append}[\name{Plus}]$ of
+Fig.~\ref{fig:instances} which are available \emph{implicitly} after the instantiation $\name{Plus}$ has been proved.
+
+
+Thus, the concept of specification terms is extended to terms with use an instantiation as a leading ``function
+symbol'' and whose arity is determined by its environment. The instance which shows that product monoid with suitable
+operations build a monoid again from Fig.~\ref{fig:instances} allows, e.g., for the specification term
+$\name{ProductMonoid}(\name{Plus},\name{ProductMonoid}(\name{Plus},M))$, if $M$ is the name for some specification of a
+monoid in the current environment. This is decoded in OMDoc in the following way:
+\begin{itemize}
+  \item instances as leading specification term symbols
+\end{itemize}
+
+\section{Conclusion} \label{sec:conclusion}
+
+Axiomatic specifications as presented here have been integrated into an experimental version of the \VeriFun\
+system~\cite{K:Module} and further developed based on the experiences gained by using specifications in several case
+studies. However, proving properties about axiomatically specified entities necessitates a high degree of user
+interaction in \VeriFun. This is because \VeriFun's heuristics were designed for controlling the verification of
+properties of programs rather than the proof of theorems in pure first order logic. Hence, a pure first-order reasoner
+is needed when working with axiomatic specifications. We therefore presently investigate how to integrate a first-order
+theorem prover into the system~\cite{E:FOI}. Another open problem, the support of the OMDoc standard is tackled in this
+paper and will be implemented soon.
+
+We presented the essential features of axiomatic specifications in \VeriFun, illustrated by several examples. Our
+proposal offers a certain flexibility, as many kinds of combinations between specifications are supported:
+Specifications can be inherited, parameterized, referenced, multi-used, linked, and instantiated. Using specifications
+it is even possible to perform induction proofs over non-freely generated data types like integers without introducing
+formal clutter by using normal forms, defining congruence relations explicitly, etc. A comparison with related work,
+summarized in Tab.~\ref{tab:comparison}, reveals that our approach might extend proposals known from the literature in
+a useful way, especially wrt.\ the possibilities of developing \emph{structured hierarchies} of specifications.
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{specifications-omdoc}
+
+
+\appendix
+
+\section{Specification of Non-Free Data Types} \label{sec:integerarithmetic}
+
+In the previous sections, specifications were used to build hierarchies of theories which then were used in generic
+algorithms and lemmas. Another benefit of axiomatic specifications is that they support the definition of non-free data
+types like \emph{integer}. Such specifications are typically neither instantiated nor inherited from nor multi-used.
+
+
+\subsection{Integers}
+
+Integers are defined as a set $\ZZ := \ZZ^- \cup \{0\} \cup \ZZ^+$, where $\ZZ^- := \{-n\, |\, n\in \NN, n>0 \}$ and
+$\ZZ^+ := \{n\, |\, n\in \NN, n>0\}$. This structure is modeled with specification $\name{Integer}$ of
+Fig.~\ref{fig:integers}. Here, integers are built with the operators $\name{zero}$, $\name{succ}$, and $\name{pred}$
+over some domain $@I$. Operators $\name{succ}$ and $\name{pred}$ are \emph{non-free}, as non-trivial equations between
+them hold, e.g.\ that they are inverse to each other; both are injective, and do not possess a fixpoint. Additionally,
+the specification defines the algebraic sign $\name{sign}$ and the absolute value $\name{abs}$ of an integer.
+
+The axioms for operators $\name{sign}$, $\name{abs}$, $\name{pred}$, and $\name{succ}$ guarantee that $\NN$
+(represented by terms over $0$ and $^+(\ldots)$) is isomorphic to $\{0\} \cup \ZZ^+$ (represented by terms over
+$\name{zero}$ and $\name{succ}$) as well as to $\{0\} \cup \ZZ^-$ (represented by terms over $\name{zero}$ and
+$\name{pred}$), where term $i$ represents an integer in $\ZZ^+$ if $\name{sign}(i)=\name{pos}$ and an integer in
+$\ZZ^-$ if $\name{sign}(i)=\name{neg}$. Terms $i$ with $\name{sign}(i)=\name{neut}$ represent $\{0\}$.
+
+Functions $\name{sign}$ and $\name{abs}$ also provide a termination argument for algorithms over integers, which is
+used to prove termination of procedures operating on $\name{Integer}$: Procedures \texttt{function}
+$f[I$:$\name{Integer}](x$:$@I, \ldots)$:$\tau$ $<$= $\ldots$ are usually defined recursively, typically by case
+analysis over the sign of at least one of its arguments.\footnote{Since integers do not have a unique representation
+using $\name{zero}$, $\name{succ}$, and $\name{pred}$, a case analysis on the leading ``constructor" neither makes
+sense nor is syntactically possible.} Termination is verified by proving a termination hypothesis like $C \rightarrow$
+$\name{abs}(x)>\name{abs}(t)$ for recursive calls $f(t,\ldots)$ under condition $C$.
+
+
+\begin{figure}[t]
+\begin{tabbing}
+x \= x \= xxmi \= xxxxr \=i\= \kill
+\texttt{structure} $\name{int\_sign}$ $<$= $\name{pos}, \name{neut}, \name{neg}$\\
+\\
+\texttt{specification} $\name{Integer}$ \\
+\> \texttt{domain} $@I$ \\
+\> \texttt{operator} $\name{zero}: @I$ \\
+\> \texttt{operator} $\name{succ}: @I \rightarrow @I$ \\
+\> \texttt{operator} $\name{pred}: @I \rightarrow @I$ \\
+\> \texttt{operator} $\name{sign}: @I \rightarrow \name{int\_sign}$ \\
+\> \texttt{operator} $\name{abs}: @I \rightarrow \nat$ \\
+\> \texttt{axiom} $\name{pred}\ \name{succ}$ $<$= $\forall i$:$@I\ \name{pred}(\name{succ}(i))\ieq i$ \\
+\> \texttt{axiom} $\name{succ}\ \name{pred}$ $<$= $\forall i$:$@I\ \name{succ}(\name{pred}(i))\ieq i$ \\
+\> \texttt{axiom} $\name{succ}\ \name{not}\ \name{id}$ $<$= $\forall i$:$@I\ \name{succ}(i)\ineq i$ \\
+\> \texttt{axiom} $\name{pred}\ \name{not}\ \name{id}$ $<$= $\forall i$:$@I\ \name{pred}(i)\ineq i$ \\
+\> \texttt{axiom} $\name{succ}\ \name{injective}$ $<$= $\forall \name{i1},\name{i2}$:$@I\ \name{succ}(\name{i1})\ieq\name{succ}(\name{i2}) \rightarrow \name{i1}\ieq\name{i2}$ \\
+\> \texttt{axiom} $\name{pred}\ \name{injective}$ $<$= $\forall \name{i1},\name{i2}$:$@I\ \name{pred}(\name{i1})\ieq\name{pred}(\name{i2}) \rightarrow \name{i1}\ieq\name{i2}$ \\
+\> \texttt{axiom} $\name{sign}\ \name{definition}$ $<$= $\forall i$:$@I$\  $(i\ieq\name{zero} \leftrightarrow \name{sign}(i)\ieq\name{neut}) \wedge$ \\
+\> \> $(\name{sign}(\name{pred}(\name{zero}))\ieq\name{neg}) \wedge (\name{sign}(\name{succ}(\name{zero}))\ieq\name{pos}) \wedge$ \\
+\> \> $(\name{sign}(i)\ieq\name{pos} \rightarrow \name{sign}(\name{succ}(i))\ieq\name{pos} \wedge \name{sign}(\name{pred}(i))\ineq \name{neg}) \wedge$ \\
+\> \> $(\name{sign}(i)\ieq\name{neg} \rightarrow \name{sign}(\name{pred}(i))\ieq\name{neg} \wedge \name{sign}(\name{succ}(i))\ineq \name{pos})$ \\
+\> \texttt{axiom} $\name{abs}\ \name{definition}$ $<$= $\forall i$:$@I$ \\
+\> \> $\name{case}\,\{\name{sign}(i);$ \\
+\> \> \> $\name{pos}: \name{abs}(i)\ieq\,^-(\name{abs}(\name{succ}(i))) \wedge \name{abs}(i)\ieq\,^+(\name{abs}(\name{pred}(i))),$ \\
+\> \> \> $\name{neut}: \name{abs}(i)\ieq0,$ \\
+\> \> \> $\name{neg}: \name{abs}(i)\ieq\,^+(\name{abs}(\name{succ}(i))) \wedge
+\name{abs}(i)\ieq\,^-(\name{abs}(\name{pred}(i)))\}$
+\end{tabbing}
+
+\caption{Specification of the integers} \label{fig:integers}
+\end{figure}
+
+
+Before verifying properties of procedures importing $\name{Integer}$, an instance of specification $\name{Integer}$ has
+to be provided to ensure consistency of the specification: By encoding integers as natural numbers (viz.\ even numbers
+to represent the non-negative integers and odd numbers to represent the negative ones) a model for the axioms of
+$\name{Integer}$ is obtained, thus proving consistency of this specification.
+
+Alternatively, integers can be straightforwardly represented by pairs of sign and natural number, by pairs of natural
+numbers, by a \emph{free} data type with three constructors $\name{Zero}$, $\name{Succ}$, and $\name{Pred}$, etc.
+Having a concrete representation of integers, in principle there is no need to use an abstract presentation. But each
+of the above concrete representations introduce formal peculiarities which makes the formulation of procedures and
+statements about them (as well as proofs of these statements) awkward. E.g., $(-,0)$ and $(+,0)$ always need a special
+treatment when using pairs of sign and natural number. Similarly, a user-defined equality has to be provided when using
+pairs of natural numbers, where $(n,m)$ denotes the integer $n-m$. Defining a freely generated data type requires
+restriction to normal forms of integers to be able to use the built-in equality. Thus, all procedures have to be
+defined to return results in normal form, and formulation of properties is restricted to normal form integers. Encoding
+integers by even and odd natural numbers avoids all pitfalls of the other representations, but with the high price of
+unreadable definitions and counterintuitive proof obligations.
+
+All these problems are circumvented when using an axiomatic specification as the built-in equality then can be used
+like for freely generated data types. Hence a \emph{naive implementation} is used for proving \emph{consistency} of
+specification $\name{Integer}$, but then the \emph{abstract presentation} coming with $\name{Integer}$ is used for
+\emph{working} with integers, i.e.\ to formulate procedures operating on integers and stating lemmas about them, as
+this eases definitions and proofs significantly.
+
+\subsection{Algorithms}
+
+
+
+\begin{figure}[t]
+
+\scriptsize
+
+\begin{tabbing}
+x \= x \= x \= x \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \= x \= x \= x \= x \= \kill
+\texttt{function} $\name{plus}[I$:$\name{Integer}](x,y$:$@I)$:$@I$ $<$= $$ \> \> \> \> \> \texttt{function} $\name{minus}[I$:$\name{Integer}](x,y$:$@I)$:$@I$ $<$= \\
+$\icase \name{sign}(x)\ \iof$ \> \> \> \> \> $\icase \name{sign}(y)\ \iof$ \\
+\> $\name{pos}: \name{succ}(\name{plus}[I](\name{pred}(x),y)),$ \> \> \> \> \> $\name{pos}: \name{minus}[I](\name{pred}(x),\name{pred}(y)),$\\
+\> $\name{neut}: y,$ \> \> \> \> \> $\name{neut}: x,$ \\
+\> $\name{neg}: \name{pred}(\name{plus}[I](\name{succ}(x),y))$ \> \> \> \> \>  $\name{neg}: \name{minus}[I](\name{succ}(x),\name{succ}(y))$ \\
+$\iend$ \> \> \> \> \> $\iend$\\
+\\
+\texttt{function} $\name{times}[I$:$\name{Integer}](x,y:@I)$:$@I$ $<$= \> \> \> \> \> \texttt{function} $\name{uminus}[I$:$\name{Integer}](x$:$@I)$:$@I$ $<$= \\
+$\icase \name{sign}(x)\ \iof$ \> \> \> \> \> $\icase \name{sign}(x)\ \iof$ \\
+\> $\name{pos}: \name{plus}[I](\name{times}[I](\name{pred}(x),y),y), $  \> \> \> \> \> $\name{pos}: \name{pred}(\name{uminus}[I](\name{pred}(x))),$\\
+\> $\name{neut}: \name{zero}, $  \> \> \> \> \> $\name{neut}: x, $ \\
+\> $\name{neg}: \name{minus}[I](\name{times}[I](\name{succ}(x),y),y)$ \> \> \> \> \> $\name{neg}: \name{succ}(\name{uminus}[I](\emph{succ}(x)))$\\
+$\iend$ \> \> \> \> \> $\iend$  \\
+\\
+\texttt{function} $\name{quotient}[I$:$\name{Integer}](x,y$:$@I)$:$@I$ $<$= \> \> \> \> \> \texttt{function} $\name{remainder}[I$:$\name{Integer}](x,y$:$@I)$:$@I$ $<$=\\
+$\icase \name{sign}(y)\ \iof$ \> \> \> \> \> $\icase \name{sign}(y)\ \iof$\\
+\> $\name{pos}:$ \> \> \> \> \> $\name{pos}:$\\
+\> \> $\iif \name{abs}(y)>\name{abs}(x)$ \> \> \> \> \> $\iif \name{abs}(y)>\name{abs}(x)$\\
+\> \> \> $\ithen \name{zero}$ \> \> \> \> \> $\ithen x$ \\
+\> \> \> $\ielse \icase \name{sign}(x)\ \iof$ \> \> \> \> \> $\ielse \icase \name{sign}(x)\ \iof$ \\
+\> \> \> \> $\name{pos}: \name{succ}(\name{quotient}[I](\name{minus}[I](x,y),y))$ \> \> \> \> \> $\name{pos}: \name{remainder}[I](\name{minus}[I](x,y),y)$\\
+\> \> \> \> $\name{neut}: \name{zero}$ \> \> \> \> \> $\name{neut}: \name{zero}$\\
+\> \> \> \> $\name{neg}: \name{pred}(\name{quotient}[I](\name{plus}[I](x,y),y))$ \> \> \> \> \> $\name{neg}: \name{remainder}[I](\name{plus}[I](x,y),y)$\\
+\> \> $\iend \iend$ \> \> \> \> \> $\iend \iend$\\
+\> $\name{neut}: \star$\footnotemark[4] \> \> \> \> \>  $\name{neut}: \star$\footnotemark[4]\\
+\> $\name{neg}:$ \> \> \> \> \>  $\name{neg}:$\\
+\> \> $\iif \name{abs}(y)>\name{abs}(x)$ \> \> \> \> \> $\iif \name{abs}(y)>\name{abs}(x)$ \\
+\> \> \> $\ithen \name{zero}$ \> \> \> \> \> $\ithen x$\\
+\> \> \> $\ielse \icase \name{sign}(x)\ \iof$ \> \> \> \> \> $\ielse \icase \name{sign}(x)\ \iof$\\
+\> \> \> \> $\name{pos}: \name{pred}(\name{quotient}[I](\name{plus}[I](x,y),y))$ \> \> \> \> \> $\name{pos}: \name{remainder}[I](\name{plus}[I](x,y),y)$\\
+\> \> \> \> $\name{neut}: \name{zero}$ \> \> \> \> \> $\name{neut}: \name{zero}$ \\
+\> \> \> \> $\name{neg}: \name{succ}(\name{quotient}[I](\name{minus}[I](x,y),y))$ \> \> \> \> \> $\name{neg}: \name{remainder}[I](\name{minus}[I](x,y),y)$\\
+\> \> $\iend \iend$ \> \> \> \> \> $\iend \iend$\\
+$\iend$ \> \> \> \> \> $\iend$
+\end{tabbing}
+
+\normalsize
+
+\caption{Arithmetic operations over integers} \label{fig:int:operators}
+\end{figure}
+
+Figure~\ref{fig:int:operators} gives some definitions of arithmetic operations over integers. Addition of integers,
+e.g., is defined recursively similarly to the recursive definition of addition of natural numbers. Termination of
+procedure $\name{plus}$ is shown using procedure $>$ with termination function $\lambda x,y. \name{abs}(x)$. This
+yields two termination hypotheses for procedure $\name{plus}$, viz.\ $\name{sign}(x)\ieq\name{pos} \rightarrow
+\name{abs}(x)>\name{abs}(\name{pred}(x))$ and $\name{sign}(x)\ieq\name{neg}  \rightarrow
+\name{abs}(x)>\name{abs}(\name{succ}(x)). $ Both termination hypotheses are easily proved using the axioms of
+$\name{Integer}$. Subtraction, multiplication, and negation are defined in a similar way, based on the case analysis of
+the sign of one argument, and termination is shown in the same way as for addition. Procedures $\name{quotient}$ and
+$\name{remainder}$ have more complicated termination hypotheses. Using $\lambda x,y. \name{abs}(x)$ as a termination
+function again, termination hypotheses are obtained which require lemmas relating $\name{abs}$, $\name{sign}$,
+$\name{plus}$, $\name{minus}$, and $>$. \footnotetext[4]{The value $\star$ denotes an indetermined result, i.e.\
+$\name{quotient}$ and $\name{remainder}$ are only incompletely defined, cf.~\cite{WS:Incompletely}.}
+
+
+\subsection{Verification}
+
+
+\begin{figure}[t]
+\begin{tabbing}
+x \= x \= x \= \kill
+\texttt{lemma} $\name{plus}\ \name{associative}[I$:$\name{Integer}]$ $<$= $\forall x,y,z$:$@I$ \\
+\> $\name{plus}[I](x,\name{plus}[I](y,z))\ieq\name{plus}[I](\name{plus}[I](x,y),z)$ \\
+\\
+\texttt{lemma} $\name{plus}\ \name{commutative}[I$:$\name{Integer}]$ $<$= $\forall x,y$:$@I$ \\
+\> $\name{plus}[I](x,y)\ieq\name{plus}[I](y,x)$ \\
+\\
+\texttt{lemma} $\name{sign}\ \name{plus}\ \name{pos}\ \name{neg}[I$:$\name{Integer}]$ $<$= $\forall x,y$:$@I$ \\
+\> $\name{sign}(x)\ieq\name{pos} \wedge \name{sign}(y)\ieq\name{neg} \rightarrow $ \\
+\> \> $\iiff\{\name{abs}(x)>\name{abs}(y),$ \\
+\> \> \> $\name{sign}(\name{plus}[I](x,y))\ieq \name{pos},$ \\
+\> \> \> $\iiff\{\name{abs}(y)>\name{abs}(x), \name{sign}(\name{plus}[I](x,y))\ieq \name{neg}, \name{sign}(\name{plus}[I](x,y))\ieq \name{neut}\}\}$ \\
+\\
+\texttt{lemma} $\name{plus}\ \name{uminus}\ \name{same}\ \name{is}\ \name{zero}[I$:$\name{Integer}]$ $<$= $\forall x$:$@I$\\
+\> $\name{plus}[I](x,\name{uminus}[I](x))\ieq \name{zero}$ \\
+\\
+\texttt{lemma} $\name{quotient}\ \name{remainder}[I$:$\name{Integer}]$ $<$= $\forall x,y$:$@I$ \\
+\> $\name{sign}(y)\ineq \name{neut} \rightarrow x\ieq \name{plus}[I](\name{times}[I](\name{quotient}[I](x,y),y),\name{remainder}[I](x,y)))$ \\
+\\
+\texttt{specification} $\name{AbelianGroup}[G$:$\name{Group}]$ \\
+\> \texttt{axiom} $\name{op}\ \name{comm}$ $<$= $\forall x,y:@G\ \name{op}(x,y)\ieq\name{op}(y,x)$ \\
+\\
+\texttt{instance} $\name{IntegersGroup}[I$:$\name{Integer}]$ $<$= $$\\
+\> $\name{AbelianGroup}(@I, \name{zero}, \name{plus}[I], \name{uminus}[I])$
+\end{tabbing}
+
+\caption{Properties of integers} \label{fig:int:lemmas}
+\end{figure}
+
+
+In general, lemmas about recursively defined procedures are proved by induction. Sound induction schemas can be
+obtained uniformly from the recursion structure of \emph{terminating} procedures. For example, procedure $\name{plus}$
+yields following induction schema for proving a formula $\phi[x]$ with a free integer variable~$x$:
+\begin{equation*}
+\frac{\begin{aligned}
+&\forall x:@I\ \name{sign}(x)\ieq\name{neut} \rightarrow \phi[x] \\
+&\forall x:@I\ \name{sign}(x)\ieq\name{pos} \wedge \phi[\name{pred}(x)] \rightarrow \phi[x] \\
+&\forall x:@I\ \name{sign}(x)\ieq\name{neg} \wedge \phi[\name{succ}(x)] \rightarrow \phi[x] )
+\end{aligned} }{\forall x:@I\ \phi[x]}
+\end{equation*}
+
+Figure~\ref{fig:int:lemmas} displays some properties of $\name{Integer}$ operations which have been verified in
+\VeriFun\ by induction, some of which were subsequently used to verify other proof obligations. For example, lemma
+$\name{sign}\ \name{plus}\ \name{pos}\ \name{neg}$ has been used for proving termination of procedure
+$\name{quotient}$.
+
+The integers together with addition and unary minus form an abelian group, defined by specification
+$\name{AbelianGroup}$ of Fig.~\ref{fig:int:lemmas}. The instance property follows immediately from some of the
+properties displayed in Fig.~\ref{fig:int:lemmas}. Like procedures, lemmas, and specifications, an instance can import
+specifications, too. So the parameterized instantiation of $\name{AbelianGroup}$ given in Fig.~\ref{fig:int:lemmas} is
+easily proved correct. This instantiation makes, e.g., the instance $\forall x:@I\ \name{uminus}(\name{uminus}(x))\ieq
+x$ of lemma $\name{inv}\ \name{inv}$ of specification $\name{Group}$ of Fig.~\ref{fig:algstruct} available for
+integers, such that it can be used in subsequent proofs of lemmas about integers.
+
+\section{Semantics}\label{sec:semantics}
+
+The operational semantics for \vflang-programs $P$ is defined in~\cite{S:Diss,ASW:LPrimer} by an interpreter $\evalP:
+\bigcup_\tau \terms(\Sigma(P))_\tau \mapsto \bigcup_\tau \terms(\Sigma(P)^c)_\tau$ which maps ground terms of
+\emph{arbitrary} monomorphic data types $\tau$ to constructor ground terms of the respective monomorphic data types
+using the definition of the procedures and data types in $P$. In \cite{A:HOinVF} the language is extended to
+$\vflang^*$ including higher-order functions.
+
+To be able to define the semantics of programs with specifications and lemmas about them, we first define the
+components of specifications and instances. Furthermore, environments (written as $[\ldots]$) and conversions---i.e.\
+renamings or instantiations---of specifications are defined. Last, environment terms which are used, e.g., to address
+substructures are defined.
+
+
+\begin{definition}[Specifications, Environments, and Instances]
+A \emph{specification} $s$ is a tuple $s=(S, \env, \vars_T, \vars_{O}, \Ax )$, where $S$ is an identifier, $\env$ is
+the environment of the specification, $\vars_T$ is a list of type variables and type operator variables denoting the
+domain of the specification, $\vars_O$ is a list of first-order function variables denoting the operators of the
+specification, and $\Ax$ is a finite set of second-order formulas defining the axioms of the specification.
+
+A \emph{specification conversion} is a pair $\gamma := \langle\xi,\sigma\rangle$ where $\xi$ is a type substitution and
+$\sigma$ is a term substitution. $\gamma$ is an \emph{$s$-conversion for specification $s$} if $\dom(\xi) \subseteq
+\vars_T$ and $\dom(\sigma) \subseteq \vars_O$.
+
+An \emph{environment} $\env$ is a list of named specification conversions $\env = \langle e_1 :
+(s_1,\gamma_1),\ldots,e_n : (s_n,\gamma_n) \rangle$ where each $\gamma_i$ is an $s_i$-conversion. The domain of $\env$
+is defined by $\dom(\env) := \langle e_1,\ldots,e_n \rangle$, and $\env(e_i) := (s_i,\gamma_i)$ for each $e_i \in
+\dom(\env)$.
+
+An \emph{instance} is a tuple $(I,\env,s,\gamma)$ where $I$ is the name of the instantiation, $\env$ is an environment,
+$s$ is a specification, and $\gamma$ is an $s$-conversion.
+\end{definition}
+
+\noindent Specification conversions provide a renaming or a specialization of a specification. Environments are used to
+make some (renamed) specifications available in different contexts, like in specification, instance, procedure, or
+lemma definitions.
+
+
+\begin{definition}[Environment Terms]
+Given an environment $\env$, the set $\envterms$ of \emph{specification typed environment terms} is defined as the
+smallest set satisfying (\ref{def:envterm1})--(\ref{def:envterm3}). To each environment term $e\in\envterms$, a
+corresponding specification conversion $\gamma_\env$ is assigned.
+\begin{enumerate}
+ \item \label{def:envterm1} $a_s\in\envterms$ for each $a\in \dom(\env)$ with $\env(a)=(s,\gamma)$; and
+ $\gamma_\env(a_s) := \gamma$,
+ \item \label{def:envterm2} $b(a_s)_{s'}\in\envterms$ for each $a_s\in \envterms$ with $s=(S, \env_s, \vars_T, \vars_O, \Ax)$
+  and for each $b\in \dom(\env_s)$ with $\env_s(b)=(s',\gamma')$; and $\gamma_\env(b(a_s)_{s'}) :=
+  \gamma_\env(a_s) \circ \gamma'$, and
+ \item \label{def:envterm3} ${I[a^1_{s_1},\ldots,a^n_{s_n}]}_s\in \envterms$ for each instance $(I,\env_I,s,\gamma)$ with
+   $\env_I = \langle e_1$\emph{:}$(s_1,\gamma_1),\ldots,$ $e_n$\emph{:}$(s_n,\gamma_n) \rangle$ and $a^1_{s_1},\ldots,a^n_{s_n}\in\envterms$, if
+   $\gamma_{I[a^1_{s_1},\ldots,a^n_{s_n}]} = \bigcup_{i=1}^n \gamma_{(s_i,\gamma_i),a^i_{s_i}}$ with
+   $\gamma_{(s_i,\gamma_i),a^i_{s_i}} =
+   \langle \{ \gamma_i(\tau) / \gamma_\env(a^i_{s_i})(\tau) | \tau\in  \vars_T(s_i) \} ,\
+   \{ \gamma_i(x) / \gamma_\env(a^i_{s_i})(x) | x\in \vars_O(s_i) \} \rangle$
+   is well-defined; and $\gamma_\env(I[a^1_{s_1},\ldots,$ $a^n_{s_n}]) := \gamma_{I[a^1_{s_1},\ldots,a^n_{s_n}]} \circ
+   \gamma$.
+\end{enumerate}
+Sometimes an environment term $e_s$ is denoted as $e$\emph{:}$s$.
+\end{definition}
+
+With~(\ref{def:envterm1}) all specifications used directly in the environment can be addressed by their name and the
+induced conversion is defined by the environment. If some specification uses other specifications in its environment,
+they can be referenced by using the name, given in the environment with~(\ref{def:envterm2}) and the conversion is the
+concatenation of the conversion induced by $a_s$ and the conversion which is used in the environment of $s$ to import
+$s'$. Furthermore, existing instances with an environment can be specialized using properly typed environment
+terms~(\ref{def:envterm3}), i.e. the environment terms need to address the specifications used in the environment of
+the instance. The corresponding conversion is the concatenation of the conversions induced by the subterms and the
+conversion defined in the actual instance. The conversions induced by the subterms are slightly modified such that they
+do not replace the variables of the specifications, but the variables already renamed by the instance conversion. So,
+each environment term $e_s$ defines an $s$-conversion which provides a renaming of the original specification so that
+it matches its usage in the environment.
+
+The semantics of a procedure \texttt{function} $\name{func}[\env](x_1$:$\tau_1,\ldots,x_m$:$\tau_m)$:$\tau$ $<$=
+\ldots\ with $\env := \langle e_1$:$(s_1,\gamma_1),\ldots,e_n$:$(s_n,\gamma_n) \rangle$ is defined as the semantics of
+the \emph{signature extended} $\vflang^*$-procedure \texttt{function}
+$\name{func}^*(\gamma_1(\vars_O(s_1)),\ldots,\gamma_n(\vars_O(s_n)),x_1$:$\tau_1,\ldots,$ $x_m$:$\tau_m)$:$\tau$ $<$=
+\ldots\ where $\vars_O(s)$ denotes the list of operators of specification $s$. I.e., the semantics of a procedure with
+an environment is defined as the semantics of the corresponding signature extended procedure without an environment,
+but additional renamed first-order parameters corresponding to the operators of the used specifications.
+%
+Calls of procedure \emph{func} are translated to calls of the signature extended procedure $\name{func}^*$ by computing
+the specification conversions $\gamma_\env$ for the environment terms and applying them to the actual environment
+(given by environment terms) of the procedure call, yielding the properly renamed function variables of the addressed
+specifications. Hence, a procedure call $\name{func}[a_1$:$s_1,\ldots,a_n$:$s_n](t_1,\ldots,t_m)$ in an environment
+$\env$ with $a_i$:$s_i \in \envterms$ is translated into call $\name{func}^*(\gamma_\env(a_1)(\vars_O(s_1)),$
+$\ldots,\gamma_\env(a_n)(\vars_O(s_n)),t_1,\ldots,t_m)$.
+
+For example, the semantics of procedure $\name{plus}$ of Fig.~\ref{fig:int:operators} is defined as the semantics of
+the transformed procedure
+\begin{tabbing}
+x \= xxxxxxpmmp \= x \= x \=  \kill
+\texttt{function} $\name{plus}^*(\name{zero}$:$@I,\name{succ},\name{pred}$:$@I\rightarrow@I,\name{sign}$:$@I \rightarrow \name{int\_sign},$ \\
+\> \> $\name{abs}$:$@I \rightarrow \nat,x,y$:$@I)$:$@I$ $<$= \\
+$\icase \name{sign}(x)\ \iof$ \\
+\> $\name{pos}: \name{succ}(\name{plus}^*(\name{zero},\name{succ},\name{pred},\name{sign},\name{abs},\name{pred}(x),y)),$ \\
+\> $\name{neut}: y,$ \\
+\> $\name{neg}: \name{pred}(\name{plus}^*(\name{zero},\name{succ},\name{pred},\name{sign},\name{abs},\name{succ}(x),y))$ \\
+$\iend$
+\end{tabbing}
+where the signature is extended with first-order function variables and the recursive calls are translated to calls of
+the signature extended procedure.
+
+A lemma $\mathtt{lemma}\ \name{lem}[\env] <$= $\forall x_1$:$\tau_1,\ldots,x_m$:$\tau_m\ b$ with environment $\env :=
+\langle e_1$: $(s_1,\gamma_1),\ldots,e_n$:$(s_n,\gamma_n) \rangle$ is \emph{true} in a program $P$ iff for all
+substitutions $\sigma_O$ with $\dom(\sigma_O)=\bigcup_{i=1}^n \gamma_i(\vars_O(s_i))$ assigning the first-order
+function variables \emph{arbitrary} terminating \vflang-procedures holds: $\evalP(\sigma_\xi(\sigma_O(b))) = \itruef$
+for all constructor ground substitutions $\sigma_\xi$ with $\dom(\sigma_\xi)=\{x_1$:$\tau_1,\ldots,x_m$:$\tau_m\}$ if
+$\evalP(\sigma'_{\xi'}(\sigma_O(\name{ax})))=\itruef$ for all axioms $\forall z_1$:$\upsilon_1,\ldots,z_k$:$\upsilon_k\
+\name{ax} \in \bigcup_{i=1}^n \gamma_i(\Ax(s_i))$ and for all constructor ground substitutions $\sigma'_{\xi'}$ with
+$\dom(\sigma'_{\xi'}) = \{z_1$:$\upsilon_1,\ldots,z_k$: $\upsilon_k\}$, where $\Ax(s)$ denotes the set of axioms of
+specification $s$.\footnote[5]{$\sigma_\xi$ denotes a pair of a term substitution $\sigma$ and a type substitution
+$\xi$.}
+
+An instance $(I,\langle e_1$:$(s_1,\gamma_1),\ldots,e_n$:$(s_n,\gamma_n)\rangle,s,\gamma)$ is \emph{true} in a program
+$P$ iff for all substitutions $\sigma_O$ with $\dom(\sigma_O)=\bigcup_{i=1}^n \gamma_i(\vars_O(s_i))$ assigning the
+first-order function variables \emph{arbitrary} terminating \vflang-procedures holds: $\evalP(\sigma_\xi(\sigma_O(b)))
+= \itruef$ for all axioms $\forall x_1$:$\tau_1,\ldots,x_m$:$\tau_m\ b \in \gamma(\Ax(s))$ and all constructor ground
+substitutions $\sigma_\xi$ with $\dom(\sigma_\xi)=\{x_1$:$\tau_1,\ldots,x_m$:$\tau_m\}$ if
+$\evalP(\sigma'_{\xi'}(\sigma_O(\name{ax}))) = \itruef$ for all axioms $\forall
+z_1$:$\upsilon_1,\ldots,z_k$:$\upsilon_k\ \name{ax} \in \bigcup_{i=1}^n \gamma_i(\Ax(s_i))$ available in the
+environment and for all constructor ground substitutions $\sigma'_{\xi'}$ with
+$\dom(\sigma'_{\xi'})=\{z_1$:$\upsilon_1,\ldots,z_k$:$\upsilon_k\}$.
+
+
+\section{Related Work} \label{sec:related}
+
+ACL2 provides mechanisms to build structured theories~\cite{KM:Theory}. In a so-called \emph{encapsulation} the user
+can define function symbols and constraints (axioms) on them. Theorems derived from axioms introduced by encapsulations
+may be \emph{functionally instantiated}~\cite{BGKM:Instantiation}, i.e.\ a functional substitution maps the symbols of
+the encapsulation to concrete functions. If it can be shown that these functions satisfy the axioms of the
+encapsulation, the theorem can be instantiated with these functions. This corresponds to instantiation of
+specifications like in Fig.~\ref{fig:instances}, where \emph{Monoid} is instantiated. ACL2 uses a global name\-space,
+and thus prohibits inheritance or multi-usage, cf.\ \emph{GroupHomomorphism} in Fig.~\ref{fig:algstruct}, of
+specifications, since no renaming is possible. Furthermore every instantiation of a specification has to be concrete in
+the sense that all domain and operator variables have to be instantiated. Instantiations like \emph{IntegersGroup},
+cf.\ Fig.~\ref{fig:int:lemmas}, are not possible.
+
+IMPS supports axiomatic specifications by so-called \emph{little theories}~\cite{FGT:TheoriesIMPS}. The user can build
+theories based on different axioms and instantiate derived theorems by \emph{translation} into other theories, i.e.\
+giving a mapping between specifications like with parameterized instantiations, cf.\ Fig.~\ref{fig:int:lemmas}. IMPS
+allows no multi-usage and only a very restricted version of inheritance, where the user has to give a translation
+between independent spe\-cifications manually to prove the inheritance relation between these specifications. I.e.,
+inheritance cannot be accomplished by parameterization, cf.\ specification \emph{Group} of Fig.~\ref{fig:algstruct},
+but has to be stated explicitly after defining specifications. Hence, common domains and operators first have to be
+defined twice and then are shown to be equivalent.
+
+PVS implements direct support for theory interpretations~\cite{OS:TheoryInterpretationsPVS}. A \emph{theory} can use
+uninterpreted types and functions and stipulate axioms, like a specification in \VeriFun. A theory can be imported into
+another theory by \emph{mapping} some or all uninterpreted types and functions to concrete types and functions. This
+realizes inheritance and instantiation and allows multiple usage of the same theory upon import. The completely
+instantiated axioms are proof obligations (\emph{type checking constraints)} presented to the user. However, it is not
+possible to link imported theories, i.e.\ it is not possible to use two different theories sharing some operators or
+domains, cf.\ specification \emph{RingUnit} of Fig.~\ref{fig:algstruct}.
+
+Isabelle/HOL~\cite{NPW:Isabelle} uses \emph{axiomatic type classes} to provide axiomatic specifications, inspired by
+type classes~\cite{HHJL:TypeClassesHaskell} in Haskell%~\cite{J:Haskell}
+. Axiomatic type classes specify the constraints on some previously defined function symbols. Type classes can include
+other type classes and be instantiated with either concrete implementations or other type classes, i.e.\ type classes
+support inheritance and (possibly parameterized) instantiations. Isabelle's axiomatic type classes are restricted to
+only one domain per type class as well as only one instance of each type for a given class and do not allow the usage
+of type operator variables like $Q$ in specification \emph{PriorityQueue} of Fig.~\ref{fig:pqueue}.
+
+A more recent approach in Isabelle is the concept of \emph{locales}~\cite{B:Locales}. Locales define a layer on top of
+the underlying logic of Isabelle which is used to manage certain \emph{contexts}. Such a context is usually a set of
+function symbols and axioms about them, i.e.\ an axiomatic specification. Locales can be combined using so-called
+\emph{locale expressions} allowing inheritance, sharing, and multi-usage, like specifications \emph{RingUnit} and
+\emph{GroupHomomorphism} in Fig.~\ref{fig:algstruct}. Since locales are constructed on top of Isabelle's logic, usage
+of type operator variables is prohibited, too.
+
+The MAYA-System~\cite{AHMS:DevelopmentGraph} is not a reasoning system, but manages \emph{development graphs} which are
+a representation of axiomatic specifications and links between them. These links represent imports and instantiations
+of specifications. MAYA reads specification languages like CASL~\cite{ABK:CASL} and transforms them into a development
+graph. The proof obligations resulting from the development graph are passed to some external proof system. MAYA allows
+inheritance, instantiation, and multi-usage of specifications, but supports neither type operator variables nor
+referencing of substructures, which is used, e.g., in lemma \emph{sort sorts} of Fig.~\ref{fig:pqsorting}.
+
+Nuprl allows axiomatic specifications by definition of \emph{classes}~\cite{CH:NuprlClass}. A class is a collection of
+sets and operators on them, where the signature of an operator is a type in Nuprl's constructive type theory. Axioms
+are further types and also part of classes. Inheritance is modeled by intersection of classes (types), and multi-usage
+and sharing is possible by applying renamings to classes. But the mapping of classes to renamed instances always has to
+be given explicitly \emph{after} defining composed classes. Hence, e.g.\ modeling of algebraic structures like in
+Fig.~\ref{fig:algstruct} is possible, but linking the \emph{Monoid} specifications used in the definition of
+\emph{RingUnit} requires two explicit renamings of \emph{Monoid} after the definition of \emph{RingUnit}.
+Parameterization of classes is formulated in terms of dependent types. Instantiation and referencing of substructures
+is not possible.
+
+Coq supports \emph{modules} to structure theories~\cite{BC:Coq}. A module consists of definitions of parameters
+(domains and operators) and axioms. Modules can be extended and parameterized as well as instantiated, cf.\ sorting
+with priority queues of Figs.~\ref{fig:isort:abstr} and~\ref{fig:instances}. Modules may be used multiple, but sharing
+between different instances of one module is not supported. Thus, definition of \emph{RingUnit} in
+Fig.~\ref{fig:algstruct} is not possible in Coq whereas \emph{GroupHomomorphism} can be defined since both imported
+groups do not share any elements.
+
+\begin{table}[t]
+\caption{Comparison with other systems} \label{tab:comparison} \center
+\begin{tabular}{lccccccccc}
+% \noalign{\smallskip}
+                    & \ \rot{\VeriFun} \ & \ \rot{ACL2} \ & \ \rot{IMPS} \ & \ \rot{PVS} \ & \ \rot{Isabelle/}\rot{HOL} \ & \ \rot{Locales} \ & \ \rot{MAYA} \ & \ \rot{Nuprl} \ & \ \rot{Coq} \\% \noalign{\smallskip}
+ \hline
+ \noalign{\smallskip}
+inheritance         & \checkmark & \ding{55}   & $\bullet$  & \checkmark & $\bullet$    & \checkmark & \checkmark & \checkmark & \checkmark \\
+parameterization    & \checkmark & \ding{55}   & \ding{55}  & \checkmark & $\bullet$    & \checkmark & \checkmark & \checkmark & \checkmark \\
+type operator vars  & \checkmark & \ding{55}   & \ding{55}  & \ding{55}  & \ding{55}    & \ding{55}  & \ding{55}  & \ding{55}  & \ding{55} \\
+referencing         & \checkmark & \ding{55}   & \ding{55}  & \ding{55}  & \ding{55}    & \ding{55}  & \ding{55}  & \ding{55}  & \ding{55} \\
+multi-usage         & \checkmark & \ding{55}   & \ding{55}  & \checkmark & \ding{55}    & \checkmark & \checkmark & $\bullet$  & \checkmark \\
+sharing             & \checkmark & \ding{55}   & \ding{55}  & \ding{55}  & \ding{55}    & \checkmark & \checkmark & $\bullet$  & \ding{55} \\
+instantiation       & \checkmark & $\bullet$   & \checkmark & \checkmark & \checkmark   & \checkmark & \checkmark & \ding{55}  & \checkmark \\
+\hline
+ \noalign{\smallskip}
+\end{tabular}
+
+\checkmark: full support\ \ $\bullet$\,: partial support\ \  \ding{55}\,: no support
+\end{table}
+
+
+\end{document}

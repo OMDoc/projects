@@ -1,0 +1,1804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="cons_test">
+  <theory xml:id="sp_E1">
+    <presentation for="sp_E1">
+      <use format="Hets">[sp,E,1]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="sp">
+    <presentation for="sp">
+      <use format="Hets">[sp,,0]</use>
+    </presentation>
+    <imports from="#sp_E1"/>
+    <symbol role="sort" name="Nat3"/>
+    <presentation for="Nat3">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat3" type="free">
+        <constructor name="N05"/>
+        <constructor name="suc5">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="sp" name="Nat3"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+      </sortdef>
+    </adt>
+    <symbol name="N03" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="sp" name="Nat3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N03">
+      <use format="Hets">[0]</use>
+    </presentation>
+    <symbol name="__Plus__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="sp" name="Nat3"/>
+            <OMS cd="sp" name="Nat3"/>
+            <OMS cd="sp" name="Nat3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__1">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="suc3" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="sp" name="Nat3"/>
+            <OMS cd="sp" name="Nat3"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="suc3">
+      <use format="Hets">[suc]</use>
+    </presentation>
+    <axiom name="Ax43">
+      <CMP>
+  forall x,y:Nat
+  . x+x=x
+  . x+suc(y)=suc(x+y)   
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp" name="Nat3"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="sp" name="__Plus__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="sp" name="Nat3"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="sp" name="Nat3"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp" name="Nat3"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax43">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax52">
+      <CMP>
+  forall x,y:Nat
+  . x+x=x
+  . x+suc(y)=suc(x+y)   
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp" name="Nat3"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp" name="Nat3"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="sp" name="__Plus__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="sp" name="Nat3"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="sp" name="suc3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="sp" name="Nat3"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="sp" name="suc3"/>
+                <OMA>
+                  <OMS cd="sp" name="__Plus__1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="sp" name="Nat3"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="sp" name="Nat3"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax52">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="ga_disjoint_0_suc3">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp" name="Nat3"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMS cd="sp" name="N03"/>
+                <OMA>
+                  <OMS cd="sp" name="suc3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="sp" name="Nat3"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint_0_suc3">
+      <use format="Hets">ga_disjoint_0_suc</use>
+    </presentation>
+    <axiom name="ga_injective_suc3">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp" name="Nat3"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp" name="Nat3"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="sp" name="suc3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="sp" name="Nat3"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="sp" name="suc3"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="sp" name="Nat3"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="sp" name="Nat3"/>
+                  </OMATP>
+                  <OMV name="X1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="sp" name="Nat3"/>
+                  </OMATP>
+                  <OMV name="Y1"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective_suc3">
+      <use format="Hets">ga_injective_suc</use>
+    </presentation>
+  </theory>
+  <private for="sp">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"sp_E1" Type:"GlobalDef" Origin:"DGExtension"
+From:"sp_E1" Type:"GlobalThm Open Cons Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="sp1">
+    <presentation for="sp1">
+      <use format="Hets">[sp1,,0]</use>
+    </presentation>
+    <imports from="#sp"/>
+    <symbol role="sort" name="Bool"/>
+    <presentation for="Bool">
+      <use format="Hets">[Bool]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Bool" type="free">
+        <constructor name="False1"/>
+        <constructor name="True1"/>
+      </sortdef>
+    </adt>
+    <symbol name="False" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="sp1" name="Bool"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="False">
+      <use format="Hets">[False]</use>
+    </presentation>
+    <symbol name="True" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="sp1" name="Bool"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="True">
+      <use format="Hets">[True]</use>
+    </presentation>
+    <axiom name="ga_disjoint_True_False">
+      <CMP>
+  free type Bool ::= True | False
+  free type Bool ::= True | False
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="neg"/>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMS cd="sp1" name="True"/>
+              <OMS cd="sp1" name="False"/>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint_True_False">
+      <use format="Hets">ga_disjoint_True_False</use>
+    </presentation>
+  </theory>
+  <private for="sp1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"sp" Type:"GlobalDef" Origin:"DGExtension"
+From:"sp" Type:"GlobalThm Open Cons Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="predicateDefinitionConsistent_E1">
+    <presentation for="predicateDefinitionConsistent_E1">
+      <use format="Hets">[predicateDefinitionConsistent,E,1]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="predicateDefinitionConsistent">
+    <presentation for="predicateDefinitionConsistent">
+      <use format="Hets">[predicateDefinitionConsistent,,0]</use>
+    </presentation>
+    <imports from="#predicateDefinitionConsistent_E1"/>
+    <symbol role="sort" name="Nat1"/>
+    <presentation for="Nat1">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat1" type="free">
+        <constructor name="N05"/>
+        <constructor name="suc5">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+      </sortdef>
+    </adt>
+    <symbol name="__EqualsEquals__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+            <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__EqualsEquals__">
+      <use format="Hets">[__,==,__]</use>
+    </presentation>
+    <symbol name="N01" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N01">
+      <use format="Hets">[0]</use>
+    </presentation>
+    <symbol name="suc1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+            <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="suc1">
+      <use format="Hets">[suc]</use>
+    </presentation>
+    <axiom name="Ax41">
+      <CMP>
+  forall x,y:Nat
+  . x==y &#60;=&#62; x=y
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="predicateDefinitionConsistent" name="__EqualsEquals__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax41">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="ga_disjoint_0_suc1">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMS cd="predicateDefinitionConsistent" name="N01"/>
+                <OMA>
+                  <OMS cd="predicateDefinitionConsistent" name="suc1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint_0_suc1">
+      <use format="Hets">ga_disjoint_0_suc</use>
+    </presentation>
+    <axiom name="ga_injective_suc1">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="predicateDefinitionConsistent" name="suc1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="predicateDefinitionConsistent" name="suc1"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="X1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionConsistent" name="Nat1"/>
+                  </OMATP>
+                  <OMV name="Y1"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective_suc1">
+      <use format="Hets">ga_injective_suc</use>
+    </presentation>
+  </theory>
+  <private for="predicateDefinitionConsistent">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"predicateDefinitionConsistent_E1" Type:"GlobalDef" Origin:"DGExtension"
+From:"predicateDefinitionConsistent_E1" Type:"GlobalThm Open Cons Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="predicateDefinitionInconsistent_E1">
+    <presentation for="predicateDefinitionInconsistent_E1">
+      <use format="Hets">[predicateDefinitionInconsistent,E,1]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="predicateDefinitionInconsistent">
+    <presentation for="predicateDefinitionInconsistent">
+      <use format="Hets">[predicateDefinitionInconsistent,,0]</use>
+    </presentation>
+    <imports from="#predicateDefinitionInconsistent_E1"/>
+    <symbol role="sort" name="Nat2"/>
+    <presentation for="Nat2">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat2" type="free">
+        <constructor name="N05"/>
+        <constructor name="suc5">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+      </sortdef>
+    </adt>
+    <symbol name="__EqualsEquals__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+            <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__EqualsEquals__1">
+      <use format="Hets">[__,==,__]</use>
+    </presentation>
+    <symbol name="N02" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N02">
+      <use format="Hets">[0]</use>
+    </presentation>
+    <symbol name="suc2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+            <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="suc2">
+      <use format="Hets">[suc]</use>
+    </presentation>
+    <axiom name="Ax42">
+      <CMP>
+  forall x,y:Nat
+  . x==y &#60;=&#62; x=y
+  . x==y &#60;=&#62; not x=y
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="predicateDefinitionInconsistent" name="__EqualsEquals__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax42">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax51">
+      <CMP>
+  forall x,y:Nat
+  . x==y &#60;=&#62; x=y
+  . x==y &#60;=&#62; not x=y
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="predicateDefinitionInconsistent" name="__EqualsEquals__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="y"/>
+                </OMATTR>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="neg"/>
+                <OMA>
+                  <OMS cd="casl" name="strong-equation"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax51">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="ga_disjoint_0_suc2">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMS cd="predicateDefinitionInconsistent" name="N02"/>
+                <OMA>
+                  <OMS cd="predicateDefinitionInconsistent" name="suc2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint_0_suc2">
+      <use format="Hets">ga_disjoint_0_suc</use>
+    </presentation>
+    <axiom name="ga_injective_suc2">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="predicateDefinitionInconsistent" name="suc2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="predicateDefinitionInconsistent" name="suc2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="X1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="predicateDefinitionInconsistent" name="Nat2"/>
+                  </OMATP>
+                  <OMV name="Y1"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective_suc2">
+      <use format="Hets">ga_injective_suc</use>
+    </presentation>
+  </theory>
+  <private for="predicateDefinitionInconsistent">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"predicateDefinitionInconsistent_E1" Type:"GlobalDef" Origin:"DGExtension"
+From:"predicateDefinitionInconsistent_E1" Type:"GlobalThm Open Cons Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="conditional_E1">
+    <presentation for="conditional_E1">
+      <use format="Hets">[conditional,E,1]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="conditional">
+    <presentation for="conditional">
+      <use format="Hets">[conditional,,0]</use>
+    </presentation>
+    <imports from="#conditional_E1"/>
+    <symbol role="sort" name="Nat"/>
+    <presentation for="Nat">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat" type="free">
+        <constructor name="N05"/>
+        <constructor name="suc5">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="conditional" name="Nat"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+      </sortdef>
+    </adt>
+    <symbol name="__Greater__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="conditional" name="Nat"/>
+            <OMS cd="conditional" name="Nat"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="N0" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="conditional" name="Nat"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N0">
+      <use format="Hets">[0]</use>
+    </presentation>
+    <symbol name="__Plus__" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="conditional" name="Nat"/>
+            <OMS cd="conditional" name="Nat"/>
+            <OMS cd="conditional" name="Nat"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="suc" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="conditional" name="Nat"/>
+            <OMS cd="conditional" name="Nat"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="suc">
+      <use format="Hets">[suc]</use>
+    </presentation>
+    <axiom name="Ax4">
+      <CMP>
+  forall x,y:Nat
+  . x&#62;0 =&#62; x+0=x
+  . x=0 =&#62; x+0=0 
+  . x+suc(y)=suc(x+y)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="conditional" name="Nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="conditional" name="__Greater__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="conditional" name="Nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="conditional" name="N0"/>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="conditional" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="conditional" name="Nat"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMS cd="conditional" name="N0"/>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="conditional" name="Nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax4">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax5">
+      <CMP>
+  forall x,y:Nat
+  . x&#62;0 =&#62; x+0=x
+  . x=0 =&#62; x+0=0 
+  . x+suc(y)=suc(x+y)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="conditional" name="Nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="conditional" name="Nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="conditional" name="N0"/>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="conditional" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="conditional" name="Nat"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMS cd="conditional" name="N0"/>
+                </OMA>
+                <OMS cd="conditional" name="N0"/>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax5">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="Ax6">
+      <CMP>
+  forall x,y:Nat
+  . x&#62;0 =&#62; x+0=x
+  . x=0 =&#62; x+0=0 
+  . x+suc(y)=suc(x+y)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="conditional" name="Nat"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="conditional" name="Nat"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="conditional" name="__Plus__"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="conditional" name="Nat"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="conditional" name="suc"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="conditional" name="Nat"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="conditional" name="suc"/>
+                <OMA>
+                  <OMS cd="conditional" name="__Plus__"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="conditional" name="Nat"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="conditional" name="Nat"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax6">
+      <use format="Hets">Ax6</use>
+    </presentation>
+    <axiom name="ga_disjoint_0_suc">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="conditional" name="Nat"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMS cd="conditional" name="N0"/>
+                <OMA>
+                  <OMS cd="conditional" name="suc"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="conditional" name="Nat"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint_0_suc">
+      <use format="Hets">ga_disjoint_0_suc</use>
+    </presentation>
+    <axiom name="ga_injective_suc">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="conditional" name="Nat"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="conditional" name="Nat"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="conditional" name="suc"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="conditional" name="Nat"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="conditional" name="suc"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="conditional" name="Nat"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="conditional" name="Nat"/>
+                  </OMATP>
+                  <OMV name="X1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="conditional" name="Nat"/>
+                  </OMATP>
+                  <OMV name="Y1"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective_suc">
+      <use format="Hets">ga_injective_suc</use>
+    </presentation>
+  </theory>
+  <private for="conditional">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"conditional_E1" Type:"GlobalDef" Origin:"DGExtension"
+From:"conditional_E1" Type:"GlobalThm Open Cons Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="terminating_E1">
+    <presentation for="terminating_E1">
+      <use format="Hets">[terminating,E,1]</use>
+    </presentation>
+  </theory>
+  <theory xml:id="terminating">
+    <presentation for="terminating">
+      <use format="Hets">[terminating,,0]</use>
+    </presentation>
+    <imports from="#terminating_E1"/>
+    <symbol role="sort" name="Nat4"/>
+    <presentation for="Nat4">
+      <use format="Hets">[Nat]</use>
+    </presentation>
+    <adt>
+      <sortdef name="Nat4" type="free">
+        <constructor name="N05"/>
+        <constructor name="suc5">
+          <argument>
+            <type>
+              <OMOBJ>
+                <OMS cd="terminating" name="Nat4"/>
+              </OMOBJ>
+            </type>
+          </argument>
+        </constructor>
+      </sortdef>
+    </adt>
+    <symbol name="__Greater__1" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="predication"/>
+            <OMS cd="terminating" name="Nat4"/>
+            <OMS cd="terminating" name="Nat4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Greater__1">
+      <use format="Hets">[__,&#62;,__]</use>
+    </presentation>
+    <symbol name="N04" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="terminating" name="Nat4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="N04">
+      <use format="Hets">[0]</use>
+    </presentation>
+    <symbol name="__Plus__2" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="terminating" name="Nat4"/>
+            <OMS cd="terminating" name="Nat4"/>
+            <OMS cd="terminating" name="Nat4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="__Plus__2">
+      <use format="Hets">[__,+,__]</use>
+    </presentation>
+    <symbol name="suc4" role="object">
+      <type system="casl">
+        <OMOBJ>
+          <OMA>
+            <OMS cd="casl" name="function"/>
+            <OMS cd="terminating" name="Nat4"/>
+            <OMS cd="terminating" name="Nat4"/>
+          </OMA>
+        </OMOBJ>
+      </type>
+    </symbol>
+    <presentation for="suc4">
+      <use format="Hets">[suc]</use>
+    </presentation>
+    <axiom name="Ax44">
+      <CMP>
+  forall x,y:Nat
+  . x&#62;0 =&#62; x+0=x
+  . x=0 =&#62; x+0=0 
+  . x+suc(y)=suc(x+y)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="terminating" name="Nat4"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="predication"/>
+                <OMS cd="terminating" name="__Greater__1"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="terminating" name="Nat4"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="terminating" name="N04"/>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="terminating" name="__Plus__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="terminating" name="Nat4"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMS cd="terminating" name="N04"/>
+                </OMA>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="terminating" name="Nat4"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax44">
+      <use format="Hets">Ax4</use>
+    </presentation>
+    <axiom name="Ax53">
+      <CMP>
+  forall x,y:Nat
+  . x&#62;0 =&#62; x+0=x
+  . x=0 =&#62; x+0=0 
+  . x+suc(y)=suc(x+y)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="terminating" name="Nat4"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="implication"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="terminating" name="Nat4"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMS cd="terminating" name="N04"/>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="terminating" name="__Plus__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="terminating" name="Nat4"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMS cd="terminating" name="N04"/>
+                </OMA>
+                <OMS cd="terminating" name="N04"/>
+              </OMA>
+              <OMS cd="casl" name="true"/>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax53">
+      <use format="Hets">Ax5</use>
+    </presentation>
+    <axiom name="Ax61">
+      <CMP>
+  forall x,y:Nat
+  . x&#62;0 =&#62; x+0=x
+  . x=0 =&#62; x+0=0 
+  . x+suc(y)=suc(x+y)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="terminating" name="Nat4"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="terminating" name="Nat4"/>
+                </OMATP>
+                <OMV name="y"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMA>
+                <OMS cd="terminating" name="__Plus__2"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="terminating" name="Nat4"/>
+                  </OMATP>
+                  <OMV name="x"/>
+                </OMATTR>
+                <OMA>
+                  <OMS cd="terminating" name="suc4"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="terminating" name="Nat4"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="terminating" name="suc4"/>
+                <OMA>
+                  <OMS cd="terminating" name="__Plus__2"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="terminating" name="Nat4"/>
+                    </OMATP>
+                    <OMV name="x"/>
+                  </OMATTR>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="terminating" name="Nat4"/>
+                    </OMATP>
+                    <OMV name="y"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax61">
+      <use format="Hets">Ax6</use>
+    </presentation>
+    <axiom name="ga_disjoint_0_suc4">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="terminating" name="Nat4"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="neg"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMS cd="terminating" name="N04"/>
+                <OMA>
+                  <OMS cd="terminating" name="suc4"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="terminating" name="Nat4"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_disjoint_0_suc4">
+      <use format="Hets">ga_disjoint_0_suc</use>
+    </presentation>
+    <axiom name="ga_injective_suc4">
+      <CMP>
+  free type Nat ::= 0 | suc(Nat)
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="terminating" name="Nat4"/>
+                </OMATP>
+                <OMV name="X1"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="terminating" name="Nat4"/>
+                </OMATP>
+                <OMV name="Y1"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="equivalence"/>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMA>
+                  <OMS cd="terminating" name="suc4"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="terminating" name="Nat4"/>
+                    </OMATP>
+                    <OMV name="X1"/>
+                  </OMATTR>
+                </OMA>
+                <OMA>
+                  <OMS cd="terminating" name="suc4"/>
+                  <OMATTR>
+                    <OMATP>
+                      <OMS cd="casl" name="type"/>
+                      <OMS cd="terminating" name="Nat4"/>
+                    </OMATP>
+                    <OMV name="Y1"/>
+                  </OMATTR>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="casl" name="strong-equation"/>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="terminating" name="Nat4"/>
+                  </OMATP>
+                  <OMV name="X1"/>
+                </OMATTR>
+                <OMATTR>
+                  <OMATP>
+                    <OMS cd="casl" name="type"/>
+                    <OMS cd="terminating" name="Nat4"/>
+                  </OMATP>
+                  <OMV name="Y1"/>
+                </OMATTR>
+              </OMA>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="ga_injective_suc4">
+      <use format="Hets">ga_injective_suc</use>
+    </presentation>
+  </theory>
+  <private for="terminating">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"terminating_E1" Type:"GlobalDef" Origin:"DGExtension"
+From:"terminating_E1" Type:"GlobalThm Open Cons Open" Origin:"DGExtension"
+]]></data>
+  </private>
+</omdoc>

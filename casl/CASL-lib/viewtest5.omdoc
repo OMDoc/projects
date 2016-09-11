@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="viewtest5">
+  <theory xml:id="sp0">
+    <presentation for="sp0">
+      <use format="Hets">[sp0,,0]</use>
+    </presentation>
+    <symbol role="sort" name="s"/>
+    <presentation for="s">
+      <use format="Hets">[s]</use>
+    </presentation>
+    <axiom name="Ax1">
+      <CMP>
+  forall x:s . x=x
+  forall x:s . x=x
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMBIND>
+            <OMS cd="casl" name="universal"/>
+            <OMBVAR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp0" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMBVAR>
+            <OMA>
+              <OMS cd="casl" name="strong-equation"/>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp0" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="casl" name="type"/>
+                  <OMS cd="sp0" name="s"/>
+                </OMATP>
+                <OMV name="x"/>
+              </OMATTR>
+            </OMA>
+          </OMBIND>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax1">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <theory xml:id="sp">
+    <presentation for="sp">
+      <use format="Hets">[sp,,0]</use>
+    </presentation>
+    <imports from="#sp0"/>
+    <symbol role="sort" name="t"/>
+    <presentation for="t">
+      <use format="Hets">[t]</use>
+    </presentation>
+  </theory>
+  <private for="sp">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"sp0" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="sp2_E1">
+    <presentation for="sp2_E1">
+      <use format="Hets">[sp2,E,1]</use>
+    </presentation>
+    <imports from="#sp"/>
+    <imports from="#sp0"/>
+    <symbol role="sort" name="t1"/>
+    <presentation for="t1">
+      <use format="Hets">[t]</use>
+    </presentation>
+  </theory>
+  <private for="sp2_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"sp0" Type:"GlobalDef" Origin:"DGSpecInst sp"
+From:"sp0" Type:"GlobalDef" Origin:"DGFitSpec"
+From:"sp" Type:"GlobalDef" Origin:"DGSpecInst sp"
+]]></data>
+  </private>
+  <theory xml:id="sp2">
+    <presentation for="sp2">
+      <use format="Hets">[sp2,,0]</use>
+    </presentation>
+    <imports from="#sp2_E1"/>
+    <symbol role="sort" name="u"/>
+    <presentation for="u">
+      <use format="Hets">[u]</use>
+    </presentation>
+  </theory>
+  <private for="sp2">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"sp2_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+</omdoc>

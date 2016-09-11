@@ -1,0 +1,36 @@
+\svnInfo $Id: features.tex 9179 2012-03-14 20:20:33Z fhorozal $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/omdoc/projects/omdoc-2.0/pragmatic-strict/features.tex $
+\section{Generic Elaboration of Pragmatic Language Features}
+ A \defemph{feature} consists of three components:
+\begin{itemize}
+  \item an {\mmt} theory, called the \defemph{feature theory},
+  \item an extension of the {\mmt} grammar and type system with symbol-level declarations, called the \defemph{feature-dependent syntax},
+  \item an \defemph{elaboration} of the feature-dependent syntax into {\mmt} syntax
+\end{itemize}
+
+We will abbreviate the URI \url{http://cds.omdoc.org/features} with $\cn{Feat}$.
+
+\paragraph{Logic}
+The feature of being a logic is defined as follows.
+The feature theory is given by
+\[\thdecl{\feath{Logic}}{\symdd{o}{}{},\;\symdd{ded}{}{}}\]
+The pragmatic syntax is given by
+\[Sym \;\bnfas\; \mmtaxiom{a}{F}\]
+The well-formedness rule is
+\[\ianc{\otermtype{\TG}{\qT}{F}{o}}
+       {\osym{\TG}{\qT}{\mmtaxiom{a}{F}}}
+       {}\]
+\ednote{Alternatively, the semantics can be defined through elaboration. Then this would become a theorem.}
+
+The elaboration is given by
+\[\elaborate{\mmtaxiom{a}{F}}
+            {\symdd{a}{\oma{ded,F}}}{}\]
+\ednote{ded here actually refers to the meaning of ded within $\qT$. This must be
+  discussed.}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
+
+% LocalWords:  defemph mmt cn thdecl feath symdd symdd ded Sym bnfas mmtaxiom
+% LocalWords:  ianc otermtype osym ednote

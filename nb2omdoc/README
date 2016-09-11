@@ -1,0 +1,7 @@
+This directory contains a project to convert Mathematica notebooks to OMDoc. 
+It is documented as section 26.17 in the OMDoc1.2 book. 
+
+This project has been dormant for years now, the code is Mathematica 4.2 
+(and not the current 7), furthermore, it addresses OMDoc1.2. 
+
+So this project needs love and attention. 

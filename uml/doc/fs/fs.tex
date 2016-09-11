@@ -1,0 +1,146 @@
+\documentclass[pdftex,a4paper]{article}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{latexsym}
+\usepackage{bbding} % nice arrows
+\usepackage{listings}
+\usepackage{lstscala}
+\usepackage{var,cmt}
+\usepackage{acro}
+\usepackage{xspace}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\tikzstyle{default}=[font=\sffamily,>=triangle 60]
+\tikzstyle concept=[font=\sffamily\bfseries,draw,minimum height=3.5ex,rounded corners]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SVN info
+%\usepackage[eso-foot,today]{svninfo}
+%\usepackage[final]{svninfo}
+%\svnInfo $Id: fs.tex 1850 2008-06-20 16:28:21Z nmueller $
+%\svnKeyword $HeadURL: https://svn.omdoc.org/uml/doc/fs.tex $
+%
+% Editor notes & variants
+%\declarevariant{longversion}
+%\declarevariant{shortversion}
+%\setvariant{longversion}
+
+\usepackage[show]{ed}
+%\usepackage[hide]{ed}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\lstset{language=XML,basicstyle=\small,frame=tb, float=htb, columns=flexible}
+
+\newcommand{\png}{\textsc{PNG}\xspace}
+%\newcommand{\dtd}{\textsc{DTD}\xspace}
+\newcommand{\rnc}{\textsc{RNC}\xspace}
+\newcommand{\ocl}{\textsc{OCL}\xspace}
+\newcommand{\argouml}{\textsc{ArgoUML}\xspace}
+\newcommand{\pgml}{\textsc{PGML}\xspace}
+%\newcommand{\uml}{\textsc{UML}\xspace}
+\newcommand{\svg}{\textsc{SVG}\xspace}
+%\newcommand{\omdoc}{\textsc{OMDoc}\xspace}
+%\newcommand{\xhtml}{\textsc{XHTML}\xspace}
+%\newcommand{\xslt}{\textsc{XSLT}\xspace}
+
+\title{Functional specification for UMLProc}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\maketitle{}
+
+The aim of this project is a basic integration of \uml into \omdoc. To achieve this, two main tasks
+have to be completed:
+\begin{itemize}
+\item Specification and documentation of an \omdoc module for \uml,
+\item Programming of an \uml processor that converts \omdoc documents with \uml diagrams to
+    \xhtml.
+\end{itemize}
+
+\section{Specification of an \omdoc / \uml module}
+The \uml module for \omdoc should specify how to represent certain \uml diagrams in \omdoc.
+Relevant diagram types have to be identified and may include, but are not restricted to Class
+Diagrams, Sequence Diagrams, Use Case Diagrams, Collaboration Diagrams, State Diagrams and
+Deployment Diagrams \ednote{These are the diagram types supported by {\argouml}}. Semantic
+associations between these diagrams and native \omdoc elements need to be identified and
+documented. This comprises the question of how to include \uml diagrams in \omdoc theories and how
+to include \omdoc statements and objects in \uml diagrams.
+
+\xmi will serve as a basis for the specification of an \xml representation of \uml models, but
+solely for the content of these diagrams. As the \xml representation of the graphical view on these
+\uml models has not been sufficiently standardized and is mainly tool-dependent, it is sufficient
+to choose such an \xml representation on the basis of the choice of the \uml modeling tool. As it
+is intended to modify the modeling tool, an open source modeling tool is most convenient for this
+project, hence \argouml seems to be the best choice. \argouml uses the Precision Graphics Markup
+Language (\pgml) for representing the graphical representation of \uml diagrams.
+
+Fig.~\ref{fig:example:input} shows the basic structure of a \omdoc document with mixed-in \uml
+elements. The \xmlelem{uml:model} element contains content markup for \uml models and formulae
+written in \omdoc. Such formulae might describe constraints, pre- and postconditions as it is
+usually done with the Object Constraint Language (\ocl) in the \uml community. A complete example
+is provided with the file \textit{input-v0.omdoc}.
+
+\begin{myfig}{example:input}{A sample \omdoc document with \uml}
+\begin{lstlisting}[language=XML,mathescape,breaklines=true]
+<omdoc>
+ <theory>
+  <omtext>
+   $\ldots$
+  </omtext>
+  <uml>
+   <uml:model>
+    $\ldots$
+   <omobj>
+    $\ldots$
+   </omobj>
+   </uml:model>
+   <pgml>
+    $\ldots$
+   </pgml>
+  </uml>
+ </theory>
+</omdoc>
+\end{lstlisting}
+\end{myfig}
+
+This first task can be split up into three subtasks that will be carried out in parallel:
+\begin{itemize}
+\item Converting the existing \dtd for \xmi to \rnc
+\item Extending the existing \rnc for \omdoc to possibly include \uml diagrams where
+    appropriate
+\item Documenting the newly introduced elements and the relations to existing \omdoc elements
+\end{itemize}
+
+The preliminary design goals are:
+\begin{itemize}
+\item Support a subset of the \uml diagrams that is sufficient for the whole software design
+    process
+\item Provide at least as much expressiveness as \ocl
+\end{itemize}
+
+\section{Presentation of \omdoc/\uml documents}
+To enable a basic workflow for \omdoc / \uml documents it is necessary to provide means of viewing
+these documents in a webbrowser. The current conversion process of \omdoc documents to \xhtml
+documents needs to be extended to support conversion of \uml models. More concretely, a conversion
+from \pgml to \svg needs to be specified, as \pgml is not supported by recent webbrowser, but \svg
+is.
+
+It is intended to solve this task by writing an \xslt that converts the subset of \pgml that is
+used in \argouml to \svg. In a second step the question of how to incorporate the mathematical
+formulae into the diagrams has to be solved. Possible solutions are:
+\begin{itemize}
+\item Extend \argouml to automatically add the formulae in the \pgml element and extend the
+    \xslt accordingly
+\item Display the formulae separately using the existing conversion tools while linking them to
+    the appropriate elements in the \uml diagram
+\end{itemize}
+
+
+\end{document}

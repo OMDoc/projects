@@ -1,0 +1,1472 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     53984,       1239]*)
+(*NotebookOutlinePosition[     54685,       1264]*)
+(*  CellTagsIndexPosition[     54641,       1260]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["nb2om", "Title",
+  InitializationCell->True,
+  FontFamily->"Charter"],
+
+Cell[CellGroupData[{
+
+Cell["Auxiliaries", "Section",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell["Helpers", "Subsubsection",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(Off[General::spell, General::spell1]\), "\n", 
+    \(Off[General::stop]\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(ClearAll[dprintind, dprint]\n
+    \(dprintind[xx___String]\  := 
+        If[\ $celltrace, \ Print[makeSpace[], xx]\ ];\)\n
+    \(dprintdown[
+          xx___String]\  := \ \[IndentingNewLine]If[\ $celltrace, \ \
+\[IndentingNewLine]\t$indent\  += \ $deltaindent; 
+          Print["\<---->  \>", \ xx]\ ];\)\n
+    \(dprintup[
+          xx___String]\  := \ \[IndentingNewLine]If[\ $celltrace, \ \
+\[IndentingNewLine]\t$indent\  -= \ $deltaindent; 
+          Print["\<<----  \>", \ 
+            xx]\ ];\)\[IndentingNewLine]\[IndentingNewLine]
+    makeSpace[]\  := \ StringJoin @@ Table["\< \>", {$indent}]\)\)\)], "Input",\
+
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Constants, Counters", "Subsubsection",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(Clear[InitializeCounters, genID]\)], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+$leerzeichen = 1;
+$ostream;
+$filename = \"\";
+$indent = 0;
+$deltaindent = 1;\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+InitializeCounters[] := 
+(
+\t$tmpcnt = 0;
+\t$indent = 0;
+\tcodeCnt = 0;
+\ttextCnt = 0;
+\tgroupCnt = 0;
+\tinputCnt = 0;
+\tsectionCnt = 0;
+\tssectionCnt = 0;
+\tsssectionCnt = 0;
+\tssssectionCnt = 0;
+\ttitleCnt = 0;
+\tstitleCnt = 0;
+\tsstitleCnt = 0;
+\ttheoremCnt = 0;
+\tdefinitionCnt = 0;
+\tpropositionCnt = 0;
+\tlemmaCnt = 0;
+\tcorollaryCnt = 0;
+\tcommentCnt = 0;
+\texerciseCnt = 0;
+\texampleCnt = 0;
+\tquestionCnt = 0;
+\tproofCnt = 0;\t
+\tproofstepCnt = 0;\t
+\tglobalCnt = 0;
+\tmtainCnt = 0;
+\tmtaoutCnt = 0;
+\tgraphCnt = 0;
+);\
+\>", "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(genID["\<text\>"]\  := \ \ "\<T\>"\  <> \ 
+        ToString[\ \(textCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<title\>"]\  := \ \ "\<S\>"\  <> \ 
+        ToString[\ \(titleCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<subtitle\>"]\  := \ \ "\<S\>"\  <> \ 
+        ToString[\ \(stitleCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<subsubtitle\>"]\  := \ \ "\<S\>"\  <> \ 
+        ToString[\ \(sstitleCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<section\>"]\  := \ \ "\<S\>"\  <> \ 
+        ToString[\ \(sectionCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<subsection\>"]\  := \ \ "\<S\>"\  <> \ 
+        ToString[\ \(ssectionCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<subsubsection\>"]\  := \ \ "\<S\>"\  <> \ 
+        ToString[\ \(sssectionCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<subsubsubsection\>"]\  := \ \ "\<S\>"\  <> \ 
+        ToString[\ \(ssssectionCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<omgroup\>"]\  := \ \ "\<G\>"\  <> \ 
+        ToString[\ \(groupCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<theorem\>"]\  := \ \ "\<Thm\>"\  <> \ 
+        ToString[\ \(theoremCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<lemma\>"]\  := \ \ "\<L\>"\  <> \ 
+        ToString[\ \(lemmaCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<proposition\>"]\  := \ \ "\<P\>"\  <> \ 
+        ToString[\ \(propositionCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<corollary\>"]\  := \ \ "\<O\>"\  <> \ 
+        ToString[\ \(corollaryCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<definition\>"]\  := \ \ "\<D\>"\  <> \ 
+        ToString[\ \(definitionCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<comment\>"]\  := \ \ "\<C\>"\  <> \ 
+        ToString[\ \(commentCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<example\>"]\  := \ \ "\<E\>"\  <> \ 
+        ToString[\ \(exampleCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<exercise\>"]\  := \ \ "\<X\>"\  <> \ 
+        ToString[\ \(exerciseCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<proof\>"]\  := \ \ "\<Pr\>"\  <> \ 
+        ToString[\ \(proofCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<proofstep\>"]\  := \ \ "\<Ps\>"\  <> \ 
+        ToString[\ \(proofstepCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<mtainput\>"]\  := \ \ "\<Mtain\>"\  <> \ 
+        ToString[\ \(matinputCnt++\)]\), "\[IndentingNewLine]", 
+    \(genID["\<code\>"]\  := \ \ "\<c\>"\  <> \ 
+        ToString[\ \(codeCnt++\)]\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\($celltrace\  = \ True;\)\), "\[IndentingNewLine]", 
+    \(\($tracemath\  = \ False;\)\), "\[IndentingNewLine]", 
+    \(\($fulltracemath = False;\)\), "\[IndentingNewLine]", 
+    \(\($traceinput\  = \ False;\)\), "\[IndentingNewLine]", 
+    \(\($traceoutput\  = \ False;\)\), "\[IndentingNewLine]", 
+    \(\($fulltrace\  = \ False;\)\), "\[IndentingNewLine]", 
+    \(\($longpath\  = \ True;\)\), "\[IndentingNewLine]", 
+    \(\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["CellType Checking", "Subsubsection",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(\(Clear[CellType, CellCont, isText, isInput, isOutput, isGraphics, 
+      isGrData]\)\(\n\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(CellType[\ Cell[_, ct_String, ___]]\  := \ ct;\)\), "\n", 
+    \(\(CellType[\ 
+          Cell[CellGroupData[__]]]\  := \ "\<CellGroup\>";\)\), "\n", 
+    \(\(CellType[\ Cell[BoxData[__], ___]]\  := \ "\<BoxData\>";\)\), "\n", 
+    \(\(CellType[\ 
+          Cell[c_]]\  := \ \((Print[c]; "\<untyped cell\>")\);\)\), "\n", 
+    \(\(\(CellCont[\ Cell[cnt_, ___\ ]]\  := \ cnt;\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\($headingsm = {"\<Section\>", "\<Subsection\>", "\<Subsubsection\>", "\
+\<Subsubsubsection\>", "\<Title\>", "\<Subtitle\>", "\<Subsubtitle\>"};\)\), \
+"\n", 
+    \(\(isHeading[str_String]\  := \ 
+        MemberQ[\ $headingsm, \ str\ ];\)\), "\n", 
+    \(\(\(isHeading[c_Cell]\  := \ 
+        isHeading[\ \ CellType[c]\ ];\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\($textlike = {"\<Text\>", "\<SmallText\>", "\<Warning\>", "\<Note\>", \
+"\<Question\>", "\<Hint\>", "\<RhetoricalQuestion\>", "\<Definition\>", \
+"\<Proposition\>", "\<Lemma\>", "\<Problem\>", "\<Program\>", "\<Theorem\>", \
+"\<Proof\>", "\<ProofEnd\>", "\<ProofStep\>", "\<Creator\>", \
+"\<Date\>"};\)\), "\n", 
+    \(\($textlike = {"\<Text\>", "\<SmallText\>"};\)\), "\n", 
+    \(\(isText[str_String]\  := \ MemberQ[\ $textlike, \ str\ ];\)\), "\n", 
+    \(\(\(isText[c_Cell]\  := \ 
+        isText[\ \ CellType[c]\ ];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\($assertion = {"\<Proposition\>", "\<Lemma\>", "\<Theorem\>"};\)\), "\n\
+", 
+    \(\($textlike = {"\<Text\>", "\<SmallText\>"};\)\), "\n", 
+    \(\(isAssertion[str_String]\  := \ 
+        MemberQ[\ $assertion, \ str\ ];\)\), "\n", 
+    \(\(\(isAssertion[c_Cell]\  := \ 
+        isAssertion[\ \ CellType[c]\ ];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(isInput[str_String]\  := \ "\<Input\>"\  === \ str;\)\), "\n", 
+    \(\(\(isInput[c_Cell]\  := \ 
+        isInput[\ \ CellType[c]\ ];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(isOutput[str_String]\  := \ "\<Output\>"\  === \ str;\)\), "\n", 
+    \(\(\(isOutput[c_Cell]\  := \ 
+        isOutput[\ \ CellType[c]\ ];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(isGraphics[str_String]\  := \ "\<Graphics\>"\  === \ str;\)\), "\n", 
+    \(\(\(isGraphics[c_Cell]\  := \ 
+        isGraphics[\ \ CellType[c]\ ];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(isGrData[Cell[GraphicsData[___], ___]]\  := \ True;\)\), "\n", 
+    \(\(isGrData[_]\  := \ False;\)\), "\n", 
+    \(\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["XML Helpers", "Subsubsection",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(XMLmeta[cnt_List]\  := \ \ XMLElement["\<metadata\>", {}, \ 
+          cnt];\)\), "\[IndentingNewLine]", 
+    \(\(XMLmeta[
+          cnt__]\  := \ \ XMLElement["\<metadata\>", {}, \ {cnt}];\)\), "\
+\[IndentingNewLine]", 
+    \(\(XMLcmp[cnt_List]\  := \ \ XMLElement["\<CMP\>", {}, \ 
+          cnt\ ];\)\), "\[IndentingNewLine]", 
+    \(\(\(XMLcmp[
+          cnt__]\  := \ \ \ XMLElement["\<CMP\>", {}, \ {cnt}\ ];\)\(\
+\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(XMLgroup[
+          cnt_List]\  := \ \ \[IndentingNewLine]XMLElement["\<omgroup\>", \
+{"\<id\>" \[Rule] genID["\<omgroup\>"]}, \ cnt];\)\), "\[IndentingNewLine]", 
+    \(\(XMLgroup[
+          cnt__]\  := \ \ \ XMLElement["\<omgroup\>", {"\<id\>" -> 
+              genID["\<omgroup\>"]}, \ {cnt}];\)\), "\[IndentingNewLine]", 
+    \(\(XMLtext[
+          cnt_List]\  := \ \ XMLElement["\<omtext\>", {"\<id\>" -> 
+              genID["\<text\>"]}, \ cnt];\)\), "\[IndentingNewLine]", 
+    \(\(XMLtext[
+          cnt__]\  := \ \ \ XMLElement["\<omtext\>", {"\<id\>" -> 
+              genID["\<text\>"]}, \ {cnt}];\)\), "\[IndentingNewLine]", 
+    \(\(XMLcode[
+          cnt_List]\  := \ \ XMLElement["\<code\>", {"\<id\>" -> 
+              genID["\<code\>"]}, \ cnt];\)\), "\[IndentingNewLine]", 
+    \(\(\(XMLcode[
+          cnt__]\  := \ \ \ XMLElement["\<code\>", {"\<id\>" -> 
+              genID["\<code\>"]}, \ {cnt}];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(XMLdata[cnt_String]\  := \ 
+        XMLElement["\<data\>", {"\<format\>" -> "\<mathematica\>"}, \
+\[IndentingNewLine]\t\t\t\t\t\t{\ \(XMLObject["\<CDATASection\>"]\)[
+              cnt]}\ ];\)\), "\[IndentingNewLine]", 
+    \(\(XMLdata[cnt_]\  := \ 
+        XMLdata[ToString[cnt, 
+            CharacterEncoding \[Rule] None]];\)\), "\[IndentingNewLine]", 
+    \(\(XMLdata[fmt_String, 
+          cnt_String]\  := \ \[IndentingNewLine]XMLElement["\<data\>", \
+{"\<format\>" \[Rule] fmt}, {\ \(XMLObject["\<CDATASection\>"]\)[
+              cnt]}\ ];\)\), "\[IndentingNewLine]", 
+    \(\(\(XMLdata[fmt_String, cnt_]\  := \ 
+        XMLdata[fmt, 
+          ToString[cnt, 
+            CharacterEncoding \[Rule] None]];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\)}], "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Process Cells", "Section",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(Clear[processCell]\), "\[IndentingNewLine]", 
+    \(\(processCell::nodef\  = \ "\<cannot process: `1`\>";\)\)}], "Input",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell["Cell Groups", "Subsection",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell["Heading", "Subsubsection",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(processCell[\ 
+          Cell[CellGroupData[\ {ch_?isHeading, 
+                cc___}, ___]\ ]]\  := \ \[IndentingNewLine]Block[\ {res, 
+            hd}, \[IndentingNewLine]\t
+          dprintdown[CellType[ch]]; \[IndentingNewLine]\t
+          hd\  = \ XMLmeta[
+              XMLElement["\<Title\>", {}, \ \[IndentingNewLine]\t
+                Flatten[{processText[
+                      CellCont[ch]]}]\ ]\ ]; \[IndentingNewLine]\t
+          res\  = \ 
+            Prepend[\ Map[\ processCell, \ {cc}\ ], 
+              hd\ ]; \[IndentingNewLine]\tdprintup[]; \[IndentingNewLine]\t
+          XMLgroup[\ res\ ]\[IndentingNewLine]];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Input", "Subsubsection",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(\(processCell[\ 
+          Cell[CellGroupData[\ {cin_?isInput, grout_?isGraphics, 
+                grsk___?
+                  isOutput}, ___]\ ]]\  := \ \[IndentingNewLine]Block[\ {res, 
+            resg}, \[IndentingNewLine]\t
+          dprintdown[CellType[cin]]; \[IndentingNewLine]\t
+          resg\  = \ 
+            XMLcode[\ 
+              XMLdata["\<graphics\>", "\<---PHONY---\>"]]; \
+\[IndentingNewLine]\t
+          res\  = \ \ XMLgroup[\ \ Flatten[{processInput[cin], \ 
+                  resg}]]; \[IndentingNewLine]\t
+          dprintup[]; \[IndentingNewLine]\t
+          res\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(processCell[\ 
+          Cell[CellGroupData[\ {cin_?isInput, 
+                cout_}, ___]\ ]]\  := \ \[IndentingNewLine]Block[\ {resi, 
+            reso}, \[IndentingNewLine]\t
+          dprintdown[CellType[cin]]; \[IndentingNewLine]\t
+          res\  = \ \ XMLgroup[\ \ Flatten[{processInput[cin], \ 
+                  processOutput[cout]}]]; \[IndentingNewLine]\t
+          dprintup[]; \[IndentingNewLine]\t
+          res\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(processCell[\ cin_Cell?isInput\ ]\  := \ 
+        XMLgroup[\ \ processInput[cin]\ ];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(processInput[\ 
+          Cell[\ cnt_String, ___]\ ]\  := \ \[IndentingNewLine]Block[\ {resi, 
+            resic}, \[IndentingNewLine]\t
+          dprintind["\<Input\>"]; \[IndentingNewLine]\t
+          resi\  = \ 
+            XMLtext[XMLcmp[processText[cnt\ ]\ ]]; \[IndentingNewLine]\t
+          resic\  = \ XMLcode[XMLdata[cnt]]; \[IndentingNewLine]\t{\ resi, 
+            resic\ }\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(processInput[\ 
+          Cell[\ cnt_BoxData, ___]\ ]\  := \ \[IndentingNewLine]Block[\ \
+{resi, resic}, \[IndentingNewLine]\t
+          dprintind["\<Input\>"]; \[IndentingNewLine]\t
+          resi\  = \ XMLtext[XMLcmp[btoSML[cnt\ ]\ ]]; \[IndentingNewLine]\t
+          resic\  = \ XMLcode[XMLdata[cnt]]; \[IndentingNewLine]\t{\ resi, 
+            resic\ }\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(processCell[\ \ co_?isOutput\ ]\  := \ 
+        processOutput[co];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(processOutput[\ \ Cell[\ 
+            cnt_, ___]\ ]\  := \ \[IndentingNewLine]Block[\ {reso}, \
+\[IndentingNewLine]\tdprintind["\<Output\>"]; \[IndentingNewLine]\t
+          XMLcode[XMLdata[
+              cnt]]\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\)}], "Input",
+  InitializationCell->True],
+
+Cell["Need to deal with non-string headings.", "Text",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(\(processCell[\ 
+          ch_Cell?isHeading\ ]\  := \ \[IndentingNewLine]Block[\ {}, \
+\[IndentingNewLine]\tdprintind["\<Heading naked\>"]; \[IndentingNewLine]\t
+          XMLgroup[
+            XMLmeta[XMLElement["\<Title\>", {}, \ \[IndentingNewLine]\t
+                Flatten[{processText[
+                      CellCont[
+                        ch]]}]\ ]\ ]\ ]\[IndentingNewLine]\t\
+\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["General Groups", "Subsubsection",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(processCell[\ 
+          Cell[CellGroupData[\ {ch_, 
+                cc___}, ___]\ ]]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\tdprintdown[CellType[ch]]; \[IndentingNewLine]\t
+          res\  = \ Map[\ processCell, \ {ch, cc}\ ]; \[IndentingNewLine]\t
+          dprintup[]; \[IndentingNewLine]\t
+          XMLgroup[\ res\ ]\[IndentingNewLine]];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Boxes \[Rule] math", "Subsection",
+  InitializationCell->True],
+
+Cell["Inline math:  untyped cell containing BoxData", "Text",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(processCell[\ 
+          Cell[\ BoxData[\ 
+              bd_]\ ]\ ] := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\tdprintind[\ "\<*BoxData\>"\ ]; \[IndentingNewLine]\t
+          btoSML[BoxData[bd]]\[IndentingNewLine]];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Text, Strings", "Subsection",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(\(processCell[\ 
+          Cell[\ cnt_, \ 
+            tp_String?
+              isText, \ ___\ \ ]\ ]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\tdprintind["\<*Cell  Text\>"\ ]; \[IndentingNewLine]\t
+          XMLtext[\ 
+            XMLcmp[\ processText[
+                cnt]\ ]\ ]\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(processText[str_String] := 
+        ToString[str, CharacterEncoding \[Rule] None];\)\), "\n", 
+    \(\(processText[StyleBox[str_String, __]] := 
+        XMLElement["\<with\>", {"\<style\>" \[Rule] "\<emph\>"}, {processText[
+              str]}];\)\), "\n", 
+    \(\(processText[TextData[L_List]] := processText /@ L;\)\), "\n", 
+    \(\(processText[TextData[StyleBox[str_String, __]]] := 
+        processText[str];\)\), "\n", 
+    \(\(processText[TextData[cl_Cell]] := processText[cl];\)\), "\n", 
+    \(\(processText[Cell[BoxData[bx_]]] := 
+        processCell[Cell[BoxData[bx]]];\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Assertions", "Subsection",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(processCell[\ 
+          Cell[\ cnt_, \ 
+            tp_String?
+              isAssertion, \ ___\ \ ]\ ]\  := \ \[IndentingNewLine]Block[\ \
+{res}, \[IndentingNewLine]\ttpp\  = \ ToLowerCase[tp]; \[IndentingNewLine]\t
+          dprintind["\<*Cell  Assertion  \>", tp\ ]; \[IndentingNewLine]\t
+          XMLElement["\<assertion\>", {"\<id\>" \[Rule] \ 
+                genID[tpp], "\<type\>" \[Rule] tpp}, {\ 
+              XMLcmp[\ processText[
+                  cnt]]}\ ]\[IndentingNewLine]];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Assertions", "Subsection",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(processCell[\ 
+          Cell[\ cnt_, \ "\<Definition\>", \ ___\ \ ]\ ]\  := \ \
+\[IndentingNewLine]Block[\ {res}, \[IndentingNewLine]\t
+          tpp\  = \ ToLowerCase[tp]; \[IndentingNewLine]\t
+          dprintind["\<*Cell  Definition\>"]; \[IndentingNewLine]\t
+          XMLElement["\<definition\>", {"\<id\>" \[Rule] \ 
+                genID["\<definition\>"], "\<for\>" -> "\<dogfood\>", \
+"\<type\>" \[Rule] "\<simple\>"}, {\ 
+              XMLcmp[\ processText[
+                  cnt]]}\ ]\[IndentingNewLine]];\)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Graphics alone", "Subsection",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(\(processCell[\ 
+          Cell[\ GraphicsData[\ 
+              bd__], ___\ ]\ ] := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t
+          dprintind[\ "\<*GraphicsData\>"\ ]; \[IndentingNewLine]XMLcode[\ 
+            XMLdata["\<graphics\>", "\<---PHONY---\>"]\ \
+]\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\)], "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Catch", "Subsection",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(\(processCell[\ \ \ StyleBox[
+            str_String, __]\ \ ]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\tdprintind["\<*StyleBox  \>"\ ]; \[IndentingNewLine]\t
+          XMLElement["\<with\>", {"\<style\>" -> "\<emph\>"}, {str}\ ]\ \
+\[IndentingNewLine]];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(processCell[\ 
+          xx__\ ]\  := \ \[IndentingNewLine]Block[\ {res}, \
+\[IndentingNewLine]\t
+          Message[\ processCell::nodef, 
+            xx\ ]\[IndentingNewLine]];\)\)}], "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Math", "Section",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell["Boxes to MathML", "Subsubsection",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(\(ClearAll[btoSMLraw, btoSML]\)\(\n\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(btoSMLraw[\ 
+          BoxData[FormBox[bb_, TraditionalForm\ ]]]\  := \[IndentingNewLine]\t
+        btoSMLraw[BoxData[bb]];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(btoSMLraw[\ 
+          BoxData[InterpretationBox[bb_, 
+              cc_, ___\ ]]]\  := \[IndentingNewLine]\t
+        btoSMLraw[BoxData[cc]];\)\(\n\)
+    \)\), "\n", 
+    \(\(\(btoSMLraw[\ 
+          BoxData[bx_List]]\  := \ \[IndentingNewLine]XMLElement["\<OMA\>", \
+{}, \ \[IndentingNewLine]Flatten[{\[IndentingNewLine]XMLElement[\ "\<OMS\>", \
+{"\<cd\>" -> "\<mathematica\>", "\<name\>" -> "\<Compound\>"}, {}], \
+\[IndentingNewLine]btoSMLraw\  /@ \ bx\ }]\ ];\)\(\n\)
+    \)\), "\n", 
+    \(\(\(btoSMLraw[
+          ee_]\  := \ \[IndentingNewLine]\(XML`MathML`BoxesToSymbolicMathML[\ 
+            Unevaluated[
+              ee], "\<Annotations\>" \[Rule] {}, "\<Formats\>" \[Rule] \
+{"\<ContentMathML\>"}\ \ ]\)[\([3, 1]\)];\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\(\(btoSML[
+        ee_]\  := \ \[IndentingNewLine]Module[{res, 
+          err}, \[IndentingNewLine]\t
+        res\  = \ 
+          XMLElement["\<OMOBJ\>", {}, {btoSMLraw[ee]\ \  //. \ 
+                omrules}\ ]; \[IndentingNewLine]\t
+        err\  = \ XML`SymbolicXMLErrors[res]; \[IndentingNewLine]\t
+        If[\ err\  === \ {}, \ \[IndentingNewLine]\t\tres, \ \
+\[IndentingNewLine]\t\tOMOBJERR\[IndentingNewLine]\t]\[IndentingNewLine]]\)\(\
+\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(OMOBJERR\  = \ 
+        XMLElement["\<OMOBJ\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" \[Rule] \
+\ "\<error\>", "\<name\>" \[Rule] \ "\<ERROR\>"}, {}]\ }\ ];\)\)}], "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["OM Rules", "Subsubsection",
+  InitializationCell->True],
+
+Cell["\<\
+Carful, order is important.
+
+\tremove  trailing Null in compound expressions
+\tremove MatrixForm
+\trewrite  Power[..,-1] as reciprocals
+\trewrite Times[...,-1] as unary/binary minus
+\t\
+\>", "Text",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(Clear[\ ompre, \ omrgeneral, \ omrspecial, \ ommat, \ omrlist, 
+      omrminmax, omrrelation, \ omrlogic, \ omrarithmetic, \ omrround, \ 
+      omrinteger, \ \[IndentingNewLine]omrcompound\ , \ omrsequ\ ]\)], "Input",\
+
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(\(\ \)\(\(ompre\  = \ {\[IndentingNewLine]XMLElement["\<apply\>", {}, \
+{\ XMLElement["\<ci\>", {}, {"\<CompoundExpression\>"}], xxx__, 
+                XMLElement["\<ci\>", {}, {"\<Null\>"}]}]\  \[RuleDelayed] \ 
+            xxx, \[IndentingNewLine]\[IndentingNewLine]{xxx___, 
+              XMLElement["\<ci\>", {}, {"\<Null\>"}], 
+              yyy___}\  \[RuleDelayed] \ {xxx, 
+              yyy}, \[IndentingNewLine]\[IndentingNewLine]XMLElement["\<apply\
+\>", {}, {\ XMLElement["\<ci\>", {}, {"\<MatrixForm\>"}], 
+                xxx__\ }]\  \[RuleDelayed] \ 
+            xxx, \[IndentingNewLine]\[IndentingNewLine]XMLElement["\<apply\>",\
+ {}, {XMLElement["\<times\>", {}, {}], top_, 
+                XMLElement["\<apply\>", {}, {XMLElement["\<power\>", {}, {}], 
+                    bot_, XMLElement["\<cn\>", {"\<type\>" \[Rule] "\<integer\
+\>"}, {"\<-1\>"}]}]}]\  :> 
+            XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" -> \
+"\<arith1\>", "\<name\>" -> "\<divide\>"}, {}], top, 
+                bot}], \[IndentingNewLine]\[IndentingNewLine]XMLElement["\<\
+apply\>", {}, {XMLElement["\<plus\>", {}, {}], arg1_, 
+                XMLElement["\<apply\>", {}, {XMLElement["\<times\>", {}, {}], 
+                    XMLElement["\<cn\>", {"\<type\>" \[Rule] "\<integer\>"}, \
+{"\<-1\>"}], arg2_}]}] :> 
+            XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" -> \
+"\<arith1\>", "\<name\>" -> "\<minus\>"}, {}], arg1, \ 
+                arg2\ }], \
+\[IndentingNewLine]\[IndentingNewLine]XMLElement["\<apply\>", {}, \
+{XMLElement["\<times\>", {}, {}], 
+                XMLElement["\<cn\>", {"\<type\>" \[Rule] "\<integer\>"}, \
+{"\<-1\>"}], 
+                arg_}]\  \[RuleDelayed] \
+\[IndentingNewLine]XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" \
+-> "\<arith1\>", "\<name\>" -> "\<unary_minus\>"}, {}], 
+                arg\ }], \
+\[IndentingNewLine]\[IndentingNewLine]XMLElement["\<ci\>", {}, {"\<SetDelayed\
+\>"}]\  \[RuleDelayed] \ \[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\>" -> \
+"\<prog2\>", "\<name\>" -> "\<assignment\>"}, {}], \[IndentingNewLine]\
+\[IndentingNewLine] (*\ \(XMLElement["\<ci\>", {}, {"\<Set\>"}]\  \
+\[RuleDelayed] \ \[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\>" -> \
+"\<prog2\>", "\<name\>" -> "\<assignment\>"}, {}]\)\(,\)\ \
+*) \[IndentingNewLine]\[IndentingNewLine]\ 
+          XMLElement["\<ci\>", {}, {"\<Set\>"}]\  \[RuleDelayed] \ \
+\[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\>" -> "\<relation1\>", \
+"\<name\>" -> "\<eq\>"}, {}], \ \[IndentingNewLine]\ 
+          XMLElement["\<apply\>", {}, \
+{\[IndentingNewLine]XMLElement["\<ci\>", {}, {"\<Function\>"}], \
+\[IndentingNewLine]XMLElement["\<ci\>", {}, {var_String}], 
+                body_\ }\ ]\  \[RuleDelayed] \
+\[IndentingNewLine]XMLElement["\<OMBIND\>", {}, \
+{\[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\>" -> "\<fns1\>", "\<name\>" \
+-> "\<lambda\>"}, {}], \[IndentingNewLine]XMLElement["\<OMBVAR\>", {}, {\ 
+                    XMLElement["\<OMV\>", {"\<name\>" \[Rule] 
+                          var}, \ {}\ ]\ }], \[IndentingNewLine]body\ }], \
+\[IndentingNewLine]\ 
+          XMLElement["\<lambda\>", {}, {body__}]\  \[RuleDelayed] \
+\[IndentingNewLine]XMLElement["\<OMBIND\>", {}, \
+{\[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\>" -> "\<fns1\>", "\<name\>" \
+-> "\<lambda\>"}, {}], \[IndentingNewLine]body\ }\ ], \[IndentingNewLine]\ 
+          XMLElement["\<bvar\>", {}, {xx__}]\  \[RuleDelayed] \
+\[IndentingNewLine]XMLElement["\<OMBVAR\>", {}, {xx}]\[IndentingNewLine]};\)\
+\[IndentingNewLine]\[IndentingNewLine]
+    \(omrgeneral\  = \ {\[IndentingNewLine]XMLElement["\<transpose\>", {}, \
+{}]\  \[RuleDelayed] \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<mathematica\>", "\<name\>" -> \
+"\<Transpose\>"}, {}], \[IndentingNewLine]XMLElement["\<ident\>", {}, {}\ ]\  \
+:> \ XMLElement["\<OMS\>", {"\<cd\>" -> "\<mathematica\>", "\<name\>" -> \
+"\<Identity\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<none\>", {}, {}\ ]\  \
+:> \ XMLElement["\<OMS\>", {"\<cd\>" -> "\<mathematica\>", "\<name\>" -> \
+"\<None\>"}, {}\ ], \
+\[IndentingNewLine]\[IndentingNewLine]\[IndentingNewLine]XMLElement["\<math\>\
+", att_, \ dat_\ ]\  :> \ 
+            XMLElement["\<OMOBJ\>", {}, dat\ ], \[IndentingNewLine]XMLElement[
+              "\<apply\>", att_, \ dat_\ ]\  :> \ 
+            XMLElement["\<OMA\>", att, 
+              dat], \ \[IndentingNewLine]XMLElement["\<selector\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMV\>", {"\<name\>" \[Rule] "\<Part\>"}, {}]\ , 
+          XMLElement["\<ci\>", att_, \ {"\<\[CenterEllipsis]\>"}\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<sequences\>", \ "\<name\>" \
+\[Rule] "\<CenterEllipsis\>"}, \ {}\ ], \
+\[IndentingNewLine]XMLElement["\<ci\>", {}, \ {"\<Subscript\>"}\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<scripts\>", "\<name\>" \
+\[Rule] "\<subscript\>"}, \ {}\ ], \[IndentingNewLine]XMLElement["\<ci\>", 
+              att_, \ {xx_String}\ ]\  :> \ 
+            XMLElement["\<OMV\>", {"\<name\>" \[Rule] 
+                  xx}, \ {}\ ], \[IndentingNewLine]XMLElement["\<cn\>", \
+{"\<type\>" \[Rule] "\<integer\>"}, \ {xx_String}\ ]\  :> \ 
+            XMLElement["\<OMI\>", {}, \ {xx}\ ], \
+\[IndentingNewLine]XMLElement["\<cn\>", {"\<type\>" \[Rule] "\<real\>"}, \ \
+{xx_String}\ ]\  :> \ 
+            XMLElement["\<OMF\>", {"\<dec\>" \[Rule] 
+                  xx}, \ {}\ ], \[IndentingNewLine]XMLElement["\<ms\>", {}, \ \
+{xx_String}\ ]\  :> \ 
+            XMLElement["\<OMV\>", {"\<name\>" \[Rule] 
+                  xx}, \ {}\ ], \
+\[IndentingNewLine]\[IndentingNewLine]XMLElement["\<msub\>", {}, \ {dat__}\ ]\
+\  :> \ XMLElement["\<OMS\>", {"\<cd\>" -> "\<scripts\>", "\<name\>" \[Rule] \
+"\<subscript\>"}, \ {dat}\ ]\[IndentingNewLine]};\)\ \[IndentingNewLine]\n
+    \(omrlist\  = \ {\ \[IndentingNewLine]XMLElement["\<list\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMA\>", {}, \ \ Join[\ {XMLElement["\<OMS\>", \
+{"\<cd\>" -> "\<list1\>", "\<name\>" -> "\<list\>"}, {}]}, 
+                dat]], \[IndentingNewLine]XMLElement["\<in\>", {}, {}]\  \
+\[RuleDelayed] \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<set1\>", "\<name\>" -> \
+"\<in\>"}, {}], \[IndentingNewLine]XMLElement["\<subset\>", {}, {}]\  \
+\[RuleDelayed] \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<set1\>", "\<name\>" -> \
+"\<SubsetEqual\>"}, {}], \[IndentingNewLine]XMLElement["\<prsubset\>", {}, \
+{}]\  \[RuleDelayed] \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<set1\>", "\<name\>" -> \
+"\<Subset\>"}, {}], \[IndentingNewLine]XMLElement["\<union\>", {}, {}]\  \
+\[RuleDelayed] \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<set1\>", "\<name\>" -> \
+"\<union\>"}, {}], \[IndentingNewLine]XMLElement["\<intersect\>", {}, {}]\  \
+\[RuleDelayed] \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<set1\>", "\<name\>" -> \
+"\<intersection\>"}, {}]\[IndentingNewLine]};\)\[IndentingNewLine]\n\
+\[IndentingNewLine]
+    \(omrspecial\  = \ {\[IndentingNewLine]XMLElement["\<scalarproduct\>", 
+              att_, \ dat_\ ]\  :> \ 
+            XMLElement["\<OMV\>", {"\<name\>" -> "\<Dot\>"}, 
+              dat], \[IndentingNewLine]XMLElement["\<infinity\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<nums1\>", "\<name\>" -> \
+"\<infinity\>"}, 
+              dat], \[IndentingNewLine]\[IndentingNewLine]XMLElement["\<cn\>",\
+ {"\<type\>" -> "\<rational\>"}, {num_, XMLElement["\<sep\>", {}, {}], 
+                den_}\ ]\  :> \ 
+            XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" -> \
+"\<nums1\>", "\<name\>" -> "\<rational\>"}, {}], \
+\[IndentingNewLine]XMLElement["\<OMI\>", {}, {num}], 
+                XMLElement["\<OMI\>", {}, {den}]}], \[IndentingNewLine]\
+\[IndentingNewLine]\[IndentingNewLine]\[IndentingNewLine]XMLElement["\<cn\>", \
+{"\<type\>" -> "\<complex-cartesian\>"}, {xx_, XMLElement["\<sep\>", {}, {}], 
+                yy_}\ ]\  :> \ 
+            XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" -> \
+"\<complex1\>", "\<name\>" -> "\<complex_cartesian\>"}, {}], \
+\[IndentingNewLine]XMLElement["\<OMI\>", {}, {xx}], 
+                XMLElement["\<OMI\>", {}, {yy}]}], \[IndentingNewLine]\
+\[IndentingNewLine]\[IndentingNewLine]XMLElement["\<exponentiale\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<nums1\>", "\<name\>" -> \
+"\<e\>"}, dat], \[IndentingNewLine]XMLElement["\<imaginaryi\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<nums1\>", "\<name\>" -> \
+"\<i\>"}, dat], \[IndentingNewLine]XMLElement["\<pi\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<nums1\>", "\<name\>" -> \
+"\<pi\>"}, dat], \[IndentingNewLine]XMLElement["\<real\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<complex1\>", "\<name\>" -> \
+"\<real\>"}, dat], \[IndentingNewLine]XMLElement["\<imaginary\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<complex1\>", "\<name\>" -> \
+"\<imaginary\>"}, dat], \[IndentingNewLine]XMLElement["\<conjugate\>", 
+              att_, \ dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<complex1\>", "\<name\>" -> \
+"\<conjugate\>"}, dat], \[IndentingNewLine]XMLElement["\<arg\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<complex1\>", "\<name\>" -> \
+"\<argument\>"}, dat], \[IndentingNewLine]XMLElement["\<sinh\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<transc1\>", "\<name\>" -> "\
+\<sinh\>"}, dat], \[IndentingNewLine]XMLElement["\<cosh\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<transc1\>", "\<name\>" -> "\
+\<cosh\>"}, dat], \[IndentingNewLine]XMLElement["\<tan\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<transc1\>", "\<name\>" -> "\
+\<tan\>"}, dat], \[IndentingNewLine]XMLElement["\<arctan\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<transc1\>", "\<name\>" -> "\
+\<arctan\>"}, dat], \[IndentingNewLine]XMLElement["\<sin\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<transc1\>", "\<name\>" -> "\
+\<sin\>"}, dat], \[IndentingNewLine]XMLElement["\<cos\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<transc1\>", "\<name\>" -> "\
+\<cos\>"}, dat], \[IndentingNewLine]XMLElement["\<ln\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<transc1\>", "\<name\>" -> "\
+\<ln\>"}, dat], \[IndentingNewLine]XMLElement["\<vectorproduct\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<linalg1\>", "\<name\>" -> "\
+\<vectorproduct\>"}, dat]\[IndentingNewLine]};\)\n\[IndentingNewLine]
+    \(omrrelation\  = \ {\[IndentingNewLine]XMLElement["\<eq\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<relation1\>", "\<name\>" -> \
+"\<eq\>"}, dat], \[IndentingNewLine]XMLElement["\<geq\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<relation1\>", "\<name\>" -> \
+"\<geq\>"}, dat], \[IndentingNewLine]XMLElement["\<leq\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<relation1\>", "\<name\>" -> \
+"\<leq\>"}, dat], \[IndentingNewLine]XMLElement["\<neq\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<relation1\>", "\<name\>" -> \
+"\<neq\>"}, dat], \[IndentingNewLine]XMLElement["\<lt\>", att_, \ 
+              dat_\ ]\  :> \ \[IndentingNewLine]XMLElement["\<OMS\>", \
+{"\<cd\>" -> "\<relation1\>", "\<name\>" -> "\<lt\>"}, 
+              dat], \[IndentingNewLine]XMLElement["\<gt\>", att_, \ 
+              dat_\ ]\  :> \ \[IndentingNewLine]XMLElement["\<OMS\>", \
+{"\<cd\>" -> "\<relation1\>", "\<name\>" -> "\<gt\>"}, 
+              dat]\[IndentingNewLine]};\)\n\[IndentingNewLine]
+    \(omrminmax\  = \ {\[IndentingNewLine]XMLElement["\<min\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<minmax1\>", "\<name\>" -> "\
+\<min\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<max\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<minmax1\>", "\<name\>" -> "\
+\<max\>"}, {}\ ]\[IndentingNewLine]};\)\n\[IndentingNewLine]
+    \(omrlogic\  = \ {\[IndentingNewLine]XMLElement["\<false\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<logic1\>", "\<name\>" -> \
+"\<false\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<true\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<logic1\>", "\<name\>" -> \
+"\<true\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<not\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<logic1\>", "\<name\>" -> \
+"\<not\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<implies\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<logic1\>", "\<name\>" -> \
+"\<implies\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<and\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<logic1\>", "\<name\>" -> \
+"\<and\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<xor\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<logic1\>", "\<name\>" -> \
+"\<xor\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<or\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<logic1\>", "\<name\>" -> \
+"\<or\>"}, {}\ ]\[IndentingNewLine]};\)\n\[IndentingNewLine]
+    \(omrround\  = \ {\[IndentingNewLine]XMLElement["\<ceiling\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<round1\>", "\<name\>" -> \
+"\<ceiling\>"}, {}\ ], \[IndentingNewLine]XMLElement["\<floor\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<round1\>", "\<name\>" -> \
+"\<floor\>"}, {}\ ]\[IndentingNewLine]};\)\n\[IndentingNewLine]
+    \(omrinteger\  = \ {\[IndentingNewLine]XMLElement["\<rem\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<integer1\>", "\<name\>" -> \
+"\<rem\>"}, dat]\[IndentingNewLine]};\)\[IndentingNewLine]\n
+    \(omrarithmetic\  = \ {\[IndentingNewLine]XMLElement["\<factorial\>", 
+              att_, \ dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<integer1\>", "\<name\>" -> \
+"\<factorial\>"}, dat], \[IndentingNewLine]XMLElement["\<root\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> \
+"\<root\>"}, dat], \[IndentingNewLine]XMLElement["\<gcd\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> \
+"\<gcd\>"}, dat], \[IndentingNewLine]XMLElement["\<plus\>", att_, \ 
+              dat_\ ]\  :> \ 
+            
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> \
+"\<plus\>"}, dat], \[IndentingNewLine]XMLElement["\<minus\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> \
+"\<minus\>"}, dat], \[IndentingNewLine]XMLElement["\<times\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> \
+"\<times\>"}, dat], \[IndentingNewLine]XMLElement["\<power\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> \
+"\<power\>"}, dat], \[IndentingNewLine]XMLElement["\<abs\>", att_, \ 
+              dat_\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> \
+"\<abs\>"}, dat]\[IndentingNewLine]};\)\)\)\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(omrcompound\  = \ \[IndentingNewLine]{\ {\ \
+\[IndentingNewLine]XMLElement["\<product\>", {}\ , {}\ ], \
+\[IndentingNewLine]XMLElement["\<bvar\>", {}, \ {bv_}\ ], \
+\[IndentingNewLine]XMLElement["\<lowlimit\>", {}, \ {lol_}\ ], \
+\[IndentingNewLine]XMLElement["\<uplimit\>", {}, \ {upl_}\ ], \
+\[IndentingNewLine]\ 
+              xmlelm_\ }\ \  :> \ \[IndentingNewLine]{\ \ \ XMLElement["\<OMS\
+\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> "\<prod\>"}, {}], \
+\[IndentingNewLine]\ \ \ XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", \
+{"\<cd\>" -> "\<interval1\>", "\<name\>" -> "\<integer_interval\>"}, {}], 
+                  lol, \[IndentingNewLine]upl\ }], \[IndentingNewLine]\ \ \ \
+XMLElement["\<OMBIND\>", {}, {\[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\
+\>" -> "\<fns1\>", "\<name\>" -> "\<lambda\>"}, {}], \
+\[IndentingNewLine]XMLElement["\<OMBVAR\>", {}, {bv}], \
+\[IndentingNewLine]xmlelm\ }\ ]\ }, \[IndentingNewLine]{\ \
+\[IndentingNewLine]XMLElement["\<sum\>", {}\ , {}\ ], \
+\[IndentingNewLine]XMLElement["\<bvar\>", {}, \ {bv_}\ ], \
+\[IndentingNewLine]XMLElement["\<lowlimit\>", {}, \ {lol_}\ ], \
+\[IndentingNewLine]XMLElement["\<uplimit\>", {}, \ {upl_}\ ], \
+\[IndentingNewLine]\ 
+              xmlelm_\ }\ \  :> \ \[IndentingNewLine]{\ \ \ XMLElement["\<OMS\
+\>", {"\<cd\>" -> "\<arith1\>", "\<name\>" -> "\<sum\>"}, {}], \
+\[IndentingNewLine]\ \ \ XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", \
+{"\<cd\>" -> "\<interval1\>", "\<name\>" -> "\<integer_interval\>"}, {}], 
+                  lol, \ upl\ }\ ], \[IndentingNewLine]\ \ \ \
+XMLElement["\<OMBIND\>", {}, {\[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\
+\>" -> "\<fns1\>", "\<name\>" -> "\<lambda\>"}, {}], \
+\[IndentingNewLine]XMLElement["\<OMBVAR\>", {}, {bv}], \
+\[IndentingNewLine]xmlelm\ }\ ]\ \ }\ };\)\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(\(omrsequ\  = \ {\[IndentingNewLine]XMLElement["\<OMV\>", {"\<name\>" \
+-> "\<EllipsisInfix\>"}, {}\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<sequences\>", "\<name\>" -> \
+"\<ellipsis_infix\>"}, {}], \[IndentingNewLine]XMLElement["\<OMV\>", {"\<name\
+\>" -> "\<EllipsisInfixPlus\>"}, {}\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<sequences\>", "\<name\>" -> \
+"\<ellipsis_infix_plus\>"}, {}], \[IndentingNewLine]XMLElement["\<OMV\>", \
+{"\<name\>" -> "\<EllipsisInfixTimes\>"}, {}\ ]\  :> \ 
+            XMLElement["\<OMS\>", {"\<cd\>" -> "\<sequences\>", "\<name\>" -> \
+"\<ellipsis_infix_times\>"}, \
+{}]\[IndentingNewLine]};\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(\(ommat = \ {\[IndentingNewLine]XMLElement["\<determinant\>", {}, {}]\
+\  \[RuleDelayed] \ \[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\>" -> \
+"\<linalg1\>", \ "\<name\>" \[Rule] "\<determinant\>"}, {}], \
+\[IndentingNewLine]\[IndentingNewLine]XMLElement["\<list\>", {}, \ 
+              XX : {XMLElement["\<list\>", {}, {__}] .. }]\  \[RuleDelayed] \ \
+\[IndentingNewLine]XMLElement["\<apply\>", {}, {\ \
+\[IndentingNewLine]XMLElement["\<OMS\>", {"\<cd\>" -> "\<linalg2\>", \ \
+"\<name\>" \[Rule] "\<matrix\>"}, {}], \[IndentingNewLine]Sequence @@ \
+\((\(XMLElement["\<apply\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" -> \
+"\<linalg2\>", \ "\<name\>" \[Rule] "\<matrixrow\>"}, {}], \
+\[IndentingNewLine]Sequence @@ \((#[\([3]\)])\)}] &\)\  /@ \ 
+                      XX)\)}\ ]};\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(\(omother\  = \ {\ \ XMLElement["\<OMA\>", {}, {XMLElement["\<OMV\>", \
+{"\<name\>" \[Rule] "\<SubscriptBox\>"}, {}], xx_, 
+                yy_}] \[RuleDelayed] \[IndentingNewLine]\ 
+            XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" \
+\[Rule] "\<scripts\>", \[IndentingNewLine]"\<name\>" -> "\<subscript\>"}, \
+{}], xx, yy}\ ], \[IndentingNewLine]XMLElement["\<OMA\>", {}, \
+{XMLElement["\<OMV\>", {"\<name\>" \[Rule] "\<SuperscriptBox\>"}, {}], xx_, 
+                yy_}] \[RuleDelayed] \[IndentingNewLine]\ 
+            XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" \
+\[Rule] "\<scripts\>", \[IndentingNewLine]"\<name\>" -> "\<superscript\>"}, \
+{}], xx, yy}\ ], \[IndentingNewLine]XMLElement["\<OMA\>", {}, \
+\[IndentingNewLine]\[IndentingNewLine]{XMLElement["\<OMS\>", {"\<cd\>" \
+\[Rule] "\<arith1\>", "\<name\>" \[Rule] "\<power\>"}, {}], base_, 
+                exp_\ }] \[RuleDelayed] \ \
+\[IndentingNewLine]XMLElement["\<OMA\>", {}, {XMLElement["\<OMS\>", {"\<cd\>" \
+\[Rule] "\<scripts\>", "\<name\>" \[Rule] "\<superscript\>"}, {}], base, 
+                exp\ }]\[IndentingNewLine]};\)\), "\[IndentingNewLine]", 
+    \(\(omother\  = \ {};\)\)}], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+Last rule really needs some heuristics as to when Power[a,b] should \
+be replaced by SuperscriptBox[a,b].\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(omrules\  = \ 
+        Dispatch[
+          Join[\ ompre, \ omrgeneral, \ omrspecial, \ ommat, \ omrlist, 
+            omrminmax, omrrelation, \ omrlogic, \ omrarithmetic, \ 
+            omrround, \ omrinteger, \ \[IndentingNewLine]omrcompound\ , \ 
+            omrsequ, \ omother\ ]];\)\)], "Input",
+  InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["NB2OMDoc", "Section",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell["Header Information", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(\( (*\ \($omsystem\  = \ "\<../../../../../../omdoc/dtd/omdoc.dtd\>";\
+\)\ *) \)\(\n\)\(\($omsystem\  = \ "\<omdoc.dtd\>";\)\[IndentingNewLine]
+    \($omident\  = \ "\<mtanb\>";\)\[IndentingNewLine]
+    \($omtitle\  = "\<NN\>";\)\[IndentingNewLine]
+    \($omcreator = "\<NN\>";\)\[IndentingNewLine]
+    \($omsubject = "\<NN\>";\)\n\n
+    \(PrintHeaderInfo[]\  := \[IndentingNewLine]\((\[IndentingNewLine]Print["\
+\<dtd:       \>", $omsystem]; \[IndentingNewLine]Print["\<ident:     \>", \
+$omident]; \[IndentingNewLine]Print["\<title:     \>", $omtitle]; \
+\[IndentingNewLine]Print["\<creator:   \>", $omcreator]; \
+\[IndentingNewLine]Print["\<subject:   \>", \
+$omsubject];\[IndentingNewLine])\);\)\n
+    \)\)\)], "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Profiling", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(\(\(\(Clear[ProfileCells]\)\(\[IndentingNewLine]\)
+    \)\[IndentingNewLine]
+    \(ProfileCells[\ fname_String]\  := \ 
+        ProfileCells[\ Directory[], fname\ ];\)\[IndentingNewLine]
+    ProfileCells[nbpath_String, 
+        fname_String]\  := \[IndentingNewLine]Module[\ {nb, 
+          cl}, \[IndentingNewLine]\t
+        If[\((nb = 
+                Get[ToFileName[nbpath, 
+                    fname]])\) === $Failed, \[IndentingNewLine]\t\tMessage[
+            NB2OMDoc::nofile, 
+            fname]; \[IndentingNewLine]\t\tReturn[]\[IndentingNewLine]\t]; \
+\[IndentingNewLine]\t
+        cl\  = \ Position[\ nb, \ Cell[___]]; \[IndentingNewLine]\t
+        Print["\<number of cells:  \>", Length[cl]]; \[IndentingNewLine]\t
+        Table[CellType@Part[\ nb, \ Sequence @@ cl[\([i]\)]]\ , \ {i, 
+            Length[cl]}]\[IndentingNewLine]]\)\(\ \)\)\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(\(\(\(Clear[TransformCells]\)\(\[IndentingNewLine]\)
+    \)\[IndentingNewLine]
+    TransformCells[nbpath_String, 
+        fname_String]\  := \[IndentingNewLine]Module[\ {nb, 
+          cl}, \[IndentingNewLine]\t
+        If[\((nb = 
+                Get[ToFileName[nbpath, 
+                    fname]])\) === $Failed, \[IndentingNewLine]\t\tMessage[
+            NB2OMDoc::nofile, 
+            fname]; \[IndentingNewLine]\t\tReturn[]\[IndentingNewLine]\t]; \
+\[IndentingNewLine]\t
+        cl\  = \ Position[\ nb, \ 
+            Cell[BoxData[__], "\<Input\>", ___]]; \[IndentingNewLine]\t
+        Print["\<number of cells:  \>", Length[cl]]; \[IndentingNewLine]\t
+        rep\  = \ \[IndentingNewLine]\t
+          Pairs[\ Table[\ 
+              fixcell@Part[\ nb, \ Sequence @@ cl[\([i]\)]]\ , \ {i, 
+                Length[cl]}], cl]; \[IndentingNewLine]nnb\  = \ 
+          Fold[\ ReplacePart[#1, #2[\([1]\)], #2[\([2]\)]] &, \ 
+            nb, \ \ rep\ ]; \[IndentingNewLine]NotebookSave[\ nnb, \ 
+          ToFileName[
+            nbpath, "\<foo.nb\>"]\ ]; \[IndentingNewLine]rep\
+\[IndentingNewLine]]\)\(\ \)\)\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(Clear[fixcell]\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(fixcell[Cell[x_, "\<Input\>", tg___]]\  := \ \[IndentingNewLine]\((\ 
+        Print[tg]; \ Cell[x, "\<Input\>", tg])\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(fixcell[
+          Cell[BoxData[FormBox[RowBox[L_List], __]], tp_String, ___]]\  := \ 
+        Cell[Concatenate @@ L, tp];\)\), "\[IndentingNewLine]", 
+    \(\(fixcell[
+          Cell[BoxData[FormBox[RowBox[s_String], __]], 
+            tp_String, ___]]\  := \ Cell[s, tp];\)\), "\[IndentingNewLine]", 
+    \(\(fixcell[Cell[BoxData[FormBox[s_String, __]], tp_String, ___]]\  := \ 
+        Cell[s, tp];\)\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(\(\(Clear[ProcessNotebook]\)\(\[IndentingNewLine]\)
+    \)\), "\n", 
+    \(\(ProcessNotebook[
+          nb : Notebook[\ {cells__}, 
+              options___\ ]]\  := \ \[IndentingNewLine]Block[{res}, \
+\[IndentingNewLine]\t$indent\  = \ 0; \[IndentingNewLine]\t
+          res\  = \ Map[\ processCell, \ {cells}\ ]; \[IndentingNewLine]\t
+          dprint["\<eof\>"]; \[IndentingNewLine]\t
+          res\[IndentingNewLine]];\)\), "\[IndentingNewLine]", 
+    \(\)}], "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conversion", "Subsubsection"],
+
+Cell["\<\
+ClearAll[NB2OMDoc]
+NB2OMDoc::nofile = \"cannot open `1`\";
+NB2OMDoc::nodir  = \"cannot cd to `1`\";
+NB2OMDoc::nosave = \"cannot save `1`\";
+NB2OMDoc::noclose = \"cannot close `1`\";
+
+NB2OMDoc[ fn_String ]:= NB2OMDoc[ fn,  Directory[] ];
+
+NB2OMDoc[ fn_String,  nbpath_String ]:=
+    Module[{cepos,i,nbp, nb },
+      
+      \tInitializeCounters[];
+      
+      \tIf[ StringMatchQ[ fn, \"*.nb\" ],
+        \t\tfilename = fn; 
+        \t\t$filename = StringDrop[fn,-3], 
+        \t\tfilename = StringJoin[fn,\".nb\"];
+        \t\t$filename = fn
+        \t];
+      
+      Print[\"nb2omdoc:  \",filename  ];
+      
+      \tIf[(nb=(Get[ToFileName[nbpath,filename]]))===$Failed,
+        \t\t\tMessage[NB2OMDoc::nofile,filename] ;
+        \t\t\tReturn[]
+        \t];
+      
+      \tres = ProcessNotebook[ nb ] ;
+      
+      \tIf[ NotebookClose[nb]===$Failed,
+        \t\tMessage[NB2OMDoc::noclose,filename] ;
+        \t\t\tReturn[]
+        \t];
+      
+      \t$ofile =  StringJoin[$filename,\".omdoc\"];
+
+\t\tprintHeadInfo[];
+
+        Print[\"nb2omdoc:  \", $ofile  ];
+    
+      \tExport[ $ofile, 
+        \t\tres = addHeader[ res ],
+        \t\t\"XML\",
+       \t\t\tConversionOptions\[Rule]{\"ElementFormatting\"\[Rule]All,
+       \t\t\t\t\t\"AttributeQuoting\"->\"\\\"\"}];
+      res
+      ];\
+\>", "Input",
+  InitializationCell->True],
+
+Cell["\<\
+Add header information. 
+Should be parametrized.\
+\>", "Text",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(ClearAll[addHeader]\), "\n", 
+    \(\(\(Options[
+          addHeader] = {HeaderMeta\  \[Rule] \
+\[IndentingNewLine]{"\<omdident\>" \[RuleDelayed] \ \ $omident, "\<Title\>" \
+\[RuleDelayed] \ $omtitle, "\<Creator\>" \[RuleDelayed] \ $omcreator, \
+"\<Subject\>" \[RuleDelayed] \ $omsubject\ }};\)\(\n\)
+    \)\), "\n", 
+    \(\(addHeader[body_List, 
+          opts___?OptionQ\ ]\  := \ \[IndentingNewLine]Module[\ {metadr, 
+            date, root}, \[IndentingNewLine]metadr\  = \ \(HeaderMeta\  /. \ \
+{opts}\)\  /. \ Options[addHeader]; \[IndentingNewLine]date\  = \ 
+            StringJoin[
+              Thread[{ToString\  /@ \ 
+                    Date[], {"\<-\>", "\<-\>", "\< \>", "\<:\>", "\<:\>", "\<\
+\>"}}]]; \[IndentingNewLine]AppendTo[\ 
+            metadr, "\<Date\>" \[Rule] 
+              date]; \[IndentingNewLine]\[IndentingNewLine]root\  = \ \ \
+XMLElement["\<omdoc\>", {"\<id\>" \[Rule] \ "\<omdident\>"\  /. \ 
+                  metadr, \[IndentingNewLine]"\<xmlns\>"\  \[Rule] \ \
+"\<http://www.mathweb.org/omdoc\>", \[IndentingNewLine]"\<catalogue\>" \
+\[Rule] \ "\<../../../../../../omdoc/examples/omstd/catalogue.omdoc\>", \n\t"\
+\<xmlns:xsi\>" \[Rule] \ "\<http://www.w3.org/2001/XMLSchema-instance\>", \n\t\
+"\<xsi:schemaLocation\>" \[Rule] \ "\<omdoc.xsd \
+http://www.mathweb.org/omdoc\>"\ }, \[IndentingNewLine]Join[\ \ \
+\[IndentingNewLine]{\[IndentingNewLine]XMLElement["\<metadata\>", {}, {\
+\[IndentingNewLine]XMLElement["\<Title\>", {}, {\ "\<Title\>"\  /. \ 
+                            metadr\ }], \
+\[IndentingNewLine]XMLElement["\<Creator\>", {}, {\ "\<Creator\>"\  /. \ 
+                            metadr\ }], \
+\[IndentingNewLine]XMLElement["\<Subject\>", {}, {\ "\<Subject\>"\  /. \ 
+                            metadr\ }], \[IndentingNewLine]XMLElement["\<Date\
+\>", {"\<action\>" -> "\<created\>"}, {\ "\<Date\>"\  /. \ 
+                            metadr\ }]}], \
+\[IndentingNewLine]XMLElement["\<catalogue\>", {}, \
+{\[IndentingNewLine]XMLElement["\<loc\>", {"\<theory\>" -> "\<scripts\>", \
+"\<omdoc\>" -> "\<../../../../../theories/migration/scripts.omdoc\>"}, {}]}\ \
+]\ \[IndentingNewLine]}, \[IndentingNewLine]\t
+                
+                body\ \[IndentingNewLine]]]; \[IndentingNewLine]\
+\[IndentingNewLine]\(XMLObject["\<Document\>"]\)[\[IndentingNewLine]{\
+\[IndentingNewLine]\(XMLObject["\<Declaration\>"]\)["\<Version\>" \[Rule] \
+"\<1.0\>", "\<Encoding\>" \[Rule] "\<utf-8\>"], \
+\[IndentingNewLine]\(XMLObject["\<Doctype\>"]\)["\<omdoc\>", \ "\<Public\>" \
+\[Rule] \ "\<-//OMDoc//DTD OMDoc V1.2//EN\>", "\<System\>"\  \[Rule] \ \
+$omsystem, "\<InternalSubset\>" \[Rule] "\<\>"]}, \[IndentingNewLine]root, \
+\[IndentingNewLine]{}\[IndentingNewLine]]\[IndentingNewLine]];\)\)}], "Input",\
+
+  InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for X",
+ScreenRectangle->{{0, 1024}, {0, 768}},
+AutoGeneratedPackage->Automatic,
+WindowSize->{934, 768},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+ShowSelection->True,
+Magnification->1.5
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 75, 2, 175, "Title",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+Cell[1876, 59, 58, 1, 87, "Section",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+Cell[1959, 64, 60, 1, 60, "Subsubsection",
+  InitializationCell->True],
+Cell[2022, 67, 134, 3, 62, "Input",
+  InitializationCell->True],
+Cell[2159, 72, 694, 15, 269, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[2890, 92, 72, 1, 37, "Subsubsection",
+  InitializationCell->True],
+Cell[2965, 95, 93, 2, 39, "Input",
+  InitializationCell->True],
+Cell[3061, 99, 129, 7, 118, "Input",
+  InitializationCell->True],
+Cell[3193, 108, 580, 33, 638, "Input",
+  InitializationCell->True],
+Cell[3776, 143, 2501, 43, 499, "Input",
+  InitializationCell->True],
+Cell[6280, 188, 490, 9, 200, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6807, 202, 70, 1, 37, "Subsubsection",
+  InitializationCell->True],
+Cell[6880, 205, 2692, 53, 890, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9609, 263, 64, 1, 37, "Subsubsection",
+  InitializationCell->True],
+Cell[9676, 266, 2316, 48, 591, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[12041, 320, 60, 1, 55, "Section",
+  InitializationCell->True],
+Cell[12104, 323, 170, 3, 62, "Input",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+Cell[12299, 330, 61, 1, 64, "Subsection",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+Cell[12385, 335, 60, 1, 60, "Subsubsection",
+  InitializationCell->True],
+Cell[12448, 338, 696, 14, 223, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[13181, 357, 58, 1, 37, "Subsubsection",
+  InitializationCell->True],
+Cell[13242, 360, 2735, 55, 1074, "Input",
+  InitializationCell->True],
+Cell[15980, 417, 82, 1, 46, "Text",
+  InitializationCell->True],
+Cell[16065, 420, 503, 11, 200, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[16605, 436, 67, 1, 37, "Subsubsection",
+  InitializationCell->True],
+Cell[16675, 439, 431, 8, 177, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[17155, 453, 68, 1, 64, "Subsection",
+  InitializationCell->True],
+Cell[17226, 456, 89, 1, 46, "Text",
+  InitializationCell->True],
+Cell[17318, 459, 298, 6, 131, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[17653, 470, 63, 1, 38, "Subsection",
+  InitializationCell->True],
+Cell[17719, 473, 417, 10, 154, "Input",
+  InitializationCell->True],
+Cell[18139, 485, 648, 12, 177, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[18824, 502, 60, 1, 38, "Subsection",
+  InitializationCell->True],
+Cell[18887, 505, 558, 11, 177, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[19482, 521, 60, 1, 64, "Subsection",
+  InitializationCell->True],
+Cell[19545, 524, 582, 11, 200, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[20164, 540, 64, 1, 64, "Subsection",
+  InitializationCell->True],
+Cell[20231, 543, 395, 9, 153, "Input",
+  InitializationCell->True]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[20663, 557, 55, 1, 38, "Subsection",
+  InitializationCell->True],
+Cell[20721, 560, 588, 12, 246, "Input",
+  InitializationCell->True]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[21358, 578, 51, 1, 55, "Section",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+Cell[21434, 583, 68, 1, 60, "Subsubsection",
+  InitializationCell->True],
+Cell[21505, 586, 1785, 38, 706, "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[23327, 629, 61, 1, 60, "Subsubsection",
+  InitializationCell->True],
+Cell[23391, 632, 236, 9, 196, "Text",
+  InitializationCell->True],
+Cell[23630, 643, 267, 5, 85, "Input",
+  InitializationCell->True],
+Cell[23900, 650, 16197, 270, 5168, "Input",
+  InitializationCell->True],
+Cell[40100, 922, 1862, 30, 706, "Input",
+  InitializationCell->True],
+Cell[41965, 954, 2832, 44, 1051, "Input",
+  InitializationCell->True],
+Cell[44800, 1000, 129, 3, 46, "Text"],
+Cell[44932, 1005, 349, 7, 131, "Input",
+  InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[45330, 1018, 55, 1, 87, "Section",
+  InitializationCell->True],
+
+Cell[CellGroupData[{
+Cell[45410, 1023, 43, 0, 60, "Subsubsection"],
+Cell[45456, 1025, 773, 14, 384, "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[46266, 1044, 34, 0, 60, "Subsubsection"],
+Cell[46303, 1046, 915, 18, 315, "Input",
+  InitializationCell->True],
+Cell[47221, 1066, 1174, 24, 407, "Input",
+  InitializationCell->True],
+Cell[48398, 1092, 75, 2, 39, "Input",
+  InitializationCell->True],
+Cell[48476, 1096, 151, 2, 62, "Input"],
+Cell[48630, 1100, 468, 9, 154, "Input",
+  InitializationCell->True],
+Cell[49101, 1111, 521, 11, 246, "Input",
+  InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[49659, 1127, 35, 0, 60, "Subsubsection"],
+Cell[49697, 1129, 1341, 49, 958, "Input",
+  InitializationCell->True],
+Cell[51041, 1180, 100, 4, 71, "Text",
+  InitializationCell->True],
+Cell[51144, 1186, 2800, 48, 1051, "Input",
+  InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

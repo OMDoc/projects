@@ -1,0 +1,165 @@
+\definecolor{ForestGreen}{rgb}{0,0.4,0}
+\definecolor{Green}{rgb}{0,0.5,0}
+\definecolor{Brown}{rgb}{.5,0.2,0}
+\definecolor{Orange}{rgb}{0,.8,.6}
+\definecolor{Lila}{rgb}{.7,0,1}
+\definecolor{Pink}{RGB}{250,0,250}
+\newcommand{\clrb}[1]{{\color{ForestGreen}{#1}}}
+\renewcommand{\ctx}[2]{#1 \clrb{\,:\,} #2}
+
+\newcommand{\mmturi}[1]{\langle\!\!\langle #1 \rangle\!\!\rangle}
+
+%% Extension parameters
+\newcommand{\user}{{\color{Green}{user}}}
+\newcommand{\prog}{{\color{blue}{programmer}}}
+\newcommand{\unconst}{{\color{Brown}{unconstrained}}}
+\newcommand{\const}{\color{Lila}{constrained}}
+\newcommand{\un}{\color{Brown}{(un)}}
+%% MMT
+\newcommand{\theoDecl}[2]{\lfkw{theory}\;\,#1 \clrb{\,=\,} \clrb{\{}#2\clrb{\}}}
+\newcommand{\conDeclOp}[3][]{#2 \clrb{\,\bnf{[}:\,} #3\bnf{]} \ifnonempty{#1}{\,\bnf{[}\clrb{=}\,}{#1\bnf{]}}}
+\newcommand{\conDecl}[3][]{#2 \clrb{\,:\,} #3 \ifnonempty{#1}{\,\clrb{=}\,}{#1}}
+
+
+\newcommand{\exu}{\mathit{exu}}
+\newcommand{\Module}{\mathit{Module}}
+\newcommand{\Theory}{\mathit{Theory}}
+\newcommand{\Symbol}{\mathit{Symbol}}
+\newcommand{\Const}{\mathit{Const}}
+\newcommand{\Term}{\mathit{Term}}
+%% NAMES
+\newcommand{\Sqrt}{\mathit{SquareRoot}}
+\newcommand{\dom}{\mathit{dom}}
+\newcommand{\cod}{\mathit{cod}}
+\newcommand{\FOL}{\mathit{FOL}}
+\newcommand{\Forms}{\mathit{Propositions}}
+\renewcommand{\Types}{\mathit{Types}}
+\newcommand{\axiom}{\mathit{axiom}}
+\newcommand{\thm}{\mathit{theorem}}
+\newcommand{\form}{prop}
+\newcommand{\term}{\mathit{term}}
+\newcommand{\nat}{\mathit{Nat}}
+\newcommand{\real}{\mathit{Real}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Exponential}{\mathit{Exponential}}
+\newcommand{\deriv}{\mathit{deriv}}
+\newcommand{\ax}{\mathit{ax}}
+\newcommand{\ded}{\mathit{proof}}
+\newcommand{\expo}{\mathit{exp}}
+\newcommand{\lmbd}{\mathit{lam}}
+\newcommand{\foo}{\mathit{foo}}
+\newcommand{\tm}{\mathit{tm}}
+\newcommand{\tp}{\mathit{tp}}
+\newcommand{\means}{\mathit{means}}
+\newcommand{\defthm}{\mathit{definitional\_theorem}}
+\newcommand{\functor}{\mathit{functor}}
+\newcommand{\Theorems}{\mathit{Theorems}}
+\newcommand{\MyTheorem}{\mathit{MyTheorem}}
+\newcommand{\FunctorDefinitions}{\mathit{FunctorDefinitions}}
+\newcommand{\Assertions}{\mathit{Assertion}}
+\newcommand{\Definitions}{\mathit{Definitions}}
+\newcommand{\Commutativity}{\mathit{Commutativity}}
+\newcommand{\CaseBased}{\mathit{CaseBasedDefinitions}}
+\newcommand{\comm}{\mathit{comm}}
+\newcommand{\neutr}{\mathit{neut_r}}
+\newcommand{\neutl}{\mathit{neut_l}}
+\newcommand{\Description}{\mathit{ImplicitDefinitions}}
+\newcommand{\tpj}{\#}
+\newcommand{\Exists}{\mathit{exists}}
+\newcommand{\truth}{\mathit{true}}
+\newcommand{\false}{\mathit{false}}
+\newcommand{\implDef}{\mathit{implDef}}
+\newcommand{\typeDef}{\mathit{typeDef}}
+\newcommand{\directDef}{\mathit{directDef}}
+\newcommand{\casedef}{\mathit{caseDef}}
+\newcommand{\typedCons}{\mathit{typedCons}}
+\newcommand{\welldefn}{\mathit{welldefined}}
+\newcommand{\Rep}{\mathit{Rep}}
+\newcommand{\Abs}{\mathit{Abs}}
+\newcommand{\RepInv}{\mathit{Rep\_inverse}}
+\newcommand{\AbsInv}{\mathit{Abs\_inverse}}
+\newcommand{\uexists}{\exists^{!}}
+\newcommand{\HOLd}{\mathit{HOLd}}
+\newcommand{\HOL}{\mathit{HOL}}
+\newcommand{\descr}{\iota}
+\newcommand{\ind}{i}
+\newcommand{\existence}{\mathit{existence}}
+\newcommand{\uniqueness}{\mathit{uniqueness}}
+%\newcommand{\arg}{\mathit{arg}}
+\newcommand{\param}{\mathit{param}}
+\newcommand{\eqn}{\doteq}
+%% Syntax
+\newcommand{\lflam}[2][]{\clrb{\lambda} #2\ifnonempty{#1}{\clrb{\,:\,} #1}\clrb{.}\,}
+%\newcommand{\lflam}[2][]{\clrb{[}#2\ifnonempty{#1}{\clrb{\,:\,} #1}\clrb{]}\,}
+%% Seq
+\newcommand{\lfseqbind}[3]{\big[#1\big]_{#2 = 1}^{#3}}
+
+%% Theory Families
+\newcommand{\prdecl}[3]{#1 : #2\,#3}
+%\renewcommand{\sfdecl}[3][]{#2 & #3\ifnonempty{#1}{\clrb{=} #1}}
+
+\renewcommand{\sigfr}[1]{\clrb{\{}#1\clrb{\}}}
+\renewcommand{\pbind}[3]{\clrb{\lambda} #1\clrb{\,:\,}#2\clrb{.}\,#3} %Pattern binder
+\newcommand{\Lam}[2][]{\lambda #2\ifnonempty{#1}{\,:\,#1.\,}}
+
+\newcommand{\mmtcomma}{\clrb{,}}
+\newcommand{\mmtcolon}{\clrb{\,:\,}}
+\newcommand{\mmtdot}{\clrb{.}\,}
+\newcommand{\mmtpar}[1]{\clrb{(}#1\clrb{)}}
+%% Twelf Math
+\renewcommand{\lfkw}[1]{\clrb{\mathtt{#1}}}
+\renewcommand{\tsig}[1]{\multicolumn{3}{l}{$\lfkw{theory}\;#1\;\clrb{=}\,\clrb{\{}$}} % \tsig{NAME}
+\renewcommand{\tsigend}{\multicolumn{3}{l}{$\clrb{\}}\clrb{\dotatend}$}} % \tsigend
+\renewcommand{\tcolon}{& \clrb{\ensuremath{:}} &}
+\renewcommand{\tequal}{\clrb{\ensuremath{=}}}
+
+\renewcommand{\tpattern}[3]{
+  \multicolumn{4}{@{\tb}l}{$\lfkw{extension}\;#1\;\tequal\;#2\,\clrb{\{}$} \\
+  \multicolumn{4}{@{\tb\tb}l}{\begin{tabular}{lll}#3\end{tabular}} \\
+  \multicolumn{4}{@{\tb}l}{$\clrb{\}}$}
+}
+
+\renewcommand{\tsfdecl}[3][]{$#2$ \tcolon $#3$\ifnonempty{#1}{$\;\;\tequal\;\;#1$}}
+
+\newcommand{\tpragmatic}[2]{\multicolumn{4}{@{\tb}l}{$\lfkw{pragmatic}\;#1\;\mmtcolon\;#2\dotatend$}} 
+
+%\renewcommand{\pdecl}[3][]{$\lfkw{pragmatic}$ $#2$\tcolon $#3$\dotatend & #1} % \pdecl[COMMENTorFIXITY]{c}{F}
+\newcommand{\pdecldef}[4][]{$#2$\tcolon $#3\tequal #4$\dotatend & #1} % \decl[COMMENTorFIXITY]{c}{F}{f}
+
+%% Inline Twelf Math
+\newcommand{\extension}[2]{\lfkw{extension}\;#1 \clrb{\,=\,} #2}
+\newcommand{\pragmatic}[2]{\lfkw{pragmatic}\;#1 \clrb{\,:\,} #2}
+
+\newcommand{\extInGrammar}[2]{\alert{\mathtt{extension}\;#1 \,=\, #2}}
+\newcommand{\pragInGrammar}[2]{\alert{\mathtt{pragmatic}\;#1 \,:\, #2}}
+%% tikz
+\newcommand{\mmtarrowtip}{angle 45}
+\newcommand{\mmtarrowtipepi}{triangle 45}
+\newcommand{\mmtarrowtipmono}{right hook}
+\tikzstyle{thy}=[draw,outer sep=1mm,rounded corners]
+%\tikzstyle{include}=[\mmtarrowtipmono-\mmtarrowtip,thick]
+%\tikzstyle{meta}=[dotted,-\mmtarrowtip,thick]
+%\tikzstyle{view}=[dashed,-\mmtarrowtip,thick]
+%\tikzstyle{struct}=[-\mmtarrowtip,thick]
+%\tikzstyle{morph}=[-\mmtarrowtip] % any morphism
+\tikzstyle{struct}=[->]
+\tikzstyle{meta}=[\mmtarrowtipmono->]
+
+%
+%\newcommand\mmturi[3]{#1?#2?#3}
+%\def\defemph#1{\textbf{#1}} 
+%\def\mmt{MMT}
+%\def\omdoc{OMDoc\xspace}
+%%\def\ptos{\ensuremath{\mathcal{P}\kern-.2em2\kern-.2em\mathcal{S}}}
+%\def\ptos{\ensuremath{\mathcal{P}2\mathcal{S}}}
+%\def\llquote#1{\ensuremath{\langle\kern-.25em\langle\hbox{\sl{#1}}\rangle\kern-.25em\rangle}}
+%\def\llqn#1#2{\ensuremath{\langle\kern-.25em\langle\hbox{\sl{#1}}_#2\rangle\kern-.25em\rangle}}
+%\def\cn{}
+%\def\om#1{\fbox{\ensuremath{#1}}}
+%
+%\lstdefinelanguage[sTeX]{TeX}[LaTeX]{TeX}%
+%  {moretexcs={[2]defin,twindef,atwindef,definalt,twindefalt,atwindefalt,definiendum,
+%      importmodule,symdef,
+%      termref,sref},
+%   morekeywords={module,definition,axiom,assertion,
+%     sproof,spfstep,spfcases,spfcase,justification,premise}}

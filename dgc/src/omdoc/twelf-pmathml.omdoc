@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//om:OMDoc//DTD om:OMDoc V1.2//EN" "../../dtd/omdoc.dtd">
+<omdoc xml:id=":twelf-pmathml" xmlns="http://www.mathweb.org/omdoc" xmlns:om="http://www.openmath.org/OpenMath" xmlns:visib="http://www.mathweb.org/omdoc" version="1.2">
+
+  <presentation for="http://www.mathweb.org/omdoc?twelf" format="pmathml" role="constant">
+      <element name="mi">
+         <name/>
+      </element>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="pmathml" role="variable">
+      <element name="mi">
+         <name/>
+      </element>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="pmathml" role="key">
+      <components begin="2"/>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="pmathml" role="application">
+      <element name="mrow">
+         <use fixity="prefix" precedence="0" bracketstyle="lisp">
+            <lbrack>
+               <element name="mo">
+                  <text value="("/>
+                  <attribute name="mathcolor">
+                     <text value="red"/>
+                  </attribute>
+               </element>
+            </lbrack>
+            <rbrack>
+               <element name="mo">
+                  <text value=")"/>
+                  <attribute name="mathcolor">
+                     <text value="red"/>
+                  </attribute>
+               </element>
+            </rbrack>
+            <separator>
+               <element name="mspace">
+                  <attribute name="width">
+                     <text value="0.2em"/>
+                   </attribute>
+               </element>
+            </separator>
+            <operator>
+               <components begin="0"/>
+            </operator>
+         </use>
+      </element>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf" format="pmathml" role="morphism">
+      <components begin="0"/>
+      <element name="mo">
+         <text value="("/>
+      </element>
+      <components begin="1"/>
+      <element name="mo">
+         <text value=")"/>
+      </element>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/type" format="pmathml" role="constant">
+      <element name="mi">
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+         <text value="type"/>
+      </element>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/omitted" format="pmathml" role="constant">
+      <element name="mi">
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+         <text value="_"/>
+      </element>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/lambda" format="pmathml" role="binder" precedence="-100">
+      <element name="mo" visib:level="bracket">
+         <text value="("/>
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+      </element>
+      <element name="mo">
+         <text value="&#x03bb;"/>
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+      </element>
+      <components begin="1">
+         <recurse precedence="infinity"/>
+         <attribution>
+            <OMOBJ>
+               <om:OMS path="http://www.mathweb.org/omdoc?twelf/oftype"/>
+            </OMOBJ>
+            <element name="mo">
+               <attribute name="mathcolor">
+                  <text value="blue"/>
+               </attribute>
+               <text value=":"/>
+            </element>
+            <recurse precedence="infinity"/>
+         </attribution>
+      </components>
+      <element name="mo">
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+         <text value="."/>
+      </element>
+      <components begin="3">
+         <recurse precedence="-50"/>
+      </components>
+      <element name="mo" visib:level="bracket">
+         <text value=")"/>
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+      </element>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/Pi" format="pmathml" role="binder" precedence="-100">
+      <element name="mo" visib:level="bracket">
+         <text value="("/>
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+      </element>
+      <element name="mo">
+         <text value="&#x03a0;"/>
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+      </element>
+      <components begin="1">
+         <recurse precedence="infinity"/>
+         <attribution>
+            <OMOBJ>
+               <om:OMS path="http://www.mathweb.org/omdoc?twelf/oftype"/>
+            </OMOBJ>
+            <element name="mo">
+               <attribute name="mathcolor">
+                  <text value="blue"/>
+               </attribute>
+               <text value=":"/>
+            </element>
+            <recurse precedence="infinity"/>
+         </attribution>
+      </components>
+      <element name="mo">
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+         <text value="."/>
+      </element>
+      <components begin="3">
+         <recurse precedence="-50"/>
+      </components>
+      <element name="mo" visib:level="bracket">
+         <text value=")"/>
+         <attribute name="mathcolor">
+            <text value="blue"/>
+         </attribute>
+      </element>
+   </presentation>
+   <presentation for="http://www.mathweb.org/omdoc?twelf/arrow" format="pmathml" role="application" precedence="1">
+      <element name="mrow">
+         <use fixity="infixr" precedence="1">
+            <lbrack>
+               <element name="mo">
+                  <text value="("/>
+                  <attribute name="mathcolor">
+                     <text value="blue"/>
+                  </attribute>
+               </element>
+            </lbrack>
+            <rbrack>
+               <element name="mo">
+                  <text value=")"/>
+                  <attribute name="mathcolor">
+                     <text value="blue"/>
+                  </attribute>
+               </element>
+            </rbrack>
+            <separator>
+               <element name="mspace">
+                  <attribute name="width">
+                     <text value="0.25em"/>
+                  </attribute>
+               </element>
+            </separator>
+            <operator>
+               <element name="mo">
+                  <attribute name="mathcolor">
+                     <text value="blue"/>
+                  </attribute>
+                  <text value="&#x2192;"/>
+               </element>
+            </operator>
+         </use>
+      </element>
+   </presentation>
+
+</omdoc>

@@ -1,0 +1,68 @@
+\documentclass{entcs}
+\usepackage{graphicx,url}
+%\usepackage[top=4cm,bottom=4cm,left=4cm,right=4cm]{geometry}
+\usepackage[hide]{ed}
+\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{xkeyval}
+\usepackage{listings}
+%\lstset{frame=single,captionpos=b,float=t,breaklines,breakatwhitespace,basicstyle=\small}
+
+\setlength{\hfuzz}{3pt} \hbadness=10001
+
+\input{math}
+\input{commands}
+\input{lfi}
+
+\def\sep{\!-\!}
+
+\begin{document}
+\begin{frontmatter}
+  \title{Interpreting Heterogeneous Theory Graphs in a Logical Framework}
+  \author{Florian Rabe}
+  \address{Jacobs University Bremen}
+
+\begin{abstract} 
+Theory graphs provide a formalism for developing and relating structured specifications over a logic. In the heterogeneous case, different logics can be used in the same specification if appropriate logic translations are given. But checking the syntactic and semantic requirements necessary for the correctness of such a graph is non-trivial. We extend {\omdoc} to use it as a generic representation language for heterogeneous theory graphs and describe how to interpret such a graph in the logical framework LF.
+\end{abstract}
+\begin{keyword}
+  logical framework, theory graph, OMDoc, heterogeneous specification
+\end{keyword}
+\end{frontmatter}
+
+\pagestyle{plain}
+
+\maketitle{}
+
+\lstset{mathescape,basicstyle=\footnotesize}
+
+\section{Introduction and Related Work}
+
+The logical framwork LF (\cite{lf}) and its implementation Twelf (\cite{twelf}) have been used extensively to encode logics (e.g., \cite{lfencodings,lfcut,logosphere}). However, applications of logic encodings in LF suffer from the lack of high-level services for LF such as a module system, a scalable library architecture, library-wide structural search, management of change, and visual presentation tools.
+
+Providing these services is the strength of the knowledge management language {\omdoc} (\cite{omdoc}). It is an XML language for mathematical documents incorporating {\openmath} (\cite{openmath}) to represent mathematical objects. Like LF, it provides logic-independent concrete syntax to represent the theories of a logic and the translations within a logic and between logics. But contrary to LF, it ignores type-checking issues and focuses on the above-mentioned advanced management services, which to a large extent are independent of whether the theories they operate on are type-correct. Its module system gives a powerful but simple standardized syntax; every document can be referenced by any other document using URIs; and {\omdoc} can be easily parsed and generated on all platforms.
+
+The basic concept to represent theories in {\omdoc} is a theory graph, whose formal semantics is given by the model-theoretic framework of institutions (\cite{institutions}). A theory over an institution is a pair $(\Sigma,\Delta)$ where $\Sigma$ is a signature and $\Delta$ is a set of sentences over $\Sigma$. For example, in the theory of monoids in the institution for first-order logic, $\Sigma$ would consist of the symbols $unit$ and $comp$ and their arities, and $\Delta$ would contain the axioms for associativity and neutral element. A theory morphism from $(\Sigma_1,\Delta_1)$ to $(\Sigma_2,\Delta_2)$ is a signature morphism, which we can think of here as a mapping from the syntax over $\Sigma_1$ to the syntax over $\Sigma_2$, such that the axioms in $\Delta_1$ are mapped to theorems of the theory $\Delta_2$.
+
+Development graphs (\cite{devgraphs},\cite{maya}) permit the hierarchic structured representation of complex theories via acyclic multi-graphs. In a development graph over an institution, every node is labeled with a theory $(\Sigma,\Delta)$, and every edge from $T_1=(\Sigma_1,\Delta_1)$ to $T_2=(\Sigma_2,\Delta_2)$ is labeled with a definitional theory morphism $\sigma:T_1\arr T_2$. If $\sigma$ is the only edge of the graph, this means that the node $T_2$ represents the theory $(\Sigma_2,\Delta_2\cup \sigma(\Delta_1)$, where $\sigma(\Delta_1)$ is the element-wise translation of the axioms of $T_1$. More generally, every node represents the theory arising by recursively importing all axioms from all incoming edges. 
+%Two types of links are used: A local link only imports the axioms of the source node, a global link also imports all axioms (transitively) imported into the source node.
+
+Development graphs may also have postulated edges, which represent theory morphisms that have to be established by proving the consequence requirements.  One strength of development graphs is that postulated edges between complex theories may be decomposed into simpler edges that can be proved efficiently by calling an automated prover for the underlying institution. In heterogeneous development graphs (\cite{hetdevgraphs},\cite{hets}), the nodes are triples $(\I,\Sigma,\Delta)$ where $\I$ is an institution, and the edges from $(\I_1,\Sigma_1,\Delta_1)$ to $(\I_2,\Sigma_2,\Delta_2)$ are pairs $(\mu,\sigma)$ where $\mu$ is an institution translation from $\I_1$ to $\I_2$, and $\sigma$ is a theory morphism in $\I_2$ from $(\mu(\Sigma_1),\mu(\Delta_1))$ to $(\Sigma_2,\Delta_2)$.
+
+However, currently, signatures, signature morphisms, and institution translations have to be implemented ad hoc for every institution. In \cite{rabe:instlf:07}, we formalized how LF can be used as a meta-language in which these can be specified. Our current motivation is to use {\omdoc} as a high-level interface language mediating between tools maintaining development graphs, Twelf, and other services. Here, as a first step, we describe how certain {\omdoc} theory graphs can be interpreted in LF so that LF type-checking validates a theory graph.
+%In Sect.~\ref{sec:omdoc}, we define theory graphs, and in Sect.~\ref{sec:lf}, we define their interpretation in LF.
+
+\input{content.tex}
+
+\section{Conclusion and Future Work}
+
+We have described the current state of ongoing work to establish and tighten the connection between high-level structured specification languages and the logical framework LF by using {\omdoc} as an interface language and Twelf as a type-checking backend. This combination also opens the door to add the advanced services of {\omdoc} on top of Twelf. For example, the conservative LF module system designed by Watkins and Pfenning (unpublished work) is a special case of the {\omdoc} module system because a modular LF signature can be transformed naturally into an {\omdoc} theory graph, which can then be interpreted in non-modular LF. It is also promising to use {\omdoc} as a library backend for Twelf: The library would store logics, theories, and translations and produce the corresponding Twelf files transparently upon request. This would permit to build the Logosphere project (\cite{logosphere}) on top of a powerful database.
+
+We are currently implementing the interpretation. The interpretation of proofs and theory-inclusions is still missing, but there are no problems left, and and we expect the first release version within weeks. Our future work will consist of specifying the logics and translations used in tools like Hets in {\omdoc} so that they can generate Twelf files via {\omdoc}. For heterogeneous proving, it will be crucial to add proof steps to {\omdoc} consisting of translating the proof goal into a different logic. This does not present a major problem.
+
+\bibliographystyle{alpha}
+\input{bibs}
+
+\end{document}

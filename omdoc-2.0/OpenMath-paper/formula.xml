@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+               "http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:omdoc="http://www.mathweb.org/omdoc">
+  <head>
+    <title>Elision Demo (Formula)</title>
+    <link rel="stylesheet" type="text/css" href="omdoc.css"/>
+    <style type="text/css">
+      span.formula {
+        font-size: x-large;
+      }
+    </style>
+  </head>
+  <body>
+    <p><span class="formula"><!--
+      --><span class="mo" style="display:none" omdoc:elevel="500">(</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="300">(</span><!--
+      --><span class="mn">5</span><!--
+      --><span class="mo">·</span><!--
+      --><span class="mo">(</span><!--
+      --><span class="mi">x</span><!--
+      --><span class="mo">+</span><!--
+      --><span class="mi">y</span><!--
+      --><span class="mo">)</span><!--
+      --><sup style="font-size:smaller"><!--
+      --><span class="mo" style="display:none" omdoc:elevel="infinity">(</span><!--
+      --><span class="mi">n</span><!--
+      --><span class="mo">+</span><!--
+      --><span class="mn">3</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="infinity">)</span><!--
+      --></sup><!--
+      --><span class="mo" style="display:none" omdoc:elevel="300">)</span><!--
+      --><span class="mo">≤</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="400">(</span><!--
+      --><span class="mo">(</span><!--
+      --><span class="mi">a</span><!--
+      --><span class="mo">·</span><!--
+      --><span class="mi">b</span><!--
+      --><span class="mo">)</span><!--
+      --><span class="mo">!</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="400">)</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="500">)</span><!--
+      --><span class="mo">∨</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="200">(</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="400">(</span><!--
+      --><span class="mo">¬</span><!--
+      --><span class="mi">p</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="400">)</span><!--
+      --><span class="mo">∧</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="400">(</span><!--
+      --><span class="mo">¬</span><!--
+      --><span class="mo">(</span><!--
+      --><span class="mi">q</span><!--
+      --><span class="mo">≤</span><!--
+      --><span class="mi">π</span><!--
+      --><span class="mo">)</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="400">)</span><!--
+      --><span class="mo" style="display:none" omdoc:elevel="200">)</span><!--
+      --></span></p>
+    <p><span class="formula"><!--
+	--><span class="mi">∧*</span><!--
+        --><sub><!--
+        --><span class="mrow" style="display:none" omdoc:egroup="types" omdoc:elevel="200"><!--
+  	  --><span class="mo">(</span><!--
+  	  --><span class="mi">ι</span><!--
+  	  --><span class="mo">→</span><!--
+  	  --><span class="mi">ο</span><!--
+  	  --><span class="mo">)</span><!--
+  	  --><span class="mo">→</span><!--
+          --><span class="mo" style="display:none" omdoc:elevel="100">(</span><!--
+  	  --><span class="mo">(</span><!--
+  	  --><span class="mi">ι</span><!--
+  	  --><span class="mo">→</span><!--
+  	  --><span class="mi">ο</span><!--
+  	  --><span class="mo">)</span><!--
+  	  --><span class="mo">→</span><!--
+          --><span class="mo" style="display:none" omdoc:elevel="100">(</span><!--
+  	  --><span class="mi">ι</span><!--
+  	  --><span class="mo">→</span><!--
+          --><span class="mi">ο</span><!--
+          --><span class="mo" style="display:none" omdoc:elevel="100">)</span><!--
+          --><span class="mo" style="display:none" omdoc:elevel="100">)</span><!--
+        --></span><!--
+        --></sub><!--
+  	--><span class="mo">=</span><!--
+	--><span class="mo">λ</span><!--
+	--><span class="mi">F</span><!--
+	--><sub><!--
+  	  --><span class="mrow" style="display:none" omdoc:egroup="types" omdoc:elevel="100"><!--
+	    --><span class="mi">ι</span><!--
+	    --><span class="mo">→</span><!--
+	    --><span class="mi">ο</span><!--
+	  --></span><!--
+	--></sub><!--
+	--><span class="mi">G</span><!--
+        --><sub><!--
+  	  --><span class="mrow" style="display:none" omdoc:egroup="types" omdoc:elevel="100"><!--
+	    --><span class="mi">ι</span><!--
+	    --><span class="mo">→</span><!--
+	    --><span class="mi">ο</span><!--
+	  --></span><!--
+	--></sub><!--
+	--><span class="mi">X</span><!--
+	--><sub><!--
+  	  --><span class="mrow" omdoc:egroup="types" omdoc:elevel="0"><!--
+	    --><span class="mi">ι</span><!--
+	  --></span><!--
+	--></sub><!--
+	--><span class="mo">.</span><!--
+	--><span class="mi">F</span><!--
+	--><sub><!--
+  	  --><span class="mrow" style="display:none" omdoc:egroup="types" omdoc:elevel="300"><!--
+	    --><span class="mi">ι</span><!--
+	    --><span class="mo">→</span><!--
+	    --><span class="mi">ο</span><!--
+	  --></span><!--
+	--></sub><!--
+	--><span class="mo">(</span><!--
+	--><span class="mi">X</span><!--
+	--><sub><!--
+  	  --><span class="mrow" style="display:none" omdoc:egroup="types" omdoc:elevel="300"><!--
+	    --><span class="mi">ι</span><!--
+	  --></span><!--
+	--></sub><!--
+	--><span class="mo">)</span><!--
+	--><span class="mo">∧</span><!--
+	--><sub><!--
+  	  --><span class="mrow" style="display:none" omdoc:egroup="types" omdoc:elevel="300"><!--
+	    --><span class="mi">o</span><!--
+	    --><span class="mo">→</span><!--
+            --><span class="mo" style="display:none" omdoc:elevel="100">(</span><!--
+	    --><span class="mi">ο</span><!--
+	    --><span class="mo">→</span><!--
+	    --><span class="mi">ο</span><!--
+            --><span class="mo" style="display:none" omdoc:elevel="100">)</span><!--
+	  --></span><!--
+	--></sub><!--
+	--><span class="mi">G</span><!--
+	--><sub><!--
+  	  --><span class="mrow" style="display:none" omdoc:egroup="types" omdoc:elevel="300"><!--
+	    --><span class="mi">ι</span><!--
+	    --><span class="mo">→</span><!--
+	    --><span class="mi">ο</span><!--
+	  --></span><!--
+	--></sub><!--
+	--><span class="mo">(</span><!--
+	--><span class="mi">X</span><!--
+	--><sub><!--
+  	  --><span class="mrow" style="display:none" omdoc:egroup="types" omdoc:elevel="300"><!--
+	    --><span class="mi">ι</span><!--
+	  --></span><!--
+	--></sub><!--
+	--><span class="mo">)</span><!--
+      --></span></p>
+  </body>
+</html>

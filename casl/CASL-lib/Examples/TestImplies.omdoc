@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN" "http://www.tzi.de/~hiben/omdoc/dtd/omdoc.dtd">
+<omdoc xml:id="TestImplies">
+  <theory xml:id="sp_E1">
+    <presentation for="sp_E1">
+      <use format="Hets">[sp,E,1]</use>
+    </presentation>
+    <symbol role="sort" name="s"/>
+    <presentation for="s">
+      <use format="Hets">[s]</use>
+    </presentation>
+  </theory>
+  <private for="sp_E1">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"sp" Type:"GlobalThm Open None Open" Origin:"DGExtension"
+]]></data>
+  </private>
+  <theory xml:id="sp">
+    <presentation for="sp">
+      <use format="Hets">[sp,,0]</use>
+    </presentation>
+    <imports from="#sp_E1"/>
+    <axiom name="Ax1">
+      <CMP>
+  . false
+</CMP>
+      <FMP>
+        <OMOBJ>
+          <OMS cd="casl" name="false"/>
+        </OMOBJ>
+      </FMP>
+    </axiom>
+    <presentation for="Ax1">
+      <use format="Hets">Ax1</use>
+    </presentation>
+  </theory>
+  <private for="sp">
+    <data format="Hets-Imports" pto="Hets"><![CDATA[
+From:"sp_E1" Type:"GlobalDef" Origin:"DGExtension"
+]]></data>
+  </private>
+</omdoc>

@@ -1,0 +1,641 @@
+default namespace = "http://schema.omg.org/spec/UML/1.4"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+
+# ========= content element for simplified class diagrams =========
+start = content
+content = 
+  element content { 
+    (Package 
+    | Class 
+    | Interface 
+    | Association 
+    | Generalization 
+    | Abstraction 
+    | Dependency 
+    | DataType 
+    | Stereotype 
+    | Comment 
+    | Enumeration)*
+  }
+  
+ # ========= XMI inheritance =========
+XMI.ELEMENT.att = 
+  attribute xmi.id {text}?, 
+  attribute xmi.label {text}?, 
+  attribute xmi.uuid {text}?,
+  attribute xmi.idref {text}?
+
+# ========= Data_Types =========
+AggregationKind = "none" | "aggregate" | "composite"
+CallConcurrencyKind = "sequential" | "guarded" | "concurrent"
+ChangeableKind = "changeable" | "frozen" | "addOnly"
+OrderingKind = "unordered" | "ordered"
+ParameterDirectionKind = "in" | "inout" | "out" | "return"
+ScopeKind = "instance" | "classifier"
+VisibilityKind = "public" | "protected" | "private" | "package"
+PseudostateKind =
+  "choice"
+  | "deepHistory"
+  | "fork"
+  | "initial"
+  | "join"
+  | "junction"
+  | "shallowHistory"
+ 
+# ========= Multiplicity =========
+Multiplicity.range = element Multiplicity.range { MultiplicityRange* }
+MultiplicityFeatures = Multiplicity.range
+MultiplicityAtts = XMI.ELEMENT.att
+Multiplicity = element Multiplicity { MultiplicityAtts, MultiplicityFeatures* }
+
+# ========= MultiplicityRange =========
+MultiplicityRange.lower = element MultiplicityRange.lower { text* }
+MultiplicityRange.upper = element MultiplicityRange.upper { text* }
+MultiplicityRange.multiplicity = element MultiplicityRange.multiplicity { Multiplicity* }
+MultiplicityRangeFeatures =
+  MultiplicityRange.lower
+  | MultiplicityRange.upper
+  | MultiplicityRange.multiplicity
+MultiplicityRangeAtts =
+  XMI.ELEMENT.att,
+  attribute lower { text }?,
+  attribute upper { text }?,
+  attribute multiplicity { xsd:IDREFS }?
+MultiplicityRange =
+  element MultiplicityRange { MultiplicityRangeAtts, MultiplicityRangeFeatures* }
+
+# ========= Core =========
+# ========= ELEMENT =========
+ELEMENTAtts = XMI.ELEMENT.att
+ELEMENT = element ELEMENT { ELEMENTAtts }
+
+# ========= ModelELEMENT =========
+ModelELEMENT.name =
+  element ModelELEMENT.name { text* }
+ ModelELEMENT.visibility =
+  element ModelELEMENT.visibility { attribute xmi.value { VisibilityKind } }
+ModelELEMENT.isSpecification =
+  element ModelELEMENT.isSpecification { attribute xmi.value { "true" | "false" } }
+ModelELEMENT.namespace =
+  element ModelELEMENT.namespace { Namespace* }
+ModelELEMENT.clientDependency =
+  element ModelELEMENT.clientDependency { Dependency* }
+ModelELEMENT.comment =
+  element ModelELEMENT.comment { Comment* }
+ModelELEMENT.stereotype =
+  element ModelELEMENT.stereotype { Stereotype* }
+ModelELEMENT.taggedValue =
+  element ModelELEMENT.taggedValue { TaggedValue* }
+ModelELEMENTFeatures =
+  ModelELEMENT.name
+  | ModelELEMENT.visibility
+  | ModelELEMENT.isSpecification
+  | ModelELEMENT.namespace
+  | ModelELEMENT.clientDependency
+  | ModelELEMENT.comment
+  | ModelELEMENT.stereotype
+  | ModelELEMENT.taggedValue
+ModelELEMENTAtts =
+  ELEMENTAtts,
+  attribute name { text }?,
+  attribute visibility { VisibilityKind }?,
+  attribute isSpecification { "true" | "false" }?,
+  attribute namespace { xsd:IDREFS }?,
+  attribute clientDependency { xsd:IDREFS }?,
+  attribute comment { xsd:IDREFS }?,
+  attribute stereotype { xsd:IDREFS }?
+ModelELEMENT =
+  element ModelELEMENT { ModelELEMENTAtts, ModelELEMENTFeatures* }
+
+# ========= GeneralizableELEMENT =========
+GeneralizableELEMENT.isRoot =
+  element GeneralizableELEMENT.isRoot { attribute xmi.value { "true" | "false" } }
+GeneralizableELEMENT.isLeaf =
+  element GeneralizableELEMENT.isLeaf { attribute xmi.value { "true" | "false" } }
+ GeneralizableELEMENT.isAbstract =
+  element GeneralizableELEMENT.isAbstract { attribute xmi.value { "true" | "false" } }
+GeneralizableELEMENT.generalization =
+  element GeneralizableELEMENT.generalization { Generalization* }
+GeneralizableELEMENTFeatures =
+  ModelELEMENTFeatures
+  | GeneralizableELEMENT.isRoot
+  | GeneralizableELEMENT.isLeaf
+  | GeneralizableELEMENT.isAbstract
+  | GeneralizableELEMENT.generalization
+GeneralizableELEMENTAtts =
+  ModelELEMENTAtts,
+  attribute isRoot { "true" | "false" }?,
+  attribute isLeaf { "true" | "false" }?,
+  attribute isAbstract { "true" | "false" }?,
+  attribute generalization { xsd:IDREFS }?
+  
+GeneralizableELEMENT =
+  element GeneralizableELEMENT {
+    GeneralizableELEMENTAtts, GeneralizableELEMENTFeatures*
+  }
+
+# ========= Namespace =========
+Namespace.ownedElement =
+  element Namespace.ownedElement {
+    (ModelELEMENT
+     | GeneralizableELEMENT
+     | Classifier
+     | Class
+     | AssociationClass
+     | DataType
+     | Primitive
+     | Enumeration
+     | Interface
+     | ClassifierRole
+     | Association
+     | AssociationRole
+     | Stereotype
+     | Package
+     | Namespace
+     | Feature
+     | StructuralFeature
+     | Attribute
+     | BehavioralFeature
+     | Operation
+     | Method
+     | AssociationEnd
+     | AssociationEndRole
+     | Relationship
+     | Generalization
+     | Dependency
+     | Abstraction
+     | Parameter
+     | Comment
+     | EnumerationLiteral
+     | TagDefinition
+     | TaggedValue)*
+  }
+NamespaceFeatures = ModelELEMENTFeatures | Namespace.ownedElement
+NamespaceAtts = ModelELEMENTAtts
+Namespace = element Namespace { NamespaceAtts, NamespaceFeatures* }
+
+# ========= Classifier =========
+Classifier.feature =
+  element Classifier.feature {
+    (Feature
+     | StructuralFeature
+     | Attribute
+     | BehavioralFeature
+     | Operation
+     | Method)*
+  }
+Classifier.powertypeRange =
+  element Classifier.powertypeRange { Generalization* }
+ClassifierFeatures =
+  GeneralizableELEMENTFeatures
+  | Namespace.ownedElement
+  | Classifier.feature
+  | Classifier.powertypeRange
+ClassifierAtts =
+  GeneralizableELEMENTAtts,
+  attribute powertypeRange { xsd:IDREFS }?
+Classifier =
+  (element Classifier { ClassifierAtts, ClassifierFeatures* } | DataType | Class)
+
+# ========= Class =========
+Class.isActive =
+  element Class.isActive { attribute xmi.value { "true" | "false" } }
+ClassFeatures = ClassifierFeatures | Class.isActive
+ClassAtts =
+  ClassifierAtts,
+  attribute isActive { "true" | "false" }?
+Class = element Class { ClassAtts, ClassFeatures* }
+
+# ========= DataType =========
+DataTypeFeatures = ClassifierFeatures
+DataTypeAtts = ClassifierAtts
+DataType = element DataType { DataTypeAtts, DataTypeFeatures* }
+
+# ========= Feature =========
+Feature.ownerScope =
+  element Feature.ownerScope { attlist.Feature.ownerScope, empty }
+attlist.Feature.ownerScope &= attribute xmi.value { ScopeKind }
+Feature.owner =
+  element Feature.owner { attlist.Feature.owner, Classifier* }
+attlist.Feature.owner &= empty
+FeatureFeatures =
+  ModelELEMENTFeatures | Feature.ownerScope | Feature.owner
+FeatureAtts =
+  ModelELEMENTAtts,
+  attribute ownerScope { ScopeKind }?,
+  attribute owner { xsd:IDREFS }?
+Feature = element Feature { FeatureAtts, FeatureFeatures* }
+
+# ========= StructuralFeature =========
+StructuralFeature.multiplicity =
+  element StructuralFeature.multiplicity { Multiplicity* }
+StructuralFeature.changeability =
+  element StructuralFeature.changeability {attribute xmi.value { ChangeableKind } }
+StructuralFeature.targetScope =
+  element StructuralFeature.targetScope { attribute xmi.value { ScopeKind } }
+StructuralFeature.ordering = 
+  element StructuralFeature.ordering { attribute xmi.value { OrderingKind } }
+StructuralFeature.type = element StructuralFeature.type { Classifier* }
+StructuralFeatureFeatures =
+  FeatureFeatures
+  | StructuralFeature.multiplicity
+  | StructuralFeature.changeability
+  | StructuralFeature.targetScope
+  | StructuralFeature.ordering
+  | StructuralFeature.type
+StructuralFeatureAtts =
+  FeatureAtts,
+  attribute changeability { ChangeableKind }?,
+  attribute targetScope { ScopeKind }?,
+  attribute ordering { OrderingKind }?,
+  attribute type { xsd:IDREFS }?
+StructuralFeature =
+  element StructuralFeature { StructuralFeatureAtts, StructuralFeatureFeatures* }
+
+# ========= AssociationEnd =========
+AssociationEnd.isNavigable =
+  element AssociationEnd.isNavigable { attribute xmi.value { "true" | "false" } }
+AssociationEnd.ordering =
+  element AssociationEnd.ordering { attribute xmi.value { OrderingKind } }
+AssociationEnd.aggregation =
+  element AssociationEnd.aggregation { attribute xmi.value { AggregationKind } }
+AssociationEnd.targetScope =
+  element AssociationEnd.targetScope { attribute xmi.value { ScopeKind } }
+AssociationEnd.multiplicity =
+  element AssociationEnd.multiplicity { Multiplicity* }
+AssociationEnd.changeability =
+  element AssociationEnd.changeability { attribute xmi.value { ChangeableKind } }
+AssociationEnd.association =
+  element AssociationEnd.association { Association* }
+AssociationEnd.qualifier =
+  element AssociationEnd.qualifier { Attribute* }
+AssociationEnd.participant =
+  element AssociationEnd.participant { Classifier* }
+AssociationEnd.specification =
+  element AssociationEnd.specification { Classifier* }
+AssociationEndFeatures =
+  ModelELEMENTFeatures
+  | AssociationEnd.isNavigable
+  | AssociationEnd.ordering
+  | AssociationEnd.aggregation
+  | AssociationEnd.targetScope
+  | AssociationEnd.multiplicity
+  | AssociationEnd.changeability
+  | AssociationEnd.association
+  | AssociationEnd.qualifier
+  | AssociationEnd.participant
+  | AssociationEnd.specification
+AssociationEndAtts =
+  ModelELEMENTAtts,
+  attribute isNavigable { "true" | "false" }?,
+  attribute ordering { OrderingKind }?,
+  attribute aggregation { AggregationKind }?,
+  attribute targetScope { ScopeKind }?,
+  attribute changeability { ChangeableKind }?,
+  attribute association { xsd:IDREFS }?,
+  attribute participant { xsd:IDREFS }?,
+  attribute specification { xsd:IDREFS }?
+AssociationEnd =
+  element AssociationEnd { AssociationEndAtts, AssociationEndFeatures* }
+
+# ========= Interface =========
+InterfaceFeatures = ClassifierFeatures
+InterfaceAtts = ClassifierAtts
+Interface = element Interface { attlist.Interface, InterfaceFeatures* }
+attlist.Interface &= InterfaceAtts
+
+# ========= Relationship =========
+RelationshipFeatures = ModelELEMENTFeatures
+RelationshipAtts = ModelELEMENTAtts
+Relationship =
+  element Relationship { attlist.Relationship, RelationshipFeatures* }
+attlist.Relationship &= RelationshipAtts
+
+# ========= Association =========
+Association.connection =
+  element Association.connection {(AssociationEnd | AssociationEndRole)* }
+AssociationFeatures =
+  GeneralizableELEMENTFeatures | Association.connection
+AssociationAtts = GeneralizableELEMENTAtts
+Association = element Association { AssociationAtts, AssociationFeatures* }
+
+# ========= Attribute =========
+Attribute.associationEnd =
+  element Attribute.associationEnd {  AssociationEnd* }
+AttributeFeatures =
+  StructuralFeatureFeatures
+  | Attribute.associationEnd
+AttributeAtts =
+  StructuralFeatureAtts,
+  attribute associationEnd { xsd:IDREFS }?
+Attribute = element Attribute { AttributeAtts, AttributeFeatures* }
+
+# ========= BehavioralFeature =========
+BehavioralFeature.isQuery =
+  element BehavioralFeature.isQuery { attribute xmi.value { "true" | "false" } }
+BehavioralFeature.parameter =
+  element BehavioralFeature.parameter { Parameter* }
+BehavioralFeatureFeatures =
+  FeatureFeatures
+  | BehavioralFeature.isQuery
+  | BehavioralFeature.parameter
+BehavioralFeatureAtts =
+  FeatureAtts,
+  attribute isQuery { "true" | "false" }?
+BehavioralFeature =
+  element BehavioralFeature { BehavioralFeatureAtts, BehavioralFeatureFeatures* }
+  
+# ========= Operation =========
+Operation.concurrency =
+  element Operation.concurrency { attribute xmi.value { CallConcurrencyKind } }
+Operation.isRoot =
+  element Operation.isRoot { attribute xmi.value { "true" | "false" } }
+Operation.isLeaf =
+  element Operation.isLeaf { attribute xmi.value { "true" | "false" } }
+Operation.isAbstract =
+  element Operation.isAbstract { attribute xmi.value { "true" | "false" } }
+Operation.specification = element Operation.specification { (text)* }
+OperationFeatures =
+  BehavioralFeatureFeatures
+  | Operation.concurrency
+  | Operation.isRoot
+  | Operation.isLeaf
+  | Operation.isAbstract
+  | Operation.specification
+OperationAtts =
+  BehavioralFeatureAtts,
+  attribute concurrency { CallConcurrencyKind }?,
+  attribute isRoot { "true" | "false" }?,
+  attribute isLeaf { "true" | "false" }?,
+  attribute isAbstract { "true" | "false" }?,
+  attribute specification { text }?
+Operation = element Operation { OperationAtts, OperationFeatures* }
+
+# ========= Parameter =========
+Parameter.kind =
+  element Parameter.kind { attribute xmi.value { ParameterDirectionKind } }
+Parameter.behavioralFeature =
+  element Parameter.behavioralFeature { BehavioralFeature* }
+Parameter.type =
+  element Parameter.type { Classifier* }
+ParameterFeatures =
+  ModelELEMENTFeatures
+  | Parameter.kind
+  | Parameter.behavioralFeature
+  | Parameter.type
+ParameterAtts =
+  ModelELEMENTAtts,
+  attribute kind { ParameterDirectionKind }?,
+  attribute behavioralFeature { xsd:IDREFS }?,
+  attribute type { xsd:IDREFS }?
+Parameter = element Parameter { ParameterAtts, ParameterFeatures* }
+
+# ========= Method =========
+Method.body = element Method.body { empty }
+Method.specification = element Method.specification { Operation* }
+MethodFeatures =
+  BehavioralFeatureFeatures | Method.body | Method.specification
+MethodAtts =
+  BehavioralFeatureAtts,
+  attribute specification { xsd:IDREFS }?
+Method = element Method { MethodAtts, MethodFeatures* }
+
+# ========= Generalization =========
+Generalization.discriminator =
+  element Generalization.discriminator { text * }
+Generalization.child =
+  element Generalization.child { GeneralizableELEMENT* }
+Generalization.parent =
+  element Generalization.parent { GeneralizableELEMENT* }
+Generalization.powertype =
+  element Generalization.powertype { Classifier* }
+GeneralizationFeatures =
+  RelationshipFeatures
+  | Generalization.discriminator
+  | Generalization.child
+  | Generalization.parent
+  | Generalization.powertype
+GeneralizationAtts =
+  RelationshipAtts,
+  attribute discriminator { text }?,
+  attribute child { xsd:IDREFS }?,
+  attribute parent { xsd:IDREFS }?,
+  attribute powertype { xsd:IDREFS }?
+Generalization =
+  element Generalization { GeneralizationAtts, GeneralizationFeatures* }
+
+# ========= AssociationClass =========
+AssociationClassFeatures =
+  AssociationFeatures
+  | Namespace.ownedElement
+  | Classifier.feature
+  | Classifier.powertypeRange
+  | Class.isActive
+AssociationClassAtts =
+  AssociationAtts,
+  attribute powertypeRange { xsd:IDREFS }?,
+  attribute isActive { "true" | "false" }?
+AssociationClass =
+  element AssociationClass { AssociationClassAtts, AssociationClassFeatures* }
+
+# ========= Dependency =========
+Dependency.client =
+  element Dependency.client { ModelELEMENT* }
+Dependency.supplier =
+  element Dependency.supplier { ModelELEMENT* }
+DependencyFeatures =
+  RelationshipFeatures | Dependency.client | Dependency.supplier
+DependencyAtts =
+  RelationshipAtts,
+  attribute client { xsd:IDREFS }?,
+  attribute supplier { xsd:IDREFS }?
+Dependency =
+  element Dependency { DependencyAtts, DependencyFeatures* }
+
+# ========= Abstraction =========
+Abstraction.mapping =
+  element Abstraction.mapping { empty }
+AbstractionFeatures = DependencyFeatures | Abstraction.mapping
+AbstractionAtts = DependencyAtts
+Abstraction =
+  element Abstraction { AbstractionAtts, AbstractionFeatures* }
+
+# ========= PresentationELEMENT =========
+PresentationELEMENT.subject =
+  element PresentationELEMENT.subject { ModelELEMENT* }
+PresentationELEMENTFeatures = PresentationELEMENT.subject
+PresentationELEMENTAtts =
+  ELEMENTAtts,
+  attribute subject { xsd:IDREFS }?
+PresentationELEMENT =
+  element PresentationELEMENT { PresentationELEMENTAtts, PresentationELEMENTFeatures* }
+
+# ========= Comment =========
+Comment.body =
+  element Comment.body { text* }
+Comment.annotatedELEMENT =
+  element Comment.annotatedELEMENT { ModelELEMENT* }
+CommentFeatures =
+  ModelELEMENTFeatures | Comment.body | Comment.annotatedELEMENT
+CommentAtts =
+  ModelELEMENTAtts,
+  attribute body { text }?,
+  attribute annotatedELEMENT { xsd:IDREFS }?
+Comment = element Comment { CommentAtts, CommentFeatures* }
+
+# ========= Primitive =========
+PrimitiveFeatures = DataTypeFeatures
+PrimitiveAtts = DataTypeAtts
+Primitive = element Primitive { PrimitiveAtts, PrimitiveFeatures* }
+
+# ========= Enumeration =========
+Enumeration.literal =
+  element Enumeration.literal { EnumerationLiteral* }
+EnumerationFeatures = DataTypeFeatures | Enumeration.literal
+EnumerationAtts = DataTypeAtts
+Enumeration =
+  element Enumeration { EnumerationAtts, EnumerationFeatures* }
+
+# ========= EnumerationLiteral =========
+EnumerationLiteral.enumeration =
+  element EnumerationLiteral.enumeration { Enumeration* }
+EnumerationLiteralFeatures = ModelELEMENTFeatures | EnumerationLiteral.enumeration
+EnumerationLiteralAtts =
+  ModelELEMENTAtts,
+  attribute enumeration { xsd:IDREFS }?
+EnumerationLiteral =
+  element EnumerationLiteral { EnumerationLiteralAtts, EnumerationLiteralFeatures* }
+
+# ========= Stereotype =========
+Stereotype.icon =
+  element Stereotype.icon { (text)* }
+Stereotype.baseClass =
+  element Stereotype.baseClass { (text)* }
+Stereotype.definedTag =
+  element Stereotype.definedTag { TagDefinition* }
+Stereotype.stereotypeConstraint =
+  element Stereotype.stereotypeConstraint { empty }
+StereotypeFeatures =
+  GeneralizableELEMENTFeatures
+  | Stereotype.icon
+  | Stereotype.baseClass
+  | Stereotype.definedTag
+  | Stereotype.stereotypeConstraint
+StereotypeAtts =
+  GeneralizableELEMENTAtts,
+  attribute icon { text }?
+Stereotype =
+  element Stereotype { StereotypeAtts, StereotypeFeatures* }
+
+# ========= TagDefinition =========
+TagDefinition.tagType = element TagDefinition.tagType { text* }
+TagDefinition.multiplicity =
+  element TagDefinition.multiplicity { Multiplicity* }
+TagDefinition.owner =
+  element TagDefinition.owner { Stereotype* }
+TagDefinitionFeatures =
+  ModelELEMENTFeatures
+  | TagDefinition.tagType
+  | TagDefinition.multiplicity
+  | TagDefinition.owner
+TagDefinitionAtts =
+  ModelELEMENTAtts,
+  attribute tagType { text }?,
+  attribute owner { xsd:IDREFS }?
+TagDefinition =
+  element TagDefinition { TagDefinitionAtts, TagDefinitionFeatures* }
+
+# ========= TaggedValue =========
+TaggedValue.dataValue =
+  element TaggedValue.dataValue { text * }
+TaggedValue.modelELEMENT =
+  element TaggedValue.modelELEMENT { ModelELEMENT* }
+TaggedValue.type =
+  element TaggedValue.type { TagDefinition* }
+TaggedValue.referenceValue =
+  element TaggedValue.referenceValue { ModelELEMENT* }
+TaggedValueFeatures =
+  ModelELEMENTFeatures
+  | TaggedValue.dataValue
+  | TaggedValue.modelELEMENT
+  | TaggedValue.type
+  | TaggedValue.referenceValue
+TaggedValueAtts =
+  ModelELEMENTAtts,
+  attribute modelELEMENT { xsd:IDREFS }?,
+  attribute type { xsd:IDREFS }?,
+  attribute referenceValue { xsd:IDREFS }?
+TaggedValue =
+  element TaggedValue { TaggedValueAtts, TaggedValueFeatures* }
+
+# ========= Common_Behavior =========
+
+# ========= ClassifierRole =========
+ClassifierRole.multiplicity =
+  element ClassifierRole.multiplicity { Multiplicity* }
+ClassifierRole.base =
+  element ClassifierRole.base { Classifier* }
+ClassifierRole.availableFeature =
+  element ClassifierRole.availableFeature { Feature* }
+ClassifierRole.availableContents =
+  element ClassifierRole.availableContents { ModelELEMENT* }
+ClassifierRoleFeatures =
+  ClassifierFeatures
+  | ClassifierRole.multiplicity
+  | ClassifierRole.base
+  | ClassifierRole.availableFeature
+  | ClassifierRole.availableContents
+ClassifierRoleAtts =
+  ClassifierAtts,
+  attribute base { xsd:IDREFS }?,
+  attribute availableFeature { xsd:IDREFS }?,
+  attribute availableContents { xsd:IDREFS }?,
+  attribute conformingInstance { xsd:IDREFS }?
+ClassifierRole =
+  element ClassifierRole {
+    ClassifierRoleAtts, ClassifierRoleFeatures*
+  }
+
+# ========= AssociationRole =========
+AssociationRole.multiplicity =
+  element AssociationRole.multiplicity { Multiplicity* }
+AssociationRole.base =
+  element AssociationRole.base { Association* }
+AssociationRoleFeatures =
+  AssociationFeatures
+  | AssociationRole.multiplicity
+  | AssociationRole.base
+AssociationRoleAtts =
+  AssociationAtts,
+  attribute base { xsd:IDREFS }?,
+  attribute message { xsd:IDREFS }?,
+  attribute conformingLink { xsd:IDREFS }?
+AssociationRole =
+  element AssociationRole { AssociationRoleAtts, AssociationRoleFeatures* }
+
+# ========= AssociationEndRole =========
+AssociationEndRole.collaborationMultiplicity =
+  element AssociationEndRole.collaborationMultiplicity { Multiplicity* }
+AssociationEndRole.base =
+  element AssociationEndRole.base {  AssociationEnd* }
+AssociationEndRole.availableQualifier =
+  element AssociationEndRole.availableQualifier { Attribute* }
+AssociationEndRoleFeatures =
+  AssociationEndFeatures
+  | AssociationEndRole.collaborationMultiplicity
+  | AssociationEndRole.base
+  | AssociationEndRole.availableQualifier
+AssociationEndRoleAtts =
+  AssociationEndAtts,
+  attribute base { xsd:IDREFS }?,
+  attribute availableQualifier { xsd:IDREFS }?
+AssociationEndRole =
+  element AssociationEndRole { AssociationEndRoleAtts, AssociationEndRoleFeatures* }
+
+# ========= Package =========
+PackageFeatures =
+  GeneralizableELEMENTFeatures
+  | Namespace.ownedElement
+PackageAtts = GeneralizableELEMENTAtts
+Package = element Package { PackageAtts, PackageFeatures* }
