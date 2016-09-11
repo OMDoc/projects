@@ -1,1 +1,0 @@
-java -classpath "..\..\src\scala-library.jar;..\..\bin" omdoc.flomdoc %1 %2 %3

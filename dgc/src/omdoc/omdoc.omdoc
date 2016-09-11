@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<omdoc cdbase="http://www.mathweb.org/omdoc" xmlns="http://www.omdoc.org/ns/" xmlns:om="http://www.openmath.org/OpenMath" xmlns:visib="http://www.mathweb.org/omdoc" version="1.2">
-
-   <theory name="omdoc">
-      <symbol name="hidden" role="constant"/>
-   </theory>
-</omdoc>
